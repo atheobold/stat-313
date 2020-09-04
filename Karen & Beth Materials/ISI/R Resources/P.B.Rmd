@@ -1,0 +1,122 @@
+---
+title: "ISI- Exploration P.B"
+author: "name and section"
+output: word_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(global.par = TRUE)
+knitr::opts_chunk$set(fig.width=4, fig.height=2.67) 
+```
+```{r, echo=FALSE}
+par(mar=c(4.1, 4.1, 1.1, 1.1)) 
+```
+
+# STEP 1: Ask a research  question.
+
+**1) I want to predict how much should I expect to pay for a home. What explanatory variables might explain variation in home prices?.**
+
+
+# STEP 2: Design a study an collect data.
+
+**In 2015, we sampled 13 homes that were for sale just north of Lake Macatawa in Michigan, and recorded the sale price (in thousands of dollars) as listed on Zillow (a real estate website).**
+
+**2) Identify the observational units and the response variable of interest. Is the response variable quantitative or categorical? What kinds of graphs and numerical summaries can you use to explore these data?**
+
+
+# STEP 3: Explore the data.
+
+```{r}
+load(url("http://www.isi-stats.com/isi2/ISI.RData"))
+homeprices= read.delim("http://www.isi-stats.com/isi2/data/homeprices.txt")
+View(homeprices)
+hist(homeprices$price.1000)
+isisummary(homeprices$'price.1000')
+```
+**3) Describe the shape of the home prices in this sample.**
+
+
+
+**4) Suppose we want to estimate or “predict” a typical home price based on these 13 homes. Do you think the mean would be a reasonable value to use? Explain why or why not.**
+
+
+**5) Do you think the mean is larger or smaller than the median? Explain.**
+
+
+**6) What is the standard deviation of these home prices? (What are the units?) Provide a one-sentence interpretation of this value. (<I>Hint</I>: How accurately can we predict a home price?) What are some possible explanations for this variation in home prices?**
+
+
+**7) The first home in the data set sold for $639,000. If we had used the mean to predict that sale price, how far off would we have been?**
+
+
+**8) Using the mean as our prediction, did we over-predict or under-predict the price of the first house. (<i>Hint</I>: Is the residual positive or negative?)**
+
+
+```{r}
+model1 = lm(homeprices$price.1000 ~ 1)
+isidotplot(model1$residuals, names="residuals")
+```
+
+**9) Roughly how often do you find a positive residual (under-prediction) and how often do you find a negative residual (over-prediction)?**
+
+
+```{r}
+model2 = lm(homeprices$price.1000~homeprices$sqft)
+model2$coefficients
+plot(homeprices$price.1000 ~ homeprices$sqft)
+abline(model2)
+```
+
+**10)Describe the association between home price and square footage (strength, direction, linearity?). Does the association behave as you would have predicted? Explain.**
+
+
+
+```{r}
+model2$residuals
+sd(model2$residuals)  #dividing by n-1
+summary(model2)$sigma  #dividing by n-2
+```
+**11) What residual does this model give you for the first home in the dataset? Is the standard error of the residuals larger or smaller than before? What does this tell you?**
+
+
+**Fit separate regression lines for lakefront and non-lakefront homes.**
+
+```{r}
+model3a = with(homeprices[homeprices$lake=="lakefront",], lm(price.1000~sqft)); coefficients(model3a)
+model3b = with(homeprices[homeprices$lake=="notlakefront",], lm(price.1000~sqft)); coefficients(model3b)
+
+with(homeprices, plot(price.1000 ~ sqft, col = lake))
+abline(model3a, col="blue")
+abline(model3b, col="red")
+```
+
+**12) How do the two lines compare (think about both the slopes and the intercepts). Do these comparisons make sense in this context?**
+
+
+**13) Use this model to predict the price of the first home in the data set. (Show your work.)**
+
+
+
+**14) Find the Standard Error of the residuals for this model**
+
+```{r}
+model3 = with(homeprices, lm(price.1000 ~ sqft*lake))
+sd(model3$residuals)  #dividing by n - 1
+summary(model3)$sigma  #dividing by n - 4
+```
+
+**15) Does including this additional location variable further reduce the standard error of the residuals?**
+
+
+**16)Based on the scatterplot, is location (lake front or not) confounded with size of the home? Remember to consider both whether location appears to be related to price and whether location appears to be related to size. (Include any additional output you use to help you answer this question.)**
+
+
+# STEP 5: Formulate conclusions.
+
+**17) Summarize the conclusions you would draw from this study, including which statistical model you would recommend and why. Is there a larger population of homes to which you are willing to generalize your conclusions? Is it reasonable to conclude that either the size of the home and/or the location of the property is causing variation in home prices? Explain.**
+
+# STEP 6: Looking back and ahead.
+
+**18) Identify any limitations you see to this study. What additional data would you like to collect to answer this research question?**
+

@@ -1,0 +1,70 @@
+---
+title: "Exploration 2.1"
+output: word_document
+---
+  
+  
+```{r setup, include=FALSE}
+knitr::opts_knit$set(global.par = TRUE)
+knitr::opts_chunk$set(fig.width=4, fig.height=2.67) 
+```
+```{r, echo=FALSE}
+par(mar=c(4.1, 4.1, 1.1, 1.1)) 
+```
+
+**Load the chip melting dataset, e.g.,**
+```{r}
+chipmelting= read.delim("http://www.isi-stats.com/isi2/data/MeltingTimes.txt")
+head(chipmelting)
+```
+
+
+**7. Find the following**
+```{r, results = "hide"}
+Overall =  mean(chipmelting$time)
+SSTotal = var(chipmelting$time)*(length(chipmelting$time) - 1)
+chocmean = mean(chipmelting$time[chipmelting$chip == "chocolate"])
+buttermean = mean(chipmelting$time[chipmelting$chip == "butterscotch"])
+choceffect = chocmean-Overall
+buttereffect = buttermean - Overall
+SSchip = 31*(mean(chipmelting$time[chipmelting$chip == "chocolate"])-mean(chipmelting$time))^2 + 31*(mean(chipmelting$time[chipmelting$chip == "butterscotch"])-mean(chipmelting$time))^2
+SSError = SSTotal - SSchip
+#controls the number of decimal places in the prinout and use of scientific notation
+options(digits = 2, scipen=2)
+```
+Overall mean melting time `r Overall`
+
+SSTotal `r SSTotal`
+
+Mean chocolate: `r chocmean`
+
+Mean butterscotch: `r buttermean`
+
+Effect of chocolate: `r choceffect`
+
+Effect of butterscotch: `r buttereffect`
+
+SSchip: `r SSchip`
+
+SSError: `r SSError`
+
+12. Compute SSperson.
+```{r}
+#use the unstacked dataset to find person means
+chipmeltingUnstacked= read.delim("http://www.isi-stats.com/isi2/data/MeltingTimesUnstacked.txt")
+head(chipmeltingUnstacked)
+
+personmeans = (chipmeltingUnstacked$chocolate + chipmeltingUnstacked$butterscotch)/2
+personeffects = personmeans - Overall
+2*sum(personeffects^2)
+```
+
+13. ANOVA table
+```{r}
+anova(lm(chipmelting$time ~ chipmelting$chip + as.factor(chipmelting$student)))
+```
+
+14. Prediction equation
+```{r}
+summary(lm(chipmelting$time ~ chipmelting$chip + as.factor(chipmelting$student)))
+```
