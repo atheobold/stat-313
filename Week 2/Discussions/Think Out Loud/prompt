@@ -1,0 +1,17 @@
+A student is working through the Introduction to R & RStudio lab, and they are
+having a difficult time with exercise 3. They feel that their code is correct
+and they should be getting a plot, but they keep getting an error from R that
+says: 
+
+Error in FUN(X[[i]], ...) : object 'boy_ratio' not found
+
+Below is the code the student used when trying to create their plot. What advise
+would you give to them?
+
+
+arbuthnot %>%
+  mutate(boy_ratio = boys / total)
+
+ 
+
+arbuthnot %>%  ggplot(aes(x=year, y=boy_ratio)) +geom_point()

@@ -26,7 +26,8 @@ course!
 
 ### Outline
 
-This tutorial will help you set up your computer to use R. It is for you if you need to:
+This tutorial will help you set up your computer to use R. It is for you if you
+need to:
 
 * Install R on your computer
 * Install the RStudio IDE
@@ -191,7 +192,7 @@ quiz(caption = "Quiz - Install RStudio",
 
 ### How to install R packages
 
-![](https://vimeo.com/203516241)
+![](http://youtu.be/tXZDoMlXfTE?hd=1)
 
 ### Test your knowledge
 
