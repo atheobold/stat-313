@@ -76,7 +76,7 @@ knitr::include_graphics('course images/greenwood.PNG')
 ### Additional Materials 
 
 ```{r, out.width = '20%', fig.align = 'center', echo = FALSE, eval = TRUE}
-knitr::include_graphics('course images/openintro_logo.png')
+knitr::include_graphics('course images/open_intro.png')
 ```
 
 Çetinkaya-Rundel, Diez, and Hardin, __Introduction to Statistics with
@@ -101,9 +101,15 @@ Ismay & Kim, __Modern Dive: Statistical Inference via Data Science__.
 way to interact with the `R` software. To function correctly, RStudio needs `R`
 and therefore both need to be installed on your computer.
 
-<!-- - RStudio Cloud functions and looks the same as RStudio, but doesn't require for -->
-<!-- you to install any programs on your computer. Instead, you can access RStudio -->
-<!-- through an internet browser.  -->
+- If you are unable to install `R` and RStudio on your computer, you can use Cal
+Poly's Virtual Computer Labs 
+(<https://tech.calpoly.edu/virtual-computer-labs-appstream>). RStudio is
+available in the "Computational" labs. You will need to use a two-factor log-in 
+(Cal Poly + Duo Mobile), which will then take you to a list of applications. 
+When you select RStudio, the page will load for 2-4 minutes 
+(```emo::ji("sad")```). Once you are in, you can work in RStudio the same way 
+you would on your laptop, *except* everything you make during a session 
+__cannot be accessed later__. 
 
 - Canvas will be used for weekly course discussions and lab submissions
 - Zoom will be used for weekly (synchronous) course meetings, office hours, and
@@ -224,9 +230,9 @@ node[fontname = 'helvetica', width = 2, height = 1]
 
 videos [label = 'Monday: \n Read chapter \n Watch lecture video', fillcolor = '#e40303']
 post1 [label = 'Tuesday: \n Contribute concept \n discussion post', fillcolor = '#ff8c00']
-in_person [label = 'Wednesday: \n Attend in-person lecture & activity \n Complete lab activity', fillcolor = '#ffed00']
+in_person [label = 'Wednesday: \n Attend in-person lecture & activity \n Begin lab assignment', fillcolor = '#ffed00']
 post2 [label = 'Thursday: \n Contribute think out loud discussion post \n Participate in group collaboration session', fillcolor = '#008026']
-homework [label =  'Sunday: \n Submit weekly activity \n Wrap-up discussion conversations', fillcolor = '#004dff']
+homework [label =  'Sunday: \n Submit lab assignment \n Wrap-up discussion conversations', fillcolor = '#004dff']
 
 videos -> post1 -> in_person -> post2 -> homework
 }")
@@ -518,7 +524,7 @@ September 25 | Friday    | End of second week
 October 2	   | Friday    | End of third week - Census date
 October 30   | Friday    | End of seventh week, last day to withdraw from a course
 November 11  | Wednesday | Academic holiday - Veterans Day Observed
-November 24  | Tuesday   | Last day of instruction
+November 24  | Tuesday   | Last day of instruction, Last day to decide C/NC
 November 25 - 29 | Wednesday-Sunday | Thanksgiving holiday
 November 30  | Monday | Final Exam
 
