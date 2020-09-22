@@ -124,15 +124,6 @@ un_votes %>%
     )
 ```
 
-<!-- TASKS  -->
-<!-- - List the variables used in creating this visualization. -->
-
-<!-- What are the explanatory variables? What is the response variable? -->
-
-<!-- - Indicate whether each variable in the study is numerical or categorical. If -->
-<!-- numerical, identify as continuous or discrete. If categorical, indicate if the -->
-<!-- variable is ordinal. -->
-
 ## Sampling Strategies 
 
 <div class="columns-2">
@@ -262,16 +253,6 @@ ggplot(aes(y = life_exp_at_birth,
     ) +
   theme_minimal()
     ```
-
-<!-- TASKS  -->
-
-<!-- a.  Describe the relationship between life expectancy and percentage of internet -->
-<!-- users. -->
-
-<!-- b.  What type of study is this? -->
-
-<!-- c.  State a possible confounding variable that might explain this relationship -->
-<!-- and describe its potential effect. -->
 
 ## Questions for Me
 
