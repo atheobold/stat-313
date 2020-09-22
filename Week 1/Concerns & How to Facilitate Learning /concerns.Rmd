@@ -1,0 +1,194 @@
+---
+title: "Concerns About Stat 313"
+output: pdf_document
+---
+
+# Missing Due Dates
+
+__I'm worried about missing assignments because I didn't see it.__
+
+Every assignment for each week will be outlined in the page at the beginning of 
+the module. Additionally, each assignment or a link to the assignment will be 
+posted in the weekly module. In general, you should expect the following 
+assignments __every week__:
+
+- concept discussion
+- think out loud discussion 
+- group collaboration participation/recording
+- lab assignment
+
+\vspace{0.25cm}
+
+__I'm worried I'll forget due dates, or miss posted assignments.__
+
+The due dates for every assignment is the Sunday of that week. While I hope that 
+you accomplish the assignments before that date, that is the formal deadline for 
+every assignment each week. 
+
+\vspace{0.25cm}
+
+# Internet Connection
+
+__I'm worried my unstable internet connection will limit my ability to attend course meetings.__
+
+The synchronous course meetings will also be recorded, so that if you lose your 
+connection, you will be able to watch the recording on your own time. During the 
+synchronous course meetings, I will not require that you turn on your video. 
+While I appreciate seeing everyone's faces, so I feel less alone, I understand 
+that sharing your video sometimes sucks up all of the bandwidth in your internet.
+
+\vspace{0.25cm}
+
+__I'm worried my internet will be an issue with oral exams.__ 
+
+When we come around to scheduling oral exams, I will make sure to communicate 
+exactly what I expect from you as far as Zoom connectivity. If you do not feel 
+comfortable with your internet connection, I am willing to work out alternative 
+solutions, such as using a video call on a cell phone. 
+
+\vspace{0.25cm}
+
+__I'm worried about traveling to locations without stable internet connection.__
+
+If you will be traveling during the quarter and you are worried about there 
+being internet wherever you are going, please communicate that to me __and__ 
+to the members of your discussion group. I can be flexible with deadlines for
+submitting assignments, but I expect that you communicate with your group 
+members, so they are not left waiting for you to post in the discussion forum.
+
+\vspace{0.25cm}
+
+# Group Participation 
+
+__It is difficult to ask other students questions in an online course.__ 
+
+I know this is difficult, and I will try and make the course as conducive to 
+peer communication as I can! I have opened up the People tab on Canvas, so you 
+can see who your classmates are, and send them direct messages. I am using groups 
+for the weekly discussions, so you are able to talk with others about the 
+concepts you are learning and the assignment you are working on. I will also be 
+using breakout rooms during our weekly synchronous meetings, so you can work 
+with others and ask questions. 
+
+\vspace{0.25cm}
+
+__I learn by interacting with others, which is really difficult in an online course.__ 
+
+I totally agree, and I learn the same way. My hope is that the weekly discussions 
+will help you to identify students with which you feel comfortable working with. 
+You are welcome to discuss assignments or concepts with others, it will, 
+however, require more effort on your part. You will need to reach out to other 
+students to collaborate. I understand that for some this may cause you anxiety, 
+since I would feel the same way. If you are having difficulties meeting with 
+other students, I would encourage you to meet with me and I am happy to make 
+course announcements that help to facilitate group collaborations. 
+
+\vspace{0.25cm}
+
+__I worry that the group discussions won't have meaningful interactions. I also worry that my group members will not respond to my messages in a timely manner, so that I can learn.__ 
+
+I understand these concerns, since I have been in an online course where I was 
+required to post chapter summaries for absolutely no one to read. I want for the
+discussions to be meaningful for your learning, so I will not ask you to 
+"discuss" stupid things (e.g. chapter summaries). Instead, I will try to pick 
+out big picture ideas that may be confusing, so you can voice your ideas or 
+questions to your group. 
+
+I also understand that group discussions are tricky, because you are working on 
+other people's schedule. For this reason, I request that everyone complete their 
+first concept discussion post by Wednesday, so that your group members will 
+have a sufficient amount of time to respond. As for the think out loud 
+discussion, this topic will be related to the lab assignment that week. I 
+will intentionally pick a question from the lab assignment that I think is 
+tricky, so everyone in the group can help each other complete the assignment. 
+
+\vspace{0.25cm}
+
+# Time Since Last Statistics Class
+
+__It's been a long time since I took Intro Stat.__
+
+__I'm nervous that I forgot everything.__
+
+__It would be nice to have some review before we start doing stuff I've never seen before.__ 
+
+I totally understand that it has been a while since some people have taken 
+a statistics course. It is __very__ unlikely that you have forgotten everything 
+you learned. Instead, it is likely that with a bit of review the concepts will 
+start coming back to you. Almost everyone in the course is coming in with a 
+different background, so it is likely that some of the "review" stuff may be 
+new to some of you. For this reason, we will be taking three weeks to review 
+the building blocks of the statistics we will be using for the rest of the
+quarter.
+
+\vspace{0.25cm}
+
+# Online Format
+
+__I struggle to work on my own.__
+
+I encourage you to use your group members to make connections with others, so 
+that you feel less alone. I know that I do much better with a study/homework 
+partner, so I suggest that you use the group discussions to find a student 
+with whom you feel comfortable working. 
+
+\vspace{0.25cm}
+
+__I struggle to motivate to do my work.__
+
+Let's be honest, we all do. It is possible that some weeks we will all feel 
+pretty blah, and not really excited about learning statistics. That's how it 
+goes. If life is really getting you down and you are having a difficult time 
+doing your coursework, please communicate with me. I am happy to work with you 
+for deadlines, but also talk to you so you feel less blah. 
+
+\vspace{0.25cm}
+
+__I'm afraid of not understanding the content.__ 
+
+There are multiple outlets for you to ask questions about the course content 
+each week. You will have groups with whom you will discuss concepts from the 
+reading, and a problem from the lab assignment. You will interact with these
+same group members when working on an exercise during our synchronous course
+meetings. You are always welcome to post questions in the Course Questions 
+discussion forum, which I will try to respond to ASAP. Finally, you are always
+welcome to come to my office hours to talk about anything that is confusing you.
+
+__I dislike assignments that are repetitive and take a lot of time.__
+
+I dislike writing assignments that are repetitive, since they are boring. I 
+promise you that I will try my hardest to not assign you anything that is 
+repetitive. There will be activities and labs that cover the same content 
+that you learn in the textbook, but these assignments __will not__ ask you the 
+same questions over and over and over. 
+
+__I worry about having enough time on quizzes.__ 
+
+I like to take time on quizzes, so I've given everyone as much time to
+complete the quizzes as you need. I've also created the quizzes so that you are 
+able to see all of the questions at once, in case your answer for one question 
+helps you decide your answer for another question. 
+
+__I had a bad experience in the last statistics course I took online.__ 
+
+I'm really sorry to hear this and I will do my best to make this course as 
+great of an experience as I can. I will be checking in with everyone every few 
+weeks, so I can gauge how the course delivery is going, and what changes 
+you feel would make the course better. 
+
+# Learning `R`
+
+__I worry about memorizing `R` code.__
+
+You will not have to memorize `R` code. You will be given exercises that help 
+you learn `R`, which will then be helpful when you complete your lab 
+assignment. The `R` code required to complete each lab assignment will have 
+been covered in previous activities or exercises.
+
+__I've never programmed, so learning to program online sounds terrifying.__ 
+
+Learning to program is scary. I understand that many of you are not feeling 
+super great about learning to program in `R`, but I would like to 
+encourage you that I will give you as much support learning to program as I can. 
+There will be weekly activities that give you the chance to practice your 
+programming, where there will be hints and solutions to the exercises.
