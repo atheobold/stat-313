@@ -1,22 +1,13 @@
-https://rstudio.csm.calpoly.edu/chapter1_recap/
+WEB ADDRESS: https://rstudio.csm.calpoly.edu/september_30/
 
-GROUP TASK 1
+90 SECOND WRITING TASK:
 
-- List the variables used in creating this visualization.
+What would the dataframe look like?
 
-What are the explanatory variables? What is the response variable?
+GROUP TASK
 
-- Indicate whether each variable in the study is numerical or categorical. If
-numerical, identify as continuous or discrete. If categorical, indicate if the
-variable is ordinal.
+In your group, decide what data wrangling tasks are necessary to prepare the 
+data for plotting.
 
-
-GROUP TASK 2
-
-a.  Describe the relationship between life expectancy and percentage of internet
-users.
-
-b.  What type of study is this?
-
-c.  State a possible confounding variable that might explain this relationship
-and describe its potential effect.
+Then, decide what visualization you believe would help address these
+researchers' question.

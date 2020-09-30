@@ -25,15 +25,30 @@ library(vembedr)
 library(htmltools)
 ```
 
+## Welcome to Our Course
+
+__Group Norms:__
+
+- Zero tolerance for: racism, sexism, homophobia, transphobia, ageism, ableism 
+
+- Be the expert of your own experience -- Use "I" statements
+
+- Respect one another
+
+- Intent and impact *both* matter
+
+- Non-judgmental 
+
+- Take space, make space -- Share the air
+<!-- Challenge yourself to take space if you tend to be quieter, make space if you -->
+<!-- find yourself talking a lot or otherwise taking up space. -->
+<!-- Be aware of your airtime to ensure all voices are heard. -->
+
+- Embrace discomfort
+
+- Make decisions by consensus
+
 ## What is Statistics?
-
-```{r}
-embed_url("https://www.youtube.com/watch?v=wV0Ks7aS7YI")
-```
-
-## What Statistics Is To Me 
-
-<div style="font-size:1.25em">
 
 > Scientists seek to answer questions using rigorous methods and careful
 > observations. These observations – collected from the likes of field notes,
@@ -45,10 +60,20 @@ embed_url("https://www.youtube.com/watch?v=wV0Ks7aS7YI")
 >
 > _Introduction to Modern Statistics_
 
+
+## What Statistics Is To Me 
+
+</br>
+</br>
+
+![](cycle.png)
+
+
 ## Data
 
 ```{r, echo = FALSE}
-children_gender_stereo[[1]] %>% 
+children_gender_stereo[[2]] %>% 
+  rename(sex = gender) %>% 
   sample_n(6) %>%
   kable(caption = "Gender stereotypes in 5-7 year old children", 
         format = "html") %>% 
@@ -97,7 +122,7 @@ loan50 <- loan50 %>%
 loan50
 ```
 
-## Group Exercise
+## 90 Second Writing Exercise
 
 ```{r, echo = FALSE, fig.width = 8, fig.height = 5}
 un_votes %>%
