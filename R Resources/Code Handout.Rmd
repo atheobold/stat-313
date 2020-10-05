@@ -1,0 +1,415 @@
+---
+title: "Code Handout"
+author: "Allison Theobold"
+output: pdf_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(fig.width = 3, 
+                  fig.height = 3, 
+                  message = FALSE, 
+                  warning = FALSE,
+                  eval = FALSE)
+
+```
+
+This document contains all of the functions that we have covered thus far in the
+course. It will be updated every week, after we've added new skills. Each 
+function is presented alongside an example of how it is used. 
+
+All of the examples below are in the context of the Palmer Penguins, found 
+[here (link)](https://allisonhorst.github.io/palmerpenguins/index.html). 
+
+\vspace{0.5cm}
+
+## Packages
+
+- `library()` -- loads packages into your `R` session
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+\vspace{0.5cm}
+
+## Inspecting Data
+
+- `glimpse()` -- shows a summary of the dataset, the number of rows and columns, 
+variable names, and the first 10 entries of each variable 
+```{r}
+glimpse(penguins)
+```
+
+\vspace{0.5cm}
+
+## Working with Data
+
+- `<-` -- "assignment arrow", assigns a value (vector, dataframe, single value)
+to the name of a variable 
+```{r}
+penguins_2007 <- penguins %>% 
+  filter(year == 2007)
+```
+
+\vspace{0.5cm}
+
+- `c()` -- the "concatenate" function combines inputs to form a vector, the 
+values have to be the same data type. 
+
+```{r}
+cat_variables <- c("Species", "Island", "Sex")
+```
+
+\newpage
+
+## Verbs of Data Wrangling
+
+- `select()` -- selects variables (columns) from a dataframe 
+```{r}
+penguins %>% 
+select(species)
+```
+
+\vspace{0.5cm}
+
+- `filter()` -- filters observations (rows) out of / into a dataframe, where
+the inputs (arguments) are the conditions to be satisfied in the data that are
+kept 
+```{r}
+## It's nice to have a new line for each condition, so your code is easier to read!
+penguins %>% 
+filter(species == "Adelie",
+       body_mass_g > 3000,
+       year == 2008)
+
+```
+
+\vspace{0.5cm}
+
+- `mutate()` -- creates new variables or modifies existing variables
+```{r}
+penguins %>% 
+  filter(is.na(bill_length_mm) != TRUE, 
+         is.na(bill_depth_mm) != TRUE) %>% 
+  mutate(body_mass_kg = body_mass_g / 1000)
+```
+
+\vspace{0.5cm}
+
+- `group_by()` -- groups the dataframe based on levels of a categorical variable, 
+usually used alongside `summarize()`
+
+```{r, eval = FALSE}
+penguins %>% 
+  group_by(island)
+```
+
+\vspace{0.5cm}
+
+- summarize()` -- creates data summaries of variables in a dataframe, for grouped 
+summaries use alongside `group_by()`
+
+```{r}
+penguins %>% 
+  filter(is.na(body_mass_g) != TRUE) %>% 
+  group_by(island) %>% 
+  summarize(mean_mass = mean(body_mass_g))  
+
+```
+
+\vspace{0.5cm}
+
+- `arrange()` -- orders a dataframe based on the values of a numerical variable, 
+paired with `desc()` to order in descending order
+
+```{r}
+penguins %>% 
+  filter(is.na(body_mass_g) != TRUE) %>% 
+  group_by(island) %>% 
+  summarize(mean_mass = mean(body_mass_g)) %>% 
+  arrange(desc(mean_mass))
+```
+
+\newpage
+
+- `%>%` -- the "pipe" operator, joins sequences of data wrangling steps together, 
+works with any function that has `data = ` as the first argument 
+```{r}
+penguins %>%
+  select(species, island, body_mass_g, sex, year) %>% 
+  filter(island ==   "Torgersen", 
+         is.na(body_mass_g) != TRUE) %>% 
+  group_by(species, year) %>% 
+  summarize(mean_mass = mean(body_mass_g),
+            median_mass = median(body_mass_g),
+            observations = n()) %>% 
+  arrange(desc(mean_mass))
+```
+
+## Other Data Wrangling Tools
+
+- `count()` -- counts the number of observations (rows) of the different levels 
+of a categorical variable
+```{r}
+penguins %>% 
+count(species)
+```
+  
+\vspace{0.5cm}
+
+- `mean()` -- finds the mean of a numerical variable, not resistant to `NA` values, 
+so either filter out prior or use `na.omit = TRUE` argument
+  * Other summary functions include:
+    +  `var()` -- find the variance of a numerical variable
+    +  `sd()` -- finds the standard deviation of a numerical variable
+    + `IQR()` -- find the innerquartile range (Q3 - Q1) of a numerical variable
+    + `median()` -- finds the median of a numerical variable 
+
+\vspace{0.5cm}
+
+- `is.na()` -- returns a vector of `TRUE` and `FALSE` values corresponding to 
+whether a particular row of a variable was `NA` (missing)
+```{r}
+penguins %>% 
+  mutate(missing_weight = is.na(body_mass_g))
+```
+
+\vspace{0.5cm}
+
+- `drop.levels()` -- drops the levels of a categorical variable that have no 
+observations in them, useful to use after filtering out levels of a categorical 
+variable, so the only levels that appear are the ones you wanted to keep
+
+```{r, eval = FALSE}
+penguins %>% 
+  filter(species != "Adelie") %>% 
+  droplevels()
+```
+
+\vspace{0.5cm}
+
+- `distinct()` -- selects the unique values of a variable 
+
+```{r}
+penguins %>% 
+  distinct(species)
+```
+
+\vspace{0.5cm}
+
+- `slice_sample()` -- selects rows from the dataframe, based on the value of 
+`n` specified
+
+```{r}
+penguins %>% 
+  slice_sample(n = 10)
+```
+
+\vspace{0.5cm}
+
+- `if_else()` -- function which creates output based on a condition to be 
+satisfied, the first argument is the logical test we wish to perform, the second
+argument is what we want output if the result of the logical test is `TRUE`,
+the third argument is what we want output if the result of the logical test is
+`FALSE`
+```{r}
+penguins %>%
+  filter(is.na(flipper_length_mm) != TRUE) %>% 
+  mutate(large_flipper = 
+           if_else(flipper_length_mm >= mean(flipper_length_mm),
+                   "above average",
+                   "below average")
+         )
+```
+
+\vspace{0.5cm}
+
+- `%in%` -- the "inclusion operator", used to specify 2 or more levels of a 
+categorical variable that you wish to keep in your data
+  * The levels to be kept must be included in a vector (`c()`). 
+
+```{r}
+penguins %>% 
+  filter(species %in% c("Gentoo", "Chinstrap"))
+```
+
+\vspace{0.5cm}
+
+- `as.factor()` -- converts a variable from numerical or character into a factor, 
+necessary if fitting a data model or producing a visualization with a numerical 
+variable that you want treated as categorical
+  * `as.character()` will also work! 
+
+```{r}
+penguins %>% 
+  mutate(year_chr = as.character(year), 
+         year_fct = as.factor(year))
+```
+
+  
+## Data Visualization
+
+* `ggplot()` -- a function to create the shell of a visualization, where 
+specific variables are mapped to different aspects of the plot 
+
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species))
+```
+
+\vspace{0.5cm}
+
+- `aes()` -- aesthetics that can be used when creating a `ggplot()`, where the 
+aesthetics can either be hard coded (e.g. `color = "blue"`) or associated with 
+a variable (e.g. `color = sex`). 
+  * The following are the aesthetic options for *most* plots:
+    + `x`
+    + `y`
+    + `alpha` -- changes transparency
+    + `color` -- produces colored outline 
+    + `fill` -- fills with color
+    + `group` -- used with categorical variables, similar to color
+
+\vspace{0.5cm}
+
+- **`+`** -- an important aspect creating a `ggplot()` is to note that the 
+    `geom_XXX()` function is separated from the `ggplot()` function with a plus
+    sign, `+`.
+  * `ggplot()` plots are constructed in series of layers, where the plus sign
+    separates these layers.  
+  * Generally, the `+` sign can be thought of as the end of a line, so you
+    should always hit enter/return after it. While it is not mandatory to move
+    to the next line for each layer, doing so makes the code a lot easier to
+    organize and read. 
+
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point()
+```
+
+\vspace{0.5cm}
+
+- `geom_histogram( )` -- adds a histogram to the plot, 
+where the observations are binned into ranges of values and then frequencies
+of observations are plotted on the y-axis
+  * You can specify the number of bins you want with the `bins` argument 
+  
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram(bins = 20)
+```
+
+\vspace{0.5cm}
+
+- `geom_dotplot()` -- plots each observation as a dot that's placed at it's
+appropriate value on the x axis, then stacked as other cases take similar values
+  * You can use the `dotsize` argument to decrease the size of the dots (1 is the 
+  default value).
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_dotplot(dotsize = 1)
+```
+
+\vspace{0.5cm}
+
+- `geom_boxplot( )` -- adds a boxplot to the plot, where observations are 
+aggregated (summarized), the min, Q1, median, Q3, and maximum are plotted as the
+box and whiskers, and "outliers" are plotted as points. 
+  * You can plot a vertical boxplot by specifying the `x` variable, or a 
+  horizontal boxplot by specifying the `y` variable.
+  * Note: the min and max may not be included in the whiskers, if they are
+  deemed to be "outliers" based on the $1.5 \times \text{IQR}$ rule. 
+
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_boxplot()
+```
+
+\vspace{0.5cm}
+
+- `geom_density()` -- adds a density curve to the plot, where the probability
+density is plotted on the y-axis (so the density curve has a total area of one). 
+  * By default this creates a density curve without shading. By specifying a 
+    color in the `fill` argument, the density curve is shaded. 
+
+```{r, warning=FALSE, message=FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_density(fill = "tomato")
+```
+
+\vspace{0.5cm}
+
+- `geom_smooth()` -- plots a line over a set of points, draws the readers eye 
+to a specific trend
+  * The methods we will use are "lm" for a linear model (straight line), and 
+  "loess" for a wiggly line
+  * By default, the smoother gives you gray SE bars, to remove these add 
+  `se = FALSE` 
+  
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") 
+```
+
+\newpage
+
+- `labs()` -- specifies the plot labels, possible labels are: x, y, color, fill, 
+title, and subtitle
+
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Bill Length (mm)", 
+       y = "Bill Depth (mm)", 
+       color = "Penguin Species")
+```
+
+\vspace{0.5cm}
+
+- `xlim()` -- specifies the limits of the x-axis, must be specified as a vector
+(`c()`)
+
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  xlim(c(0, 70))
+```
+
+\vspace{0.5cm}
+
+- `ylim()` -- specifies the limits of the y-axis, must be specified as a vector
+
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  ylim(c(0, 30))
+```
+
+\vspace{0.5cm}
+
+- `facet_wrap()` -- creates subplots of your original plot, based on the levels
+of the variable you input
+  * To facet by one variable, use `~variable`. 
+  * To facet by two variables, use `variable1 ~ variable2`. 
+  * If you prefer for your facets to be organized in rows or columns, use the 
+  `nrow` and/or `ncol` arguments. 
+  
+```{r, fig.width = 12}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  facet_wrap(~island, nrow = 1)
+```
+  

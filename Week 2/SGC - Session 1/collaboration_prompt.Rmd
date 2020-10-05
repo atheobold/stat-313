@@ -13,10 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 Researchers collected data to examine the relationship between the use of 
 sunscreens and oral betacarotene supplements and the development of skin cancer. 
 During the study, individuals were assigned to four treatment groups: 
+
 - daily application of a sun protection factor 15-plus sunscreen to the head,
   neck, arms, and hands, and betacarotene supplementation (30 mg per day)
 - sunscreen plus placebo tablets
-- betacarotene only
+- betacarotene supplementation (30 mg per day) only
 - placebo only 
 
 The study was performed on 1621 residents of Nambour in southeast Queensland,
@@ -35,59 +36,85 @@ group than in the no daily sunscreen group
 </br>
 </br>
 
-__Identify the main research question of the study.__
+__1. Identify the main research question of the study.__
 
 </br>
 </br>
 
-__Who were the subjects in this study, and how many were included?__
+__2. Who were the subjects in this study, and how many were included?__
 
 </br>
 </br>
 
-__What are the variables in the study? Identify each variable as numerical or
+__3. What are the variables in the study? Identify each variable as numerical or
 categorical. If numerical, state whether the variable is discrete or continuous.
 If categorical, state whether the variable is ordinal.__ 
 
 </br>
 </br>
 
-__Was blocking included in this study? If not, what variable do you believe 
+__4. Was blocking included in this study? If not, what variable do you believe 
 would have been wise to consider as a blocking variable?__
 
 </br>
 </br>
 
-__Identify the population of interest and the sample in this study.__
+__5. Identify the population of interest and the sample in this study.__
 
 </br>
 </br>
 
-__What type of study was this?__
+__6. What type of study was this?__
 
 </br>
 </br>
 
-__Were the patients blinded to their treatment? Was this study double-blind?__
+__7. Were the patients blinded to their treatment? Was this study double-blind?__
 
 </br>
 </br>
 
-__The researchers stated that "there was no effect on incidence of basal-cell
+__8. The researchers stated that "there was no effect on incidence of basal-cell
 carcinoma by sunscreen use." Given the study design, can the researchers 
 establish causal relationships?__ 
 
 </br>
 </br>
 
-__Can the results of the study be generalized to the population at large?__
+__9. Can the results of the study be generalized to the population at large?__
 
 </br>
 </br>
 
-__These researchers concluded sunscreen had "no effect" because their test
+__10. These researchers concluded sunscreen had "no effect" because their test
 statistic resulted in a p-value that was greater than 0.05. What issues do you 
 see with this interpretation?__
+
+</br>
+</br>
+
+__11. In March of 2016 the American Statistical Association released a statement 
+on the use of "statistical significance" and p-values. In the statement, the 
+authors outline six key misconceptions and misuse of p-values. Which of these
+misconceptions apply to this study?__
+
+</br>
+
+__1. P-values can indicate how incompatible the data are with a specified statistical model.__
+
+__2. P-values do not measure the probability that the studied hypothesis is true, or the
+probability that the data were produced by random chance alone.__
+
+__3. Scientific conclusions and business or policy decisions should not be based only on
+whether a p-value passes a specific threshold.__
+
+__4. Proper inference requires full reporting and transparency.__
+
+__5. A p-value, or statistical significance, does not measure the size of an effect or the
+importance of a result.__
+
+__6. By itself, a p-value does not provide a good measure of evidence regarding a model or
+hypothesis.__
 
 </br>
 
@@ -100,7 +127,7 @@ these tumors by 78%."
 
 </br>
 
-__Why do you believe the 1999 study found that sunscreen had "no effect" on 
+__12. Why do you believe the 1999 study found that sunscreen had "no effect" on 
 basal-cell carcinoma, when this previous study had found that "regular use of 
 sunscreen would reduce the incidence of tumors by 78%"?__
 
