@@ -1,5 +1,6 @@
 ---
-title: "Introduction to Linear Regression"
+title: Introduction to Linear Regression - Key
+author: Allison Theobold
 output: html_document
 ---
 
@@ -177,6 +178,7 @@ $$
 This equation tells us two things: 
 1. For countries with a `pf_expression_control` of 0 (those with the largest amount of political pressure on media content), we expect their mean personal freedom score to be 4.61707. 
 2. For every 1 unit increase in `pf_expression_control`, we expect a country's mean personal freedom score to increase 0.49143 units. 
+
 One last piece of information we will discuss from the summary output is the Multiple R-squared, or more simply, $R^2$.
 The $R^2$ value represents the proportion of variability in the response variable that is explained by the explanatory variable.
 For this model, 63.42% of the variability in `pf_score` is explained by `pf_expression_control`.
@@ -213,7 +215,7 @@ When predictions are made for values of $x$ that are beyond the range of the obs
 However, predictions made within the range of the data are more reliable.
 These predictions in the data are used to compute the residuals.
 
-__9.  If someone saw the least squares regression line and not the actual data, how would they predict a country's personal freedom score if the country had a 6.7 rating for `pf_expression_control`? If the  Is this an overestimate or an underestimate, and by how much? In other words, what is the residual for this prediction?__ 
+__9.  If someone saw the least squares regression line and not the actual data, how would they predict a country's personal freedom score if the country had a 6.7 rating for `pf_expression_control`? Is this an overestimate or an underestimate, and by how much? In other words, what is the residual for this prediction?__ 
 <!-- Your response goes here! Do not remove this line! -->
 
 

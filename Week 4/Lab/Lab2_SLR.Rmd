@@ -1,5 +1,6 @@
 ---
-title: "Introduction to Linear Regression"
+title: Introduction to Linear Regression
+author: YOUR NAME HERE
 output: html_document
 ---
 
@@ -67,8 +68,10 @@ __part (a) Using the code below, how many rows in the `small_hfi` data have miss
 __part (b) Use the `drop_na()` function to created another new dataframe named `hfi_small_clean` that **does not** contain any missing values.__ 
 
 ```{r}
-## Code for question 3
+drop_na(hfi) %>% 
+  dim()
 
+## Code for question 3
 
 ```
 
@@ -83,8 +86,15 @@ __4. Plot the relationship between `pf_score` and `pf_expression_control`, using
 
 ```
 
+You may notice that it looks like the points in the plot are only plotted in very specific incriments, roughly up to one decimal place. 
+This results in many observations being plotted on top of each other. 
+We can fix this "stacking" of points by using `geom_jitter()` instead of `geom_point()` to make our plot. 
 
-__5. If you knew a country's `pf_expression_control`, or its score out of 10, with 0 being the most, of political pressures and controls on media content, would you be comfortable using a linear model to predict the personal freedom score?__
+__5. Change your code above to use `geom_jitter()` rather than `geom_point()`. Hint: If you weren't using `geom_point()` before, you should reconsider.__ 
+<!-- There is no code or response for this question! -->
+
+
+__6. If you knew a country's `pf_expression_control`, or its score out of 10, with 0 being the most, of political pressures and controls on media content, would you be comfortable using a linear model to predict the personal freedom score?__
 <!-- Your response goes here! Do not remove this line! -->
 
 
@@ -108,7 +118,7 @@ Think back to the way that we described the distribution of a single variable.
 Recall that we discussed characteristics such as center, spread, and shape.
 It's also useful to be able to describe the relationship of two numerical variables, such as `pf_expression_control` and `pf_score` above.
 
-__6.  Looking at your plot from question 4, describe the relationship between pf_expression_control` and `pf_score`. Make sure to discuss the form, direction, and strength of the relationship as well as any unusual observations.__
+__7.  Looking at your plot from question 4, describe the relationship between pf_expression_control` and `pf_score`. Make sure to discuss the form, direction, and strength of the relationship as well as any unusual observations.__
 <!-- Your response goes here! Do not remove this line! -->
 
 
@@ -140,7 +150,7 @@ plot_ss(x = pf_expression_control, y = pf_score, data = hfi_small_clean, showSqu
 
 **Note:** The output from the `plot_ss()` function provides you with the slope and intercept of your line as well as the sum of squares.
 
-__7.  Using `plot_ss`, choose a line that does a good job of minimizing the sum of squares. Run the function several times. What was the smallest sum of squares that you got? How does it compare to your neighbors?__
+__8.  Using `plot_ss`, choose a line that does a good job of minimizing the sum of squares. Run the function several times. What was the smallest sum of squares that you got? How does it compare to your neighbors?__
 <!-- Your response goes here! Do not remove this line! -->
 
 
@@ -182,7 +192,7 @@ One last piece of information we will discuss from the summary output is the Mul
 The $R^2$ value represents the proportion of variability in the response variable that is explained by the explanatory variable.
 For this model, 63.42% of the variability in `pf_score` is explained by `pf_expression_control`.
 
-__8.  Fit a new model that uses `pf_expression_control` to predict `hf_score`, or the total human freedom score. Using the estimates from the R output, write the equation of the regression line. What does the slope tell us in the context of the relationship between human freedom and the amount of political pressure on media content?__
+__9.  Fit a new model that uses `pf_expression_control` to predict `hf_score`, or the total human freedom score. Using the estimates from the R output, write the equation of the regression line. What does the slope tell us in the context of the relationship between human freedom and the amount of political pressure on media content?__
 <!-- Your response goes here! Do not remove this line! -->
 
 
@@ -213,7 +223,7 @@ When predictions are made for values of $x$ that are beyond the range of the obs
 However, predictions made within the range of the data are more reliable.
 These predictions in the data are used to compute the residuals.
 
-__9.  If someone saw the least squares regression line and not the actual data, how would they predict a country's personal freedom score if the country had a 6.7 rating for `pf_expression_control`? If the  Is this an overestimate or an underestimate, and by how much? In other words, what is the residual for this prediction?__ 
+__10.  If someone saw the least squares regression line and not the actual data, how would they predict a country's personal freedom score if the country had a 6.7 rating for `pf_expression_control`? If the  Is this an overestimate or an underestimate, and by how much? In other words, what is the residual for this prediction?__ 
 <!-- Your response goes here! Do not remove this line! -->
 
 
@@ -236,7 +246,7 @@ Notice here that `pf_model` can also serve as a data set because stored within i
 Also note that we're getting fancy with the code here.
 After creating the scatterplot on the first layer (first line of code), we overlay a horizontal dashed red line at $y = 0$ (to help us check whether residuals are distributed around 0), and we also rename the axis labels to be more informative.
 
-__10.  Is there any apparent pattern in the residuals plot? What does this indicate about the linearity of the relationship between the two variables?__
+__11.  Is there any apparent pattern in the residuals plot? What does this indicate about the linearity of the relationship between the two variables?__
 <!-- Your response goes here! Do not remove this line! -->
 
 
@@ -248,13 +258,13 @@ ggplot(data = pf_model, aes(x = .resid)) +
   xlab("Residuals")
 ```
 
-__11.  Based on the histogram, does the nearly normal residuals condition appear to be violated? Why or why not?__
+__12.  Based on the histogram, does the nearly normal residuals condition appear to be violated? Why or why not?__
 <!-- Your response goes here! Do not remove this line! -->
 
 
 **Constant variability**:
 
-__12.  Based on the residuals vs. fitted plot, does the constant variability condition appear to be violated? Why or why not?__
+__13.  Based on the residuals vs. fitted plot, does the constant variability condition appear to be violated? Why or why not?__
 <!-- Your response goes here! Do not remove this line! -->
 
 
