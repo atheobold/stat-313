@@ -64,7 +64,7 @@ __2. The dataset has **a lot** of variables, but we are only interested in four:
 We can use the `drop_na()` function to get an idea of how many observations have missing data. The function looks row by row through the data to decide what rows should be kept. If there is an `NA` value in a row, that row is discarded. The result is a dataframe where there are no missing values for any of the variables. 
 
 __3__
-__part (a) Using the code below, how many rows in the `small_hfi` data have missing values?__
+__part (a) Using the code below, how many rows in the `hfi_small` data have missing values?__
 __part (b) Use the `drop_na()` function to created another new dataframe named `hfi_small_clean` that **does not** contain any missing values.__ 
 
 ```{r}
@@ -91,7 +91,7 @@ This results in many observations being plotted on top of each other.
 We can fix this "stacking" of points by using `geom_jitter()` instead of `geom_point()` to make our plot. 
 
 __5. Change your code above to use `geom_jitter()` rather than `geom_point()`. Hint: If you weren't using `geom_point()` before, you should reconsider.__ 
-<!-- There is no code or response for this question! -->
+<!-- There is no code needed for a response to this question! -->
 
 
 __6. If you knew a country's `pf_expression_control`, or its score out of 10, with 0 being the most, of political pressures and controls on media content, would you be comfortable using a linear model to predict the personal freedom score?__
@@ -223,7 +223,7 @@ When predictions are made for values of $x$ that are beyond the range of the obs
 However, predictions made within the range of the data are more reliable.
 These predictions in the data are used to compute the residuals.
 
-__10.  If someone saw the least squares regression line and not the actual data, how would they predict a country's personal freedom score if the country had a 6.7 rating for `pf_expression_control`? If the  Is this an overestimate or an underestimate, and by how much? In other words, what is the residual for this prediction?__ 
+__10.  If someone saw the least squares regression line and not the actual data, how would they predict a country's personal freedom score if the country had a 6.7 rating for `pf_expression_control`? Is this an overestimate or an underestimate?__ 
 <!-- Your response goes here! Do not remove this line! -->
 
 

@@ -1,0 +1,202 @@
+---
+title: "Small Group Collaboration - Session 3"
+date: "October 8, 2020"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      echo = FALSE, 
+                      fig.width = 4, 
+                      fig.height = 4, 
+                      message = FALSE)
+library(tidyverse)
+library(openintro)
+library(gridExtra)
+library(kableExtra)
+library(broom)
+```
+
+## Data 
+
+Data from 20 metropolitan areas were collected in 2018, on the following 4
+variables.
+
+- `population` -- metropolitan population 
+- `perc_pov` -- percent of population in poverty
+- `perc_unemp` -- percent unemployed 
+- `annual_murders_per_mil` -- number of murders per year per million people
+
+## Baseline of Murder Rates & Populations
+
+```{r, fig.width = 8}
+rates <- murders %>% 
+  ggplot(aes(x = annual_murders_per_mil)) +
+  geom_dotplot(binwidth = 5, dotsize = 0.5) + 
+  labs(x = "Muders per 1 million people", 
+       y = "Density")
+
+pop <-  murders %>% 
+  ggplot(aes(x = population)) +
+  geom_dotplot() + 
+  labs(x = "Population", 
+       y = "Density") + 
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE))
+
+grid.arrange(rates, pop, nrow = 1)
+```
+
+<center>
+__Do you notice any unusual points?__  
+
+## Data Filtering
+
+</br>
+</br>
+<center>
+
+If you were interested in investigating the observation with a large 
+population, how would you extract it from the `murders` dataset? 
+
+## Visualizing Relationships 
+
+```{r, echo = FALSE, fig.width = 8}
+p1 <- ggplot(murders, aes(x = perc_unemp, y = annual_murders_per_mil)) +
+  geom_point() +
+  labs(
+    x = "Percent of population unemployed",
+    y = "Number of murders per year per million people"
+    )
+
+p2 <- ggplot(murders, aes(x = perc_pov, y = annual_murders_per_mil)) +
+  geom_point() +
+  labs(
+    x = "Percent of population in poverty",
+    y = " "
+    )
+grid.arrange(p1, p2, nrow = 1)
+```
+
+## Modeling Murder Rates with Poverty 
+
+```{r, eval = FALSE}
+lm_pov <- lm(annual_murders_per_mil ~ perc_pov, data = murders)
+summary(lm_pov)
+```
+
+```{r, echo = FALSE}
+lm_pov <- lm(annual_murders_per_mil ~ perc_pov, data = murders)
+tidy(lm_pov)
+```
+
+</br>
+</br>
+
+<center>
+__How would you interpret the intercept and slope for this model?__
+
+
+## Modeling Murder Rates with Unemployment
+
+```{r, eval = FALSE}
+lm_unemp <- lm(annual_murders_per_mil ~ perc_unemp, data = murders)
+summary(lm_unemp)
+```
+
+```{r, echo = FALSE}
+lm_unemp <- lm(annual_murders_per_mil ~ perc_unemp, data = murders)
+tidy(lm_unemp)
+```
+
+</br>
+</br>
+
+<center>
+__How would you interpret the intercept and slope for this model?__
+
+## Which Model? 
+
+</br>
+</br>
+</br>
+</br>
+
+<center>
+__How would you decide which model was the "better" choice?__ 
+
+
+## Poverty Diagnostic Plots
+
+```{r, fig.width = 8}
+resids <- ggplot(data = lm_pov, aes(x = .resid)) +
+  geom_density() +
+  xlab("Residuals")
+
+fitted <- ggplot(data = lm_pov, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  xlab("Fitted values") +
+  ylab("Residuals")
+
+grid.arrange(resids, fitted, nrow = 1)
+```
+
+
+## Unemployment Diagnostic Plots
+
+```{r, fig.width = 8}
+resids <- ggplot(data = lm_unemp, aes(x = .resid)) +
+  geom_density() +
+  xlab("Residuals")
+
+fitted <- ggplot(data = lm_unemp, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  xlab("Fitted values") +
+  ylab("Residuals")
+
+grid.arrange(resids, fitted, nrow = 1)
+```
+
+## $R^2$
+
+```{r, echo = TRUE}
+murders %>% 
+  summarize(cor_pov = cor(perc_pov, annual_murders_per_mil), 
+            R_sq_pov = cor_pov^2, 
+            cor_unemp = cor(perc_unemp, annual_murders_per_mil),
+            R_sq_umep = cor_unemp^2)
+```
+
+</br>
+
+<center>
+
+__What do these $R^2$ values tell you?__ 
+
+__Which model would you choose?__ 
+
+## Alternative Models 
+
+</br>
+</br>
+
+While these variables form notable models for explaining the murder rate in 
+metropolitan areas, the data are limited. 
+
+</br>
+
+__What variables would you include in a model of metropolitan murder rates?__ 
+
+<!-- - education completion rates -->
+<!-- - how segregated a city is -->
+<!-- - income inequality -->
+<!-- - organized crime -->
+<!-- - gun laws -->
+<!-- - country's development -- GDP proxy? -->
