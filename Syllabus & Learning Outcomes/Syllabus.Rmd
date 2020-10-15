@@ -36,7 +36,7 @@ pride_pal <- c("#e40303", "#ff8c00", "#ffed00",
 The course will "meet" through three primary channels: 
 
 1. Synchronous Zoom meetings for one hour every Wednesday 
-(time TBD - per Canvas survey) 
+(during scheduled synchronous time)
 
 2. Asynchronous weekly group discussions on Canvas
 
@@ -44,6 +44,10 @@ The course will "meet" through three primary channels:
   - Section 01 - Thursdays from 9:10 - 10:00 am
   - Section 02 - Thursdays from 10:10 - 11:00 am
 
+4. Weekly `R` "skill up sessions" on Zoom (every Tuesday)
+  - Section 01 - Thursdays from 9:10 - 10:00 am
+  - Section 02 - Thursdays from 10:10 - 11:00 am
+  
 ## Office Hours
 
 __All office hours will take place on Zoom.__
@@ -53,29 +57,18 @@ Regular weekly office hours will be held:
 Day        | Time
 -----------|------------------
 Tuesdays   | 4:00 pm – 5:00 pm
-Wednesdays | 1:00 pm - 3:00 pm
+Wednesdays | 2:00 pm - 3:00 pm
 Thursdays  | 4:00 pm – 5:00 pm
 
-Individual appointments or appointments outside of these time slots may be made
-made _at least_ 24 hours in advance through Calendly, using the following link: 
-<https://calendly.com/allisontheobold> 
+Individual appointments or appointments can be made on Wednesdays from 1:00 - 
+2:00. These appointments must be made _at least_ 24 hours in advance through
+Calendly, using the following link: <https://calendly.com/allisontheobold> 
 
 ## Required Materials 
 
 For this course we will be using one main textbook, accompanied by additional 
 resources. All of the materials are free! 
 
-
-Greenwood, __Intermediate Statistics with R__ -- with `tidyverse` revisions by
-Allison Theobold
-
-```{r, out.width = '50%', fig.align = 'center', echo = FALSE, eval = TRUE}
-knitr::include_graphics('course images/greenwood.PNG')
-```
-
-<https://atheobold.github.io/Greenwood_Book/>
-
-### Additional Materials 
 
 ```{r, out.width = '20%', fig.align = 'center', echo = FALSE, eval = TRUE}
 knitr::include_graphics('course images/open_intro.png')
@@ -141,7 +134,6 @@ _Expected Outcomes_:
   * observational studies
   * one-factor completely randomized designs
   * randomized complete block designs
-  * factorial designs  
 
 - Analyze and interpret the results of analysis of variance (ANOVA) from
 different study designs, including multiple comparisons of means
@@ -157,8 +149,6 @@ predictor variables
 
 - Describe the assumptions of the ANOVA and regression models and evaluate
 whether they are violated for a particular analysis.
-
-<!-- * Residual analysis   -->
 
 - Describe Type I error, Type II error, and statistical power in context; 
 discuss how different aspects of a study design will affect errors and power
