@@ -27,7 +27,11 @@ All of the examples below are in the context of the Palmer Penguins, found
 - `library()` -- loads packages into your `R` session
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
-library(palmerpenguins)
+library(moderndive)
+library(skimr)
+library(broom)
+
+library(palmerpenguins) 
 ```
 
 \vspace{0.5cm}
@@ -39,6 +43,15 @@ variable names, and the first 10 entries of each variable
 ```{r}
 glimpse(penguins)
 ```
+
+\vspace{0.5cm}
+
+- `skim()` -- shows a summary of the variables in the dataset, summary statistics
+for the quantitative variables, and the number of missing observations. 
+```{r}
+skim(penguins)
+```
+
 
 \vspace{0.5cm}
 
@@ -60,7 +73,19 @@ values have to be the same data type.
 cat_variables <- c("Species", "Island", "Sex")
 ```
 
-\newpage
+\vspace{0.5cm}
+
+- `data.frame()` -- creates a dataframe based on input variables 
+  * Values for each variable are specified as vectors (using `c()` )
+  * Variables are separated by commas 
+  
+```{r}
+simple <- data.frame(year = c(2000, 2001), 
+                     species = c("Adelie", "Gentoo"), 
+                     island = c("Torgersen", "Dream"))
+```
+  
+\vspace{0.5cm}
 
 ## Verbs of Data Wrangling
 
@@ -106,7 +131,7 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- summarize()` -- creates data summaries of variables in a dataframe, for grouped 
+- `summarize()` -- creates data summaries of variables in a dataframe, for grouped 
 summaries use alongside `group_by()`
 
 ```{r}
@@ -117,7 +142,7 @@ penguins %>%
 
 ```
 
-\vspace{0.5cm}
+\newpage
 
 - `arrange()` -- orders a dataframe based on the values of a numerical variable, 
 paired with `desc()` to order in descending order
@@ -130,7 +155,7 @@ penguins %>%
   arrange(desc(mean_mass))
 ```
 
-\newpage
+\vspace{0.5cm}
 
 - `%>%` -- the "pipe" operator, joins sequences of data wrangling steps together, 
 works with any function that has `data = ` as the first argument 
@@ -165,6 +190,29 @@ so either filter out prior or use `na.omit = TRUE` argument
     + `IQR()` -- find the innerquartile range (Q3 - Q1) of a numerical variable
     + `median()` -- finds the median of a numerical variable 
 
+\vspace{0.5cm}
+
+- `cor()` -- finds the correlation between two numerical variables
+  * Can remove the NA values from the variables by specifying that `cor()` 
+  should only `use` the "pairwise.complete.obs". 
+```{r}
+penguins %>% 
+  summarize(correlation = cor(bill_length_mm, bill_depth_mm, 
+                              use = "pairwise.complete.obs")
+  )
+```
+
+\vspace{0.5cm}
+
+- `get_correlation()` -- finds the correlation between two numerical variables
+  * Specified using a formula (`y ~ x`)
+  * Can remove the NA values from the variables by specifying `na.rm = TRUE`
+
+```{r}
+penguins %>% 
+  get_correlation(bill_length_mm ~ bill_depth_mm, na.rm = TRUE)
+```
+  
 \vspace{0.5cm}
 
 - `is.na()` -- returns a vector of `TRUE` and `FALSE` values corresponding to 
@@ -313,7 +361,7 @@ penguins %>%
   geom_dotplot(dotsize = 1)
 ```
 
-\vspace{0.5cm}
+\newpage
 
 - `geom_boxplot( )` -- adds a boxplot to the plot, where observations are 
 aggregated (summarized), the min, Q1, median, Q3, and maximum are plotted as the
@@ -358,7 +406,18 @@ penguins %>%
   geom_smooth(method = "lm") 
 ```
 
-\newpage
+\vspace{0.5cm}
+
+- `geom_parallel_slopes()` -- fits lines for each group of a categorical variable, 
+but forces the lines to have parallel slopes
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_parallel_slopes() 
+```
+
+\vspace{0.5cm}
 
 - `labs()` -- specifies the plot labels, possible labels are: x, y, color, fill, 
 title, and subtitle
@@ -373,7 +432,7 @@ penguins %>%
        color = "Penguin Species")
 ```
 
-\vspace{0.5cm}
+\newpage
 
 - `xlim()` -- specifies the limits of the x-axis, must be specified as a vector
 (`c()`)
@@ -412,4 +471,92 @@ penguins %>%
   geom_smooth(method = "lm") + 
   facet_wrap(~island, nrow = 1)
 ```
+
+
+## Data Modeling 
+
+- `lm()` -- fits a linear model to a dataset
+  * You specify the variables as a formula (`y ~ x`), where `y` is your 
+  response variable and `x` is your explanatory variable
+  * The second argument is the name of the dataset (`data = penguins`)
+```{r}
+## Two quantitative explanatory variables
+model1 <- lm(bill_length_mm ~ bill_depth_mm + body_mass_g, data = penguins)
+
+## One quantitative and one categorical explanatory variable
+model2 <- lm(bill_length_mm ~ bill_depth_mm + sex, data = penguins)
+```
   
+\vspace{0.5cm}
+
+- `get_regression_table()` -- produces a tidy table output of a regression 
+model
+  * Output includes coefficients, standard errors, p-values, and confidence
+  intervals
+  
+```{r}
+get_regression_table(model1)
+```
+
+\vspace{0.5cm}
+
+- `summary()` -- produces a "raw" summary of a regression model
+  * The "untidy" version of a regression summary. 
+  * Includes same information as `get_regression_table()`, but also includes
+  $R^2$ and adjusted $R^2$. 
+
+```{r}
+summary(model2)
+```
+
+\newpage
+
+- `tidy()` -- takes untidy output and creates a nice table! 
+  * Similar to `get_regression_table()`, but doesn't output confidence intervals.
+  * Lives in the **broom** package
+```{r}
+tidy(model2)
+```
+
+\vspace{0.5cm}
+
+- `get_regression_points()` -- provides information on each observation used in
+a `lm()` in a tidy table format
+  * Produces a table with the variables included in the regression, and the 
+  residual associated with each observation
+
+```{r}
+get_regression_points(model1)
+```
+
+
+\vspace{0.5cm}
+
+- `predict()` -- produces an untidy vector of the predicted y-values for each
+observation in the dataset
+  * Can make predictions for new observations with the `newdata` argument. 
+  
+```{r}
+predict(model1)
+
+new_penguin <- data.frame(bill_depth_mm = 200, body_mass_g = 500)
+predict(model1, newdata = new_penguin)
+```
+
+\vspace{0.5cm}
+
+- `augment()` -- produces a tidy table of data values from a regression model
+  * Lives in the **broom** package
+  * Produces a table with the variables included in the regression, and 6 
+  additional columns:
+    + including `.fitted` (predicted y-value for that observation), `.resid`
+    (residual for that observation)
+  * Can make predictions for new observations with the `newdata` argument. 
+```{r}
+augment(model2)
+
+new_penguin <- data.frame(bill_depth_mm = 15, sex = "female")
+augment(model2, newdata = new_penguin)
+```
+
+

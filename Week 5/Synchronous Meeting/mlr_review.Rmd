@@ -67,12 +67,17 @@ __What are the model conditions we need to check for a simple linear regression?
 
 ## Visualizing SLR
 
-```{r}
+```{r slr-viz, echo = FALSE, eval = FALSE}
 evals %>% 
   ggplot(aes(x = bty_avg, y = score)) + 
   geom_jitter() + 
   geom_smooth(method = "lm")
 
+```
+
+```{r, echo = FALSE}
+decorate("slr-viz") %>% 
+  flair("geom_jitter")
 ```
 
 ## Fitting a SLR Model
@@ -106,12 +111,18 @@ quantitative and one categorical explanatory variables.__
 
 ## Visualization
 
-```{r}
+```{r mlr-viz, eval = FALSE, echo = FALSE}
 evals %>% 
   ggplot(aes(x = bty_avg, y = score, color = gender)) + 
   geom_jitter() + 
   geom_smooth(method = "lm", se = FALSE)
 ```
+
+```{r, echo = FALSE}
+decorate("mlr-viz") %>% 
+  flair("color = gender")
+```
+
 
 
 ## Modeling Options
@@ -226,12 +237,16 @@ the average beauty score is increased by 1.
 
 ## Fitting a Different Slopes Model
 
-```{r}
+```{r mlr-slopes, eval = FALSE, echo = FALSE}
 model3 <- lm(score ~ bty_avg + gender + bty_avg:gender, data = evals)
 
 get_regression_table(model3)
 ```
 
+```{r, echo = FALSE}
+decorate("mlr-slopes") %>% 
+  flair("bty_avg:gender")
+```
 
 ## Interpreting a Different Slopes Model
 

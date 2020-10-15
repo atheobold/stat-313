@@ -1,0 +1,239 @@
+---
+title: "Small Group Collaboration - Session 4"
+date: "October 15, 2020"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      echo = FALSE, 
+                      fig.width = 4, 
+                      fig.height = 4, 
+                      message = FALSE)
+library(tidyverse)
+library(openintro)
+library(gridExtra)
+library(moderndive)
+library(ISLR)
+library(kableExtra)
+library(broom)
+
+credit <- Credit %>% as_tibble() %>% 
+  select(ID, debt = Balance,
+         credit_limit = Limit, 
+         income = Income, 
+         credit_rating = Rating, 
+         age = Age, 
+         student = Student,
+         cards = Cards, 
+         married = Married, 
+         ethnicity = Ethnicity)
+```
+
+## Data 
+
+We'll investigate the `credit` dataset from the textbook, which has 400 
+observations on customer's financial information. 
+
+The aim of the dataset is to predict which customers will default on their credit
+card debt.
+
+```{r}
+glimpse(credit)
+```
+
+## Exploratory Data Analysis
+
+<div class="columns-2">
+
+```{r, echo = FALSE}
+credit %>% 
+  ggplot(aes(x = credit_limit, y = debt)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+</br>
+</br>
+
+What other variables do believe may impact this relationship?
+
+</br> 
+
+How would you explore that relationship?  
+
+## 
+
+<div class="columns-2">
+
+```{r, echo = FALSE}
+credit %>% 
+  ggplot(aes(x = credit_limit, y = debt, color = student)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r, echo = FALSE}
+credit %>% 
+  ggplot(aes(x = credit_limit, y = debt, color = cards)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+</div> 
+<center>
+
+What do you see in these visualizations?
+
+## Modeling Debt with Credit Limit
+
+```{r, echo = TRUE, eval = FALSE}
+debt_model1 <- lm(debt ~ credit_limit, data = credit)
+```
+
+```{r}
+debt_model1 <- lm(debt ~ credit_limit, data = credit)
+
+get_regression_table(debt_model1)
+```
+
+</br> 
+<center> 
+
+How would you interpret the relationship between credit card debt and credit 
+card limit? 
+
+</br> 
+
+Who does this regression apply to?  
+
+## Adding in Student Variable
+
+```{r, echo = TRUE}
+debt_model2 <- lm(debt ~ credit_limit + student, data = credit)
+```
+
+</br>
+<center>
+
+What type of model was fit? Is that appropriate given what you saw in the visualization?  
+
+## Interpreting 
+
+```{r, eval = FALSE, echo = TRUE}
+debt_model2 <- lm(debt ~ credit_limit + student, data = credit)
+```
+
+```{r}
+get_regression_table(debt_model2)
+```
+
+</br> 
+<center> 
+
+What is the estimated regression line for students?
+
+</br>
+
+What does this model assume about the relationship between debt and credit limit? 
+
+## Model Fit
+
+```{r}
+r.sq1 <- summary(debt_model1)$r.squared
+r.sq2 <- summary(debt_model2)$r.squared
+
+adj.r.sq1 <- summary(debt_model1)$adj.r.squared
+adj.r.sq2 <- summary(debt_model2)$adj.r.squared
+
+```
+
+| Model          | $R^2$    | Adjusted $R^2$ | 
+| ---------------| ---------|:--------------:| 
+| Credit Limit           | 0.745    | 0.811          |
+| Credit Limit + Student | 0.812    | 0.811          | 
+
+</br>
+</br>
+<center>
+
+How much additional variability in debt can we explain when adding in whether 
+the individual was a student? 
+
+## Alternative Model -- Number of Cards
+
+```{r, echo = TRUE}
+debt_model3 <- lm(debt ~ credit_limit + cards, data = credit)
+
+get_regression_table(debt_model3)
+```
+
+</br>
+<center>
+
+What type of explanatory variable is `cards`?
+
+How do we interpret the slope on `credit_limit`?
+
+How do we interpret the slope on `cards`? 
+
+
+## Model Fit
+
+```{r}
+r.sq3 <- summary(debt_model3)$r.squared
+adj.r.sq3 <- summary(debt_model3)$adj.r.squared
+```
+
+| Model          | $R^2$    | Adjusted $R^2$ | 
+| ---------------| ---------|:--------------:| 
+| Credit Limit           | 0.745    | 0.811  |
+| Credit Limit + Student | 0.812    | 0.811  | 
+| Credit Limit + Cards   | 0.748    | 0.747  | 
+
+</br>
+</br>
+<center>
+
+Which model does a better job of explaining debt? 
+
+## Issues with Credit Limits? 
+
+```{r, fig.width = 6}
+credit %>% 
+  mutate(income_bracket = cut_number(income, 4)) %>%
+  mutate(income_bracket = fct_recode(income_bracket,
+    "low" =  "[10.4,21]",
+    "med-low" = "(21,33.1]",
+    "med-high" = "(33.1,57.5]",
+    "high" = "(57.5,187]")
+  ) %>% 
+  ggplot(aes(x = credit_limit, y = debt, color = income_bracket)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+Which group(s) appear to have similar relationships between credit limit and 
+debt?
+
+## Modeling the Wealthy 
+
+How would we create a variable that indicated whether someone was wealthy or not? 
+
+```{r, fig.width = 5, fig.height = 3}
+credit %>% 
+  mutate(income_bracket = if_else(income > 58, "wealthy", "not wealthy")) %>% 
+  ggplot(aes(x = credit_limit, y = debt, color = income_bracket)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+
+```
+
+What type of regression should we use to model this relationship?
+
