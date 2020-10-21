@@ -1,0 +1,143 @@
+---
+title: "Data Wrangling and Visualization with Educational Data"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include = FALSE}
+library(learnr)
+library(tidyverse)
+library(openintro)
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+hsb2_public <- hsb2 %>% 
+  filter(schtyp == "public")
+```
+
+## Welcome
+
+The dataset that we will work with in this tutorial comes from the High School and Beyond Survey, which is a survey conducted on high school seniors by the National Center of Education Statistics.
+
+### Variables in `hsb2`
+
+Let's take a moment to go through the variables in the High School and Beyond dataset:
+
+```{r glimpse-hsb2-again, echo=TRUE}
+glimpse(hsb2)
+```
+
+## Filtering Categorical Data 
+
+A common step in many analyses that involve categorical data is a subgroup analysis, where we work with only a subset of the data. For example, analyzing data only from students in public schools or only for students who identified as female. We can obtain these subsets by filtering for the specific levels we're interested in.
+
+Suppose we want to do an analysis of only the students in public schools in the High School and Beyond dataset. Let's first find out how many such students there are in each school type!
+
+```{r hsb2-count-schtyp, exercise=TRUE, exercise.eval = FALSE}
+
+```
+
+Next, let's use the `filter()` function to filter the data to only include
+public school students __and__ save that new dataset as `hsb2_public`. 
+
+```{r hsb2-filter-schtyp-public, exercise=TRUE, exercise.eval = FALSE}
+
+```
+
+Make another another frequency table of school type in the filtered dataset, to 
+verify that only public schools are included. 
+
+```{r hsb2-count-schtyp-again, exercise=TRUE, exercise.eval = FALSE}
+
+```
+
+Now we will practice filtering and handling factors with a different categorical variable.
+
+## Discretize variables
+
+A common way of creating a new variable from an existing variable is discretizing, that is converting a numerical variable to a categorical variable based on certain criteria.
+
+For example, suppose we are not interested in the actual scores of students, but instead whether their total score is below average or at or above average. First, we need to create a `total` variable that is the sum of the `read`, `math`, `science`, and `socst` variables. THen, we need to  
+calculate the average total score with the `mean()` function.
+
+```{r hsb2-mean-read, exercise=TRUE, exercise.eval = FALSE}
+# Step 1: Create new variable named total 
+
+# Step 2: Calculate average total score and show the value
+
+```
+
+However, in order to be able to refer back to this value later on, we want to store this average value as an object that we can refer to by name. So instead of just printing the result, let's save it as a new object called `avg_total`.
+
+```{r}
+hsb2 <- hsb2 %>% 
+  mutate(total = read + math + science + socst, 
+         total_cat = if_else(total < mean(total), "below average", "at or above average")
+         )
+```
+
+
+```{r hsb2-mean-read-assign, exercise=TRUE, exercise.eval = FALSE}
+# Calculate average total score and store as avg_total
+
+```
+
+### New variable: `total_cat`
+
+We now want to make a new variable from the `total` variable, named `total_cat`. We want for the values of this variable to be "below average" if the student's score was below the `avg_total`, and "at or above average" for scores greater than or equal to the `avg_total`. 
+
+
+```{r hsb2-mutate-total-cat, exercise=TRUE, exercise.eval = FALSE}
+hsb2 <- hsb2 %>%
+  mutate(total_cat = if_else(total < mean(total), "[VALUE IF TRUE]", "[VALUE IF FALSE]")
+         ) 
+```
+
+```{r hsb2-mutate-total-cat-solution}
+hsb2 <- hsb2 %>%
+  mutate(total_cat = if_else(total < mean(total), "below average", "at or above average") 
+         )
+```
+
+Remember: 
+
+- The first argument of the function is the logical test we wish to perform.
+- The second argument is what we want the function to do if the result of the logical test is `TRUE`, in other words, if the student's score is below the average score.
+- The third argument is what we want the function to do if the result of the logical test is `FALSE`, in other words, if the student's score is above the average score.
+
+## Visualizing Numerical Data
+
+The most logical and most useful first step of any data analysis is an exploratory analysis. And a very important and informative component of exploratory data analysis is visualization.
+
+First, let's start by visualizing the relationship between the math and science scores of the students in the High School and Beyond dataset.
+
+```{r hsb2-science-math, exercise=TRUE, exercise.eval = FALSE}
+
+
+```
+
+### Visualizing Numerical & Categorical Data
+
+Let's plot the same math and science test scores, but this time let's also consider the race that the student is: white, asian, hispanic, and african american. 
+
+- Add a linear regression line for each race! 
+- Turn the standard error bands off, so you can more easily see each line. 
+
+```{r hsb2-science-math-prog, exercise=TRUE, exercise.eval = FALSE}
+
+```
+
+## Modeling Numerical & Categorical Data
+
+Let's model the relationship between student's math scores and reading scores, allowing for the relationship to differ by race. 
+
+Then inspect the regression to see how different the lines for each group are.
+
+```{r model-science-math-race, exercise=TRUE, exercise.eval = FALSE}
+# Fit a linear regression model with different slopes 
+
+```
+
