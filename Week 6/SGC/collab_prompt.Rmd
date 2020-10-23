@@ -1,0 +1,186 @@
+---
+title: "Small Group Collaboration - Session 5"
+date: "October 22, 2020"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      echo = FALSE, 
+                      fig.width = 4, 
+                      fig.height = 4, 
+                      message = FALSE)
+library(tidyverse)
+library(openintro)
+library(gridExtra)
+library(moderndive)
+library(infer)
+```
+
+## Data 
+
+We will consider data from many different studies, but the main one will be 
+the `evals` dataset from course evaluations at UT Austin. 
+
+```{r, echo=FALSE}
+evals_small <- evals %>% 
+  select(prof_ID, score, age, gender, rank) 
+
+glimpse(evals_small)
+```
+
+## Deciding a Study Population 
+
+Often when reading a statistical study, you will not know who the researchers 
+thought of as their target population, and are left to imagine who the study 
+population may have been. 
+
+</br>
+
+__Comment on the study population for the following studies:__ 
+
+`hsb2`: "Two hundred observations were randomly sampled from the High School and
+Beyond survey, a survey conducted on high school seniors by the National Center
+of Education Statistics."
+
+`evals`: "The data on the 463 courses at UT Austin."
+
+`Credit`: "A simulated data set containing information on ten thousand customers."
+
+## Random Sampling
+
+- What is the central tenant of random sampling? i.e. How are observations 
+selected from the study population? 
+
+</br> 
+
+__Comment on the "random-ness" of the following studies:__ 
+
+A Cal Poly administrator wants to know the average income of all graduates in
+the last 10 years. So they get the records of five randomly chosen graduates,
+contact them, and obtain their answers.
+
+You want to know the prevalence of illegal downloading of TV shows among
+students at a local college. You get the emails of 100 randomly chosen students
+and ask them, “How many times did you download a pirated TV show last week?”.
+
+## Sampling Randomly
+
+Suppose we have a database of every professor at UT Austin, and are 
+interested in studying the relationship between evaluations and age. 
+
+- How would we go about randomly sampling observations from the database? 
+
+- Would we allow for individuals to be selected more than once?  
+
+- Would we expect that our observations are independent?  
+
+- Would we expect that our sample look like the population at UT Austin?  
+
+## Representative Sampling 
+
+- What is the central tenant of representative sampling? i.e. How are
+observations selected from the study population? 
+
+</br> 
+
+__Comment on the "representative-ness" of the following studies:__ 
+
+The Royal Air Force wants to study how resistant all their airplanes are to
+bullets. They study the bullet holes on all the airplanes on the tarmac after an
+air battle against the Luftwaffe (German Air Force).
+
+You want to know the average number of people in each household in your city.
+You randomly pick out 500 phone numbers from the phone book and conduct a phone
+survey.
+
+## Sampling Representatively 
+
+<div class="columns-2">
+
+```{r, echo = FALSE}
+evals_small  %>% 
+  slice_sample(n = 50) %>% 
+  count(gender, rank) %>% 
+  mutate(perc = paste(n / 50 * 100, "%", sep = "")) %>% 
+  select(-n)
+```
+
+</br>
+
+- Female teaching = 28%   
+- Female tenure track = 15%  
+- Female tenured = 12% 
+
+</div>
+</br> 
+
+Suppose we want to ensure that we have a representative proportion of faculty
+who are women and faculty of different tenure statuses.
+
+- How would we go about collecting a representative sample that accounts for 
+these demographic characteristics? 
+
+
+## Sampling Issues 
+
+In the `evals` data, the courses included in the dataset were only taught by 94 
+unique professors. 
+
+<div class="columns-2">
+
+```{r}
+evals_small %>% 
+  count(prof_ID)
+```
+
+</br>
+
+- How would you use sampling to remedy this situation?  
+
+## Population Parameter 
+
+To investigate the relationship between course evaluation score and the 
+professor's age, we would carry out a simple linear regression. 
+
+- What would be the population parameter we are interested in? Do we know its value? 
+
+- What would be our point estimate? What is its purpose? 
+
+```{r, echo = FALSE, fig.align='center', fig.width=4, fig.height=2.75}
+evals %>% 
+  ggplot(aes(x = age, y = score)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm")
+```
+
+
+## Repeated Samples
+
+Repeated samples are necessary for us to create a sampling distribution like the 
+one below. 
+
+- What are we assuming when we plot the result of every sample on the __same__
+distribution?  
+
+
+```{r, echo = FALSE, fig.width= 4, fig.height=3, fig.align='center'}
+evals %>% 
+  specify(formula = score ~ age) %>%
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "slope") %>% 
+  ggplot(aes(x = stat)) + 
+  geom_dotplot(dotsize = 0.25, color = "blue") + 
+  labs(y = "Density", 
+       x = "Slope on Age")
+  
+
+
+```
+

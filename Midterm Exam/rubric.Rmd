@@ -1,0 +1,35 @@
+---
+title: "Rubric for Oral Exams"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+Score   | Demonstration
+--------|--------------
+4       | __Excellent__ -- Outstanding ability to articulate the concepts covered in the exam, with comprehensive and thoughtful understanding of the content of the assessment. If if any errors occur, and do not cloud the overall understanding of the content. 
+3       | __Good__ -- Ability to articulate the central concepts covered in the exam, but several errors may occur during the assessment. These errors, however, do not cloud the central concepts of the assessment. 
+2       | __Fair__ -- Limited ability to articulate the concepts covered in the exam, explanations contain inconsistencies and demonstrate limited understanding of the content.  
+1       | __Poor__ -- Little to no articulation of concepts covered in the exam, numerous inconsistencies and errors occur and demonstrate little to no understanding of the content. 
+0       | __No credit__ -- Inability to present any understanding of topics covered in exam. 
+
+
+</br>
+</br>
+
+Letter grades will be assigned according to the following scale. In this scale
+the first question comes from the "linear models" bank and the second question 
+comes from the "other topics" bank. Note that the "linear models" question is 
+weighed more heavily than the "other topics" question. 
+
+- 4, 4, (A+) 
+- 4, 3 (A)
+- 3, 4 (A-)
+- 3, 3 (B)
+- 3, 2 (B-)
+- 2, 3 (C)
+- 2, 2 (C-)
+- either a 2, 1 or a 1, 2 (D+)
+- 1, 1 (D)
+- either 1, 0 or 0, 1 (D-)
+- 0, 0 (F)
