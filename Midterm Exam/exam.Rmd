@@ -1,0 +1,96 @@
+---
+title: "Midterm Exams - Stat 313"
+output: ioslides_presentation
+---
+
+## LINEAR MODELS
+
+## Question 1 
+
+<center>
+Describe to someone who has never taken a Statistics course what a linear model is. 
+
+## Question 2
+
+<center>
+Describe to someone who has never taken a Statistics course the difference 
+between simple linear regression and multiple linear regression. 
+
+## Question 3
+
+<center>
+What are the benefits and weaknesses of linear regression?  
+
+## Question 4
+
+<center>
+Many disciplines employ regression, but do not check the model conditions. 
+Why should we care about the model conditions? What are the implications of not 
+checking these conditions?  
+
+## Question 5
+
+<center>
+Some textbooks list "lack of influential points" as a model condition for 
+regression. Why is this a potentially important condition to consider? What 
+are the implications of removing all "influential" observations from a dataset?  
+
+## Question 6
+
+<center>
+Most people are familiar with the saying that "correlation does not imply 
+causation." However, when some researchers find a strong correlation between 
+their explanatory and response variables (R > 0.8), they often interpret the 
+relationship as "larger values in x _lead to_ larger values in y." 
+
+What is an issue with this interpretation? In this scenario, what could researchers 
+conclude? 
+
+## OTHER TOPICS
+
+## Question 1
+
+<center>
+Describe to someone who has never taken a Statistics course what the principle 
+of parsimony is. 
+
+## Question 2
+
+<center>
+Describe to someone who has never taken a Statistics course what Simpson's
+paradox is. 
+
+## Question 3
+
+<center>
+How would you determine if your statistical model should be used for 
+predicting what could be expected to happen for new data? 
+
+## Question 4
+
+<center>
+Much of what we have done thus far in `R` could have been done in Excel. What 
+are the benefits of programming in `R`? What are the costs?  
+
+## Question 5
+
+<center>
+We have spent a great deal of time producing and critiquing data
+visualizations, and have yet to discuss statistical testing (e.g. 
+hypothesis tests). What information can a data visualization provide you that a 
+data summary or a statistical test cannot?  
+
+## Question 6
+
+<center>
+Random samples and experiments are often thought of as the "gold standard" of 
+study design. Why are these aspects of a study so highly valued? What
+difficulties may researchers encounter when attempting to utilize these 
+designs in their study? 
+
+## Question 7
+
+<center>
+What is the purpose of blocking in a study? If an experiment fails to block 
+on a variable that influences the response, what are the implications for the 
+inference of the study?  
