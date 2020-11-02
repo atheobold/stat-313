@@ -13,6 +13,7 @@ knitr::opts_chunk$set(eval = TRUE,
                       message = FALSE, 
                       fig.width = 4, 
                       fig.height = 4)
+set.seed(1234)
 ```
 
 In the 10 days after the 2016 election, nearly 900 hate incidents were reported to the Southern Poverty Law Center, averaging out to 90 per day. By comparison, about 36,000 hate crimes were reported to the FBI from 2010 through 2015 — an average of 16 per day.
