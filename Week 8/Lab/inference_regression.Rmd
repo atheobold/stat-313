@@ -1,5 +1,5 @@
 ---
-title: Inferemnce for to Linear Regression
+title: Inference for to Linear Regression
 author: YOUR NAME HERE!
 output: html_document
 ---
