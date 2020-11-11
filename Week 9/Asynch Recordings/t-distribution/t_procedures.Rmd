@@ -1,0 +1,146 @@
+---
+title: "t-procedures for a Difference in Means"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE)
+library(tidyverse) 
+library(palmerpenguins)
+library(gridExtra)
+library(openintro)
+library(skimr)
+library(infer)
+
+classdata <- classdata %>% 
+  filter(lecture %in% c("a", "b")) %>% 
+    mutate(exam = lecture)
+
+```
+
+## A Mathematical Model 
+
+If it is reasonable to assume that the observations from each group are 
+normally distributed, a $t$-distribution can be used to approximate the sampling 
+distribution.   
+
+</br> 
+
+Conditions:  
+
+- Independent observations within and across groups  
+
+- Approximately normal distributions within each group 
+  * Sufficiently "large" samples 
+  * No extreme outliers
+
+## Test Statistic
+
+The test statistic for a $t$-test can be thought of as a ratio of how different the groups are to how different the observations in each group are. 
+
+The equation for the statistic is: 
+
+$$ T = \frac{\bar{x_1} - \bar{x_2}}{\sqrt{\frac{s_1^2}{n_1}} \sqrt{\frac{s_2^2}{n_2}}}$$ 
+</br> 
+
+For the difference between exam A and exam B, the statistic is: 
+
+$$ T = \frac{75.1 - 72}{\sqrt{\frac{13.9^2}{58}} \sqrt{\frac{13.8^2}{55}}} = 1.21$$
+
+```{r, echo = FALSE, eval = FALSE}
+classdata %>% 
+  t_test(m1 ~ exam, order = c("a", "b"))
+
+```
+
+
+## Hypothesis Test
+
+When the null hypothesis is true and the model conditions are not violated, the 
+$t$-statistic follows a $t$-distribution. 
+
+- The official formula for the degrees of freedom is quite complex, so instead
+you may use the smaller of $min(n_1 - 1, n_2 - 1)$. 
+
+
+```{r, echo = FALSE, fig.align='center', fig.width=5, fig.height=3}
+values <- tibble(small = rt(1000000, df = 54), 
+                     big = rt(1000000, df = 57)) %>% 
+  pivot_longer(cols = small:big, names_to = "dist", values_to = "value")
+
+values %>% 
+  mutate(dist = if_else(dist == "big", "57 degrees of freedom", "54 degrees of freedom")) %>% 
+  ggplot(aes(x = value, color = dist)) + 
+  geom_density() + 
+  labs(x = "t-statistic") + 
+  xlim(c(-3, 3))
+```
+
+## p-value Calculation 
+
+1. Find test statistic on $t$-distribution 
+2. Find area of distribution as or more extreme than observed statistic, based on alternative hypothesis 
+
+```{r, echo = FALSE, fig.align='center', fig.width=4, fig.height=2.75}
+values %>% 
+  filter(dist == "small") %>% 
+  ggplot(aes(x = value)) + 
+  geom_density() + 
+  labs(x = "t-statistic") + 
+  xlim(c(-3, 3)) + 
+  geom_vline(xintercept = 1.21, color = "red", linetype = "dashed")
+```
+
+```{r}
+1 - pt(1.21, df = 54)
+```
+
+## Using the `t_test()` Function Instead 
+
+```{r}
+classdata %>% 
+  t_test(m1 ~ exam, 
+         order = c("a", "b"), 
+         alternative = "greater", 
+         conf_int = FALSE)
+```
+
+
+## Confidence Interval Calculation 
+
+A $t$-based confidence interval uses three numbers: 
+
+1. The observed statistic  
+2. The observed variability 
+3. A multiplier determining the width of the interval 
+
+These components are assembled as follows:  
+
+$$ \bar{x_1} - \bar{x_2} \pm t^* \cdot SE $$
+</br> 
+
+- The value of $t^*$ is determined from
+
+  * the t-distribution with $df = min(n_1 - 1, n_2 - 1)$ 
+  * the confidence level (e.g. 90%, 95%, 99%)
+
+## Using the `t_test()` Function Instead 
+
+```{r}
+classdata %>% 
+  t_test(m1 ~ exam, 
+         order = c("a", "b"), 
+         alternative = "greater", 
+         conf_int = TRUE, 
+         conf_level = 0.95)
+```
+
+
+
