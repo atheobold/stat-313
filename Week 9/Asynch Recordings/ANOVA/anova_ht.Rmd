@@ -1,0 +1,191 @@
+---
+title: "Randomization Tests for an ANOVA"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE)
+library(tidyverse) 
+library(palmerpenguins)
+library(gridExtra)
+library(openintro)
+library(skimr)
+library(infer)
+library(okcupiddata)
+
+classdata <- classdata %>% 
+  mutate(exam = lecture)
+```
+
+## Goal of a Hypothesis Test for Many Means
+
+An ANOVA seeks to assess the differences in the group means relative to the 
+variability in the observations within each group. 
+
+</br> 
+
+Ideally, we'd like to see:  
+
+- large differences in the means of the groups 
+- small amounts of variability within each group
+
+
+## Hypotheses 
+
+ANOVA uses a single hypothesis test to check whether the means across many
+groups are equal:
+
+$H_0$: The mean outcome is the same across all groups.  
+
+_OR_ 
+
+$H_0$: $\mu_1 = \mu_2 = \cdots = \mu_k,$  where $\mu_i$ represents the
+mean of the response for observations in category $i$.
+
+</br>
+
+$H_A$: At least one mean ($\mu_i$) is different.  
+
+## Model Conditions 
+
+Before performing an ANOVA, there are three conditions we must check: 
+
+- the observations are independent within and across groups  
+
+- the data within each group are nearly normal 
+
+- the variability across the groups is similar
+
+## Calculating an Observed Statistic
+
+We need a statistic that captures:  
+
+1. how different the group of means are from each other 
+2. how variable the observations of the groups are  
+
+</br> 
+
+The $F$-statistic does just this!   
+
+It is the ratio of the variability *between* the groups to the variability
+*within* the groups. 
+
+$$ F = \frac{MSG}{MSE} $$
+
+
+## Null Hypothesis
+
+An ANOVA focuses on answering one question: is the variability in the sample
+means so large that it seems unlikely to be from chance alone?
+
+</br> 
+
+If the null hypothesis is true, any differences among the sample means are only
+due to chance. This would mean that the $MSG$ and $MSE$ should be about equal.
+  
+  - This means, if the null hypothesis is true, we'd expect an $F$-statistic of 
+  about 1. 
+  
+
+## Exam Scores
+
+Suppose now that the teacher had had such an extremely large class that three
+different exams were given: A, B, and C. We’d like to investigate whether or not
+the difficultly of the exams is the same across the three exams. 
+
+So, our test would be: 
+
+$H_0$: $\mu_A = \mu_B = \mu_C$; The inherent average difficulty is the same
+across the three exams.  
+
+$H_A$: at least one $\mu_i$ (i = A, B, C) is different; At least one of the
+exams is inherently more (or less) difficult than the others.
+
+
+## Exploratory Visualization
+
+```{r, fig.height=3.5, fig.width=4, fig.align='center'}
+classdata %>% 
+  ggplot(aes(x = exam, y = m1)) + 
+  geom_violin(aes(fill = exam)) + 
+  geom_jitter(width = 0.2) + 
+  theme(legend.position = "none")
+```
+
+## Randomization Test
+
+- If the null hypothesis is true, then the score on each exam should represent
+the true student ability on that material. 
+
+- It shouldn't matter whether a student took exam A or exam B or exam C. 
+
+- By reallocating which student got which exam, we are able to understand how
+the difference in average exam scores changes due only to natural variability. 
+
+## Using infer 
+
+We have the same steps as before, the only modifications are to the statistic
+calculated for each permutation. 
+
+```{r}
+null_dist <- classdata %>% 
+  specify(m1 ~ exam) %>% 
+  hypothesise(null = "independence") %>% 
+  generate(reps = 2000, type = "permute") %>% 
+  calculate(stat = "F")
+```
+
+## Visualizing the Null Distribution 
+
+<div class="columns-2">
+
+```{r, eval = FALSE}
+obs_F <- classdata %>% 
+  specify(m1 ~ exam) %>% 
+  calculate(stat = "F")
+
+null_dist %>% 
+  visualise() + 
+  geom_vline(xintercept = obs_F)
+```
+
+</br> 
+</br> 
+</br> 
+</br> 
+</br> 
+</br> 
+
+```{r, echo = FALSE, fig.width=4, fig.height=4}
+obs_F <- classdata %>% 
+  specify(m1 ~ exam) %>% 
+  calculate(stat = "F") %>% 
+  pull()
+
+null_dist %>% 
+  visualise() + 
+  shade_p_value(obs_stat = obs_F, 
+                direction = "greater")
+```
+
+## Calculating the p-value
+
+```{r}
+null_dist %>% 
+  get_p_value(obs_stat = obs_F, direction = "greater")
+```
+
+</br> 
+
+- What would you conclude? 
+
+- Which exam seemed different from the others? 
+
+

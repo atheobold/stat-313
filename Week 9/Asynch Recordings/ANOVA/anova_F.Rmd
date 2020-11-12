@@ -1,0 +1,145 @@
+---
+title: "F-test for an ANOVA"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE)
+library(tidyverse) 
+library(palmerpenguins)
+library(gridExtra)
+library(openintro)
+library(broom)
+```
+
+
+## A Mathematical Model 
+
+If it is reasonable to assume that the observations from each group are 
+normally distributed, an $F$-distribution can be used to approximate the
+sampling distribution.   
+
+</br> 
+
+Conditions:  
+
+- Independent observations within and across groups  
+
+- Approximately normal distributions within each group & similar variability across groups
+  * Sufficiently "large" samples 
+  * No extreme outliers
+
+## Test Statistic
+
+The test statistic for an ANOVA $F$-test is exactly the __same__ as the test 
+statistic as what we use in a randomization test.  
+
+- Here, we are assuming that the $F$-statistic follows an $F$-distribution. 
+
+</br> 
+
+The equation for and $F$-statistic is: 
+
+$$ F = \frac{\frac{SSG}{k}}{\frac{SSE}{n - k}} = \frac{MSG}{MSE}$$ 
+
+## F-distribution 
+
+Under the null hypothesis, an $F$-statistic follows an $F$-distribution.  
+
+This distribution is defined by __two__ different degrees of freedom:  
+
+</br>
+
+<div class="columns-2">
+
+1. from the numerator (MSG) 
+2. from the denominator (MSE)
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+```{r, echo = FALSE, fig.width=4, fig.height=3}
+values <- rf(100000, df1 = 2, df2 = 110) %>% 
+  tibble()
+
+values %>% 
+ggplot(aes(x = .)) + 
+  geom_density() + 
+  xlim(c(0, 5)) + 
+  labs(x = "F-statistic", 
+       y = "Density", 
+       title = "F-distribution with 2 and 110 \n Degrees of Freedom")
+
+```
+
+## Degrees of Freedom 
+
+Degrees of freedom can be thought of "as how much information is left" 
+when calculating the MSG and MSE. 
+
+</br>
+
+- For the MSG, we need to know how far each group is from the overall mean. 
+  * We need to calculate the overall mean. 
+  * Thus, we have $k - 1$ degrees of freedom. 
+
+</br>
+
+- For the MSE, we need to know how far each observation is from its group mean.
+  * We need to calculate the $k$ group means. 
+  * Thus, we have $n - k$ degrees of freedom. 
+
+
+## Difference in Penguin Bill Length 
+
+- We're interested in testing to see if the mean bill depth differs across
+species of penguins in the Palmer Archipelago. 
+
+```{r, fig.width=4, fig.height=4, fig.align='center', echo = FALSE}
+penguins %>% 
+  ggplot(aes(x = species, y = bill_depth_mm)) + 
+  geom_violin(aes(fill = species)) + 
+  geom_jitter(width = 0.2) +
+  theme(legend.position = "none")
+```
+
+## Model Conditions 
+
+- It seems reasonable to assume that the penguins within each species are
+independent. 
+
+- These penguins were not randomly sampled, but it seems reasonable to assume 
+that the observations within a group are independent. 
+  <!-- * The sample sizes (152, 68, and 124) are certainly less than 10% of the -->
+  <!-- population.  -->
+
+- The distributions have some oddities, but not enough to conclude they violate 
+the normality condition. 
+
+- The shapes of the distribution appear relatively similar.
+  * The Adelie penguins have more variability in their bill depths, but nothing 
+  too outlandish. 
+  
+## Conducting an ANOVA $F$-test
+
+```{r}
+aov(bill_depth_mm ~ species, data = penguins) %>% 
+  tidy()
+```
+
+
+
+

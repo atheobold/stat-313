@@ -1,0 +1,59 @@
+---
+title: "ANOVA Visualizations"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE)
+library(tidyverse) 
+library(palmerpenguins)
+library(gridExtra)
+library(openintro)
+library(skimr)
+library(infer)
+library(okcupiddata)
+```
+
+## ANOVA
+
+Analysis of variance (ANOVA) compares the means of three of more groups to 
+detect if the means of the groups are different.  
+
+</br>
+
+We want visualizations that allow for us to easily compare:  
+
+- the center (mean) of the groups 
+- the spread (variability) of the groups 
+
+
+## Data Visualizations 
+
+__Side-by-Side Violin Plots__ 
+
+```{r, fig.width=4, fig.height=3, fig.align='center'}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = island)) + 
+  geom_violin(aes(fill = island)) + 
+  geom_jitter() +
+  theme(legend.position = "none")
+```
+
+## Faceted Boxplots 
+
+```{r, fig.width=5, fig.height=4, fig.align='center'}
+profiles %>% 
+  filter(sex == "m") %>% 
+  ggplot(aes(x = height)) +
+  geom_histogram() + 
+  facet_wrap(~orientation)
+```
+
+

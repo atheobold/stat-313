@@ -13,10 +13,7 @@ slides > slide:not(.nobackground):after {
 knitr::opts_chunk$set(warning = FALSE, 
                       message = FALSE)
 library(tidyverse) 
-library(palmerpenguins)
-library(gridExtra)
 library(openintro)
-library(skimr)
 library(infer)
 
 classdata <- classdata %>% 

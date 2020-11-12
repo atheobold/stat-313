@@ -1,0 +1,352 @@
+---
+title: "Comparing Many Means with ANOVA"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE, 
+                      fig.width = 4, 
+                      fig.height = 4)
+library(tidyverse) 
+library(palmerpenguins)
+library(gridExtra)
+library(openintro)
+library(infer)
+library(broom)
+library(RColorBrewer)
+
+evals_small <- evals %>% 
+  group_by(prof_id) %>% 
+  sample_n(size = 1) %>% 
+  ungroup()
+
+```
+
+
+## Goal of an ANOVA
+
+Analysis of variance (ANOVA) compares the means of three of more groups to 
+detect if the means of the groups are different. 
+
+  - ANOVA assess the differences in the group means relative to the 
+variability in the observations within each group. 
+
+</br> 
+
+Ideally, we'd like to see:  
+
+- large differences in the means of the groups 
+- small amounts of variability within each group
+
+## Visualizing Differences 
+
+<div class="columns-2">
+
+```{r, echo = FALSE, echo = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = island)) + 
+  geom_violin(aes(fill = island)) + 
+  geom_jitter(width = 0.2) +
+  theme(legend.position = "none") + 
+  scale_fill_brewer(palette = "RdPu") + 
+  labs(x = "Bill Length (mm)", 
+       y = "Island")
+```
+
+```{r, echo = FALSE}
+evals_small %>% 
+  ggplot(aes(x = rank, y = score)) + 
+  geom_violin(aes(fill = rank)) + 
+  geom_jitter(width = 0.2) +
+  theme(legend.position = "none") + 
+  scale_fill_brewer(palette = "GnBu") + 
+  labs(x = "Professor Rank", 
+       y = "Evaluation Score")
+```
+
+</div>
+
+<center> 
+
+What can you say about the differences between the groups?  
+
+What can you say about the variability within the groups? 
+
+
+## Hypotheses 
+
+ANOVA uses a single hypothesis test to assess whether the means across many
+groups are equal. 
+
+- What would be the null hypothesis for the `evals` dataset?  
+  * What is the population parameter associated with the null hypothesis? 
+
+- What would be the alternative hypothesis for the `evals` dataset? 
+
+
+## Model Conditions for ANOVA
+
+Before performing an ANOVA, there are three conditions we must check: 
+
+- the observations are independent *within* and *across* groups  
+
+- the data within each group should be nearly normal 
+
+- the variability across the groups should be similar
+
+</br>
+</br> 
+<center> 
+What decisions would you reach for the conditions of the `penguins` and `evals`
+datasets? 
+
+## Sum of Squares 
+
+<div class="columns-2">
+
+```{r, echo = FALSE}
+means <- evals_small %>% 
+  group_by(rank) %>% 
+  summarise(mean_score = mean(score))
+
+evals_small %>% 
+  ggplot(aes(x = rank, y = score)) + 
+  geom_violin(aes(fill = rank)) + 
+  geom_jitter() +
+  theme(legend.position = "none") + 
+  scale_fill_brewer(palette = "GnBu") + 
+  labs(x = "Professor Rank", 
+       y = "Evaluation Score") + 
+  geom_segment(x = 0.5, y = 4.2, xend = 1.5, yend = 4.2, color = "red") +
+  geom_segment(x = 1.5, y = 4, xend = 2.5, yend = 4, color = "red") +
+  geom_segment(x = 2.5, y = 4.09, xend = 3.5, yend = 4.09, color = "red") 
+
+```
+
+<center> 
+
+- What do the red lines represent? 
+  * How are those used in the sum of squares calculation?  
+
+</br> 
+
+- What do the points represent? 
+  * How are those used in the sum of squares calculation? 
+
+## Decomposing an ANOVA Table 
+
+```{r, echo = FALSE}
+aov(score ~ rank, data = evals) %>% 
+  tidy()
+```
+
+</br> 
+
+- What do the two *rows* correspond to? 
+
+<!-- (i.e. Which is the "between group" measure and which is the "within group" measure?S) -->
+
+- What is the difference between `sumsq` and `meansq`? 
+
+- How is the `statistic` calculated?  
+
+- How is the `p.value` calculated? 
+
+## Randomization Test for ANOVA 
+
+If the null hypothesis is true, then the evaluation score of each professor 
+should represent their true teaching ability.
+
+</br>
+
+- How would you create a simulated null distribution to test for a difference in
+evaluation scores between the different ranks of professors?  
+
+
+- How is this process the same or different from a simulating a null distribution 
+for a difference in means?
+
+
+## Visualizing the Null Distribution 
+
+<div class="columns-2">
+
+```{r, echo = FALSE}
+set.seed(12345)
+
+null_dist <- evals_small %>% 
+  specify(score ~ rank) %>% 
+  hypothesise(null = "independence") %>% 
+  generate(reps = 2000, type = "permute") %>% 
+  calculate(stat = "F")
+
+obs_F <- evals_small %>% 
+  specify(score ~ rank) %>% 
+  calculate(stat = "F")
+
+null_dist %>% 
+  visualise()  
+#  shade_p_value(obs_stat = obs_F, direction = "greater")
+```
+
+</br>
+</br> 
+
+- Why are there no negative values on the distribution?  
+
+- Why is the peak of the distribution at 1?   
+
+- How would you calculate the p-value for the hypothesis test based on this
+distribution? 
+
+## Making a Conclusion 
+
+```{r, echo = FALSE}
+set.seed(12345)
+
+null_dist %>% 
+  get_p_value(obs_stat = obs_F, direction = "greater")
+```
+
+</br> 
+<center> 
+
+Based on the p-value above, what conclusion would you reach for this 
+hypothesis test?  
+
+Why do you suspect that the p-value using an $F$-distribution is much lower 
+(0.0679)?
+
+## Comparing with a Parametric Test
+
+- How would the process we just carried out differ, if we chose to use an 
+$F$-distribution instead of simulating the null distribution? 
+
+- What are benefits of using an $F$-distribution?  
+
+- What are the costs of using an $F$-distribution?  
+
+
+## Code Used in Collaboration 
+
+All of the slides after this slide are for the `R` code that was used during this presentation! 
+
+## Penguin Visualizations
+
+```{r, eval = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = island)) + 
+  geom_violin(aes(fill = island)) + 
+  geom_jitter() +
+  theme(legend.position = "none") + 
+  scale_fill_brewer(palette = "RdPu")
+```
+
+## Evals Visualization 
+
+```{r, eval = FALSE}
+evals %>% 
+  ggplot(aes(x = rank, y = score)) + 
+  geom_violin(aes(fill = rank)) + 
+  geom_jitter() +
+  theme(legend.position = "none") + 
+  scale_fill_brewer(palette = "GnBu")
+
+```
+
+
+## Sum of Squares 
+
+```{r, eval = FALSE}
+means <- evals_small %>% 
+  group_by(rank) %>% 
+  summarise(mean_score = mean(score))
+
+evals_small %>% 
+  ggplot(aes(x = rank, y = score)) + 
+  geom_violin(aes(fill = rank)) + 
+  geom_jitter() +
+  theme(legend.position = "none") + 
+  scale_fill_brewer(palette = "GnBu") + 
+  labs(x = "Professor Rank", 
+       y = "Evaluation Score") + 
+  geom_segment(x = 0.5, y = 4.2, xend = 1.5, yend = 4.2, color = "red") +
+  geom_segment(x = 1.5, y = 4, xend = 2.5, yend = 4, color = "red") +
+  geom_segment(x = 2.5, y = 4.09, xend = 3.5, yend = 4.09, color = "red") 
+
+```
+
+## ANOVA Table
+
+```{r, eval = FALSE}
+aov(score ~ rank, data = evals) %>% 
+  tidy()
+```
+
+
+## Null Distribution
+
+```{r, eval = FALSE}
+null_dist <- evals_small %>% 
+  specify(score ~ rank) %>% 
+  hypothesise(null = "independence") %>% 
+  generate(reps = 2000, type = "permute") %>% 
+  calculate(stat = "F")
+
+obs_F <- evals_small %>% 
+  specify(score ~ rank) %>% 
+  calculate(stat = "F")
+
+null_dist %>% 
+  visualise() + 
+  shade_p_value(obs_stat = obs_F, direction = "greater")
+```
+
+## p-value Calculation 
+
+```{r, eval = FALSE}
+null_dist %>% 
+  get_p_value(obs_stat = obs_F, direction = "greater")
+```
+
+
+
+```{r, echo=FALSE, eval=FALSE}
+set.seed(123)
+
+a1 <- rnorm(100, mean = 2, sd = 0.25)
+a2 <- rnorm(100, mean = 3, sd = 0.25)
+a3 <- rnorm(100, mean = 4, sd = 0.25)
+a <- abs(c(a1, a2, a3))
+
+b1 <- rnorm(100, mean = 2, sd = 0.5)
+b2 <- rnorm(100, mean = 3, sd = 0.5)
+b3 <- rnorm(100, mean = 4, sd = 0.5)
+b <- c(b1, b2, b3)
+
+d1 <- rnorm(100, mean = 2, sd = 1)
+d2 <- rnorm(100, mean = 3, sd = 1)
+d3 <- rnorm(100, mean = 4, sd = 1)
+d <- c(d1, d2, d3)
+
+y <- c(a, b, d)
+x <- factor(rep(c(rep("teaching", 100), rep("tenure track", 100), rep("tenured", 100)), 3))
+z <- c(rep("I", 300), rep("II", 300), rep("III", 300))
+
+df <- tibble(x = x, y = y, z = z)
+
+ggplot(df, aes(x = y, y = x)) +
+  geom_violin() +
+  facet_grid( ~ z) + 
+  labs(x = "Score", 
+       y = "Rank")
+```
+
+

@@ -13,10 +13,7 @@ slides > slide:not(.nobackground):after {
 knitr::opts_chunk$set(warning = FALSE, 
                       message = FALSE)
 library(tidyverse) 
-library(palmerpenguins)
-library(gridExtra)
 library(openintro)
-library(skimr)
 library(infer)
 
 classdata <- classdata %>% 
@@ -32,6 +29,8 @@ classdata <- classdata %>%
 - Confidence intervals provide "how much" answers. 
   * In this scenario, we are instead interested in estimating the unknown value
   of a population parameter.
+
+</br> 
 
 - For this example, a confidence interval can be used to the range of values 
 that seem plausible for the difference in the mean exam scores 
