@@ -172,7 +172,7 @@ if they were smokers.
 - What issues do you see with this type of survey question? 
 - How would these issues be reflected in the data from this study? 
 
-# Scope of Inference (10 pts)
+# Scope of Inference (4 pts)
 
 Write a brief Scope of Inference statement. Specifically, answer these two
 questions and comment on their implications:
