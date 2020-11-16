@@ -1,0 +1,655 @@
+age,FEV,height,sex,smoke
+middle childhood,1.708,57,female,non-smoker
+middle childhood,1.724,67.5,female,non-smoker
+middle childhood,1.72,54.5,female,non-smoker
+middle childhood,1.558,53,male,non-smoker
+middle childhood,1.895,57,male,non-smoker
+middle childhood,2.336,61,female,non-smoker
+middle childhood,1.919,58,female,non-smoker
+middle childhood,1.415,56,female,non-smoker
+middle childhood,1.987,58.5,female,non-smoker
+middle childhood,1.942,60,female,non-smoker
+middle childhood,1.602,53,female,non-smoker
+middle childhood,1.735,54,male,non-smoker
+middle childhood,2.193,58.5,female,non-smoker
+middle childhood,2.118,60.5,male,non-smoker
+middle childhood,2.258,58,male,non-smoker
+middle childhood,1.932,53,male,non-smoker
+preschooler,1.472,50,male,non-smoker
+middle childhood,1.878,53,female,non-smoker
+middle childhood,2.352,59,male,non-smoker
+middle childhood,2.604,61.5,male,non-smoker
+preschooler,1.4,49,female,non-smoker
+preschooler,1.256,52.5,female,non-smoker
+preschooler,0.839,48,female,non-smoker
+middle childhood,2.578,62.5,male,non-smoker
+middle childhood,2.988,65,female,non-smoker
+toddler,1.404,51.5,male,non-smoker
+middle childhood,2.348,60,male,non-smoker
+preschooler,1.755,52,male,non-smoker
+middle childhood,2.98,60,female,non-smoker
+middle childhood,2.1,60,female,non-smoker
+preschooler,1.282,49,female,non-smoker
+middle childhood,3,65.5,male,non-smoker
+middle childhood,2.673,60,female,non-smoker
+middle childhood,2.093,57.5,female,non-smoker
+preschooler,1.612,52,female,non-smoker
+middle childhood,2.175,59,female,non-smoker
+middle childhood,2.725,59,male,non-smoker
+middle childhood,2.071,55,male,non-smoker
+middle childhood,1.547,57,male,non-smoker
+middle childhood,2.004,57,male,non-smoker
+middle childhood,3.135,60,female,non-smoker
+middle childhood,2.42,59,male,non-smoker
+preschooler,1.776,51,male,non-smoker
+middle childhood,1.931,57,female,non-smoker
+preschooler,1.343,50,female,non-smoker
+middle childhood,2.076,57,female,non-smoker
+middle childhood,1.624,54,male,non-smoker
+middle childhood,1.344,52.5,female,non-smoker
+middle childhood,1.65,55,male,non-smoker
+middle childhood,2.732,60.5,male,non-smoker
+preschooler,2.017,54.5,male,non-smoker
+middle childhood,2.797,61.5,female,non-smoker
+middle childhood,3.556,62,male,non-smoker
+middle childhood,1.703,54.5,male,non-smoker
+middle childhood,1.634,54,male,non-smoker
+middle childhood,2.57,57,male,non-smoker
+middle childhood,3.016,62.5,female,non-smoker
+middle childhood,2.419,60,female,non-smoker
+preschooler,1.569,50,female,non-smoker
+middle childhood,1.698,57.5,female,non-smoker
+middle childhood,2.123,60,male,non-smoker
+middle childhood,2.481,60,female,non-smoker
+middle childhood,1.481,51,female,non-smoker
+preschooler,1.577,49,female,non-smoker
+middle childhood,1.94,59,male,non-smoker
+middle childhood,1.747,57.5,male,non-smoker
+middle childhood,2.069,58,male,non-smoker
+middle childhood,1.631,55.5,female,non-smoker
+preschooler,1.536,52,female,non-smoker
+middle childhood,2.56,60.5,female,non-smoker
+middle childhood,1.962,57,male,non-smoker
+middle childhood,2.531,58,female,non-smoker
+middle childhood,2.715,60,male,non-smoker
+middle childhood,2.457,59,male,non-smoker
+middle childhood,2.09,59.5,male,non-smoker
+middle childhood,1.789,56,male,non-smoker
+preschooler,1.858,53,male,non-smoker
+preschooler,1.452,51,male,non-smoker
+middle childhood,3.842,69,male,non-smoker
+middle childhood,1.719,53,female,non-smoker
+middle childhood,2.111,57,female,non-smoker
+middle childhood,1.695,53,female,non-smoker
+middle childhood,2.211,63,male,non-smoker
+middle childhood,1.794,54.5,male,non-smoker
+middle childhood,1.917,58,female,non-smoker
+middle childhood,2.144,63,female,non-smoker
+middle childhood,1.253,52,male,non-smoker
+middle childhood,2.659,61.5,male,non-smoker
+preschooler,1.58,52.5,male,non-smoker
+middle childhood,2.126,62,male,non-smoker
+middle childhood,3.029,61.5,female,non-smoker
+middle childhood,2.964,64.5,male,non-smoker
+middle childhood,1.611,57.5,male,non-smoker
+middle childhood,2.215,60,female,non-smoker
+middle childhood,2.388,60,female,non-smoker
+middle childhood,2.196,61,male,non-smoker
+middle childhood,1.751,58,male,non-smoker
+middle childhood,2.165,61.5,male,non-smoker
+middle childhood,1.682,55,male,non-smoker
+middle childhood,1.523,55,male,non-smoker
+middle childhood,1.292,52,female,non-smoker
+middle childhood,1.649,54,male,non-smoker
+middle childhood,2.588,63,male,non-smoker
+preschooler,0.796,47,male,non-smoker
+middle childhood,2.574,60.5,female,non-smoker
+middle childhood,1.979,56,male,non-smoker
+middle childhood,2.354,58.5,male,non-smoker
+middle childhood,1.718,55,male,non-smoker
+middle childhood,1.742,58.5,female,non-smoker
+middle childhood,1.603,51,female,non-smoker
+middle childhood,2.639,59.5,female,non-smoker
+middle childhood,1.829,54,female,non-smoker
+middle childhood,2.084,58,male,non-smoker
+middle childhood,2.22,58,male,non-smoker
+middle childhood,1.473,52.5,female,non-smoker
+middle childhood,2.341,60.5,female,non-smoker
+middle childhood,1.698,54.5,female,non-smoker
+preschooler,1.196,46.5,female,non-smoker
+middle childhood,1.872,56.5,female,non-smoker
+middle childhood,2.219,55,male,non-smoker
+middle childhood,2.42,57,male,non-smoker
+middle childhood,1.827,54.5,female,non-smoker
+middle childhood,1.461,54,female,non-smoker
+middle childhood,1.338,53,male,non-smoker
+middle childhood,2.09,57,male,non-smoker
+middle childhood,1.697,59,female,non-smoker
+middle childhood,1.562,55,male,non-smoker
+middle childhood,2.04,55.5,female,non-smoker
+middle childhood,1.609,51.5,female,non-smoker
+middle childhood,2.458,61,female,non-smoker
+middle childhood,2.65,63.5,male,non-smoker
+middle childhood,1.429,57.5,male,non-smoker
+middle childhood,1.675,53,male,non-smoker
+middle childhood,1.947,56.5,female,non-smoker
+middle childhood,2.069,54,male,non-smoker
+middle childhood,1.572,52,male,non-smoker
+middle childhood,1.348,53,male,non-smoker
+middle childhood,2.288,61.5,female,non-smoker
+middle childhood,1.773,58.5,male,non-smoker
+preschooler,0.791,52,female,non-smoker
+middle childhood,1.905,58,male,non-smoker
+middle childhood,2.463,61,female,non-smoker
+middle childhood,1.431,51,male,non-smoker
+middle childhood,2.631,62,female,non-smoker
+middle childhood,3.114,64.5,male,non-smoker
+middle childhood,2.135,58.5,male,non-smoker
+middle childhood,1.527,52.5,male,non-smoker
+middle childhood,2.293,58,female,non-smoker
+middle childhood,3.042,66,female,non-smoker
+middle childhood,2.927,63.5,male,non-smoker
+middle childhood,2.665,64,female,non-smoker
+middle childhood,2.301,58.5,male,non-smoker
+middle childhood,2.46,64,male,non-smoker
+middle childhood,2.592,60.5,female,non-smoker
+middle childhood,1.75,55,female,non-smoker
+middle childhood,1.759,53,male,non-smoker
+middle childhood,1.536,48,male,non-smoker
+middle childhood,2.259,58.5,female,non-smoker
+middle childhood,2.048,64.5,female,non-smoker
+middle childhood,2.571,60.5,male,non-smoker
+middle childhood,2.046,56,male,non-smoker
+middle childhood,1.78,58.5,female,non-smoker
+preschooler,1.552,54,female,non-smoker
+middle childhood,1.953,58,female,non-smoker
+middle childhood,2.893,64.5,male,non-smoker
+middle childhood,1.713,50.5,male,non-smoker
+middle childhood,2.851,60,female,non-smoker
+middle childhood,1.624,51.5,male,non-smoker
+middle childhood,2.631,59,male,non-smoker
+preschooler,1.819,53,male,non-smoker
+middle childhood,1.658,53,male,non-smoker
+middle childhood,2.158,53.5,male,non-smoker
+preschooler,1.789,52,male,non-smoker
+middle childhood,3.004,64,female,non-smoker
+middle childhood,2.503,63,male,non-smoker
+middle childhood,1.933,58,female,non-smoker
+middle childhood,2.091,58.5,female,non-smoker
+middle childhood,2.316,59.5,female,non-smoker
+preschooler,1.704,51,female,non-smoker
+middle childhood,1.606,57.5,female,non-smoker
+middle childhood,1.165,47,male,non-smoker
+middle childhood,2.102,55.5,female,non-smoker
+middle childhood,2.32,57,female,non-smoker
+middle childhood,2.23,61,male,non-smoker
+middle childhood,1.716,55.5,male,non-smoker
+middle childhood,1.79,53.5,male,non-smoker
+preschooler,1.146,50,female,non-smoker
+middle childhood,2.187,61.5,female,non-smoker
+middle childhood,2.717,61.5,male,non-smoker
+middle childhood,1.796,55,male,non-smoker
+middle childhood,1.953,58,male,smoker
+middle childhood,1.335,56.5,female,non-smoker
+middle childhood,2.119,57,male,non-smoker
+middle childhood,1.666,52,male,non-smoker
+middle childhood,1.826,52.5,male,non-smoker
+middle childhood,2.709,62.5,female,non-smoker
+middle childhood,2.871,65,male,non-smoker
+preschooler,1.092,50,female,non-smoker
+middle childhood,2.262,57.5,male,non-smoker
+middle childhood,2.104,56.5,male,non-smoker
+middle childhood,2.166,57.5,female,non-smoker
+middle childhood,1.69,54,female,non-smoker
+middle childhood,2.973,59.5,male,non-smoker
+middle childhood,2.145,59.5,female,non-smoker
+preschooler,1.971,58,male,non-smoker
+middle childhood,2.095,57,female,non-smoker
+middle childhood,1.697,55,female,non-smoker
+middle childhood,2.455,60,female,non-smoker
+middle childhood,1.92,56.5,male,non-smoker
+middle childhood,2.164,60,male,non-smoker
+middle childhood,2.13,59,female,non-smoker
+middle childhood,2.993,63,female,non-smoker
+middle childhood,2.529,59,female,non-smoker
+middle childhood,1.726,53,female,non-smoker
+middle childhood,2.442,61.5,female,non-smoker
+preschooler,1.102,48,female,non-smoker
+middle childhood,2.056,63,female,non-smoker
+preschooler,1.808,55.5,male,non-smoker
+middle childhood,2.305,64.5,female,non-smoker
+middle childhood,1.969,59,female,non-smoker
+middle childhood,1.556,58.5,female,non-smoker
+toddler,1.072,46,female,non-smoker
+middle childhood,2.042,62,male,non-smoker
+middle childhood,1.512,53,female,non-smoker
+middle childhood,1.423,49.5,male,non-smoker
+middle childhood,3.681,68,male,non-smoker
+middle childhood,1.991,59.5,male,non-smoker
+middle childhood,1.897,55.5,male,non-smoker
+middle childhood,1.37,55,female,non-smoker
+middle childhood,1.338,51.5,female,non-smoker
+middle childhood,2.016,56,male,non-smoker
+middle childhood,2.639,63,female,non-smoker
+preschooler,1.389,48,female,non-smoker
+middle childhood,1.612,56.5,male,non-smoker
+middle childhood,2.135,59,female,non-smoker
+middle childhood,2.681,60.5,male,non-smoker
+middle childhood,3.223,65,female,non-smoker
+middle childhood,1.796,55,female,non-smoker
+middle childhood,2.01,55,male,non-smoker
+middle childhood,1.523,51,female,non-smoker
+middle childhood,1.744,52.5,male,non-smoker
+middle childhood,2.485,64,female,non-smoker
+middle childhood,2.335,59,female,non-smoker
+middle childhood,1.415,53.5,female,non-smoker
+middle childhood,2.076,60.5,male,non-smoker
+middle childhood,2.435,59.5,male,non-smoker
+middle childhood,1.728,56.5,female,non-smoker
+middle childhood,2.85,63,female,non-smoker
+middle childhood,1.844,56.5,female,non-smoker
+middle childhood,1.754,61.5,female,non-smoker
+middle childhood,1.343,52,female,non-smoker
+middle childhood,2.303,57,male,non-smoker
+middle childhood,2.246,63.5,male,non-smoker
+middle childhood,2.476,63,female,non-smoker
+middle childhood,3.239,65,male,non-smoker
+middle childhood,2.457,61.5,male,non-smoker
+middle childhood,2.382,62,female,non-smoker
+middle childhood,1.64,55,female,non-smoker
+preschooler,1.589,51,female,non-smoker
+middle childhood,2.056,54,male,non-smoker
+middle childhood,2.226,57,male,non-smoker
+middle childhood,1.886,56,female,non-smoker
+middle childhood,2.833,61.5,male,non-smoker
+middle childhood,1.715,53,male,non-smoker
+middle childhood,2.631,59,male,non-smoker
+middle childhood,2.55,56,male,non-smoker
+middle childhood,1.912,59,female,non-smoker
+middle childhood,1.877,52.5,female,non-smoker
+middle childhood,1.935,52.5,female,non-smoker
+preschooler,1.539,50,female,non-smoker
+middle childhood,2.803,59.5,male,non-smoker
+middle childhood,2.923,64,male,non-smoker
+middle childhood,2.358,61,female,non-smoker
+middle childhood,2.094,57.5,male,non-smoker
+middle childhood,1.855,60,male,non-smoker
+middle childhood,1.535,55,female,non-smoker
+middle childhood,2.135,56,male,non-smoker
+preschooler,1.93,51,male,non-smoker
+middle childhood,2.182,59.5,female,non-smoker
+preschooler,1.359,50.5,male,non-smoker
+middle childhood,2.002,57.5,female,non-smoker
+middle childhood,1.699,54,male,non-smoker
+middle childhood,2.5,57,male,non-smoker
+middle childhood,2.366,58,female,non-smoker
+middle childhood,2.069,60,female,non-smoker
+preschooler,1.418,49,female,non-smoker
+middle childhood,2.333,57,female,non-smoker
+preschooler,1.514,52,male,non-smoker
+middle childhood,1.758,52,female,non-smoker
+middle childhood,2.535,59.5,male,non-smoker
+middle childhood,2.564,58,female,non-smoker
+middle childhood,2.487,64,female,non-smoker
+middle childhood,1.591,57,female,non-smoker
+middle childhood,1.624,53,male,non-smoker
+middle childhood,2.798,62,male,non-smoker
+middle childhood,1.691,53,male,non-smoker
+middle childhood,1.999,56.5,female,non-smoker
+middle childhood,1.869,57,male,non-smoker
+preschooler,1.004,48,male,non-smoker
+middle childhood,1.427,49.5,male,non-smoker
+middle childhood,1.826,51,male,non-smoker
+middle childhood,2.688,59.5,female,non-smoker
+middle childhood,1.657,56,male,non-smoker
+middle childhood,1.672,54,female,non-smoker
+middle childhood,2.015,57.5,female,non-smoker
+middle childhood,2.371,55.5,female,non-smoker
+preschooler,2.115,50,male,non-smoker
+middle childhood,2.328,60,female,non-smoker
+middle childhood,1.495,57,female,non-smoker
+middle childhood,2.884,69,male,non-smoker
+middle childhood,2.328,64,male,non-smoker
+pre-teen,3.381,63,male,non-smoker
+middle childhood,2.17,58,female,non-smoker
+middle childhood,3.47,66.5,male,non-smoker
+pre-teen,3.058,60.5,female,non-smoker
+middle childhood,1.811,57,male,non-smoker
+middle childhood,2.524,64,male,non-smoker
+middle childhood,2.642,61,female,non-smoker
+pre-teen,3.741,68.5,male,non-smoker
+pre-teen,4.336,69.5,male,non-smoker
+pre-teen,4.842,72,male,non-smoker
+pre-teen,4.55,71,male,non-smoker
+pre-teen,2.841,63,female,non-smoker
+middle childhood,3.166,61.5,female,non-smoker
+pre-teen,3.816,63.5,female,non-smoker
+middle childhood,2.561,62,male,non-smoker
+middle childhood,3.654,65,female,non-smoker
+middle childhood,2.481,61,male,non-smoker
+middle childhood,2.665,63,female,non-smoker
+middle childhood,3.203,66,male,non-smoker
+pre-teen,3.549,68,male,non-smoker
+pre-teen,2.236,66,female,smoker
+middle childhood,3.222,72,male,non-smoker
+middle childhood,3.111,66,male,non-smoker
+middle childhood,3.49,67,female,non-smoker
+pre-teen,3.147,64,female,non-smoker
+middle childhood,2.52,60.5,female,non-smoker
+middle childhood,2.292,63,male,non-smoker
+pre-teen,2.889,64,female,non-smoker
+middle childhood,2.246,60.5,male,non-smoker
+middle childhood,1.937,62,male,non-smoker
+middle childhood,2.646,60,male,non-smoker
+middle childhood,2.957,64.5,male,non-smoker
+middle childhood,4.007,67,male,non-smoker
+middle childhood,2.386,61.5,female,non-smoker
+middle childhood,3.251,66,male,non-smoker
+middle childhood,2.762,60,female,non-smoker
+middle childhood,3.011,64,female,non-smoker
+pre-teen,4.305,68.5,male,non-smoker
+pre-teen,3.906,67,male,non-smoker
+middle childhood,3.583,67,male,non-smoker
+middle childhood,3.236,66,female,non-smoker
+pre-teen,3.436,62.5,male,non-smoker
+middle childhood,3.058,61,male,non-smoker
+middle childhood,3.007,62,male,non-smoker
+middle childhood,3.489,66.5,male,non-smoker
+middle childhood,2.864,60,female,non-smoker
+pre-teen,3.428,64,female,smoker
+pre-teen,2.819,62,female,non-smoker
+middle childhood,2.25,58,female,non-smoker
+pre-teen,4.683,68.5,male,non-smoker
+middle childhood,2.352,61.5,male,non-smoker
+middle childhood,3.108,64.5,male,non-smoker
+pre-teen,3.994,67,male,non-smoker
+pre-teen,4.393,68.5,male,non-smoker
+pre-teen,3.208,61,female,smoker
+middle childhood,2.592,65,male,non-smoker
+pre-teen,3.193,70,male,non-smoker
+middle childhood,1.694,60,male,smoker
+pre-teen,3.957,72,male,smoker
+middle childhood,2.346,59,female,non-smoker
+pre-teen,4.789,69,male,smoker
+middle childhood,3.515,67.5,male,non-smoker
+middle childhood,2.754,65.5,female,non-smoker
+middle childhood,2.72,65.5,male,non-smoker
+middle childhood,2.463,64.5,male,non-smoker
+middle childhood,2.633,62,female,non-smoker
+middle childhood,3.048,65.5,female,non-smoker
+middle childhood,3.111,67.5,male,non-smoker
+pre-teen,3.745,68,female,non-smoker
+pre-teen,2.384,63.5,female,smoker
+middle childhood,2.094,58.5,male,non-smoker
+middle childhood,3.183,65.5,female,non-smoker
+pre-teen,3.074,65,female,smoker
+middle childhood,3.977,70.5,male,non-smoker
+middle childhood,3.354,63,male,non-smoker
+middle childhood,3.411,63.5,female,non-smoker
+middle childhood,2.387,66,female,smoker
+middle childhood,3.171,63,female,non-smoker
+pre-teen,3.887,67.5,male,non-smoker
+pre-teen,2.646,61.5,female,non-smoker
+middle childhood,2.504,60,female,non-smoker
+middle childhood,3.587,64.5,male,non-smoker
+middle childhood,3.845,68.5,male,non-smoker
+pre-teen,2.971,64.5,male,non-smoker
+middle childhood,2.891,61,female,non-smoker
+middle childhood,1.823,57,female,non-smoker
+middle childhood,2.417,62.5,male,non-smoker
+middle childhood,2.175,58,female,non-smoker
+middle childhood,2.735,62.5,female,non-smoker
+pre-teen,4.273,72.5,male,non-smoker
+pre-teen,2.976,65.5,male,non-smoker
+pre-teen,3.835,69.5,female,smoker
+middle childhood,4.065,66.5,male,non-smoker
+middle childhood,2.318,59,female,non-smoker
+middle childhood,3.596,68,male,non-smoker
+pre-teen,3.395,67,female,non-smoker
+pre-teen,2.751,63,female,non-smoker
+middle childhood,2.673,64.5,female,non-smoker
+pre-teen,2.556,62,female,non-smoker
+middle childhood,2.542,62,female,non-smoker
+middle childhood,2.608,66,male,non-smoker
+middle childhood,2.354,62,female,non-smoker
+pre-teen,2.599,62.5,female,smoker
+middle childhood,1.458,57,female,non-smoker
+middle childhood,3.795,68.5,male,non-smoker
+middle childhood,2.491,59,female,non-smoker
+pre-teen,3.06,61.5,female,non-smoker
+middle childhood,2.545,65,male,non-smoker
+middle childhood,2.993,66.5,male,non-smoker
+middle childhood,3.305,65,female,non-smoker
+pre-teen,4.756,68,male,smoker
+middle childhood,3.774,67,female,non-smoker
+middle childhood,2.855,64.5,male,non-smoker
+middle childhood,2.988,70,male,non-smoker
+middle childhood,2.498,60,male,non-smoker
+pre-teen,3.169,64,female,non-smoker
+middle childhood,2.887,62.5,male,non-smoker
+pre-teen,2.704,61,female,non-smoker
+middle childhood,3.515,64,female,non-smoker
+middle childhood,3.425,65.5,male,non-smoker
+middle childhood,2.287,61,female,non-smoker
+pre-teen,2.434,65.4,female,non-smoker
+middle childhood,2.365,63.5,female,non-smoker
+pre-teen,3.086,67.5,female,smoker
+middle childhood,2.696,66,male,non-smoker
+pre-teen,2.868,62,female,non-smoker
+middle childhood,2.813,61.5,female,non-smoker
+pre-teen,4.309,69,male,smoker
+pre-teen,3.255,66,female,non-smoker
+middle childhood,3.413,66,female,smoker
+middle childhood,4.593,69,male,non-smoker
+pre-teen,4.111,71,male,non-smoker
+pre-teen,1.916,60.5,male,non-smoker
+middle childhood,1.858,58,male,non-smoker
+middle childhood,2.975,63,female,smoker
+middle childhood,3.35,69,male,non-smoker
+middle childhood,2.901,59.5,male,non-smoker
+pre-teen,2.241,64,male,non-smoker
+pre-teen,4.225,74,male,non-smoker
+middle childhood,3.223,64.5,female,non-smoker
+pre-teen,5.224,70,male,non-smoker
+middle childhood,4.073,67,male,non-smoker
+pre-teen,4.08,64.5,male,non-smoker
+middle childhood,2.606,65,female,non-smoker
+middle childhood,3.169,62.5,female,smoker
+pre-teen,4.411,68,male,non-smoker
+pre-teen,3.791,68.5,male,non-smoker
+pre-teen,3.089,67.5,male,non-smoker
+middle childhood,2.465,60,male,non-smoker
+pre-teen,3.343,68,male,smoker
+middle childhood,3.2,65,male,non-smoker
+pre-teen,2.913,64,male,non-smoker
+pre-teen,4.877,73,male,non-smoker
+middle childhood,2.358,59,female,non-smoker
+pre-teen,3.279,70.5,male,non-smoker
+middle childhood,2.581,66,male,non-smoker
+pre-teen,2.347,61.5,female,non-smoker
+middle childhood,2.691,67,female,non-smoker
+middle childhood,2.827,62.5,female,non-smoker
+middle childhood,1.873,52.5,male,non-smoker
+pre-teen,3.751,72,male,smoker
+pre-teen,2.538,71,female,non-smoker
+middle childhood,2.758,65.5,male,non-smoker
+middle childhood,3.05,60,female,non-smoker
+pre-teen,3.079,60,female,non-smoker
+middle childhood,2.201,60.5,male,non-smoker
+middle childhood,1.858,59,male,non-smoker
+pre-teen,2.216,68,female,smoker
+pre-teen,3.403,62,female,non-smoker
+pre-teen,3.501,64.5,female,non-smoker
+middle childhood,2.578,63,female,non-smoker
+pre-teen,3.078,66,female,smoker
+pre-teen,3.186,67,female,smoker
+middle childhood,1.665,57,male,non-smoker
+middle childhood,2.081,63,female,non-smoker
+middle childhood,2.974,62,female,non-smoker
+pre-teen,3.297,65,female,smoker
+pre-teen,4.073,68.5,male,non-smoker
+pre-teen,4.448,69,male,non-smoker
+pre-teen,3.984,71,male,non-smoker
+middle childhood,2.25,58,female,non-smoker
+pre-teen,2.752,63.5,female,non-smoker
+pre-teen,2.304,66.5,male,smoker
+pre-teen,3.68,67,male,non-smoker
+middle childhood,3.102,64,female,smoker
+middle childhood,2.862,61,female,non-smoker
+pre-teen,2.677,67,female,smoker
+middle childhood,3.023,67.5,female,non-smoker
+middle childhood,3.681,68,female,non-smoker
+pre-teen,3.255,66.5,female,non-smoker
+pre-teen,3.692,67,male,non-smoker
+middle childhood,2.356,60.5,female,non-smoker
+middle childhood,4.591,70,male,non-smoker
+pre-teen,3.082,63.5,female,non-smoker
+pre-teen,3.297,65,female,smoker
+middle childhood,3.258,63,female,non-smoker
+middle childhood,2.216,61,male,non-smoker
+middle childhood,3.247,65.5,male,non-smoker
+middle childhood,4.324,67.5,male,non-smoker
+middle childhood,2.362,61,female,non-smoker
+middle childhood,2.563,63,female,non-smoker
+middle childhood,3.206,63.5,male,non-smoker
+pre-teen,3.585,70,male,non-smoker
+pre-teen,4.72,71.5,male,non-smoker
+pre-teen,3.331,65.5,female,non-smoker
+pre-teen,5.083,74,male,non-smoker
+middle childhood,3.498,68,male,smoker
+pre-teen,2.417,61,female,non-smoker
+middle childhood,2.364,61,male,non-smoker
+middle childhood,2.341,61,male,non-smoker
+pre-teen,2.759,61.5,female,smoker
+middle childhood,2.953,67,female,smoker
+pre-teen,3.231,63,male,non-smoker
+middle childhood,3.078,67.5,male,non-smoker
+middle childhood,3.369,70.5,male,non-smoker
+pre-teen,3.529,70.5,male,non-smoker
+pre-teen,2.866,62,female,non-smoker
+pre-teen,2.891,62,female,non-smoker
+middle childhood,3.022,61.5,female,non-smoker
+middle childhood,3.127,62,male,non-smoker
+middle childhood,2.866,60.5,female,non-smoker
+pre-teen,2.605,62.5,female,non-smoker
+pre-teen,3.056,63,female,non-smoker
+pre-teen,2.569,63,female,non-smoker
+middle childhood,2.501,62,female,non-smoker
+middle childhood,3.32,65.5,male,non-smoker
+middle childhood,2.123,65,male,non-smoker
+pre-teen,3.78,70,male,non-smoker
+middle childhood,3.847,66,male,non-smoker
+pre-teen,3.785,63,female,smoker
+pre-teen,3.924,68,male,non-smoker
+middle childhood,2.132,59,male,non-smoker
+pre-teen,2.752,68.5,male,non-smoker
+pre-teen,2.449,63,female,non-smoker
+middle childhood,3.456,63,male,non-smoker
+middle childhood,3.073,66,female,non-smoker
+middle childhood,2.688,62,female,non-smoker
+middle childhood,3.329,68,male,non-smoker
+pre-teen,4.271,72.5,male,non-smoker
+pre-teen,3.53,64,male,non-smoker
+middle childhood,2.928,65.5,male,non-smoker
+middle childhood,2.689,61.5,female,non-smoker
+pre-teen,2.332,57,male,non-smoker
+pre-teen,2.934,64,female,non-smoker
+pre-teen,2.276,66,male,smoker
+middle childhood,3.11,64.5,male,non-smoker
+middle childhood,2.894,67,male,non-smoker
+middle childhood,4.637,72,male,smoker
+middle childhood,2.435,65,female,non-smoker
+middle childhood,2.838,63,female,non-smoker
+pre-teen,3.035,62,female,non-smoker
+pre-teen,4.831,71,male,non-smoker
+middle childhood,2.812,61,male,non-smoker
+pre-teen,2.714,65.5,female,non-smoker
+middle childhood,3.086,62,female,non-smoker
+pre-teen,3.519,65.5,female,non-smoker
+pre-teen,4.232,70.5,male,non-smoker
+middle childhood,2.77,62,male,non-smoker
+pre-teen,3.341,65.5,female,non-smoker
+middle childhood,3.09,65,male,non-smoker
+pre-teen,2.531,61,male,non-smoker
+pre-teen,2.822,69.5,male,non-smoker
+middle childhood,3.038,65,female,smoker
+pre-teen,2.935,65.5,male,non-smoker
+middle childhood,2.568,63.5,female,non-smoker
+middle childhood,2.387,60.5,male,non-smoker
+pre-teen,2.499,65,male,non-smoker
+middle childhood,4.13,67,male,non-smoker
+pre-teen,3.001,63.5,female,non-smoker
+middle childhood,3.132,59.5,female,non-smoker
+pre-teen,3.577,63.5,female,non-smoker
+pre-teen,3.222,61,female,non-smoker
+middle childhood,3.28,66,male,non-smoker
+middle childhood,2.659,64,male,non-smoker
+middle childhood,2.822,62,female,non-smoker
+middle childhood,2.14,60.5,female,non-smoker
+pre-teen,4.203,71,male,non-smoker
+pre-teen,2.997,64.5,female,non-smoker
+middle childhood,3.12,61,female,smoker
+middle childhood,2.562,62.5,female,non-smoker
+pre-teen,3.082,64.5,female,non-smoker
+pre-teen,3.806,68,male,non-smoker
+middle childhood,3.339,68.5,male,smoker
+pre-teen,3.152,62,female,smoker
+middle childhood,2.458,60,female,non-smoker
+middle childhood,2.391,59.5,male,non-smoker
+pre-teen,3.141,61,female,non-smoker
+pre-teen,2.579,63,female,non-smoker
+middle childhood,3.104,67.5,female,smoker
+pre-teen,4.045,69,male,smoker
+pre-teen,4.763,68,male,smoker
+middle childhood,2.1,58,male,non-smoker
+middle childhood,3.069,65,female,smoker
+middle childhood,2.785,69,male,non-smoker
+teenager,4.284,70,male,non-smoker
+teenager,4.506,71,male,smoker
+teenager,2.906,66,female,non-smoker
+teenager,5.102,72,male,non-smoker
+teenager,3.519,66,female,smoker
+teenager,3.688,68,male,smoker
+teenager,4.429,70,male,non-smoker
+teenager,4.279,67.5,male,non-smoker
+teenager,4.5,70,male,non-smoker
+teenager,2.635,64,female,non-smoker
+teenager,2.679,66,female,smoker
+teenager,2.198,62,female,smoker
+teenager,3.345,65.5,female,smoker
+teenager,3.082,64.5,female,non-smoker
+teenager,3.387,66.5,female,non-smoker
+teenager,3.082,67,male,smoker
+teenager,2.903,63,female,smoker
+teenager,3.004,64,female,smoker
+teenager,5.793,69,male,non-smoker
+teenager,3.985,71,male,non-smoker
+teenager,4.22,68,male,non-smoker
+teenager,4.724,70.5,male,non-smoker
+teenager,3.731,67,male,non-smoker
+teenager,3.406,69,male,smoker
+teenager,3.5,62,female,non-smoker
+teenager,3.674,67.5,female,non-smoker
+teenager,5.633,73,male,non-smoker
+teenager,3.122,64,female,smoker
+teenager,3.33,68.5,female,smoker
+teenager,2.608,62,female,smoker
+teenager,3.645,73.5,male,non-smoker
+teenager,3.799,66.5,male,smoker
+teenager,4.086,67,male,smoker
+teenager,2.887,63,female,non-smoker
+teenager,4.07,69.5,male,smoker
+teenager,3.96,70,male,non-smoker
+teenager,4.299,66,male,non-smoker
+teenager,2.981,66,female,non-smoker
+teenager,2.264,63,female,smoker
+teenager,4.404,70.5,male,smoker
+teenager,2.278,60,female,smoker
+teenager,4.504,72,male,non-smoker
+teenager,5.638,70,male,non-smoker
+teenager,4.872,72,male,smoker
+teenager,4.27,67,male,smoker
+teenager,3.727,68,male,smoker
+teenager,2.853,60,female,non-smoker
+teenager,2.795,63,female,smoker
+teenager,3.211,66.5,female,non-smoker
