@@ -1,0 +1,9 @@
+---
+title: "Midterm Exams - Stat 313"
+output: ioslides_presentation
+---
+
+## STATISTICAL INFRERENCE 
+
+
+## LINEAR MODELS
