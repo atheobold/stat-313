@@ -1,9 +1,95 @@
 ---
-title: "Midterm Exams - Stat 313"
+title: "Final Exams - Stat 313"
 output: ioslides_presentation
 ---
 
-## STATISTICAL INFRERENCE 
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+## STATISTICAL INFERENCE 
+
+## Question 1 
+
+Explain to someone who has never taken a statistics course what a p-value is. 
 
 
-## LINEAR MODELS
+## Question 2 
+
+Explain to someone who has never taken a statistics course what a confidence interval is. 
+
+
+## Question 3 
+
+It is very likely researchers in your field are familiar with parametric tests (e.g. $t$-test, $F$-test) but are not familiar with simulation based methods (e.g. randomization test, bootstrap confidence interval). 
+
+Explain to someone in your field the similarities and differences between these two methods. 
+
+
+## Question 4 
+
+Large portions of the scientific community are pushing to eliminate p-value thresholds for publication of scientific research. 
+
+What is the role of a p-value threshold (e.g. 0.05) in hypothesis testing? 
+
+What are the benefits and costs of eliminating p-value thresholds? 
+
+## Question 5 
+
+In the last lab assignment (Inference for Linear Regression), you used a bootstrap distribution to estimate a plausible range of values for the population slope. 
+
+What is the key assumption behind a bootstrap distribution? 
+
+Why was it not necessary to create a bootstrap distribution to estimate a range of values for the population slope?
+
+
+## LINEAR MODELS 
+
+## Question 1 
+
+Suppose a researcher performs a one-way ANOVA and finds strong evidence to reject the null. They are interested in reporting which groups are "significantly" different from each other and are planning to perform tests for a difference in means for all of the groups that appear to be different. 
+
+Explain to this individual the issues with this analysis strategy and propose an alternative strategy they should take. 
+
+
+## Question 2 
+
+When the conditions for a linear regression are violated, how is the associated p-value and confidence interval impacted? 
+
+How do these impacts differ for simulation based methods versus parametric methods? 
+
+
+## Question 3 
+
+A one-way ANOVA compares the means of three or more groups, and summarizes these differences with an F-statistic.
+
+What are the components of an F-statistic and what does each term symbolize in terms of the variability of the responses? 
+
+
+## Question 4 
+
+What are the similarities and differences between a two-way ANOVA model and a multiple linear regression? 
+
+What does it mean to have "parallel lines" in a two-way ANOVA? 
+
+What does it mean to have "different slopes" in a two-way ANOVA?  
+
+
+## Question 5 
+
+Prior to this year, it was fairly common for medical studies to have a lack of representation of women and people of color (and women of color). Suppose a researcher was interested in assessing the relationship between race and age on the metabolic rates of women. The researcher categorized race and age as follows: 
+
+* Black, Hispanic, American Indian or Alaska Native, Asian, Native Hawaiian or Pacific Islander, White
+ 
+* 20 - 30, 30 - 40, 40 - 50, 50 - 60, 60 - 70, 70 - 80
+
+The researcher recruited one woman from each intersecting group (e.g. Black and 30-40).  When testing for an interaction between race and age on metabolic rates, the researcher obtained the following degrees of freedom for their test. What is the issue? What can the researcher do to assess the relationship between these variables and the metabolic rate?  
+
+| term     | degrees of freedom  |  
+| -------- |:-------------------:|  
+| race     | 5  |  
+| age      | 5  |  
+| race:age | 25 |  
+| error    | 0  | 
