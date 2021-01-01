@@ -11,7 +11,6 @@ description: |
   Learn how to set up R and RStudio on your computer. We will also demonstrate how to install R packages from CRAN, and install the tidyverse package (a package we will use often).
 ---
 
-MAKE A CHANGE HERE! 
 
 ```{r setup, include=FALSE}
 library(learnr)
@@ -31,8 +30,10 @@ course!
 This tutorial will help you set up your computer to use R. It is for you if you
 need to:
 
+* Change where files are downloaded
 * Install R on your computer
 * Install the RStudio IDE
+* Learn how to work in RStudio
 * Install the `tidyverse` R package
 
 You can skip this tutorial if you've already done these things.
@@ -56,6 +57,19 @@ question("Check all that you have NOT done:",
   incorrect = "This tutorial is here to help! To get set up read:"
 )
 ```
+
+## Change File Download Destination
+
+I would highly recommended you change the default file download location for
+your internet browser!
+
+Generally by default, internet browsers automatically save all files to the
+Downloads folder on your computer. This does not encourage good file
+organization practices. It is highly recommended that you change this option so 
+that your browser asks you where to save each file before downloading it.
+
+This [page](https://www.online-tech-tips.com/computer-tips/change-default-download-folder-location-on-any-web-browser/) has information on how to do this for the most common browsers.
+
 
 ## Install `R`
 
@@ -190,6 +204,13 @@ quiz(caption = "Quiz - Install RStudio",
 )
 ```
 
+## How to Work in RStudio, Save Files, and Open Downloaded Files
+
+Please watch this video made by Professor Lisa Lendway that describes essential
+configuration options for RStudio.
+
+![](https://www.youtube.com/watch?v=LJiRSPoe8r0)
+
 ## Install Packages
 
 ### How to install R packages
@@ -266,3 +287,21 @@ quiz(caption = "Quiz - Working with Packages",
   )
 )
 ```
+
+## Troubleshooting 
+
+Problem: You are on a Mac and getting the following error:
+
+```
+Error: package or namespace load failed for ‘tidyverse’ in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
+ there is no package called ‘rlang’`
+```
+
+Here’s how to fix it:
+
+- First install the suite of Command Line Tools for Mac using the instructions (here)[https://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/]. 
+
+- Next enter install.packages("rlang") in the Console. 
+
+- Finally check that entering library(ggplot2) gives no errors. You should be
+good now for tidyverse and openintro.

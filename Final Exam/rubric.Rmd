@@ -7,7 +7,7 @@ output:
 
 Score   | Demonstration
 --------|--------------
-4       | __Excellent__ -- Outstanding ability to articulate the concepts covered in the exam, with comprehensive and thoughtful understanding of the content of the assessment. If if any errors occur, and do not cloud the overall understanding of the content.  
+4       | __Excellent__ -- Outstanding ability to articulate the concepts covered in the exam, with comprehensive and thoughtful understanding of the content of the assessment. Few if if any errors occur. Any errors that do occur are minor and do not cloud the understanding articulated during the exam.  
         |     
 3       | __Good__ -- Ability to articulate the central concepts covered in the exam, but several errors may occur during the assessment. These errors, however, do not cloud the central concepts of the assessment. 
         |    

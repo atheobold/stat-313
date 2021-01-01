@@ -1,6 +1,6 @@
 ---
 title: 'STAT 313: Applied Experimental Design and Regression Models'
-author: "Fall 2020"
+author: "Winter 2021"
 output: 
   html_document:
       toc: TRUE
@@ -19,9 +19,9 @@ library(PridePalettes)
 library(DiagrammeR)
 library(tidyverse)
 
-#pride_palette(palette = "philly_poc_pride")
 pride_pal <- c("#e40303", "#ff8c00", "#ffed00",
                "#008026", "#004dff", "#750787")
+brewer_pal <- brewer.pal(n = 8, name = "Purples")
 ```
 
 
@@ -33,21 +33,13 @@ pride_pal <- c("#e40303", "#ff8c00", "#ffed00",
 
 ## Course Meetings
 
-The course will "meet" through three primary channels: 
+This is an asynchronous course which has no "formal" meeting times. I will be 
+offering two weekly meetings, one _`R` Help Session_ and one _Weekly Review Session_. 
 
-1. Synchronous Zoom meetings for one hour every Wednesday 
-(during scheduled synchronous time)
+Each of these meetings will be held on Wednesdays on Zoom and recorded for those
+who cannot attend. The meeting times will be determined from the course survey 
+administered during the first week. 
 
-2. Asynchronous weekly group discussions on Canvas
-
-3. Weekly "work sessions" on Zoom (every Thursday)
-  - Section 01 - Thursdays from 9:10 - 10:00 am
-  - Section 02 - Thursdays from 10:10 - 11:00 am
-
-4. Weekly `R` "skill up sessions" on Zoom (every Tuesday)
-  - Section 01 - Thursdays from 9:10 - 10:00 am
-  - Section 02 - Thursdays from 10:10 - 11:00 am
-  
 ## Office Hours
 
 __All office hours will take place on Zoom.__
@@ -56,19 +48,19 @@ Regular weekly office hours will be held:
 
 Day        | Time
 -----------|------------------
-Tuesdays   | 4:00 pm – 5:00 pm
-Wednesdays | 2:00 pm - 3:00 pm
-Thursdays  | 4:00 pm – 5:00 pm
+Mondays    | 1:30 pm – 2:30 pm
+Tuesdays   | 1:30 pm – 2:30 pm
+Thursdays  | 1:30 pm – 2:30 pm
 
-Individual appointments or appointments can be made on Wednesdays from 1:00 - 
-2:00. These appointments must be made _at least_ 24 hours in advance through
-Calendly, using the following link: <https://calendly.com/allisontheobold> 
+I am available for individual appointments on Mondays and Thursdays outside of
+these time slots, but appointments __must__ be made made _at least_ 24 hours
+in advance through Calendly, using the following link: 
+<https://calendly.com/allisontheobold> 
 
 ## Required Materials 
 
 For this course we will be using one main textbook, accompanied by additional 
 resources. All of the materials are free! 
-
 
 ```{r, out.width = '20%', fig.align = 'center', echo = FALSE, eval = TRUE}
 knitr::include_graphics('course images/open_intro.png')
@@ -78,7 +70,7 @@ knitr::include_graphics('course images/open_intro.png')
 Randomization and Simulation__. 
 <https://openintro-ims.netlify.app/>
 
-</br>
+### Additional Materials 
 
 ```{r, out.width = '30%', fig.align = 'center', echo = FALSE, eval = TRUE}
 knitr::include_graphics('course images/modern_dive.png')
@@ -106,9 +98,9 @@ When you select RStudio, the page will load for 2-4 minutes
 you would on your laptop, *except* everything you make during a session 
 __cannot be accessed later__. 
 
-- Canvas will be used for weekly course discussions and lab submissions
-- Zoom will be used for weekly (synchronous) course meetings, office hours, and
-small group collaborations
+- Canvas will be used for weekly discussions / homework, weekly quizzes, and 
+submissions for lab assignments and group projects.
+- Zoom will be used for weekly review sessions, office hours, and oral exams. 
 
 ## Welcoming Classroom
 
@@ -134,21 +126,24 @@ _Expected Outcomes_:
   * observational studies
   * one-factor completely randomized designs
   * randomized complete block designs
+  * factorial designs  
 
 - Analyze and interpret the results of analysis of variance (ANOVA) from
 different study designs, including multiple comparisons of means
 
 - Analyze and interpret the results of simple linear regression models, and
 multiple linear regression models which use both quantitative and categorical 
-predictor variables 
+predictor variables   
+  * Lack of fit
+  * Transformations
+  * Indicator variables
 
-<!-- * Lack of fit   -->
-<!-- * Transformations   -->
-<!-- * Indicator variables   -->
-<!-- - Understand and know how to use variable selection techniques in regression. -->
+- Understand and know how to use variable selection techniques in regression.
 
 - Describe the assumptions of the ANOVA and regression models and evaluate
 whether they are violated for a particular analysis.
+
+<!-- * Residual analysis   -->
 
 - Describe Type I error, Type II error, and statistical power in context; 
 discuss how different aspects of a study design will affect errors and power
@@ -167,15 +162,14 @@ collaborate in groups to create a reproducible statistical report
 #### COVID-19 Addendum
 
 I understand and appreciate the strange world we find ourselves living in today. 
-Surrounded by a global pandemic, civil unrest, and an upcoming presidential 
-election, many of us find ourselves overwhelmed, frustrated, confused, and sad. 
-I appreciate all of these outside forces you are navigating, and will do my best 
-to monitor the pace of our course so that no one feels left behind. Yes, this 
-may mean that we may not hit every learning outcome. Instead, it is of utmost 
-importance to me that you leave this course with an appreciation for
-the complexities involved in building a statistical model, grasp of the
-importance of good experimental design, and that you participate in group
-conversations about statistical reasoning and problem solving. 
+Surrounded by a variety of factors, many of us find ourselves overwhelmed, 
+frustrated, confused, and sad. I appreciate all of these outside forces you are
+navigating, and will do my best to monitor the pace of our course so that no one
+feels left behind. Yes, this may mean that we may not hit every learning outcome.
+Instead, it is of utmost importance to me that you leave this course with an
+appreciation for the complexities involved in building a statistical model,
+grasp of the importance of good experimental design, and that you participate
+in group conversations about statistical reasoning and problem solving. 
 
 ## Course Components 
 
@@ -189,15 +183,17 @@ Canvas will be your main resource for asynchronous course materials:
 - group projects
 - software resources
 
-Zoom will be the main resource for synchronous course participation:
+Zoom will be the main resource for synchronous course meetings:
 
-- course meetings
-- small group collaborations
+- course review sessions
+- oral exams
 
 ### Communication 
 
-Every Monday there will be an announcement on Canvas letting you know what is 
-due over the next week, and the material we will be covering.
+Every Sunday evening there will be an announcement on Canvas letting you know
+what is due over the next week, and the material we will be covering. The module 
+for each week will be released on Sunday evening, so you can look over the 
+content and strategize how you will use your time. 
 
 We will use discussion channels in Canvas to manage questions and
 responses regarding course content. Please __do not__ send an email about
@@ -210,7 +206,7 @@ something, the discussion channels are the first place you should go. Personal
 matters may be sent via email.
 
 Generally, I will work **either** Saturday or Sunday each weekend, and will work 
-from approximately 8am to 5pm (PST) during the week. I will attempt to respond
+from approximately 7am to 4pm (PST) during the week. I will attempt to respond
 to emails in 24 hours, but emails sent on a Saturday night may not be responded
 to until Monday morning. If you don't hear back from me in 48 hours, assume I
 did not receive your email and resend it!
@@ -227,13 +223,14 @@ graph[layout = dot, rankdir = LR]
 node [shape = rectangle, style = filled, fillcolor = LightBlue]
 node[fontname = 'helvetica', width = 2, height = 1]
 
-videos [label = 'Monday: \n Read chapter \n Watch lecture video', fillcolor = '#e40303']
-post1 [label = 'Tuesday: \n Contribute concept \n discussion post', fillcolor = '#ff8c00']
-in_person [label = 'Wednesday: \n Attend in-person lecture & activity \n Begin lab assignment', fillcolor = '#ffed00']
-post2 [label = 'Thursday: \n Contribute think out loud discussion post \n Participate in group collaboration session', fillcolor = '#008026']
-homework [label =  'Sunday: \n Submit lab assignment \n Wrap-up discussion conversations', fillcolor = '#004dff']
+videos [label = 'Monday: \n Read chapter \n Watch lecture video(s)', fillcolor = '#e40303']
+post1 [label = 'Tuesday: \n Contribute to weekly \n group discussion / homework', fillcolor = '#ff8c00']
+post2 [label = 'Begin Lab Assignment \n or R Tutorial', fillcolor = '#008026']
+in_person [label = 'Wednesday: \n Attend / Watch course review \n & R help session', fillcolor = '#ffed00']
+homework [label =  'Friday: \n Submit group discussion responses', fillcolor = '#004dff']
+lab [label =  'Sunday: \n Submit lab assignment', fillcolor = '#750787']
 
-videos -> post1 -> in_person -> post2 -> homework
+videos -> post1 -> post2 -> in_person -> homework -> lab
 }")
 ```
 
@@ -243,75 +240,134 @@ knitr::include_graphics('course images/weekly_flow.PNG')
 
 ### Readings and Videos
 
-For this course, we'll be using a "flipped class" format. This means I will 
-provide you with readings, pre-recorded videos, and guided tutorials for you to
-watch, read, and do on your own time. You are expected to complete the readings,
-watch the videos, and/or attempt the tutorials __before__ our weekly in-person
-class meetings. 
+As this is an asynchronous course, we will be using a "flipped class" format. 
+This means I will  provide you with readings, pre-recorded videos, and guided
+tutorials for you to watch, read, and do on your own time. You are expected to
+complete the readings, watch the videos, and/or attempt the tutorials __before__
+our weekly in-person review sessions. 
 
-### Course Meetings
+### Weekly Group Discussions / Homework Assignments 
 
-The weekly course meetings will consist of group discussions and interactive lab
-activities. You will be randomly spit into breakout rooms where you will work
-with others to accomplish the activity. 
+You will be expected to regularly participate in discussion groups on Canvas to 
+complete a set of questions associated with the content for the week. The 
+questions for each week will be shared with your group through a Google Doc. 
+You can access the document through the "Collaborations" tab in Canvas. 
 
-### Discussion Forums, Active Participation, & Tasks
+My hope is that each member of the group makes an initial contribution by
+Tuesday or Wednesday, so everyone can read through the posts and see what
+they would modify or add. The group then has until Friday at 11:59pm to submit
+your final responses. 
 
-You will be expected to regularly participate in online discussion forums on 
-Canvas. Every two weeks you will be randomly assigned to a group of 3-4 
-students, whom you will converse with when completing the week's required posts. 
-You will be expected to complete the following discussion posts each week: 
+Homework assignments will be given full credit, so long as each question was 
+"reasonably" attempted. A "reasonable" attempt requires that the responses to 
+each question (1) reflect critical thinking about the central concept(s) of the 
+question, and (2) provide a unique insight into the group's thinking. 
 
-1. "concept" post discussing and/or asking questions about the concepts
-covered in the videos/reading
-
-2. "thinking out loud" post describing your *rough-draft* thinking about a
-designated problems
-
-The "concept post" should be done as you are completing the reading and/or 
-watching the video. The "thinking out loud" post should be done after the course
-meeting, while you are working through the week's lab. You are expected 
-to continue the conversation by responding to _at least_ two other student's
-posts and addressing any comments made to your original thread. When responding 
-to members of your group, respond first to those who have not yet received any
-replies. Each post cannot have more than two responses until every post has 
-has had a response. 
-
-Scores for contributions to discussion forums will be based on the following
-rubric:
-
-Score | Justification  
-------|-------------------------------------------------------------------
-4	    | __Substantial Contributions__ -- Contributions to discussions that reflect thoughtfulness and move understanding of content forward. These contributions can include unique solution strategies, making connections across strategies, critical reflection, OR asking questions to promote discussion.  
-3	    | __Supportive Contributions__ -- Contributions to discussions that reflect agreement or disagreement with others’ contributions without moving understanding of content forward OR offer summaries of others’ contributions without making connections.
-0     | __No Contributions__ -- Does not contribute, includes statements such as “I agree” or “That’s interesting.” 
-0     | __Negligence__ -- Contributions restrict or squelch the ability of others to contribute to the learning environment. 
-
-
-### Work Sessions 
-
-There will be 1 small group collaboration held __each week__ on Zoom, where
-up to 4 students will work together on a task for the week. Each student
-will sign up to attend __at least one__ small group collaboration during the
-quarter. Each session will be held on Zoom, and recorded for all other students
-to watch and reflect. Scores for this portion of the course will be allocated
-based on attendance and by using the rubric for discussion forums (see above).
+At the end of each week, I will provide every group with feedback regarding
+their ideas, and I will provide a "summary" of ideas that stood out and key
+misconceptions to the entire course. You should think of these collaborative
+questions as your first "check point" in the week's content. You will get
+feedback as you progress through the check points, so you have a better idea of
+what you need to work on as you prepare for the exams
 
 ### Knowledge Checks
 
-Each small group collaboration will be accompanied by a short knowledge check
-for students to reflect on what they learned during the collaboration or through
-watching the video.
+Every week I will post one "big picture" conceptual question from the content 
+covered the prior week, which you are required to record your response to the 
+prompt. You should think of this "knowledge check" as the second check point for 
+the content covered each week. 
 
-### Homework/Labs
+Each recording will be done through FlipGrid. Each recording will have an 
+associated Canvas assignment, which will direct you to the FlipGrid application. 
+You will need to use your computer audio to record, and I would prefer that 
+you use your video camera during your recording. 
 
-Labs will be assigned regularly based on content covered and in
-preparation for upcoming activities. Problem sets will consist of explorations 
-of concepts from the week's reading, and will often require `R` for completion. 
+Scores for this portion of the course will be allocated similar to that of 
+homework submissions, where full credit will be given so long as you provide a 
+response that demonstrates you have spent time thinking about the content. I 
+will provide individualized feedback to your recording, letting you know where
+you are on the right track and what areas you could review. 
+
+### Weekly Quizzes
+
+Each week there will be a short (~10 questions) quiz over the reading and 
+videos from the week. These quizzes are intended to ensure that you grasped the 
+key concepts from the week's readings. The quizzes are not timed, so you can 
+feel free to check your answers with the textbook and/or videos if you so wish. 
+
+### Tutorials
+
+On the weeks where there are no lab assignments, I will assign a set of 
+tutorials focusing on specific skills in `R`. These tutorials provide a 
+review of the concepts covered in the textbook, give examples of how to work 
+with data in `R`, and have hand-on exercises where you will need to write the 
+`R` code necessary to complete a given task (with hints provided). 
+
+The tutorials are work at your own pace, so you can complete them all at once or
+slowly throughout the week. There are no submissions for completing the
+tutorials, but the skills you learn in these tutorials are necessary for 
+completing the `R` code in each lab assignment.  
+
+### Labs Assignments
+
+Labs will be assigned every other week, providing the opportunity to explore 
+the course concepts in the context of real data. Lab assignments will require
+`R` for completion, and thus should be started early.  
 
 You are expected to submit your lab solutions electronically to Canvas as
-__both__ an HTML and an RMarkdown document. Not every item will be scored;
-however, feedback on representative items will be given for each assignment.
+__both__ an HTML and an RMarkdown document. 
+
+#### Lab Assignment Grading 
+
+I expect that you will approach each lab assignment seriously, investing 
+the necessary time and energy to prepare your responses. Different from what 
+you may have experienced, lab assignments are graded for "mastery" of the 
+concepts. The degree to which you "mastered" each question is assessed with 
+the following four-point scale. 
+
+Score   | Justification
+--------|--------------
+4       | __Master__ -- Outstanding work that exhibits comprehensive and thoughtful understanding of the content of the question, with an individualized perspective. Errors do not occur in the assignment.
+3       | __Practitioner__ -- Work reflects a solid understanding of the content of the question. Work may not exhibit original perspectives. Several errors may occur in the question. 
+R       | __Redo (Required)__ -- Work satisfies the requirements of the assignment while missing the spirit of the assignment. May be an incomplete rendering of the assignment. The work may contain inconsistencies or demonstrate limited understanding of the content. May be incoherent or poorly written. 
+1       | __Novice__ -- The work shows a lack of understanding of the assignment.
+0       | __No credit__ -- The problem was not seriously attempted. 
+
+</br>
+
+For questions that you reasonably attempted but did not earn a "Practitioner"
+score, you will be requested to revise and resubmit your response. Problems
+marked with an “R” have the opportunity to be redone and returned to 
+earn "Practitioner" credit. Although you may have as many opportunities as
+needed to correctly redo problems, your first attempt at redos __must__ be
+completed and turned in within __two days__ (48 hours) after receiving your
+lab assignment. 
+
+For each problem marked with an “R”, you will be required to
+submit a redo form in order to earn back a "Practitioner" score (3 points) on
+the problem. One redo form must be completed for each problem. You will 
+submit your revisions to the __same__ assignment portal, along with a redo form 
+for every question. 
+
+Each homework assignment will receive a score that reflects the average 
+points-per-question. For example, suppose your homework assignment has four
+questions and you receive the following scores on each problem: 3, 4, 3, and 4.
+Then, your overall score is (3+4+3+4)/4 = 3.5. Suppose you received the
+following scores (3, 4, 3, and R). Then, your initial overall score is
+(3+4+3+0)/4 = 2.5 (Redo 1). 
+
+__Do not__ interpret 3/4 as equivalent to a grade of 75%. This rubric is
+intended to be about the quality of your work, not the percentage of points
+earned. It is likely that students consistently scoring “Practitioner” on this
+rubric will earn at least a B- in the course.
+
+Letter grades will be assigned according to the following minimums: 3.75 (A),
+3.0 (B-), 2.85 (C), below 2.85 (C-, D, or F).
+
+__Note__: If you have more than three “0” grades due to turning assignments in
+late, un-revised “Rs,” class absences resulting in “0” participation grade, or
+missed assignments, the highest grade you will earn for the class is a C-. 
+
 
 ### Projects
 
@@ -337,79 +393,44 @@ Your grade in STAT 313 will contain the following components.
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, eval = TRUE}
 grades <- tribble(
   ~category,  ~percent,
-  "Discussion Forums, Active Participation, & Tasks", 25,
-  "Homework", 10, 
-  "Knowledge Checks", 10,
-  "Live Small Group Collaborations (3)", 15,
-  "Projects (2)", 20, 
-  "Oral Assessments (2)", 20
+  "Homework", 5, 
+  "Knowledge Checks", 5,
+  "Quizzes", 10,
+  "Labs", 15,
+  "Projects", 15,
+  "Midterm", 25, 
+  "Final", 25
+  ) 
+
+grades <- grades %>% 
+  mutate(category = factor(category, 
+                           levels = c("Homework", "Knowledge Checks", 
+                                      "Quizzes", "Labs", "Projects", 
+                                      "Midterm", "Final")
+                           )
   )
 
-grades$location <- rep(1, 6)
+grades$location <- rep(1, 7)
 
 grades %>% 
   ggplot(aes(x = location, y = percent)) +
   geom_col(aes(fill = category), 
            col = 'black') + 
   guides(fill = FALSE) + 
-  geom_text(aes(x = rep(1, 6),
-                label = c('Discussions & Participation (25%)',
-                          'Homework (10%)',
-                          'Knowledge Checks (10%)',
-                          'Small Group Collaborations (15%)', 
-                          'Oral Assessments (20%)', 
-                          'Projects (20%)'),
-                y = c(87, 70, 60, 47, 30, 10))) +
+  geom_text(aes(x = rep(1, 7),
+                label = c('Group Discussions / Weekly Homework (5%)',
+                          'Weekly Knowledge Checks (5%)',
+                          'Weekly Quizzes (10%)',
+                          'Lab Assignments (15%)',
+                          'Group Projects (15%)',
+                          'Oral Midterm (25%)',
+                          'Oral Final (25%)'),
+                y = c(98, 93, 85, 72, 58, 38, 13))) +
   labs(x = '', y = 'Cumulative percent') + 
   theme(axis.text.x = element_blank()) +
-  scale_fill_manual(values = pride_pal)
+  scale_fill_manual(values = brewer_pal)
 
 ```
-
-### Grading 
-
-I expect that you will approach each homework assignment seriously, investing 
-the necessary time and energy to prepare your responses. All items will be 
-scored using the following four-point scale. 
-
-Score   | Justification
---------|--------------
-4       | __Excellent__ -- Outstanding work that exhibits comprehensive and thoughtful understanding of the content of the assignment. Errors do not occur in the assignment.
-3       | __Good__ -- Work reflects a solid understanding of the content of the assignment. Work may not exhibit original perspectives. Several errors may occur in the assignment. 
-R       | __Redo (Required)__ -- Work satisfies the requirements of the assignment while missing the spirit of the assignment. May be an incomplete rendering of the assignment. The work may contain inconsistencies or demonstrate limited understanding of the content. May be incoherent or poorly written. 
-1       | __Poor__ -- The work shows a lack of understanding of the assignment.
-0       | __No credit__ -- The problem was not seriously attempted. 
-
-</br>
-
-Each homework assignment will receive a score that reflects the average 
-points-per-question. For example, suppose your homework assignment has four
-questions and you receive the following scores on each problem: 3, 4, 3, and 4.
-Then, your overall score is (3+4+3+4)/4 = 3.5. Suppose you received the
-following scores (3, 4, 3, and R). Then, your initial overall score is
-(3+4+3+0)/4 = 2.5 (Redo 1). Note: If you have a redo on an assignment, a total
-score of 0 will be entered into the gradebook for that assignment until the redo
-has been completed. 
-
-Problems marked with an “R” __must__ be redone and returned
-within __two days__ of receiving the assignment back. Late redos receive a zero
-but still must be turned in to fulfill the spirit of redos. Work successfully
-redone (on time) will receive a maximum grade of 3. When you submit your redo, 
-label the revision with your name, the assignment number, and if applicable,
-the page and problem number. It is possible to have a redo on a redo.
-
-__Do not__ interpret 3/4 as equivalent to a grade of 75%. This rubric is
-intended to be about the quality of your work, not the percentage of points
-earned. It is likely that students consistently scoring “Good” on this rubric
-will earn at least a B- in the course.
-
-Letter grades will be assigned according to the following minimums: 3.75 (A),
-3.0 (B-), 2.85 (C), below 2.85 (C-, D, or F).
-
-If you have more than three “0” grades due to turning assignments in late,
-un-revised “Rs,” class absences resulting in “0” participation grade, or missed
-assignments, the highest grade you will earn for the class is a C-. 
-
 
 ## Late Work Policy 
 
@@ -422,24 +443,23 @@ me, we can work together to find a deadline that is fair to both you and other
 students. If I do not hear from you, I will take a 5% reduction in score for
 every day an assignment is late, up to four days
 
-You are also expected to participate in the week's discussions in a timely 
-manner. You will not be able to see your group's posts until you have created a
-post of your own. Thus, if you neglect to post anything until Friday, you will 
-only have until Sunday night to create thoughtful responses to the other posts 
-from your group. If you find that you are unable to participate in the week's 
-discussion posts in a timely manner, __please contact me__. Once you contact 
-me, we can create a timeline that will both allow for you to participate in the 
-discussions and allow for members of your group to receive feedback from you. 
+You are also expected to participate in the week's group discussions in a timely 
+manner. I will be able to track the change in the Google Doc to see if / when 
+every member of the group contributed. If you find that you are unable to 
+participate in the week's discussion posts in a timely manner, 
+__please contact me__. Once you contact me, we can create a timeline that will
+both allow for you to participate in the discussions and allow for members of
+your group to receive feedback from you. 
 
 
 ## Time Dedication Expectations
 
 In a face-to-face lecture course like STAT 313, each unit of credit represents
-one hour of in class instruction and approximately 2 hours of work outside of
-class per week. This equals approximately 9 hours of student work for a 3-unit
-class: 3 hours in-class and approximately 6 hours outside of class each week.
+one hour of in class instruction and approximately 2-3 hours of work outside of
+class per week. This equals approximately 16 hours of student work for a 4-unit
+class: 4 hours in-class and approximately 12 hours outside of class each week.
 
-For a 3-unit asynchronous, I expect you to work approximately 1-3 hours per day
+For a 4-unit asynchronous, I expect you to work approximately 1-3 hours per day
 (Mon-Friday), plus another 3-6 hours over the weekend (Sat-Sun). I will attempt
 to follow this guideline as I develop and post materials for the course, but
 please reach out if the time you are spending on the materials for this course
@@ -483,21 +503,31 @@ you are unsure about the degree of collaboration that is acceptable, please ask
 the professor for clarification. Cheating will not be tolerated. Academic
 misconduct will result in a minimum penalty of a grade of F on the assignment.
 
+## Plagiarism
+
+Paraphrasing or quoting another’s work without citing the source is a form of
+academic misconduct. This included the `R` code produced by someone else! 
+Writing code is like writing a paper, it is obvious if you copied-and-pasted 
+a sentence from someone else into your paper because the way each person writes 
+is different. 
+
+Even inadvertent or unintentional misuse or appropriation
+of another's work (such as relying heavily on source material that is not
+expressly acknowledged) is considered plagiarism. If you are struggling with 
+writing the `R` code for an assignment, please reach out to me. I would prefer 
+that I get to help you rather than you spending hours Googling things and 
+get nowhere! 
+
+If you have any questions about using and citing sources, you are expected to
+ask for clarification. 
+
 ## Computer Assistance - Cal Poly Cares
 
 If you are experiencing financial hardship and are unable to afford the
 technology you need to be academically successful, you can apply to Cal Poly
-Cares for assistance. Https://basicneeds.calpoly.edu/calpolycares or email
+Cares for assistance. <https://basicneeds.calpoly.edu/calpolycares> or email
 financialaid@calpoly.edu to request information about how you can apply for 
 funding to help cover the cost of purchasing a computer. 
-
-## Plagiarism
-
-Paraphrasing or quoting another’s work without citing the source is a form of
-academic misconduct. Even inadvertent or unintentional misuse or appropriation
-of another's work (such as relying heavily on source material that is not
-expressly acknowledged) is considered plagiarism. If you have any questions
-about using and citing sources, you are expected to ask for clarification. 
 
 ## Illnesses 
 
@@ -525,15 +555,12 @@ accommodations, please contact me before the third week of class.
 
 Date         | Day       | Event 
 -------------|-----------|------ 
-September 14 | Monday    | Fall term classes begin
-September 23 | Wednesday | Last day to drop classes
-September 25 | Friday    | End of second week
-October 2	   | Friday    | End of third week - Census date
-October 30   | Friday    | End of seventh week, last day to withdraw from a course
-November 11  | Wednesday | Academic holiday - Veterans Day Observed
-November 24  | Tuesday   | Last day of instruction, Last day to decide C/NC
-November 25 - 29 | Wednesday-Sunday | Thanksgiving holiday
-November 30  | Monday | Final Exam
+January 4    | Monday    | Beginning of winter term 
+January 18   | Monday    | MLK Day - observed holiday
+January 19   | Tuesday   | Classes follow Monday schedule
+February 15  | Monday    | Washington's birthday - observed holiday
+March 12     | Friday    | Last day of classes 
+March 15-19  |           | Final exams 
 
-**Note:** The final exam times are as follows: 7:10 - 10:00 am for Section 01,
-10:10 - 1:00 pm for Section 02
+**Note:** Midterm and final exams will be held over the course of an entire week. 
+Final exams will take place during the week of March 15-19. 

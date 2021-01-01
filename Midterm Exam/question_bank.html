@@ -381,13 +381,55 @@ summary {
 <h1>Linear Models - Question Bank</h1>
 <p>You will be asked one question from this bank of questions during your oral exam.</p>
 <ol style="list-style-type: decimal">
-<li><p>Describe to someone who has never taken a Statistics course what a linear model is.</p></li>
-<li><p>Describe to someone who has never taken a Statistics course the difference between simple linear regression and multiple linear regression.</p></li>
-<li><p>What are the benefits and weaknesses of linear regression?</p></li>
-<li><p>Many disciplines employ regression, but do not check the model conditions. Why should we care about the model conditions? What are the implications of not checking these conditions?</p></li>
-<li><p>Some textbooks list “lack of influential points” as a model condition for regression. Why is this a potentially important condition to consider? What are the implications of removing all “influential” observations from a dataset?</p></li>
-<li><p>Most people are familiar with the saying that “correlation does not imply causation.” However, when some researchers find a strong correlation between their explanatory and response variables (R &gt; 0.8), they often interpret the relationship as “larger values in x <em>lead to</em> larger values in y.” What is an issue with this interpretation? In this scenario, what could researchers conclude?</p></li>
+<li>Describe to someone who has never taken a Statistics course what a linear model is.</li>
 </ol>
+<ul>
+<li>How is the relationship between the variables described?</li>
+<li>What are the conditions of a linear model?</li>
+<li>Are a difference in means and a linear regression both linear models?</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Describe to someone who has never taken a Statistics course the difference between simple linear regression and multiple linear regression.</li>
+</ol>
+<ul>
+<li>Are there differences in the conditions for these two models?</li>
+<li>How does the interpretation of the slope coefficient change in a multiple linear regression?</li>
+<li>What are the benefits of using a multiple linear regression instead of a simple linear regression?</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>What are the benefits and weaknesses of linear regression?</li>
+</ol>
+<ul>
+<li>What are the conditions of linear regression?</li>
+<li>Are the conditions for regression difficult to be “met”?</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Many disciplines employ regression, but do not check the model conditions. Why should we care about the model conditions? What are the implications of not checking these conditions?</li>
+</ol>
+<ul>
+<li>What are the model conditions for regression?</li>
+<li>What do each of these conditions mean in the context of the data being used?</li>
+<li>What can happen if the model conditions are violated?</li>
+<li>Are there conditions we should worry about more than others?</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>Some textbooks list “lack of influential points” as a model condition for regression. Why is this a potentially important condition to consider? What are the implications of removing all “influential” observations from a dataset?</li>
+</ol>
+<ul>
+<li>What is an “influential” point?</li>
+<li>How would an influential point impact a linear regression?</li>
+<li>How would you determine if a point was “influential”?</li>
+<li>How does removing every “influential” point from a dataset change what can be inferred from the regression?</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>Most people are familiar with the saying that “correlation does not imply causation.” However, when some researchers find a strong correlation between their explanatory and response variables (R &gt; 0.8), they often interpret the relationship as “larger values in x <em>lead to</em> larger values in y.” What is an issue with this interpretation? In this scenario, what could researchers conclude?</li>
+</ol>
+<ul>
+<li>How do you interpret the phrase “lead to”?</li>
+<li>What type of relationship is implied by this phrasing?</li>
+<li>What is required to make causal statements?</li>
+<li>What does random assignment look like in the context of a linear regression?</li>
+</ul>
 <p></br></p>
 </div>
 <div id="additional-topics---question-bank" class="section level1">
@@ -396,26 +438,69 @@ summary {
 <p></br></p>
 <p><strong>Statistical Models</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Describe to someone who has never taken a Statistics course what the principle of parsimony is.</p></li>
-<li><p>Describe to someone who has never taken a Statistics course what Simpson’s paradox is.</p></li>
-<li><p>How would you determine if your statistical model should be used for predicting what could be expected to happen for new data?</p></li>
+<li>Describe to someone who has never taken a Statistics course what the principle of parsimony is.</li>
 </ol>
+<ul>
+<li>What does it mean for a model to be “simpler” than another model?</li>
+<li>How does one choose the “simplest” model?</li>
+<li>How could you determine if it’s worth it to add another explanatory variable to the model?</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Describe to someone who has never taken a Statistics course what Simpson’s paradox is.</li>
+</ol>
+<ul>
+<li>How does the relationship between two variables change when another variable is included, if Simpson’s paradox is present?</li>
+<li>What does this mean?</li>
+<li>How can researchers avoid falling into the trap of Simpson’s paradox?</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>How would you determine if your statistical model should be used for predicting what could be expected to happen for new data?</li>
+</ol>
+<ul>
+<li>What would you like to see from your statistical model, if you were to use it for prediction?</li>
+<li>If someone was interested in using your model to make predictions for their data, would you offer them any advice?</li>
+</ul>
 <p></br></p>
 <p><strong>Reproducibility</strong></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Much of what we have done thus far in <code>R</code> could have been done in Excel. What are the benefits of programming in <code>R</code>? What are the costs?</li>
 </ol>
+<ul>
+<li>Do the costs of learning to code in <code>R</code> outweigh the benefits?</li>
+<li>What have you learned to do in <code>R</code> that you hadn’t done in Excel?</li>
+<li>If you were to use Excel to analyze your data, how would you get that analysis into a report?</li>
+<li>Are there any issues with copying-and-pasting graphs or analyses from Excel into Word?</li>
+</ul>
 <p></br></p>
 <p><strong>Data Visualization</strong></p>
 <ol start="5" style="list-style-type: decimal">
 <li>We have spent a great deal of time producing and critiquing data visualizations, and have yet to discuss statistical testing (e.g.  hypothesis tests). What information can a data visualization provide you that a data summary or a statistical test cannot?</li>
 </ol>
+<ul>
+<li>What type of information does a statistical test (like a hypothesis test) tell you?</li>
+<li>What type of information does a data visualization tell you?</li>
+<li>If you weren’t sure about the results of a statistical test, how would you determine if the results were sound?</li>
+</ul>
 <p></br></p>
 <p><strong>Study Design</strong></p>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Random samples and experiments are often thought of as the “gold standard” of study design. Why are these aspects of a study so highly valued? What difficulties may researchers encounter when attempting to utilize these designs in their study?</p></li>
-<li><p>What is the purpose of blocking in a study? If an experiment fails to block on a variable that influences the response, what are the implications for the inference of the study?</p></li>
+<li>Random samples and experiments are often thought of as the “gold standard” of study design. Why are these aspects of a study so highly valued? What difficulties may researchers encounter when attempting to utilize these designs in their study?</li>
 </ol>
+<ul>
+<li>What does random sampling allow for researchers to say?</li>
+<li>What does random assignment allow for researchers to say?</li>
+<li>How would it be difficult for a researcher to use random sampling?</li>
+<li>How would it be difficult for a researcher to use random assignment?</li>
+<li>Can you always use random assignment? Why or why not?</li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li>What is the purpose of blocking in a study? If an experiment fails to block on a variable that influences the response, what are the implications for the inference of the study?</li>
+</ol>
+<ul>
+<li>How are treatments assigned in an “experiment”?</li>
+<li>What type of inference can be made about the relationship between the treatment and the response in an “experiment”?</li>
+<li>How does failing to block on an influential variable impact this inference?</li>
+</ul>
 </div>
 
 

@@ -5,8 +5,8 @@ account: allisontheobold
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2806009
-bundleId: 3627977
+bundleId: 4043711
 url: https://allisontheobold.shinyapps.io/R_RStudio_Setup/
-when: 1600100310.96919
+when: 1609368809.79375
 asMultiple: FALSE
 asStatic: FALSE

@@ -15,11 +15,19 @@ slides > slide:not(.nobackground):after {
 
 Explain to someone who has never taken a statistics course what a p-value is. 
 
+_Follow-up questions:_ 
+
+- A p-value is often reported as a percentage. What does that percentage p-value mean?
+- How is a p-value calculated? 
+- What does a small / large p-value suggest? 
 
 ## Question 2 
 
 Explain to someone who has never taken a statistics course what a confidence interval is. 
 
+_Follow-up questions:_ 
+
+- 
 
 ## Question 3 
 

@@ -6,6 +6,17 @@ output:
   html_document: default
 ---
 
+These are the exam questions given to students for their oral midterm exams. 
+Students answered one randomly selected question from each bank (Statistical 
+Inference & Linear Models), and were informed of their assigned questions when
+they entered the "exam room." 
+
+The numbered questions are what were given to students the Friday before exam 
+week. The _follow-up questions_ are a sample of the questions I asked students 
+following their explanation. These questions are not exhaustive, but provide an 
+outline of the types of questions I asked students. 
+
+
 # Statistical Inference - Question Bank 
 
 1. Explain to someone who has never taken a statistics course what a p-value is. 
