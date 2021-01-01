@@ -66,8 +66,7 @@ resources. All of the materials are free!
 knitr::include_graphics('course images/open_intro.png')
 ```
 
-Çetinkaya-Rundel, Diez, and Hardin, __Introduction to Statistics with
-Randomization and Simulation__. 
+Çetinkaya-Rundel, Diez, and Hardin, __Introduction to Modern Statistics__. 
 <https://openintro-ims.netlify.app/>
 
 ### Additional Materials 
