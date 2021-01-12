@@ -1290,7 +1290,7 @@ color: #d14;
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      </style>
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -1336,6 +1336,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <style type="text/css">p.caption {
 color: #777;
@@ -1551,6 +1552,16 @@ div.tocify {
 <h2>Course Meetings</h2>
 <p>This is an asynchronous course which has no “formal” meeting times. I will be offering two weekly meetings, one <em><code>R</code> Help Session</em> and one <em>Weekly Review Session</em>.</p>
 <p>Each of these meetings will be held on Wednesdays on Zoom and recorded for those who cannot attend. The meeting times will be determined from the course survey administered during the first week.</p>
+<p><em>Weekly Review Sessions</em></p>
+<ul>
+<li>Meeting for Section 01: Wednesday from</li>
+<li>Meeting for Section 02: Wednesday from 3-4pm</li>
+</ul>
+<p><em>Weekly <code>R</code> Help Sessions</em></p>
+<ul>
+<li>Tuesday from 9-10am</li>
+<li>Tuesday from 6-7pm</li>
+</ul>
 </div>
 <div id="office-hours" class="section level2">
 <h2>Office Hours</h2>
@@ -1569,8 +1580,8 @@ div.tocify {
 <td>1:30 pm – 2:30 pm</td>
 </tr>
 <tr class="even">
-<td>Tuesdays</td>
-<td>1:30 pm – 2:30 pm</td>
+<td>Wednesdays</td>
+<td>7 – 8 pm</td>
 </tr>
 <tr class="odd">
 <td>Thursdays</td>
@@ -1741,7 +1752,7 @@ div.tocify {
 <p>Each homework assignment will receive a score that reflects the average points-per-question. For example, suppose your homework assignment has four questions and you receive the following scores on each problem: 3, 4, 3, and 4. Then, your overall score is (3+4+3+4)/4 = 3.5. Suppose you received the following scores (3, 4, 3, and R). Then, your initial overall score is (3+4+3+0)/4 = 2.5 (Redo 1).</p>
 <p><strong>Do not</strong> interpret 3/4 as equivalent to a grade of 75%. This rubric is intended to be about the quality of your work, not the percentage of points earned. It is likely that students consistently scoring “Practitioner” on this rubric will earn at least a B- in the course.</p>
 <p>Letter grades will be assigned according to the following minimums: 3.75 (A), 3.0 (B-), 2.85 (C), below 2.85 (C-, D, or F).</p>
-<p><strong>Note</strong>: If you have more than three “0” grades due to turning assignments in late, un-revised “Rs,” class absences resulting in “0” participation grade, or missed assignments, the highest grade you will earn for the class is a C-.</p>
+<p><strong>Note</strong>: If you have more than three “0” grades due to turning assignments in late, un-revised “Rs,” failure to participate in group discussions, or missed assignments, the highest grade you will earn for the class is a C-.</p>
 </div>
 </div>
 <div id="projects" class="section level3">
@@ -1876,7 +1887,7 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

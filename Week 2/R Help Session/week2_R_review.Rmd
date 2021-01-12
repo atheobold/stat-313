@@ -1,0 +1,165 @@
+---
+title: "Introduction to Using R"
+date: "January 12, 2021"
+output: ioslides_presentation
+fig_height: 4
+fig_width: 4
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE)
+
+library(palmerpenguins)
+library(tidyverse)
+library(flair)
+```
+
+## Data for Today
+
+Data were collected on 344 penguins living on three islands
+(Torgersen, Biscoe, and Dream) in the Palmer Archipelago, Antarctica. In 
+addition to which island each penguin lives on, the data contains information on
+the species of the penguin (Adelie, Chinstrap, or Gentoo), its bill length, bill
+depth, and flipper length (measured in millimeters), its body mass (measured in
+grams), and the sex of the penguin (female or male).
+
+__What would the dataframe look like?__ 
+
+<center>
+![](images/penguin.png){
+width=75% }
+</center>
+
+## Data Preview 
+
+```{r}
+glimpse(penguins)
+```
+
+
+## Data Wrangling
+
+- Data Wrangling Verbs Used this Week 
+  * `filter()` -- filter out/in observations/rows
+  * `group_by()` -- group data by a categorical variable 
+  * `count()` -- counts the number of observations (rows) in different levels of
+  a categorical variable 
+
+## What is the Pipe Operator? 
+
+- Clearly express a sequence of multiple operations
+- __Improve code read-ability__
+
+```{r wrangle, include = FALSE}
+penguins %>%
+  filter(sex == "male", year == 2007) %>%
+  group_by(species) %>%
+  count() 
+```
+
+```{r, echo = FALSE}
+decorate("wrangle") %>%
+  flair("%>%")
+```
+
+## Bivariate (Two Variables) Visualizations -- For Numerical Data
+
+
+```{r, fig.width = 4, fig.height = 3, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm)) + 
+  geom_point()
+```
+
+## Building a Blank `ggplot`
+
+- `ggplot()` -- a function to create the shell of a visualization
+- `aes()` -- maps variables to different aspects of the plot 
+
+```{r, fig.width = 3, fig.height = 3, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm)) 
+```
+
+## Adding a Geometric Object to the Plot
+
+- `geom_XXX()`-- tells ggplot how you want the data represented
+- `geom_XXX()` is separated from `ggplot()` with a plus sign (`+`)
+
+```{r, fig.width = 3, fig.height = 3, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm)) + 
+  geom_point()
+```
+
+
+## Multivariate Plots 
+
+There are two main methods for adding a third (or fourth) variable into a 
+data visualization.  
+
+This week we introduced the first method: __color__ 
+
+</br>
+
+- Mapping a variable to the `color` aesthetic in ggplot 
+  * creates colors for every level of a categorical variable
+  * creates a gradient for different values of a quantitative variable
+
+## Colors in Scatterplots
+
+```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = species)) + 
+  geom_point()
+```
+
+## Your Turn!
+
+Suppose researchers were interested in investigating the relationship between 
+a penguin's flipper length and their year of capture, specifically for
+penguins from the Biscoe island. 
+
+They are also interested in how this relationship differs by penguin sex.
+
+</br>
+
+- __What data wrangling tasks are necessary to prepare the data for plotting?__
+
+- __What visualization you believe would help address this question?__ 
+
+## Solution? 
+
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  filter(island == "Biscoe") %>% 
+  ggplot(aes(x = year, y = flipper_length_mm)) + 
+  geom_point()
+```
+
+## A Better Visualization? 
+
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  filter(island == "Biscoe") %>% 
+  ggplot(aes(x = year, y = flipper_length_mm)) + 
+  geom_boxplot()
+```
+
+## A Much Better Visualization 
+
+```{r, fig.width = 4, fig.height = 3, fig.align = 'center'}
+penguins %>% 
+  filter(island == "Biscoe") %>% 
+  mutate(year_f = as.factor(year)) %>% 
+  ggplot(aes(x = year_f, y = flipper_length_mm)) + 
+  geom_boxplot()
+```
+

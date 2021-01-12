@@ -40,6 +40,16 @@ Each of these meetings will be held on Wednesdays on Zoom and recorded for those
 who cannot attend. The meeting times will be determined from the course survey 
 administered during the first week. 
 
+_Weekly Review Sessions_ 
+
+- Meeting for Section 01: Wednesday from 
+- Meeting for Section 02: Wednesday from 3-4pm
+
+_Weekly `R` Help Sessions_ 
+
+- Tuesday from 9-10am 
+- Tuesday from 6-7pm 
+
 ## Office Hours
 
 __All office hours will take place on Zoom.__
@@ -49,7 +59,7 @@ Regular weekly office hours will be held:
 Day        | Time
 -----------|------------------
 Mondays    | 1:30 pm – 2:30 pm
-Tuesdays   | 1:30 pm – 2:30 pm
+Wednesdays | 7 – 8 pm
 Thursdays  | 1:30 pm – 2:30 pm
 
 I am available for individual appointments on Mondays and Thursdays outside of
@@ -364,7 +374,7 @@ Letter grades will be assigned according to the following minimums: 3.75 (A),
 3.0 (B-), 2.85 (C), below 2.85 (C-, D, or F).
 
 __Note__: If you have more than three “0” grades due to turning assignments in
-late, un-revised “Rs,” class absences resulting in “0” participation grade, or
+late, un-revised “Rs,” failure to participate in group discussions, or
 missed assignments, the highest grade you will earn for the class is a C-. 
 
 
