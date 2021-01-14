@@ -1,7 +1,7 @@
 ---
 title: "Stat 313 - First Synchronous Meeting!"
 author: "Allison Theobold"
-date: "September 23, 2020"
+date: "January 13, 2021"
 output: ioslides_presentation
 ---
 
@@ -17,12 +17,13 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE)
 library(tidyverse)
 library(openintro)
-library(nycflights13)
-library(unvotes)
 library(kableExtra)
 library(lubridate)
 library(vembedr)
 library(htmltools)
+
+fish <- read_csv("data/BlackfootFish.csv")
+nba <- read_csv("data/NBA_player_of_the_week.csv")
 ```
 
 ## Welcome to Our Course
@@ -30,8 +31,7 @@ library(htmltools)
 __Group Norms:__
 
 - Zero tolerance for: racism, sexism, homophobia, transphobia, ageism, ableism 
-
-- Be the expert of your own experience -- Use "I" statements
+- Do not make generalizations -- Use "I" statements
 
 - Respect one another
 
@@ -39,7 +39,7 @@ __Group Norms:__
 
 - Non-judgmental 
 
-- Take space, make space -- Share the air
+- Take space, make space -- Share the air (page) 
 <!-- Challenge yourself to take space if you tend to be quieter, make space if you -->
 <!-- find yourself talking a lot or otherwise taking up space. -->
 <!-- Be aware of your airtime to ensure all voices are heard. -->
@@ -71,12 +71,17 @@ __Group Norms:__
 
 ## Data
 
+<center>
+Gender stereotypes in 5-7 year old children
+</center>
+
+</br>
+        
 ```{r, echo = FALSE}
 children_gender_stereo[[2]] %>% 
   rename(sex = gender) %>% 
   sample_n(6) %>%
-  kable(caption = "Gender stereotypes in 5-7 year old children", 
-        format = "html") %>% 
+  kable(format = "html") %>% 
   kable_styling(bootstrap_options = c("striped", "condensed"), 
                 latex_options = "striped")
   
@@ -84,22 +89,33 @@ children_gender_stereo[[2]] %>%
 
 ## In Every Context 
 
+<center> 
+NBA player of the week from 1985 to 2016
+</center>
+
+</br>
+
 ```{r, echo = FALSE}
-nba_heights %>% 
+nba %>% 
   sample_n(6) %>%
-  kable(caption = "Heights of NBA players from the 2008-2009 season", 
-        format = "html") %>% 
+  select(Age:Position) %>% 
+  kable(format = "html") %>% 
     kable_styling(bootstrap_options = c("striped", "condensed"), 
                 latex_options = "striped")
 ```
 
 ## You Could Imagine
 
+<center>
+Fish Sampled on Blackfoot River
+</center>
+
+</br>
+
 ```{r, echo = FALSE}
-un_votes %>% 
+fish %>% 
   sample_n(6) %>%
-  kable(caption = "Voting history of the United Nations General Assembly", 
-        format = "html") %>% 
+  kable(format = "html") %>% 
     kable_styling(bootstrap_options = c("striped", "condensed"), 
                 latex_options = "striped")
 ```
@@ -108,46 +124,26 @@ un_votes %>%
 
 ![](variables.png)
 
-## Data Types in `R`
-
-```{r}
-loan50 <- loan50 %>% 
-  select(state, term, homeownership, annual_income, verified_income,
-         has_second_income) %>% 
-  rename(income = annual_income, 
-         ownership = homeownership)
-```
-
-```{r echo = TRUE}
-loan50
-```
-
 ## 90 Second Writing Exercise
 
-```{r, echo = FALSE, fig.width = 8, fig.height = 5}
-un_votes %>%
-  filter(country %in% c("United States of America", "Turkey")) %>%
-  inner_join(un_roll_calls, by = "rcid") %>%
-  inner_join(un_roll_call_issues, by = "rcid") %>%
-  mutate(issue = ifelse(issue == "Nuclear weapons and nuclear material",
-                        "Nuclear weapons and materials", issue)) %>%
-  group_by(country, year = year(date), issue) %>%
-  summarize(
-    votes = n(),
-    percent_yes = mean(vote == "yes")
-    ) %>%
-  filter(votes > 5) %>%  # only use records where there are more than 5 votes
-  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
-    geom_point() +
-    geom_smooth(method = "loess", se = FALSE) +
-    facet_wrap(~ issue) +
-    labs(
-      title = "Percentage of 'Yes' votes in the UN General Assembly, from 1946 to 2015",
-      y = "% Yes",
-      x = "Year",
-      color = "Country"
-    )
+Data were collected on thousands of loans made through the Lending Club platform, a platform that allows individuals to lend to other individuals. 
+
+A total of 55 variables were collected on every loan that was made, including information about: 
+
+- the borrower's employment, credit, current financial status, tax filings
+- the loan's details, date of issue, balance, and current status
+
+</br> 
+<center>
+__What do you expect this dataframe would look like?__ 
+</center>
+
+## Data Types in `R`
+
+```{r echo = TRUE}
+glimpse(loans_full_schema)
 ```
+
 
 ## Sampling Strategies 
 
@@ -253,14 +249,14 @@ association $\neq$ causation
 __What do you need to say that the explanatory variable **causes** a change in
 the response variable?__ 
 
-## Group Exercise 
+## Group Exercise
 
 The following scatterplot was created as part of a study evaluating the
 relationship between estimated life expectancy at birth (as of 2014) and
 percentage of internet users (as of 2009) in 208 countries for which such data
 were available.
 
-```{r, fig.width = 5, fig.height= 4, fig.align = "center"}
+```{r, fig.width = 5, fig.height= 3, fig.align = "center"}
 library(scales)
 
 cia_factbook %>% 
