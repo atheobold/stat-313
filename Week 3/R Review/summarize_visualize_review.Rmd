@@ -1,0 +1,176 @@
+---
+title: "Data Visualization & Data Summary R Skills Review"
+date: "January 19, 2021"
+output: ioslides_presentation
+fig_height: 4
+fig_width: 4
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE)
+
+library(palmerpenguins)
+library(tidyverse)
+library(flair)
+library(gridExtra)
+library(ggridges)
+```
+
+## Data
+
+Data were collected on 344 penguins living on three islands
+(Torgersen, Biscoe, and Dream) in the Palmer Archipelago, Antarctica. In 
+addition to which island each penguin lives on, the data contains information on
+the species of the penguin (Adelie, Chinstrap, or Gentoo), its bill length, bill
+depth, and flipper length (measured in millimeters), its body mass (measured in
+grams), and the sex of the penguin (female or male).
+
+## Data Wrangling
+
+- 6 Verbs of Data Wrangling 
+  * `filter()` -- filter out/in observations/rows
+  * `select()` -- select variables/columns
+  * `mutate()` -- modifies a dataset
+  * `group_by()` -- group data by a categorical variable 
+  * `summarize()` -- create data summaries of variables
+  * `arrange()` -- arrange data in descending/ascending order
+
+## `filter()`
+
+## `select()` 
+
+## `mutate()`
+
+Adds new columns to a dataset **or** changes existing columns in a dataset. 
+
+## `group_by()` 
+
+## `summarize()` 
+
+## `arrange()`
+
+## Connecting Steps with the Pipe Operator 
+
+```{r wrangle, include = FALSE}
+penguins %>%
+  filter(sex == "male", year == 2007) %>%
+  group_by(species) %>%
+  summarize(mean_bill_length = mean(bill_length_mm),
+            sd_bill_length = sd(bill_length_mm),
+            obs = n()) %>%
+  arrange(desc(obs))
+```
+
+```{r, echo = FALSE}
+decorate("wrangle") %>%
+  flair("%>%")
+```
+
+```{r, echo = FALSE}
+penguins %>%
+  filter(sex == "male", year == 2007) %>%
+  group_by(species) %>%
+  summarize(mean_bill_length = mean(bill_length_mm),
+            sd_bill_length = sd(bill_length_mm),
+            obs = n()) %>%
+  arrange(desc(obs))
+```
+
+
+## Histogram
+
+```{r, message = FALSE, fig.height = 3, fig.width = 3}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram()
+```
+
+## Dotplot
+
+```{r, fig.height = 3, fig.width = 3}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_dotplot()
+```
+
+## Boxplot
+
+```{r, fig.width = 3, fig.height = 5, echo = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_boxplot()
+
+```
+
+## Density Plot 
+
+```{r, fig.width = 4, fig.height = 4}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_density()
+```
+
+## Side-by-Side Boxplots
+
+```{r, fig.width = 4, fig.height = 4, fig.align = "center"}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = species)) + 
+  geom_boxplot()
+```
+
+## Side-by-Side Density Plots -- Ridge Plots
+
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = species)) + 
+  geom_density_ridges()
+```
+
+## Scatterplots
+
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm)) + 
+  geom_point()
+```
+
+## Colors in Scatterplots
+
+```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = species)) + 
+  geom_point()
+```
+
+## Colors in Ridge Plots
+
+```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = species, fill = species)) + 
+  geom_density_ridges()
+```
+
+## Facets in Scatterplots 
+
+```{r, fig.width = 8, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = sex)) + 
+  geom_point() + 
+  facet_wrap(vars(species))
+```
+
+## Facets in Violin Plots
+
+```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = species, fill = sex)) + 
+  geom_violin() + 
+  facet_wrap(vars(island))
+```

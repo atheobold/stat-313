@@ -1,6 +1,6 @@
 ---
 title: "Data Visualization & Data Summary Review"
-date: "September 30, 2020"
+date: "January 20, 2021"
 output: ioslides_presentation
 fig_height: 4
 fig_width: 4
@@ -21,13 +21,6 @@ library(tidyverse)
 library(flair)
 library(gridExtra)
 ```
-
-## Data Analysis Methods 
-
-<center>
-![](images/methods_edit.PNG){
-width=95% }
-</center>
 
 ## Dataframe Review 
 
