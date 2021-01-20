@@ -19,6 +19,7 @@ knitr::opts_chunk$set(warning = FALSE,
 library(palmerpenguins)
 library(tidyverse)
 library(flair)
+library(ggridges)
 library(gridExtra)
 ```
 
@@ -29,9 +30,7 @@ Data were collected on 344 penguins living on three islands
 addition to which island each penguin lives on, the data contains information on
 the species of the penguin (Adelie, Chinstrap, or Gentoo), its bill length, bill
 depth, and flipper length (measured in millimeters), its body mass (measured in
-grams), and the sex of the penguin (female or male).
-
-__What would the dataframe look like?__ 
+grams), its sex (female or male), and its year of capture (2007, 2008, 2009).
 
 <center>
 ![](images/penguin.png){
@@ -41,9 +40,10 @@ width=75% }
 
 ## Data Wrangling
 
-- 5 Verbs of Data Wrangling 
+- 6 Verbs of Data Wrangling 
   * `filter()` -- filter out/in observations/rows
   * `select()` -- select variables/columns
+  * `mutate()` -- modifies the variables in a dataset
   * `group_by()` -- group data by a categorical variable 
   * `summarize()` -- create data summaries of variables
   * `arrange()` -- arrange data in descending/ascending order
@@ -110,8 +110,6 @@ penguins %>%
 
 ## Univariate (One Variable) Visualizations -- For Numerical Data
 
-</br>
-
 - Histogram 
 
 </br>
@@ -124,20 +122,24 @@ penguins %>%
 
 </br>
 
+- Density Plot
+
+
 ## Histogram
 
 <div class="columns-2">
 
-```{r, message = FALSE, fig.height = 3, fig.width = 3}
+```{r, message = FALSE, fig.height = 3, fig.width = 4}
 penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
   geom_histogram()
 ```
 
 </br>
+</br>
 
-- Higher bars represent where the data are relatively more common 
-- Convenient for understanding the shape of the data distribution
+- **Do not** plot raw data, plot summaries (counts) of the data! 
+- Higher bars represent where data are relatively more common 
 - Inspect shape of a distribution (skewed or symmetric) 
 - Identify modes
 
@@ -147,7 +149,7 @@ penguins %>%
 
 <div class="columns-2">
 
-```{r, fig.height = 3, fig.width = 3}
+```{r, fig.height = 3, fig.width = 4}
 penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
   geom_dotplot()
@@ -155,13 +157,13 @@ penguins %>%
 
 </br>
 </br>
-</br>
 
 - One-variable scatterplot
+- y-axis not useful (can remove or change)
 
 </br>
 
-- __What can you see in the dot plot that you cannot see in the histogram?__
+__What can you see in the dot plot that you cannot see in the histogram?__
 
 ## Boxplot
 
@@ -170,7 +172,10 @@ penguins %>%
 ```{r, fig.width = 3, fig.height = 5, echo = FALSE}
 p1 <- penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
-  geom_dotplot(color = "blue")
+  geom_dotplot(color = "blue", dotsize = 0.6) + 
+  theme(axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        axis.text.y = element_blank())
 
 p2 <- penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
@@ -181,13 +186,16 @@ grid.arrange(p1, p2, nrow = 2, ncol = 1)
 
 - What calculations are necessary to create a boxplot? 
 
-- What aspects of a variable's distribution are hidden in a boxplot? 
+- What are strengths of a boxplot? 
+
+- What are weaknesses of a boxplot?
+
 
 ## Density Plot 
 
 <div class="columns-2">
 
-```{r, fig.width = 4, fig.height = 4}
+```{r, fig.width = 3, fig.height = 3}
 penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
   geom_density()
@@ -195,17 +203,26 @@ penguins %>%
 
 </br>
 </br>
-</br>
+</br> 
 
 - A smooth approximation to a variable's distribution 
 - Plots density (as a proportion) on the y-axis
-- May be easier to see changes in shape or multiple modes 
+
+</br> 
+
+- What are the strengths of a density plot?  
+- What are the weaknesses of a density plot? 
 
 
 ## Bivariate (Two Variables) Visualizations -- For Numerical Data
 
 </br>
-- Side-by-Side Density Plots (Violin Plots)
+
+- Side-by-Side Boxplots 
+
+</br>
+
+- Side-by-Side Density Plots (Ridge Plots)
 
 </br>
 
@@ -217,23 +234,67 @@ penguins %>%
 
 ## Side-by-Side Boxplots
 
-```{r, fig.width = 4, fig.height = 4, fig.align = "center"}
+```{r, eval = FALSE}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = species)) + 
+  geom_boxplot()
+
+```
+
+<div class="columns-2">
+
+```{r, fig.width = 4, fig.height = 4, fig.align = "center", echo = FALSE}
 penguins %>% 
   ggplot(aes(y = bill_length_mm, x = species)) + 
   geom_boxplot()
 ```
 
-## Side-by-Side Violin Plots
+</br>
+</br>
 
-```{r, fig.width = 4, fig.height = 4, fig.align = 'center'}
+Can stack vertically (with categorical variable on `y`-axis) **or** horizontally (with categorical variable on `x`-axis)
+
+## Ridge Plots
+
+```{r, eval = FALSE}
 penguins %>% 
-  ggplot(aes(y = bill_length_mm, x = species)) + 
-  geom_violin()
+  ggplot(aes(x = bill_length_mm, y = species)) + 
+  geom_density_ridges()
 ```
 
-<!-- - Similar to density plots, but the density plot has been reflected across the  -->
-<!-- y-axis -->
-<!-- - Easier to see the shape of the distribution -->
+
+<div class="columns-2">
+
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center', echo = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = species)) + 
+  geom_density_ridges()
+```
+
+</br> 
+</br> 
+
+- Stacks density plots vertically
+- Categorical variable on `y`-axis
+- Can modify transparency with `alpha`
+
+## Faceted Histograms 
+
+```{r, eval = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram(binwidth = 3) + 
+  facet_wrap(vars(species))
+```
+
+```{r, fig.width = 6, fig.height = 4, fig.align = "center", echo = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram(binwidth = 3) + 
+  facet_wrap(vars(species))
+```
+
 
 ## Scatterplots
 
@@ -255,7 +316,7 @@ data visualization:
 </br>
 
 - Facets: 
-  * creates plot windows for every level of a categorical variable
+  * creates subplots for every level of a variable
   * labels each sub-plot with the value of the variable
 
 ## Colors in Scatterplots
@@ -266,12 +327,12 @@ penguins %>%
   geom_point()
 ```
 
-## Colors in Violin Plots
+## Colors in Ridge Plots
 
-```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+```{r, fig.width = 8, fig.height = 4, fig.align = 'center'}
 penguins %>% 
-  ggplot(aes(y = bill_length_mm, x = species, fill = island)) + 
-  geom_violin()
+  ggplot(aes(x = bill_length_mm, y = species, fill = sex)) + 
+  geom_density_ridges(alpha = 0.3)
 ```
 
 ## Facets in Scatterplots 
@@ -280,16 +341,16 @@ penguins %>%
 penguins %>% 
   ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = sex)) + 
   geom_point() + 
-  facet_wrap(~species)
+  facet_wrap(vars(species))
 ```
 
-## Facets in Violin Plots
+## Facets in Ridge Plots
 
-```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+```{r, fig.width = 8, fig.height = 4, fig.align = 'center'}
 penguins %>% 
   ggplot(aes(x = bill_length_mm, y = species, fill = sex)) + 
-  geom_violin() + 
-  facet_wrap(~island)
+  geom_density_ridges(alpha = 0.3) + 
+  facet_wrap(vars(island))
 ```
 
 ## Your Turn!
