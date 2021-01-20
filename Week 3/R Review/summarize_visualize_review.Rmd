@@ -14,7 +14,9 @@ slides > slide:not(.nobackground):after {
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, 
-                       message = FALSE)
+                      message = FALSE, 
+                      eval = FALSE, 
+                      fig.align = "center")
 
 library(palmerpenguins)
 library(tidyverse)
@@ -44,36 +46,55 @@ grams), and the sex of the penguin (female or male).
 
 ## `filter()`
 
+Removes observations / rows from the dataset that **do not** satify the criteria 
+
+```{r}
+penguins %>% 
+  filter(species == "Adelie")
+```
+
 ## `select()` 
+
+Selects variables / columns from the dataset
+
+```{r}
+penguins %>% 
+  select(species, island, sex, year)
+```
+
 
 ## `mutate()`
 
-Adds new columns to a dataset **or** changes existing columns in a dataset. 
+Modifies the dataset in two ways: 
 
-## `group_by()` 
+1. Adds new columns
+2. Changes existing columns
 
-## `summarize()` 
+```{r}
+penguins %>% 
+  mutate(body_mass_kg = body_mass_g / 1000, 
+         sex = if_else(is.na(sex) == TRUE, "unsexed", sex)
+         )
+```
+
+
+## `group_by()` & `summarize()`
+
+Creates groups from a categorical variable, then summarizes each group
+
+```{r}
+penguins %>% 
+  group_by(sex) %>% 
+  summarize(mean_mass = mean(body_mass_g), 
+            mean_flipper = mean(flipper_length_mm)
+            )
+```
 
 ## `arrange()`
 
-## Connecting Steps with the Pipe Operator 
+Arranges a dataset in ascending or descending order based variable(s) input
 
-```{r wrangle, include = FALSE}
-penguins %>%
-  filter(sex == "male", year == 2007) %>%
-  group_by(species) %>%
-  summarize(mean_bill_length = mean(bill_length_mm),
-            sd_bill_length = sd(bill_length_mm),
-            obs = n()) %>%
-  arrange(desc(obs))
-```
-
-```{r, echo = FALSE}
-decorate("wrangle") %>%
-  flair("%>%")
-```
-
-```{r, echo = FALSE}
+```{r}
 penguins %>%
   filter(sex == "male", year == 2007) %>%
   group_by(species) %>%
@@ -86,7 +107,7 @@ penguins %>%
 
 ## Histogram
 
-```{r, message = FALSE, fig.height = 3, fig.width = 3}
+```{r, message = FALSE, fig.height = 3, fig.width = 3, eval = TRUE}
 penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
   geom_histogram()
@@ -94,7 +115,7 @@ penguins %>%
 
 ## Dotplot
 
-```{r, fig.height = 3, fig.width = 3}
+```{r, fig.height = 3, fig.width = 3, eval = TRUE}
 penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
   geom_dotplot()
@@ -102,7 +123,7 @@ penguins %>%
 
 ## Boxplot
 
-```{r, fig.width = 3, fig.height = 5, echo = FALSE}
+```{r, fig.width = 3, fig.height = 3, eval = TRUE}
 penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
   geom_boxplot()
@@ -111,7 +132,7 @@ penguins %>%
 
 ## Density Plot 
 
-```{r, fig.width = 4, fig.height = 4}
+```{r, fig.width = 4, fig.height = 4, eval = TRUE}
 penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
   geom_density()
@@ -119,7 +140,7 @@ penguins %>%
 
 ## Side-by-Side Boxplots
 
-```{r, fig.width = 4, fig.height = 4, fig.align = "center"}
+```{r, fig.width = 4, fig.height = 4, fig.align = "center", eval = TRUE}
 penguins %>% 
   ggplot(aes(y = bill_length_mm, x = species)) + 
   geom_boxplot()
@@ -127,7 +148,7 @@ penguins %>%
 
 ## Side-by-Side Density Plots -- Ridge Plots
 
-```{r, fig.width = 4, fig.height = 4, fig.align = 'center'}
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center', eval = TRUE}
 penguins %>% 
   ggplot(aes(x = bill_length_mm, y = species)) + 
   geom_density_ridges()
@@ -135,7 +156,7 @@ penguins %>%
 
 ## Scatterplots
 
-```{r, fig.width = 4, fig.height = 4, fig.align = 'center'}
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center', eval = TRUE}
 penguins %>% 
   ggplot(aes(y = bill_length_mm, x = bill_depth_mm)) + 
   geom_point()
@@ -143,7 +164,7 @@ penguins %>%
 
 ## Colors in Scatterplots
 
-```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+```{r, fig.width = 6, fig.height = 4, fig.align = 'center', eval = TRUE}
 penguins %>% 
   ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = species)) + 
   geom_point()
@@ -151,26 +172,26 @@ penguins %>%
 
 ## Colors in Ridge Plots
 
-```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+```{r, fig.width = 6, fig.height = 4, fig.align = 'center', eval = TRUE}
 penguins %>% 
-  ggplot(aes(x = bill_length_mm, y = species, fill = species)) + 
-  geom_density_ridges()
+  ggplot(aes(x = bill_length_mm, y = species, fill = sex)) + 
+  geom_density_ridges(alpha = 0.3)
 ```
 
 ## Facets in Scatterplots 
 
-```{r, fig.width = 8, fig.height = 4, fig.align = 'center'}
+```{r, fig.width = 8, fig.height = 4, fig.align = 'center', eval = TRUE}
 penguins %>% 
   ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = sex)) + 
   geom_point() + 
   facet_wrap(vars(species))
 ```
 
-## Facets in Violin Plots
+## Facets in Ridge Plots
 
-```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+```{r, fig.width = 6, fig.height = 4, fig.align = 'center', eval = TRUE}
 penguins %>% 
-  ggplot(aes(x = bill_length_mm, y = species, fill = sex)) + 
-  geom_violin() + 
-  facet_wrap(vars(island))
+  ggplot(aes(x = bill_length_mm, y = species)) + 
+  geom_density_ridges(alpha = 0.3) + 
+  facet_wrap(vars(sex))
 ```
