@@ -85,7 +85,7 @@ grid.arrange(p1, p2, nrow = 1)
 
 ## Modeling Murder Rates with Poverty 
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 lm_pov <- lm(annual_murders_per_mil ~ perc_pov, data = murders)
 summary(lm_pov)
 ```
@@ -104,7 +104,7 @@ __How would you interpret the intercept and slope for this model?__
 
 ## Modeling Murder Rates with Unemployment
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 lm_unemp <- lm(annual_murders_per_mil ~ perc_unemp, data = murders)
 summary(lm_unemp)
 ```
@@ -168,10 +168,10 @@ grid.arrange(resids, fitted, nrow = 1)
 
 ```{r, echo = TRUE}
 murders %>% 
-  summarize(cor_pov = cor(perc_pov, annual_murders_per_mil), 
-            R_sq_pov = cor_pov^2, 
-            cor_unemp = cor(perc_unemp, annual_murders_per_mil),
-            R_sq_umep = cor_unemp^2)
+  summarize(cor_poverty = cor(perc_pov, annual_murders_per_mil), 
+            R_sq_poverty = cor_pov^2, 
+            cor_unemployment = cor(perc_unemp, annual_murders_per_mil),
+            R_sq_umeployment = cor_unemp^2)
 ```
 
 </br>
