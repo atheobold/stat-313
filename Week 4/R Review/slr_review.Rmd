@@ -1,0 +1,38 @@
+---
+title: "Simple Linear Regression -- R Skills Review"
+date: "January 26, 2021"
+output: ioslides_presentation
+fig_height: 4
+fig_width: 4
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE, 
+                      eval = FALSE, 
+                      fig.align = "center")
+
+library(palmerpenguins)
+library(tidyverse)
+library(flair)
+library(gridExtra)
+library(ggridges)
+```
+
+## Data
+
+The `ncbirths` dataset is a random sample of 1,000 cases taken from a larger 
+dataset collected in North Carolina in 2004. 
+
+Each case describes the birth of a single child born in North Carolina, along
+with various characteristics of the child (e.g. birth weight, length of
+gestation, etc.), the child’s mother (e.g. age, weight gained during pregnancy,
+smoking habits, etc.) and the child’s father (e.g. age). 
+
+
