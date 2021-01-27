@@ -1,7 +1,9 @@
 ---
 title: "Introduction to Linear Models"
-date: "October 7, 2020"
-output: ioslides_presentation
+date: "January 27, 2021"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
 fig_height: 4
 fig_width: 4
 ---
@@ -113,7 +115,7 @@ ggplot(data = bdims, aes(y = wgt, x = hgt)) +
 
 - Strength (how much scatter/noise? sometimes characterized as weak or strong relationship.)
 
-- Outliers
+- Unusual Observations
 
 <!-- Form is the overall shape made by the points. Since we are learning about linear regression, our primary concern is whether the form is linear or non-linear. -->
 
@@ -178,7 +180,7 @@ How would your characterize this relationship?
 
 ```{r}
 ncbirths %>% 
-  filter(is.na(mage) == FALSE, 
+  filter(is.na(weight) == FALSE, 
          is.na(weeks) == FALSE) %>% 
   summarize(correlation = cor(mage, weeks))
 ```
@@ -220,7 +222,7 @@ __For which of these relationships is correlation a reasonable summary measure?_
 <!-- The word “correlation” has both a precise mathematical definition and a more general definition for typical usage in English. While these uses of the word are obviously related and generally in sync, there are times when these two uses can be conflated and/or misconstrued. This occurs frequently in the media when journalists write about scientific results—particularly in health-related studies. -->
 
 
-## Simple Linear Regression
+## Fitting a Linear Model
 
 ```{r smooth, echo = FALSE, eval = FALSE}
 ncbirths %>% 
@@ -250,16 +252,10 @@ ggplot(aes(x = gained, y = weight)) +
 
 ## Interpretting a Linear Regression
 
-```{r, eval = FALSE}
-m1 <- lm(weight ~ gained, data = ncbirths)
-summary(m1)
+```{r}
+m1 <- lm(weight ~ weeks, data = ncbirths)
+coef(m1)
 ```
-
-```{r, echo = FALSE}
-m1 <- lm(weight ~ gained, data = ncbirths)
-summary(m1)$coefficients[1:2, 1:2]
-```
-
 
 </br> 
 
@@ -273,18 +269,18 @@ __What do these interpretations look like for this relationship?__
 
 ## Model Diagnostics 
 
-- Independence
-
 - Linear relationship
+
+- Independence of observations
 
 - Normally distributed residuals
 
-- Constant variance 
+- Equal (constant) variance 
 
 ## Independence
 
-In __every__ statistical model we will encounter we require for the observations
-in the data to be independent.  
+In all of the statistical models we encounter in this course we require for the
+observations in the data to be independent.  
 
   * Often the most crucial but also the most difficult to diagnose. 
 
@@ -297,12 +293,17 @@ observation based on knowing the $y$ value of another observation.
 - If there is an inherent grouping of observations, then independence may be 
 violated. 
   * Stock market prices over time  
+  * Geographical similarities
   * Biological conditions of family members
   * Repeated observations 
 
 ## Linear Relationship 
 
-- Almost nothing you explore will look perfectly linear. 
+- Almost nothing you explore will look perfectly linear 
+
+- Be careful with relationships that have curvature 
+
+- Variable transformations can often help 
   
 ```{r, echo = FALSE, fig.width = 8}
 ## curvature
@@ -344,19 +345,23 @@ in a bell-shaped fashion.
   * Least squares is an unbiased estimate of the true population model.
   * Larger sample sizes make the model more reliable. 
 
-## Constant Variance
+## Equal Variance
 
 <div class="columns-2">
 
-</br>
-</br>
+```{r, echo = FALSE, fig.height = 5}
+p1 <- ggplot(ncbirths, aes(x = weeks, y = weight)) +
+  geom_jitter() +
+  geom_smooth(method = "lm") +
+  labs(x = "Length of pregnancy (in weeks)", y = "Birth weight of baby (in lbs)")
 
-```{r, echo = FALSE}
-ggplot(data = m1, aes(x = .fitted, y = .resid)) +
+p2 <- ggplot(data = m1, aes(x = .fitted, y = .resid)) +
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
   xlab("Fitted values") +
   ylab("Residuals")
+
+grid.arrange(p1, p2, ncol = 1)
 ```
 
 - The variability of points around the least squares line remains roughly
@@ -398,3 +403,5 @@ tidy(m2)
 <center>
 __Interpret the intercept & slope estimates in the context of hospital visits
 and baby's birth weight.__
+
+## 
