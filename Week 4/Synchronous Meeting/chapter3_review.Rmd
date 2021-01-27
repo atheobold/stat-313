@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Linear Models"
+title: "Introduction to Linear Models -- Simple Linear Regression"
 date: "January 27, 2021"
 output:
   ioslides_presentation: default
@@ -61,34 +61,6 @@ one or more variables that are the inputs.
 
 - Both variables are numerical
 
-## Linear Regression
-
-<!-- Models are ubiquitous in statistics. In many cases, we assume that the value of -->
-<!-- our response variable is some function of our explanatory variable, plus some -->
-<!-- random noise.  -->
-
-<!-- What we are saying here is that there is some mathematical function $f$, which can translate values of one variable into values of another, except that there is some randomness in the process. What often distinguishes statisticians from other quantitative researchers is the way that we try to model that random noise.  -->
-
-- Assume the relationship between $x$ and $y$ takes the form of a linear function.
-
-$$
-  response = intercept + slope \cdot explanatory + noise
-$$
-</br>
-
-- Population Regression Model
-
-$$
-  y_i = \beta_0 + \beta_1 \cdot X + \epsilon_i \,, \qquad \epsilon \sim N(0, \sigma)
-$$
-
-</br>
-
-- Fitted Regression Model 
-
-$$
-  \hat{y} = b_0 + b_1 \cdot x_i
-$$
 
 ## Visualizing Linear Regression
 
@@ -113,9 +85,9 @@ ggplot(data = bdims, aes(y = wgt, x = hgt)) +
 
 - Direction (e.g. positive, negative)
 
-- Strength (how much scatter/noise? sometimes characterized as weak or strong relationship.)
+- Strength (how much scatter/noise?)
 
-- Unusual Observations
+- Unusual observations (do points not fit the overall pattern?)
 
 <!-- Form is the overall shape made by the points. Since we are learning about linear regression, our primary concern is whether the form is linear or non-linear. -->
 
@@ -181,8 +153,9 @@ How would your characterize this relationship?
 ```{r}
 ncbirths %>% 
   filter(is.na(weight) == FALSE, 
-         is.na(weeks) == FALSE) %>% 
-  summarize(correlation = cor(mage, weeks))
+         is.na(weeks) == FALSE, 
+         weeks > 26) %>% 
+  summarize(correlation = cor(weight, weeks))
 ```
 
 ## Anscombe Correlations
@@ -221,6 +194,34 @@ __For which of these relationships is correlation a reasonable summary measure?_
 
 <!-- The word “correlation” has both a precise mathematical definition and a more general definition for typical usage in English. While these uses of the word are obviously related and generally in sync, there are times when these two uses can be conflated and/or misconstrued. This occurs frequently in the media when journalists write about scientific results—particularly in health-related studies. -->
 
+## Linear Regression
+
+<!-- Models are ubiquitous in statistics. In many cases, we assume that the value of -->
+<!-- our response variable is some function of our explanatory variable, plus some -->
+<!-- random noise.  -->
+
+<!-- What we are saying here is that there is some mathematical function $f$, which can translate values of one variable into values of another, except that there is some randomness in the process. What often distinguishes statisticians from other quantitative researchers is the way that we try to model that random noise.  -->
+
+- Assume the relationship between $x$ and $y$ takes the form of a linear function.
+
+$$
+  response = intercept + slope \cdot explanatory + noise
+$$
+</br>
+
+- Population Regression Model
+
+$$
+  Y = \beta_0 + \beta_1 \cdot X + \epsilon_i \,, \qquad \epsilon \sim N(0, \sigma)
+$$
+
+</br>
+
+- Fitted Regression Model 
+
+$$
+  \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 \cdot x
+$$
 
 ## Fitting a Linear Model
 
@@ -277,26 +278,6 @@ __What do these interpretations look like for this relationship?__
 
 - Equal (constant) variance 
 
-## Independence
-
-In all of the statistical models we encounter in this course we require for the
-observations in the data to be independent.  
-
-  * Often the most crucial but also the most difficult to diagnose. 
-
-<!-- It is also extremely difficult to gather a dataset which is a true random sample -->
-<!-- from the population of interest.  -->
-
-- Independence means that I should not be able to guess the $y$ value for one
-observation based on knowing the $y$ value of another observation. 
-
-- If there is an inherent grouping of observations, then independence may be 
-violated. 
-  * Stock market prices over time  
-  * Geographical similarities
-  * Biological conditions of family members
-  * Repeated observations 
-
 ## Linear Relationship 
 
 - Almost nothing you explore will look perfectly linear 
@@ -322,6 +303,26 @@ p2 <- ggplot(ncbirths, aes(x = weeks, y = weight)) +
 grid.arrange(p1, p2, nrow = 1)
 ```
 
+## Independence
+
+In all of the statistical models we encounter in this course we require for the
+observations in the data to be independent.  
+
+  * Often the most crucial but also the most difficult to diagnose. 
+
+<!-- It is also extremely difficult to gather a dataset which is a true random sample -->
+<!-- from the population of interest.  -->
+
+- Independence means that I should not be able to guess the $y$ value for one
+observation based on knowing the $y$ value of another observation. 
+
+- If there is an inherent grouping of observations, then independence may be 
+violated. 
+  * Stock market prices over time  
+  * Geographical similarities
+  * Biological conditions of family members
+  * Repeated observations 
+
 ## Normally Distributed Residuals
 
 <div class="columns-2">
@@ -331,7 +332,9 @@ grid.arrange(p1, p2, nrow = 1)
 
 ```{r, message = FALSE, fig.height = 4, fig.width = 4, echo = FALSE}
 ggplot(data = m1, aes(x = .resid)) +
-  geom_histogram(bins = 35) +
+  geom_histogram(aes(y = ..density..)) +
+  geom_density(color = "dodgerblue", 
+               lwd = 1.5) + 
   xlab("Residuals")
 ```
 
@@ -350,7 +353,9 @@ in a bell-shaped fashion.
 <div class="columns-2">
 
 ```{r, echo = FALSE, fig.height = 5}
-p1 <- ggplot(ncbirths, aes(x = weeks, y = weight)) +
+p1 <- ncbirths %>% 
+  filter(weeks > 26) %>% 
+  ggplot(aes(x = weeks, y = weight)) +
   geom_jitter() +
   geom_smooth(method = "lm") +
   labs(x = "Length of pregnancy (in weeks)", y = "Birth weight of baby (in lbs)")
@@ -404,4 +409,41 @@ tidy(m2)
 __Interpret the intercept & slope estimates in the context of hospital visits
 and baby's birth weight.__
 
-## 
+## Assessing Model Fit 
+
+</br> 
+
+- Sum of Square Errors (SSE)
+  * sum of squared residuals 
+
+</br> 
+
+- Root Mean Square Error (RMSE)
+  * standard deviation of residuals 
+
+</br> 
+
+- $R^2$ 
+* proportion of variability in response accounted for by model
+
+## Model Comparison
+
+```{r, echo = TRUE}
+weight_weeks <- lm(weight ~ weeks, data = ncbirths)
+```
+
+- SSE = 1246.55 
+- RMSE = 1.119
+- $R^2$ = 0.449
+
+</br>
+
+```{r, echo = TRUE}
+weight_visits <- lm(weight ~ visits, data = ncbirths)
+```
+
+- SSE = 2152.74
+- RMSE = 1.475
+- $R^2$ = 0.01819
+
+

@@ -1,0 +1,436 @@
+---
+title: "Introduction to Visualizing and Summarizing Data"
+author: "Ellie Rabin!"
+date: 'Due: January 24, 2021 at 11:59pm'
+output:
+  html_document: default
+  pdf_document: default
+---
+
+<div style="color:blue">
+
+Great job! You have revisions on problems: 
+
+My comments for your responses to the exercises can be found in blue text, and my comments/suggestions for your R code can be found in the code chunks behind two hashtags (##)
+
+Your homework assignment receives a score that reflects the average points-per-question, where each question is worth 4 points. This is assigned based on the grading system outlined in the syllabus. 
+
+Problems marked with an “R” must be redone and returned within two days of receiving the assignment back. You will receive a score of 0 on each problem requiring a revision until a revision is submitted. Late revisions receive a zero, unless you contact me. Work successfully redone (on time) will receive a maximum grade of 3. It is possible to have a redo on a redo.
+
+</div>
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echol = TRUE, 
+                      results = "hold", 
+                      message = FALSE, 
+                      warning = FALSE)
+```
+
+## Getting started
+
+### Load packages
+
+In this lab, we will explore and visualize the data using the **tidyverse** suite of packages. The data can be found in the companion package for OpenIntro labs, **openintro**.
+
+Let's load the following packages:
+
+-   The **tidyverse** "umbrella" package which houses a suite of many different `R` packages: for data wrangling and data visualization
+-   The **openintro** `R` package: for data and custom functions with the OpenIntro resources
+
+```{r, include = FALSE}
+
+library(tidyverse)
+library(openintro)
+library(nycflights13)
+## Technically you didn't need to install this! 
+## The nycflights dataset is included in the openintro package. :)
+library(ggplot2)
+library(dplyr)
+## This is a comment -- R will not run this line as code, because it has ## before it
+```
+
+### The data
+
+The [Bureau of Transportation Statistics](http://www.rita.dot.gov/bts/about/) (BTS) is a statistical agency that is a part of the Research and Innovative Technology Administration (RITA).
+As its name implies, BTS collects and makes transportation data available, such as the flights data we will be working with in this lab.
+
+First, we'll view the `nycflights` data frame.
+Type the following in your console to load the data:
+
+```{r}
+data(nycflights)
+```
+
+The data set `nycflights` that shows up in your workspace is a *data matrix*, with each row representing an *observation* and each column representing a *variable*.
+R calls this data format a **data frame**, which is a term that will be used throughout the labs.
+For this data set, each *observation* is a single flight.
+
+To view the names of the variables, you can use the `names()` function: 
+
+```{r}
+names(nycflights)
+```
+
+This returns the names of the variables in this data frame.
+The **codebook** (description of the variables) can be accessed by pulling up the help file by typing a `?` before the name of the dataset:
+
+```{r, eval = FALSE}
+?nycflights
+```
+
+One of the variables refers to the carrier (i.e. airline) of the flight, which is coded according to the following system.
+
+-   `carrier`: Two letter carrier abbreviation.
+
+    -   `9E`: Endeavor Air Inc.
+    -   `AA`: American Airlines Inc.
+    -   `AS`: Alaska Airlines Inc.
+    -   `B6`: JetBlue Airways
+    -   `DL`: Delta Air Lines Inc.
+    -   `EV`: ExpressJet Airlines Inc.
+    -   `F9`: Frontier Airlines Inc.
+    -   `FL`: AirTran Airways Corporation
+    -   `HA`: Hawaiian Airlines Inc.
+    -   `MQ`: Envoy Air
+    -   `OO`: SkyWest Airlines Inc.
+    -   `UA`: United Air Lines Inc.
+    -   `US`: US Airways Inc.
+    -   `VX`: Virgin America
+    -   `WN`: Southwest Airlines Co.
+    -   `YV`: Mesa Airlines Inc.
+
+Remember that you can use `glimpse` to take a quick peek at your data to understand its contents better.
+
+```{r}
+library(ggplot2)
+## The ggplot2 package is included in the tidyverse package, so you don't need to load it in! 
+library(nat)
+## What is this package for?
+glimpse(flights)
+```
+
+1. (a) How large is the `nycflights` dataset? (i.e. How many rows and columns does it have?)
+<!-- Your response goes below this line! -->
+The 'nycflights' dataset has 336,776 rows and 19 columns. The columns represent the variables that are collected from each flight. This can be seen on the left side of the above chart.
+The rows in this dataset represent an individual flight, and they can be seen on the right side.
+
+<div style="color:blue">
+Give the output of the `glimpse()` function another look!  
+</div>
+
+1. (b) When were these data collected? 
+<!-- Your response goes below this line! -->
+This data collection began in the year 2000 and continues until the year 2200. This is a prospective study design.
+
+<div style="color:blue">
+These retrospective data from only one year. Take a look at the help file and see what information it tells you.  
+</div>
+
+
+
+1. (c) Are there categorical variables in the dataset? If so, what are their names and data types? 
+<!-- Your response goes below this line! --> 
+
+Yes, there are categorical variables. These include: 
+  1. carrier-- collecting the name of the airline
+    data type:<chr>
+  2. flight-- collecting the flight number, representing which airplane is traveling. 
+    data type:<int>
+  3. origin-- the abbreviation for the airport that the flight departs from
+  data type: <chr>
+  4. dest-- the abbreviation for the airport that the flight lands into
+  data type:<chr>
+  5. year-- the year in which the flight departed, the options given range from 2000-2200    
+  data type:<int>
+  6. month-- the month in which the flights departed, the options given range from January-December
+  data type: <int>
+  7. day-- this variable in the dataset is shown by which day of the month the flight departs on. This is shown numerically and ranges from 0-32
+  data type: <int>
+
+<div style="color:blue">
+Nice work! Keep in mind that if these variables were labeled a `fct` that would *also* be a categorical variable!  
+</div>
+
+<div style="color:blue">
+Overall: Redo 1(a) & 1(b)
+</div>
+
+### Departure Delays
+
+Let's start by examining the distribution of departure delays of all flights with a histogram.
+
+```{r}
+ggplot(data = nycflights, aes(x = dep_delay)) +
+  geom_histogram(bins = 40, binwidth = 75, color = "gray", fill = "purple")
+```
+
+This function says to plot the `dep_delay` variable from the `nycflights` data frame on the x-axis.
+It also defines a `geom` (short for geometric object), which describes the type of plot you will produce.
+
+Histograms are generally a very good way to see the shape of a single distribution of numerical data, but that shape can change depending on how the data is split between the different bins.
+You can easily define the binwidth you want to use, by specifying the `binwidth` argument to `geom_histogram()`, like so:
+
+```{r}
+ggplot(data = nycflights, aes(x = dep_delay)) +
+  geom_histogram(binwidth = 15, color = "gray", fill = "blue")
+
+ggplot(data = nycflights, aes(x = dep_delay)) +
+  geom_histogram(binwidth = 150, color = "gray", fill = "darkgreen")
+```
+
+2.  Look carefully at these three histograms. How do they compare? Are features revealed in one that are obscured in another?
+<!-- Your answer goes below this line -- do not remove this!  -->
+The three histograms differ most obviously in their bin width. The first graph, I input the binwidth as 75, and the other two are 15 and 150. Binwidth can widen or narrow the numerical measurements taken in the above data on both the x and y axis. Furthermore, the last graph shows that many travelers did not get any time delay and clearly no traveler was delayed for more than 400 minutes, and this data showed an increase in the amount of flights departing. Overall as the binwidth increases, measurements on the x-axis will group together showing one singular bar--grouping data together. As the binwidth decreases, the more details can be seen on the histogram such as more bars can be seen.
+Another point to recognize are the warning signs displayed in all of the above graphs. This is becuase on eof the rows has missing data that's seen as 'NA'. This missing data is extracted and not displayed in the final graph, which is helpful! R is telling us that this data will be omitted. 
+
+<div style="color:blue">
+Nice description of how the different binwidths impact the x- and y-axis! How do these changes impact what you can see from the plot? Are some characteristics of the distribution easier / harder to see in some histograms versus others?  
+</div>
+
+<div style="color:blue">
+Overall: Redo
+</div>
+
+3. A histogram is only one way to visualize the distribution of a numerical variable. 
+(a) What are other visualizations that we could have produced? 
+(b) What are the benefits and weaknesses of a histogram compared to these other options? 
+<!-- Your response goes below this line! -->
+(a) Other visualizations that we could have produced include: scatterplots, linegraphs, histograms, boxplots, and barplots
+(b) The benefits of histograms are:easy to visualize and interpret, easy identification of patterns, good for measuring lengths of time
+The weaknesses of histograms include over-estimation, should only be used to analyze two variables
+
+<div style="color:blue">
+How many variables are plotted in a histogram? How many are plotted in a scatterplot or line graph? What are the appropriate visualizations for **one** numerical variable? What are the strengths / weaknesses of these plotting options? 
+</div>
+
+<div style="color:blue">
+Overall: Redo
+</div>
+
+
+## LAX Destinations 
+
+If you want to visualize only on delays of flights headed to Los Angeles, you need to first `filter()` the data for flights with that destination (`dest == "LAX"`) and then make a histogram of the departure delays of only those flights.
+
+```{r}
+lax_flights <- nycflights %>%
+  filter(dest == "LAX")
+
+ggplot(data = lax_flights, aes(x = dep_delay)) +
+  geom_histogram(binwidth = 10, fill = "darkgreen")
+```
+
+Let's decipher these two commands (OK, so it might look like four lines, but the first two physical lines of code are actually part of the same command. It's common to add a break to a new line after `%>%` to help readability).
+
+-   Command 1: Take the `nycflights` data frame, `filter()` for flights headed to LAX, and save the result as a new data frame called `lax_flights`.
+
+    -   `==` means "if it's equal to".
+    -   `LAX` is in quotation marks since it is a character string.
+
+-   Command 2: Basically the same `ggplot()` call from earlier for making a histogram, except that it uses the smaller data frame for flights headed to LAX instead of all flights.
+
+**Logical operators:** Filtering for certain observations (e.g. flights from a particular airport) is often of interest in data frames where we might want to examine observations with certain characteristics separately from the rest of the data.
+To do so, you can use the `filter()` function and a series of **logical operators**.
+The most commonly used logical operators for data analysis are as follows:
+
+-   `==` means "equal to"
+-   `!=` means "not equal to"
+-   `>` or `<` means "greater than" or "less than"
+-   `>=` or `<=` means "greater than or equal to" or "less than or equal to"
+
+
+4. You learned in the tutorial that this process of creating a new dataset based on a filter is not necessarily the best plan. An alternative plan is to use the pipe operator (`%>%`) to create a data pipeline, carrying the filtered data into the plot. 
+Change the code below, so it uses the pipe operator instead of saving a new dataset. 
+
+```{r echo=TRUE}
+## For this exercise, you need to change the code below! 
+
+lax_flights <- nycflights %>%
+  filter(dest == "LAX")
+
+ggplot(data = nycflights, aes(x = dep_delay)) +
+  geom_histogram(binwidth = 100)
+
+```
+
+<div style="color:blue">
+Your code doesn't connect the data filtering process with the ggplot process with the pipe operator. 
+See my comments in your code above! 
+</div>
+
+<div style="color:blue">
+Overall: Redo
+</div>
+
+
+
+### Multiple Data Filters 
+
+You can also filter based on multiple criteria.
+Suppose you are interested in flights headed to San Francisco (SFO) in February:
+
+```{r}
+sfo_feb_flights <- nycflights %>%
+  filter(dest == "SFO", month == 2)
+```
+
+Note that you can separate the conditions using commas if you want flights that are both headed to SFO **and** in February.
+If you are interested in either flights headed to SFO **or** in February, you can use the `|` instead of the comma.
+
+
+5.  Find the number of flights in this dataset that were headed to SFO in February. 
+**Hint:** The `filter()` and `count()` functions will be helpful!  
+
+```{r}
+## Code for exercise 1 here! 
+count(sfo_feb_flights) 
+glimpse(sfo_feb_flights)
+
+```
+
+<div style="color:blue">
+Technically, these commands get you the answer, but I was hoping that you would connect the previous idea with the `count()` function in a data wrangling **process**. Make sure you know how to address this task combining all of these functions together. 
+</div>
+
+<div style="color:blue">
+Overall: 4
+</div>
+
+## Data Summaries 
+
+You can also obtain numerical summaries for the flights headed to LAX, using the `summarise()` function:
+
+```{r}
+lax_flights %>%
+  summarise(mean_depdelay = mean(dep_delay), 
+            median_depdelay = median(dep_delay), 
+            n         = n())
+
+
+```
+
+Note that in the `summarise()` function you created a list of three different numerical summaries that you were interested in.
+The names of these elements are user defined, like `mean_dd`, `median_dd`, `n`, and you can customize these names as you like (just don't use spaces in your names).
+Calculating these summary statistics also requires that you know the summary functions you would like to use. 
+
+**Summary statistics:** Some useful function calls for summary statistics for a single numerical variable are as follows:
+
+-   `mean()`: calculates the average
+-   `median()`: calculates the median
+-   `sd()`: calculates the standard deviation
+-   `var()`: calculates the variances
+-   `IQR()`: calculates the inner quartile range (Q3 - Q1)
+-   `min()`: finds the minimum 
+-   `max()`: finds the maximum
+-   `n()`: reports the sample size
+
+Note that each of these functions takes a single vector as an argument and returns a single value.
+
+## Data Summaries & Data Visualizations 
+
+6.  Describe the distribution of the **arrival** delays of the LAX flights using a histogram and appropriate summary statistics.
+**Hint:** The summary statistics you use should depend on the shape of the distribution.
+<!-- Your response to this problem goes below this line! -->
+Of the 578 flights that experiences arrival delays, the median was displayed as 19.5 and the mean was 35.6. Therefore, since many flights arrived at the airport early, about half of the flights had a delay less than 19.5 minutes and half above 19.5 minutes. Although, the outlying flights that had extremely high delay times skewed the mean. A reasoning for this could be if a flight got delayed, the flights' takeoff was not as prioritized as other flights that remain on-time. 
+
+<div style="color:blue">
+Great visualization and data summaries! Are the summaries you found appropriate for this distribution? If a distribution is skewed, what is an appropriate measure of center / spread? Why did you filter out the observations with arrival delays less than 1? Does that provide an accurate descripton of the distribution? 
+</div>
+
+<div style="color:blue">
+Overall: Redo 
+</div>
+
+
+```{r}
+## Code for exercise 2 goes here! 
+lax_flights %>%
+  filter(arr_delay > 1) %>%
+  ## Why are you filtering the negative delays out? 
+  summarise(mean_arrdelay = mean(arr_delay), 
+            median_arrdelay = median(arr_delay),
+            sd_dev = sd(arr_delay),
+            n         = n(  ))
+
+ggplot(data = lax_flights, aes(x = arr_delay)) +
+  geom_histogram(binwidth = 30, color = "gray", fill = "purple")
+```
+
+## Grouped Summaries 
+
+Another useful technique is quickly calculating summary statistics for various groups in your data frame.
+For example, we can modify the above command using the `group_by()` function to get the same summary stats for each origin airport:
+
+```{r warning=FALSE}
+lax_flights %>%
+  group_by(origin) %>%
+  summarise(median_dd = median(dep_delay), 
+            IQR(dep_delay), 
+            n_flights = n())
+```
+
+Here, we first grouped the data by `origin` and then calculated the summary statistics.
+
+## Summaries vs. Visualizations 
+
+Which month would you expect to have the highest average delay departing from an NYC airport?
+
+Let's think about how you could answer this question. 
+One option is to summarize the data and inspect the output. 
+Another option is to plot the delays and inspect the plots. 
+Let's try both! 
+
+7. Find the average departure delays for each month, and arrange these average delays in descending order. 
+**Hint:** the `desc()` function is helpful for arranging numbers in descending order! 
+  I found instead of using the 'desc()' function, the minus sign also orders data in descending order.
+
+```{r}
+## Code for exercise 3 goes here! 
+lax_flights %>% group_by(month)
+arrange(lax_flights, -dep_delay)
+ggplot(data = lax_flights, aes(x = dep_delay)) +
+  geom_density(bw = 100)
+## The plot is not necessary and should not be included
+lax_flights %>% 
+summarise(median_dd = median(dep_delay), 
+          IQR(.5), 
+            n_flights = n())
+## This code is not necessary and is not doing the correct data summaries for the problem. It should not be includeed. 
+```
+
+<div style="color:blue">
+You have certain components of what you need, but the whole process is not complete. You need to find the average departure delay for each month and then arrange those mean delays. 
+
+The question does not ask for any additional code (plots, summaries), so please do not include any irrelevant code. 
+</div>
+
+<div style="color:blue">
+Overall: Redo
+</div>
+
+
+8. Now, plot the distribution of departure delays, faceted by the month of departure. 
+Choose the type of plot you believe is appropriate for visualizing the distribution of departure delays. 
+
+```{r}
+## Code for exercise 4 goes here! 
+ggplot(data = lax_flights, aes(x = dep_delay)) +
+  geom_density(bw = 50, color = "gray", fill = "purple") +
+  facet_wrap(vars(month))
+
+```
+
+<div style="color:blue">
+Nice work faceting by month and changing the colors of your plot! Why did you choose a density? 
+</div>
+
+<div style="color:blue">
+Overall: 4
+</div>
+
+
+9. What information can you obtain from the visualization that you could not from the data summaries?   
+<!-- Your response to this question goes below this line!  -->
+This faceted diagram when applied to the density plot is the best visualization that I could obtain from the data summaries. This is beneficial because it is easy to cross-compare the data of departure delays between months. This data shows that there was little to no significant difference among distribution patterns compared between months.Therefore, the pattern shows the average of delay time at about 10 minutes, and flights are rarely delayed beyond 90 minutes.This could not be seen in data summaries they cannot illustrate commopn patterns seen among a dataset. 
+
