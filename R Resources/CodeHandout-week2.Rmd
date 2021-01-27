@@ -1,0 +1,343 @@
+---
+title: "Code Handout -- Week 2"
+author: "Allison Theobold"
+output: pdf_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(fig.width = 3, 
+                  fig.height = 3, 
+                  message = FALSE, 
+                  warning = FALSE,
+                  eval = FALSE)
+
+```
+
+This document contains all of the functions that we have covered thus far in the
+course. It will be updated every week, after we've added new skills. Each 
+function is presented alongside an example of how it is used. 
+
+All of the examples below are in the context of the Palmer Penguins, found 
+[here (link)](https://allisonhorst.github.io/palmerpenguins/index.html). 
+
+\vspace{0.5cm}
+
+## Packages
+
+- `library()` -- loads packages into your `R` session
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(moderndive)
+library(skimr)
+library(broom)
+
+library(palmerpenguins) 
+```
+
+\vspace{0.5cm}
+
+## Inspecting Data
+
+- `glimpse()` -- shows a summary of the dataset, the number of rows and columns, 
+variable names, and the first 10 entries of each variable 
+```{r}
+glimpse(penguins)
+```
+
+
+\vspace{0.5cm}
+
+## Working with Data
+
+- `<-` -- "assignment arrow", assigns a value (vector, dataframe, single value)
+to the name of a variable 
+```{r}
+penguins_2007 <- penguins %>% 
+  filter(year == 2007)
+```
+
+\vspace{0.5cm}
+
+- `c()` -- the "concatenate" function combines inputs to form a vector, the 
+values have to be the same data type. 
+
+```{r}
+cat_variables <- c("Species", "Island", "Sex")
+```
+
+\vspace{0.5cm}
+
+## Verbs of Data Wrangling
+
+- `filter()` -- filters observations (rows) out of / into a dataframe, where
+the inputs (arguments) are the conditions to be satisfied in the data that are
+kept 
+```{r}
+## It's nice to have a new line for each condition, so your code is easier to read!
+penguins %>% 
+filter(species == "Adelie",
+       body_mass_g > 3000,
+       year == 2008)
+
+```
+
+\vspace{0.5cm}
+
+- `mutate()` -- creates new variables or modifies existing variables
+```{r}
+penguins %>% 
+  filter(is.na(bill_length_mm) != TRUE, 
+         is.na(bill_depth_mm) != TRUE) %>% 
+  mutate(body_mass_kg = body_mass_g / 1000)
+```
+
+\vspace{0.5cm}
+
+- `group_by()` -- groups the dataframe based on levels of a categorical 
+variable (usually used alongside `summarize()` or `count()`)
+
+```{r, eval = FALSE}
+penguins %>% 
+  group_by(island)
+```
+
+\vspace{0.5cm}
+
+- `%>%` -- the "pipe" operator, joins sequences of data wrangling steps together, 
+works with any function that has `data = ` as the first argument 
+
+```{r}
+penguins %>%
+  select(species, island, body_mass_g, sex, year) %>% 
+  filter(island ==   "Torgersen", 
+         is.na(body_mass_g) != TRUE) %>% 
+  group_by(species, year) %>% 
+  summarize(mean_mass = mean(body_mass_g),
+            median_mass = median(body_mass_g),
+            observations = n()) %>% 
+  arrange(desc(mean_mass))
+```
+
+## Other Data Wrangling Tools
+
+- `count()` -- counts the number of observations (rows) in different levels of a 
+categorical variable (can be used with `group_by()` to include two categorical 
+variables) 
+
+```{r}
+penguins %>% 
+  count(island)
+
+penguins %>% 
+  group_by(island) %>% 
+  count(species)
+```
+  
+\vspace{0.5cm}
+
+- `mean()` -- finds the mean of a numerical variable, not resistant to `NA` values, 
+so either filter out prior or use `na.omit = TRUE` argument
+  * Other summary functions include:
+    +  `var()` -- find the variance of a numerical variable
+    +  `sd()` -- finds the standard deviation of a numerical variable
+    + `IQR()` -- find the innerquartile range (Q3 - Q1) of a numerical variable
+    + `median()` -- finds the median of a numerical variable 
+
+- `is.na()` -- returns a vector of `TRUE` and `FALSE` values corresponding to 
+whether a particular row of a variable was `NA` (missing)
+```{r}
+penguins %>% 
+  mutate(missing_weight = is.na(body_mass_g))
+```
+
+\vspace{0.5cm}
+
+- `drop.levels()` -- drops the levels of a categorical variable that have no 
+observations in them, useful to use after filtering out levels of a categorical 
+variable, so the only levels that appear are the ones you wanted to keep
+
+```{r, eval = FALSE}
+penguins %>% 
+  filter(species != "Adelie") %>% 
+  droplevels()
+```
+
+\vspace{0.5cm}
+
+- `slice_sample()` -- selects rows from the dataframe, based on the value of 
+`n` specified
+
+```{r}
+penguins %>% 
+  slice_sample(n = 10)
+```
+
+\vspace{0.5cm}
+
+- `if_else()` -- function which creates output based on a condition to be 
+satisfied, the first argument is the logical test we wish to perform, the second
+argument is what we want output if the result of the logical test is `TRUE`,
+the third argument is what we want output if the result of the logical test is
+`FALSE`
+```{r}
+penguins %>%
+  filter(is.na(flipper_length_mm) != TRUE) %>% 
+  mutate(large_flipper = 
+           if_else(flipper_length_mm >= mean(flipper_length_mm),
+                   "above average",
+                   "below average")
+         )
+```
+
+\vspace{0.5cm}
+
+- `as.factor()` -- converts a variable from numerical or character into a factor, 
+necessary if fitting a data model or producing a visualization with a numerical 
+variable that you want treated as categorical
+  * `as.character()` will also work! 
+
+```{r}
+penguins %>% 
+  mutate(year_chr = as.character(year), 
+         year_fct = as.factor(year))
+```
+
+  
+## Data Visualization
+
+* `ggplot()` -- a function to create the shell of a visualization, where 
+specific variables are mapped to different aspects of the plot 
+
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species))
+```
+
+\vspace{0.5cm}
+
+- `aes()` -- aesthetics that can be used when creating a `ggplot()`, where the 
+aesthetics can either be hard coded (e.g. `color = "blue"`) or associated with 
+a variable (e.g. `color = sex`). 
+  * The following are the aesthetic options for *most* plots:
+    + `x`
+    + `y`
+    + `alpha` -- changes transparency
+    + `color` -- produces colored outline 
+    + `fill` -- fills with color
+    + `group` -- used with categorical variables, similar to color
+
+\vspace{0.5cm}
+
+- **`+`** -- an important aspect creating a `ggplot()` is to note that the 
+    `geom_XXX()` function is separated from the `ggplot()` function with a plus
+    sign, `+`.
+  * `ggplot()` plots are constructed in series of layers, where the plus sign
+    separates these layers.  
+  * Generally, the `+` sign can be thought of as the end of a line, so you
+    should always hit enter/return after it. While it is not mandatory to move
+    to the next line for each layer, doing so makes the code a lot easier to
+    organize and read. 
+
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point()
+```
+
+- `geom_point()` -- plots each observation as a point at it's appropriate 
+ordered pair (x, y) 
+
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point()
+```
+
+
+## Data Modeling 
+
+- `lm()` -- fits a linear model to a dataset
+  * You specify the variables as a formula (`y ~ x`), where `y` is your 
+  response variable and `x` is your explanatory variable
+  * The second argument is the name of the dataset (`data = penguins`)
+```{r}
+## Two quantitative explanatory variables
+model1 <- lm(bill_length_mm ~ bill_depth_mm + body_mass_g, data = penguins)
+
+## One quantitative and one categorical explanatory variable
+model2 <- lm(bill_length_mm ~ bill_depth_mm + sex, data = penguins)
+```
+  
+\vspace{0.5cm}
+
+- `get_regression_table()` -- produces a tidy table output of a regression 
+model
+  * Output includes coefficients, standard errors, p-values, and confidence
+  intervals
+  
+```{r}
+get_regression_table(model1)
+```
+
+\vspace{0.5cm}
+
+- `summary()` -- produces a "raw" summary of a regression model
+  * The "untidy" version of a regression summary. 
+  * Includes same information as `get_regression_table()`, but also includes
+  $R^2$ and adjusted $R^2$. 
+
+```{r}
+summary(model2)
+```
+
+\newpage
+
+- `tidy()` -- takes untidy output and creates a nice table! 
+  * Similar to `get_regression_table()`, but doesn't output confidence intervals.
+  * Lives in the **broom** package
+```{r}
+tidy(model2)
+```
+
+\vspace{0.5cm}
+
+- `get_regression_points()` -- provides information on each observation used in
+a `lm()` in a tidy table format
+  * Produces a table with the variables included in the regression, and the 
+  residual associated with each observation
+
+```{r}
+get_regression_points(model1)
+```
+
+
+\vspace{0.5cm}
+
+- `predict()` -- produces an untidy vector of the predicted y-values for each
+observation in the dataset
+  * Can make predictions for new observations with the `newdata` argument. 
+  
+```{r}
+predict(model1)
+
+new_penguin <- data.frame(bill_depth_mm = 200, body_mass_g = 500)
+predict(model1, newdata = new_penguin)
+```
+
+\vspace{0.5cm}
+
+- `augment()` -- produces a tidy table of data values from a regression model
+  * Lives in the **broom** package
+  * Produces a table with the variables included in the regression, and 6 
+  additional columns:
+    + including `.fitted` (predicted y-value for that observation), `.resid`
+    (residual for that observation)
+  * Can make predictions for new observations with the `newdata` argument. 
+```{r}
+augment(model2)
+
+new_penguin <- data.frame(bill_depth_mm = 15, sex = "female")
+augment(model2, newdata = new_penguin)
+```
+
+
