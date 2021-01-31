@@ -1,7 +1,6 @@
 ---
-title: "Stat 313: Project 1"
-author: "Names here! Include both first and last names!"
-date: "Date submitted here!"
+title: "Stat 313: SAT Exploration"
+date: "January 31"
 output: html_document
 ---
 
@@ -14,17 +13,50 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r, include = FALSE}
-## Code to read in the data
-## Assumes that the data live in the SAME folder as this RMarkdown document
-grads_grants <- read_csv("grads_grants.csv")
-```
-
-
-```{r, include = FALSE}
 ## Insert the code to include the packages you wish to use here!
 
 
 ```
+
+
+```{r, include = FALSE}
+## Average SAT Math and Verbal Scores for every state
+## Includes average scores for different income levels
+sat <- read_csv("school_scores.csv") %>%
+  select(Year, State.Code, State.Name,
+        starts_with("Family Income")
+  ) %>% 
+  select(-contains("Test-takers"))
+
+sat <- sat %>% 
+  pivot_longer(cols = starts_with("Family Income"), 
+               names_to = c("Income", "Exam"),
+               names_pattern = "Family Income\\.(.*)\\.(.*)",
+               values_to = "Average Score"
+  ) %>% 
+  pivot_wider(names_from = Exam, 
+              values_from = `Average Score`)
+
+```
+
+```{r}
+## Trying a different pivot 
+sat2 <- read_csv("school_scores.csv") %>%
+  select(Year, State.Code, State.Name,
+        starts_with("Family Income")
+  ) %>% 
+  select(-contains("Test-takers"))
+
+sat2 <- sat2 %>% 
+  pivot_longer(cols = starts_with("Family Income"), 
+               names_to = c("Income", "Exam"),
+               names_pattern = "Family Income\\.(.*)\\.(.*)",
+               values_to = "Average Score"
+  )
+
+```
+
+
 
 # Introduction 
 <!-- TODO: -->
@@ -42,6 +74,12 @@ grads_grants <- read_csv("grads_grants.csv")
 <!-- 3. Describe what statistical method will be used to address the question of interest, and why this method is appropriate. -->
 <!-- 4. Check model conditions for statistical model chosen. Include all necessary plots! -->
 
+```{r}
+sat %>% 
+  ggplot(aes(x = Verbal, y = Math, color = Income)) + 
+  geom_point(alpha = 0.5) +
+  geom_parallel_slopes()
+```
 
 
 
