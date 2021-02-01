@@ -1,0 +1,73 @@
+---
+title: 'Stat 313: Linear Regression Project'
+author: "Names here! Include both first and last names!"
+date: "Date submitted here!"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+## Do not change this code chunk! 
+## This has settings for how I want your report to look!
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center", 
+                      message = FALSE, 
+                      warning = FALSE)
+## This makes it so your code will not print to the page, which makes your report look more professional!
+## Additionally, there will be no messages or errors output for your models an / or visualizations. 
+## And your figures will be centered on the page. 
+```
+
+```{r, include = FALSE}
+## Insert the code to include the packages you wish to use here!
+
+
+```
+
+```{r, include = FALSE}
+## Code to read in the data
+## Assumes that the data live in the SAME folder as this RMarkdown document
+sat <- read_csv("sat_project_data.csv")
+```
+
+
+# Introduction 
+<!-- TODO: -->
+<!-- 1. Include a background of the data and the unit of study. -->
+<!-- 2. Articulate the research question of interest -- be specific! -->
+
+
+
+
+
+# Statistical Methods
+<!-- TODO: -->
+<!-- 1. Describe the response and explanatory variables. -->
+<!-- 2. Create a summary table of the median average SAT math and verbal scores for each year -->
+<!-- 3. Create visualizations investigating the relationship(s) of interest.  -->
+<!-- 4. Describe what statistical method will be used to address the question of interest, and why this method is appropriate. -->
+<!-- 5. Check model conditions for statistical model chosen. Include all necessary plots! -->
+
+
+
+
+
+# Summary of Statistical Findings 
+<!-- TODO: -->
+<!-- 1. Provide conclusion for questions of interest -- referencing visualizations and statistical model. -->
+<!-- 2. Interpret each of the coefficients from the statistical model -- in the context of these data.  -->
+
+
+
+
+
+# Scope of Inference 
+<!-- TODO: -->
+<!-- 1. Who can the results of this investigation be applied to? Why?  -->
+<!-- 2. What can be said about the relationship between the average SAT math and 
+SAT verbal scores? Why? -->
+
+
+
+
+

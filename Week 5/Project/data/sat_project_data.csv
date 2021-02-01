@@ -1,0 +1,3463 @@
+Year,State.Code,State.Name,Income,Math,Verbal
+2005,AL,Alabama,Between 20-40k,513,527
+2005,AL,Alabama,Between 40-60k,539,551
+2005,AL,Alabama,Between 60-80k,550,564
+2005,AL,Alabama,Between 80-100k,566,577
+2005,AL,Alabama,Less than 20k,462,474
+2005,AL,Alabama,More than 100k,588,590
+2005,AK,Alaska,Between 20-40k,492,500
+2005,AK,Alaska,Between 40-60k,517,522
+2005,AK,Alaska,Between 60-80k,513,519
+2005,AK,Alaska,Between 80-100k,528,534
+2005,AK,Alaska,Less than 20k,464,467
+2005,AK,Alaska,More than 100k,541,544
+2005,AZ,Arizona,Between 20-40k,498,495
+2005,AZ,Arizona,Between 40-60k,520,518
+2005,AZ,Arizona,Between 60-80k,524,523
+2005,AZ,Arizona,Between 80-100k,534,533
+2005,AZ,Arizona,Less than 20k,485,474
+2005,AZ,Arizona,More than 100k,554,546
+2005,AR,Arkansas,Between 20-40k,513,526
+2005,AR,Arkansas,Between 40-60k,543,555
+2005,AR,Arkansas,Between 60-80k,553,570
+2005,AR,Arkansas,Between 80-100k,570,580
+2005,AR,Arkansas,Less than 20k,489,486
+2005,AR,Arkansas,More than 100k,572,589
+2005,CA,California,Between 20-40k,477,458
+2005,CA,California,Between 40-60k,506,494
+2005,CA,California,Between 60-80k,521,511
+2005,CA,California,Between 80-100k,535,525
+2005,CA,California,Less than 20k,451,421
+2005,CA,California,More than 100k,566,551
+2005,CO,Colorado,Between 20-40k,533,535
+2005,CO,Colorado,Between 40-60k,543,548
+2005,CO,Colorado,Between 60-80k,553,552
+2005,CO,Colorado,Between 80-100k,562,560
+2005,CO,Colorado,Less than 20k,514,505
+2005,CO,Colorado,More than 100k,574,568
+2005,CT,Connecticut,Between 20-40k,463,467
+2005,CT,Connecticut,Between 40-60k,493,499
+2005,CT,Connecticut,Between 60-80k,507,511
+2005,CT,Connecticut,Between 80-100k,523,523
+2005,CT,Connecticut,Less than 20k,434,426
+2005,CT,Connecticut,More than 100k,565,559
+2005,DE,Delaware,Between 20-40k,449,454
+2005,DE,Delaware,Between 40-60k,481,487
+2005,DE,Delaware,Between 60-80k,497,501
+2005,DE,Delaware,Between 80-100k,512,510
+2005,DE,Delaware,Less than 20k,411,410
+2005,DE,Delaware,More than 100k,554,550
+2005,DC,District Of Columbia,Between 20-40k,391,404
+2005,DC,District Of Columbia,Between 40-60k,433,454
+2005,DC,District Of Columbia,Between 60-80k,470,482
+2005,DC,District Of Columbia,Between 80-100k,539,549
+2005,DC,District Of Columbia,Less than 20k,374,377
+2005,DC,District Of Columbia,More than 100k,608,622
+2005,FL,Florida,Between 20-40k,471,473
+2005,FL,Florida,Between 40-60k,492,496
+2005,FL,Florida,Between 60-80k,504,505
+2005,FL,Florida,Between 80-100k,516,517
+2005,FL,Florida,Less than 20k,433,431
+2005,FL,Florida,More than 100k,544,538
+2005,GA,Georgia,Between 20-40k,459,462
+2005,GA,Georgia,Between 40-60k,482,487
+2005,GA,Georgia,Between 60-80k,499,503
+2005,GA,Georgia,Between 80-100k,516,517
+2005,GA,Georgia,Less than 20k,425,423
+2005,GA,Georgia,More than 100k,546,541
+2005,HI,Hawaii,Between 20-40k,487,465
+2005,HI,Hawaii,Between 40-60k,503,480
+2005,HI,Hawaii,Between 60-80k,512,489
+2005,HI,Hawaii,Between 80-100k,535,510
+2005,HI,Hawaii,Less than 20k,456,432
+2005,HI,Hawaii,More than 100k,565,535
+2005,ID,Idaho,Between 20-40k,520,525
+2005,ID,Idaho,Between 40-60k,534,533
+2005,ID,Idaho,Between 60-80k,539,544
+2005,ID,Idaho,Between 80-100k,552,552
+2005,ID,Idaho,Less than 20k,519,511
+2005,ID,Idaho,More than 100k,561,564
+2005,IL,Illinois,Between 20-40k,569,556
+2005,IL,Illinois,Between 40-60k,583,571
+2005,IL,Illinois,Between 60-80k,595,590
+2005,IL,Illinois,Between 80-100k,607,601
+2005,IL,Illinois,Less than 20k,544,520
+2005,IL,Illinois,More than 100k,622,608
+2005,IN,Indiana,Between 20-40k,478,477
+2005,IN,Indiana,Between 40-60k,499,496
+2005,IN,Indiana,Between 60-80k,508,505
+2005,IN,Indiana,Between 80-100k,524,516
+2005,IN,Indiana,Less than 20k,451,447
+2005,IN,Indiana,More than 100k,548,538
+2005,IA,Iowa,Between 20-40k,585,564
+2005,IA,Iowa,Between 40-60k,596,589
+2005,IA,Iowa,Between 60-80k,622,610
+2005,IA,Iowa,Between 80-100k,623,611
+2005,IA,Iowa,Less than 20k,276,524
+2005,IA,Iowa,More than 100k,620,609
+2005,KS,Kansas,Between 20-40k,558,554
+2005,KS,Kansas,Between 40-60k,574,582
+2005,KS,Kansas,Between 60-80k,585,580
+2005,KS,Kansas,Between 80-100k,597,599
+2005,KS,Kansas,Less than 20k,537,508
+2005,KS,Kansas,More than 100k,599,594
+2005,KY,Kentucky,Between 20-40k,520,528
+2005,KY,Kentucky,Between 40-60k,544,549
+2005,KY,Kentucky,Between 60-80k,553,557
+2005,KY,Kentucky,Between 80-100k,562,567
+2005,KY,Kentucky,Less than 20k,500,479
+2005,KY,Kentucky,More than 100k,579,577
+2005,LA,Louisiana,Between 20-40k,497,505
+2005,LA,Louisiana,Between 40-60k,549,563
+2005,LA,Louisiana,Between 60-80k,560,563
+2005,LA,Louisiana,Between 80-100k,574,581
+2005,LA,Louisiana,Less than 20k,470,463
+2005,LA,Louisiana,More than 100k,598,594
+2005,ME,Maine,Between 20-40k,485,491
+2005,ME,Maine,Between 40-60k,498,504
+2005,ME,Maine,Between 60-80k,509,513
+2005,ME,Maine,Between 80-100k,524,527
+2005,ME,Maine,Less than 20k,458,463
+2005,ME,Maine,More than 100k,547,544
+2005,MD,Maryland,Between 20-40k,459,455
+2005,MD,Maryland,Between 40-60k,486,486
+2005,MD,Maryland,Between 60-80k,510,508
+2005,MD,Maryland,Between 80-100k,530,528
+2005,MD,Maryland,Less than 20k,419,413
+2005,MD,Maryland,More than 100k,569,561
+2005,MA,Massachusetts,Between 20-40k,481,476
+2005,MA,Massachusetts,Between 40-60k,506,503
+2005,MA,Massachusetts,Between 60-80k,517,516
+2005,MA,Massachusetts,Between 80-100k,534,530
+2005,MA,Massachusetts,Less than 20k,449,427
+2005,MA,Massachusetts,More than 100k,573,562
+2005,MI,Michigan,Between 20-40k,525,521
+2005,MI,Michigan,Between 40-60k,551,546
+2005,MI,Michigan,Between 60-80k,571,565
+2005,MI,Michigan,Between 80-100k,586,576
+2005,MI,Michigan,Less than 20k,495,481
+2005,MI,Michigan,More than 100k,605,590
+2005,MN,Minnesota,Between 20-40k,571,568
+2005,MN,Minnesota,Between 40-60k,571,576
+2005,MN,Minnesota,Between 60-80k,587,584
+2005,MN,Minnesota,Between 80-100k,599,595
+2005,MN,Minnesota,Less than 20k,531,510
+2005,MN,Minnesota,More than 100k,612,606
+2005,MS,Mississippi,Between 20-40k,520,536
+2005,MS,Mississippi,Between 40-60k,546,558
+2005,MS,Mississippi,Between 60-80k,556,572
+2005,MS,Mississippi,Between 80-100k,575,594
+2005,MS,Mississippi,Less than 20k,229,447
+2005,MS,Mississippi,More than 100k,598,607
+2005,MO,Missouri,Between 20-40k,531,533
+2005,MO,Missouri,Between 40-60k,568,574
+2005,MO,Missouri,Between 60-80k,576,588
+2005,MO,Missouri,Between 80-100k,598,591
+2005,MO,Missouri,Less than 20k,514,495
+2005,MO,Missouri,More than 100k,602,599
+2005,MT,Montana,Between 20-40k,529,533
+2005,MT,Montana,Between 40-60k,534,539
+2005,MT,Montana,Between 60-80k,543,533
+2005,MT,Montana,Between 80-100k,551,543
+2005,MT,Montana,Less than 20k,496,507
+2005,MT,Montana,More than 100k,568,552
+2005,NE,Nebraska,Between 20-40k,535,546
+2005,NE,Nebraska,Between 40-60k,568,561
+2005,NE,Nebraska,Between 60-80k,583,578
+2005,NE,Nebraska,Between 80-100k,588,572
+2005,NE,Nebraska,Less than 20k,270,507
+2005,NE,Nebraska,More than 100k,595,588
+2005,NV,Nevada,Between 20-40k,488,484
+2005,NV,Nevada,Between 40-60k,500,500
+2005,NV,Nevada,Between 60-80k,509,506
+2005,NV,Nevada,Between 80-100k,517,513
+2005,NV,Nevada,Less than 20k,471,458
+2005,NV,Nevada,More than 100k,538,532
+2005,NH,New Hampshire,Between 20-40k,491,496
+2005,NH,New Hampshire,Between 40-60k,505,509
+2005,NH,New Hampshire,Between 60-80k,515,518
+2005,NH,New Hampshire,Between 80-100k,528,524
+2005,NH,New Hampshire,Less than 20k,490,486
+2005,NH,New Hampshire,More than 100k,553,548
+2005,NJ,New Jersey,Between 20-40k,466,453
+2005,NJ,New Jersey,Between 40-60k,497,487
+2005,NJ,New Jersey,Between 60-80k,510,500
+2005,NJ,New Jersey,Between 80-100k,526,515
+2005,NJ,New Jersey,Less than 20k,427,405
+2005,NJ,New Jersey,More than 100k,565,549
+2005,NM,New Mexico,Between 20-40k,509,519
+2005,NM,New Mexico,Between 40-60k,528,538
+2005,NM,New Mexico,Between 60-80k,542,558
+2005,NM,New Mexico,Between 80-100k,555,578
+2005,NM,New Mexico,Less than 20k,496,490
+2005,NM,New Mexico,More than 100k,575,581
+2005,NY,New York,Between 20-40k,478,467
+2005,NY,New York,Between 40-60k,504,495
+2005,NY,New York,Between 60-80k,519,509
+2005,NY,New York,Between 80-100k,530,521
+2005,NY,New York,Less than 20k,449,422
+2005,NY,New York,More than 100k,566,552
+2005,NC,North Carolina,Between 20-40k,476,466
+2005,NC,North Carolina,Between 40-60k,502,494
+2005,NC,North Carolina,Between 60-80k,519,506
+2005,NC,North Carolina,Between 80-100k,534,523
+2005,NC,North Carolina,Less than 20k,434,420
+2005,NC,North Carolina,More than 100k,565,549
+2005,ND,North Dakota,Between 20-40k,0,552
+2005,ND,North Dakota,Between 40-60k,616,594
+2005,ND,North Dakota,Between 60-80k,609,591
+2005,ND,North Dakota,Between 80-100k,613,605
+2005,ND,North Dakota,Less than 20k,0,257
+2005,ND,North Dakota,More than 100k,619,601
+2005,OH,Ohio,Between 20-40k,497,498
+2005,OH,Ohio,Between 40-60k,524,524
+2005,OH,Ohio,Between 60-80k,539,536
+2005,OH,Ohio,Between 80-100k,551,545
+2005,OH,Ohio,Less than 20k,464,458
+2005,OH,Ohio,More than 100k,571,561
+2005,OK,Oklahoma,Between 20-40k,528,539
+2005,OK,Oklahoma,Between 40-60k,555,563
+2005,OK,Oklahoma,Between 60-80k,566,580
+2005,OK,Oklahoma,Between 80-100k,570,578
+2005,OK,Oklahoma,Less than 20k,511,505
+2005,OK,Oklahoma,More than 100k,580,586
+2005,OR,Oregon,Between 20-40k,504,503
+2005,OR,Oregon,Between 40-60k,516,519
+2005,OR,Oregon,Between 60-80k,530,530
+2005,OR,Oregon,Between 80-100k,539,537
+2005,OR,Oregon,Less than 20k,484,472
+2005,OR,Oregon,More than 100k,559,555
+2005,PA,Pennsylvania,Between 20-40k,468,468
+2005,PA,Pennsylvania,Between 40-60k,494,494
+2005,PA,Pennsylvania,Between 60-80k,509,507
+2005,PA,Pennsylvania,Between 80-100k,523,521
+2005,PA,Pennsylvania,Less than 20k,430,424
+2005,PA,Pennsylvania,More than 100k,558,550
+2005,PR,Puerto Rico,Between 20-40k,431,431
+2005,PR,Puerto Rico,Between 40-60k,446,462
+2005,PR,Puerto Rico,Between 60-80k,465,464
+2005,PR,Puerto Rico,Between 80-100k,479,488
+2005,PR,Puerto Rico,Less than 20k,396,403
+2005,PR,Puerto Rico,More than 100k,512,507
+2005,RI,Rhode Island,Between 20-40k,468,467
+2005,RI,Rhode Island,Between 40-60k,500,495
+2005,RI,Rhode Island,Between 60-80k,513,514
+2005,RI,Rhode Island,Between 80-100k,531,530
+2005,RI,Rhode Island,Less than 20k,421,411
+2005,RI,Rhode Island,More than 100k,555,549
+2005,SC,South Carolina,Between 20-40k,469,466
+2005,SC,South Carolina,Between 40-60k,494,492
+2005,SC,South Carolina,Between 60-80k,510,507
+2005,SC,South Carolina,Between 80-100k,526,519
+2005,SC,South Carolina,Less than 20k,429,425
+2005,SC,South Carolina,More than 100k,545,535
+2005,SD,South Dakota,Between 20-40k,552,568
+2005,SD,South Dakota,Between 40-60k,584,588
+2005,SD,South Dakota,Between 60-80k,602,596
+2005,SD,South Dakota,Between 80-100k,599,595
+2005,SD,South Dakota,Less than 20k,0,531
+2005,SD,South Dakota,More than 100k,634,633
+2005,TN,Tennessee,Between 20-40k,524,536
+2005,TN,Tennessee,Between 40-60k,543,558
+2005,TN,Tennessee,Between 60-80k,559,575
+2005,TN,Tennessee,Between 80-100k,572,582
+2005,TN,Tennessee,Less than 20k,499,498
+2005,TN,Tennessee,More than 100k,585,588
+2005,TX,Texas,Between 20-40k,467,459
+2005,TX,Texas,Between 40-60k,495,489
+2005,TX,Texas,Between 60-80k,510,503
+2005,TX,Texas,Between 80-100k,528,521
+2005,TX,Texas,Less than 20k,430,416
+2005,TX,Texas,More than 100k,557,544
+2005,UT,Utah,Between 20-40k,539,562
+2005,UT,Utah,Between 40-60k,553,568
+2005,UT,Utah,Between 60-80k,570,576
+2005,UT,Utah,Between 80-100k,560,566
+2005,UT,Utah,Less than 20k,539,516
+2005,UT,Utah,More than 100k,576,591
+2005,VT,Vermont,Between 20-40k,492,500
+2005,VT,Vermont,Between 40-60k,505,512
+2005,VT,Vermont,Between 60-80k,519,523
+2005,VT,Vermont,Between 80-100k,539,539
+2005,VT,Vermont,Less than 20k,470,480
+2005,VT,Vermont,More than 100k,558,551
+2005,VI,Virgin Islands,Between 20-40k,399,419
+2005,VI,Virgin Islands,Between 40-60k,412,433
+2005,VI,Virgin Islands,Between 60-80k,454,455
+2005,VI,Virgin Islands,Between 80-100k,442,478
+2005,VI,Virgin Islands,Less than 20k,372,381
+2005,VI,Virgin Islands,More than 100k,528,538
+2005,VA,Virginia,Between 20-40k,489,503
+2005,VA,Virginia,Between 40-60k,494,513
+2005,VA,Virginia,Between 60-80k,511,526
+2005,VA,Virginia,Between 80-100k,517,526
+2005,VA,Virginia,Less than 20k,471,491
+2005,VA,Virginia,More than 100k,549,552
+2005,WA,Washington,Between 20-40k,501,499
+2005,WA,Washington,Between 40-60k,523,523
+2005,WA,Washington,Between 60-80k,531,532
+2005,WA,Washington,Between 80-100k,541,539
+2005,WA,Washington,Less than 20k,481,468
+2005,WA,Washington,More than 100k,561,556
+2005,WI,Wisconsin,Between 20-40k,559,559
+2005,WI,Wisconsin,Between 40-60k,591,580
+2005,WI,Wisconsin,Between 60-80k,595,591
+2005,WI,Wisconsin,Between 80-100k,608,602
+2005,WI,Wisconsin,Less than 20k,515,488
+2005,WI,Wisconsin,More than 100k,618,609
+2005,WY,Wyoming,Between 20-40k,506,509
+2005,WY,Wyoming,Between 40-60k,539,547
+2005,WY,Wyoming,Between 60-80k,553,546
+2005,WY,Wyoming,Between 80-100k,557,554
+2005,WY,Wyoming,Less than 20k,0,474
+2005,WY,Wyoming,More than 100k,553,568
+2006,AL,Alabama,Between 20-40k,516,519
+2006,AL,Alabama,Between 40-60k,535,547
+2006,AL,Alabama,Between 60-80k,565,563
+2006,AL,Alabama,Between 80-100k,573,580
+2006,AL,Alabama,Less than 20k,445,459
+2006,AL,Alabama,More than 100k,587,590
+2006,AK,Alaska,Between 20-40k,486,484
+2006,AK,Alaska,Between 40-60k,511,514
+2006,AK,Alaska,Between 60-80k,513,517
+2006,AK,Alaska,Between 80-100k,531,528
+2006,AK,Alaska,Less than 20k,481,478
+2006,AK,Alaska,More than 100k,542,541
+2006,AZ,Arizona,Between 20-40k,501,495
+2006,AZ,Arizona,Between 40-60k,517,508
+2006,AZ,Arizona,Between 60-80k,524,521
+2006,AZ,Arizona,Between 80-100k,537,531
+2006,AZ,Arizona,Less than 20k,489,477
+2006,AZ,Arizona,More than 100k,550,539
+2006,AR,Arkansas,Between 20-40k,548,546
+2006,AR,Arkansas,Between 40-60k,555,578
+2006,AR,Arkansas,Between 60-80k,559,575
+2006,AR,Arkansas,Between 80-100k,573,576
+2006,AR,Arkansas,Less than 20k,508,501
+2006,AR,Arkansas,More than 100k,592,600
+2006,CA,California,Between 20-40k,476,459
+2006,CA,California,Between 40-60k,504,491
+2006,CA,California,Between 60-80k,519,506
+2006,CA,California,Between 80-100k,536,523
+2006,CA,California,Less than 20k,455,429
+2006,CA,California,More than 100k,564,548
+2006,CO,Colorado,Between 20-40k,539,533
+2006,CO,Colorado,Between 40-60k,548,549
+2006,CO,Colorado,Between 60-80k,555,553
+2006,CO,Colorado,Between 80-100k,571,561
+2006,CO,Colorado,Less than 20k,529,514
+2006,CO,Colorado,More than 100k,575,563
+2006,CT,Connecticut,Between 20-40k,464,465
+2006,CT,Connecticut,Between 40-60k,494,495
+2006,CT,Connecticut,Between 60-80k,507,504
+2006,CT,Connecticut,Between 80-100k,525,521
+2006,CT,Connecticut,Less than 20k,429,429
+2006,CT,Connecticut,More than 100k,565,554
+2006,DE,Delaware,Between 20-40k,457,456
+2006,DE,Delaware,Between 40-60k,481,476
+2006,DE,Delaware,Between 60-80k,498,491
+2006,DE,Delaware,Between 80-100k,519,513
+2006,DE,Delaware,Less than 20k,414,414
+2006,DE,Delaware,More than 100k,549,540
+2006,DC,District Of Columbia,Between 20-40k,392,413
+2006,DC,District Of Columbia,Between 40-60k,430,451
+2006,DC,District Of Columbia,Between 60-80k,468,490
+2006,DC,District Of Columbia,Between 80-100k,507,526
+2006,DC,District Of Columbia,Less than 20k,381,384
+2006,DC,District Of Columbia,More than 100k,608,617
+2006,FL,Florida,Between 20-40k,469,471
+2006,FL,Florida,Between 40-60k,493,493
+2006,FL,Florida,Between 60-80k,503,503
+2006,FL,Florida,Between 80-100k,517,516
+2006,FL,Florida,Less than 20k,434,435
+2006,FL,Florida,More than 100k,540,533
+2006,GA,Georgia,Between 20-40k,458,460
+2006,GA,Georgia,Between 40-60k,483,487
+2006,GA,Georgia,Between 60-80k,499,499
+2006,GA,Georgia,Between 80-100k,517,516
+2006,GA,Georgia,Less than 20k,428,426
+2006,GA,Georgia,More than 100k,545,536
+2006,HI,Hawaii,Between 20-40k,481,456
+2006,HI,Hawaii,Between 40-60k,495,478
+2006,HI,Hawaii,Between 60-80k,507,481
+2006,HI,Hawaii,Between 80-100k,529,500
+2006,HI,Hawaii,Less than 20k,462,431
+2006,HI,Hawaii,More than 100k,558,523
+2006,ID,Idaho,Between 20-40k,529,526
+2006,ID,Idaho,Between 40-60k,531,537
+2006,ID,Idaho,Between 60-80k,546,546
+2006,ID,Idaho,Between 80-100k,551,549
+2006,ID,Idaho,Less than 20k,530,505
+2006,ID,Idaho,More than 100k,568,562
+2006,IL,Illinois,Between 20-40k,568,555
+2006,IL,Illinois,Between 40-60k,578,569
+2006,IL,Illinois,Between 60-80k,598,585
+2006,IL,Illinois,Between 80-100k,609,594
+2006,IL,Illinois,Less than 20k,560,540
+2006,IL,Illinois,More than 100k,626,605
+2006,IN,Indiana,Between 20-40k,482,476
+2006,IN,Indiana,Between 40-60k,503,492
+2006,IN,Indiana,Between 60-80k,509,498
+2006,IN,Indiana,Between 80-100k,523,508
+2006,IN,Indiana,Less than 20k,456,453
+2006,IN,Indiana,More than 100k,546,529
+2006,IA,Iowa,Between 20-40k,608,587
+2006,IA,Iowa,Between 40-60k,597,590
+2006,IA,Iowa,Between 60-80k,612,615
+2006,IA,Iowa,Between 80-100k,619,598
+2006,IA,Iowa,Less than 20k,526,511
+2006,IA,Iowa,More than 100k,635,624
+2006,KS,Kansas,Between 20-40k,576,563
+2006,KS,Kansas,Between 40-60k,585,593
+2006,KS,Kansas,Between 60-80k,591,588
+2006,KS,Kansas,Between 80-100k,591,588
+2006,KS,Kansas,Less than 20k,514,489
+2006,KS,Kansas,More than 100k,600,590
+2006,KY,Kentucky,Between 20-40k,526,531
+2006,KY,Kentucky,Between 40-60k,550,560
+2006,KY,Kentucky,Between 60-80k,552,555
+2006,KY,Kentucky,Between 80-100k,564,564
+2006,KY,Kentucky,Less than 20k,518,491
+2006,KY,Kentucky,More than 100k,577,571
+2006,LA,Louisiana,Between 20-40k,517,516
+2006,LA,Louisiana,Between 40-60k,536,555
+2006,LA,Louisiana,Between 60-80k,573,572
+2006,LA,Louisiana,Between 80-100k,573,585
+2006,LA,Louisiana,Less than 20k,490,472
+2006,LA,Louisiana,More than 100k,597,594
+2006,ME,Maine,Between 20-40k,486,490
+2006,ME,Maine,Between 40-60k,498,498
+2006,ME,Maine,Between 60-80k,513,510
+2006,ME,Maine,Between 80-100k,524,517
+2006,ME,Maine,Less than 20k,450,457
+2006,ME,Maine,More than 100k,544,538
+2006,MD,Maryland,Between 20-40k,457,455
+2006,MD,Maryland,Between 40-60k,488,485
+2006,MD,Maryland,Between 60-80k,504,502
+2006,MD,Maryland,Between 80-100k,526,521
+2006,MD,Maryland,Less than 20k,418,411
+2006,MD,Maryland,More than 100k,564,553
+2006,MA,Massachusetts,Between 20-40k,483,472
+2006,MA,Massachusetts,Between 40-60k,504,497
+2006,MA,Massachusetts,Between 60-80k,514,505
+2006,MA,Massachusetts,Between 80-100k,533,521
+2006,MA,Massachusetts,Less than 20k,447,431
+2006,MA,Massachusetts,More than 100k,572,558
+2006,MI,Michigan,Between 20-40k,535,526
+2006,MI,Michigan,Between 40-60k,561,553
+2006,MI,Michigan,Between 60-80k,573,563
+2006,MI,Michigan,Between 80-100k,584,565
+2006,MI,Michigan,Less than 20k,510,494
+2006,MI,Michigan,More than 100k,611,592
+2006,MN,Minnesota,Between 20-40k,560,553
+2006,MN,Minnesota,Between 40-60k,583,584
+2006,MN,Minnesota,Between 60-80k,587,588
+2006,MN,Minnesota,Between 80-100k,601,592
+2006,MN,Minnesota,Less than 20k,544,524
+2006,MN,Minnesota,More than 100k,616,603
+2006,MS,Mississippi,Between 20-40k,485,510
+2006,MS,Mississippi,Between 40-60k,532,544
+2006,MS,Mississippi,Between 60-80k,525,554
+2006,MS,Mississippi,Between 80-100k,579,589
+2006,MS,Mississippi,Less than 20k,436,474
+2006,MS,Mississippi,More than 100k,593,606
+2006,MO,Missouri,Between 20-40k,552,547
+2006,MO,Missouri,Between 40-60k,564,575
+2006,MO,Missouri,Between 60-80k,581,581
+2006,MO,Missouri,Between 80-100k,603,593
+2006,MO,Missouri,Less than 20k,503,491
+2006,MO,Missouri,More than 100k,615,606
+2006,MT,Montana,Between 20-40k,546,532
+2006,MT,Montana,Between 40-60k,544,543
+2006,MT,Montana,Between 60-80k,553,541
+2006,MT,Montana,Between 80-100k,550,538
+2006,MT,Montana,Less than 20k,516,514
+2006,MT,Montana,More than 100k,566,555
+2006,NE,Nebraska,Between 20-40k,540,549
+2006,NE,Nebraska,Between 40-60k,567,564
+2006,NE,Nebraska,Between 60-80k,588,580
+2006,NE,Nebraska,Between 80-100k,591,580
+2006,NE,Nebraska,Less than 20k,526,508
+2006,NE,Nebraska,More than 100k,602,592
+2006,NV,Nevada,Between 20-40k,487,475
+2006,NV,Nevada,Between 40-60k,501,491
+2006,NV,Nevada,Between 60-80k,502,494
+2006,NV,Nevada,Between 80-100k,513,508
+2006,NV,Nevada,Less than 20k,470,457
+2006,NV,Nevada,More than 100k,531,516
+2006,NH,New Hampshire,Between 20-40k,491,491
+2006,NH,New Hampshire,Between 40-60k,502,504
+2006,NH,New Hampshire,Between 60-80k,515,514
+2006,NH,New Hampshire,Between 80-100k,525,518
+2006,NH,New Hampshire,Less than 20k,466,471
+2006,NH,New Hampshire,More than 100k,551,541
+2006,NJ,New Jersey,Between 20-40k,465,448
+2006,NJ,New Jersey,Between 40-60k,495,480
+2006,NJ,New Jersey,Between 60-80k,510,494
+2006,NJ,New Jersey,Between 80-100k,525,507
+2006,NJ,New Jersey,Less than 20k,432,409
+2006,NJ,New Jersey,More than 100k,563,541
+2006,NM,New Mexico,Between 20-40k,510,522
+2006,NM,New Mexico,Between 40-60k,520,542
+2006,NM,New Mexico,Between 60-80k,534,548
+2006,NM,New Mexico,Between 80-100k,554,566
+2006,NM,New Mexico,Less than 20k,513,494
+2006,NM,New Mexico,More than 100k,589,586
+2006,NY,New York,Between 20-40k,481,466
+2006,NY,New York,Between 40-60k,506,491
+2006,NY,New York,Between 60-80k,518,502
+2006,NY,New York,Between 80-100k,530,515
+2006,NY,New York,Less than 20k,451,429
+2006,NY,New York,More than 100k,569,548
+2006,NC,North Carolina,Between 20-40k,477,463
+2006,NC,North Carolina,Between 40-60k,507,489
+2006,NC,North Carolina,Between 60-80k,521,501
+2006,NC,North Carolina,Between 80-100k,536,518
+2006,NC,North Carolina,Less than 20k,446,429
+2006,NC,North Carolina,More than 100k,562,542
+2006,ND,North Dakota,Between 20-40k,560,587
+2006,ND,North Dakota,Between 40-60k,617,609
+2006,ND,North Dakota,Between 60-80k,586,606
+2006,ND,North Dakota,Between 80-100k,634,614
+2006,ND,North Dakota,Less than 20k,293,292
+2006,ND,North Dakota,More than 100k,623,616
+2006,OH,Ohio,Between 20-40k,505,503
+2006,OH,Ohio,Between 40-60k,527,524
+2006,OH,Ohio,Between 60-80k,537,531
+2006,OH,Ohio,Between 80-100k,551,541
+2006,OH,Ohio,Less than 20k,463,459
+2006,OH,Ohio,More than 100k,575,558
+2006,OK,Oklahoma,Between 20-40k,545,550
+2006,OK,Oklahoma,Between 40-60k,562,570
+2006,OK,Oklahoma,Between 60-80k,571,579
+2006,OK,Oklahoma,Between 80-100k,575,590
+2006,OK,Oklahoma,Less than 20k,546,538
+2006,OK,Oklahoma,More than 100k,588,587
+2006,OR,Oregon,Between 20-40k,506,500
+2006,OR,Oregon,Between 40-60k,522,518
+2006,OR,Oregon,Between 60-80k,528,521
+2006,OR,Oregon,Between 80-100k,541,535
+2006,OR,Oregon,Less than 20k,487,473
+2006,OR,Oregon,More than 100k,563,553
+2006,PA,Pennsylvania,Between 20-40k,467,465
+2006,PA,Pennsylvania,Between 40-60k,492,488
+2006,PA,Pennsylvania,Between 60-80k,503,497
+2006,PA,Pennsylvania,Between 80-100k,521,511
+2006,PA,Pennsylvania,Less than 20k,433,429
+2006,PA,Pennsylvania,More than 100k,554,540
+2006,PR,Puerto Rico,Between 20-40k,422,432
+2006,PR,Puerto Rico,Between 40-60k,444,464
+2006,PR,Puerto Rico,Between 60-80k,456,464
+2006,PR,Puerto Rico,Between 80-100k,472,482
+2006,PR,Puerto Rico,Less than 20k,391,407
+2006,PR,Puerto Rico,More than 100k,495,493
+2006,RI,Rhode Island,Between 20-40k,468,466
+2006,RI,Rhode Island,Between 40-60k,494,489
+2006,RI,Rhode Island,Between 60-80k,507,500
+2006,RI,Rhode Island,Between 80-100k,523,517
+2006,RI,Rhode Island,Less than 20k,416,416
+2006,RI,Rhode Island,More than 100k,555,542
+2006,SC,South Carolina,Between 20-40k,468,462
+2006,SC,South Carolina,Between 40-60k,496,487
+2006,SC,South Carolina,Between 60-80k,509,497
+2006,SC,South Carolina,Between 80-100k,526,512
+2006,SC,South Carolina,Less than 20k,435,424
+2006,SC,South Carolina,More than 100k,542,527
+2006,SD,South Dakota,Between 20-40k,559,557
+2006,SD,South Dakota,Between 40-60k,595,573
+2006,SD,South Dakota,Between 60-80k,588,614
+2006,SD,South Dakota,Between 80-100k,644,609
+2006,SD,South Dakota,Less than 20k,273,269
+2006,SD,South Dakota,More than 100k,608,605
+2006,TN,Tennessee,Between 20-40k,533,542
+2006,TN,Tennessee,Between 40-60k,546,558
+2006,TN,Tennessee,Between 60-80k,557,572
+2006,TN,Tennessee,Between 80-100k,580,582
+2006,TN,Tennessee,Less than 20k,515,513
+2006,TN,Tennessee,More than 100k,588,589
+2006,TX,Texas,Between 20-40k,473,458
+2006,TX,Texas,Between 40-60k,501,489
+2006,TX,Texas,Between 60-80k,514,499
+2006,TX,Texas,Between 80-100k,531,516
+2006,TX,Texas,Less than 20k,438,422
+2006,TX,Texas,More than 100k,559,540
+2006,UT,Utah,Between 20-40k,525,542
+2006,UT,Utah,Between 40-60k,566,573
+2006,UT,Utah,Between 60-80k,557,563
+2006,UT,Utah,Between 80-100k,576,586
+2006,UT,Utah,Less than 20k,526,506
+2006,UT,Utah,More than 100k,572,575
+2006,VT,Vermont,Between 20-40k,497,501
+2006,VT,Vermont,Between 40-60k,510,507
+2006,VT,Vermont,Between 60-80k,516,506
+2006,VT,Vermont,Between 80-100k,537,531
+2006,VT,Vermont,Less than 20k,468,466
+2006,VT,Vermont,More than 100k,560,550
+2006,VI,Virgin Islands,Between 20-40k,397,424
+2006,VI,Virgin Islands,Between 40-60k,398,432
+2006,VI,Virgin Islands,Between 60-80k,450,467
+2006,VI,Virgin Islands,Between 80-100k,456,474
+2006,VI,Virgin Islands,Less than 20k,371,386
+2006,VI,Virgin Islands,More than 100k,525,520
+2006,VA,Virginia,Between 20-40k,476,493
+2006,VA,Virginia,Between 40-60k,498,512
+2006,VA,Virginia,Between 60-80k,511,514
+2006,VA,Virginia,Between 80-100k,524,536
+2006,VA,Virginia,Less than 20k,467,486
+2006,VA,Virginia,More than 100k,549,553
+2006,WA,Washington,Between 20-40k,503,501
+2006,WA,Washington,Between 40-60k,519,517
+2006,WA,Washington,Between 60-80k,530,526
+2006,WA,Washington,Between 80-100k,539,534
+2006,WA,Washington,Less than 20k,485,473
+2006,WA,Washington,More than 100k,559,549
+2006,WI,Wisconsin,Between 20-40k,563,556
+2006,WI,Wisconsin,Between 40-60k,589,584
+2006,WI,Wisconsin,Between 60-80k,600,590
+2006,WI,Wisconsin,Between 80-100k,609,598
+2006,WI,Wisconsin,Less than 20k,545,501
+2006,WI,Wisconsin,More than 100k,619,605
+2006,WY,Wyoming,Between 20-40k,537,563
+2006,WY,Wyoming,Between 40-60k,562,549
+2006,WY,Wyoming,Between 60-80k,559,548
+2006,WY,Wyoming,Between 80-100k,546,540
+2006,WY,Wyoming,Less than 20k,244,237
+2006,WY,Wyoming,More than 100k,565,552
+2007,AL,Alabama,Between 20-40k,510,522
+2007,AL,Alabama,Between 40-60k,523,550
+2007,AL,Alabama,Between 60-80k,555,558
+2007,AL,Alabama,Between 80-100k,566,571
+2007,AL,Alabama,Less than 20k,475,482
+2007,AL,Alabama,More than 100k,579,581
+2007,AK,Alaska,Between 20-40k,473,491
+2007,AK,Alaska,Between 40-60k,511,516
+2007,AK,Alaska,Between 60-80k,520,522
+2007,AK,Alaska,Between 80-100k,526,523
+2007,AK,Alaska,Less than 20k,471,478
+2007,AK,Alaska,More than 100k,539,541
+2007,AZ,Arizona,Between 20-40k,493,486
+2007,AZ,Arizona,Between 40-60k,514,508
+2007,AZ,Arizona,Between 60-80k,519,514
+2007,AZ,Arizona,Between 80-100k,533,526
+2007,AZ,Arizona,Less than 20k,494,474
+2007,AZ,Arizona,More than 100k,545,536
+2007,AR,Arkansas,Between 20-40k,540,545
+2007,AR,Arkansas,Between 40-60k,557,571
+2007,AR,Arkansas,Between 60-80k,567,593
+2007,AR,Arkansas,Between 80-100k,572,592
+2007,AR,Arkansas,Less than 20k,504,495
+2007,AR,Arkansas,More than 100k,589,600
+2007,CA,California,Between 20-40k,470,453
+2007,CA,California,Between 40-60k,500,486
+2007,CA,California,Between 60-80k,516,504
+2007,CA,California,Between 80-100k,531,519
+2007,CA,California,Less than 20k,456,431
+2007,CA,California,More than 100k,560,544
+2007,CO,Colorado,Between 20-40k,530,536
+2007,CO,Colorado,Between 40-60k,548,545
+2007,CO,Colorado,Between 60-80k,557,551
+2007,CO,Colorado,Between 80-100k,567,564
+2007,CO,Colorado,Less than 20k,533,518
+2007,CO,Colorado,More than 100k,575,568
+2007,CT,Connecticut,Between 20-40k,451,453
+2007,CT,Connecticut,Between 40-60k,483,487
+2007,CT,Connecticut,Between 60-80k,500,501
+2007,CT,Connecticut,Between 80-100k,514,511
+2007,CT,Connecticut,Less than 20k,428,429
+2007,CT,Connecticut,More than 100k,557,552
+2007,DE,Delaware,Between 20-40k,443,441
+2007,DE,Delaware,Between 40-60k,479,483
+2007,DE,Delaware,Between 60-80k,494,496
+2007,DE,Delaware,Between 80-100k,516,513
+2007,DE,Delaware,Less than 20k,415,421
+2007,DE,Delaware,More than 100k,533,531
+2007,DC,District Of Columbia,Between 20-40k,383,404
+2007,DC,District Of Columbia,Between 40-60k,411,428
+2007,DC,District Of Columbia,Between 60-80k,443,470
+2007,DC,District Of Columbia,Between 80-100k,512,534
+2007,DC,District Of Columbia,Less than 20k,374,390
+2007,DC,District Of Columbia,More than 100k,601,614
+2007,FL,Florida,Between 20-40k,464,468
+2007,FL,Florida,Between 40-60k,488,493
+2007,FL,Florida,Between 60-80k,499,501
+2007,FL,Florida,Between 80-100k,514,513
+2007,FL,Florida,Less than 20k,439,441
+2007,FL,Florida,More than 100k,533,528
+2007,GA,Georgia,Between 20-40k,456,460
+2007,GA,Georgia,Between 40-60k,478,481
+2007,GA,Georgia,Between 60-80k,495,497
+2007,GA,Georgia,Between 80-100k,513,512
+2007,GA,Georgia,Less than 20k,431,429
+2007,GA,Georgia,More than 100k,537,531
+2007,HI,Hawaii,Between 20-40k,469,447
+2007,HI,Hawaii,Between 40-60k,485,470
+2007,HI,Hawaii,Between 60-80k,500,480
+2007,HI,Hawaii,Between 80-100k,519,492
+2007,HI,Hawaii,Less than 20k,461,434
+2007,HI,Hawaii,More than 100k,540,514
+2007,ID,Idaho,Between 20-40k,524,531
+2007,ID,Idaho,Between 40-60k,534,537
+2007,ID,Idaho,Between 60-80k,532,534
+2007,ID,Idaho,Between 80-100k,542,551
+2007,ID,Idaho,Less than 20k,510,510
+2007,ID,Idaho,More than 100k,555,549
+2007,IL,Illinois,Between 20-40k,571,551
+2007,IL,Illinois,Between 40-60k,585,575
+2007,IL,Illinois,Between 60-80k,598,583
+2007,IL,Illinois,Between 80-100k,612,594
+2007,IL,Illinois,Less than 20k,565,539
+2007,IL,Illinois,More than 100k,629,610
+2007,IN,Indiana,Between 20-40k,478,472
+2007,IN,Indiana,Between 40-60k,498,488
+2007,IN,Indiana,Between 60-80k,507,496
+2007,IN,Indiana,Between 80-100k,519,505
+2007,IN,Indiana,Less than 20k,454,449
+2007,IN,Indiana,More than 100k,539,524
+2007,IA,Iowa,Between 20-40k,578,573
+2007,IA,Iowa,Between 40-60k,606,599
+2007,IA,Iowa,Between 60-80k,618,620
+2007,IA,Iowa,Between 80-100k,630,626
+2007,IA,Iowa,Less than 20k,554,528
+2007,IA,Iowa,More than 100k,625,623
+2007,KS,Kansas,Between 20-40k,573,560
+2007,KS,Kansas,Between 40-60k,583,584
+2007,KS,Kansas,Between 60-80k,590,587
+2007,KS,Kansas,Between 80-100k,596,590
+2007,KS,Kansas,Less than 20k,547,528
+2007,KS,Kansas,More than 100k,595,585
+2007,KY,Kentucky,Between 20-40k,525,532
+2007,KY,Kentucky,Between 40-60k,548,555
+2007,KY,Kentucky,Between 60-80k,568,564
+2007,KY,Kentucky,Between 80-100k,561,563
+2007,KY,Kentucky,Less than 20k,536,531
+2007,KY,Kentucky,More than 100k,581,579
+2007,LA,Louisiana,Between 20-40k,495,505
+2007,LA,Louisiana,Between 40-60k,539,551
+2007,LA,Louisiana,Between 60-80k,572,571
+2007,LA,Louisiana,Between 80-100k,573,582
+2007,LA,Louisiana,Less than 20k,474,467
+2007,LA,Louisiana,More than 100k,592,593
+2007,ME,Maine,Between 20-40k,480,483
+2007,ME,Maine,Between 40-60k,501,508
+2007,ME,Maine,Between 60-80k,511,516
+2007,ME,Maine,Between 80-100k,522,518
+2007,ME,Maine,Less than 20k,451,458
+2007,ME,Maine,More than 100k,540,529
+2007,MD,Maryland,Between 20-40k,446,444
+2007,MD,Maryland,Between 40-60k,478,477
+2007,MD,Maryland,Between 60-80k,499,497
+2007,MD,Maryland,Between 80-100k,519,518
+2007,MD,Maryland,Less than 20k,425,422
+2007,MD,Maryland,More than 100k,551,546
+2007,MA,Massachusetts,Between 20-40k,471,466
+2007,MA,Massachusetts,Between 40-60k,501,494
+2007,MA,Massachusetts,Between 60-80k,511,506
+2007,MA,Massachusetts,Between 80-100k,531,521
+2007,MA,Massachusetts,Less than 20k,451,434
+2007,MA,Massachusetts,More than 100k,566,554
+2007,MI,Michigan,Between 20-40k,511,515
+2007,MI,Michigan,Between 40-60k,550,546
+2007,MI,Michigan,Between 60-80k,570,561
+2007,MI,Michigan,Between 80-100k,583,572
+2007,MI,Michigan,Less than 20k,504,485
+2007,MI,Michigan,More than 100k,603,588
+2007,MN,Minnesota,Between 20-40k,568,553
+2007,MN,Minnesota,Between 40-60k,579,590
+2007,MN,Minnesota,Between 60-80k,597,600
+2007,MN,Minnesota,Between 80-100k,607,597
+2007,MN,Minnesota,Less than 20k,540,495
+2007,MN,Minnesota,More than 100k,620,606
+2007,MS,Mississippi,Between 20-40k,511,534
+2007,MS,Mississippi,Between 40-60k,537,564
+2007,MS,Mississippi,Between 60-80k,570,588
+2007,MS,Mississippi,Between 80-100k,554,581
+2007,MS,Mississippi,Less than 20k,469,478
+2007,MS,Mississippi,More than 100k,580,599
+2007,MO,Missouri,Between 20-40k,541,542
+2007,MO,Missouri,Between 40-60k,576,588
+2007,MO,Missouri,Between 60-80k,579,581
+2007,MO,Missouri,Between 80-100k,611,606
+2007,MO,Missouri,Less than 20k,556,552
+2007,MO,Missouri,More than 100k,610,606
+2007,MT,Montana,Between 20-40k,531,533
+2007,MT,Montana,Between 40-60k,543,537
+2007,MT,Montana,Between 60-80k,545,533
+2007,MT,Montana,Between 80-100k,545,532
+2007,MT,Montana,Less than 20k,510,528
+2007,MT,Montana,More than 100k,557,551
+2007,NE,Nebraska,Between 20-40k,550,528
+2007,NE,Nebraska,Between 40-60k,575,584
+2007,NE,Nebraska,Between 60-80k,580,575
+2007,NE,Nebraska,Between 80-100k,594,581
+2007,NE,Nebraska,Less than 20k,510,506
+2007,NE,Nebraska,More than 100k,601,595
+2007,NV,Nevada,Between 20-40k,475,469
+2007,NV,Nevada,Between 40-60k,499,491
+2007,NV,Nevada,Between 60-80k,496,495
+2007,NV,Nevada,Between 80-100k,517,513
+2007,NV,Nevada,Less than 20k,473,460
+2007,NV,Nevada,More than 100k,520,515
+2007,NH,New Hampshire,Between 20-40k,488,495
+2007,NH,New Hampshire,Between 40-60k,501,499
+2007,NH,New Hampshire,Between 60-80k,505,507
+2007,NH,New Hampshire,Between 80-100k,521,517
+2007,NH,New Hampshire,Less than 20k,482,488
+2007,NH,New Hampshire,More than 100k,542,538
+2007,NJ,New Jersey,Between 20-40k,459,446
+2007,NJ,New Jersey,Between 40-60k,489,476
+2007,NJ,New Jersey,Between 60-80k,502,491
+2007,NJ,New Jersey,Between 80-100k,520,504
+2007,NJ,New Jersey,Less than 20k,434,415
+2007,NJ,New Jersey,More than 100k,554,537
+2007,NM,New Mexico,Between 20-40k,511,513
+2007,NM,New Mexico,Between 40-60k,515,535
+2007,NM,New Mexico,Between 60-80k,531,552
+2007,NM,New Mexico,Between 80-100k,543,557
+2007,NM,New Mexico,Less than 20k,517,497
+2007,NM,New Mexico,More than 100k,569,578
+2007,NY,New York,Between 20-40k,471,460
+2007,NY,New York,Between 40-60k,498,488
+2007,NY,New York,Between 60-80k,513,501
+2007,NY,New York,Between 80-100k,526,513
+2007,NY,New York,Less than 20k,450,425
+2007,NY,New York,More than 100k,559,544
+2007,NC,North Carolina,Between 20-40k,471,456
+2007,NC,North Carolina,Between 40-60k,498,483
+2007,NC,North Carolina,Between 60-80k,515,502
+2007,NC,North Carolina,Between 80-100k,533,516
+2007,NC,North Carolina,Less than 20k,444,429
+2007,NC,North Carolina,More than 100k,551,536
+2007,ND,North Dakota,Between 20-40k,522,545
+2007,ND,North Dakota,Between 40-60k,551,558
+2007,ND,North Dakota,Between 60-80k,569,600
+2007,ND,North Dakota,Between 80-100k,599,581
+2007,ND,North Dakota,Less than 20k,0,0
+2007,ND,North Dakota,More than 100k,617,603
+2007,OH,Ohio,Between 20-40k,493,497
+2007,OH,Ohio,Between 40-60k,521,519
+2007,OH,Ohio,Between 60-80k,537,530
+2007,OH,Ohio,Between 80-100k,549,541
+2007,OH,Ohio,Less than 20k,468,469
+2007,OH,Ohio,More than 100k,569,556
+2007,OK,Oklahoma,Between 20-40k,533,549
+2007,OK,Oklahoma,Between 40-60k,566,580
+2007,OK,Oklahoma,Between 60-80k,571,577
+2007,OK,Oklahoma,Between 80-100k,572,588
+2007,OK,Oklahoma,Less than 20k,524,512
+2007,OK,Oklahoma,More than 100k,586,590
+2007,OR,Oregon,Between 20-40k,498,495
+2007,OR,Oregon,Between 40-60k,516,514
+2007,OR,Oregon,Between 60-80k,526,524
+2007,OR,Oregon,Between 80-100k,531,530
+2007,OR,Oregon,Less than 20k,482,473
+2007,OR,Oregon,More than 100k,551,543
+2007,PA,Pennsylvania,Between 20-40k,464,462
+2007,PA,Pennsylvania,Between 40-60k,489,485
+2007,PA,Pennsylvania,Between 60-80k,502,496
+2007,PA,Pennsylvania,Between 80-100k,516,509
+2007,PA,Pennsylvania,Less than 20k,436,433
+2007,PA,Pennsylvania,More than 100k,547,537
+2007,PR,Puerto Rico,Between 20-40k,412,430
+2007,PR,Puerto Rico,Between 40-60k,436,458
+2007,PR,Puerto Rico,Between 60-80k,449,470
+2007,PR,Puerto Rico,Between 80-100k,469,489
+2007,PR,Puerto Rico,Less than 20k,396,414
+2007,PR,Puerto Rico,More than 100k,496,503
+2007,RI,Rhode Island,Between 20-40k,461,464
+2007,RI,Rhode Island,Between 40-60k,496,490
+2007,RI,Rhode Island,Between 60-80k,501,501
+2007,RI,Rhode Island,Between 80-100k,512,507
+2007,RI,Rhode Island,Less than 20k,422,425
+2007,RI,Rhode Island,More than 100k,546,540
+2007,SC,South Carolina,Between 20-40k,463,456
+2007,SC,South Carolina,Between 40-60k,491,484
+2007,SC,South Carolina,Between 60-80k,505,495
+2007,SC,South Carolina,Between 80-100k,524,514
+2007,SC,South Carolina,Less than 20k,439,432
+2007,SC,South Carolina,More than 100k,534,521
+2007,SD,South Dakota,Between 20-40k,535,565
+2007,SD,South Dakota,Between 40-60k,590,601
+2007,SD,South Dakota,Between 60-80k,590,605
+2007,SD,South Dakota,Between 80-100k,609,591
+2007,SD,South Dakota,Less than 20k,253,269
+2007,SD,South Dakota,More than 100k,596,606
+2007,TN,Tennessee,Between 20-40k,529,535
+2007,TN,Tennessee,Between 40-60k,548,561
+2007,TN,Tennessee,Between 60-80k,559,573
+2007,TN,Tennessee,Between 80-100k,570,574
+2007,TN,Tennessee,Less than 20k,526,526
+2007,TN,Tennessee,More than 100k,583,586
+2007,TX,Texas,Between 20-40k,472,457
+2007,TX,Texas,Between 40-60k,496,483
+2007,TX,Texas,Between 60-80k,511,497
+2007,TX,Texas,Between 80-100k,527,513
+2007,TX,Texas,Less than 20k,446,428
+2007,TX,Texas,More than 100k,549,533
+2007,UT,Utah,Between 20-40k,542,542
+2007,UT,Utah,Between 40-60k,560,560
+2007,UT,Utah,Between 60-80k,565,564
+2007,UT,Utah,Between 80-100k,563,564
+2007,UT,Utah,Less than 20k,544,549
+2007,UT,Utah,More than 100k,563,569
+2007,VT,Vermont,Between 20-40k,488,490
+2007,VT,Vermont,Between 40-60k,509,513
+2007,VT,Vermont,Between 60-80k,519,512
+2007,VT,Vermont,Between 80-100k,522,520
+2007,VT,Vermont,Less than 20k,479,470
+2007,VT,Vermont,More than 100k,558,550
+2007,VI,Virgin Islands,Between 20-40k,387,415
+2007,VI,Virgin Islands,Between 40-60k,398,435
+2007,VI,Virgin Islands,Between 60-80k,458,469
+2007,VI,Virgin Islands,Between 80-100k,468,481
+2007,VI,Virgin Islands,Less than 20k,359,391
+2007,VI,Virgin Islands,More than 100k,493,494
+2007,VA,Virginia,Between 20-40k,461,464
+2007,VA,Virginia,Between 40-60k,489,491
+2007,VA,Virginia,Between 60-80k,504,506
+2007,VA,Virginia,Between 80-100k,522,524
+2007,VA,Virginia,Less than 20k,442,437
+2007,VA,Virginia,More than 100k,548,547
+2007,WA,Washington,Between 20-40k,497,492
+2007,WA,Washington,Between 40-60k,518,516
+2007,WA,Washington,Between 60-80k,526,522
+2007,WA,Washington,Between 80-100k,537,531
+2007,WA,Washington,Less than 20k,479,466
+2007,WA,Washington,More than 100k,552,547
+2007,WV,West Virginia,Between 20-40k,488,498
+2007,WV,West Virginia,Between 40-60k,495,513
+2007,WV,West Virginia,Between 60-80k,511,516
+2007,WV,West Virginia,Between 80-100k,513,519
+2007,WV,West Virginia,Less than 20k,465,482
+2007,WV,West Virginia,More than 100k,530,540
+2007,WI,Wisconsin,Between 20-40k,543,540
+2007,WI,Wisconsin,Between 40-60k,592,584
+2007,WI,Wisconsin,Between 60-80k,600,589
+2007,WI,Wisconsin,Between 80-100k,607,599
+2007,WI,Wisconsin,Less than 20k,530,493
+2007,WI,Wisconsin,More than 100k,616,605
+2007,WY,Wyoming,Between 20-40k,529,556
+2007,WY,Wyoming,Between 40-60k,562,577
+2007,WY,Wyoming,Between 60-80k,582,565
+2007,WY,Wyoming,Between 80-100k,570,567
+2007,WY,Wyoming,Less than 20k,243,262
+2007,WY,Wyoming,More than 100k,593,584
+2008,AL,Alabama,Between 20-40k,543,557
+2008,AL,Alabama,Between 40-60k,560,573
+2008,AL,Alabama,Between 60-80k,571,579
+2008,AL,Alabama,Between 80-100k,575,582
+2008,AL,Alabama,Less than 20k,476,479
+2008,AL,Alabama,More than 100k,608,603
+2008,AK,Alaska,Between 20-40k,519,519
+2008,AK,Alaska,Between 40-60k,528,533
+2008,AK,Alaska,Between 60-80k,538,527
+2008,AK,Alaska,Between 80-100k,531,515
+2008,AK,Alaska,Less than 20k,464,475
+2008,AK,Alaska,More than 100k,542,545
+2008,AZ,Arizona,Between 20-40k,509,506
+2008,AZ,Arizona,Between 40-60k,530,524
+2008,AZ,Arizona,Between 60-80k,540,532
+2008,AZ,Arizona,Between 80-100k,538,529
+2008,AZ,Arizona,Less than 20k,480,472
+2008,AZ,Arizona,More than 100k,553,538
+2008,AR,Arkansas,Between 20-40k,573,570
+2008,AR,Arkansas,Between 40-60k,562,575
+2008,AR,Arkansas,Between 60-80k,561,590
+2008,AR,Arkansas,Between 80-100k,574,592
+2008,AR,Arkansas,Less than 20k,526,527
+2008,AR,Arkansas,More than 100k,595,598
+2008,CA,California,Between 20-40k,500,489
+2008,CA,California,Between 40-60k,529,516
+2008,CA,California,Between 60-80k,539,526
+2008,CA,California,Between 80-100k,545,532
+2008,CA,California,Less than 20k,456,439
+2008,CA,California,More than 100k,565,552
+2008,CO,Colorado,Between 20-40k,555,553
+2008,CO,Colorado,Between 40-60k,567,563
+2008,CO,Colorado,Between 60-80k,571,563
+2008,CO,Colorado,Between 80-100k,578,569
+2008,CO,Colorado,Less than 20k,533,525
+2008,CO,Colorado,More than 100k,583,568
+2008,CT,Connecticut,Between 20-40k,487,490
+2008,CT,Connecticut,Between 40-60k,519,512
+2008,CT,Connecticut,Between 60-80k,536,528
+2008,CT,Connecticut,Between 80-100k,538,536
+2008,CT,Connecticut,Less than 20k,437,438
+2008,CT,Connecticut,More than 100k,574,562
+2008,DE,Delaware,Between 20-40k,481,481
+2008,DE,Delaware,Between 40-60k,511,509
+2008,DE,Delaware,Between 60-80k,527,526
+2008,DE,Delaware,Between 80-100k,536,537
+2008,DE,Delaware,Less than 20k,435,437
+2008,DE,Delaware,More than 100k,573,566
+2008,DC,District Of Columbia,Between 20-40k,425,444
+2008,DC,District Of Columbia,Between 40-60k,510,532
+2008,DC,District Of Columbia,Between 60-80k,542,548
+2008,DC,District Of Columbia,Between 80-100k,542,560
+2008,DC,District Of Columbia,Less than 20k,371,385
+2008,DC,District Of Columbia,More than 100k,623,633
+2008,FL,Florida,Between 20-40k,493,495
+2008,FL,Florida,Between 40-60k,517,513
+2008,FL,Florida,Between 60-80k,526,520
+2008,FL,Florida,Between 80-100k,527,523
+2008,FL,Florida,Less than 20k,449,452
+2008,FL,Florida,More than 100k,551,542
+2008,GA,Georgia,Between 20-40k,482,485
+2008,GA,Georgia,Between 40-60k,510,508
+2008,GA,Georgia,Between 60-80k,525,519
+2008,GA,Georgia,Between 80-100k,532,525
+2008,GA,Georgia,Less than 20k,439,439
+2008,GA,Georgia,More than 100k,552,545
+2008,HI,Hawaii,Between 20-40k,485,470
+2008,HI,Hawaii,Between 40-60k,509,487
+2008,HI,Hawaii,Between 60-80k,523,494
+2008,HI,Hawaii,Between 80-100k,518,511
+2008,HI,Hawaii,Less than 20k,457,439
+2008,HI,Hawaii,More than 100k,544,518
+2008,ID,Idaho,Between 20-40k,532,535
+2008,ID,Idaho,Between 40-60k,549,543
+2008,ID,Idaho,Between 60-80k,562,553
+2008,ID,Idaho,Between 80-100k,549,548
+2008,ID,Idaho,Less than 20k,513,516
+2008,ID,Idaho,More than 100k,551,551
+2008,IL,Illinois,Between 20-40k,585,570
+2008,IL,Illinois,Between 40-60k,608,591
+2008,IL,Illinois,Between 60-80k,616,598
+2008,IL,Illinois,Between 80-100k,617,598
+2008,IL,Illinois,Less than 20k,523,505
+2008,IL,Illinois,More than 100k,624,602
+2008,IN,Indiana,Between 20-40k,501,491
+2008,IN,Indiana,Between 40-60k,524,507
+2008,IN,Indiana,Between 60-80k,534,517
+2008,IN,Indiana,Between 80-100k,540,527
+2008,IN,Indiana,Less than 20k,465,459
+2008,IN,Indiana,More than 100k,553,539
+2008,IA,Iowa,Between 20-40k,600,591
+2008,IA,Iowa,Between 40-60k,623,612
+2008,IA,Iowa,Between 60-80k,630,633
+2008,IA,Iowa,Between 80-100k,646,642
+2008,IA,Iowa,Less than 20k,573,544
+2008,IA,Iowa,More than 100k,621,625
+2008,KS,Kansas,Between 20-40k,576,571
+2008,KS,Kansas,Between 40-60k,590,585
+2008,KS,Kansas,Between 60-80k,591,584
+2008,KS,Kansas,Between 80-100k,598,590
+2008,KS,Kansas,Less than 20k,550,544
+2008,KS,Kansas,More than 100k,608,597
+2008,KY,Kentucky,Between 20-40k,560,562
+2008,KY,Kentucky,Between 40-60k,571,567
+2008,KY,Kentucky,Between 60-80k,577,578
+2008,KY,Kentucky,Between 80-100k,573,577
+2008,KY,Kentucky,Less than 20k,526,526
+2008,KY,Kentucky,More than 100k,582,578
+2008,LA,Louisiana,Between 20-40k,552,562
+2008,LA,Louisiana,Between 40-60k,567,570
+2008,LA,Louisiana,Between 60-80k,578,577
+2008,LA,Louisiana,Between 80-100k,600,592
+2008,LA,Louisiana,Less than 20k,500,495
+2008,LA,Louisiana,More than 100k,599,593
+2008,ME,Maine,Between 20-40k,495,497
+2008,ME,Maine,Between 40-60k,520,513
+2008,ME,Maine,Between 60-80k,538,525
+2008,ME,Maine,Between 80-100k,509,506
+2008,ME,Maine,Less than 20k,454,461
+2008,ME,Maine,More than 100k,545,547
+2008,MD,Maryland,Between 20-40k,481,479
+2008,MD,Maryland,Between 40-60k,519,515
+2008,MD,Maryland,Between 60-80k,534,526
+2008,MD,Maryland,Between 80-100k,542,536
+2008,MD,Maryland,Less than 20k,431,429
+2008,MD,Maryland,More than 100k,572,559
+2008,MA,Massachusetts,Between 20-40k,503,496
+2008,MA,Massachusetts,Between 40-60k,529,517
+2008,MA,Massachusetts,Between 60-80k,542,532
+2008,MA,Massachusetts,Between 80-100k,548,539
+2008,MA,Massachusetts,Less than 20k,462,445
+2008,MA,Massachusetts,More than 100k,583,570
+2008,MI,Michigan,Between 20-40k,576,570
+2008,MI,Michigan,Between 40-60k,601,580
+2008,MI,Michigan,Between 60-80k,602,587
+2008,MI,Michigan,Between 80-100k,611,597
+2008,MI,Michigan,Less than 20k,542,524
+2008,MI,Michigan,More than 100k,617,600
+2008,MN,Minnesota,Between 20-40k,591,587
+2008,MN,Minnesota,Between 40-60k,604,596
+2008,MN,Minnesota,Between 60-80k,616,604
+2008,MN,Minnesota,Between 80-100k,617,600
+2008,MN,Minnesota,Less than 20k,577,542
+2008,MN,Minnesota,More than 100k,623,608
+2008,MS,Mississippi,Between 20-40k,535,564
+2008,MS,Mississippi,Between 40-60k,564,573
+2008,MS,Mississippi,Between 60-80k,588,601
+2008,MS,Mississippi,Between 80-100k,556,557
+2008,MS,Mississippi,Less than 20k,493,515
+2008,MS,Mississippi,More than 100k,585,601
+2008,MO,Missouri,Between 20-40k,586,588
+2008,MO,Missouri,Between 40-60k,595,591
+2008,MO,Missouri,Between 60-80k,609,600
+2008,MO,Missouri,Between 80-100k,610,607
+2008,MO,Missouri,Less than 20k,542,528
+2008,MO,Missouri,More than 100k,609,599
+2008,MT,Montana,Between 20-40k,542,537
+2008,MT,Montana,Between 40-60k,555,547
+2008,MT,Montana,Between 60-80k,541,544
+2008,MT,Montana,Between 80-100k,576,546
+2008,MT,Montana,Less than 20k,524,514
+2008,MT,Montana,More than 100k,562,540
+2008,NE,Nebraska,Between 20-40k,564,568
+2008,NE,Nebraska,Between 40-60k,597,584
+2008,NE,Nebraska,Between 60-80k,612,613
+2008,NE,Nebraska,Between 80-100k,599,584
+2008,NE,Nebraska,Less than 20k,538,525
+2008,NE,Nebraska,More than 100k,620,607
+2008,NV,Nevada,Between 20-40k,495,487
+2008,NV,Nevada,Between 40-60k,516,508
+2008,NV,Nevada,Between 60-80k,518,508
+2008,NV,Nevada,Between 80-100k,512,513
+2008,NV,Nevada,Less than 20k,467,461
+2008,NV,Nevada,More than 100k,538,533
+2008,NH,New Hampshire,Between 20-40k,505,504
+2008,NH,New Hampshire,Between 40-60k,522,517
+2008,NH,New Hampshire,Between 60-80k,536,529
+2008,NH,New Hampshire,Between 80-100k,537,540
+2008,NH,New Hampshire,Less than 20k,478,484
+2008,NH,New Hampshire,More than 100k,564,548
+2008,NJ,New Jersey,Between 20-40k,492,478
+2008,NJ,New Jersey,Between 40-60k,521,504
+2008,NJ,New Jersey,Between 60-80k,534,517
+2008,NJ,New Jersey,Between 80-100k,547,525
+2008,NJ,New Jersey,Less than 20k,442,423
+2008,NJ,New Jersey,More than 100k,574,552
+2008,NM,New Mexico,Between 20-40k,522,539
+2008,NM,New Mexico,Between 40-60k,547,559
+2008,NM,New Mexico,Between 60-80k,573,574
+2008,NM,New Mexico,Between 80-100k,558,578
+2008,NM,New Mexico,Less than 20k,514,510
+2008,NM,New Mexico,More than 100k,581,586
+2008,NY,New York,Between 20-40k,497,486
+2008,NY,New York,Between 40-60k,523,507
+2008,NY,New York,Between 60-80k,533,515
+2008,NY,New York,Between 80-100k,539,523
+2008,NY,New York,Less than 20k,455,437
+2008,NY,New York,More than 100k,570,550
+2008,NC,North Carolina,Between 20-40k,504,487
+2008,NC,North Carolina,Between 40-60k,530,514
+2008,NC,North Carolina,Between 60-80k,543,525
+2008,NC,North Carolina,Between 80-100k,551,534
+2008,NC,North Carolina,Less than 20k,454,441
+2008,NC,North Carolina,More than 100k,568,551
+2008,ND,North Dakota,Between 20-40k,590,594
+2008,ND,North Dakota,Between 40-60k,603,618
+2008,ND,North Dakota,Between 60-80k,551,570
+2008,ND,North Dakota,Between 80-100k,570,596
+2008,ND,North Dakota,Less than 20k,275,291
+2008,ND,North Dakota,More than 100k,574,594
+2008,OH,Ohio,Between 20-40k,528,523
+2008,OH,Ohio,Between 40-60k,551,538
+2008,OH,Ohio,Between 60-80k,559,545
+2008,OH,Ohio,Between 80-100k,562,547
+2008,OH,Ohio,Less than 20k,475,474
+2008,OH,Ohio,More than 100k,574,559
+2008,OK,Oklahoma,Between 20-40k,556,565
+2008,OK,Oklahoma,Between 40-60k,578,583
+2008,OK,Oklahoma,Between 60-80k,560,560
+2008,OK,Oklahoma,Between 80-100k,587,585
+2008,OK,Oklahoma,Less than 20k,546,533
+2008,OK,Oklahoma,More than 100k,598,594
+2008,OR,Oregon,Between 20-40k,520,520
+2008,OR,Oregon,Between 40-60k,539,532
+2008,OR,Oregon,Between 60-80k,543,538
+2008,OR,Oregon,Between 80-100k,546,538
+2008,OR,Oregon,Less than 20k,484,481
+2008,OR,Oregon,More than 100k,557,548
+2008,PA,Pennsylvania,Between 20-40k,494,489
+2008,PA,Pennsylvania,Between 40-60k,518,509
+2008,PA,Pennsylvania,Between 60-80k,534,523
+2008,PA,Pennsylvania,Between 80-100k,540,531
+2008,PA,Pennsylvania,Less than 20k,450,447
+2008,PA,Pennsylvania,More than 100k,565,550
+2008,PR,Puerto Rico,Between 20-40k,450,453
+2008,PR,Puerto Rico,Between 40-60k,485,484
+2008,PR,Puerto Rico,Between 60-80k,469,476
+2008,PR,Puerto Rico,Between 80-100k,481,498
+2008,PR,Puerto Rico,Less than 20k,411,414
+2008,PR,Puerto Rico,More than 100k,508,496
+2008,RI,Rhode Island,Between 20-40k,487,488
+2008,RI,Rhode Island,Between 40-60k,522,515
+2008,RI,Rhode Island,Between 60-80k,531,527
+2008,RI,Rhode Island,Between 80-100k,546,540
+2008,RI,Rhode Island,Less than 20k,438,436
+2008,RI,Rhode Island,More than 100k,567,559
+2008,SC,South Carolina,Between 20-40k,495,486
+2008,SC,South Carolina,Between 40-60k,522,510
+2008,SC,South Carolina,Between 60-80k,529,516
+2008,SC,South Carolina,Between 80-100k,529,514
+2008,SC,South Carolina,Less than 20k,442,434
+2008,SC,South Carolina,More than 100k,540,534
+2008,SD,South Dakota,Between 20-40k,603,609
+2008,SD,South Dakota,Between 40-60k,623,628
+2008,SD,South Dakota,Between 60-80k,568,605
+2008,SD,South Dakota,Between 80-100k,586,609
+2008,SD,South Dakota,Less than 20k,512,532
+2008,SD,South Dakota,More than 100k,584,608
+2008,TN,Tennessee,Between 20-40k,554,562
+2008,TN,Tennessee,Between 40-60k,570,576
+2008,TN,Tennessee,Between 60-80k,577,583
+2008,TN,Tennessee,Between 80-100k,579,579
+2008,TN,Tennessee,Less than 20k,515,522
+2008,TN,Tennessee,More than 100k,583,576
+2008,TX,Texas,Between 20-40k,499,486
+2008,TX,Texas,Between 40-60k,529,512
+2008,TX,Texas,Between 60-80k,543,526
+2008,TX,Texas,Between 80-100k,548,531
+2008,TX,Texas,Less than 20k,454,437
+2008,TX,Texas,More than 100k,566,546
+2008,UT,Utah,Between 20-40k,555,561
+2008,UT,Utah,Between 40-60k,567,570
+2008,UT,Utah,Between 60-80k,548,560
+2008,UT,Utah,Between 80-100k,578,573
+2008,UT,Utah,Less than 20k,498,497
+2008,UT,Utah,More than 100k,549,564
+2008,VT,Vermont,Between 20-40k,518,514
+2008,VT,Vermont,Between 40-60k,535,527
+2008,VT,Vermont,Between 60-80k,561,552
+2008,VT,Vermont,Between 80-100k,553,531
+2008,VT,Vermont,Less than 20k,487,490
+2008,VT,Vermont,More than 100k,585,562
+2008,VI,Virgin Islands,Between 20-40k,400,420
+2008,VI,Virgin Islands,Between 40-60k,463,496
+2008,VI,Virgin Islands,Between 60-80k,249,232
+2008,VI,Virgin Islands,Between 80-100k,490,542
+2008,VI,Virgin Islands,Less than 20k,362,390
+2008,VI,Virgin Islands,More than 100k,0,0
+2008,VA,Virginia,Between 20-40k,492,494
+2008,VA,Virginia,Between 40-60k,521,521
+2008,VA,Virginia,Between 60-80k,540,541
+2008,VA,Virginia,Between 80-100k,548,547
+2008,VA,Virginia,Less than 20k,449,447
+2008,VA,Virginia,More than 100k,569,562
+2008,WA,Washington,Between 20-40k,521,518
+2008,WA,Washington,Between 40-60k,541,534
+2008,WA,Washington,Between 60-80k,548,542
+2008,WA,Washington,Between 80-100k,557,548
+2008,WA,Washington,Less than 20k,485,472
+2008,WA,Washington,More than 100k,570,561
+2008,WV,West Virginia,Between 20-40k,491,502
+2008,WV,West Virginia,Between 40-60k,510,517
+2008,WV,West Virginia,Between 60-80k,518,527
+2008,WV,West Virginia,Between 80-100k,522,521
+2008,WV,West Virginia,Less than 20k,477,490
+2008,WV,West Virginia,More than 100k,532,543
+2008,WI,Wisconsin,Between 20-40k,585,573
+2008,WI,Wisconsin,Between 40-60k,617,597
+2008,WI,Wisconsin,Between 60-80k,620,606
+2008,WI,Wisconsin,Between 80-100k,616,590
+2008,WI,Wisconsin,Less than 20k,541,525
+2008,WI,Wisconsin,More than 100k,621,603
+2008,WY,Wyoming,Between 20-40k,568,550
+2008,WY,Wyoming,Between 40-60k,595,604
+2008,WY,Wyoming,Between 60-80k,553,579
+2008,WY,Wyoming,Between 80-100k,548,514
+2008,WY,Wyoming,Less than 20k,521,519
+2008,WY,Wyoming,More than 100k,568,581
+2009,AL,Alabama,Between 20-40k,533,541
+2009,AL,Alabama,Between 40-60k,560,564
+2009,AL,Alabama,Between 60-80k,565,567
+2009,AL,Alabama,Between 80-100k,585,583
+2009,AL,Alabama,Less than 20k,468,489
+2009,AL,Alabama,More than 100k,596,590
+2009,AK,Alaska,Between 20-40k,533,541
+2009,AK,Alaska,Between 40-60k,560,564
+2009,AK,Alaska,Between 60-80k,565,567
+2009,AK,Alaska,Between 80-100k,585,583
+2009,AK,Alaska,Less than 20k,468,489
+2009,AK,Alaska,More than 100k,596,590
+2009,AZ,Arizona,Between 20-40k,508,507
+2009,AZ,Arizona,Between 40-60k,530,524
+2009,AZ,Arizona,Between 60-80k,544,537
+2009,AZ,Arizona,Between 80-100k,547,537
+2009,AZ,Arizona,Less than 20k,478,474
+2009,AZ,Arizona,More than 100k,561,552
+2009,AR,Arkansas,Between 20-40k,565,565
+2009,AR,Arkansas,Between 40-60k,575,584
+2009,AR,Arkansas,Between 60-80k,593,598
+2009,AR,Arkansas,Between 80-100k,581,587
+2009,AR,Arkansas,Less than 20k,528,519
+2009,AR,Arkansas,More than 100k,605,593
+2009,CA,California,Between 20-40k,504,494
+2009,CA,California,Between 40-60k,537,525
+2009,CA,California,Between 60-80k,549,535
+2009,CA,California,Between 80-100k,555,543
+2009,CA,California,Less than 20k,458,444
+2009,CA,California,More than 100k,581,565
+2009,CO,Colorado,Between 20-40k,557,554
+2009,CO,Colorado,Between 40-60k,573,570
+2009,CO,Colorado,Between 60-80k,588,576
+2009,CO,Colorado,Between 80-100k,582,572
+2009,CO,Colorado,Less than 20k,526,519
+2009,CO,Colorado,More than 100k,591,580
+2009,CT,Connecticut,Between 20-40k,489,489
+2009,CT,Connecticut,Between 40-60k,519,516
+2009,CT,Connecticut,Between 60-80k,537,529
+2009,CT,Connecticut,Between 80-100k,544,539
+2009,CT,Connecticut,Less than 20k,436,437
+2009,CT,Connecticut,More than 100k,590,575
+2009,DE,Delaware,Between 20-40k,482,480
+2009,DE,Delaware,Between 40-60k,512,511
+2009,DE,Delaware,Between 60-80k,527,519
+2009,DE,Delaware,Between 80-100k,530,539
+2009,DE,Delaware,Less than 20k,440,437
+2009,DE,Delaware,More than 100k,576,563
+2009,DC,District Of Columbia,Between 20-40k,418,441
+2009,DC,District Of Columbia,Between 40-60k,484,508
+2009,DC,District Of Columbia,Between 60-80k,534,551
+2009,DC,District Of Columbia,Between 80-100k,591,611
+2009,DC,District Of Columbia,Less than 20k,373,384
+2009,DC,District Of Columbia,More than 100k,614,632
+2009,FL,Florida,Between 20-40k,498,499
+2009,FL,Florida,Between 40-60k,520,517
+2009,FL,Florida,Between 60-80k,528,524
+2009,FL,Florida,Between 80-100k,534,531
+2009,FL,Florida,Less than 20k,450,453
+2009,FL,Florida,More than 100k,553,547
+2009,GA,Georgia,Between 20-40k,482,484
+2009,GA,Georgia,Between 40-60k,513,512
+2009,GA,Georgia,Between 60-80k,531,525
+2009,GA,Georgia,Between 80-100k,539,532
+2009,GA,Georgia,Less than 20k,437,438
+2009,GA,Georgia,More than 100k,563,553
+2009,HI,Hawaii,Between 20-40k,485,467
+2009,HI,Hawaii,Between 40-60k,516,491
+2009,HI,Hawaii,Between 60-80k,530,500
+2009,HI,Hawaii,Between 80-100k,528,499
+2009,HI,Hawaii,Less than 20k,459,440
+2009,HI,Hawaii,More than 100k,549,524
+2009,ID,Idaho,Between 20-40k,531,537
+2009,ID,Idaho,Between 40-60k,548,549
+2009,ID,Idaho,Between 60-80k,560,557
+2009,ID,Idaho,Between 80-100k,556,548
+2009,ID,Idaho,Less than 20k,521,517
+2009,ID,Idaho,More than 100k,565,556
+2009,IL,Illinois,Between 20-40k,582,569
+2009,IL,Illinois,Between 40-60k,613,598
+2009,IL,Illinois,Between 60-80k,614,602
+2009,IL,Illinois,Between 80-100k,621,608
+2009,IL,Illinois,Less than 20k,532,510
+2009,IL,Illinois,More than 100k,627,609
+2009,IN,Indiana,Between 20-40k,500,489
+2009,IN,Indiana,Between 40-60k,522,506
+2009,IN,Indiana,Between 60-80k,537,520
+2009,IN,Indiana,Between 80-100k,543,530
+2009,IN,Indiana,Less than 20k,462,458
+2009,IN,Indiana,More than 100k,561,545
+2009,IA,Iowa,Between 20-40k,606,608
+2009,IA,Iowa,Between 40-60k,622,614
+2009,IA,Iowa,Between 60-80k,617,628
+2009,IA,Iowa,Between 80-100k,621,614
+2009,IA,Iowa,Less than 20k,575,547
+2009,IA,Iowa,More than 100k,624,619
+2009,KS,Kansas,Between 20-40k,573,576
+2009,KS,Kansas,Between 40-60k,600,593
+2009,KS,Kansas,Between 60-80k,586,589
+2009,KS,Kansas,Between 80-100k,592,586
+2009,KS,Kansas,Less than 20k,563,525
+2009,KS,Kansas,More than 100k,610,592
+2009,KY,Kentucky,Between 20-40k,556,563
+2009,KY,Kentucky,Between 40-60k,572,568
+2009,KY,Kentucky,Between 60-80k,588,588
+2009,KY,Kentucky,Between 80-100k,580,584
+2009,KY,Kentucky,Less than 20k,539,532
+2009,KY,Kentucky,More than 100k,587,586
+2009,LA,Louisiana,Between 20-40k,543,550
+2009,LA,Louisiana,Between 40-60k,568,578
+2009,LA,Louisiana,Between 60-80k,573,576
+2009,LA,Louisiana,Between 80-100k,569,578
+2009,LA,Louisiana,Less than 20k,484,485
+2009,LA,Louisiana,More than 100k,595,601
+2009,ME,Maine,Between 20-40k,483,486
+2009,ME,Maine,Between 40-60k,514,507
+2009,ME,Maine,Between 60-80k,521,514
+2009,ME,Maine,Between 80-100k,531,521
+2009,ME,Maine,Less than 20k,442,452
+2009,ME,Maine,More than 100k,547,534
+2009,MD,Maryland,Between 20-40k,482,483
+2009,MD,Maryland,Between 40-60k,523,517
+2009,MD,Maryland,Between 60-80k,537,532
+2009,MD,Maryland,Between 80-100k,552,543
+2009,MD,Maryland,Less than 20k,432,434
+2009,MD,Maryland,More than 100k,580,569
+2009,MA,Massachusetts,Between 20-40k,504,496
+2009,MA,Massachusetts,Between 40-60k,533,522
+2009,MA,Massachusetts,Between 60-80k,553,537
+2009,MA,Massachusetts,Between 80-100k,568,556
+2009,MA,Massachusetts,Less than 20k,463,446
+2009,MA,Massachusetts,More than 100k,595,579
+2009,MI,Michigan,Between 20-40k,581,570
+2009,MI,Michigan,Between 40-60k,608,587
+2009,MI,Michigan,Between 60-80k,608,591
+2009,MI,Michigan,Between 80-100k,622,609
+2009,MI,Michigan,Less than 20k,541,512
+2009,MI,Michigan,More than 100k,617,595
+2009,MN,Minnesota,Between 20-40k,590,581
+2009,MN,Minnesota,Between 40-60k,610,605
+2009,MN,Minnesota,Between 60-80k,618,610
+2009,MN,Minnesota,Between 80-100k,619,611
+2009,MN,Minnesota,Less than 20k,558,518
+2009,MN,Minnesota,More than 100k,628,612
+2009,MS,Mississippi,Between 20-40k,550,569
+2009,MS,Mississippi,Between 40-60k,563,576
+2009,MS,Mississippi,Between 60-80k,564,575
+2009,MS,Mississippi,Between 80-100k,576,586
+2009,MS,Mississippi,Less than 20k,494,496
+2009,MS,Mississippi,More than 100k,602,599
+2009,MO,Missouri,Between 20-40k,586,584
+2009,MO,Missouri,Between 40-60k,600,604
+2009,MO,Missouri,Between 60-80k,616,608
+2009,MO,Missouri,Between 80-100k,617,609
+2009,MO,Missouri,Less than 20k,556,536
+2009,MO,Missouri,More than 100k,620,611
+2009,MT,Montana,Between 20-40k,544,538
+2009,MT,Montana,Between 40-60k,545,542
+2009,MT,Montana,Between 60-80k,549,544
+2009,MT,Montana,Between 80-100k,524,543
+2009,MT,Montana,Less than 20k,518,521
+2009,MT,Montana,More than 100k,585,563
+2009,NE,Nebraska,Between 20-40k,595,592
+2009,NE,Nebraska,Between 40-60k,590,585
+2009,NE,Nebraska,Between 60-80k,606,603
+2009,NE,Nebraska,Between 80-100k,599,595
+2009,NE,Nebraska,Less than 20k,541,524
+2009,NE,Nebraska,More than 100k,611,595
+2009,NV,Nevada,Between 20-40k,499,497
+2009,NV,Nevada,Between 40-60k,517,514
+2009,NV,Nevada,Between 60-80k,516,518
+2009,NV,Nevada,Between 80-100k,536,530
+2009,NV,Nevada,Less than 20k,470,465
+2009,NV,Nevada,More than 100k,538,530
+2009,NH,New Hampshire,Between 20-40k,503,506
+2009,NH,New Hampshire,Between 40-60k,522,520
+2009,NH,New Hampshire,Between 60-80k,537,532
+2009,NH,New Hampshire,Between 80-100k,548,546
+2009,NH,New Hampshire,Less than 20k,481,485
+2009,NH,New Hampshire,More than 100k,577,566
+2009,NJ,New Jersey,Between 20-40k,495,480
+2009,NJ,New Jersey,Between 40-60k,521,505
+2009,NJ,New Jersey,Between 60-80k,538,519
+2009,NJ,New Jersey,Between 80-100k,552,531
+2009,NJ,New Jersey,Less than 20k,444,426
+2009,NJ,New Jersey,More than 100k,580,559
+2009,NM,New Mexico,Between 20-40k,527,534
+2009,NM,New Mexico,Between 40-60k,553,559
+2009,NM,New Mexico,Between 60-80k,570,579
+2009,NM,New Mexico,Between 80-100k,571,587
+2009,NM,New Mexico,Less than 20k,494,494
+2009,NM,New Mexico,More than 100k,587,578
+2009,NY,New York,Between 20-40k,500,486
+2009,NY,New York,Between 40-60k,527,509
+2009,NY,New York,Between 60-80k,538,520
+2009,NY,New York,Between 80-100k,546,527
+2009,NY,New York,Less than 20k,457,436
+2009,NY,New York,More than 100k,583,567
+2009,NC,North Carolina,Between 20-40k,506,490
+2009,NC,North Carolina,Between 40-60k,535,517
+2009,NC,North Carolina,Between 60-80k,551,532
+2009,NC,North Carolina,Between 80-100k,555,540
+2009,NC,North Carolina,Less than 20k,456,441
+2009,NC,North Carolina,More than 100k,580,561
+2009,ND,North Dakota,Between 20-40k,605,600
+2009,ND,North Dakota,Between 40-60k,585,584
+2009,ND,North Dakota,Between 60-80k,579,604
+2009,ND,North Dakota,Between 80-100k,573,611
+2009,ND,North Dakota,Less than 20k,501,526
+2009,ND,North Dakota,More than 100k,627,617
+2009,OH,Ohio,Between 20-40k,528,525
+2009,OH,Ohio,Between 40-60k,555,543
+2009,OH,Ohio,Between 60-80k,557,546
+2009,OH,Ohio,Between 80-100k,573,559
+2009,OH,Ohio,Less than 20k,476,475
+2009,OH,Ohio,More than 100k,588,568
+2009,OK,Oklahoma,Between 20-40k,560,565
+2009,OK,Oklahoma,Between 40-60k,575,587
+2009,OK,Oklahoma,Between 60-80k,580,579
+2009,OK,Oklahoma,Between 80-100k,575,574
+2009,OK,Oklahoma,Less than 20k,534,538
+2009,OK,Oklahoma,More than 100k,588,591
+2009,OR,Oregon,Between 20-40k,516,514
+2009,OR,Oregon,Between 40-60k,537,534
+2009,OR,Oregon,Between 60-80k,554,547
+2009,OR,Oregon,Between 80-100k,553,551
+2009,OR,Oregon,Less than 20k,481,481
+2009,OR,Oregon,More than 100k,569,563
+2009,PA,Pennsylvania,Between 20-40k,493,486
+2009,PA,Pennsylvania,Between 40-60k,521,511
+2009,PA,Pennsylvania,Between 60-80k,536,522
+2009,PA,Pennsylvania,Between 80-100k,547,537
+2009,PA,Pennsylvania,Less than 20k,450,444
+2009,PA,Pennsylvania,More than 100k,573,558
+2009,RI,Rhode Island,Between 20-40k,493,496
+2009,RI,Rhode Island,Between 40-60k,519,516
+2009,RI,Rhode Island,Between 60-80k,529,534
+2009,RI,Rhode Island,Between 80-100k,545,547
+2009,RI,Rhode Island,Less than 20k,440,440
+2009,RI,Rhode Island,More than 100k,569,562
+2009,SC,South Carolina,Between 20-40k,493,484
+2009,SC,South Carolina,Between 40-60k,524,511
+2009,SC,South Carolina,Between 60-80k,539,524
+2009,SC,South Carolina,Between 80-100k,540,521
+2009,SC,South Carolina,Less than 20k,444,435
+2009,SC,South Carolina,More than 100k,553,545
+2009,SD,South Dakota,Between 20-40k,581,571
+2009,SD,South Dakota,Between 40-60k,609,605
+2009,SD,South Dakota,Between 60-80k,276,294
+2009,SD,South Dakota,Between 80-100k,584,616
+2009,SD,South Dakota,Less than 20k,548,564
+2009,SD,South Dakota,More than 100k,603,637
+2009,TN,Tennessee,Between 20-40k,543,562
+2009,TN,Tennessee,Between 40-60k,567,575
+2009,TN,Tennessee,Between 60-80k,589,593
+2009,TN,Tennessee,Between 80-100k,581,590
+2009,TN,Tennessee,Less than 20k,506,508
+2009,TN,Tennessee,More than 100k,592,588
+2009,TX,Texas,Between 20-40k,502,485
+2009,TX,Texas,Between 40-60k,533,514
+2009,TX,Texas,Between 60-80k,547,525
+2009,TX,Texas,Between 80-100k,553,536
+2009,TX,Texas,Less than 20k,458,436
+2009,TX,Texas,More than 100k,574,552
+2009,UT,Utah,Between 20-40k,553,561
+2009,UT,Utah,Between 40-60k,577,583
+2009,UT,Utah,Between 60-80k,566,571
+2009,UT,Utah,Between 80-100k,566,561
+2009,UT,Utah,Less than 20k,517,529
+2009,UT,Utah,More than 100k,562,561
+2009,VT,Vermont,Between 20-40k,508,510
+2009,VT,Vermont,Between 40-60k,536,538
+2009,VT,Vermont,Between 60-80k,542,546
+2009,VT,Vermont,Between 80-100k,570,580
+2009,VT,Vermont,Less than 20k,478,479
+2009,VT,Vermont,More than 100k,557,556
+2009,VA,Virginia,Between 20-40k,490,493
+2009,VA,Virginia,Between 40-60k,524,524
+2009,VA,Virginia,Between 60-80k,541,541
+2009,VA,Virginia,Between 80-100k,549,548
+2009,VA,Virginia,Less than 20k,449,448
+2009,VA,Virginia,More than 100k,575,569
+2009,WA,Washington,Between 20-40k,521,517
+2009,WA,Washington,Between 40-60k,543,536
+2009,WA,Washington,Between 60-80k,554,545
+2009,WA,Washington,Between 80-100k,557,552
+2009,WA,Washington,Less than 20k,479,470
+2009,WA,Washington,More than 100k,571,560
+2009,WV,West Virginia,Between 20-40k,490,505
+2009,WV,West Virginia,Between 40-60k,509,511
+2009,WV,West Virginia,Between 60-80k,521,526
+2009,WV,West Virginia,Between 80-100k,529,533
+2009,WV,West Virginia,Less than 20k,455,476
+2009,WV,West Virginia,More than 100k,572,563
+2009,WI,Wisconsin,Between 20-40k,596,586
+2009,WI,Wisconsin,Between 40-60k,609,599
+2009,WI,Wisconsin,Between 60-80k,619,608
+2009,WI,Wisconsin,Between 80-100k,618,611
+2009,WI,Wisconsin,Less than 20k,558,528
+2009,WI,Wisconsin,More than 100k,629,599
+2009,WY,Wyoming,Between 20-40k,557,563
+2009,WY,Wyoming,Between 40-60k,572,565
+2009,WY,Wyoming,Between 60-80k,534,544
+2009,WY,Wyoming,Between 80-100k,520,526
+2009,WY,Wyoming,Less than 20k,267,263
+2009,WY,Wyoming,More than 100k,599,628
+2010,AL,Alabama,Between 20-40k,490,501
+2010,AL,Alabama,Between 40-60k,516,530
+2010,AL,Alabama,Between 60-80k,534,549
+2010,AL,Alabama,Between 80-100k,563,575
+2010,AL,Alabama,Less than 20k,445,452
+2010,AL,Alabama,More than 100k,581,581
+2010,AK,Alaska,Between 20-40k,485,496
+2010,AK,Alaska,Between 40-60k,500,498
+2010,AK,Alaska,Between 60-80k,508,519
+2010,AK,Alaska,Between 80-100k,516,526
+2010,AK,Alaska,Less than 20k,450,460
+2010,AK,Alaska,More than 100k,545,540
+2010,AZ,Arizona,Between 20-40k,491,487
+2010,AZ,Arizona,Between 40-60k,506,505
+2010,AZ,Arizona,Between 60-80k,523,519
+2010,AZ,Arizona,Between 80-100k,531,525
+2010,AZ,Arizona,Less than 20k,472,463
+2010,AZ,Arizona,More than 100k,553,542
+2010,AR,Arkansas,Between 20-40k,530,523
+2010,AR,Arkansas,Between 40-60k,546,549
+2010,AR,Arkansas,Between 60-80k,562,563
+2010,AR,Arkansas,Between 80-100k,574,578
+2010,AR,Arkansas,Less than 20k,510,489
+2010,AR,Arkansas,More than 100k,591,591
+2010,CA,California,Between 20-40k,477,461
+2010,CA,California,Between 40-60k,501,488
+2010,CA,California,Between 60-80k,520,508
+2010,CA,California,Between 80-100k,537,525
+2010,CA,California,Less than 20k,457,436
+2010,CA,California,More than 100k,563,550
+2010,CO,Colorado,Between 20-40k,532,539
+2010,CO,Colorado,Between 40-60k,550,551
+2010,CO,Colorado,Between 60-80k,558,558
+2010,CO,Colorado,Between 80-100k,574,569
+2010,CO,Colorado,Less than 20k,507,498
+2010,CO,Colorado,More than 100k,586,578
+2010,CT,Connecticut,Between 20-40k,457,458
+2010,CT,Connecticut,Between 40-60k,482,480
+2010,CT,Connecticut,Between 60-80k,498,498
+2010,CT,Connecticut,Between 80-100k,518,514
+2010,CT,Connecticut,Less than 20k,426,424
+2010,CT,Connecticut,More than 100k,551,542
+2010,DE,Delaware,Between 20-40k,449,449
+2010,DE,Delaware,Between 40-60k,476,478
+2010,DE,Delaware,Between 60-80k,493,488
+2010,DE,Delaware,Between 80-100k,506,503
+2010,DE,Delaware,Less than 20k,436,430
+2010,DE,Delaware,More than 100k,535,534
+2010,DC,District Of Columbia,Between 20-40k,399,406
+2010,DC,District Of Columbia,Between 40-60k,413,431
+2010,DC,District Of Columbia,Between 60-80k,441,451
+2010,DC,District Of Columbia,Between 80-100k,505,525
+2010,DC,District Of Columbia,Less than 20k,377,384
+2010,DC,District Of Columbia,More than 100k,566,580
+2010,FL,Florida,Between 20-40k,473,474
+2010,FL,Florida,Between 40-60k,495,496
+2010,FL,Florida,Between 60-80k,508,508
+2010,FL,Florida,Between 80-100k,521,516
+2010,FL,Florida,Less than 20k,441,442
+2010,FL,Florida,More than 100k,541,534
+2010,GA,Georgia,Between 20-40k,454,456
+2010,GA,Georgia,Between 40-60k,476,479
+2010,GA,Georgia,Between 60-80k,493,494
+2010,GA,Georgia,Between 80-100k,511,510
+2010,GA,Georgia,Less than 20k,429,427
+2010,GA,Georgia,More than 100k,540,534
+2010,HI,Hawaii,Between 20-40k,475,460
+2010,HI,Hawaii,Between 40-60k,484,468
+2010,HI,Hawaii,Between 60-80k,495,473
+2010,HI,Hawaii,Between 80-100k,515,492
+2010,HI,Hawaii,Less than 20k,462,441
+2010,HI,Hawaii,More than 100k,550,523
+2010,ID,Idaho,Between 20-40k,515,522
+2010,ID,Idaho,Between 40-60k,529,533
+2010,ID,Idaho,Between 60-80k,542,549
+2010,ID,Idaho,Between 80-100k,556,552
+2010,ID,Idaho,Less than 20k,513,519
+2010,ID,Idaho,More than 100k,566,559
+2010,IL,Illinois,Between 20-40k,529,518
+2010,IL,Illinois,Between 40-60k,571,554
+2010,IL,Illinois,Between 60-80k,584,573
+2010,IL,Illinois,Between 80-100k,610,595
+2010,IL,Illinois,Less than 20k,471,462
+2010,IL,Illinois,More than 100k,629,614
+2010,IN,Indiana,Between 20-40k,476,469
+2010,IN,Indiana,Between 40-60k,495,485
+2010,IN,Indiana,Between 60-80k,508,496
+2010,IN,Indiana,Between 80-100k,519,504
+2010,IN,Indiana,Less than 20k,446,443
+2010,IN,Indiana,More than 100k,545,528
+2010,IA,Iowa,Between 20-40k,548,554
+2010,IA,Iowa,Between 40-60k,625,604
+2010,IA,Iowa,Between 60-80k,594,605
+2010,IA,Iowa,Between 80-100k,631,614
+2010,IA,Iowa,Less than 20k,558,503
+2010,IA,Iowa,More than 100k,627,621
+2010,KS,Kansas,Between 20-40k,556,541
+2010,KS,Kansas,Between 40-60k,585,586
+2010,KS,Kansas,Between 60-80k,566,570
+2010,KS,Kansas,Between 80-100k,615,612
+2010,KS,Kansas,Less than 20k,549,509
+2010,KS,Kansas,More than 100k,618,615
+2010,KY,Kentucky,Between 20-40k,538,531
+2010,KY,Kentucky,Between 40-60k,549,553
+2010,KY,Kentucky,Between 60-80k,560,568
+2010,KY,Kentucky,Between 80-100k,572,578
+2010,KY,Kentucky,Less than 20k,536,524
+2010,KY,Kentucky,More than 100k,587,591
+2010,LA,Louisiana,Between 20-40k,496,502
+2010,LA,Louisiana,Between 40-60k,517,529
+2010,LA,Louisiana,Between 60-80k,527,542
+2010,LA,Louisiana,Between 80-100k,552,568
+2010,LA,Louisiana,Less than 20k,470,461
+2010,LA,Louisiana,More than 100k,575,577
+2010,ME,Maine,Between 20-40k,471,483
+2010,ME,Maine,Between 40-60k,492,495
+2010,ME,Maine,Between 60-80k,507,510
+2010,ME,Maine,Between 80-100k,515,512
+2010,ME,Maine,Less than 20k,434,441
+2010,ME,Maine,More than 100k,539,536
+2010,MD,Maryland,Between 20-40k,456,453
+2010,MD,Maryland,Between 40-60k,477,476
+2010,MD,Maryland,Between 60-80k,501,497
+2010,MD,Maryland,Between 80-100k,516,509
+2010,MD,Maryland,Less than 20k,431,425
+2010,MD,Maryland,More than 100k,549,540
+2010,MA,Massachusetts,Between 20-40k,483,467
+2010,MA,Massachusetts,Between 40-60k,505,492
+2010,MA,Massachusetts,Between 60-80k,516,507
+2010,MA,Massachusetts,Between 80-100k,532,519
+2010,MA,Massachusetts,Less than 20k,453,430
+2010,MA,Massachusetts,More than 100k,565,549
+2010,MI,Michigan,Between 20-40k,546,525
+2010,MI,Michigan,Between 40-60k,576,555
+2010,MI,Michigan,Between 60-80k,591,582
+2010,MI,Michigan,Between 80-100k,602,582
+2010,MI,Michigan,Less than 20k,528,496
+2010,MI,Michigan,More than 100k,621,600
+2010,MN,Minnesota,Between 20-40k,556,545
+2010,MN,Minnesota,Between 40-60k,580,563
+2010,MN,Minnesota,Between 60-80k,579,571
+2010,MN,Minnesota,Between 80-100k,609,607
+2010,MN,Minnesota,Less than 20k,540,504
+2010,MN,Minnesota,More than 100k,619,607
+2010,MS,Mississippi,Between 20-40k,512,525
+2010,MS,Mississippi,Between 40-60k,531,557
+2010,MS,Mississippi,Between 60-80k,538,560
+2010,MS,Mississippi,Between 80-100k,565,587
+2010,MS,Mississippi,Less than 20k,454,464
+2010,MS,Mississippi,More than 100k,582,603
+2010,MO,Missouri,Between 20-40k,538,542
+2010,MO,Missouri,Between 40-60k,570,580
+2010,MO,Missouri,Between 60-80k,574,583
+2010,MO,Missouri,Between 80-100k,591,587
+2010,MO,Missouri,Less than 20k,531,506
+2010,MO,Missouri,More than 100k,608,608
+2010,MT,Montana,Between 20-40k,514,525
+2010,MT,Montana,Between 40-60k,535,530
+2010,MT,Montana,Between 60-80k,541,541
+2010,MT,Montana,Between 80-100k,548,539
+2010,MT,Montana,Less than 20k,507,513
+2010,MT,Montana,More than 100k,559,552
+2010,NE,Nebraska,Between 20-40k,571,571
+2010,NE,Nebraska,Between 40-60k,581,566
+2010,NE,Nebraska,Between 60-80k,594,584
+2010,NE,Nebraska,Between 80-100k,602,597
+2010,NE,Nebraska,Less than 20k,527,541
+2010,NE,Nebraska,More than 100k,604,606
+2010,NV,Nevada,Between 20-40k,477,472
+2010,NV,Nevada,Between 40-60k,498,493
+2010,NV,Nevada,Between 60-80k,501,499
+2010,NV,Nevada,Between 80-100k,512,508
+2010,NV,Nevada,Less than 20k,460,447
+2010,NV,Nevada,More than 100k,526,520
+2010,NH,New Hampshire,Between 20-40k,490,489
+2010,NH,New Hampshire,Between 40-60k,501,503
+2010,NH,New Hampshire,Between 60-80k,513,510
+2010,NH,New Hampshire,Between 80-100k,519,518
+2010,NH,New Hampshire,Less than 20k,475,471
+2010,NH,New Hampshire,More than 100k,553,544
+2010,NJ,New Jersey,Between 20-40k,466,446
+2010,NJ,New Jersey,Between 40-60k,492,474
+2010,NJ,New Jersey,Between 60-80k,505,488
+2010,NJ,New Jersey,Between 80-100k,519,501
+2010,NJ,New Jersey,Less than 20k,437,415
+2010,NJ,New Jersey,More than 100k,551,529
+2010,NM,New Mexico,Between 20-40k,517,524
+2010,NM,New Mexico,Between 40-60k,526,532
+2010,NM,New Mexico,Between 60-80k,532,539
+2010,NM,New Mexico,Between 80-100k,550,566
+2010,NM,New Mexico,Less than 20k,523,491
+2010,NM,New Mexico,More than 100k,576,579
+2010,NY,New York,Between 20-40k,472,455
+2010,NY,New York,Between 40-60k,492,480
+2010,NY,New York,Between 60-80k,506,495
+2010,NY,New York,Between 80-100k,521,506
+2010,NY,New York,Less than 20k,444,419
+2010,NY,New York,More than 100k,551,534
+2010,NC,North Carolina,Between 20-40k,476,460
+2010,NC,North Carolina,Between 40-60k,500,487
+2010,NC,North Carolina,Between 60-80k,516,501
+2010,NC,North Carolina,Between 80-100k,531,515
+2010,NC,North Carolina,Less than 20k,449,432
+2010,NC,North Carolina,More than 100k,558,543
+2010,ND,North Dakota,Between 20-40k,570,557
+2010,ND,North Dakota,Between 40-60k,608,599
+2010,ND,North Dakota,Between 60-80k,619,600
+2010,ND,North Dakota,Between 80-100k,597,589
+2010,ND,North Dakota,Less than 20k,493,508
+2010,ND,North Dakota,More than 100k,576,595
+2010,OH,Ohio,Between 20-40k,496,494
+2010,OH,Ohio,Between 40-60k,522,517
+2010,OH,Ohio,Between 60-80k,540,533
+2010,OH,Ohio,Between 80-100k,548,540
+2010,OH,Ohio,Less than 20k,465,462
+2010,OH,Ohio,More than 100k,572,558
+2010,OK,Oklahoma,Between 20-40k,547,535
+2010,OK,Oklahoma,Between 40-60k,548,559
+2010,OK,Oklahoma,Between 60-80k,555,568
+2010,OK,Oklahoma,Between 80-100k,575,578
+2010,OK,Oklahoma,Less than 20k,516,502
+2010,OK,Oklahoma,More than 100k,583,583
+2010,OR,Oregon,Between 20-40k,498,498
+2010,OR,Oregon,Between 40-60k,512,517
+2010,OR,Oregon,Between 60-80k,523,523
+2010,OR,Oregon,Between 80-100k,536,535
+2010,OR,Oregon,Less than 20k,476,471
+2010,OR,Oregon,More than 100k,557,553
+2010,PA,Pennsylvania,Between 20-40k,466,460
+2010,PA,Pennsylvania,Between 40-60k,489,482
+2010,PA,Pennsylvania,Between 60-80k,502,493
+2010,PA,Pennsylvania,Between 80-100k,515,505
+2010,PA,Pennsylvania,Less than 20k,434,426
+2010,PA,Pennsylvania,More than 100k,546,533
+2010,RI,Rhode Island,Between 20-40k,466,464
+2010,RI,Rhode Island,Between 40-60k,483,485
+2010,RI,Rhode Island,Between 60-80k,498,495
+2010,RI,Rhode Island,Between 80-100k,517,518
+2010,RI,Rhode Island,Less than 20k,422,420
+2010,RI,Rhode Island,More than 100k,542,538
+2010,SC,South Carolina,Between 20-40k,464,452
+2010,SC,South Carolina,Between 40-60k,489,478
+2010,SC,South Carolina,Between 60-80k,499,487
+2010,SC,South Carolina,Between 80-100k,517,506
+2010,SC,South Carolina,Less than 20k,433,423
+2010,SC,South Carolina,More than 100k,543,528
+2010,SD,South Dakota,Between 20-40k,547,559
+2010,SD,South Dakota,Between 40-60k,609,587
+2010,SD,South Dakota,Between 60-80k,609,591
+2010,SD,South Dakota,Between 80-100k,583,618
+2010,SD,South Dakota,Less than 20k,549,510
+2010,SD,South Dakota,More than 100k,589,617
+2010,TN,Tennessee,Between 20-40k,524,539
+2010,TN,Tennessee,Between 40-60k,533,556
+2010,TN,Tennessee,Between 60-80k,567,574
+2010,TN,Tennessee,Between 80-100k,562,578
+2010,TN,Tennessee,Less than 20k,503,504
+2010,TN,Tennessee,More than 100k,588,591
+2010,TX,Texas,Between 20-40k,472,450
+2010,TX,Texas,Between 40-60k,496,478
+2010,TX,Texas,Between 60-80k,510,493
+2010,TX,Texas,Between 80-100k,528,509
+2010,TX,Texas,Less than 20k,446,421
+2010,TX,Texas,More than 100k,556,534
+2010,UT,Utah,Between 20-40k,502,526
+2010,UT,Utah,Between 40-60k,542,554
+2010,UT,Utah,Between 60-80k,556,568
+2010,UT,Utah,Between 80-100k,562,578
+2010,UT,Utah,Less than 20k,530,542
+2010,UT,Utah,More than 100k,575,587
+2010,VT,Vermont,Between 20-40k,491,493
+2010,VT,Vermont,Between 40-60k,512,519
+2010,VT,Vermont,Between 60-80k,528,522
+2010,VT,Vermont,Between 80-100k,532,531
+2010,VT,Vermont,Less than 20k,467,474
+2010,VT,Vermont,More than 100k,559,550
+2010,VA,Virginia,Between 20-40k,463,465
+2010,VA,Virginia,Between 40-60k,488,490
+2010,VA,Virginia,Between 60-80k,501,501
+2010,VA,Virginia,Between 80-100k,519,520
+2010,VA,Virginia,Less than 20k,439,435
+2010,VA,Virginia,More than 100k,551,549
+2010,WA,Washington,Between 20-40k,497,487
+2010,WA,Washington,Between 40-60k,513,511
+2010,WA,Washington,Between 60-80k,526,522
+2010,WA,Washington,Between 80-100k,537,529
+2010,WA,Washington,Less than 20k,473,455
+2010,WA,Washington,More than 100k,561,552
+2010,WV,West Virginia,Between 20-40k,489,499
+2010,WV,West Virginia,Between 40-60k,489,501
+2010,WV,West Virginia,Between 60-80k,506,509
+2010,WV,West Virginia,Between 80-100k,509,520
+2010,WV,West Virginia,Less than 20k,450,467
+2010,WV,West Virginia,More than 100k,535,538
+2010,WI,Wisconsin,Between 20-40k,562,549
+2010,WI,Wisconsin,Between 40-60k,581,580
+2010,WI,Wisconsin,Between 60-80k,595,590
+2010,WI,Wisconsin,Between 80-100k,611,604
+2010,WI,Wisconsin,Less than 20k,543,529
+2010,WI,Wisconsin,More than 100k,615,610
+2010,WY,Wyoming,Between 20-40k,494,524
+2010,WY,Wyoming,Between 40-60k,536,556
+2010,WY,Wyoming,Between 60-80k,584,596
+2010,WY,Wyoming,Between 80-100k,523,545
+2010,WY,Wyoming,Less than 20k,542,539
+2010,WY,Wyoming,More than 100k,575,584
+2011,AL,Alabama,Between 20-40k,474,481
+2011,AL,Alabama,Between 40-60k,509,520
+2011,AL,Alabama,Between 60-80k,531,537
+2011,AL,Alabama,Between 80-100k,545,554
+2011,AL,Alabama,Less than 20k,444,440
+2011,AL,Alabama,More than 100k,576,579
+2011,AK,Alaska,Between 20-40k,478,478
+2011,AK,Alaska,Between 40-60k,499,504
+2011,AK,Alaska,Between 60-80k,510,514
+2011,AK,Alaska,Between 80-100k,515,515
+2011,AK,Alaska,Less than 20k,441,439
+2011,AK,Alaska,More than 100k,531,532
+2011,AZ,Arizona,Between 20-40k,489,485
+2011,AZ,Arizona,Between 40-60k,510,505
+2011,AZ,Arizona,Between 60-80k,521,516
+2011,AZ,Arizona,Between 80-100k,531,524
+2011,AZ,Arizona,Less than 20k,472,465
+2011,AZ,Arizona,More than 100k,552,541
+2011,AR,Arkansas,Between 20-40k,555,537
+2011,AR,Arkansas,Between 40-60k,548,555
+2011,AR,Arkansas,Between 60-80k,569,574
+2011,AR,Arkansas,Between 80-100k,564,566
+2011,AR,Arkansas,Less than 20k,528,487
+2011,AR,Arkansas,More than 100k,594,590
+2011,CA,California,Between 20-40k,480,463
+2011,CA,California,Between 40-60k,503,488
+2011,CA,California,Between 60-80k,519,508
+2011,CA,California,Between 80-100k,537,524
+2011,CA,California,Less than 20k,455,435
+2011,CA,California,More than 100k,564,549
+2011,CO,Colorado,Between 20-40k,539,534
+2011,CO,Colorado,Between 40-60k,554,559
+2011,CO,Colorado,Between 60-80k,561,559
+2011,CO,Colorado,Between 80-100k,574,568
+2011,CO,Colorado,Less than 20k,504,507
+2011,CO,Colorado,More than 100k,582,576
+2011,CT,Connecticut,Between 20-40k,460,459
+2011,CT,Connecticut,Between 40-60k,482,482
+2011,CT,Connecticut,Between 60-80k,497,497
+2011,CT,Connecticut,Between 80-100k,512,511
+2011,CT,Connecticut,Less than 20k,425,428
+2011,CT,Connecticut,More than 100k,551,541
+2011,DE,Delaware,Between 20-40k,453,449
+2011,DE,Delaware,Between 40-60k,474,473
+2011,DE,Delaware,Between 60-80k,488,485
+2011,DE,Delaware,Between 80-100k,503,500
+2011,DE,Delaware,Less than 20k,417,409
+2011,DE,Delaware,More than 100k,538,536
+2011,DC,District Of Columbia,Between 20-40k,407,414
+2011,DC,District Of Columbia,Between 40-60k,425,436
+2011,DC,District Of Columbia,Between 60-80k,461,490
+2011,DC,District Of Columbia,Between 80-100k,478,498
+2011,DC,District Of Columbia,Less than 20k,381,388
+2011,DC,District Of Columbia,More than 100k,559,572
+2011,FL,Florida,Between 20-40k,467,468
+2011,FL,Florida,Between 40-60k,488,489
+2011,FL,Florida,Between 60-80k,503,502
+2011,FL,Florida,Between 80-100k,517,514
+2011,FL,Florida,Less than 20k,435,434
+2011,FL,Florida,More than 100k,536,530
+2011,GA,Georgia,Between 20-40k,452,451
+2011,GA,Georgia,Between 40-60k,472,475
+2011,GA,Georgia,Between 60-80k,486,487
+2011,GA,Georgia,Between 80-100k,502,502
+2011,GA,Georgia,Less than 20k,426,423
+2011,GA,Georgia,More than 100k,534,529
+2011,HI,Hawaii,Between 20-40k,468,445
+2011,HI,Hawaii,Between 40-60k,479,466
+2011,HI,Hawaii,Between 60-80k,491,468
+2011,HI,Hawaii,Between 80-100k,512,486
+2011,HI,Hawaii,Less than 20k,448,430
+2011,HI,Hawaii,More than 100k,550,518
+2011,ID,Idaho,Between 20-40k,528,528
+2011,ID,Idaho,Between 40-60k,517,529
+2011,ID,Idaho,Between 60-80k,546,546
+2011,ID,Idaho,Between 80-100k,543,548
+2011,ID,Idaho,Less than 20k,497,523
+2011,ID,Idaho,More than 100k,560,558
+2011,IL,Illinois,Between 20-40k,565,545
+2011,IL,Illinois,Between 40-60k,584,571
+2011,IL,Illinois,Between 60-80k,593,587
+2011,IL,Illinois,Between 80-100k,608,595
+2011,IL,Illinois,Less than 20k,564,532
+2011,IL,Illinois,More than 100k,629,610
+2011,IN,Indiana,Between 20-40k,471,467
+2011,IN,Indiana,Between 40-60k,490,483
+2011,IN,Indiana,Between 60-80k,501,493
+2011,IN,Indiana,Between 80-100k,515,502
+2011,IN,Indiana,Less than 20k,445,441
+2011,IN,Indiana,More than 100k,542,529
+2011,IA,Iowa,Between 20-40k,544,545
+2011,IA,Iowa,Between 40-60k,594,576
+2011,IA,Iowa,Between 60-80k,578,570
+2011,IA,Iowa,Between 80-100k,605,612
+2011,IA,Iowa,Less than 20k,589,508
+2011,IA,Iowa,More than 100k,626,617
+2011,KS,Kansas,Between 20-40k,551,541
+2011,KS,Kansas,Between 40-60k,577,570
+2011,KS,Kansas,Between 60-80k,567,572
+2011,KS,Kansas,Between 80-100k,604,599
+2011,KS,Kansas,Less than 20k,546,516
+2011,KS,Kansas,More than 100k,604,592
+2011,KY,Kentucky,Between 20-40k,531,532
+2011,KY,Kentucky,Between 40-60k,545,558
+2011,KY,Kentucky,Between 60-80k,556,569
+2011,KY,Kentucky,Between 80-100k,576,586
+2011,KY,Kentucky,Less than 20k,506,514
+2011,KY,Kentucky,More than 100k,585,585
+2011,LA,Louisiana,Between 20-40k,488,497
+2011,LA,Louisiana,Between 40-60k,525,534
+2011,LA,Louisiana,Between 60-80k,539,553
+2011,LA,Louisiana,Between 80-100k,538,542
+2011,LA,Louisiana,Less than 20k,453,456
+2011,LA,Louisiana,More than 100k,584,582
+2011,ME,Maine,Between 20-40k,486,496
+2011,ME,Maine,Between 40-60k,511,515
+2011,ME,Maine,Between 60-80k,527,533
+2011,ME,Maine,Between 80-100k,531,522
+2011,ME,Maine,Less than 20k,467,461
+2011,ME,Maine,More than 100k,549,536
+2011,MD,Maryland,Between 20-40k,457,454
+2011,MD,Maryland,Between 40-60k,478,476
+2011,MD,Maryland,Between 60-80k,494,491
+2011,MD,Maryland,Between 80-100k,511,508
+2011,MD,Maryland,Less than 20k,427,425
+2011,MD,Maryland,More than 100k,546,540
+2011,MA,Massachusetts,Between 20-40k,483,468
+2011,MA,Massachusetts,Between 40-60k,504,492
+2011,MA,Massachusetts,Between 60-80k,516,504
+2011,MA,Massachusetts,Between 80-100k,530,516
+2011,MA,Massachusetts,Less than 20k,455,432
+2011,MA,Massachusetts,More than 100k,566,551
+2011,MI,Michigan,Between 20-40k,549,535
+2011,MI,Michigan,Between 40-60k,565,552
+2011,MI,Michigan,Between 60-80k,590,576
+2011,MI,Michigan,Between 80-100k,609,589
+2011,MI,Michigan,Less than 20k,528,483
+2011,MI,Michigan,More than 100k,626,603
+2011,MN,Minnesota,Between 20-40k,548,541
+2011,MN,Minnesota,Between 40-60k,575,570
+2011,MN,Minnesota,Between 60-80k,595,585
+2011,MN,Minnesota,Between 80-100k,613,604
+2011,MN,Minnesota,Less than 20k,548,515
+2011,MN,Minnesota,More than 100k,621,607
+2011,MS,Mississippi,Between 20-40k,497,520
+2011,MS,Mississippi,Between 40-60k,530,555
+2011,MS,Mississippi,Between 60-80k,547,576
+2011,MS,Mississippi,Between 80-100k,569,580
+2011,MS,Mississippi,Less than 20k,427,445
+2011,MS,Mississippi,More than 100k,576,595
+2011,MO,Missouri,Between 20-40k,540,534
+2011,MO,Missouri,Between 40-60k,549,548
+2011,MO,Missouri,Between 60-80k,571,580
+2011,MO,Missouri,Between 80-100k,598,596
+2011,MO,Missouri,Less than 20k,498,490
+2011,MO,Missouri,More than 100k,613,615
+2011,MT,Montana,Between 20-40k,528,527
+2011,MT,Montana,Between 40-60k,526,529
+2011,MT,Montana,Between 60-80k,540,535
+2011,MT,Montana,Between 80-100k,532,530
+2011,MT,Montana,Less than 20k,504,513
+2011,MT,Montana,More than 100k,557,555
+2011,NE,Nebraska,Between 20-40k,560,561
+2011,NE,Nebraska,Between 40-60k,565,559
+2011,NE,Nebraska,Between 60-80k,571,556
+2011,NE,Nebraska,Between 80-100k,614,606
+2011,NE,Nebraska,Less than 20k,501,492
+2011,NE,Nebraska,More than 100k,602,606
+2011,NV,Nevada,Between 20-40k,473,473
+2011,NV,Nevada,Between 40-60k,486,482
+2011,NV,Nevada,Between 60-80k,497,499
+2011,NV,Nevada,Between 80-100k,516,508
+2011,NV,Nevada,Less than 20k,452,446
+2011,NV,Nevada,More than 100k,527,521
+2011,NH,New Hampshire,Between 20-40k,494,494
+2011,NH,New Hampshire,Between 40-60k,504,507
+2011,NH,New Hampshire,Between 60-80k,513,512
+2011,NH,New Hampshire,Between 80-100k,519,519
+2011,NH,New Hampshire,Less than 20k,462,452
+2011,NH,New Hampshire,More than 100k,548,539
+2011,NJ,New Jersey,Between 20-40k,470,448
+2011,NJ,New Jersey,Between 40-60k,491,471
+2011,NJ,New Jersey,Between 60-80k,505,488
+2011,NJ,New Jersey,Between 80-100k,520,501
+2011,NJ,New Jersey,Less than 20k,440,414
+2011,NJ,New Jersey,More than 100k,551,529
+2011,NM,New Mexico,Between 20-40k,509,507
+2011,NM,New Mexico,Between 40-60k,508,528
+2011,NM,New Mexico,Between 60-80k,533,540
+2011,NM,New Mexico,Between 80-100k,541,543
+2011,NM,New Mexico,Less than 20k,480,475
+2011,NM,New Mexico,More than 100k,570,577
+2011,NY,New York,Between 20-40k,473,455
+2011,NY,New York,Between 40-60k,491,479
+2011,NY,New York,Between 60-80k,506,496
+2011,NY,New York,Between 80-100k,520,505
+2011,NY,New York,Less than 20k,444,418
+2011,NY,New York,More than 100k,550,534
+2011,NC,North Carolina,Between 20-40k,474,459
+2011,NC,North Carolina,Between 40-60k,494,479
+2011,NC,North Carolina,Between 60-80k,511,495
+2011,NC,North Carolina,Between 80-100k,527,511
+2011,NC,North Carolina,Less than 20k,446,429
+2011,NC,North Carolina,More than 100k,553,537
+2011,ND,North Dakota,Between 20-40k,540,551
+2011,ND,North Dakota,Between 40-60k,547,554
+2011,ND,North Dakota,Between 60-80k,597,590
+2011,ND,North Dakota,Between 80-100k,628,588
+2011,ND,North Dakota,Less than 20k,0,0
+2011,ND,North Dakota,More than 100k,572,608
+2011,OH,Ohio,Between 20-40k,493,493
+2011,OH,Ohio,Between 40-60k,520,521
+2011,OH,Ohio,Between 60-80k,536,534
+2011,OH,Ohio,Between 80-100k,549,541
+2011,OH,Ohio,Less than 20k,469,462
+2011,OH,Ohio,More than 100k,567,558
+2011,OK,Oklahoma,Between 20-40k,535,541
+2011,OK,Oklahoma,Between 40-60k,534,541
+2011,OK,Oklahoma,Between 60-80k,559,572
+2011,OK,Oklahoma,Between 80-100k,564,578
+2011,OK,Oklahoma,Less than 20k,511,492
+2011,OK,Oklahoma,More than 100k,575,584
+2011,OR,Oregon,Between 20-40k,493,493
+2011,OR,Oregon,Between 40-60k,507,510
+2011,OR,Oregon,Between 60-80k,519,518
+2011,OR,Oregon,Between 80-100k,536,533
+2011,OR,Oregon,Less than 20k,472,471
+2011,OR,Oregon,More than 100k,556,553
+2011,PA,Pennsylvania,Between 20-40k,466,461
+2011,PA,Pennsylvania,Between 40-60k,487,482
+2011,PA,Pennsylvania,Between 60-80k,501,494
+2011,PA,Pennsylvania,Between 80-100k,516,506
+2011,PA,Pennsylvania,Less than 20k,434,427
+2011,PA,Pennsylvania,More than 100k,545,534
+2011,PR,Puerto Rico,Between 20-40k,418,427
+2011,PR,Puerto Rico,Between 40-60k,435,442
+2011,PR,Puerto Rico,Between 60-80k,463,462
+2011,PR,Puerto Rico,Between 80-100k,471,456
+2011,PR,Puerto Rico,Less than 20k,394,407
+2011,PR,Puerto Rico,More than 100k,498,499
+2011,RI,Rhode Island,Between 20-40k,463,467
+2011,RI,Rhode Island,Between 40-60k,482,484
+2011,RI,Rhode Island,Between 60-80k,496,499
+2011,RI,Rhode Island,Between 80-100k,509,510
+2011,RI,Rhode Island,Less than 20k,423,423
+2011,RI,Rhode Island,More than 100k,536,536
+2011,SC,South Carolina,Between 20-40k,456,447
+2011,SC,South Carolina,Between 40-60k,479,475
+2011,SC,South Carolina,Between 60-80k,497,490
+2011,SC,South Carolina,Between 80-100k,507,496
+2011,SC,South Carolina,Less than 20k,428,418
+2011,SC,South Carolina,More than 100k,530,522
+2011,SD,South Dakota,Between 20-40k,539,537
+2011,SD,South Dakota,Between 40-60k,585,606
+2011,SD,South Dakota,Between 60-80k,571,577
+2011,SD,South Dakota,Between 80-100k,593,591
+2011,SD,South Dakota,Less than 20k,458,488
+2011,SD,South Dakota,More than 100k,591,612
+2011,TN,Tennessee,Between 20-40k,519,530
+2011,TN,Tennessee,Between 40-60k,542,552
+2011,TN,Tennessee,Between 60-80k,552,560
+2011,TN,Tennessee,Between 80-100k,568,578
+2011,TN,Tennessee,Less than 20k,493,492
+2011,TN,Tennessee,More than 100k,582,591
+2011,TX,Texas,Between 20-40k,472,446
+2011,TX,Texas,Between 40-60k,494,473
+2011,TX,Texas,Between 60-80k,508,487
+2011,TX,Texas,Between 80-100k,523,502
+2011,TX,Texas,Less than 20k,446,417
+2011,TX,Texas,More than 100k,549,526
+2011,UT,Utah,Between 20-40k,534,545
+2011,UT,Utah,Between 40-60k,550,546
+2011,UT,Utah,Between 60-80k,554,570
+2011,UT,Utah,Between 80-100k,572,569
+2011,UT,Utah,Less than 20k,523,516
+2011,UT,Utah,More than 100k,571,579
+2011,VT,Vermont,Between 20-40k,496,492
+2011,VT,Vermont,Between 40-60k,504,510
+2011,VT,Vermont,Between 60-80k,515,519
+2011,VT,Vermont,Between 80-100k,533,525
+2011,VT,Vermont,Less than 20k,479,471
+2011,VT,Vermont,More than 100k,553,545
+2011,VI,Virgin Islands,Between 20-40k,354,392
+2011,VI,Virgin Islands,Between 40-60k,392,426
+2011,VI,Virgin Islands,Between 60-80k,408,447
+2011,VI,Virgin Islands,Between 80-100k,398,437
+2011,VI,Virgin Islands,Less than 20k,348,370
+2011,VI,Virgin Islands,More than 100k,487,486
+2011,VA,Virginia,Between 20-40k,461,463
+2011,VA,Virginia,Between 40-60k,485,490
+2011,VA,Virginia,Between 60-80k,498,502
+2011,VA,Virginia,Between 80-100k,510,517
+2011,VA,Virginia,Less than 20k,440,436
+2011,VA,Virginia,More than 100k,546,547
+2011,WA,Washington,Between 20-40k,493,486
+2011,WA,Washington,Between 40-60k,516,509
+2011,WA,Washington,Between 60-80k,525,521
+2011,WA,Washington,Between 80-100k,539,533
+2011,WA,Washington,Less than 20k,470,451
+2011,WA,Washington,More than 100k,559,552
+2011,WV,West Virginia,Between 20-40k,472,487
+2011,WV,West Virginia,Between 40-60k,484,503
+2011,WV,West Virginia,Between 60-80k,503,521
+2011,WV,West Virginia,Between 80-100k,510,516
+2011,WV,West Virginia,Less than 20k,457,465
+2011,WV,West Virginia,More than 100k,523,530
+2011,WI,Wisconsin,Between 20-40k,558,537
+2011,WI,Wisconsin,Between 40-60k,569,553
+2011,WI,Wisconsin,Between 60-80k,597,588
+2011,WI,Wisconsin,Between 80-100k,610,597
+2011,WI,Wisconsin,Less than 20k,559,529
+2011,WI,Wisconsin,More than 100k,614,603
+2011,WY,Wyoming,Between 20-40k,526,554
+2011,WY,Wyoming,Between 40-60k,547,559
+2011,WY,Wyoming,Between 60-80k,587,606
+2011,WY,Wyoming,Between 80-100k,553,563
+2011,WY,Wyoming,Less than 20k,545,551
+2011,WY,Wyoming,More than 100k,546,571
+2012,AL,Alabama,Between 20-40k,462,470
+2012,AL,Alabama,Between 40-60k,502,517
+2012,AL,Alabama,Between 60-80k,513,528
+2012,AL,Alabama,Between 80-100k,529,535
+2012,AL,Alabama,Less than 20k,429,435
+2012,AL,Alabama,More than 100k,568,573
+2012,AK,Alaska,Between 20-40k,471,470
+2012,AK,Alaska,Between 40-60k,493,500
+2012,AK,Alaska,Between 60-80k,510,517
+2012,AK,Alaska,Between 80-100k,510,512
+2012,AK,Alaska,Less than 20k,456,464
+2012,AK,Alaska,More than 100k,530,532
+2012,AZ,Arizona,Between 20-40k,488,481
+2012,AZ,Arizona,Between 40-60k,508,500
+2012,AZ,Arizona,Between 60-80k,513,511
+2012,AZ,Arizona,Between 80-100k,529,519
+2012,AZ,Arizona,Less than 20k,466,455
+2012,AZ,Arizona,More than 100k,547,535
+2012,AR,Arkansas,Between 20-40k,525,516
+2012,AR,Arkansas,Between 40-60k,552,552
+2012,AR,Arkansas,Between 60-80k,563,574
+2012,AR,Arkansas,Between 80-100k,578,569
+2012,AR,Arkansas,Less than 20k,500,494
+2012,AR,Arkansas,More than 100k,579,569
+2012,CA,California,Between 20-40k,477,459
+2012,CA,California,Between 40-60k,497,482
+2012,CA,California,Between 60-80k,516,503
+2012,CA,California,Between 80-100k,530,517
+2012,CA,California,Less than 20k,454,433
+2012,CA,California,More than 100k,563,546
+2012,CO,Colorado,Between 20-40k,550,549
+2012,CO,Colorado,Between 40-60k,568,558
+2012,CO,Colorado,Between 60-80k,565,562
+2012,CO,Colorado,Between 80-100k,576,573
+2012,CO,Colorado,Less than 20k,515,518
+2012,CO,Colorado,More than 100k,590,580
+2012,CT,Connecticut,Between 20-40k,458,455
+2012,CT,Connecticut,Between 40-60k,480,483
+2012,CT,Connecticut,Between 60-80k,503,502
+2012,CT,Connecticut,Between 80-100k,515,506
+2012,CT,Connecticut,Less than 20k,420,412
+2012,CT,Connecticut,More than 100k,548,539
+2012,DE,Delaware,Between 20-40k,436,428
+2012,DE,Delaware,Between 40-60k,455,455
+2012,DE,Delaware,Between 60-80k,471,460
+2012,DE,Delaware,Between 80-100k,494,486
+2012,DE,Delaware,Less than 20k,406,399
+2012,DE,Delaware,More than 100k,530,518
+2012,DC,District Of Columbia,Between 20-40k,393,407
+2012,DC,District Of Columbia,Between 40-60k,417,425
+2012,DC,District Of Columbia,Between 60-80k,445,457
+2012,DC,District Of Columbia,Between 80-100k,466,487
+2012,DC,District Of Columbia,Less than 20k,385,386
+2012,DC,District Of Columbia,More than 100k,550,563
+2012,FL,Florida,Between 20-40k,464,468
+2012,FL,Florida,Between 40-60k,484,488
+2012,FL,Florida,Between 60-80k,499,500
+2012,FL,Florida,Between 80-100k,509,507
+2012,FL,Florida,Less than 20k,430,431
+2012,FL,Florida,More than 100k,533,527
+2012,GA,Georgia,Between 20-40k,451,452
+2012,GA,Georgia,Between 40-60k,470,473
+2012,GA,Georgia,Between 60-80k,485,486
+2012,GA,Georgia,Between 80-100k,494,495
+2012,GA,Georgia,Less than 20k,426,423
+2012,GA,Georgia,More than 100k,529,524
+2012,HI,Hawaii,Between 20-40k,471,451
+2012,HI,Hawaii,Between 40-60k,484,467
+2012,HI,Hawaii,Between 60-80k,481,462
+2012,HI,Hawaii,Between 80-100k,507,483
+2012,HI,Hawaii,Less than 20k,452,436
+2012,HI,Hawaii,More than 100k,543,515
+2012,ID,Idaho,Between 20-40k,511,520
+2012,ID,Idaho,Between 40-60k,527,539
+2012,ID,Idaho,Between 60-80k,532,536
+2012,ID,Idaho,Between 80-100k,540,558
+2012,ID,Idaho,Less than 20k,508,519
+2012,ID,Idaho,More than 100k,562,562
+2012,IL,Illinois,Between 20-40k,559,548
+2012,IL,Illinois,Between 40-60k,567,560
+2012,IL,Illinois,Between 60-80k,590,578
+2012,IL,Illinois,Between 80-100k,607,585
+2012,IL,Illinois,Less than 20k,534,510
+2012,IL,Illinois,More than 100k,624,604
+2012,IN,Indiana,Between 20-40k,465,465
+2012,IN,Indiana,Between 40-60k,488,482
+2012,IN,Indiana,Between 60-80k,500,492
+2012,IN,Indiana,Between 80-100k,512,500
+2012,IN,Indiana,Less than 20k,441,437
+2012,IN,Indiana,More than 100k,540,524
+2012,IA,Iowa,Between 20-40k,545,553
+2012,IA,Iowa,Between 40-60k,566,580
+2012,IA,Iowa,Between 60-80k,607,604
+2012,IA,Iowa,Between 80-100k,601,598
+2012,IA,Iowa,Less than 20k,555,530
+2012,IA,Iowa,More than 100k,604,598
+2012,KS,Kansas,Between 20-40k,529,520
+2012,KS,Kansas,Between 40-60k,573,573
+2012,KS,Kansas,Between 60-80k,583,575
+2012,KS,Kansas,Between 80-100k,605,593
+2012,KS,Kansas,Less than 20k,534,518
+2012,KS,Kansas,More than 100k,605,597
+2012,KY,Kentucky,Between 20-40k,542,549
+2012,KY,Kentucky,Between 40-60k,550,564
+2012,KY,Kentucky,Between 60-80k,559,568
+2012,KY,Kentucky,Between 80-100k,560,574
+2012,KY,Kentucky,Less than 20k,543,532
+2012,KY,Kentucky,More than 100k,587,588
+2012,LA,Louisiana,Between 20-40k,461,466
+2012,LA,Louisiana,Between 40-60k,498,512
+2012,LA,Louisiana,Between 60-80k,526,536
+2012,LA,Louisiana,Between 80-100k,530,544
+2012,LA,Louisiana,Less than 20k,441,447
+2012,LA,Louisiana,More than 100k,571,578
+2012,ME,Maine,Between 20-40k,520,511
+2012,ME,Maine,Between 40-60k,526,514
+2012,ME,Maine,Between 60-80k,533,531
+2012,ME,Maine,Between 80-100k,542,532
+2012,ME,Maine,Less than 20k,476,470
+2012,ME,Maine,More than 100k,553,537
+2012,MD,Maryland,Between 20-40k,454,449
+2012,MD,Maryland,Between 40-60k,469,467
+2012,MD,Maryland,Between 60-80k,488,484
+2012,MD,Maryland,Between 80-100k,503,497
+2012,MD,Maryland,Less than 20k,417,415
+2012,MD,Maryland,More than 100k,545,536
+2012,MA,Massachusetts,Between 20-40k,487,469
+2012,MA,Massachusetts,Between 40-60k,505,490
+2012,MA,Massachusetts,Between 60-80k,518,508
+2012,MA,Massachusetts,Between 80-100k,530,514
+2012,MA,Massachusetts,Less than 20k,454,431
+2012,MA,Massachusetts,More than 100k,569,551
+2012,MI,Michigan,Between 20-40k,550,520
+2012,MI,Michigan,Between 40-60k,561,557
+2012,MI,Michigan,Between 60-80k,586,571
+2012,MI,Michigan,Between 80-100k,604,586
+2012,MI,Michigan,Less than 20k,519,493
+2012,MI,Michigan,More than 100k,615,594
+2012,MN,Minnesota,Between 20-40k,568,535
+2012,MN,Minnesota,Between 40-60k,567,557
+2012,MN,Minnesota,Between 60-80k,589,583
+2012,MN,Minnesota,Between 80-100k,604,595
+2012,MN,Minnesota,Less than 20k,561,512
+2012,MN,Minnesota,More than 100k,623,609
+2012,MS,Mississippi,Between 20-40k,496,527
+2012,MS,Mississippi,Between 40-60k,498,525
+2012,MS,Mississippi,Between 60-80k,549,569
+2012,MS,Mississippi,Between 80-100k,534,550
+2012,MS,Mississippi,Less than 20k,441,458
+2012,MS,Mississippi,More than 100k,584,594
+2012,MO,Missouri,Between 20-40k,546,548
+2012,MO,Missouri,Between 40-60k,568,568
+2012,MO,Missouri,Between 60-80k,554,560
+2012,MO,Missouri,Between 80-100k,591,586
+2012,MO,Missouri,Less than 20k,504,489
+2012,MO,Missouri,More than 100k,598,597
+2012,MT,Montana,Between 20-40k,506,512
+2012,MT,Montana,Between 40-60k,523,528
+2012,MT,Montana,Between 60-80k,537,540
+2012,MT,Montana,Between 80-100k,546,534
+2012,MT,Montana,Less than 20k,487,487
+2012,MT,Montana,More than 100k,558,547
+2012,NE,Nebraska,Between 20-40k,526,521
+2012,NE,Nebraska,Between 40-60k,562,561
+2012,NE,Nebraska,Between 60-80k,606,590
+2012,NE,Nebraska,Between 80-100k,597,569
+2012,NE,Nebraska,Less than 20k,526,493
+2012,NE,Nebraska,More than 100k,594,603
+2012,NV,Nevada,Between 20-40k,464,463
+2012,NV,Nevada,Between 40-60k,486,486
+2012,NV,Nevada,Between 60-80k,488,492
+2012,NV,Nevada,Between 80-100k,506,500
+2012,NV,Nevada,Less than 20k,441,441
+2012,NV,Nevada,More than 100k,519,514
+2012,NH,New Hampshire,Between 20-40k,484,492
+2012,NH,New Hampshire,Between 40-60k,502,505
+2012,NH,New Hampshire,Between 60-80k,509,506
+2012,NH,New Hampshire,Between 80-100k,518,512
+2012,NH,New Hampshire,Less than 20k,455,456
+2012,NH,New Hampshire,More than 100k,550,540
+2012,NJ,New Jersey,Between 20-40k,470,446
+2012,NJ,New Jersey,Between 40-60k,492,472
+2012,NJ,New Jersey,Between 60-80k,509,491
+2012,NJ,New Jersey,Between 80-100k,526,505
+2012,NJ,New Jersey,Less than 20k,435,410
+2012,NJ,New Jersey,More than 100k,557,533
+2012,NM,New Mexico,Between 20-40k,502,520
+2012,NM,New Mexico,Between 40-60k,517,529
+2012,NM,New Mexico,Between 60-80k,515,530
+2012,NM,New Mexico,Between 80-100k,538,548
+2012,NM,New Mexico,Less than 20k,517,506
+2012,NM,New Mexico,More than 100k,572,574
+2012,NY,New York,Between 20-40k,475,457
+2012,NY,New York,Between 40-60k,493,481
+2012,NY,New York,Between 60-80k,508,495
+2012,NY,New York,Between 80-100k,521,506
+2012,NY,New York,Less than 20k,444,418
+2012,NY,New York,More than 100k,554,536
+2012,NC,North Carolina,Between 20-40k,472,457
+2012,NC,North Carolina,Between 40-60k,496,482
+2012,NC,North Carolina,Between 60-80k,508,491
+2012,NC,North Carolina,Between 80-100k,526,508
+2012,NC,North Carolina,Less than 20k,441,426
+2012,NC,North Carolina,More than 100k,557,538
+2012,ND,North Dakota,Between 20-40k,528,585
+2012,ND,North Dakota,Between 40-60k,545,578
+2012,ND,North Dakota,Between 60-80k,589,634
+2012,ND,North Dakota,Between 80-100k,527,539
+2012,ND,North Dakota,Less than 20k,0,0
+2012,ND,North Dakota,More than 100k,471,472
+2012,OH,Ohio,Between 20-40k,496,493
+2012,OH,Ohio,Between 40-60k,524,521
+2012,OH,Ohio,Between 60-80k,537,533
+2012,OH,Ohio,Between 80-100k,554,541
+2012,OH,Ohio,Less than 20k,476,469
+2012,OH,Ohio,More than 100k,573,560
+2012,OK,Oklahoma,Between 20-40k,506,508
+2012,OK,Oklahoma,Between 40-60k,540,554
+2012,OK,Oklahoma,Between 60-80k,564,571
+2012,OK,Oklahoma,Between 80-100k,558,566
+2012,OK,Oklahoma,Less than 20k,486,486
+2012,OK,Oklahoma,More than 100k,571,578
+2012,OR,Oregon,Between 20-40k,489,487
+2012,OR,Oregon,Between 40-60k,509,509
+2012,OR,Oregon,Between 60-80k,520,520
+2012,OR,Oregon,Between 80-100k,528,525
+2012,OR,Oregon,Less than 20k,474,474
+2012,OR,Oregon,More than 100k,550,547
+2012,PA,Pennsylvania,Between 20-40k,465,460
+2012,PA,Pennsylvania,Between 40-60k,487,479
+2012,PA,Pennsylvania,Between 60-80k,499,490
+2012,PA,Pennsylvania,Between 80-100k,514,502
+2012,PA,Pennsylvania,Less than 20k,435,427
+2012,PA,Pennsylvania,More than 100k,545,531
+2012,PR,Puerto Rico,Between 20-40k,416,416
+2012,PR,Puerto Rico,Between 40-60k,439,441
+2012,PR,Puerto Rico,Between 60-80k,453,465
+2012,PR,Puerto Rico,Between 80-100k,466,464
+2012,PR,Puerto Rico,Less than 20k,386,393
+2012,PR,Puerto Rico,More than 100k,495,497
+2012,RI,Rhode Island,Between 20-40k,450,449
+2012,RI,Rhode Island,Between 40-60k,479,478
+2012,RI,Rhode Island,Between 60-80k,491,494
+2012,RI,Rhode Island,Between 80-100k,502,500
+2012,RI,Rhode Island,Less than 20k,416,418
+2012,RI,Rhode Island,More than 100k,532,527
+2012,SC,South Carolina,Between 20-40k,454,450
+2012,SC,South Carolina,Between 40-60k,475,471
+2012,SC,South Carolina,Between 60-80k,492,482
+2012,SC,South Carolina,Between 80-100k,508,498
+2012,SC,South Carolina,Less than 20k,425,413
+2012,SC,South Carolina,More than 100k,528,516
+2012,SD,South Dakota,Between 20-40k,522,517
+2012,SD,South Dakota,Between 40-60k,629,604
+2012,SD,South Dakota,Between 60-80k,555,592
+2012,SD,South Dakota,Between 80-100k,607,607
+2012,SD,South Dakota,Less than 20k,480,493
+2012,SD,South Dakota,More than 100k,480,489
+2012,TN,Tennessee,Between 20-40k,521,536
+2012,TN,Tennessee,Between 40-60k,534,547
+2012,TN,Tennessee,Between 60-80k,551,560
+2012,TN,Tennessee,Between 80-100k,553,568
+2012,TN,Tennessee,Less than 20k,493,498
+2012,TN,Tennessee,More than 100k,586,589
+2012,TX,Texas,Between 20-40k,472,446
+2012,TX,Texas,Between 40-60k,492,472
+2012,TX,Texas,Between 60-80k,504,485
+2012,TX,Texas,Between 80-100k,520,499
+2012,TX,Texas,Less than 20k,443,416
+2012,TX,Texas,More than 100k,546,524
+2012,UT,Utah,Between 20-40k,537,556
+2012,UT,Utah,Between 40-60k,547,550
+2012,UT,Utah,Between 60-80k,571,559
+2012,UT,Utah,Between 80-100k,585,583
+2012,UT,Utah,Less than 20k,516,490
+2012,UT,Utah,More than 100k,576,578
+2012,VT,Vermont,Between 20-40k,502,505
+2012,VT,Vermont,Between 40-60k,507,513
+2012,VT,Vermont,Between 60-80k,520,514
+2012,VT,Vermont,Between 80-100k,531,527
+2012,VT,Vermont,Less than 20k,465,470
+2012,VT,Vermont,More than 100k,557,548
+2012,VI,Virgin Islands,Between 20-40k,377,387
+2012,VI,Virgin Islands,Between 40-60k,381,414
+2012,VI,Virgin Islands,Between 60-80k,436,444
+2012,VI,Virgin Islands,Between 80-100k,435,455
+2012,VI,Virgin Islands,Less than 20k,346,361
+2012,VI,Virgin Islands,More than 100k,482,469
+2012,VA,Virginia,Between 20-40k,464,463
+2012,VA,Virginia,Between 40-60k,483,483
+2012,VA,Virginia,Between 60-80k,496,499
+2012,VA,Virginia,Between 80-100k,513,513
+2012,VA,Virginia,Less than 20k,438,437
+2012,VA,Virginia,More than 100k,545,541
+2012,WA,Washington,Between 20-40k,492,482
+2012,WA,Washington,Between 40-60k,512,504
+2012,WA,Washington,Between 60-80k,520,515
+2012,WA,Washington,Between 80-100k,539,529
+2012,WA,Washington,Less than 20k,465,452
+2012,WA,Washington,More than 100k,558,546
+2012,WV,West Virginia,Between 20-40k,479,497
+2012,WV,West Virginia,Between 40-60k,472,497
+2012,WV,West Virginia,Between 60-80k,488,508
+2012,WV,West Virginia,Between 80-100k,502,502
+2012,WV,West Virginia,Less than 20k,459,474
+2012,WV,West Virginia,More than 100k,524,536
+2012,WI,Wisconsin,Between 20-40k,554,542
+2012,WI,Wisconsin,Between 40-60k,582,561
+2012,WI,Wisconsin,Between 60-80k,580,574
+2012,WI,Wisconsin,Between 80-100k,599,593
+2012,WI,Wisconsin,Less than 20k,567,525
+2012,WI,Wisconsin,More than 100k,618,603
+2012,WY,Wyoming,Between 20-40k,577,596
+2012,WY,Wyoming,Between 40-60k,579,575
+2012,WY,Wyoming,Between 60-80k,542,559
+2012,WY,Wyoming,Between 80-100k,611,625
+2012,WY,Wyoming,Less than 20k,532,515
+2012,WY,Wyoming,More than 100k,550,568
+2013,AL,Alabama,Between 20-40k,475,486
+2013,AL,Alabama,Between 40-60k,494,510
+2013,AL,Alabama,Between 60-80k,520,525
+2013,AL,Alabama,Between 80-100k,536,551
+2013,AL,Alabama,Less than 20k,425,435
+2013,AL,Alabama,More than 100k,566,579
+2013,AK,Alaska,Between 20-40k,478,480
+2013,AK,Alaska,Between 40-60k,494,499
+2013,AK,Alaska,Between 60-80k,498,509
+2013,AK,Alaska,Between 80-100k,514,525
+2013,AK,Alaska,Less than 20k,453,446
+2013,AK,Alaska,More than 100k,524,521
+2013,AZ,Arizona,Between 20-40k,492,488
+2013,AZ,Arizona,Between 40-60k,506,505
+2013,AZ,Arizona,Between 60-80k,517,513
+2013,AZ,Arizona,Between 80-100k,527,521
+2013,AZ,Arizona,Less than 20k,472,465
+2013,AZ,Arizona,More than 100k,549,538
+2013,AR,Arkansas,Between 20-40k,532,543
+2013,AR,Arkansas,Between 40-60k,537,549
+2013,AR,Arkansas,Between 60-80k,564,577
+2013,AR,Arkansas,Between 80-100k,566,570
+2013,AR,Arkansas,Less than 20k,509,491
+2013,AR,Arkansas,More than 100k,581,586
+2013,CA,California,Between 20-40k,476,461
+2013,CA,California,Between 40-60k,496,485
+2013,CA,California,Between 60-80k,512,503
+2013,CA,California,Between 80-100k,529,516
+2013,CA,California,Less than 20k,452,435
+2013,CA,California,More than 100k,556,543
+2013,CO,Colorado,Between 20-40k,532,532
+2013,CO,Colorado,Between 40-60k,551,558
+2013,CO,Colorado,Between 60-80k,558,564
+2013,CO,Colorado,Between 80-100k,575,574
+2013,CO,Colorado,Less than 20k,542,528
+2013,CO,Colorado,More than 100k,587,583
+2013,CT,Connecticut,Between 20-40k,455,458
+2013,CT,Connecticut,Between 40-60k,483,483
+2013,CT,Connecticut,Between 60-80k,495,493
+2013,CT,Connecticut,Between 80-100k,509,507
+2013,CT,Connecticut,Less than 20k,420,423
+2013,CT,Connecticut,More than 100k,547,540
+2013,DE,Delaware,Between 20-40k,435,431
+2013,DE,Delaware,Between 40-60k,460,452
+2013,DE,Delaware,Between 60-80k,477,474
+2013,DE,Delaware,Between 80-100k,483,479
+2013,DE,Delaware,Less than 20k,391,387
+2013,DE,Delaware,More than 100k,527,518
+2013,DC,District Of Columbia,Between 20-40k,405,417
+2013,DC,District Of Columbia,Between 40-60k,418,428
+2013,DC,District Of Columbia,Between 60-80k,445,454
+2013,DC,District Of Columbia,Between 80-100k,482,499
+2013,DC,District Of Columbia,Less than 20k,381,380
+2013,DC,District Of Columbia,More than 100k,560,573
+2013,FL,Florida,Between 20-40k,466,472
+2013,FL,Florida,Between 40-60k,486,493
+2013,FL,Florida,Between 60-80k,497,503
+2013,FL,Florida,Between 80-100k,508,511
+2013,FL,Florida,Less than 20k,431,438
+2013,FL,Florida,More than 100k,531,528
+2013,GA,Georgia,Between 20-40k,451,456
+2013,GA,Georgia,Between 40-60k,470,479
+2013,GA,Georgia,Between 60-80k,484,491
+2013,GA,Georgia,Between 80-100k,496,501
+2013,GA,Georgia,Less than 20k,426,428
+2013,GA,Georgia,More than 100k,530,528
+2013,HI,Hawaii,Between 20-40k,470,448
+2013,HI,Hawaii,Between 40-60k,483,465
+2013,HI,Hawaii,Between 60-80k,487,468
+2013,HI,Hawaii,Between 80-100k,510,486
+2013,HI,Hawaii,Less than 20k,440,425
+2013,HI,Hawaii,More than 100k,537,511
+2013,ID,Idaho,Between 20-40k,450,449
+2013,ID,Idaho,Between 40-60k,474,465
+2013,ID,Idaho,Between 60-80k,489,481
+2013,ID,Idaho,Between 80-100k,492,483
+2013,ID,Idaho,Less than 20k,407,407
+2013,ID,Idaho,More than 100k,506,497
+2013,IL,Illinois,Between 20-40k,551,539
+2013,IL,Illinois,Between 40-60k,579,562
+2013,IL,Illinois,Between 60-80k,585,575
+2013,IL,Illinois,Between 80-100k,607,596
+2013,IL,Illinois,Less than 20k,534,511
+2013,IL,Illinois,More than 100k,623,607
+2013,IN,Indiana,Between 20-40k,467,468
+2013,IN,Indiana,Between 40-60k,488,487
+2013,IN,Indiana,Between 60-80k,503,497
+2013,IN,Indiana,Between 80-100k,515,505
+2013,IN,Indiana,Less than 20k,442,441
+2013,IN,Indiana,More than 100k,538,525
+2013,IA,Iowa,Between 20-40k,537,544
+2013,IA,Iowa,Between 40-60k,556,566
+2013,IA,Iowa,Between 60-80k,555,569
+2013,IA,Iowa,Between 80-100k,594,586
+2013,IA,Iowa,Less than 20k,568,514
+2013,IA,Iowa,More than 100k,612,604
+2013,KS,Kansas,Between 20-40k,552,532
+2013,KS,Kansas,Between 40-60k,559,562
+2013,KS,Kansas,Between 60-80k,582,574
+2013,KS,Kansas,Between 80-100k,584,591
+2013,KS,Kansas,Less than 20k,532,496
+2013,KS,Kansas,More than 100k,608,597
+2013,KY,Kentucky,Between 20-40k,520,522
+2013,KY,Kentucky,Between 40-60k,556,558
+2013,KY,Kentucky,Between 60-80k,561,580
+2013,KY,Kentucky,Between 80-100k,586,579
+2013,KY,Kentucky,Less than 20k,528,513
+2013,KY,Kentucky,More than 100k,589,590
+2013,LA,Louisiana,Between 20-40k,483,486
+2013,LA,Louisiana,Between 40-60k,503,521
+2013,LA,Louisiana,Between 60-80k,527,543
+2013,LA,Louisiana,Between 80-100k,546,544
+2013,LA,Louisiana,Less than 20k,475,464
+2013,LA,Louisiana,More than 100k,570,574
+2013,ME,Maine,Between 20-40k,503,500
+2013,ME,Maine,Between 40-60k,527,519
+2013,ME,Maine,Between 60-80k,528,522
+2013,ME,Maine,Between 80-100k,552,532
+2013,ME,Maine,Less than 20k,479,458
+2013,ME,Maine,More than 100k,555,540
+2013,MD,Maryland,Between 20-40k,454,454
+2013,MD,Maryland,Between 40-60k,468,470
+2013,MD,Maryland,Between 60-80k,485,485
+2013,MD,Maryland,Between 80-100k,508,511
+2013,MD,Maryland,Less than 20k,418,415
+2013,MD,Maryland,More than 100k,544,536
+2013,MA,Massachusetts,Between 20-40k,483,467
+2013,MA,Massachusetts,Between 40-60k,503,492
+2013,MA,Massachusetts,Between 60-80k,511,504
+2013,MA,Massachusetts,Between 80-100k,525,514
+2013,MA,Massachusetts,Less than 20k,454,428
+2013,MA,Massachusetts,More than 100k,563,549
+2013,MI,Michigan,Between 20-40k,569,549
+2013,MI,Michigan,Between 40-60k,576,562
+2013,MI,Michigan,Between 60-80k,584,569
+2013,MI,Michigan,Between 80-100k,593,578
+2013,MI,Michigan,Less than 20k,554,491
+2013,MI,Michigan,More than 100k,619,603
+2013,MN,Minnesota,Between 20-40k,544,530
+2013,MN,Minnesota,Between 40-60k,585,567
+2013,MN,Minnesota,Between 60-80k,597,590
+2013,MN,Minnesota,Between 80-100k,600,586
+2013,MN,Minnesota,Less than 20k,547,518
+2013,MN,Minnesota,More than 100k,615,608
+2013,MS,Mississippi,Between 20-40k,496,519
+2013,MS,Mississippi,Between 40-60k,533,547
+2013,MS,Mississippi,Between 60-80k,523,540
+2013,MS,Mississippi,Between 80-100k,547,585
+2013,MS,Mississippi,Less than 20k,478,482
+2013,MS,Mississippi,More than 100k,559,579
+2013,MO,Missouri,Between 20-40k,530,528
+2013,MO,Missouri,Between 40-60k,552,557
+2013,MO,Missouri,Between 60-80k,567,579
+2013,MO,Missouri,Between 80-100k,574,580
+2013,MO,Missouri,Less than 20k,498,484
+2013,MO,Missouri,More than 100k,605,608
+2013,MT,Montana,Between 20-40k,526,536
+2013,MT,Montana,Between 40-60k,531,536
+2013,MT,Montana,Between 60-80k,539,532
+2013,MT,Montana,Between 80-100k,555,549
+2013,MT,Montana,Less than 20k,502,504
+2013,MT,Montana,More than 100k,552,550
+2013,NE,Nebraska,Between 20-40k,525,516
+2013,NE,Nebraska,Between 40-60k,561,574
+2013,NE,Nebraska,Between 60-80k,574,588
+2013,NE,Nebraska,Between 80-100k,597,602
+2013,NE,Nebraska,Less than 20k,507,489
+2013,NE,Nebraska,More than 100k,593,601
+2013,NV,Nevada,Between 20-40k,474,474
+2013,NV,Nevada,Between 40-60k,491,493
+2013,NV,Nevada,Between 60-80k,497,496
+2013,NV,Nevada,Between 80-100k,505,506
+2013,NV,Nevada,Less than 20k,452,451
+2013,NV,Nevada,More than 100k,525,525
+2013,NH,New Hampshire,Between 20-40k,493,489
+2013,NH,New Hampshire,Between 40-60k,498,502
+2013,NH,New Hampshire,Between 60-80k,506,509
+2013,NH,New Hampshire,Between 80-100k,519,512
+2013,NH,New Hampshire,Less than 20k,481,478
+2013,NH,New Hampshire,More than 100k,547,536
+2013,NJ,New Jersey,Between 20-40k,475,451
+2013,NJ,New Jersey,Between 40-60k,493,471
+2013,NJ,New Jersey,Between 60-80k,508,489
+2013,NJ,New Jersey,Between 80-100k,523,501
+2013,NJ,New Jersey,Less than 20k,441,416
+2013,NJ,New Jersey,More than 100k,553,530
+2013,NM,New Mexico,Between 20-40k,510,517
+2013,NM,New Mexico,Between 40-60k,512,526
+2013,NM,New Mexico,Between 60-80k,508,521
+2013,NM,New Mexico,Between 80-100k,547,551
+2013,NM,New Mexico,Less than 20k,498,485
+2013,NM,New Mexico,More than 100k,563,571
+2013,NY,New York,Between 20-40k,478,463
+2013,NY,New York,Between 40-60k,491,480
+2013,NY,New York,Between 60-80k,505,494
+2013,NY,New York,Between 80-100k,522,507
+2013,NY,New York,Less than 20k,445,421
+2013,NY,New York,More than 100k,549,532
+2013,NC,North Carolina,Between 20-40k,469,460
+2013,NC,North Carolina,Between 40-60k,493,485
+2013,NC,North Carolina,Between 60-80k,505,495
+2013,NC,North Carolina,Between 80-100k,517,505
+2013,NC,North Carolina,Less than 20k,441,431
+2013,NC,North Carolina,More than 100k,547,534
+2013,ND,North Dakota,Between 20-40k,521,537
+2013,ND,North Dakota,Between 40-60k,586,580
+2013,ND,North Dakota,Between 60-80k,582,590
+2013,ND,North Dakota,Between 80-100k,561,597
+2013,ND,North Dakota,Less than 20k,530,576
+2013,ND,North Dakota,More than 100k,585,622
+2013,OH,Ohio,Between 20-40k,501,504
+2013,OH,Ohio,Between 40-60k,526,525
+2013,OH,Ohio,Between 60-80k,535,530
+2013,OH,Ohio,Between 80-100k,548,541
+2013,OH,Ohio,Less than 20k,475,472
+2013,OH,Ohio,More than 100k,570,558
+2013,OK,Oklahoma,Between 20-40k,515,523
+2013,OK,Oklahoma,Between 40-60k,548,550
+2013,OK,Oklahoma,Between 60-80k,555,567
+2013,OK,Oklahoma,Between 80-100k,547,559
+2013,OK,Oklahoma,Less than 20k,498,499
+2013,OK,Oklahoma,More than 100k,585,583
+2013,OR,Oregon,Between 20-40k,492,491
+2013,OR,Oregon,Between 40-60k,512,512
+2013,OR,Oregon,Between 60-80k,517,519
+2013,OR,Oregon,Between 80-100k,527,526
+2013,OR,Oregon,Less than 20k,471,466
+2013,OR,Oregon,More than 100k,552,553
+2013,PA,Pennsylvania,Between 20-40k,468,462
+2013,PA,Pennsylvania,Between 40-60k,487,481
+2013,PA,Pennsylvania,Between 60-80k,497,490
+2013,PA,Pennsylvania,Between 80-100k,510,499
+2013,PA,Pennsylvania,Less than 20k,436,429
+2013,PA,Pennsylvania,More than 100k,544,531
+2013,PR,Puerto Rico,Between 20-40k,406,416
+2013,PR,Puerto Rico,Between 40-60k,432,436
+2013,PR,Puerto Rico,Between 60-80k,436,449
+2013,PR,Puerto Rico,Between 80-100k,480,477
+2013,PR,Puerto Rico,Less than 20k,384,401
+2013,PR,Puerto Rico,More than 100k,495,491
+2013,RI,Rhode Island,Between 20-40k,459,464
+2013,RI,Rhode Island,Between 40-60k,474,485
+2013,RI,Rhode Island,Between 60-80k,487,493
+2013,RI,Rhode Island,Between 80-100k,504,502
+2013,RI,Rhode Island,Less than 20k,425,421
+2013,RI,Rhode Island,More than 100k,530,526
+2013,SC,South Carolina,Between 20-40k,449,448
+2013,SC,South Carolina,Between 40-60k,477,475
+2013,SC,South Carolina,Between 60-80k,491,492
+2013,SC,South Carolina,Between 80-100k,499,496
+2013,SC,South Carolina,Less than 20k,423,420
+2013,SC,South Carolina,More than 100k,525,520
+2013,SD,South Dakota,Between 20-40k,520,535
+2013,SD,South Dakota,Between 40-60k,592,603
+2013,SD,South Dakota,Between 60-80k,588,593
+2013,SD,South Dakota,Between 80-100k,609,587
+2013,SD,South Dakota,Less than 20k,504,517
+2013,SD,South Dakota,More than 100k,567,609
+2013,TN,Tennessee,Between 20-40k,496,518
+2013,TN,Tennessee,Between 40-60k,530,547
+2013,TN,Tennessee,Between 60-80k,545,557
+2013,TN,Tennessee,Between 80-100k,563,572
+2013,TN,Tennessee,Less than 20k,496,503
+2013,TN,Tennessee,More than 100k,577,577
+2013,TX,Texas,Between 20-40k,472,450
+2013,TX,Texas,Between 40-60k,493,474
+2013,TX,Texas,Between 60-80k,503,487
+2013,TX,Texas,Between 80-100k,517,500
+2013,TX,Texas,Less than 20k,444,417
+2013,TX,Texas,More than 100k,543,523
+2013,UT,Utah,Between 20-40k,520,519
+2013,UT,Utah,Between 40-60k,558,555
+2013,UT,Utah,Between 60-80k,558,562
+2013,UT,Utah,Between 80-100k,568,589
+2013,UT,Utah,Less than 20k,521,495
+2013,UT,Utah,More than 100k,572,576
+2013,VT,Vermont,Between 20-40k,480,484
+2013,VT,Vermont,Between 40-60k,501,504
+2013,VT,Vermont,Between 60-80k,522,523
+2013,VT,Vermont,Between 80-100k,532,529
+2013,VT,Vermont,Less than 20k,467,469
+2013,VT,Vermont,More than 100k,551,542
+2013,VI,Virgin Islands,Between 20-40k,377,402
+2013,VI,Virgin Islands,Between 40-60k,396,429
+2013,VI,Virgin Islands,Between 60-80k,387,415
+2013,VI,Virgin Islands,Between 80-100k,454,457
+2013,VI,Virgin Islands,Less than 20k,342,372
+2013,VI,Virgin Islands,More than 100k,373,383
+2013,VA,Virginia,Between 20-40k,459,463
+2013,VA,Virginia,Between 40-60k,480,486
+2013,VA,Virginia,Between 60-80k,492,497
+2013,VA,Virginia,Between 80-100k,506,512
+2013,VA,Virginia,Less than 20k,437,437
+2013,VA,Virginia,More than 100k,540,541
+2013,WA,Washington,Between 20-40k,489,478
+2013,WA,Washington,Between 40-60k,507,500
+2013,WA,Washington,Between 60-80k,518,517
+2013,WA,Washington,Between 80-100k,530,524
+2013,WA,Washington,Less than 20k,462,447
+2013,WA,Washington,More than 100k,550,543
+2013,WV,West Virginia,Between 20-40k,465,485
+2013,WV,West Virginia,Between 40-60k,477,507
+2013,WV,West Virginia,Between 60-80k,487,503
+2013,WV,West Virginia,Between 80-100k,500,513
+2013,WV,West Virginia,Less than 20k,460,465
+2013,WV,West Virginia,More than 100k,516,521
+2013,WI,Wisconsin,Between 20-40k,553,523
+2013,WI,Wisconsin,Between 40-60k,570,560
+2013,WI,Wisconsin,Between 60-80k,579,573
+2013,WI,Wisconsin,Between 80-100k,599,581
+2013,WI,Wisconsin,Less than 20k,520,511
+2013,WI,Wisconsin,More than 100k,616,595
+2013,WY,Wyoming,Between 20-40k,579,606
+2013,WY,Wyoming,Between 40-60k,550,573
+2013,WY,Wyoming,Between 60-80k,505,525
+2013,WY,Wyoming,Between 80-100k,585,608
+2013,WY,Wyoming,Less than 20k,558,572
+2013,WY,Wyoming,More than 100k,565,597
+2014,AL,Alabama,Between 20-40k,474,486
+2014,AL,Alabama,Between 40-60k,492,509
+2014,AL,Alabama,Between 60-80k,533,542
+2014,AL,Alabama,Between 80-100k,550,556
+2014,AL,Alabama,Less than 20k,443,444
+2014,AL,Alabama,More than 100k,564,574
+2014,AK,Alaska,Between 20-40k,470,494
+2014,AK,Alaska,Between 40-60k,491,492
+2014,AK,Alaska,Between 60-80k,508,518
+2014,AK,Alaska,Between 80-100k,505,519
+2014,AK,Alaska,Less than 20k,452,445
+2014,AK,Alaska,More than 100k,530,529
+2014,AZ,Arizona,Between 20-40k,492,491
+2014,AZ,Arizona,Between 40-60k,508,508
+2014,AZ,Arizona,Between 60-80k,519,522
+2014,AZ,Arizona,Between 80-100k,533,529
+2014,AZ,Arizona,Less than 20k,474,468
+2014,AZ,Arizona,More than 100k,550,543
+2014,AR,Arkansas,Between 20-40k,532,537
+2014,AR,Arkansas,Between 40-60k,556,550
+2014,AR,Arkansas,Between 60-80k,550,570
+2014,AR,Arkansas,Between 80-100k,587,582
+2014,AR,Arkansas,Less than 20k,532,507
+2014,AR,Arkansas,More than 100k,583,594
+2014,CA,California,Between 20-40k,476,463
+2014,CA,California,Between 40-60k,496,486
+2014,CA,California,Between 60-80k,514,506
+2014,CA,California,Between 80-100k,531,522
+2014,CA,California,Less than 20k,451,437
+2014,CA,California,More than 100k,561,549
+2014,CO,Colorado,Between 20-40k,553,547
+2014,CO,Colorado,Between 40-60k,562,556
+2014,CO,Colorado,Between 60-80k,578,576
+2014,CO,Colorado,Between 80-100k,581,579
+2014,CO,Colorado,Less than 20k,536,529
+2014,CO,Colorado,More than 100k,596,592
+2014,CT,Connecticut,Between 20-40k,463,467
+2014,CT,Connecticut,Between 40-60k,486,488
+2014,CT,Connecticut,Between 60-80k,495,501
+2014,CT,Connecticut,Between 80-100k,516,515
+2014,CT,Connecticut,Less than 20k,419,424
+2014,CT,Connecticut,More than 100k,551,544
+2014,DE,Delaware,Between 20-40k,442,434
+2014,DE,Delaware,Between 40-60k,458,459
+2014,DE,Delaware,Between 60-80k,482,481
+2014,DE,Delaware,Between 80-100k,500,495
+2014,DE,Delaware,Less than 20k,400,402
+2014,DE,Delaware,More than 100k,532,521
+2014,DC,District Of Columbia,Between 20-40k,401,400
+2014,DC,District Of Columbia,Between 40-60k,425,427
+2014,DC,District Of Columbia,Between 60-80k,451,467
+2014,DC,District Of Columbia,Between 80-100k,491,516
+2014,DC,District Of Columbia,Less than 20k,365,360
+2014,DC,District Of Columbia,More than 100k,572,581
+2014,FL,Florida,Between 20-40k,465,477
+2014,FL,Florida,Between 40-60k,485,495
+2014,FL,Florida,Between 60-80k,497,507
+2014,FL,Florida,Between 80-100k,510,516
+2014,FL,Florida,Less than 20k,426,436
+2014,FL,Florida,More than 100k,531,530
+2014,GA,Georgia,Between 20-40k,453,458
+2014,GA,Georgia,Between 40-60k,469,477
+2014,GA,Georgia,Between 60-80k,480,488
+2014,GA,Georgia,Between 80-100k,495,500
+2014,GA,Georgia,Less than 20k,424,428
+2014,GA,Georgia,More than 100k,527,528
+2014,HI,Hawaii,Between 20-40k,477,459
+2014,HI,Hawaii,Between 40-60k,483,465
+2014,HI,Hawaii,Between 60-80k,481,470
+2014,HI,Hawaii,Between 80-100k,505,486
+2014,HI,Hawaii,Less than 20k,443,425
+2014,HI,Hawaii,More than 100k,541,516
+2014,ID,Idaho,Between 20-40k,451,456
+2014,ID,Idaho,Between 40-60k,471,474
+2014,ID,Idaho,Between 60-80k,484,489
+2014,ID,Idaho,Between 80-100k,498,495
+2014,ID,Idaho,Less than 20k,412,419
+2014,ID,Idaho,More than 100k,505,502
+2014,IL,Illinois,Between 20-40k,570,552
+2014,IL,Illinois,Between 40-60k,593,568
+2014,IL,Illinois,Between 60-80k,599,584
+2014,IL,Illinois,Between 80-100k,604,591
+2014,IL,Illinois,Less than 20k,548,522
+2014,IL,Illinois,More than 100k,629,612
+2014,IN,Indiana,Between 20-40k,468,469
+2014,IN,Indiana,Between 40-60k,487,488
+2014,IN,Indiana,Between 60-80k,497,494
+2014,IN,Indiana,Between 80-100k,514,506
+2014,IN,Indiana,Less than 20k,440,445
+2014,IN,Indiana,More than 100k,539,530
+2014,IA,Iowa,Between 20-40k,542,543
+2014,IA,Iowa,Between 40-60k,565,578
+2014,IA,Iowa,Between 60-80k,581,594
+2014,IA,Iowa,Between 80-100k,619,615
+2014,IA,Iowa,Less than 20k,512,508
+2014,IA,Iowa,More than 100k,637,626
+2014,KS,Kansas,Between 20-40k,556,554
+2014,KS,Kansas,Between 40-60k,551,561
+2014,KS,Kansas,Between 60-80k,571,579
+2014,KS,Kansas,Between 80-100k,581,590
+2014,KS,Kansas,Less than 20k,525,519
+2014,KS,Kansas,More than 100k,617,608
+2014,KY,Kentucky,Between 20-40k,556,559
+2014,KY,Kentucky,Between 40-60k,550,562
+2014,KY,Kentucky,Between 60-80k,574,589
+2014,KY,Kentucky,Between 80-100k,576,582
+2014,KY,Kentucky,Less than 20k,506,493
+2014,KY,Kentucky,More than 100k,596,597
+2014,LA,Louisiana,Between 20-40k,491,497
+2014,LA,Louisiana,Between 40-60k,522,525
+2014,LA,Louisiana,Between 60-80k,540,552
+2014,LA,Louisiana,Between 80-100k,566,570
+2014,LA,Louisiana,Less than 20k,468,466
+2014,LA,Louisiana,More than 100k,573,576
+2014,ME,Maine,Between 20-40k,494,495
+2014,ME,Maine,Between 40-60k,520,520
+2014,ME,Maine,Between 60-80k,535,534
+2014,ME,Maine,Between 80-100k,555,544
+2014,ME,Maine,Less than 20k,468,461
+2014,ME,Maine,More than 100k,569,556
+2014,MD,Maryland,Between 20-40k,461,458
+2014,MD,Maryland,Between 40-60k,476,477
+2014,MD,Maryland,Between 60-80k,496,496
+2014,MD,Maryland,Between 80-100k,512,511
+2014,MD,Maryland,Less than 20k,418,419
+2014,MD,Maryland,More than 100k,548,542
+2014,MA,Massachusetts,Between 20-40k,486,471
+2014,MA,Massachusetts,Between 40-60k,506,494
+2014,MA,Massachusetts,Between 60-80k,520,511
+2014,MA,Massachusetts,Between 80-100k,530,518
+2014,MA,Massachusetts,Less than 20k,453,432
+2014,MA,Massachusetts,More than 100k,566,551
+2014,MI,Michigan,Between 20-40k,565,540
+2014,MI,Michigan,Between 40-60k,579,554
+2014,MI,Michigan,Between 60-80k,596,591
+2014,MI,Michigan,Between 80-100k,609,590
+2014,MI,Michigan,Less than 20k,530,501
+2014,MI,Michigan,More than 100k,624,606
+2014,MN,Minnesota,Between 20-40k,563,548
+2014,MN,Minnesota,Between 40-60k,579,564
+2014,MN,Minnesota,Between 60-80k,588,591
+2014,MN,Minnesota,Between 80-100k,598,589
+2014,MN,Minnesota,Less than 20k,549,518
+2014,MN,Minnesota,More than 100k,625,613
+2014,MS,Mississippi,Between 20-40k,496,518
+2014,MS,Mississippi,Between 40-60k,541,560
+2014,MS,Mississippi,Between 60-80k,555,587
+2014,MS,Mississippi,Between 80-100k,564,603
+2014,MS,Mississippi,Less than 20k,497,518
+2014,MS,Mississippi,More than 100k,581,592
+2014,MO,Missouri,Between 20-40k,540,554
+2014,MO,Missouri,Between 40-60k,559,563
+2014,MO,Missouri,Between 60-80k,580,587
+2014,MO,Missouri,Between 80-100k,588,593
+2014,MO,Missouri,Less than 20k,518,501
+2014,MO,Missouri,More than 100k,608,608
+2014,MT,Montana,Between 20-40k,531,548
+2014,MT,Montana,Between 40-60k,546,546
+2014,MT,Montana,Between 60-80k,560,554
+2014,MT,Montana,Between 80-100k,561,548
+2014,MT,Montana,Less than 20k,511,509
+2014,MT,Montana,More than 100k,566,570
+2014,NE,Nebraska,Between 20-40k,540,545
+2014,NE,Nebraska,Between 40-60k,568,568
+2014,NE,Nebraska,Between 60-80k,569,581
+2014,NE,Nebraska,Between 80-100k,582,595
+2014,NE,Nebraska,Less than 20k,527,542
+2014,NE,Nebraska,More than 100k,607,607
+2014,NV,Nevada,Between 20-40k,474,472
+2014,NV,Nevada,Between 40-60k,490,490
+2014,NV,Nevada,Between 60-80k,502,504
+2014,NV,Nevada,Between 80-100k,510,514
+2014,NV,Nevada,Less than 20k,444,447
+2014,NV,Nevada,More than 100k,530,528
+2014,NH,New Hampshire,Between 20-40k,493,495
+2014,NH,New Hampshire,Between 40-60k,503,502
+2014,NH,New Hampshire,Between 60-80k,514,506
+2014,NH,New Hampshire,Between 80-100k,521,519
+2014,NH,New Hampshire,Less than 20k,459,463
+2014,NH,New Hampshire,More than 100k,553,542
+2014,NJ,New Jersey,Between 20-40k,480,457
+2014,NJ,New Jersey,Between 40-60k,499,478
+2014,NJ,New Jersey,Between 60-80k,509,492
+2014,NJ,New Jersey,Between 80-100k,527,507
+2014,NJ,New Jersey,Less than 20k,444,419
+2014,NJ,New Jersey,More than 100k,559,536
+2014,NM,New Mexico,Between 20-40k,505,515
+2014,NM,New Mexico,Between 40-60k,527,526
+2014,NM,New Mexico,Between 60-80k,525,542
+2014,NM,New Mexico,Between 80-100k,539,551
+2014,NM,New Mexico,Less than 20k,496,477
+2014,NM,New Mexico,More than 100k,571,577
+2014,NY,New York,Between 20-40k,479,463
+2014,NY,New York,Between 40-60k,495,486
+2014,NY,New York,Between 60-80k,510,500
+2014,NY,New York,Between 80-100k,521,509
+2014,NY,New York,Less than 20k,448,424
+2014,NY,New York,More than 100k,550,535
+2014,NC,North Carolina,Between 20-40k,467,461
+2014,NC,North Carolina,Between 40-60k,491,484
+2014,NC,North Carolina,Between 60-80k,505,499
+2014,NC,North Carolina,Between 80-100k,521,514
+2014,NC,North Carolina,Less than 20k,438,430
+2014,NC,North Carolina,More than 100k,552,540
+2014,ND,North Dakota,Between 20-40k,588,631
+2014,ND,North Dakota,Between 40-60k,537,577
+2014,ND,North Dakota,Between 60-80k,548,586
+2014,ND,North Dakota,Between 80-100k,635,628
+2014,ND,North Dakota,Less than 20k,520,537
+2014,ND,North Dakota,More than 100k,487,505
+2014,OH,Ohio,Between 20-40k,516,515
+2014,OH,Ohio,Between 40-60k,531,533
+2014,OH,Ohio,Between 60-80k,547,547
+2014,OH,Ohio,Between 80-100k,561,554
+2014,OH,Ohio,Less than 20k,478,473
+2014,OH,Ohio,More than 100k,578,568
+2014,OK,Oklahoma,Between 20-40k,530,535
+2014,OK,Oklahoma,Between 40-60k,549,556
+2014,OK,Oklahoma,Between 60-80k,557,570
+2014,OK,Oklahoma,Between 80-100k,575,588
+2014,OK,Oklahoma,Less than 20k,501,507
+2014,OK,Oklahoma,More than 100k,587,587
+2014,OR,Oregon,Between 20-40k,487,492
+2014,OR,Oregon,Between 40-60k,505,511
+2014,OR,Oregon,Between 60-80k,517,524
+2014,OR,Oregon,Between 80-100k,528,529
+2014,OR,Oregon,Less than 20k,472,471
+2014,OR,Oregon,More than 100k,557,556
+2014,PA,Pennsylvania,Between 20-40k,471,466
+2014,PA,Pennsylvania,Between 40-60k,490,486
+2014,PA,Pennsylvania,Between 60-80k,503,498
+2014,PA,Pennsylvania,Between 80-100k,514,506
+2014,PA,Pennsylvania,Less than 20k,434,428
+2014,PA,Pennsylvania,More than 100k,548,535
+2014,PR,Puerto Rico,Between 20-40k,410,423
+2014,PR,Puerto Rico,Between 40-60k,443,454
+2014,PR,Puerto Rico,Between 60-80k,447,469
+2014,PR,Puerto Rico,Between 80-100k,477,494
+2014,PR,Puerto Rico,Less than 20k,384,407
+2014,PR,Puerto Rico,More than 100k,499,512
+2014,RI,Rhode Island,Between 20-40k,470,472
+2014,RI,Rhode Island,Between 40-60k,481,484
+2014,RI,Rhode Island,Between 60-80k,492,505
+2014,RI,Rhode Island,Between 80-100k,517,513
+2014,RI,Rhode Island,Less than 20k,423,427
+2014,RI,Rhode Island,More than 100k,541,539
+2014,SC,South Carolina,Between 20-40k,454,454
+2014,SC,South Carolina,Between 40-60k,477,478
+2014,SC,South Carolina,Between 60-80k,488,489
+2014,SC,South Carolina,Between 80-100k,505,502
+2014,SC,South Carolina,Less than 20k,426,426
+2014,SC,South Carolina,More than 100k,531,524
+2014,SD,South Dakota,Between 20-40k,534,569
+2014,SD,South Dakota,Between 40-60k,585,585
+2014,SD,South Dakota,Between 60-80k,601,626
+2014,SD,South Dakota,Between 80-100k,618,631
+2014,SD,South Dakota,Less than 20k,567,579
+2014,SD,South Dakota,More than 100k,493,514
+2014,TN,Tennessee,Between 20-40k,518,539
+2014,TN,Tennessee,Between 40-60k,532,547
+2014,TN,Tennessee,Between 60-80k,545,564
+2014,TN,Tennessee,Between 80-100k,562,576
+2014,TN,Tennessee,Less than 20k,496,503
+2014,TN,Tennessee,More than 100k,583,590
+2014,TX,Texas,Between 20-40k,470,450
+2014,TX,Texas,Between 40-60k,489,475
+2014,TX,Texas,Between 60-80k,501,489
+2014,TX,Texas,Between 80-100k,517,503
+2014,TX,Texas,Less than 20k,440,417
+2014,TX,Texas,More than 100k,545,528
+2014,UT,Utah,Between 20-40k,537,537
+2014,UT,Utah,Between 40-60k,558,546
+2014,UT,Utah,Between 60-80k,559,571
+2014,UT,Utah,Between 80-100k,588,596
+2014,UT,Utah,Less than 20k,516,485
+2014,UT,Utah,More than 100k,586,593
+2014,VT,Vermont,Between 20-40k,488,496
+2014,VT,Vermont,Between 40-60k,511,514
+2014,VT,Vermont,Between 60-80k,523,522
+2014,VT,Vermont,Between 80-100k,537,529
+2014,VT,Vermont,Less than 20k,459,460
+2014,VT,Vermont,More than 100k,562,554
+2014,VI,Virgin Islands,Between 20-40k,380,407
+2014,VI,Virgin Islands,Between 40-60k,402,431
+2014,VI,Virgin Islands,Between 60-80k,438,462
+2014,VI,Virgin Islands,Between 80-100k,420,433
+2014,VI,Virgin Islands,Less than 20k,351,376
+2014,VI,Virgin Islands,More than 100k,276,280
+2014,VA,Virginia,Between 20-40k,466,468
+2014,VA,Virginia,Between 40-60k,484,491
+2014,VA,Virginia,Between 60-80k,497,505
+2014,VA,Virginia,Between 80-100k,514,520
+2014,VA,Virginia,Less than 20k,441,442
+2014,VA,Virginia,More than 100k,546,548
+2014,WA,Washington,Between 20-40k,486,476
+2014,WA,Washington,Between 40-60k,507,502
+2014,WA,Washington,Between 60-80k,521,519
+2014,WA,Washington,Between 80-100k,535,529
+2014,WA,Washington,Less than 20k,453,440
+2014,WA,Washington,More than 100k,559,551
+2014,WV,West Virginia,Between 20-40k,466,486
+2014,WV,West Virginia,Between 40-60k,494,514
+2014,WV,West Virginia,Between 60-80k,494,511
+2014,WV,West Virginia,Between 80-100k,511,522
+2014,WV,West Virginia,Less than 20k,454,473
+2014,WV,West Virginia,More than 100k,523,533
+2014,WI,Wisconsin,Between 20-40k,555,546
+2014,WI,Wisconsin,Between 40-60k,572,563
+2014,WI,Wisconsin,Between 60-80k,601,598
+2014,WI,Wisconsin,Between 80-100k,606,598
+2014,WI,Wisconsin,Less than 20k,558,516
+2014,WI,Wisconsin,More than 100k,618,607
+2014,WY,Wyoming,Between 20-40k,643,634
+2014,WY,Wyoming,Between 40-60k,616,589
+2014,WY,Wyoming,Between 60-80k,563,615
+2014,WY,Wyoming,Between 80-100k,566,569
+2014,WY,Wyoming,Less than 20k,0,0
+2014,WY,Wyoming,More than 100k,476,482
+2015,AL,Alabama,Between 20-40k,474,485
+2015,AL,Alabama,Between 40-60k,507,517
+2015,AL,Alabama,Between 60-80k,545,544
+2015,AL,Alabama,Between 80-100k,531,547
+2015,AL,Alabama,Less than 20k,441,459
+2015,AL,Alabama,More than 100k,567,574
+2015,AK,Alaska,Between 20-40k,468,478
+2015,AK,Alaska,Between 40-60k,488,498
+2015,AK,Alaska,Between 60-80k,506,511
+2015,AK,Alaska,Between 80-100k,518,522
+2015,AK,Alaska,Less than 20k,426,429
+2015,AK,Alaska,More than 100k,533,537
+2015,AZ,Arizona,Between 20-40k,494,491
+2015,AZ,Arizona,Between 40-60k,512,510
+2015,AZ,Arizona,Between 60-80k,524,523
+2015,AZ,Arizona,Between 80-100k,538,534
+2015,AZ,Arizona,Less than 20k,469,465
+2015,AZ,Arizona,More than 100k,555,547
+2015,AR,Arkansas,Between 20-40k,538,528
+2015,AR,Arkansas,Between 40-60k,551,548
+2015,AR,Arkansas,Between 60-80k,552,555
+2015,AR,Arkansas,Between 80-100k,575,570
+2015,AR,Arkansas,Less than 20k,509,500
+2015,AR,Arkansas,More than 100k,582,589
+2015,CA,California,Between 20-40k,472,461
+2015,CA,California,Between 40-60k,492,484
+2015,CA,California,Between 60-80k,509,502
+2015,CA,California,Between 80-100k,528,521
+2015,CA,California,Less than 20k,445,435
+2015,CA,California,More than 100k,560,549
+2015,CO,Colorado,Between 20-40k,554,547
+2015,CO,Colorado,Between 40-60k,560,552
+2015,CO,Colorado,Between 60-80k,570,575
+2015,CO,Colorado,Between 80-100k,584,586
+2015,CO,Colorado,Less than 20k,525,519
+2015,CO,Colorado,More than 100k,598,591
+2015,CT,Connecticut,Between 20-40k,459,462
+2015,CT,Connecticut,Between 40-60k,481,485
+2015,CT,Connecticut,Between 60-80k,499,501
+2015,CT,Connecticut,Between 80-100k,518,514
+2015,CT,Connecticut,Less than 20k,417,424
+2015,CT,Connecticut,More than 100k,552,545
+2015,DE,Delaware,Between 20-40k,440,451
+2015,DE,Delaware,Between 40-60k,468,467
+2015,DE,Delaware,Between 60-80k,480,485
+2015,DE,Delaware,Between 80-100k,502,501
+2015,DE,Delaware,Less than 20k,404,402
+2015,DE,Delaware,More than 100k,527,528
+2015,DC,District Of Columbia,Between 20-40k,406,404
+2015,DC,District Of Columbia,Between 40-60k,413,417
+2015,DC,District Of Columbia,Between 60-80k,459,470
+2015,DC,District Of Columbia,Between 80-100k,484,503
+2015,DC,District Of Columbia,Less than 20k,363,366
+2015,DC,District Of Columbia,More than 100k,561,574
+2015,FL,Florida,Between 20-40k,462,473
+2015,FL,Florida,Between 40-60k,483,493
+2015,FL,Florida,Between 60-80k,500,509
+2015,FL,Florida,Between 80-100k,512,518
+2015,FL,Florida,Less than 20k,424,434
+2015,FL,Florida,More than 100k,533,534
+2015,GA,Georgia,Between 20-40k,450,457
+2015,GA,Georgia,Between 40-60k,468,476
+2015,GA,Georgia,Between 60-80k,483,494
+2015,GA,Georgia,Between 80-100k,498,504
+2015,GA,Georgia,Less than 20k,422,428
+2015,GA,Georgia,More than 100k,532,532
+2015,HI,Hawaii,Between 20-40k,478,459
+2015,HI,Hawaii,Between 40-60k,489,471
+2015,HI,Hawaii,Between 60-80k,500,486
+2015,HI,Hawaii,Between 80-100k,508,487
+2015,HI,Hawaii,Less than 20k,452,430
+2015,HI,Hawaii,More than 100k,542,522
+2015,ID,Idaho,Between 20-40k,461,462
+2015,ID,Idaho,Between 40-60k,476,482
+2015,ID,Idaho,Between 60-80k,493,495
+2015,ID,Idaho,Between 80-100k,512,512
+2015,ID,Idaho,Less than 20k,422,427
+2015,ID,Idaho,More than 100k,517,520
+2015,IL,Illinois,Between 20-40k,552,529
+2015,IL,Illinois,Between 40-60k,572,563
+2015,IL,Illinois,Between 60-80k,583,569
+2015,IL,Illinois,Between 80-100k,608,595
+2015,IL,Illinois,Less than 20k,534,518
+2015,IL,Illinois,More than 100k,629,612
+2015,IN,Indiana,Between 20-40k,463,467
+2015,IN,Indiana,Between 40-60k,487,487
+2015,IN,Indiana,Between 60-80k,500,498
+2015,IN,Indiana,Between 80-100k,512,507
+2015,IN,Indiana,Less than 20k,436,440
+2015,IN,Indiana,More than 100k,538,529
+2015,IA,Iowa,Between 20-40k,523,527
+2015,IA,Iowa,Between 40-60k,547,547
+2015,IA,Iowa,Between 60-80k,580,576
+2015,IA,Iowa,Between 80-100k,604,589
+2015,IA,Iowa,Less than 20k,552,519
+2015,IA,Iowa,More than 100k,617,609
+2015,KS,Kansas,Between 20-40k,539,535
+2015,KS,Kansas,Between 40-60k,560,566
+2015,KS,Kansas,Between 60-80k,573,580
+2015,KS,Kansas,Between 80-100k,567,569
+2015,KS,Kansas,Less than 20k,515,481
+2015,KS,Kansas,More than 100k,614,614
+2015,KY,Kentucky,Between 20-40k,516,523
+2015,KY,Kentucky,Between 40-60k,570,575
+2015,KY,Kentucky,Between 60-80k,568,569
+2015,KY,Kentucky,Between 80-100k,576,581
+2015,KY,Kentucky,Less than 20k,511,497
+2015,KY,Kentucky,More than 100k,605,605
+2015,LA,Louisiana,Between 20-40k,503,504
+2015,LA,Louisiana,Between 40-60k,531,539
+2015,LA,Louisiana,Between 60-80k,522,538
+2015,LA,Louisiana,Between 80-100k,552,562
+2015,LA,Louisiana,Less than 20k,473,475
+2015,LA,Louisiana,More than 100k,582,584
+2015,ME,Maine,Between 20-40k,500,506
+2015,ME,Maine,Between 40-60k,512,517
+2015,ME,Maine,Between 60-80k,532,532
+2015,ME,Maine,Between 80-100k,544,537
+2015,ME,Maine,Less than 20k,465,467
+2015,ME,Maine,More than 100k,565,552
+2015,MD,Maryland,Between 20-40k,464,459
+2015,MD,Maryland,Between 40-60k,476,474
+2015,MD,Maryland,Between 60-80k,497,496
+2015,MD,Maryland,Between 80-100k,514,513
+2015,MD,Maryland,Less than 20k,421,420
+2015,MD,Maryland,More than 100k,550,541
+2015,MA,Massachusetts,Between 20-40k,486,471
+2015,MA,Massachusetts,Between 40-60k,507,495
+2015,MA,Massachusetts,Between 60-80k,519,511
+2015,MA,Massachusetts,Between 80-100k,533,525
+2015,MA,Massachusetts,Less than 20k,452,432
+2015,MA,Massachusetts,More than 100k,563,550
+2015,MI,Michigan,Between 20-40k,549,535
+2015,MI,Michigan,Between 40-60k,558,546
+2015,MI,Michigan,Between 60-80k,589,586
+2015,MI,Michigan,Between 80-100k,604,597
+2015,MI,Michigan,Less than 20k,530,507
+2015,MI,Michigan,More than 100k,628,610
+2015,MN,Minnesota,Between 20-40k,562,560
+2015,MN,Minnesota,Between 40-60k,561,550
+2015,MN,Minnesota,Between 60-80k,579,575
+2015,MN,Minnesota,Between 80-100k,591,582
+2015,MN,Minnesota,Less than 20k,544,514
+2015,MN,Minnesota,More than 100k,617,610
+2015,MS,Mississippi,Between 20-40k,518,535
+2015,MS,Mississippi,Between 40-60k,547,562
+2015,MS,Mississippi,Between 60-80k,533,575
+2015,MS,Mississippi,Between 80-100k,582,597
+2015,MS,Mississippi,Less than 20k,473,483
+2015,MS,Mississippi,More than 100k,591,607
+2015,MO,Missouri,Between 20-40k,531,537
+2015,MO,Missouri,Between 40-60k,558,574
+2015,MO,Missouri,Between 60-80k,578,584
+2015,MO,Missouri,Between 80-100k,600,599
+2015,MO,Missouri,Less than 20k,524,531
+2015,MO,Missouri,More than 100k,613,613
+2015,MT,Montana,Between 20-40k,545,553
+2015,MT,Montana,Between 40-60k,545,555
+2015,MT,Montana,Between 60-80k,559,568
+2015,MT,Montana,Between 80-100k,548,556
+2015,MT,Montana,Less than 20k,521,521
+2015,MT,Montana,More than 100k,568,564
+2015,NE,Nebraska,Between 20-40k,530,519
+2015,NE,Nebraska,Between 40-60k,563,568
+2015,NE,Nebraska,Between 60-80k,576,586
+2015,NE,Nebraska,Between 80-100k,599,598
+2015,NE,Nebraska,Less than 20k,538,493
+2015,NE,Nebraska,More than 100k,612,614
+2015,NV,Nevada,Between 20-40k,471,472
+2015,NV,Nevada,Between 40-60k,489,490
+2015,NV,Nevada,Between 60-80k,498,500
+2015,NV,Nevada,Between 80-100k,514,513
+2015,NV,Nevada,Less than 20k,443,447
+2015,NV,Nevada,More than 100k,529,529
+2015,NH,New Hampshire,Between 20-40k,496,497
+2015,NH,New Hampshire,Between 40-60k,505,499
+2015,NH,New Hampshire,Between 60-80k,518,517
+2015,NH,New Hampshire,Between 80-100k,517,516
+2015,NH,New Hampshire,Less than 20k,471,463
+2015,NH,New Hampshire,More than 100k,551,541
+2015,NJ,New Jersey,Between 20-40k,480,458
+2015,NJ,New Jersey,Between 40-60k,499,479
+2015,NJ,New Jersey,Between 60-80k,513,495
+2015,NJ,New Jersey,Between 80-100k,528,510
+2015,NJ,New Jersey,Less than 20k,441,417
+2015,NJ,New Jersey,More than 100k,557,537
+2015,NM,New Mexico,Between 20-40k,494,498
+2015,NM,New Mexico,Between 40-60k,515,529
+2015,NM,New Mexico,Between 60-80k,530,537
+2015,NM,New Mexico,Between 80-100k,543,547
+2015,NM,New Mexico,Less than 20k,490,483
+2015,NM,New Mexico,More than 100k,576,585
+2015,NY,New York,Between 20-40k,482,467
+2015,NY,New York,Between 40-60k,495,486
+2015,NY,New York,Between 60-80k,509,501
+2015,NY,New York,Between 80-100k,522,512
+2015,NY,New York,Less than 20k,449,427
+2015,NY,New York,More than 100k,552,539
+2015,NC,North Carolina,Between 20-40k,465,460
+2015,NC,North Carolina,Between 40-60k,489,486
+2015,NC,North Carolina,Between 60-80k,503,498
+2015,NC,North Carolina,Between 80-100k,520,511
+2015,NC,North Carolina,Less than 20k,433,430
+2015,NC,North Carolina,More than 100k,548,539
+2015,ND,North Dakota,Between 20-40k,464,542
+2015,ND,North Dakota,Between 40-60k,586,587
+2015,ND,North Dakota,Between 60-80k,615,645
+2015,ND,North Dakota,Between 80-100k,624,651
+2015,ND,North Dakota,Less than 20k,0,0
+2015,ND,North Dakota,More than 100k,622,623
+2015,OH,Ohio,Between 20-40k,507,508
+2015,OH,Ohio,Between 40-60k,531,531
+2015,OH,Ohio,Between 60-80k,546,543
+2015,OH,Ohio,Between 80-100k,558,552
+2015,OH,Ohio,Less than 20k,480,470
+2015,OH,Ohio,More than 100k,583,574
+2015,OK,Oklahoma,Between 20-40k,533,540
+2015,OK,Oklahoma,Between 40-60k,558,566
+2015,OK,Oklahoma,Between 60-80k,548,551
+2015,OK,Oklahoma,Between 80-100k,566,577
+2015,OK,Oklahoma,Less than 20k,504,487
+2015,OK,Oklahoma,More than 100k,583,590
+2015,OR,Oregon,Between 20-40k,488,493
+2015,OR,Oregon,Between 40-60k,505,510
+2015,OR,Oregon,Between 60-80k,516,521
+2015,OR,Oregon,Between 80-100k,526,532
+2015,OR,Oregon,Less than 20k,469,470
+2015,OR,Oregon,More than 100k,555,555
+2015,PA,Pennsylvania,Between 20-40k,469,468
+2015,PA,Pennsylvania,Between 40-60k,489,487
+2015,PA,Pennsylvania,Between 60-80k,502,499
+2015,PA,Pennsylvania,Between 80-100k,515,510
+2015,PA,Pennsylvania,Less than 20k,430,427
+2015,PA,Pennsylvania,More than 100k,547,537
+2015,PR,Puerto Rico,Between 20-40k,413,425
+2015,PR,Puerto Rico,Between 40-60k,443,455
+2015,PR,Puerto Rico,Between 60-80k,453,462
+2015,PR,Puerto Rico,Between 80-100k,471,485
+2015,PR,Puerto Rico,Less than 20k,386,412
+2015,PR,Puerto Rico,More than 100k,499,505
+2015,RI,Rhode Island,Between 20-40k,467,472
+2015,RI,Rhode Island,Between 40-60k,488,494
+2015,RI,Rhode Island,Between 60-80k,494,497
+2015,RI,Rhode Island,Between 80-100k,515,517
+2015,RI,Rhode Island,Less than 20k,431,432
+2015,RI,Rhode Island,More than 100k,542,539
+2015,SC,South Carolina,Between 20-40k,447,451
+2015,SC,South Carolina,Between 40-60k,473,478
+2015,SC,South Carolina,Between 60-80k,481,485
+2015,SC,South Carolina,Between 80-100k,494,497
+2015,SC,South Carolina,Less than 20k,417,422
+2015,SC,South Carolina,More than 100k,522,521
+2015,SD,South Dakota,Between 20-40k,535,564
+2015,SD,South Dakota,Between 40-60k,554,597
+2015,SD,South Dakota,Between 60-80k,568,569
+2015,SD,South Dakota,Between 80-100k,613,606
+2015,SD,South Dakota,Less than 20k,452,491
+2015,SD,South Dakota,More than 100k,578,604
+2015,TN,Tennessee,Between 20-40k,526,531
+2015,TN,Tennessee,Between 40-60k,540,559
+2015,TN,Tennessee,Between 60-80k,553,566
+2015,TN,Tennessee,Between 80-100k,576,591
+2015,TN,Tennessee,Less than 20k,500,505
+2015,TN,Tennessee,More than 100k,581,589
+2015,TX,Texas,Between 20-40k,465,449
+2015,TX,Texas,Between 40-60k,483,471
+2015,TX,Texas,Between 60-80k,497,488
+2015,TX,Texas,Between 80-100k,515,504
+2015,TX,Texas,Less than 20k,432,413
+2015,TX,Texas,More than 100k,543,528
+2015,UT,Utah,Between 20-40k,537,535
+2015,UT,Utah,Between 40-60k,566,568
+2015,UT,Utah,Between 60-80k,580,585
+2015,UT,Utah,Between 80-100k,582,574
+2015,UT,Utah,Less than 20k,532,509
+2015,UT,Utah,More than 100k,601,606
+2015,VT,Vermont,Between 20-40k,498,508
+2015,VT,Vermont,Between 40-60k,507,514
+2015,VT,Vermont,Between 60-80k,521,523
+2015,VT,Vermont,Between 80-100k,528,528
+2015,VT,Vermont,Less than 20k,469,467
+2015,VT,Vermont,More than 100k,555,553
+2015,VI,Virgin Islands,Between 20-40k,377,407
+2015,VI,Virgin Islands,Between 40-60k,412,444
+2015,VI,Virgin Islands,Between 60-80k,430,455
+2015,VI,Virgin Islands,Between 80-100k,405,433
+2015,VI,Virgin Islands,Less than 20k,369,389
+2015,VI,Virgin Islands,More than 100k,368,372
+2015,VA,Virginia,Between 20-40k,469,472
+2015,VA,Virginia,Between 40-60k,488,494
+2015,VA,Virginia,Between 60-80k,496,505
+2015,VA,Virginia,Between 80-100k,514,518
+2015,VA,Virginia,Less than 20k,441,446
+2015,VA,Virginia,More than 100k,549,550
+2015,WA,Washington,Between 20-40k,483,473
+2015,WA,Washington,Between 40-60k,503,499
+2015,WA,Washington,Between 60-80k,521,517
+2015,WA,Washington,Between 80-100k,534,530
+2015,WA,Washington,Less than 20k,449,437
+2015,WA,Washington,More than 100k,560,552
+2015,WV,West Virginia,Between 20-40k,468,481
+2015,WV,West Virginia,Between 40-60k,483,492
+2015,WV,West Virginia,Between 60-80k,487,501
+2015,WV,West Virginia,Between 80-100k,503,511
+2015,WV,West Virginia,Less than 20k,448,455
+2015,WV,West Virginia,More than 100k,522,532
+2015,WI,Wisconsin,Between 20-40k,551,544
+2015,WI,Wisconsin,Between 40-60k,596,579
+2015,WI,Wisconsin,Between 60-80k,590,580
+2015,WI,Wisconsin,Between 80-100k,605,595
+2015,WI,Wisconsin,Less than 20k,573,532
+2015,WI,Wisconsin,More than 100k,615,603
+2015,WY,Wyoming,Between 20-40k,533,560
+2015,WY,Wyoming,Between 40-60k,550,572
+2015,WY,Wyoming,Between 60-80k,561,604
+2015,WY,Wyoming,Between 80-100k,598,587
+2015,WY,Wyoming,Less than 20k,0,0
+2015,WY,Wyoming,More than 100k,573,591
