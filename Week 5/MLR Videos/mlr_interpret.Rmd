@@ -1,0 +1,196 @@
+---
+title: "Interpreting a Multiple Linear Regression Model"
+output: ioslides_presentation
+fig_height: 4
+fig_width: 4
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE, 
+                      fig.width = 5, 
+                      fig.height = 4,
+                      fig.align = "center",
+                      results = "hold")
+
+options(show.signif.stars = FALSE)
+library(tidyverse)
+library(moderndive)
+library(openintro)
+library(flair)
+library(broom)
+library(gridExtra)
+library(kableExtra)
+
+evals <- evals %>% 
+  rename(sex = gender)
+```
+
+## Interpreting a Simple Linear Regression
+
+```{r, echo = FALSE, echo = TRUE}
+model_simple <- lm(score ~ bty_avg, data = evals)
+```
+
+```{r, echo = FALSE}
+coef(model_simple)[1]
+```
+
+- For professors whose average beauty was scored as 0, the mean course evaluation score would be around 3.88. 
+
+```{r, echo = FALSE}
+coef(model_simple)[2]
+```
+
+- For every increase of 1 in average beauty score we expect the mean course evaluation score to increase by 0.067 for all professors. 
+
+## Interpreting a Parallel Slopes Model
+
+```{r}
+model_parallel <- lm(score ~ bty_avg + sex, data = evals)
+coef(model_parallel)
+```
+
+</br> 
+
+- Who does the `intercept` correspond to?
+  * Female professors 
+
+- What does the estimate labeled `sexmale` correspond to?
+  * The adjustment to the intercept for male professors,
+
+- What is relationship between evaluation score and average beauty score for 
+the professors in these data?
+
+## Calculating the Different Lines
+
+```{r}
+coef(model_parallel)
+```
+
+</br>
+
+
+| Gender    | Intercept | Slope for average beauty  |
+| --------- |:---------:| -------------------------:|
+| Female    | 3.75      | 0.074 |
+| Male      | 3.75 + 0.172 = 3.922     | 0.074 |
+
+```{r, echo = FALSE, eval = FALSE}
+options(digits = 4)
+
+table <- get_regression_table(model_parallel)
+intercept_female_parallel <- table %>% filter(term == "intercept") %>% pull(estimate)
+offset_male <- table %>% filter(term == "gendermale") %>% pull(estimate)
+slope <- table %>% filter(term == "bty_avg") %>% pull(estimate)
+offset_male_parallel <- table %>% filter(term == "intercept") %>% pull(estimate)
+intercept_male_parallel <- intercept_female_parallel + offset_male_parallel
+
+tibble(
+  Gender = c("Female instructors", "Male instructors"),
+  Intercept = c(intercept_female_parallel, intercept_male_parallel),
+  `Slope for age` = c(slope, slope)
+) %>%
+  kable(format = "html")
+```
+
+## Writing a Parallel Slopes Model
+
+$$
+\widehat{score} = 3.75 + 0.172 \cdot 1_{\text{is male}} + 0.074 \cdot bty\_avg
+$$
+where 
+
+$$
+1_{\text{is male}} = \begin{cases}
+    1, &  \text{ if professor identified as male} \\
+    0, & \text{ if professor identified as female}
+  \end{cases} 
+$$
+
+</br>
+
+- Male Professors:
+$$
+\widehat{score} = 3.992 + 0.074 \cdot bty\_avg
+$$
+
+- Female Professors:
+$$
+\widehat{score} = 3.75 + 0.074 \cdot bty\_avg
+$$
+
+## "Offsets"
+
+The Modern Dive book refers to the adjustments in the intercept and slope 
+for different levels of a categorical variable "offsets."
+
+- These describe how the regression line changes when moving from one group to 
+another. 
+
+- Intercept offsets change the estimated mean evaluation score when an average 
+beauty score is 0. 
+
+- Slope offsets modify the estimated change in the mean evaluation score when 
+the average beauty score is increased by 1. 
+
+## Interpreting a Different Slopes Model
+
+```{r}
+model_diff <- lm(score ~ bty_avg + sex + bty_avg:sex, data = evals)
+coef(model_diff)
+```
+
+</br>
+
+- Who does the `bty_avg` estimate correspond to?
+  * The slope for female professors. 
+  
+- What does the estimate labeled `bty_avg:sexmale` correspond to?
+  * The adjustment to the slope for male professors. 
+
+## Calculating the Different Lines
+
+```{r}
+coef(model_diff)
+```
+
+</br>
+
+| Gender    | Intercept | Slope for average beauty  |
+| --------- |:---------:| -------------------------:|
+| Female    | 3.95      | 0.031 |
+| Male      | 3.95 - 0.184 = 3.766     | 0.031 + 0.08 = 0.111 |
+
+## Writing a Different Slopes Model
+
+$$
+\widehat{score} = 3.95 - 0.184 \cdot 1_{\text{is male}} + 0.031 \cdot bty\_avg \\ + 0.08 \cdot 1_{\text{is male}} \cdot bty\_avg 
+$$
+where 
+
+$$
+1_{\text{is male}} = \begin{cases}
+    1, &  \text{ if professor identified as male} \\
+    0, & \text{ if professor identified as female}
+  \end{cases} 
+$$
+
+</br>
+
+- Male Professors:
+$$
+\widehat{score} = 3.766 + 0.111 \cdot bty\_avg
+$$
+
+- Female Professors:
+$$
+\widehat{score} = 3.95 + 0.031 \cdot bty\_avg
+$$
+

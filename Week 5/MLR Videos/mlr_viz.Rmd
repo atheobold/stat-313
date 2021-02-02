@@ -1,0 +1,119 @@
+---
+title: "Visualizing Multiple Linear Regression"
+output: ioslides_presentation
+fig_height: 4
+fig_width: 4
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE, 
+                      fig.width = 5, 
+                      fig.height = 4,
+                      fig.align = "center",
+                      results = "hold")
+
+options(show.signif.stars = FALSE)
+library(tidyverse)
+library(moderndive)
+library(openintro)
+library(flair)
+library(broom)
+library(gridExtra)
+library(kableExtra)
+
+evals <- evals %>% 
+  rename(sex = gender)
+```
+
+
+## Visualizing SLR
+
+```{r}
+evals %>% 
+  ggplot(aes(x = bty_avg, y = score)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+
+## Jittering Points 
+
+```{r slr-viz}
+evals %>% 
+  ggplot(aes(x = bty_avg, y = score)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm")
+```
+
+## MLR with a Categorical Variable
+
+```{r mlr-cat, echo = FALSE, eval = FALSE}
+evals %>% 
+  ggplot(aes(x = bty_avg, y = score, color = sex)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm")
+```
+
+```{r, echo = FALSE, fig.align = 'center'}
+decorate("mlr-cat") %>% 
+  flair("color = sex")
+```
+
+## Removing Standard Errors
+
+```{r mlr-se, echo = FALSE, eval = FALSE}
+evals %>% 
+  ggplot(aes(x = bty_avg, y = score, color = sex)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r, echo = FALSE, fig.align = 'center'}
+decorate("mlr-se") %>% 
+  flair("se = FALSE")
+```
+
+## MLR with Two Quantitative Variables
+
+```{r mlr-quant, echo = FALSE, eval = FALSE}
+evals %>% 
+  ggplot(aes(x = bty_avg, y = score, color = age)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm")
+```
+
+```{r, echo = FALSE}
+decorate("mlr-quant") %>% 
+  flair("color = age")
+```
+
+## MLR with Two Quantitative Variables cont.
+
+```{r mlr-facet, echo = FALSE, eval = FALSE}
+evals %>% 
+  ggplot(aes(x = bty_avg, y = score)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm") + 
+  facet_wrap(vars(age))
+```
+
+```{r, echo = FALSE}
+decorate("mlr-facet", eval = FALSE) %>% 
+  flair("facet_wrap(vars(age))")
+```
+
+##
+
+```{r, echo = FALSE, fig.width = 7, fig.height = 6}
+evals %>% 
+  ggplot(aes(x = bty_avg, y = score)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm") + 
+  facet_wrap(vars(age))
+```

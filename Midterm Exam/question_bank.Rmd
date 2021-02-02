@@ -22,7 +22,9 @@ outline of the types of questions I asked students.
 
 You will be asked one question from this bank of questions during your oral exam. 
 
-1. Describe to someone who has never taken a Statistics course what a linear model is. 
+1. A linear regression is one type of model in the broad class of "linear models." 
+What are the characteristics of these linear models? What are the requirements 
+for using these types of models? 
 
 _Possible follow-up questions:_ 
 

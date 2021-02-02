@@ -1,0 +1,88 @@
+---
+title: "Fitting a Multiple Linear Regression Model"
+output: ioslides_presentation
+fig_height: 4
+fig_width: 4
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE, 
+                      fig.width = 5, 
+                      fig.height = 4,
+                      fig.align = "center",
+                      results = "hold")
+
+options(show.signif.stars = FALSE)
+library(tidyverse)
+library(moderndive)
+library(openintro)
+library(flair)
+library(broom)
+library(gridExtra)
+library(kableExtra)
+
+evals <- evals %>% 
+  rename(sex = gender)
+```
+
+## Fitting a SLR Model
+
+```{r}
+model1 <- lm(score ~ bty_avg, data = evals)
+
+get_regression_table(model1)
+```
+
+```{r}
+coef(model1)
+```
+
+
+
+## Modeling Options
+
+```{r, fig.width = 8, echo = FALSE}
+p1 <- evals %>% 
+  ggplot(aes(x = bty_avg, y = score, color = sex)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(title = "Different Slopes Model") + 
+  theme(legend.position = "none")
+
+
+p2 <- evals %>% 
+  ggplot(aes(x = bty_avg, y = score, color = sex)) + 
+  geom_jitter() + 
+  geom_parallel_slopes(se = FALSE) + 
+  labs(title = "Parallel Slopes Model")
+
+grid.arrange(p1, p2, nrow = 1, widths = c(0.45, 0.55))
+```
+
+## Fitting a Parallel Slopes Model
+
+```{r}
+model2 <- lm(score ~ bty_avg + sex, data = evals)
+
+coef(model2)
+```
+
+## Fitting a Different Slopes Model
+
+```{r mlr-slopes, eval = FALSE, echo = FALSE}
+model3 <- lm(score ~ bty_avg + sex + bty_avg:sex, data = evals)
+
+coef(model3)
+```
+
+```{r, echo = FALSE}
+decorate("mlr-slopes") %>% 
+  flair("bty_avg:sex")
+```
