@@ -167,6 +167,8 @@ visualizations, and have yet to discuss statistical testing (e.g.
 hypothesis tests). What information can a data visualization provide you that a 
 data summary or a statistical test cannot?   
 
+What would you say to someone that said someone could manipulate a visualization to say whatever they want, but a mean doesn't lie?
+
 _Possible follow-up questions:_ 
 
 - What type of information does a statistical test (like a hypothesis test) tell 

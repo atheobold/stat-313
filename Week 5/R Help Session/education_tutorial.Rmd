@@ -43,8 +43,7 @@ Let's try these out!
 First, let's summarize the number of observations for each race in the dataset. 
 
 ```{r sum-cat, exercise = TRUE, exercise.eval = FALSE}
-hsb2 %>% 
-  count(race, sort = TRUE)
+
   
 ```
 
@@ -53,9 +52,7 @@ hsb2 %>%
 Next, let's summarize the number of observations for each race and socioeconomic status in the dataset. 
 
 ```{r sum-2cat, exercise = TRUE, exercise.eval = FALSE}
-hsb2 %>% 
-  count(race, ses) %>% 
-  arrange(n)
+
 
 ```
 
@@ -64,13 +61,7 @@ hsb2 %>%
 Finally, let's summarize the median of the reading and math tests. 
 
 ```{r sum-num, exercise = TRUE, exercise.eval = FALSE}
-hsb2 %>% 
-  group_by(race) %>% 
-  summarize(read_median = median(read), 
-            median(math), 
-            max(read), 
-            max(math)) %>% 
-  arrange(read_median)
+
 
 ```
 
@@ -82,10 +73,8 @@ The most logical and most useful first step of any data analysis is an explorato
 First, let's start by visualizing the relationship between the math and science scores of the students in the High School and Beyond dataset.
 
 ```{r hsb2-science-math, exercise = TRUE, exercise.eval = FALSE}
-hsb2 %>% 
-  ggplot(aes(x = science, y = math)) + 
-  geom_point() +
-  geom_smooth(method = "lm")
+
+
 ```
 
 ### Visualizing Numerical & Categorical Data
@@ -96,10 +85,7 @@ Let's plot the same math and science test scores, but this time let's also consi
 - Turn the standard error bands off, so you can more easily see each line. 
 
 ```{r hsb2-science-math-prog, exercise = TRUE, exercise.eval = FALSE}
-hsb2 %>% 
-  ggplot(aes(x = science, y = math, color = race)) + 
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
+
 
 ```
 
@@ -114,20 +100,8 @@ Then inspect the regression to see how different the lines for each group are.
 ```{r model-science-math-race, exercise=TRUE, exercise.eval = FALSE}
 # Fit a linear regression model with different slopes 
 
-math_sci_lm <- lm(math ~ science + race + science:race, data = hsb2)
-
-get_regression_table(math_sci_lm)
 
 ```
-
-For African American students the regression line is: 
-hat(math) = 34.126 + 0.295*science
-
-hat(y) = b_0 + b_1 * x
-
-For Asian students: 
-hat(math) = 34.126 -15.221 + 0.295 * science + 0.451 * science
-hat(math) = 18.905 + 0.746 * science
 
 ## Visualizing Model Conditions 
 
