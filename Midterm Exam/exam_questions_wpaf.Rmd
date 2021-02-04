@@ -1,0 +1,209 @@
+---
+title: "Midterm Exam - Stat 313"
+date: "The Week of February 8, 2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+These are the exam questions given to students for their oral midterm exams. 
+Students answered one randomly selected question from each bank (Linear Models
+& Additional Topics), and were informed of their assigned questions when they 
+entered the "exam room." 
+
+The numbered questions are what were given to students the Friday before exam 
+week. The _follow-up questions_ are a sample of the questions I asked students 
+following their explanation. These questions are not exhaustive, but provide an 
+outline of the types of questions I asked students. 
+
+\vspace{0.25cm}
+
+# Linear Models - Question Bank
+
+You will be asked one question from this bank of questions during your oral exam. 
+
+1. A linear regression is one type of model in the broad class of "linear models." 
+What are the characteristics of these linear models? What are the requirements 
+for using these types of models? 
+
+_Possible follow-up questions:_ 
+
+- How is the relationship between the variables described?
+- What are the conditions of a linear model? 
+- Are a difference in means and a linear regression both linear models? 
+
+\vspace{0.25cm}
+
+2. Describe to someone who has never taken a Statistics course the difference 
+between simple linear regression and multiple linear regression. 
+
+_Possible follow-up questions:_ 
+
+- Are there differences in the conditions for these two models?
+- How does the interpretation of the slope coefficient change in a multiple linear 
+regression? 
+- What are the benefits of using a multiple linear regression instead of a 
+simple linear regression? 
+
+\vspace{0.25cm}
+
+3. What are the benefits and weaknesses of linear regression?  
+
+_Possible follow-up questions:_ 
+
+- What are the conditions of linear regression? 
+- Are the conditions for regression difficult to be "met"?
+
+\vspace{0.25cm}
+
+4. Many disciplines employ regression, but do not check the model conditions. 
+Why should we care about the model conditions? What are the implications of not 
+checking these conditions?  
+
+_Possible follow-up questions:_ 
+
+- What are the model conditions for regression? 
+- What do each of these conditions mean in the context of the data being used?
+- What can happen if the model conditions are violated? 
+- Are there conditions we should worry about more than others? 
+
+\vspace{0.25cm}
+
+5. Some textbooks list "lack of influential points" as a model condition for 
+regression. Why is this a potentially important condition to consider? What 
+are the implications of removing all "influential" observations from a dataset?  
+
+_Possible follow-up questions:_ 
+
+- What is an "influential" point? 
+- How would an influential point impact a linear regression? 
+- How would you determine if a point was "influential"? 
+- How does removing every "influential" point from a dataset change what can be
+inferred from the regression? 
+
+\vspace{0.25cm}
+
+6. Most people are familiar with the saying that "correlation does not imply 
+causation." However, when some researchers find a strong correlation between 
+their explanatory and response variables (R > 0.8), they often interpret the 
+relationship as "larger values in x _lead to_ larger values in y." What is an 
+issue with this interpretation? In this scenario, what could researchers 
+conclude?  
+
+_Possible follow-up questions:_ 
+
+- How do you interpret the phrase "lead to"? 
+- What type of relationship is implied by this phrasing? 
+- What is required to make causal statements? 
+- What does random assignment look like in the context of a linear regression? 
+
+\vspace{0.5cm}
+
+# Additional Topics - Question Bank
+
+You will be asked one question from this bank of questions during your oral exam.
+
+\vspace{0.25cm}
+
+__Statistical Models__ 
+
+1. Describe to someone who has never taken a Statistics course what the principle 
+of parsimony is. 
+
+_Possible follow-up questions:_ 
+
+- What does it mean for a model to be "simpler" than another model? 
+- How does one choose the "simplest" model? 
+- How could you determine if it's worth it to add another explanatory variable 
+to the model? 
+
+\vspace{0.25cm}
+
+2. Describe to someone who has never taken a Statistics course what Simpson's
+paradox is. 
+
+_Possible follow-up questions:_ 
+
+- How does the relationship between two variables change when another variable 
+is included, if Simpson's paradox is present? 
+- What does this mean? 
+- How can researchers avoid falling into the trap of Simpson's paradox? 
+
+\vspace{0.25cm}
+
+3. How would you determine if your statistical model should be used for 
+predicting what could be expected to happen for new data? 
+
+_Possible follow-up questions:_ 
+
+- What would you like to see from your statistical model, if you were to use it 
+for prediction? 
+- If someone was interested in using your model to make predictions for their
+data, would you offer them any advice? 
+
+\vspace{0.25cm}
+
+
+__Reproducibility__ 
+
+4. Much of what we have done thus far in `R` could have been done in Excel. What 
+are the benefits of programming in `R`? What are the costs?  
+
+_Possible follow-up questions:_ 
+
+- Do the costs of learning to code in `R` outweigh the benefits? 
+- What have you learned to do in `R` that you hadn't done in Excel? 
+- If you were to use Excel to analyze your data, how would you get that analysis 
+into a report? 
+- Are there any issues with copying-and-pasting graphs or analyses from Excel 
+into Word? 
+
+\vspace{0.25cm}
+
+__Data Visualization__
+
+5. We have spent a great deal of time producing and critiquing data
+visualizations, and have yet to discuss statistical testing (e.g. 
+hypothesis tests). What information can a data visualization provide you that a 
+data summary or a statistical test cannot?   
+
+What would you say to someone that said someone could manipulate a visualization to say whatever they want, but a mean doesn't lie?
+
+_Possible follow-up questions:_ 
+
+- What type of information does a statistical test (like a hypothesis test) tell 
+you? 
+- What type of information does a data visualization tell you? 
+- If you weren't sure about the results of a statistical test, how would you 
+determine if the results were sound? 
+
+\vspace{0.25cm}
+
+__Study Design__
+
+6. Random samples and experiments are often thought of as the "gold standard" of 
+study design. Why are these aspects of a study so highly valued? What
+difficulties may researchers encounter when attempting to utilize these 
+designs in their study? 
+
+_Possible follow-up questions:_ 
+
+- What does random sampling allow for researchers to say?
+- What does random assignment allow for researchers to say? 
+- How would it be difficult for a researcher to use random sampling? 
+- How would it be difficult for a researcher to use random assignment? 
+- Can you always use random assignment? Why or why not? 
+
+\vspace{0.25cm}
+
+7. What is the purpose of blocking in a study? If an experiment fails to block 
+on a variable that influences the response, what are the implications for the 
+inference of the study?  
+
+_Possible follow-up questions:_ 
+
+- How are treatments assigned in an "experiment"? 
+- What type of inference can be made about the relationship between the treatment 
+and the response in an "experiment"? 
+- How does failing to block on an influential variable impact this inference? 
+

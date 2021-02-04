@@ -215,7 +215,7 @@ color: #d14;
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      </style>
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -261,6 +261,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -414,15 +415,15 @@ summary {
 <ul>
 <li>4, 4, (A+)</li>
 <li>4, 3 (A)</li>
+<li>4, 2 (B-)</li>
 <li>3, 4 (A-)</li>
 <li>3, 3 (B)</li>
 <li>3, 2 (B-)</li>
+<li>2, 4 (C+)</li>
 <li>2, 3 (C)</li>
 <li>2, 2 (C-)</li>
-<li>either a 2, 1 or a 1, 2 (D+)</li>
-<li>1, 1 (D)</li>
-<li>either 1, 0 or 0, 1 (D-)</li>
-<li>0, 0 (F)</li>
+<li>earning a 1 on either question (at most a D+)</li>
+<li>earning a 0 on either question (F)</li>
 </ul>
 
 
@@ -434,7 +435,7 @@ summary {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
