@@ -1,0 +1,63 @@
+---
+title: "Introduction to Sampling"
+date: "February 9, 2021"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      echo = FALSE, 
+                      fig.width = 4, 
+                      fig.height = 4, 
+                      message = FALSE)
+library(tidyverse)
+library(openintro)
+library(gridExtra)
+library(moderndive)
+library(infer)
+```
+
+## Sampling Concepts 
+
+- A __population__ is a collection of individuals or observations we are interested in. 
+  * A __population parameter__ is a numerical summary quantity about the population that is unknown, but you wish you knew.
+
+</br> 
+
+- __Sampling__ is the act of collecting a sample from the population when we don’t have the means to perform a census.
+  * A __point estimate__ is a summary statistic computed from a sample that estimates an unknown population parameter. 
+
+## Population Parameter 
+
+To investigate the relationship between course evaluation score and the 
+professor's age, we would carry out a simple linear regression. 
+
+- What would be the population parameter we are interested in? Do we know its value? 
+
+- What would be our point estimate? What is its purpose? 
+
+```{r, echo = FALSE, fig.align='center', fig.width=4, fig.height=2.75}
+evals %>% 
+  ggplot(aes(x = age, y = score)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm")
+```
+
+## Sampling Procedures 
+
+- A __census__ is an exhaustive enumeration or counting of all individuals. 
+
+- A __representative sample__ is a sample that looks roughly like the population. 
+
+- A __random sample__ is a sample where every observation has the same probability of selection. 
+
+- A __biased sample__ is a sample where certain individuals or observations in a population have a higher chance of being included than others. 
+
+- __Generalizability__ is when the results from a sample can be _inferred_ to the population. 
+

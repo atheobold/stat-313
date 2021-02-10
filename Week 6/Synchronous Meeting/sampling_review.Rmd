@@ -215,27 +215,6 @@ sds <-  rbind(sds,
 | n = 100     | 0.527    | 0.0489 |
 
 
-## Sampling Concepts 
-
-- A __population__ is a collection of individuals or observations we are interested in. 
-  * A population __parameter__ is a numerical summary quantity about the population that is unknown, but you wish you knew.
-
-</br> 
-
-- __Sampling__ is the act of collecting a sample from the population when we don’t have the means to perform a census.
-  * A __point estimate__ is a summary statistic computed from a sample that estimates an unknown population parameter. 
-
-## Sampling Procedures 
-
-- A __census__ is an exhaustive enumeration or counting of all individuals. 
-
-- A __representative sample__ is a sample that looks roughly like the population. 
-
-- A __random sample__ is a sample where every observation has the same probability of selection. 
-
-- A __biased sample__ is a sample where certain individuals or observations in a population have a higher chance of being included than others. 
-
-- __Generalizability__ is when the results from a sample can be _inferred_ to the population. 
 
 
 ## Precision & Accuracy 
@@ -243,19 +222,3 @@ sds <-  rbind(sds,
 ```{r,fig.align='center', out.width= "60%", echo = FALSE}
 knitr::include_graphics("precision_accuracy.png")
 ```
-
-
-## Your Turn 
-
-For the project, you are investigating data on student graduation and receipt of
-grants. The data come from every accredited college and university in the US & 
-Puerto Rico. 
-
-In your project groups address the following questions: 
-
-- Who is the study population?
-- What type of sample was collected?  
-- What is the population parameter?  
-- What is your point estimate / sample statistic? 
-- Are the samples generalizable to the greater population? 
-- 
