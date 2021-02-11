@@ -35,3 +35,17 @@ wednesday_students <- c("Mackenzie", "Emily", "Shannon",
                         "Jana", "Wiyi")
 
 wednesday <- exam_function(wednesday_students, end = 6)
+
+
+thursday_students <- c("Johnathan", "Erika", "Sarah", 
+                       "Izzy", "Charlie", "Gwyneth", 
+                       "Taylor", "Nick", "Ruby", 
+                       "Caroline", "Owen", "Catherine", 
+                       "Jess", "Jacqueline", "Shad", 
+                       "Shannon", "Jenny", "Lauren", 
+                       "Dylan", "Grant", "Brittani", 
+                       "Catie", "Paige")
+
+thursday <- exam_function(thursday_students, end = 6)  
+  
+
