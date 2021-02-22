@@ -14,6 +14,7 @@ knitr::opts_chunk$set(eval = TRUE,
                       fig.width = 4, 
                       fig.height = 4)
 set.seed(1234)
+## This is used for your simulations to have the same p-value and confidence interval, instead of changing everytime you knit! Please keep this in your document! 
 ```
 
 In the 10 days after the 2016 election, nearly 900 hate incidents were reported to the Southern Poverty Law Center, averaging out to 90 per day. By comparison, about 36,000 hate crimes were reported to the FBI from 2010 through 2015 — an average of 16 per day.

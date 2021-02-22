@@ -1,0 +1,234 @@
+---
+title: Inference for to Linear Regression
+author: YOUR NAME HERE!
+date: "Due: Sunday, February 28 by 11:59pm"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+## These are global specifications for how the RMarkdown file should knit. 
+## Do not change these or delete these!
+knitr::opts_chunk$set(eval = TRUE,
+                      warning = FALSE,
+                      fig.align = "center", 
+                      message = FALSE, 
+                      fig.width = 4, 
+                      fig.height = 4)
+set.seed(1234)
+## This is used for your simulations to have the same p-value and confidence interval, instead of changing every time you knit! Please keep this in your document! 
+```
+
+The Human Freedom Index is a report that attempts to summarize the idea of "freedom" through a bunch of different variables for many countries around the globe.
+It serves as a rough objective measure for the relationships between the different types of freedom - whether it's political, religious, economical or personal freedom - and other social and economic circumstances.
+The Human Freedom Index is an annually co-published report by the Cato Institute, the Fraser Institute, and the Liberales Institut at the Friedrich Naumann Foundation for Freedom.
+
+In this lab, you'll be analyzing data from Human Freedom Index reports from 2008-2016.
+Your aim will be to summarize a few of the relationships within the data both graphically and numerically in order to discuss how one specific variable can help tell a story about freedom.
+
+# Getting Started
+
+## Load Packages
+
+In this lab, you will explore and visualize the data using the **tidyverse** suite of packages.  
+
+You will also use the **moderndive** package to get nice looking regression tables, and the **infer** package to carry out simulation based methods for hypothesis tests and confidence intervals. 
+
+The data can be found in the **openintro** package.
+
+Let's load the packages!
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(moderndive)
+library(openintro)
+library(infer)
+## This requires that you have installed the moderndive and infer packages! 
+```
+
+# The data
+
+The data we're working with is in the openintro package and it's called `hfi`, short for Human Freedom Index.
+
+__1.  What are the dimensions of the dataset?__
+<!-- Your response goes here! Do not remove this line! -->
+
+
+```{r}
+## Code for question 1
+
+
+```
+
+
+__2. The dataset has **a lot** of variables, but we are only interested in two: `pf_expression_control` and `hf_score`. *Select* these variables from the `hfi` dataframe, and assign the result to a dataframe named `hfi_small`.__ 
+
+```{r}
+## Fill in the code necessary for question 2 
+
+hfi_small <- hfi %>% 
+  _____ 
+
+```
+
+
+We can use the `drop_na()` function to get an idea of how many observations have missing data. The function looks row by row through the data to decide what rows should be kept. If there is an `NA` value in a row, that row is discarded. The result is a dataframe where there are no missing values for any of the variables. 
+
+__3__
+__part (a) Using the code below, how many rows in the `hfi_small` data have missing values?__
+__part (b) Use the `drop_na()` function to created another new dataframe named `hfi_small_clean` that **does not** contain any missing values.__ 
+
+```{r}
+drop_na(hfi_small) %>% ## Drop the NAs from the dataset 
+  dim() ## Find the dimension of the dataset
+
+## Fill in the code for part (b)
+
+hfi_small_clean <- hfi_small %>% 
+  ___
+
+```
+
+# Visualizing the Relationship Between Hate Crimes and Income Inequality 
+
+__4. Plot the relationship between `hf_score` and `pf_expression_control`, using `pf_expression_control` as the predictor. Does the relationship look linear? How strong is the relationship?__
+<!-- Your response goes here! Do not remove this line! -->
+
+
+```{r}
+## Code for question 4
+
+
+```
+
+You may notice that it looks like the points in the plot are only plotted in very specific increments, roughly up to one decimal place. 
+This results in many observations being plotted on top of each other. 
+We can fix this "stacking" of points by using `geom_jitter()` instead of `geom_point()` to make our plot. 
+
+__5. Change your code above to use `geom_jitter()` rather than `geom_point()`.__  
+Hint: If you weren't using `geom_point()` before, you should reconsider.
+<!-- There is no code needed for a response to this question! -->
+
+
+# Modeling the Relationship Between Human Freedom and Expression Control 
+
+The Human Freedom Score is a cumulative measure of an individual's "freedom", when living in a specific country.
+This measure takes values between 1 and 10, with 1 being the least amount of freedom and 10 being the most.
+Expression control, or how much political pressure and control there is over media content, plays a role in human freedom. Values of expression control close to 1 indicate that the government has complete control over how an individual can express themselves on the internet and values near 10 indicate the individual has complete freedom of how they express themselves on the internet. 
+
+We will investigate this relationship using three methods: 
+
+1. a permutation distribution for a hypothesis test 
+2. a bootstrap distribution for a confidence interval
+3. a t-distribution for both a hypothesis test and a confidence interval 
+
+We will compare the results we obtain using simulation based methods to the "parametric" t-based methods, to learn more about the relationship of these methods with the conditions of linear regression. 
+
+
+## Simulation Based Methods 
+
+First, we will carry out a hypothesis test to investigate whether there is a linear relationship between the human freedom score (`hf_score`) and personal freedom of expression in media (`pf_expression_control`). Then, we will find a 99% confidence interval for this relationship. 
+
+__5. Write out the null and alternative hypotheses we are testing, using *both* words and notation.__   
+Hint: To notate you are referencing the population parameter, write out the letter of it's Greek name (beta). 
+<!-- Your response goes here! Do not remove this line! -->
+
+
+
+
+__6. Create a null distribution for testing if there is a linear relationship between human freedom and personal freedom of expression in media.__  
+Hint: Remember to use the tools from the **infer** package to create your distribution of permuted slopes! 
+
+```{r}
+## Remember the three steps needed for conducting a hypothesis test: 
+## 1. Calculate observed statistic 
+## 2. Generate null distribution 
+## 3. Calculate the p-value for the observed statistic
+
+## Code for null distribution for question 6 goes below this line! 
+
+
+
+```
+
+__7. What is the p-value for your hypothesis test? What would you conclude for this test?__   
+Hint 1: Deciding to reject or not **is not** a conclusion, you need to specify which hypothesis seems more plausible **and** what that means in the context of these data!   
+Hint 2: Stating you reject the null hypothesis requires that you specify an $\alpha$ that was used. There should be no use of the term "significant" in your conclusion. 
+<!-- Your response goes here! Do not remove this line! -->
+
+
+
+```{r}
+## Code for p-value calculation for question 9 goes below this line! 
+## Remember what you need for a p-value: an observed statistic, a null distribution, and a direction.  
+
+
+```
+
+
+__8. Create a bootstrap distribution to assess the variability we'd expect in the relationship between human freedom index and personal freedom of expression in media.__ 
+
+```{r}
+## Code for bootstrap distribution for question 10 goes below this line! 
+
+
+
+```
+
+__11. Calculate a 99% confidence interval for the slope. What does this interval tell you about the *true* relationship between human freedom and personal freedom of expression in media?__
+<!-- Your response goes here! Do not remove this line! -->
+
+
+
+```{r}
+## Remember the steps needed for finding a confidence interval: 
+## 1. Generate a bootstrap distribution 
+## 2. Keep __% of the bootstrap resamples in the confidence interval
+
+## Code for calculating confidence interval for question 11 goes below this line!
+
+
+```
+
+
+## Parametric (t-based) Methods
+
+__12. Report the p-value and confidence interval for the relationship between human freedom and personal freedom of expression in media using a t-distribution. Are these values similar or different from the simulation based p-value and confidence intervals you found previously?__
+Hint: The results of t-based methods are output in the regression table! 
+<!-- Your response goes here! Do not remove this line! -->
+
+
+
+```{r}
+## Code for finding the t-based results 
+
+
+
+```
+
+
+__13. What do the differences or similarities you found in question 12 suggest about the conditions for a linear regression?__ 
+<!-- Your response goes here! Do not remove this line! -->
+
+
+
+For reference, here is the code to visualize the conditions of normality and equal variance: 
+
+```{r}
+hf_lm <- lm(hf_score ~ pf_expression_control, 
+                  data = hfi_small_clean)
+
+hf_lm %>%
+  ggplot(aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  xlab("Fitted values") +
+  ylab("Residuals")
+
+hf_lm %>% 
+ggplot(aes(x = .resid)) +
+  geom_histogram(binwidth = 0.5) +
+  xlab("Residuals")
+
+```
+
+
