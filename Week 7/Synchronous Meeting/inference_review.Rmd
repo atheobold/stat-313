@@ -1,6 +1,6 @@
 ---
 title: "Randomization & Boostrapping - Intro to Statistical Inference"
-date: "October 28, 2020"
+date: "February 17, 2021"
 output: ioslides_presentation
 fig_height: 4
 fig_width: 4
@@ -21,24 +21,14 @@ knitr::opts_chunk$set(warning = FALSE,
                       results = "hold")
 
 options(show.signif.stars = FALSE)
+
 library(knitr)
 library(tidyverse)
-library(moderndive)
 library(openintro)
 library(infer)
 library(flair)
-library(broom)
 library(gridExtra)
 library(kableExtra)
-library(randomNames)
-
-polling_large <- tibble(name = randomNames(2500, which.names = "first"), 
-                        candidate = rbinom(n = 2500, size = 1, prob = 0.522)) %>% 
-  mutate(candidate = if_else(candidate == 0, "Trump", "Biden")
-         )
-
-virtual_poll <- polling_large %>% 
-  rep_sample_n(size = 50, reps = 1000)
 ```
 
 
@@ -46,57 +36,42 @@ virtual_poll <- polling_large %>%
 
 ## Recall: Sampling Variability 
 
-Visualize the effect of sampling variation on the distribution of any point
-estimate -- in this case, the sample proportion.  
+Visualize the effect of sampling variation on the distribution of **any** point
+estimate -- in this case, the sample slope  
 
-<center>
-```{r, echo = FALSE, fig.width = 4, fig.height=4}
-virtual_poll %>% 
-  group_by(replicate) %>% 
-  summarize(n_biden = sum(candidate == "Biden")) %>% 
-  mutate(prop_biden = n_biden / 50) %>% 
-  ggplot(aes(x = prop_biden)) + 
-  geom_dotplot(dotsize = 0.25, color = "blue") + 
-  labs(title = "1000 Samples of Size 50")
+```{r, echo = FALSE, fig.width = 4, fig.height = 4, fig.align = 'center'}
+evals %>% 
+  specify(formula = score ~ age) %>%
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "slope") %>% 
+  ggplot(aes(x = stat)) + 
+  geom_dotplot(dotsize = 0.3, color = "blue") + 
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_blank()) + 
+  labs(y = "", 
+       x = "Slope on Age")
 ```
 
-## Randomization & Variability 
+## Statistical Inference
 
-A randomized experiment is done to assess whether or not one variable (the
-explanatory variable) causes changes in a second variable (the response
-variable).
-
--  Is variability due to the causal mechanism (the randomized explanatory
-variable)?
-- Or is it instead natural variability inherent to the data? 
-
-- To decide what is the source of the variability, we set-up a sham experiment. 
-
-## Randomization Distributions -- Sham Experiments
-
-- We assume that each observational unit would have gotten the exact same 
-response value regardless of whether they received the treatment. 
-
-- We then reassign the treatments many many times and compare the results from 
-the actual experiment to the sham experiments.
-
-- If the actual experiment has more extreme results than any of the sham
-experiments, we are led to believe that it is the explanatory variable which
-is causing the result and not inherent data variability. 
+```{r, echo = FALSE, out.width = "70%", fig.align = "center"}
+knitr::include_graphics("images/inference.png")
+```
 
 
-## Permutation Distributions
+## Using Sampling Variability for Statistical Inference
 
-- Randomization = Variability from experiments where a treatment was randomly assigned. 
-  * Re-randomize treatments to observations, assuming treatment had no effect on 
-  the response. 
-  
-</br> 
+We will use the idea of sampling variability for statistical inference in two ways. 
 
-- Permutation = Variability from observed data where explanatory variable was observed. 
-  * Permute labels (levels) of the variable, assuming explanatory variable has no impact 
-  on the response. 
-  
+1. To make a "null" distribution 
+
+  _Generate samples we would have expected to see if the null hypothesis was true._ 
+
+2. To make a "bootstrap" distribution 
+
+  _Generate other samples we would have collected, assuming our sample is representative of the population._ 
+
+
 ## Difference in Means  
 
 An instructor decided to run two slight variations of the same exam. Prior to
@@ -113,6 +88,7 @@ __Construct hypotheses to evaluate whether the observed difference in sample
 means, $\bar{x}_A - \bar{x}_B = 3.1$, is due to chance.__ 
 
 (We will later evaluate these hypotheses using $\alpha = 0.01$.)
+
 
 ## Observed data
 
@@ -141,6 +117,7 @@ classdata %>%
 
 __Do you believe that exam B was more difficult than exam A?__
 
+
 ## Summary Statistics
 
 ```{r summaryStatsForTwoVersionsOfExams, echo = FALSE}
@@ -160,32 +137,80 @@ temptbl %>%
 
 __Do you believe that exam B was more difficult than exam A?__
 
-## Assumptions About the Null Hypothesis 
+## Population Parameter 
+
+- A **parameter** is the "true" value of interest.
+
+- We estimate the parameter using a point estimate from a sample of data. 
+
+__What would our parameter be in this example?__
+
+
+## Randomization & Variability 
+
+A randomized experiment is done to assess whether or not one variable (the
+explanatory variable) causes changes in a second variable (the response
+variable).
+
+-  Is variability due to the causal mechanism (the randomized explanatory
+variable)?
+
+- Or is it instead natural variability inherent to the data? 
+
+- To decide what is the source of the variability, we set-up a sham experiment. 
+
+
+## Randomization Distributions -- Sham Experiments
+
+```{r, echo = FALSE, out.width = "70%", fig.align = "center"}
+knitr::include_graphics("images/randomization.png")
+```
+
+<!-- - We assume that each observational unit would have gotten the exact same  -->
+<!-- response value regardless of whether they received the treatment.  -->
+
+<!-- - We then reassign the treatments many many times and compare the results from  -->
+<!-- the actual experiment to the sham experiments. -->
+
+
+<!-- - If the actual experiment has more extreme results than any of the sham -->
+<!-- experiments, we are led to believe that it is the explanatory variable which -->
+<!-- is causing the result and not inherent data variability.  -->
+
+
+## The Role of the Null Hypothesis 
 
 - The shuffling process assumes the null hypothesis is true -- that there is no
 effect of the treatment 
+
   * In this example, the null hypothesis is that exam A and exam B are equally
   difficult. 
+
   * We expect that students' score on each exam should represent their true
   ability on that material -- it shouldn't matter which exam they took.
 
+</br> 
+
 __If the null hypothesis is true, what is the expected value for $\mu_A - \mu_B$?__   
+
 
 ## Shuffling the Data
 
 <center>
-```{r rand2means, warning = FALSE,  out.width="75%", echo = FALSE}
-include_graphics("rand2means.png")
+
+```{r rand2means, warning = FALSE,  out.width="50%", echo = FALSE, fig.align = "center"}
+include_graphics("images/shuffled_means.png")
 ```
+
 
 ## Building a Null Distribution 
 
 - For every shuffle, we calculate the re-randomized difference in means 
 ($\bar{x}_A - \bar{x}_B$). 
 - A distribution of these statistics gives us an idea of the variability we'd 
-expect just by chance. 
+expect to happen just by chance, _if the null hypothesis is true_. 
 
-```{r randexams, warning = FALSE, fig.width = 6, echo = FALSE, fig.align='center', fig.height=4}
+```{r randexams, warning = FALSE, fig.width = 6, echo = FALSE, fig.align='center', fig.height=3.5}
 set.seed(47)
 classdata %>% filter(lecture %in% c("a", "b")) %>%
   specify(m1 ~ lecture) %>%
@@ -193,7 +218,8 @@ classdata %>% filter(lecture %in% c("a", "b")) %>%
   generate(reps = 1000, type = "permute") %>%
   calculate(stat = "diff in means", order = c("a", "b")) %>% 
   visualize() +
-  ggtitle("")
+  labs(title = "", 
+       x = "Difference in Means (A - B)")
 ```
 
 ## Calculating the p-value
@@ -217,9 +243,10 @@ obs_diff <- classdata %>%
 
 ```{r, echo = FALSE, message=FALSE, warning=FALSE}
 null %>% 
-  ggplot(aes(x = stat)) + 
-  geom_histogram() + 
-  geom_vline(xintercept = obs_diff, color = "red")
+  visualise() + 
+  shade_p_value(obs_stat = obs_diff, direction = "greater") + 
+  labs(title = "", 
+       x = "Difference in Means (A - B)")
 ```
 
 __Does our observed statistic seem unlikely to have occurred if the exams were equally difficult?__ 
@@ -255,6 +282,8 @@ __Is this the same as proving that exam A and exam B are equally difficult?__
   * In this scenario, we are instead interested in estimating the unknown value
   of a population parameter.
 
+</br> 
+
 - For this example, a confidence interval can be used to the range of values 
 that seem plausible for the difference in the mean exam scores 
 ($\mu_A - \mu_B$). 
@@ -270,18 +299,17 @@ repeated sampling.
 - How a statistic varies from sample to sample will provide information about
 how different a statistic is from the parameter of interest.  
 
-- Very rarely is sampling data is free or extremely cheap, so taking repeated
-samples from a population is usually impossible. 
-  * Instead of using a "resample from the population" approach, bootstrapping 
-  uses a "resample from the sample" approach. 
+## Obtaining New Samples 
 
+```{r, echo = FALSE, out.width = "70%", fig.align = "center"}
+knitr::include_graphics("images/bootstrap_shuffle.png")
+```
 
-## Population Parameter 
+<!-- - Very rarely is sampling data is free or extremely cheap, so taking repeated -->
+<!-- samples from a population is usually impossible.  -->
 
-- A **parameter** is the "true" value of interest.
-- We estimate the parameter using a point estimate from a sample of data. 
-
-__What would our parameter be in the exam example?__
+<!--   * Instead of using a "resample from the population" approach, bootstrapping  -->
+<!--   uses a "resample from the sample" approach.  -->
 
 
 ## Assumptions Behind a Bootstrap
@@ -289,17 +317,16 @@ __What would our parameter be in the exam example?__
 - Here, we are assuming that the scores earned on the exam are representative of 
 the population of all scores students may have earned on these exams. 
 
-- We want to estimate what scores other students may have earned taking exam A 
-and exam B. 
 
 - The process of bootstrapping is applied to *each* group separately. 
+
   * This assumes the exam scores for each group are representative of all
   possible scores students would have earned on each exam. 
   
 ## Creating a Bootstrap Distribution
 
-- For every resample, we calculate the difference in means 
-($\bar{x}_A - \bar{x}_B$). 
+- For every resample, we calculate the difference in means: $\bar{x}_A - \bar{x}_B$
+
 - A distribution of these statistics gives us an idea of the variability we'd 
 expect in repeated samples from the population.  
 
@@ -312,9 +339,9 @@ boot <- classdata %>%
   calculate(stat = "diff in means", order = c("a", "b"))
 
 boot %>% 
-  ggplot(aes(x = stat)) +
-  geom_histogram() +
-  ggtitle("")
+  visualize() + 
+  labs(title = "", 
+       x = "Difference in Means (A - B")
 ```
 
 ## Calculating a Confidence Interval 
@@ -325,11 +352,11 @@ q2.5 <- quantile(boot$stat, 0.025)
 q97.5 <- quantile(boot$stat, 0.975)
 
 boot %>% 
-  ggplot(aes(x = stat)) +
-  geom_histogram() +
-  geom_vline(xintercept = q2.5, color = "red") +
-  geom_vline(xintercept = q97.5, color = "red")
-  
+  visualise() + 
+  shade_confidence_interval(endpoints = c(q2.5, q97.5), fill = "turquoise") +
+  labs(x = "Difference in Means (A - B)", 
+       title = "")
+
 ```
 
 ```{r}
@@ -339,7 +366,7 @@ boot %>%
 
 ## Interpretting a Confidence Interval 
 
-The confidence interval was calculated to be (-1.92, 8.06).
+The confidence interval was calculated to be (-1.84, 8.14).
 
 </br> 
 

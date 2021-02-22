@@ -1,0 +1,207 @@
+---
+title: "Creating Permutation & Bootstrap Distributions"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+library(openintro)
+
+library(infer)
+```
+
+## Data 
+
+Every two years, the Centers for Disease Control and Prevention conduct the
+Youth Risk Behavior Surveillance System (YRBSS) survey, where it takes data from
+high schoolers (9th through 12th grade), to analyze health patterns.
+
+You will work with a selected group of variables from a random sample of
+observations during one of the years the YRBSS was conducted.
+
+Load the `yrbss` data set into your workspace and take a look at what the data
+look like.
+
+```{r load-data, exercise = TRUE}
+
+glimpse(yrbss)
+
+```
+
+## Relationship between Weight and Activity 
+
+Next, consider the possible relationship between a high schooler's weight and 
+their physical activity.
+
+Plotting the data is a useful first step because it helps us quickly visualize
+trends, identify strong associations, and develop research questions.
+
+First, let's create a new variable `physical_3plus`, which will be coded as
+either "yes" if the student is physically active for *at least* 3 days a week,
+and "no" if not.
+
+```{r}
+yrbss <- yrbss %>% 
+  mutate(physical_3plus = if_else(physically_active_7d > 2, 
+                                  "yes",
+                                  "no"))
+```
+
+Next, let's modify the code below to make a side-by-side violin plots of
+`physical_3plus` and `weight`. Is there a relationship between these two
+variables? What did you expect and why?
+
+```{r}
+yrbss %>% 
+  ggplot(aes(x = physical_3plus, y = ___)) + 
+  geom_violin()
+```
+
+There is an observed difference, but is this difference large enough to be
+deemed "statistically significant"? In order to answer this question we will
+conduct a hypothesis test.
+
+## Hypothesis Test 
+
+What would be the hypotheses for testing if the average weights are different
+for those who exercise at least times a week and those who don't?
+
+Alright, next we will work through creating a permutation distribution using the 
+**infer** package. 
+
+First, we need to find the observed difference in means, which we will save as
+`obs_diff`.
+
+```{r}
+## Calculate observed difference 
+
+obs_diff <- yrbss %>%
+  specify(weight ~ ____) %>%
+  calculate(stat = "____", order = c("___", "___"))
+```
+
+Recall that the `specify()` function is used to specify the variables you are
+considering (notated `y ~ x`), and you can use the `calculate()` function to
+specify the `stat`istic you want to calculate and the `order` of subtraction you
+want to use. For this hypothesis, the statistic you are searching for is the
+difference in means, with the order being `"yes"` - `"no"`.
+
+After you have calculated your observed statistic, you need to create a
+permutation distribution. 
+
+This is the distribution that is created by shuffling the observed weights into
+new `physical_3plus` groups, labeled `"yes"` and `"no"`. 
+
+Fill in the code below to create a permutation distribution, and save the
+distribution as `null_dist`. Then, use the `head()` function to view the first
+six permutation statistics. 
+
+```{r}
+## Create randomization (null) distribution
+
+null_dist <- yrbss %>%
+  specify(weight ~ physical_3plus) %>%
+  hypothesize(null = "____") %>%
+  generate(reps = ____, type = "permute") %>%
+  calculate(stat = "____", order = c("yes", "no"))
+
+## Preview the permuted statistics
+
+```
+
+The `hypothesize()` function is used to declare what the null hypothesis is. 
+Here, we are assuming that student's weight is independent of whether they exercise at least 3 days or not.
+
+We should also note that the `type` argument within `generate()` is set to
+`"permute"`. 
+
+This ensures that the statistics calculated by the `calculate()` function come
+from a reshuffling of the data (not a resampling of the data)!
+
+Finally, the `specify()` and `calculate()` steps should look familiar, since
+they are the same as what we used to find the observed difference in means! 
+
+## Visualize the p-value 
+
+For a hypothesis test we are interested in how many of these permutations were
+at least as large as our observed difference (`obs_diff`). First, let's plot the
+distribution of the permuted statistics. 
+
+```{r}
+null_dist %>% 
+  ggplot(aes(x = stat)) + 
+  geom_histogram() 
+```
+
+Now, add a vertical red line to the plot above, demonstrating where the observed
+difference in means (`obs_diff`) falls on the distribution!
+
+```{r obs-stat-add, exercise = TRUE}
+null_dist %>% 
+  ggplot(aes(x = stat)) + 
+  geom_histogram() +
+  geom_vline(xintercept = ____, color = ____)
+```
+
+
+## Calculate the p-value
+
+Now that you have calculated the observed statistic and generated a permutation distribution, you can calculate the p-value for your hypothesis test using the `get_p_value()` function from the infer package. 
+In the `get_p_value()` function, we need to declare what the observed statistic (`obs_diff`) is, and what `direction` should be used to calculate the p-value.  
+
+```{r inf-weight-habit-ht-pvalue, exercise = TRUE, warning = TRUE}
+null_dist %>%
+  get_p_value(obs_stat = ____, direction = ____)
+```
+
+What message did you get? Why do you think you get this warning message? 
+
+What would you conclude about the relationship between students' weight and whether they exercise at least 3 days a week? 
+
+## Confidence Intervals
+
+If you have access to data on an entire population, say the risk behavior of
+every high schooler in the United States, it's straightforward to answer 
+questions like, how much of a difference does exercising at least three times
+a week have on high schoolers' weight? 
+
+What is your best guess for this difference if you only have data from a small
+sample of high schoolers?
+
+The observed difference in means serves as a good **point estimate**, but it
+would be useful to also communicate how uncertain you are of that estimate.
+
+This uncertainty can be quantified using a **confidence interval**.
+
+I've inserted the code from creating a permutation distribution below. 
+
+Change the code so that we generate a bootstrap distribution instead of a
+permutation distribution. *Hint: There are only two parts that you need to change!*
+
+```{r confidence-interval-infer, exercise = TRUE}
+## Create a bootstrap distribution
+
+bootstrap <- yrbss %>%
+  specify(weight ~ physical_3plus) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("yes", "no"))
+
+## Preview the bootstrap statistics
+
+```
+
+Now, using the `bootstrap` resamples, use the `get_confidence_interval()` 
+function to find the 99% confidence interval for difference in the mean weight
+between high schoolers that exercise at least three times a week and those who
+do not, for __all__ US high schoolers. 
+
+```{r}
+## Find a 99% CI for the difference in means! 
+
+get_confidence_interval(level = ___)
+```
+
