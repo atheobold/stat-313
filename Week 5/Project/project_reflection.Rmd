@@ -1,0 +1,61 @@
+---
+title: "Regression Project Reflection"
+author: "Your Name Here"
+output:
+  word_document: default
+  html_document: default
+---
+
+## Backward Looking 
+
+__1. Based on what you know now, the feedback you received on the project, and the project compilation (posted on Canvas), outline how you would improve *at least* three aspects of your original project.__
+
+1. 
+
+2. 
+
+3. 
+
+__2. How has your understanding of the project changed?__ 
+
+
+
+__3. Where do you believe you still have room for improvement?__
+
+
+
+## Inward Looking 
+
+__4. What were your standards for this project? Did you meet your standards?__
+
+
+
+## Outward Looking
+
+__5. In what ways did your project meet the standards for the assignment?__ 
+
+
+
+
+__6. In what ways did your project not meet the standards of the assignment?__ 
+
+
+
+
+__7. If you were the teacher, what comments would you make about your project?__ 
+
+
+
+## Forward Looking
+
+__8. How did my collaborative communications fall short of the group's expectations, if ever?__ 
+
+
+
+__9. In what ways will you complete the next group project differently?__
+
+
+
+__10. How will you use what you have learned in the future?__
+
+
