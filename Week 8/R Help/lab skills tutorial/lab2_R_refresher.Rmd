@@ -10,6 +10,7 @@ runtime: shiny_prerendered
 library(learnr)
 library(tidyverse)
 library(okcupiddata)
+library(infer)
 
 data("profiles")
 
@@ -125,10 +126,10 @@ profiles_clean <- drop_na(profiles)
 
 ```{r null-dist, exercise = TRUE}
 null_dist <- profiles_clean %>% 
-  _____ %>% 
-  _____ %>% 
-  _____ %>% 
-  _____
+  specify(height ~ age) %>% 
+  hypothesize(null = "independence") %>% 
+  generate(reps = 5000, type = "permute") %>% 
+  calculate(stat = "slope")
 
 ```
 
@@ -142,8 +143,8 @@ profiles_clean <- drop_na(profiles)
 
 ```{r obs-slope, exercise = TRUE}
 obs_slope <- profiles_clean %>% 
-  specify(___) %>% 
-  calculate(stat = ___)
+  specify(height ~ age) %>% 
+  calculate(stat = "slope")
 
 ```
 
@@ -153,8 +154,10 @@ Finally, we can find the p-value! We need to find where the observed statistic f
 
 ```{r p-value, exercise = TRUE}
 
-get_p_value(null_dist, obs_stat = ___)
+get_p_value(null_dist, obs_stat = obs_slope, direction = "both")
 
+null_dist %>% 
+  visualise()
 ```
 
 
@@ -184,10 +187,12 @@ profiles_clean <- drop_na(profiles)
 
 ```{r boot-dist, exercise = TRUE}
 boot_dist <- profiles_clean %>% 
-  _____ %>% 
-  _____ %>% 
-  _____
+  specify(height ~ age) %>% 
+  generate(reps = 2000, type = "bootstrap") %>% 
+  calculate(stat = "slope")
 
+boot_dist %>% 
+  visualise()
 ```
 
 ### 
@@ -195,7 +200,7 @@ boot_dist <- profiles_clean %>%
 The next step to obtaining our confidence interval is to determine what percentage of statistics we want to keep in the confidence interval. 90%? 95%? 99%? 80%? 
 
 ```{r confidence-interval, exercise = TRUE}
-get_confidence_interval(boot_dist, level = ____, type = ____)
+get_confidence_interval(boot_dist, level = 0.95, type = "percentile")
 ```
 
 

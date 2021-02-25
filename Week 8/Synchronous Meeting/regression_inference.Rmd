@@ -1,6 +1,6 @@
 ---
 title: "Inference for Regression"
-date: "November 4, 2020"
+date: "February 24, 2021"
 output: ioslides_presentation
 fig_height: 4
 fig_width: 4
@@ -59,7 +59,7 @@ Austin, with 23 variables recorded in the data:
 - information about number of students 
 - information about the "attractiveness" rating of the professor
 
-Data from the 94 unique professors was randomly sampled, so that each row in the 
+Data from the 94 unique professors were randomly sampled, so that each row in the 
 dataset corresponds to one course taught by that professor. 
 
 ## Recall: Linear Regression 

@@ -1,0 +1,478 @@
+---
+title: "`r emo::ji('scientist')` Inference for Linear Regression"
+date: "February 19, 2021" 
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+```{r set-theme, include=FALSE}
+library(xaringanthemer)
+library(xaringan)
+library(knitr)
+library(tidyverse)
+library(moderndive)
+library(openintro)
+library(infer)
+library(flair)
+library(broom)
+library(gridExtra)
+library(kableExtra)
+
+set.seed(12345)
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE, 
+                      fig.width = 5, 
+                      fig.height = 4, 
+                      results = "hold")
+
+options(show.signif.stars = FALSE)
+
+style_duo_accent(
+  primary_color      = "#0F4C81", # pantone classic blue
+  secondary_color    = "#B6CADA", # pantone baby blue
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  text_font_size     = "30px"
+)
+
+evals_small <- evals %>% 
+  group_by(prof_id) %>% 
+  sample_n(size = 1) %>% 
+  ungroup()
+
+obs_slope <- evals_small %>% 
+  specify(score ~ age) %>% 
+  calculate(stat = "slope")
+
+bootstrap_slope <- evals_small %>% 
+  specify(formula = score ~ age) %>%
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "slope")
+
+null_slope <- evals_small %>% 
+  specify(formula = score ~ age) %>%
+  hypothesise(null = "independence") %>% 
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "slope")
+```
+
+.huge-text[you...]
+
+.large[
+- know about p-values
+- know about confidence intervals
+- know about linear regression 
+- understand sampling variability
+- are interested in using tools for statistical inference
+]
+
+---
+
+class: middle
+
+.larger[Evals Data]
+
+These data contain observations on 463 courses at the University of Texas 
+Austin, with 23 variables recorded in the data:
+
+- information about the course
+- information about the professor
+- information about number of students 
+- information about the "attractiveness" rating of the professor
+
+Data from the 94 unique professors were randomly sampled, so that each row in the 
+dataset corresponds to one course taught by that professor. 
+
+
+---
+
+.large[Linear Regression]
+
+We can model the relationship between a professor's evaluation score (`score`)
+and their average attractiveness score (`age`) with a simple linear 
+regression!
+
+- Scores for average beauty can range from 0 to 10
+- Ages range from 29 to 73, with a median of 47
+
+```{r slr-viz, echo = FALSE, fig.width=12, fig.align='center'}
+slr <- evals %>% 
+  ggplot(aes(x = age, y = score)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm")
+
+
+mlr <- evals %>% 
+  ggplot(aes(x = age, y = score, color = gender)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm")
+
+grid.arrange(slr, mlr, widths = c(0.45, 0.55))
+
+```
+
+---
+
+.large[Fitting a Model] 
+
+```{r, eval = FALSE}
+slr <- lm(score ~ age, data = evals) 
+get_regression_table(slr) 
+```
+
+```{r, echo = FALSE}
+slr <- lm(score ~ age, data = evals) 
+get_regression_table(slr) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+
+$$
+\widehat{\text{eval}} = 4.46 -0.006 \cdot \text{age}
+$$
+<center> 
+
+__How would we interpret the slope on `age`?__ 
+
+__What parameter is this an estimate of?__ 
+
+
+---
+
+.large[SE and Sampling Variability] 
+
+.pull-left[
+```{r, echo = FALSE}
+get_regression_table(slr) %>% 
+  select(estimate, std_error) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+- The standard error is the standard deviation of a point estimate calculated
+from the sample. 
+
+- A slope of -0.006 is just one possible value of the fitted slope. 
+]
+
+.pull-right[
+- A different sample of 94 professors we would almost certainly have a different fitted slope. 
+
+- The variability of the sampling distribution is also called the standard error! 
+  * The standard error quantifies how much variation we would expect between different samples.
+]
+
+---
+
+.large[Confidence Intervals]  
+
+```{r, echo = FALSE}
+get_regression_table(slr) %>% 
+  select(estimate, std_error, lower_ci, upper_ci) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+</br>
+
+A confidence interval of (-0.011, -0.001) is a range of plausible values for $\beta_1$. 
+
+</br> 
+<center> 
+__How do we interpret this confidence interval?__ 
+
+---
+
+.hand[Q: How did `R` find the endpoints for the confidence interval?]
+
+
+- `R` uses theory-based methods to acquire confidence intervals. 
+
+- Assuming that the sampling distribution is bellshaped, we can calculate a 95% 
+confidence interval as: 
+
+<center> 
+$b_1 \pm t^* \cdot \text{SE}_{b_1} = -0.006 \pm 1.660881 \cdot 0.003 = (-0.01098, -0.00102)$
+</center>
+
+.pull-left[
+.small[*Check*:]
+```{r, echo = FALSE}
+get_regression_table(slr) %>% 
+  select(lower_ci, upper_ci) %>% 
+  kable() %>% 
+  kable_styling()
+```
+]
+
+---
+
+.large[Connection to Bootstrapping] 
+
+- Bootstrapping re-samples from the original sample to see what other possible 
+samples could have looked like. 
+
+  * Each of these re-samples gives us a better idea of the true sampling variability 
+  
+</br> 
+
+__What is the key assumption about the original sample when bootstrapping?__ 
+
+</br>
+
+- Bootstrapping with replacement is done row-by-row, so the original pairs of
+`score` and `age` are always kept together.
+
+---
+
+.large[Finding Bootstrap Statistics] 
+
+.pull-left[
+```{r, eval = FALSE}
+bootstrap_slope <- evals_small %>% 
+```  
+
+</br> 
+
+```{r, eval = FALSE}
+specify(formula = score ~ age) %>%
+```
+
+
+```{r, eval = FALSE}
+generate(reps = 1000, 
+           type = "bootstrap") %>% 
+```
+
+</br>
+
+```{r, eval = FALSE}
+calculate(stat = "slope")
+```
+] 
+
+.pull-right[
+Step 1 (and 5): Take dataset and pipe it into the `infer` pipeline
+
+Step 2: `specify` the response and explanatory variables
+
+Step 3: `generate` simulated statistics -- here bootstrap resamples
+
+Step 4: `calculate` the statistic of interest -- here the slope
+
+]
+
+---
+
+.large[Visualizing & Calculating a Confidence Interval]
+
+.pull-left[
+.midi[**Visualizing**]
+
+```{r}
+bootstrap_slope %>% 
+  visualise() 
+```
+]
+
+.pull-right[
+.midi[**Calculating**]
+
+```{r, eval = FALSE}
+get_confidence_interval(bootstrap_slope, level = 0.95)
+```
+
+```{r, echo = FALSE}
+get_confidence_interval(bootstrap_slope, 
+                        level = 0.95)
+```
+}
+
+---
+
+class: middle
+
+.large[Comparison of CI Methods]
+
+.pull-left[
+```{r, echo = FALSE}
+percentile_ci <- get_confidence_interval(bootstrap_slope, level = 0.95)
+
+se_ci <- get_confidence_interval(bootstrap_slope, level = 0.95, 
+                                 type = "se", point_estimate = obs_slope)
+
+t_ci <- get_regression_table(slr) %>%
+    filter(term == "age") %>% 
+    select(lower_ci, upper_ci)
+
+
+CI <- rbind(percentile_ci, 
+            se_ci, 
+            t_ci)
+row.names(CI) <- c("Percentile", "SE", "t-based")
+
+CI %>% 
+  kable(row.names = TRUE) %>% 
+  kable_styling()
+```
+]
+
+.pull-right[
+```{r, echo = FALSE, fig.width = 6}
+visualize(bootstrap_slope) +  
+  labs(x = "Re-sampled Slope", 
+       title = "Bootstrap Distribution") +
+  shade_confidence_interval(endpoints = percentile_ci, fill = NULL, 
+                            linetype = "solid", color = "dark blue") + 
+  shade_confidence_interval(endpoints = se_ci, fill = NULL, 
+                            linetype = "dashed", color = "dark green") +
+  shade_confidence_interval(endpoints = c(-0.011, -0.001), fill = NULL, 
+                            linetype = "dotted", color = "black")
+```
+] 
+
+
+---
+
+.large[Confidence Intervals & Hypothesis Tests] 
+
+```{r, echo = FALSE}
+CI %>% 
+  kable(row.names = TRUE) %>% 
+  kable_styling()
+```
+
+- A confidence provides a range of plausible values for the population parameter, 
+here $\beta_1.$ 
+
+  * If the null value is contained in the interval, then 0 is 
+a plausible value for $\beta_1.$ 
+
+<center> 
+
+__What would you conclude for your hypothesis test?__ 
+
+---
+
+.large[Hypothesis Testing for the Slope]
+
+```{r, echo = FALSE}
+get_regression_table(slr) %>% 
+  select(term, estimate, std_error, statistic, p_value) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+</br>
+
+The statistic on the regression table tests between the hypotheses: 
+
+<center> 
+
+$H_0: \beta_1 = 0$ 
+
+$H_A: \beta_1 \neq 0$
+
+---
+
+.large[Test Statistic]
+
+```{r, echo = FALSE}
+get_regression_table(slr) %>% 
+  filter(term == "age") %>% 
+  select(term, statistic, p_value) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+- The statistic on the regression table is a $t$-statistic, calculated according
+to the formula in the book. 
+
+- To compute the p-value, `R` compares the test statistic of -2.31 to the
+appropriate null distribution.
+
+  * It can be mathematically proven that the null distribution of this statistic 
+  is a  $t$-distribution
+  
+  * The distribution has degrees of freedom equal to $n - 2 = 94 - 2$.  
+
+---
+
+.large[Let's Try Simulation Instead] 
+
+.pull-left[
+```{r, eval = FALSE}
+null_slope <- evals_small %>% 
+```  
+
+</br>
+
+```{r, eval = FALSE}
+specify(formula = score ~ age) %>%
+```
+
+```{r, eval = FALSE}
+hypothesize(null = "independence") %>% 
+```
+
+</br>
+
+```{r, eval = FALSE}
+generate(reps = 1000, 
+           type = "bootstrap") %>% 
+```
+
+```{r, eval = FALSE}
+calculate(stat = "slope")
+```
+] 
+
+.pull-right[
+Step 1 (and 6): Take dataset and pipe it into the `infer` pipeline
+
+Step 2: `specify` the response and explanatory variables
+
+Step 3: `hypothesize` what would be true under the null hypothesis
+
+Step 4: `generate` simulated statistics -- here bootstrap resamples
+
+Step 5: `calculate` the statistic of interest -- here the slope
+
+]
+
+---
+
+.large[Calculating a p-value]
+
+.pull-left[
+```{r, echo = FALSE, fig.width=4}
+null_slope %>% 
+  visualise() + 
+  shade_p_value(obs_stat = obs_slope, direction = "two-sided") + 
+  labs(x = "Permuted Slope", 
+       title = "Null Distribution")
+
+get_p_value(null_slope, obs_stat = obs_slope, direction = "two-sided") %>% 
+  pull()
+```
+]
+
+.pull-right[
+- What would you conclude for your hypothesis test? 
+
+- Using a $t$-distribution gets a p-value of 0.021. Why the difference? 
+]
