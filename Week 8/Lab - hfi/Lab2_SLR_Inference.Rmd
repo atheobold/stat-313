@@ -128,14 +128,14 @@ We will compare the results we obtain using simulation based methods to the "par
 
 First, we will carry out a hypothesis test to investigate whether there is a linear relationship between the human freedom score (`hf_score`) and personal freedom of expression in media (`pf_expression_control`). Then, we will find a 99% confidence interval for this relationship. 
 
-__5. Write out the null and alternative hypotheses we are testing, using *both* words and notation.__   
+__6. Write out the null and alternative hypotheses we are testing, using *both* words and notation.__   
 Hint: To notate you are referencing the population parameter, write out the letter of it's Greek name (beta). 
 <!-- Your response goes here! Do not remove this line! -->
 
 
 
 
-__6. Create a null distribution for testing if there is a linear relationship between human freedom and personal freedom of expression in media.__  
+__7. Create a null distribution for testing if there is a linear relationship between human freedom and personal freedom of expression in media.__  
 Hint: Remember to use the tools from the **infer** package to create your distribution of permuted slopes! 
 
 ```{r}
@@ -150,7 +150,7 @@ Hint: Remember to use the tools from the **infer** package to create your distri
 
 ```
 
-__7. What is the p-value for your hypothesis test? What would you conclude for this test?__   
+__8. What is the p-value for your hypothesis test? What would you conclude for this test?__   
 Hint 1: Deciding to reject or not **is not** a conclusion, you need to specify which hypothesis seems more plausible **and** what that means in the context of these data!   
 Hint 2: Stating you reject the null hypothesis requires that you specify an $\alpha$ that was used. There should be no use of the term "significant" in your conclusion. 
 <!-- Your response goes here! Do not remove this line! -->
@@ -165,7 +165,7 @@ Hint 2: Stating you reject the null hypothesis requires that you specify an $\al
 ```
 
 
-__8. Create a bootstrap distribution to assess the variability we'd expect in the relationship between human freedom index and personal freedom of expression in media.__ 
+__9. Create a bootstrap distribution to assess the variability we'd expect in the relationship between human freedom index and personal freedom of expression in media.__ 
 
 ```{r}
 ## Code for bootstrap distribution for question 10 goes below this line! 
@@ -174,7 +174,7 @@ __8. Create a bootstrap distribution to assess the variability we'd expect in th
 
 ```
 
-__11. Calculate a 99% confidence interval for the slope. What does this interval tell you about the *true* relationship between human freedom and personal freedom of expression in media?__
+__10. Calculate a 99% confidence interval for the slope. What does this interval tell you about the *true* relationship between human freedom and personal freedom of expression in media?__
 <!-- Your response goes here! Do not remove this line! -->
 
 
@@ -184,7 +184,7 @@ __11. Calculate a 99% confidence interval for the slope. What does this interval
 ## 1. Generate a bootstrap distribution 
 ## 2. Keep __% of the bootstrap resamples in the confidence interval
 
-## Code for calculating confidence interval for question 11 goes below this line!
+## Code for calculating confidence interval for question 9 goes below this line!
 
 
 ```
@@ -192,7 +192,7 @@ __11. Calculate a 99% confidence interval for the slope. What does this interval
 
 ## Parametric (t-based) Methods
 
-__12. Report the p-value and confidence interval for the relationship between human freedom and personal freedom of expression in media using a t-distribution. Are these values similar or different from the simulation based p-value and confidence intervals you found previously?__
+__11. Report the p-value and confidence interval for the relationship between human freedom and personal freedom of expression in media using a t-distribution. Are these values similar or different from the simulation based p-value and confidence intervals you found previously?__
 Hint: The results of t-based methods are output in the regression table! 
 <!-- Your response goes here! Do not remove this line! -->
 
@@ -206,7 +206,7 @@ Hint: The results of t-based methods are output in the regression table!
 ```
 
 
-__13. What do the differences or similarities you found in question 12 suggest about the conditions for a linear regression?__ 
+__12. What do the differences or similarities you found in question 11 suggest about the conditions for a linear regression?__ 
 <!-- Your response goes here! Do not remove this line! -->
 
 
