@@ -1,0 +1,105 @@
+---
+title: "Project R Skills"
+date: "March 2, 2021"
+output: html_document
+---
+
+# Human Freedom of Different World Regions
+
+```{r}
+library(openintro)
+
+library(tidyverse)
+library(infer)
+library(moderndive)
+library(broom)
+```
+
+
+# Filter Out Countries with Missing Human Freedom Scores 
+
+
+```{r}
+hfi %>% 
+  
+```
+
+
+
+# Visualize Relationship between Region & Human Freedom Score
+
+```{r}
+hfi %>% 
+  
+```
+
+
+
+# Incorporate Year into the Visualization
+
+```{r}
+
+```
+
+
+# Fit an ANVOA Model 
+
+```{r}
+hf_anova <- aov(hf_score ~ region, data = hfi)
+
+```
+
+
+# Inspect Model Conditions 
+
+```{r}
+hf_info <- augment(hf_anova)
+
+hf_info %>% 
+  ggplot(aes(x = .resid)) + 
+  geom_histogram(binwidth = 0.25)
+
+
+hf_info %>% 
+  ggplot(aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red")
+
+```
+
+
+# Using a Simulation-based Method Instead 
+
+
+```{r}
+obs_F <- hfi %>% 
+  specify(___) %>% 
+  calculate(stat = ___)
+
+null_dist <- hfi %>% 
+  specify(___) %>% 
+  hypothesise(___) %>% 
+  generate(___) %>% 
+  calculate(___)
+
+null_dist %>% 
+  visualise()
+```
+
+
+## Get the p-value! 
+
+```{r}
+get_p_value(null_dist, obs_stat = obs_F, direction = "greater")
+```
+
+
+# Which Countries Differ? 
+
+```{r}
+hfi %$%
+  pairwise.t.test(x = ___, g = ___, p.adjust.method = "bonferroni")
+```
+
+
+
