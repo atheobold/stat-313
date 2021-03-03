@@ -13,14 +13,16 @@ library(tidyverse)
 library(infer)
 library(moderndive)
 library(broom)
+
+library(ggridges)
 ```
 
 
-# Filter Out Countries with Missing Human Freedom Scores 
-
+# Filter Out Certain Regions 
 
 ```{r}
-hfi %>% 
+hfi_ocean <- hfi %>% 
+  filter(region == "Oceania")
   
 ```
 
@@ -30,7 +32,15 @@ hfi %>%
 
 ```{r}
 hfi %>% 
-  
+  ggplot(aes(y = region, x = hf_score, fill = region)) +
+  geom_boxplot() + 
+  theme(legend.position = "none")
+
+hfi %>% 
+  ggplot(aes(y = region, x = hf_score, fill = region)) +
+  geom_density_ridges() + 
+  theme(legend.position = "none")
+
 ```
 
 
@@ -38,6 +48,16 @@ hfi %>%
 # Incorporate Year into the Visualization
 
 ```{r}
+hfi %>% 
+  ggplot(aes(y = region, x = hf_score, fill = as.factor(year))) +
+  geom_boxplot() + 
+  theme(legend.position = "none") 
+
+hfi %>% 
+  ggplot(aes(y = region, x = hf_score, fill = region)) +
+  geom_density_ridges() + 
+  facet_wrap(vars(year)) + 
+  theme(legend.position = "none")
 
 ```
 
@@ -45,7 +65,10 @@ hfi %>%
 # Fit an ANVOA Model 
 
 ```{r}
-hf_anova <- aov(hf_score ~ region, data = hfi)
+hfi_anova <- aov(hf_score ~ region, data = hfi) 
+
+hfi_anova %>% 
+  tidy()
 
 ```
 
@@ -53,7 +76,7 @@ hf_anova <- aov(hf_score ~ region, data = hfi)
 # Inspect Model Conditions 
 
 ```{r}
-hf_info <- augment(hf_anova)
+hf_info <- augment(hfi_anova)
 
 hf_info %>% 
   ggplot(aes(x = .resid)) + 
