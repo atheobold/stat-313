@@ -79,20 +79,6 @@ class: center
 
 ---
 
-class: middle 
-
-.larger[Hypotheses]
-
-For an ANOVA, we are interested in testing for a difference in multiple groups. 
-
-&lt;center&gt; 
-
-`\(H_0\)`: all of the group means are the same 
-
-`\(H_A\)`: at least one group mean differs
-
----
-
 class: center
 
 .larger[F-statistic]
@@ -101,7 +87,7 @@ Ratio of variability between groups to variability within groups
 
 &lt;center&gt;
 .bitlarger[
-`\(\frac{\frac{SSB}{k}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}\)`
+`\(\frac{\frac{SSB}{k-1}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}\)`
 ]
 
 **Will an F-statistic ever be negative?**
@@ -153,6 +139,20 @@ evals_small %&gt;%
 
 ---
 
+class: middle 
+
+.larger[Hypotheses]
+
+For an ANOVA, we are interested in testing for a difference in multiple groups. 
+
+&lt;center&gt; 
+
+`\(H_0\)`: all of the group means are the same 
+
+`\(H_A\)`: at least one group mean differs
+
+---
+
 .bitlarger[**Conditions of an ANOVA**]
 
 - Independence 
@@ -181,8 +181,12 @@ the `\(F\)`-distribution to approximate the shape of the true sampling distribut
 
 .large[Visualizing the Observed Statistic]
 
+&lt;center&gt; 
+.midi[
+`\(F\)`-distribution with 2 and 91 degrees of freedom
+]
 
-![](many_means_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+&lt;img src="many_means_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -228,7 +232,7 @@ null_dist &lt;- evals_small %&gt;%
 .large[Visualizing the p-value]
 
 
-![](many_means_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+&lt;img src="many_means_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -279,7 +283,7 @@ all of the comparisons.
 
 .pull-right[
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="Bonferroni.jpg" alt="Carlo Emilio Bonferroni (1882-1960)"  /&gt;
+&lt;img src="Bonferroni.jpg" alt="Carlo Emilio Bonferroni (1882-1960)" width="40%" /&gt;
 &lt;p class="caption"&gt;Carlo Emilio Bonferroni (1882-1960)&lt;/p&gt;
 &lt;/div&gt;
 ]

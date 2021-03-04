@@ -143,20 +143,6 @@ evals %>%
 
 ---
 
-class: middle 
-
-.larger[Hypotheses]
-
-For an ANOVA, we are interested in testing for a difference in multiple groups. 
-
-<center> 
-
-$H_0$: all of the group means are the same 
-
-$H_A$: at least one group mean differs
-
----
-
 class: center
 
 .larger[F-statistic]
@@ -165,7 +151,7 @@ Ratio of variability between groups to variability within groups
 
 <center>
 .bitlarger[
-$\frac{\frac{SSB}{k}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}$
+$\frac{\frac{SSB}{k-1}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}$
 ]
 
 **Will an F-statistic ever be negative?**
@@ -200,6 +186,20 @@ evals_small %>%
 
 ---
 
+class: middle 
+
+.larger[Hypotheses]
+
+For an ANOVA, we are interested in testing for a difference in multiple groups. 
+
+<center> 
+
+$H_0$: all of the group means are the same 
+
+$H_A$: at least one group mean differs
+
+---
+
 .bitlarger[**Conditions of an ANOVA**]
 
 - Independence 
@@ -228,8 +228,12 @@ the $F$-distribution to approximate the shape of the true sampling distribution.
 
 .large[Visualizing the Observed Statistic]
 
+<center> 
+.midi[
+$F$-distribution with 2 and 91 degrees of freedom
+]
 
-```{r, echo = FALSE, fig.width = 8, fig.height = 6}
+```{r, echo = FALSE, fig.width = 8, fig.height = 6, fig.align='center'}
 values <- rf(100000, df1 = 2, df2 = 91) %>% 
   tibble()
 
@@ -239,8 +243,7 @@ ggplot(aes(x = .)) +
   xlim(c(0, 5)) + 
   geom_vline(xintercept = 0.546, color = "red", linetype = "dashed") +
   labs(x = "F-statistic", 
-       y = "Density", 
-       title = "F-distribution with 2 and 91 Degrees of Freedom")
+       y = "Density")
 
 ```
 
@@ -278,7 +281,7 @@ null_dist <- evals_small %>%
 .large[Visualizing the p-value]
 
 
-```{r, echo = FALSE, fig.width = 8, fig.height = 6}
+```{r, echo = FALSE, fig.width = 8, fig.height = 6, fig.align='center'}
 null_dist %>% 
   visualise() + 
   shade_p_value(obs_stat = obs_F, direction = "greater")
@@ -333,7 +336,7 @@ all of the comparisons.
 ]
 
 .pull-right[
-```{r, fig.width=4, fig.height=3, echo = FALSE, fig.align='center', fig.cap="Carlo Emilio Bonferroni (1882-1960)"}
+```{r, out.width = "40%", echo = FALSE, fig.align='center', fig.cap="Carlo Emilio Bonferroni (1882-1960)"}
 knitr::include_graphics("Bonferroni.jpg")
 ```
 ]
