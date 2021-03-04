@@ -22,7 +22,7 @@ as the RMarkdown file!
 
 # Data Background 
 
-For this project we will look at the profile content of 10,933 Okcupid users.
+For this project we will look at the profile content of 59,946 Okcupid users.
 The data were acquired from the Okcupid website on July 1, 2012 through a 
 method called "scraping" [(link to Wikipedia description)](https://en.wikipedia.org/wiki/Web_scraping). Okcupid is a free
 dating website, designed by mathematicians, which today has over 112,000 users,

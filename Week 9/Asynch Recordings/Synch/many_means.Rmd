@@ -1,0 +1,353 @@
+---
+title: "`r emo::ji('joker')` Comparison of Multiple Means"
+date: "March 3, 2021" 
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+```{r set-theme, include=FALSE}
+library(xaringanthemer)
+library(xaringan)
+library(knitr)
+library(tidyverse)
+library(openintro)
+library(infer)
+library(ggridges)
+library(flair)
+library(broom)
+library(gridExtra)
+library(kableExtra)
+
+set.seed(12345)
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE, 
+                      fig.width = 5, 
+                      fig.height = 4, 
+                      results = "hold")
+
+options(show.signif.stars = FALSE)
+
+style_duo_accent(
+  primary_color      = "#0F4C81", # pantone classic blue
+  secondary_color    = "#B6CADA", # pantone baby blue
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  text_font_size     = "30px"
+)
+
+evals_small <- evals %>% 
+  group_by(prof_id) %>% 
+  sample_n(size = 1) %>% 
+  ungroup()
+
+obs_F <- evals_small %>% 
+  specify(score ~ rank) %>% 
+  calculate(stat = "F")
+
+null_dist <- evals_small %>% 
+  specify(score ~ rank) %>% 
+  hypothesize(null = "independence") %>% 
+  generate(reps = 2000, type = "permute") %>% 
+  calculate(stat = "F")
+```
+
+.huge-text[goal]
+
+.large[
+- Compare how different a group of means are
+- Scale the differences relative to the variability of the groups
+- Summarize the differences with one number
+]
+
+---
+
+class: middle
+
+.larger[Visualizing Group Differences]
+
+We want visualizations that allow for us to easily compare:  
+
+- the center (mean) of the groups 
+- the spread (variability) of the groups 
+
+---
+
+.pull-left[
+.large[Side-by-Side Boxplots]
+
+```{r}
+evals %>% 
+  ggplot(aes(x = rank, y = score, fill = rank)) + 
+  geom_boxplot() + 
+  theme(legend.position = "none")
+```
+]
+
+.pull-right[
+.large[Stacked Density Plots]
+
+```{r}
+evals %>% 
+  ggplot(aes(y = rank, x = score, fill = rank)) + 
+  geom_density_ridges() + 
+  theme(legend.position = "none")
+```
+]
+
+---
+
+class: center
+
+.large[Summarizing Group Differences]
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 7, fig.align= 'center'}
+
+overall_mean <- evals_small %>% 
+  summarize(mean(score)) %>% 
+  pull()
+
+group_means <- evals_small %>% 
+  group_by(rank) %>% 
+  summarize(mean(score)) %>% 
+  pull()
+
+evals %>% 
+  ggplot(aes(x = rank, y = score, fill = rank)) + 
+  geom_boxplot() + 
+  geom_jitter() +
+  geom_hline(yintercept = overall_mean, 
+             color = "red", 
+             linetype = "dashed", 
+             lwd = 1.5) +
+  geom_segment(x = 0.5, xend = 1.5, y = group_means[1], yend = group_means[1], 
+               color = "black", lwd = 1, linetype = "dotted") +
+  geom_segment(x = 1.5, xend = 2.5, y = group_means[2], yend = group_means[2], 
+               color = "black", lwd = 1, linetype = "dotted") +
+  geom_segment(x = 2.5, xend = 3.5, y = group_means[3], yend = group_means[3], 
+               color = "black", lwd = 1, linetype = "dotted") +
+  theme(legend.position = "none")
+```
+
+---
+
+class: middle 
+
+.larger[Hypotheses]
+
+For an ANOVA, we are interested in testing for a difference in multiple groups. 
+
+<center> 
+
+$H_0$: all of the group means are the same 
+
+$H_A$: at least one group mean differs
+
+---
+
+class: center
+
+.larger[F-statistic]
+
+Ratio of variability between groups to variability within groups
+
+<center>
+.bitlarger[
+$\frac{\frac{SSB}{k}}{\frac{SSE}{n-k}} = \frac{MSB}{MSE}$
+]
+
+**Will an F-statistic ever be negative?**
+
+---
+
+class: center
+
+.large[Calculating an F-statistic]
+
+.pull-left[
+.large[Using `aov()`]
+
+```{r}
+aov(score ~ rank, data = evals_small) %>% 
+  tidy()
+```
+
+]
+
+
+.pull-right[
+.large[Using infer]
+
+```{r}
+evals_small %>% 
+  specify(score ~ rank) %>% 
+  calculate(stat = "F")
+```
+
+]
+
+---
+
+.bitlarger[**Conditions of an ANOVA**]
+
+- Independence 
+  * Within groups 
+  * Between groups
+  
+- Normality of residuals 
+  * Or the distribution of each group is approximately normal
+
+- Equal variability of the groups 
+  * The spread of the distributions are similar across groups
+  
+---
+
+.large[**F-distribution**] 
+
+- If the conditions of normality and equal variance are not violated, we can use 
+the $F$-distribution to approximate the shape of the true sampling distribution. 
+
+- An $F$-distribution is a variant of the $t$-distribution, and is also defined by degrees of freedom. 
+  * This distribution is defined by __two__ different degrees of freedom:  
+    1. from the numerator (MSG) 
+    2. from the denominator (MSE)
+
+---
+
+.large[Visualizing the Observed Statistic]
+
+
+```{r, echo = FALSE, fig.width = 8, fig.height = 6}
+values <- rf(100000, df1 = 2, df2 = 91) %>% 
+  tibble()
+
+values %>% 
+ggplot(aes(x = .)) + 
+  geom_density() + 
+  xlim(c(0, 5)) + 
+  geom_vline(xintercept = 0.546, color = "red", linetype = "dashed") +
+  labs(x = "F-statistic", 
+       y = "Density", 
+       title = "F-distribution with 2 and 91 Degrees of Freedom")
+
+```
+
+---
+
+.large[**Calculating the p-value**]
+
+Using an F-distribution, the p-value is output from the `aov()` function:
+
+
+```{r}
+aov(score ~ rank, data = evals_small) %>% 
+  tidy()
+```
+
+
+---
+
+.large[**Simulation-based Methods**]
+
+If the condition of normality is violated, then a simulation-based method would produce a more accurate p-value. 
+
+- We can use the familiar tools from the infer package, with only one change: the statistic that is calculated! 
+
+```{r, eval = FALSE}
+null_dist <- evals_small %>% 
+  specify(score ~ rank) %>% 
+  hypothesize(null = "independence") %>% 
+  generate(reps = 2000, type = "permute") %>% 
+  calculate(stat = "F")
+```
+
+---
+
+.large[Visualizing the p-value]
+
+
+```{r, echo = FALSE, fig.width = 8, fig.height = 6}
+null_dist %>% 
+  visualise() + 
+  shade_p_value(obs_stat = obs_F, direction = "greater")
+
+```
+
+
+---
+
+.large[**Post-hoc Tests**]
+
+In an ANVOA, when you reject $H_0$, you can only state that there is evidence 
+that _at least one_ mean differs from the others. 
+
+- This may be slightly unsatisfying. 
+- You may be interested in _which_ means differ from each other.  
+
+To do this, it is common to perform comparisons of the means of every group. 
+
+<center>
+
+**Why not only pick out the groups that look different?**
+
+---
+
+.large[**Multiple Comparisons**]  
+
+.pull-left[
+The idea of multiple comparisons is that you perform a difference in means 
+comparison (i.e. $\mu_1 = \mu_2$) for every possible combination of group means. 
+
+- As the number of groups increases, the number of comparisons gets big fast!
+]
+
+.pull-right[
+When conducting __lots__ of hypothesis tests, we need to start worrying about 
+our Type I error rates. 
+
+- We expect to make a Type I error about 5% of the time with an $\alpha$ of 0.05. 
+]
+
+---
+
+.large[**Bonferroi Adjustment**]
+
+We can fix the error rate problem by specifying a "family" $\alpha$ value, for 
+all of the comparisons.  
+
+.pull-left[
+- The family $\alpha$ is then spread to each test evenly. 
+- This is called the Bonferroni correction. 
+]
+
+.pull-right[
+```{r, fig.width=4, fig.height=3, echo = FALSE, fig.align='center', fig.cap="Carlo Emilio Bonferroni (1882-1960)"}
+knitr::include_graphics("Bonferroni.jpg")
+```
+]
+
+---
+
+class: center 
+
+.large[**Family Error Rate**]
+
+The new $\alpha$ is $\alpha^\star = \frac{\alpha}{k}$, where $k$ is the
+number of hypotheses. 
+
+</br> 
+
+For testing 6 groups at the 0.05 significance level,  
+$$\alpha^\star = \frac{0.05}{15} = 0.00333$$
