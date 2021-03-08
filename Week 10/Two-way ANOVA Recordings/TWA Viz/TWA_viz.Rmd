@@ -1,5 +1,5 @@
 ---
-title: "Two-Way ANOVA Visualizations"
+title: "Two-Way ANOVA -- A Brief Introduction"
 output: 
   learnr::tutorial:
     progressive: true
@@ -18,6 +18,7 @@ knitr::opts_chunk$set(fig.align = "center",
 library(tidyverse) 
 library(palmerpenguins)
 library(gridExtra)
+library(ggridges)
 library(openintro)
 library(infer)
 library(learnr)
@@ -44,11 +45,11 @@ response changes depending on the level of another factor, we say that the two
 explanatory variables __interact__. 
 
 It is also possible for both factors to be related to differences in the mean
-responses and not interact. For example, suppose there is a difference in the
-response variable means between young and old subjects and a difference in the
-responses among various dosages, but the effect of increasing the dosage is the
-same for both young and old subjects. This is an example of what is called
-an __additive__ type of model. 
+responses and not interact. For example, suppose there are differences in how 
+younger and older subjects respond to a drug, and there are differences in how 
+all individuals respond to different dosages of a drug, but the effect of
+increasing the dosage is the same for both young and old subjects. This is an
+example of what is called an __additive__ type of model. 
 
 In general, the world is more complicated than the single factor models we've 
 considered, especially in observational studies, so these models allow us to
@@ -74,25 +75,23 @@ We'll explore both below!
 Below is a plot of the relationship between flipper length and species for 
 penguins in the Palmer Archipelago. 
 
-The year the data were collected was modified to a categorical variable, 
-`year_cat`. Change to code below to fill the violins with the `year_cat` 
-variable. 
+The year the data were collected was modified to a categorical variable, named  
+`year_cat`. Change to code below to `fill` the boxplots and density ridges 
+with the `year_cat` variable. 
 
 ```{r colors, exercise = TRUE}
 penguins %>% 
-  ggplot(aes(x = species, y = flipper_length_mm)) + 
-  geom_violin()
+  ggplot(aes(y = species, x = flipper_length_mm, fill = ___)) + 
+  geom_boxplot()
+
+penguins %>% 
+  ggplot(aes(y = species, x = flipper_length_mm, fill = ___)) + 
+  geom_density_ridges()
+
 ```
 
-<div id="colors-hint">
-**Hint:** Add an aesthetics to either `ggplot()` or `geom_violin()` and specify that the violins should be `fill`ed with `year_cat`. 
-</div>
-
-
 ```{r colors-solution, include = FALSE}
-penguins %>% 
-  ggplot(aes(x = species, y = flipper_length_mm)) + 
-  geom_violin(aes(fill = year_cat))
+ggplot(aes(y = species, x = flipper_length_mm, fill = year_cat)) 
 ```
 
 ##
@@ -102,41 +101,40 @@ separate the different sampling years.
 
 ```{r facets, exercise = TRUE}
 penguins %>% 
-  ggplot(aes(x = species, y = flipper_length_mm)) + 
-  geom_violin() + 
-  facet_wrap()
+  ggplot(aes(y = species, x = flipper_length_mm)) + 
+  geom_boxplot() + 
+  ___
+
+penguins %>% 
+  ggplot(aes(y = species, x = flipper_length_mm)) + 
+  geom_density_ridges() + 
+  ___
 ```
 
 <div id="facets-hint">
-**Hint:** Add `~year_cat` or `vars(year_cat)` to `facet_wrap()` to create year facets. 
+**Hint:** Add `vars(year_cat)` to `facet_wrap()` to create year facets. 
 </div>
 
 ```{r facets-solution, include = FALSE}
 penguins %>% 
-  ggplot(aes(x = species, y = flipper_length_mm)) + 
-  geom_violin() + 
-  facet_wrap(~year_cat)
-```
+  ggplot(aes(y = species, x = flipper_length_mm)) + 
+  geom_boxplot() + 
+  facet_wrap(vars(year_cat))
 
-##
-
-You'll notice that the labels for the species are running together, so let's 
-swap the position of our axes. 
-
-```{r, echo = TRUE, fig.width=8}
 penguins %>% 
   ggplot(aes(y = species, x = flipper_length_mm)) + 
-  geom_violin() + 
-  facet_wrap(~year_cat)
+  geom_density_ridges() + 
+  facet_wrap(vars(year_cat))
 ```
 
 ## Additive versus Interactive Models 
 
 As was mentioned in the Introduction, there are two different types of two-way 
 ANOVA models. Similar to a multiple linear regression, the two explanatory 
-variables could have their own impact on the response (similar to parallel slopes). 
-Or, the relationship between one explanatory variable and the response could
-differ based on another explanatory variable (similar to different slopes). 
+variables could have their own impact on the response (similar to a parallel 
+slopes regression model). Or, the relationship between one explanatory variable
+and the response could differ based on another explanatory variable (similar to 
+a different slopes regression model). 
 
 These two types of models are called an __additive__ two-way ANOVA model or an 
 __interaction__ two-way ANOVA model. Similar to how we decided which model to 
@@ -148,19 +146,17 @@ When deciding if an interaction model is a good fit for the data, we look to see
 if the relationship between one categorical variable and the response differs 
 based on the level of the other response variable. 
 
-Here, we look at the relationship between `year` and `flipper_length_mm` and see 
-if it differs based on the species of the penguins. I think of looking at 
-the shape of the relationships in the outlined box, and comparing these 
-relationships with what is seen in the other species. 
-
-The other way you can think of this is to draw a line through the center of the
-Adelie violins, then look to see if you believe that the slope of this line 
-differs based on the species of the penguin. 
+Here, we look at the relationship between `year_cat` and `flipper_length_mm` and
+see if it differs based on the species of the penguins. I think of looking at 
+the shape of the relationships inside of the outlined box. I draw a line through 
+the center of the Adelie boxplots. I then look to see if it seems like the slope
+of the line through the Adelie penguins looks different from the slope of the
+lines drawn through the Chinstrap and Gentoo penguins. 
 
 ```{r}
 penguins %>% 
   ggplot(aes(x = species, y = flipper_length_mm)) + 
-  geom_violin(aes(fill = year_cat)) +
+  geom_boxplot(aes(fill = year_cat)) +
   geom_segment(aes(x=0.5, xend=1.5, y=170, yend=170), linetype = 2, size = 1) + ## BOTTOM
   geom_segment(aes(x=0.5, xend=1.5, y=210, yend=210), linetype = 2, size = 1) + ## TOP
   geom_segment(aes(x=0.5, xend=0.5, y=170, yend=210), linetype = 2, size = 1) +
@@ -169,8 +165,9 @@ penguins %>%
 ```
 
 Does it appear that the relationship between year and flipper length differs based 
-on the species of the penguin? I didn't think so, but we will see in a bit whether 
-we (I) made the "right" choice. 
+on the species of the penguin? I didn't think so, since it seems like the slope 
+of the line through the three years is about the same for all three species. 
+However, we can use an F-test to check and see if my intuition is right. 
 
 ## Conditions of a Two-Way ANOVA Model 
 
@@ -179,7 +176,9 @@ however, we now have extra groups to think about.
 
 __Independence__  
 For both categorical variables:  
+
 - observations across groups need to be independent
+
 - observations within each group need to be independent 
  
 __Equal Variance__:  the variability of each group is similar to the others.   
@@ -205,9 +204,9 @@ Your turn!
 question("Which of the following is important to consider when assessing independence?",
   correct = "Correct! We need to look across groups and within groups. ",
   allow_retry = TRUE,
-  answer("If penguins could be sampled multiple years.", correct = TRUE),
-  answer("If penguins could be sampled at multiple islands.", message = "No, island is not a variable we are interested in!"),
-  answer("If penguins in each species could share information.", correct = TRUE),
+  answer("If the same penguins could be sampled multiple years.", correct = TRUE),
+  answer("If the same penguins could be sampled at multiple islands.", message = "No, island is not a variable we are interested in!"),
+  answer("If penguins in each species could share similar information.", correct = TRUE),
   answer("If penguin species share similar characteristics", message = "No, this is not a consideration when assessing independence.")
 )
 ```
@@ -218,14 +217,15 @@ question("Based on the plot below, is the condition of equal variablility violat
   allow_retry = TRUE,
   answer("No.", correct = TRUE),
   answer("Yes.", message = "Give the plot another look. Does it appear that the length of the violins of the groups are substantiall different?"),
-  answer("It's difficult to tell. ", message = "Does it appear that the length of the violins of the groups are substantiall different?")
+  answer("It's difficult to tell. ", message = "Does it appear that the width of the density plots of the groupsare substantially different?")
 )
 ```
 
 ```{r}
 penguins %>% 
-  ggplot(aes(x = species, y = flipper_length_mm)) + 
-  geom_violin(aes(fill = year_cat))
+  ggplot(aes(y = species, x = flipper_length_mm)) + 
+  geom_density_ridges() + 
+  facet_wrap(vars(year_cat))
 
 ```
 
@@ -233,8 +233,8 @@ penguins %>%
 question("Based on the same plot above, is the condition of normally distributed responses violated?",
   correct = "Correct! The distributions all look 'normal enough' and there are no large outliers in any of the groups.",
   allow_retry = TRUE,
-  answer("Yes.", correct = TRUE),
-  answer("No.", message = "Give the plot another look. This condition is fairly robust to slight differences in shape, but we do need to worry about outliers. Are there large outliers present in any of the groups?"),
+  answer("Yes.", message = "Give the plot another look. This condition is fairly robust to slight differences in shape, but we do need to worry about outliers. Are there large outliers present in any of the groups?"),
+  answer("No.", correct = TRUE),
   answer("It's difficult to tell.", message = "Are there large outliers present in any of the groups?")
 )
 ```
@@ -253,7 +253,8 @@ between year and flipper length differs based on species of penguins.
 these two variables. 
 
 ```{r, echo = TRUE}
-aov(flipper_length_mm ~ species + year_cat + species:year_cat, data = penguins) %>% 
+aov(flipper_length_mm ~ species + year_cat + species:year_cat, 
+    data = penguins) %>% 
   tidy()
 ```
 
@@ -304,7 +305,8 @@ Again, similar to a multiple regression, the interpretation of these tests is
 ## 
 
 Based on the ANOVA table below, we would conclude that, after accounting for the 
-year of capture, at least one species has a different mean flipper length. 
+species of penguin, at least one year of capture has a different mean flipper
+length. 
 
 ```{r}
 aov(flipper_length_mm ~ species + year_cat, data = penguins) %>% 
@@ -315,10 +317,10 @@ aov(flipper_length_mm ~ species + year_cat, data = penguins) %>%
 question("Based on the ANOVA table above, what would you conclude for the second hypothesis test?",
   correct = "Correct!",
   allow_retry = TRUE,
-  answer("Fail to reject H0, the mean flipper lengths of the years are the same, after accouting for species.", message = "Careful! Look at the p-value for the `year_cat` line. Is is small? What does that say about whether it seems reasonable to say that the mean flipper lengths are the same for every year?"),
+  answer("Fail to reject H0, the mean flipper lengths of the years are the same, after accouting for uear of capture.", message = "Careful! Look at the p-value for the `species` line. Is is small? What does that say about whether it seems reasonable to say that the mean flipper lengths are the same for every species?"),
   
-  answer("There is strong evidence that at least one year has a different mean flipper length, after accouting for species.", correct = TRUE), 
-  answer("There is strong evidence that each year has a different mean flipper length, after accouting for species.", message = "Careful! What is the null hypothesis for an ANOVA? What is the opposite of saying 'everything is equal'?"), 
-answer("There is strong evidence that at least one year has a different mean flipper length.", message = "Careful! What is this hypothesis test conditional on?") 
+  answer("There is strong evidence that at least one species has a different mean flipper length, after accouting for year of capture.", correct = TRUE), 
+  answer("There is strong evidence that each species has a different mean flipper length, after accouting for year of capture.", message = "Careful! What is the null hypothesis for an ANOVA? What is the opposite of saying 'everything is equal'?"), 
+answer("There is strong evidence that at least one species has a different mean flipper length.", message = "Careful! What is this hypothesis test conditional on?") 
 )
 ```

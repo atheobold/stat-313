@@ -55,7 +55,7 @@ analysts are __only interested__ in the profiles of individuals who identified a
     + If so, how do the statuses differ?  
     
 * Does the relationship between a male user's self reported height and marital
-status differs by sexual orientation? 
+status differ by sexual orientation? 
 
 \vspace{0.5cm}
 

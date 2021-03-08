@@ -1,0 +1,85 @@
+---
+title: "Interpreting an ANOVA"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE)
+library(tidyverse) 
+library(palmerpenguins)
+library(moderndive)
+library(openintro)
+library(broom)
+library(ggridges)
+```
+
+## Difference in Penguin Bill Length 
+
+- We're interested in testing to see if the mean bill depth differs across
+species of penguins in the Palmer Archipelago. 
+
+```{r, fig.width=6, fig.height=4, fig.align='center', echo = FALSE}
+penguins %>% 
+  ggplot(aes(y = species, x = bill_depth_mm, fill = species)) + 
+  geom_density_ridges(alpha = 0.8) + 
+  theme(legend.position = "none") + 
+  labs(x = "Bill Depth (mm)", 
+       y = "Species of Penguin")
+```
+
+## Model Conditions 
+
+- It seems reasonable to assume that the penguins within each species are
+independent. 
+
+- These penguins were not randomly sampled, but it seems reasonable to assume 
+that the observations within a group are independent. 
+  <!-- * The sample sizes (152, 68, and 124) are certainly less than 10% of the -->
+  <!-- population.  -->
+
+- The distributions have some oddities, but not enough to conclude they violate 
+the normality condition. 
+
+- The shapes of the distribution appear relatively similar.
+  * The Adelie penguins have more variability in their bill depths, but nothing 
+  too outlandish. 
+  
+## Conducting an ANOVA $F$-test
+
+```{r}
+aov(bill_depth_mm ~ species, data = penguins) %>% 
+  tidy()
+```
+
+## Obtaining ANOVA Coefficients
+
+```{r}
+penguins_lm <- lm(bill_depth_mm ~ species, data = penguins)
+
+get_regression_table(penguins_lm)
+```
+
+## Interpreting ANOVA Coefficients 
+
+```{r, echo = FALSE}
+get_regression_table(penguins_lm)
+```
+
+</br>
+
+$$ \overline{bill depth}_{Adelie} = 18.3 \text{mm}$$ 
+
+$$ \overline{bill depth}_{Chinstrap} = 18.3 + 0.074 = 18.374 \text{mm}$$ 
+
+$$ \overline{bill depth}_{Gentoo} = 18.3 - 3.36 = 14.94 \text{mm}$$ 
+
+
+
+
