@@ -1,19 +1,38 @@
 ---
-title: "What We've Learned"
-date: "November 18, 2020"
-output: ioslides_presentation
-fig_height: 4
-fig_width: 4
+title: "`r emo::ji('finish')` Two-way ANOVA & The Discipline of Statistics"
+date: "March 10, 2021" 
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
 ---
 
-<style type="text/css">
-slides > slide:not(.nobackground):after {
-  content: '';
-}
-</style>
+```{r set-theme, include=FALSE}
+library(xaringanthemer)
+library(xaringan)
+library(knitr)
+library(tidyverse)
+library(openintro)
+library(moderndive)
+library(infer)
+library(ggridges)
+library(flair)
+library(broom)
+library(gridExtra)
+library(kableExtra)
 
-```{r setup, include=FALSE}
 set.seed(12345)
+
 knitr::opts_chunk$set(warning = FALSE, 
                        message = FALSE, 
                       fig.width = 5, 
@@ -22,15 +41,14 @@ knitr::opts_chunk$set(warning = FALSE,
 
 options(show.signif.stars = FALSE)
 
-library(knitr)
-library(tidyverse)
-library(moderndive)
-library(openintro)
-library(infer)
-library(flair)
-library(broom)
-library(gridExtra)
-library(RColorBrewer)
+style_duo_accent(
+  primary_color      = "#0F4C81", # pantone classic blue
+  secondary_color    = "#B6CADA", # pantone baby blue
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  text_font_size     = "30px"
+)
 
 movies <- movies_sample %>% 
   mutate(era = case_when(year < 1920 ~ "1910s", 
@@ -44,44 +62,52 @@ movies <- movies_sample %>%
                          year >= 1990 & year < 2000 ~ "1990s", 
                          year >= 2000 ~ "2000s")) %>% 
   filter(era %in% c("1970s", "1980s", "1990s", "2000s"))
+
 ```
 
-## ANOVA 
+class: middle, inverse
 
-</br> 
+.huge-text[What is two-way ANOVA?]
 
-- One-way ANOVA: one categorical explanatory variable 
+---
 
-- Two-way ANVOA: two categorical explanatory variables 
+.larger[ANOVA goal]
 
-  * Goal: describe the means of different groups, and identify whether they are
-similar or different 
+.large[
+- Identify whether the means of groups are similar or different 
+
+  - Compare how different a group of means are
+  - Scale the differences relative to the variability of the groups
+  - Summarize the differences with one number
+]
 
 
-## One-way ANOVA 
+---
+class: middle
 
-```{r, echo = FALSE, fig.width=8}
-eras <-  movies %>% 
-  ggplot(aes(x = era, y = rating, fill = era)) + 
-  geom_violin() + 
+.large[**Movie Ratings**
+]
+
+```{r, echo = FALSE, fig.height = 7, fig.align='center', fig.width=10}
+movies %>% 
+  ggplot(aes(y = era, x = rating, fill = era)) + 
+  geom_density_ridges(alpha = 0.8) + 
   scale_fill_brewer(palette = "Paired") + 
-  labs(x = "Year of Movie Release", 
-       y = "IMDB Moving Rating") + 
-  theme(legend.position = "none")
-
-genres <- movies %>% 
-  ggplot(aes(x = genre, y = rating, fill = genre)) + 
-  geom_violin() + 
-  scale_fill_brewer(palette = "Dark2") + 
-  labs(x = "Year of Movie Release", 
-       y = "") + 
-  theme(legend.position = "none")
-
-grid.arrange(eras, genres, nrow = 1)
+  labs(title = "Ratings Across Different Eras of Movies", 
+       x = "IMDB Moving Rating") + 
+  theme(legend.position = "none", 
+        axis.text.y = element_text(size = 16), 
+        axis.text.x = element_text(size = 16),
+        plot.title = element_text(size = 20),
+        axis.title.x = element_text(size = 20))
 
 ```
 
-## Model Hypotheses 
+---
+
+class: inverse 
+
+.large[**Model Hypotheses**] 
 
 $H_0$: all of the group means are the same in the population 
 
@@ -99,7 +125,9 @@ $H_A$: at least one of the means differs in the population
 * The mean movie rating for at least on era is different, for all movies made
 between 1970 and 2009. 
 
-## To Permute or F it? 
+---
+
+.large[**To Permute or F it?**] 
 
 To conduct a hypothesis test, you have two choices:  
 
@@ -114,9 +142,10 @@ Why would you choose one over the other?
 
 What is the difference in how you obtain your p-value? 
 
-## Model Conclusions 
+---
+class: middle
 
-For Movie Eras: 
+.larger[Model Conclusions] 
 
 ```{r, echo = FALSE}
 aov(rating ~ era, data = movies) %>% 
@@ -125,9 +154,13 @@ aov(rating ~ era, data = movies) %>%
 
 </br> 
 
-- There is no evidence that the mean movie rating differs across the different eras. 
+**What would you conclude for the hypothesis test?** 
 
-## Multiple Comparison - Post Hoc
+---
+
+class: inverse 
+
+.large[Multiple Comparison - Post Hoc]
 
 If we reject $H_0$ in a one-way ANOVA, we may be interested in *which* means differ from each other. 
 
@@ -140,43 +173,69 @@ If we reject $H_0$ in a one-way ANOVA, we may be interested in *which* means dif
   * Remedy with "family" $\alpha$ values 
   * Adjust p-values based on the number of tests performed   
   
+---
 
-## Two-way ANOVA 
+class: inverse, center
 
-<div class="columns-2">
+.larger[**How do we account for a second variable?**]
 
-```{r, echo = FALSE, fig.width=4}
-movies %>% 
-  ggplot(aes(x = era, y = rating)) + 
-  geom_violin(aes(fill = genre)) + 
-  scale_fill_brewer(palette = "Paired") + 
-  labs(x = "Year of Movie Release", 
-       y = "IMDB Moving Rating", 
-       fill = "Movie Genre")
-```
+---
 
-__Goal__   
+class: middle, inverse
+
+.larger[Two-way ANOVA] 
+
+</br>
+</br>
+
+<center>
+
+.hand[Goal]
 
 Assess if the relationship between one categorical explanatory variable
-and the response *differs* based on the values of another categorical variable
+and the response __*differs*__ based on the values of another categorical variable
+
+---
+
+class: middle 
+
+.bitlarger[What does this look like?]
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 6, fig.align = 'center'}
+movies %>% 
+  ggplot(aes(y = era, x = rating)) + 
+  geom_density_ridges(aes(fill = genre), alpha = 0.4) + 
+  scale_fill_brewer(palette = "Paired") + 
+  labs(title = "Ratings Across Different Eras of Movies", 
+      x = "IMDB Moving Rating", 
+       fill = "Movie Genre") + 
+  theme(axis.text.y = element_text(size = 16), 
+        axis.text.x = element_text(size = 16),
+        plot.title = element_text(size = 20),
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 16),
+        axis.title.x = element_text(size = 20))
+```
 
 
-## Additive Model
+---
 
-<div class="columns-2">
+class: middle, inverse 
 
-- Each of the explanatory variables (possibly) has an impact  
+.larger[**Modeling Options**]
 
-- The impact of one explanatory variable is the same for all levels of the other explanatory variable 
 
-- Similar to parallel slopes in a multiple linear regression! 
+.bitlarger[
+1. Additive Model
 
-</br> 
-</br> 
-</br> 
-</br> 
+2. Interaction Model 
 
-```{r, echo = FALSE, fig.width=4}
+]
+---
+
+.bitlarger[**Additive Model**]
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 6, fig.align = 'center'}
 means <- palmerpenguins::penguins %>% 
   mutate(year_cat = as.factor(year)) %>% 
   group_by(species, year_cat) %>% 
@@ -199,10 +258,11 @@ palmerpenguins::penguins %>%
         axis.ticks.x=element_blank())
 ```
 
-## Interactive Model 
-<div class="columns-2">
+---
 
-```{r, echo = FALSE, fig.width=4}
+.bitlarger[**Interaction Model**]
+
+```{r, echo = FALSE, fig.width = 10, fig.height = 6, fig.align = 'center'}
 means <- palmerpenguins::penguins %>% 
   mutate(year_cat = as.factor(year)) %>% 
   filter(!is.na(sex))  %>% 
@@ -225,99 +285,90 @@ palmerpenguins::penguins %>%
         axis.ticks.x=element_blank())
 ```
 
-
-- The impact of one explanatory variable differs based on the level of the other explanatory variable 
-- Similar to different slopes in a multiple linear regression! 
+---
 
 ## Hypothesis Test Steps 
 
-1. Fit an interaction model 
-2. Decide if the interaction is necessary  
-    * If yes, then this is your model! 
-    * If no, remove the interaction term! 
+.pull-left[
+Step 1: Fit an interaction model 
 
-</br> 
+Step 2: Decide if the interaction is necessary  
+
+- If yes, then this is your model! 
+- If no, go to step 3.  
 
 ```{r, echo = FALSE}
 aov(rating ~ era*genre, data = movies) %>% 
   tidy()
 ```
 
-## 
+]
 
-3. Fit an additive model 
-4. Decide if each explanatory variable is necessary 
+.pull-right[
+
+Step 3: Fit an additive model 
+
+Step 4: Decide if each explanatory variable is necessary 
 
 ```{r, echo = FALSE}
 aov(rating ~ era + genre, data = movies) %>% 
   tidy()
 ```
+]
+
+---
+
+class: middle, inverse
+
+.larger[The Discipline of Statistics]
+
+---
+
+class: middle, inverse
+
+.large[The field of Statistics was developed to evaluate evidence obtained from data. Over the last century, the use of statistics has become embedded as a component of the scientific process for many disciplines.]
+
+---
+
+class: middle
+
+.bitlarger[**Foundational ideas taught in statistics courses were invented by:**] 
+
+- Francis Galton 
+- Karl Pearson 
+- Ronald Fisher
+
+---
+
+.large[**Eugenics & Statistics**]
 
 </br> 
 
-<center> 
+*Ideally, statisticians would like to divorce these tools from the lives and times of the people who created them. It would be convenient if statistics existed outside of history, but that's not the case. Statistics, as a lens through which scientists investigate real-world questions, has always been smudged by the fingerprints of the people holding the lens. Statistical thinking and eugenicist thinking are, in fact, deeply intertwined, and many of the theoretical problems with methods like significance testing—first developed to identify racial differences—are remnants of their original purpose, to support eugenics.*
 
-What would our final model be? 
+[How Eugenics Shaped Statistics](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
 
-## What We've Learned 
+---
 
-```{r, fig.align='center', echo = FALSE, out.width = "80%"}
-knitr::include_graphics("methods_course.PNG") 
-```
+.large[**Statistical Significance** -- The New "S" Word]
 
-## Key Ideas 
+- "Significance, the new s-word, is overused and underdefined in the realm of connecting statistical results to the underlying science."
 
-- Reproducibility is a foundational aspect to scientific research. 
+- "When used in statistics, significant does not mean important or meaningful, as it does in everyday speech."
 
-- Data visualizations tell you a story, where statistical tests only tell you a summary.  
-
-- Multiple regression is a powerful tool to explore multivariate relationships. 
-
-- A well thought out study is more powerful than any statistical analysis. 
-
-## Code Used in This Presentation
-
-## One-way ANOVA 
-
-```{r, eval = FALSE}
-movies %>% 
-  ggplot(aes(x = era, y = rating, fill = era)) + 
-  geom_violin() + 
-  scale_fill_brewer(palette = "Paired") + 
-  labs(x = "Year of Movie Release", 
-       y = "IMDB Moving Rating") + 
-  theme(legend.position = "none")
-
-movies %>% 
-  ggplot(aes(x = genre, y = rating, fill = genre)) + 
-  geom_violin() + 
-  scale_fill_brewer(palette = "Dark2") + 
-  labs(x = "Year of Movie Release", 
-       y = "") + 
-  theme(legend.position = "none")
-
-aov(rating ~ era, data = movies) %>% 
-  tidy()
-```
+- "I advocate a simple solution: Replace the s- word with words describing what you actually mean by it."
 
 
-## Two-way ANOVA
+---
 
-```{r, eval = FALSE}
-movies %>% 
-  ggplot(aes(x = era, y = rating)) + 
-  geom_violin(aes(fill = genre)) + 
-  scale_fill_brewer(palette = "Paired") + 
-  labs(x = "Year of Movie Release", 
-       y = "IMDB Moving Rating", 
-       fill = "Movie Genre")
+class: inverse
 
-aov(rating ~ era*genre, data = movies) %>% 
-  tidy()
+.large[**Moving to a World Beyond 0.05**]
 
-aov(rating ~ era + genre, data = movies) %>% 
-  tidy()
+- Accept & Acknowledge Uncertainty
 
-```
+- Be Thoughtful 
 
+- Be Open
 
+- Be Modest 

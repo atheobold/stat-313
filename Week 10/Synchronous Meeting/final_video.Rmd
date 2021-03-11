@@ -1,0 +1,47 @@
+---
+title: "`r emo::ji('wave')` A Goodbye & Closing Thoughts"
+date: "Winter 2021" 
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+class: inverse, middle
+
+.hand-large[**This class was a triathalon!**]
+
+---
+
+class: middle 
+
+.larger[Remember to:] 
+
+- Give yourself praise
+- Connect with your peers
+- Connect with your professors
+
+---
+
+class: middle, inverse
+
+
+.bitlarger[**I hope you leave this class understanding...**] 
+
+- Reproducibility is a foundational aspect to scientific research. 
+
+- Data visualizations tell you a story, where statistical tests only tell you a summary.  
+
+- Multiple regression and two-way ANOVA are powerful tools to explore multivariate relationships. 
+
+- A well thought out study is more powerful than any statistical analysis. 
