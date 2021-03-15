@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Final Exams - Stat 313</title>
+  <title>Final Exam - Stat 313</title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -19,7 +19,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Final Exams - Stat 313',
+                title: 'Final Exam - Stat 313',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -3154,17 +3154,13 @@ slides > slide:not(.nobackground):after {
 
 </article></slide><slide class=""><hgroup><h2>Question 5</h2></hgroup><article  id="question-5">
 
-<p>In the last lab assignment (Inference for Linear Regression), you used a bootstrap distribution to estimate a plausible range of values for the population slope.</p>
-
-<p>What is the key assumption behind a bootstrap distribution?</p>
-
-<p>Why was it not necessary to create a bootstrap distribution to estimate a range of values for the population slope?</p>
+<p>What is a sampling distribution? How are randomization and bootstrap distributions used to approximate a sampling distribution?</p>
 
 </article></slide><slide class=""><hgroup><h2>LINEAR MODELS</h2></hgroup><article  id="linear-models">
 
 </article></slide><slide class=""><hgroup><h2>Question 1</h2></hgroup><article  id="question-1-1">
 
-<p>Suppose a researcher performs a one-way ANOVA and finds strong evidence to reject the null. They are interested in reporting which groups are &ldquo;significantly&rdquo; different from each other and are planning to perform tests for a difference in means for all of the groups that appear to be different.</p>
+<p>Suppose a researcher performs a one-way ANOVA and finds strong evidence to reject the null. They are interested in reporting which groups are &ldquo;significantly&rdquo; different from each other and are planning to perform tests for a difference in means for all of the groups that visually appear to be different.</p>
 
 <p>Explain to this individual the issues with this analysis strategy and propose an alternative strategy they should take.</p>
 
@@ -3190,37 +3186,34 @@ slides > slide:not(.nobackground):after {
 
 </article></slide><slide class=""><hgroup><h2>Question 5</h2></hgroup><article  id="question-5-1">
 
-<p>Prior to this year, it was fairly common for medical studies to have a lack of representation of women and people of color (and women of color). Suppose a researcher was interested in assessing the relationship between race and age on the metabolic rates of women. The researcher categorized race and age as follows:</p>
-
-<ul>
-<li><p>Black, Hispanic, American Indian or Alaska Native, Asian, Native Hawaiian or Pacific Islander, White</p></li>
-<li><p>20 - 30, 30 - 40, 40 - 50, 50 - 60, 60 - 70, 70 - 80</p></li>
-</ul>
-
-<p>The researcher recruited one woman from each intersecting group (e.g. Black and 30-40). When testing for an interaction between race and age on metabolic rates, the researcher obtained the following degrees of freedom for their test. What is the issue? What can the researcher do to assess the relationship between these variables and the metabolic rate?</p>
+<p>Suppose an experiment is designed to use blocking to account for a possible confounding variable. The analysis of the experiment’s results yields the following ANOVA table:</p>
 
 <table class = 'rmdtable'>
 <tr class="header">
-<th align="left">term</th>
-<th align="center">degrees of freedom</th>
+<th align="right">term</th>
+<th align="left">statistic</th>
+<th align="left">p-value</th>
 </tr>
 <tr class="odd">
-<td align="left">race</td>
-<td align="center">5</td>
+<td align="right">treatment</td>
+<td align="left">4.25</td>
+<td align="left">0.035</td>
 </tr>
 <tr class="even">
-<td align="left">age</td>
-<td align="center">5</td>
+<td align="right">block</td>
+<td align="left">3.5</td>
+<td align="left">0.015</td>
 </tr>
 <tr class="odd">
-<td align="left">race:age</td>
-<td align="center">25</td>
+<td align="right">treatment:block</td>
+<td align="left">2.5</td>
+<td align="left">0.01</td>
 </tr>
-<tr class="even">
-<td align="left">error</td>
-<td align="center">0</td>
-</tr>
-</table></article></slide>
+</table>
+
+<p></br></p>
+
+<p>Are there issues if there is evidence of an interaction between the blocking variable and the treatment? Whyor why not?</p></article></slide>
 
 
   <slide class="backdrop"></slide>

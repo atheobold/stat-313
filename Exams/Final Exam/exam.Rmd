@@ -1,5 +1,5 @@
 ---
-title: "Final Exams - Stat 313"
+title: "Final Exam - Stat 313"
 output: ioslides_presentation
 ---
 
@@ -15,19 +15,11 @@ slides > slide:not(.nobackground):after {
 
 Explain to someone who has never taken a statistics course what a p-value is. 
 
-_Follow-up questions:_ 
-
-- A p-value is often reported as a percentage. What does that percentage p-value mean?
-- How is a p-value calculated? 
-- What does a small / large p-value suggest? 
 
 ## Question 2 
 
 Explain to someone who has never taken a statistics course what a confidence interval is. 
 
-_Follow-up questions:_ 
-
-- 
 
 ## Question 3 
 
@@ -46,18 +38,14 @@ What are the benefits and costs of eliminating p-value thresholds?
 
 ## Question 5 
 
-In the last lab assignment (Inference for Linear Regression), you used a bootstrap distribution to estimate a plausible range of values for the population slope. 
-
-What is the key assumption behind a bootstrap distribution? 
-
-Why was it not necessary to create a bootstrap distribution to estimate a range of values for the population slope?
+What is a sampling distribution? How are randomization and bootstrap distributions used to approximate a sampling distribution?
 
 
 ## LINEAR MODELS 
 
 ## Question 1 
 
-Suppose a researcher performs a one-way ANOVA and finds strong evidence to reject the null. They are interested in reporting which groups are "significantly" different from each other and are planning to perform tests for a difference in means for all of the groups that appear to be different. 
+Suppose a researcher performs a one-way ANOVA and finds strong evidence to reject the null. They are interested in reporting which groups are "significantly" different from each other and are planning to perform tests for a difference in means for all of the groups that visually appear to be different. 
 
 Explain to this individual the issues with this analysis strategy and propose an alternative strategy they should take. 
 
@@ -87,17 +75,14 @@ What does it mean to have "different slopes" in a two-way ANOVA?
 
 ## Question 5 
 
-Prior to this year, it was fairly common for medical studies to have a lack of representation of women and people of color (and women of color). Suppose a researcher was interested in assessing the relationship between race and age on the metabolic rates of women. The researcher categorized race and age as follows: 
+Suppose an experiment is designed to use blocking to account for a possible confounding variable. The analysis of the experiment’s results yields the following ANOVA table:
 
-* Black, Hispanic, American Indian or Alaska Native, Asian, Native Hawaiian or Pacific Islander, White
- 
-* 20 - 30, 30 - 40, 40 - 50, 50 - 60, 60 - 70, 70 - 80
+| term | statistic | p-value|
+|------:|:---------|--------|
+treatment | 4.25 | 0.035 |
+block     | 3.5  | 0.015 | 
+treatment:block | 2.5 | 0.01 | 
 
-The researcher recruited one woman from each intersecting group (e.g. Black and 30-40).  When testing for an interaction between race and age on metabolic rates, the researcher obtained the following degrees of freedom for their test. What is the issue? What can the researcher do to assess the relationship between these variables and the metabolic rate?  
+</br>
 
-| term     | degrees of freedom  |  
-| -------- |:-------------------:|  
-| race     | 5  |  
-| age      | 5  |  
-| race:age | 25 |  
-| error    | 0  | 
+Are there issues if there is evidence of an interaction between the blocking variable and the treatment? Whyor why not?
