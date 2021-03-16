@@ -28,3 +28,8 @@ monday_exams <- monday %>%
   mutate(q1 = map_dbl(Monday, exam_questions, bank = 5), 
          q2 = map_dbl(Monday, exam_questions, bank = 5)
          )
+
+tuesday_exams <- tuesday %>% 
+  mutate(q1 = map_dbl(Tuesday, exam_questions, bank = 5), 
+         q2 = map_dbl(Tuesday, exam_questions, bank = 5)
+  )
