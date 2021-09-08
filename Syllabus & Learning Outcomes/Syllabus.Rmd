@@ -29,17 +29,17 @@ brewer_pal <- brewer.pal(n = 8, name = "Purples")
 ## Course Info
 
 **Room:** 
+
 - M, T, R  -- Constr Innovations Center C202
 - W -- Kennedy Library 0111B
 
 **Times:** 
-- Section 01: M, T, W, R 8:10-9:00am
-- Section 02: M, T, W, R 9:10-10:00am
+
+- Section 01: 8:10-9:00am
+- Section 02: 9:10-10:00am
 
 
 ## Office Hours
-
-__All office hours will take place on Zoom.__
 
 Regular weekly office hours will be held:
 
@@ -53,6 +53,8 @@ I am available for individual appointments on Tuesdays and Thursdays outside of
 these time slots, but appointments __must__ be made made _at least_ 24 hours
 in advance through Calendly, using the following link: 
 <https://calendly.com/allisontheobold> 
+
+---
 
 ## Required Materials 
 
@@ -71,29 +73,30 @@ a printed copy if you wish.
 ![Ismay & Kim, __Modern Dive: Statistical Inference via Data Science__. 
 <https://moderndive.com>](course images/modern_dive.png){width=40%} 
 
-## Required Technology 
+### Required Technology 
 
-- `R` is the statistical software we will be using in this course 
-(<https://cran.r-project.org/>). 
+![`R` is the statistical software we will be using in this course 
+(<https://cran.r-project.org/>)](course images/R.jpeg){width=30%}
 
-- RStudio is the most popular way to interact with the `R` software. We will be 
+![RStudio is the most popular way to interact with the `R` software. We will be 
 interacting with RStudio through RStudio Cloud (https://rstudio.cloud/). You 
 will join the Stat 313 workspace, and then be able to access the course homework
-and lab assignments. We will be walking through this in the first week of lab! 
+and lab assignments. We will be walking through this in the first week of lab!](course images/rstudio.png){width=40%}
 
+<center>
 **I strongly advise you to pay for the $5 per month plan with RStudio
 Cloud. The free plan only gives you 25 hours of working on projects a month, and
 I don't want anyone to run out of time and not be able to complete their 
 assignment!** 
+</center>
 
-- Canvas will be used for homework, quizzes, lab assignments, and group
-projects.
+</br>
 
-### Course Discord:
+![For questions of general interest, such as course clarifications or conceptual
+questions, please use the Class Discord Server. Refer to the Day One
+Class Setup materials for more information on how to effectively use this server.](course images/discord.jpeg){width=20%} 
 
-For questions of general interest, such as course clarifications or conceptual
-questions, please use the [Class Discord Server (link)](). Refer to the Day One
-Class Setup materials for more information on how to effectively use this server.
+---
 
 ## Welcoming Classroom
 
@@ -104,6 +107,8 @@ problem, and our learning will be richer by being open to different ideas,
 rejecting stereotypes, and being aware of--in order to minimize--our biases.
 I look forward to getting to know you all as individuals and as a learning
 community. 
+
+---
 
 ## Course Description and Learning Objectives 
 
@@ -159,6 +164,8 @@ appreciation for the complexities involved in building a statistical model,
 grasp of the importance of good experimental design, and that you participate
 in group conversations about statistical reasoning and problem solving. 
 
+---
+
 ## Course Components 
 
 Canvas will be your resource for the course materials necessary for each week:
@@ -200,6 +207,8 @@ from approximately 7am to 5pm during the week. I will attempt to respond
 to emails in 24 hours, but emails sent on a Saturday night may not be responded
 to until Monday morning. If you don't hear back from me in 48 hours, assume I
 did not receive your email and resend it!
+
+---
 
 ### Weekly Schedule 
 
@@ -421,6 +430,8 @@ of the concepts. Each exam will follow the submission of the group projects,
 with the first occurring approximately halfway through the course and the second
 taking place during finals week. 
 
+---
+
 ## Grade Breakdown
 
 How will the learning happen? 
@@ -486,7 +497,7 @@ missed assignments, the highest grade you will earn for the class is a C-.
 
 ## Course Organization
 
-This class is organized into ___ units.
+This class is organized into six units.
 
 ### Unit 1: Why Statistics? (Weeks 1 & 2)
 
@@ -516,20 +527,14 @@ from different samples.
 This unit will walk through chapters 7 and 8 in *Introduction to Modern 
 Statistics* and chapters 5 and 6 in *Modern Dive*. 
 
-### Unit 6: ANOVA an boring case of Regression (Week 10)
+### Unit 6: ANOVA a (Boring) Case of Regression (Week 10)
 
 This unit will walk through chapter 22 in *Introduction to Modern 
 Statistics*. 
 
+---
 
-### Dates
-
-**Midterm:** Week 7
-
-**Final Exam:** Week 11 
-
-
-## Other Policies
+# Other Policies
 
 ## Late Work Policy 
 
