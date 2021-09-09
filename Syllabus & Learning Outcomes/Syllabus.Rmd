@@ -235,11 +235,11 @@ watching the necessary videos.
 
 ### Individual Assignments 
 
-#### Knowledge Checks
+#### Think Out Loud Recording
 
 Every week I will post one "big picture" conceptual question from the content 
 covered the prior week, which you are required to record your response to the 
-prompt. You should think of this "knowledge check" as the second check point for 
+prompt. You should think of this "think out loud" as the second check point for 
 the content covered each week. 
 
 Each recording will be done through FlipGrid. The recordings will have an 
@@ -453,7 +453,7 @@ Your grade in STAT 313 will contain the following components.
 grades <- tribble(
   ~category,  ~percent,
   "Homework", 5, 
-  "Knowledge Checks", 5,
+  "Think Out Loud Recordings", 5,
   "Quizzes", 10,
   "Labs", 15,
   "Projects", 15,
@@ -463,7 +463,7 @@ grades <- tribble(
 
 grades <- grades %>% 
   mutate(category = factor(category, 
-                           levels = c("Homework", "Knowledge Checks", 
+                           levels = c("Homework", "Think Out Loud Recordings", 
                                       "Quizzes", "Labs", "Projects", 
                                       "Midterm", "Final")
                            )
@@ -478,7 +478,7 @@ grades %>%
   guides(fill = FALSE) + 
   geom_text(aes(x = rep(1, 7),
                 label = c('Group Discussions / Weekly Homework (5%)',
-                          'Weekly Knowledge Checks (5%)',
+                          'Think Out Loud Recordings (5%)',
                           'Weekly Quizzes (10%)',
                           'Lab Assignments (15%)',
                           'Group Projects (15%)',
