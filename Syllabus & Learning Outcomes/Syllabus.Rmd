@@ -233,9 +233,9 @@ experiences working through the concepts we are learning. Thus, you should
 expect to dedicate time early in the week to reading the course material and 
 watching the necessary videos.
 
-### Individual Assignments 
+## Individual Assignments 
 
-#### Think Out Loud Recording
+### Think Out Loud Recording
 
 Every week I will post one "big picture" conceptual question from the content 
 covered the prior week, which you are required to record your response to the 
@@ -266,14 +266,14 @@ are comfortable with me sharing your video with the rest of the course. You are
 permitted to say either "yes" or "no," as your grade is not dependent on this 
 request. 
 
-#### Weekly Quizzes
+### Weekly Quizzes
 
 Each week there will be a short (~10 questions) quiz over the reading and 
 videos from the week. These quizzes are intended to ensure that you grasped the 
 key concepts from the week's readings. The quizzes are not timed, so you can 
 feel free to check your answers with the textbook and/or videos if you so wish. 
 
-#### Tutorials
+### Tutorials
 
 On the lab assignment weeks, I will assign a set of tutorials focusing on
 specific skills in `R`. These tutorials provide a review of the concepts covered
@@ -286,15 +286,15 @@ slowly throughout the week. The lab assignments will require for you to put the
 skills you learned in the tutorials to work, so completing the tutorial is 
 necessary to complete the `R` code in each lab assignment.  
 
-### Team-based Assignments
+## Team-based Assignments
 
-#### Group Discussions / Conceptual Homework
+### Group Discussions / Conceptual Homework
 
 You will be expected to regularly participate in groups in class, discussing and
 working through questions associated with the content for the week. Your group 
 will be expected to submit a document with your responses to each question given
 that week. These weekly summaries of your conceptual understanding are due on 
-Fridays at 5:00pm. 
+Wednesdays at 8:00pm. 
 
 Homework assignments will be given full credit, so long as each question was 
 "reasonably" attempted. A "reasonable" attempt requires that the responses to 
@@ -308,7 +308,7 @@ questions as your first "check point" in the week's content. You will get
 feedback as you progress through the check points, so you have a better idea of
 what you need to work on as you prepare for the exams
 
-#### Lab Assignments
+### Lab Assignments
 
 Labs will be assigned every other week, providing the opportunity to explore 
 the course concepts in the context of real data. Lab assignments will require
@@ -434,19 +434,6 @@ taking place during finals week.
 
 ## Grade Breakdown
 
-How will the learning happen? 
-
-| Individual | Group |
-|------------|-------|
-| Watch lecture videos | Discuss concepts that are unclear | 
-| Read textbook        | Discuss concepts that are unclear    |
-| Complete weekly quiz    | Discuss concepts prior to quiz | 
-| Complete practice problems from textbook | Discuss practice problems | 
-| Complete practice activity | Discuss practice activity    | 
-| Complete think out loud recording | Practice talking through your ideas | 
-| Group Evaluations           | Lab assignments |
-| Peer Evaluations           | Final project   |
-| Exams                      |                | 
 Your grade in STAT 313 will contain the following components.
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, eval = TRUE}
@@ -497,14 +484,23 @@ missed assignments, the highest grade you will earn for the class is a C-.
 
 ## Course Organization
 
-This class is organized into six units.
+This class is organized into six units, each exploring a different statistical 
+method. The skills learned at the beginning of the course will carry throughout
+the remainder of the course. I hope that you are able to see the connections 
+between the topics of the different units, since they are all part of one big 
+family -- the regression family!
 
-### Unit 1: Why Statistics? (Weeks 1 & 2)
+### Unit 1: Why Statistics? (Week 1)
 
-This unit will walk through chapters 1 through 3 of *Introduction to Modern 
-Statistics* and chapter 1 in *Modern Dive*. 
+This introductory unit has three big tasks, (1) review statistical and data 
+oriented concepts you have (likely) seen before, (2) think critically about 
+**why** statistics is used in science, and (3) think about **how**
+(historically) statistics has been used to make inferences.  
 
-### Unit 2: Exploratory Data Analysis (Weeks 3 & 4)
+Reading: Chapters 1 and 2 in *Introduction to Modern Statistics*, with 
+additional articles
+
+### Unit 2: Exploratory Data Analysis (Weeks 2 through 4)
 
 This unit will walk through chapters 4 through 6 of *Introduction to Modern 
 Statistics* and chapters 2 through 4 of *Modern Dive*. 
