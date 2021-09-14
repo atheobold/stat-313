@@ -1,0 +1,150 @@
+---
+title: "Week One: Why Statistics?"
+author: ""
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library(tidyverse)
+library(flair)
+library(emo)
+
+library(unvotes)
+library(lubridate)
+library(DT)
+```
+
+
+Welcome!
+
+In this coursework, you'll get a refresher on the foundational components of 
+statistics and data, investigate how statistics is used in your major, and
+think critically about the philosophy of statistical inference.
+
+## Course TODOs
+
+`r emo::ji("play button")` Watch Video: 20 min
+
+`r emo::ji("book")` Readings: 60-75 minutes 
+
+`r emo::ji("computer")` Activities: 15 min 
+
+`r emo::ji("check")` Check-ins: 1
+
+`r emo::ji("paper")` Group Discussion Homework: 5 Questions
+
+---
+
+# Data Refresher 
+
+Let's start off by reading a refresher on some of the foundational concepts for 
+data! 
+
+`r emo::ji("book")` [Required Reading: *Introduction to Modern Statistics* Chapter 1](https://openintro-ims.netlify.app/data-hello.html)
+
+`r emo::ji("book")` [Required Reading: statistics versus Statistics ](https://critical-inference.com/statistics-vs-statistics/)
+
+
+`r emo::ji("check")` **Check-in 1:** 
+
+1. Just because a variable has numeric values, does not mean it is a numeric
+variable. What are the different types of variables that can appear in a 
+dataset? How can you determine if a variable is numerical versus categorical? 
+
+2. What are the differences between observational studies and experiments?
+
+3. Describe what you see in the plot below. 
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, out.width = "70%", fig.align = 'center'}
+un_votes %>%
+  filter(country %in% c("United States", "Turkey")) %>%
+  inner_join(un_roll_calls, by = "rcid") %>%
+  inner_join(un_roll_call_issues, by = "rcid") %>%
+  mutate(issue = ifelse(issue == "Nuclear weapons and nuclear material",
+                        "Nuclear weapons and materials", issue)) %>%
+  group_by(country, year = year(date), issue) %>%
+  summarize(
+    votes = n(),
+    percent_yes = mean(vote == "yes")
+    ) %>%
+  filter(votes > 5) %>%  # only use records where there are more than 5 votes
+  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
+    geom_point() +
+    geom_smooth(method = "loess", se = FALSE) +
+    facet_wrap(~ issue) +
+    labs(
+      title = "Percentage of 'Yes' votes in the UN General Assembly",
+      subtitle = "1946 to 2020",
+      y = "% Yes",
+      x = "Year",
+      color = "Country"
+    )
+```
+
+</br>
+
+---
+
+# Statistics in Your Field
+
+Now let's investigate how statistics is used in your discipline. 
+
+Find a peer-reviewed article from a journal in your field that performs a 
+statistical analysis somewhere in the paper. You **do not** need to be familiar
+with the analysis they do. That being said, if you want to find a paper that
+uses a statistical method we'll cover in this class, look for a paper that uses
+"regression" or "ANOVA." 
+
+The Library is a great resource for this! The following website [https://csu-calpoly.primo.exlibrisgroup.com/discovery/jsearch?vid=01CALS_PSU:01CALS_PSU](https://csu-calpoly.primo.exlibrisgroup.com/discovery/jsearch?vid=01CALS_PSU:01CALS_PSU) has a list of journals by discipline that are available through the
+library. 
+
+`r emo::ji("computer")` **Check-in 2:** Upload a PDF of your journal article to 
+the Canvas assignment portal. 
+
+</br>
+
+---
+
+# The Philosophy of Statistical Inference 
+
+`r emo::ji("book")` [**Required Reading: Our love of dichotomizing**](https://critical-inference.com/our-love-of-dichotomizing/)
+
+`r emo::ji("book")` [**Required Reading: Science is Human**](https://critical-inference.com/science-is-human/)
+
+`r emo::ji("book")` [**Required Reading: Do We Really Need the S-word?**](https://www.americanscientist.org/article/do-we-really-need-the-s-word)
+
+</br>
+
+`r emo::ji("paper")` **Group Homework Questions**
+
+Throughout the week, your group will be asked to discuss the following 
+questions:
+
+- What is **S**tatistics?
+
+- What is the role of Statistics in the progression of science?
+
+- How is dichotomous thinking used in Statistics? What are the benefits and 
+drawbacks?
+
+- What does it mean for an analysis to be "objective"? Do you believe 
+statistical analyses can be objective? Why or why not?
+
+- What are some synonyms of "significant" that come to your mind?
+
+- What are two issues that you see with using the term "significant" to denote 
+"small" p-values? 
+
+</br> 
+
+The reporter in your team will be expected to type up your team's responses to 
+these questions. The editor in your team is responsible for submitting the 
+completed questions to the Canvas assignment portal. 
