@@ -1,5 +1,5 @@
 ---
-title: "Week One: Why Statistics?"
+title: "Week One: Foundations of Statistics"
 author: ""
 output:
   prettydoc::html_pretty:
@@ -48,46 +48,46 @@ think critically about the philosophy of statistical inference.
 Let's start off by reading a refresher on some of the foundational concepts for 
 data! 
 
-`r emo::ji("book")` [Required Reading: *Introduction to Modern Statistics* Chapter 1](https://openintro-ims.netlify.app/data-hello.html)
+`r emo::ji("book")` [Required Reading: *Introduction to Modern Statistics* -- Hellow Data](https://openintro-ims.netlify.app/data-hello.html)
+
+`r emo::ji("book")` [Required Reading: *Introduction to Modern Statistics* -- Study Design](https://openintro-ims.netlify.app/data-design.html)
 
 `r emo::ji("book")` [Required Reading: statistics versus Statistics ](https://critical-inference.com/statistics-vs-statistics/)
 
 
 `r emo::ji("check")` **Check-in 1:** 
 
-1. Just because a variable has numeric values, does not mean it is a numeric
-variable. What are the different types of variables that can appear in a 
-dataset? How can you determine if a variable is numerical versus categorical? 
+1. What are the different types of variables that can appear in a 
+dataset? 
 
-2. What are the differences between observational studies and experiments?
+- discrete numerical
+- ordinal categorical
+- nominal categorical 
+- continuous numerical
+- discrete categorical
 
-3. Describe what you see in the plot below. 
+2. Just because a variable has numeric values, does not mean it is a numeric
+variable. How can you determine if a variable is numerical versus categorical? 
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, out.width = "70%", fig.align = 'center'}
-un_votes %>%
-  filter(country %in% c("United States", "Turkey")) %>%
-  inner_join(un_roll_calls, by = "rcid") %>%
-  inner_join(un_roll_call_issues, by = "rcid") %>%
-  mutate(issue = ifelse(issue == "Nuclear weapons and nuclear material",
-                        "Nuclear weapons and materials", issue)) %>%
-  group_by(country, year = year(date), issue) %>%
-  summarize(
-    votes = n(),
-    percent_yes = mean(vote == "yes")
-    ) %>%
-  filter(votes > 5) %>%  # only use records where there are more than 5 votes
-  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
-    geom_point() +
-    geom_smooth(method = "loess", se = FALSE) +
-    facet_wrap(~ issue) +
-    labs(
-      title = "Percentage of 'Yes' votes in the UN General Assembly",
-      subtitle = "1946 to 2020",
-      y = "% Yes",
-      x = "Year",
-      color = "Country"
-    )
-```
+3. Which of the following statements are true about observational studies and
+experiments?
+
+- Experiments randomly assign the explanatory variable
+- Observational studies randomly assign the explanatory variable
+- Observational studies can make causal statements about the relationship
+between the explanatory and response variables
+- Experiments can make causal statements about the relationship between the 
+explanatory and response variables
+
+4. What are different methods for sampling from a population? 
+
+- simple random sampling 
+- stratified random sampling 
+- cluster sampling 
+- multistage sampling
+- convenience sampling
+
+5. What does the "stratification" in a stratified random sample mean? 
 
 </br>
 
