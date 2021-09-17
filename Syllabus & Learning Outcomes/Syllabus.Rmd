@@ -193,7 +193,7 @@ This unit will pair:
 - Chapter 4 in *IMS* with Chapter 2 (section 8) in *Modern Dive*
 
 
-## Unit 3: Regression Modeling (Weeks 5 & 6)
+## Unit 3: Regression Modeling (Weeks 4 & 5)
 
 In this unit we *finally* begin exploring statistical methods. You will put the
 tools you learned for wrangling and visualizing to work in the context of 
@@ -208,7 +208,7 @@ This unit will pair:
 - Chapter 8 in *IMS* with Chapter 6 in *Modern Dive*
 
 
-## Unit 4: Foundations of Statistical Inference (Weeks 7 & 8)
+## Unit 4: Foundations of Statistical Inference (Weeks 6 & 7)
 
 This unit will start with Chapter 7 in *Modern Dive*, setting the stage for why
 Statisticians care so much about variability. We will then use these ideas to 
@@ -223,7 +223,7 @@ visit the ideas of p-values and significance testing, with a emphasis on making
 (and justifying) sound scientific decisions. 
 
 
-## Unit 5: Inference for Regression (Week 9)
+## Unit 5: Inference for Regression (Week 8 & 9)
 
 Now that we've discussed the ideas behind sampling variability and statistical 
 inference, we'll explore these ideas in the context of linear regression. We 
