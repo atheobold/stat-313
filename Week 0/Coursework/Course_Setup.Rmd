@@ -28,8 +28,6 @@ is expected of you each week, and hear some tips from me about how to succeed.
 
 ## Course TODOs
 
-`r emo::ji("play button")` Watch Video: 20 min
-
 `r emo::ji("book")` Readings: 15 minutes 
 
 `r emo::ji("computer")` Activities: 0 min 
