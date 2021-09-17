@@ -1,0 +1,73 @@
+---
+title: "Group Inclusion & Identitiy"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+date: "September 20, 2021"
+usepackage: multicol
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definitions
+
+_Diversity_: how we differ; the recognition and acceptance of the difference between people's social identities.  
+
+_Equity_: different from equality, as it recognizes historical and systemic oppression and acknowledges that different communities require different levels of support to succeed. Achieving equity may require an unequal distribution of resources to achieve equal outcomes.  
+
+_Inclusion:_ authentic and empowered participation, and a true sense of belonging within a group or structure. Inclusion cannot happen without equity.  
+
+_Social Identities:_ an individual's concept of self based on a broad sense of perceived group membership. 
+
+## Examples of Social Identities
+
+_Race_: White, Black, Asian, Latinx/a/o, Indigenous/Native, mixed, etc. 
+
+_Ethnicity_: Mexican, Chinese, Indian, Italian, etc.  
+
+_Physical, Emotional, Developmental (Dis)Ability_: Anxiety, Depression, ADHD, Dyslexia, etc.  
+
+_Socio-Economic Status:_ Working poor, working class, upper middle class, etc.  
+
+_Gender Identity_: (Cis or Trans) man, (Cis or Trans) woman, nonbinary, genderfluid, queer, agender, etc. 
+
+_Sexual Orientation_: Straight, Gay, Lesbian, Bisexual, Pansexual, Asexual, Questioning, etc.  
+
+_Religious or Spiritual Affiliation:_ Catholic, Jewish, Christian, Hindu, Sikh, etc.  
+
+# Reflection 
+
+1. Reflect on the social identity categories above. Think about one of these identities (or one that is not mentioned) that is important to you and write down why.  
+
+\vspace{2cm}
+
+2. Think about a time when someone made an incorrect assumption about you. Write down how that made you feel.  
+
+\vspace{2cm}
+
+3. Think about a time you made someone else feel included. Write down what you did. 
+
+\vspace{2cm}
+
+# Agreement
+
+I agree to abide by the group norms set in place for this classroom. 
+
+
+\vspace{1cm}
+
+\underline{\hspace{5in}}
+
+
+# Cast Your Vote  
+
+As a class, would you prefer: 
+
+\begin{center}
+\begin{tabular}{ c c c }
+ I use \textbf{no} pronouns and \textbf{only} use names. & \hspace{2cm} & I use \textbf{both} names and pronouns. \\ 
+\end{tabular}
+\end{center}

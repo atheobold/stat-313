@@ -95,8 +95,7 @@ explanatory and response variables
 
 # Statistics in Your Field
 
-`r emo::ji("play button")` [*R**equired Video: Statistics in Your Field**](link)
-
+`r emo::ji("play button")` [*Required Video: Statistics in Your Field**](link)
 
 Now let's investigate how statistics is used in your discipline. 
 
@@ -145,8 +144,8 @@ statistical analyses can be objective? Why or why not?
 
 - What are some synonyms of "significant" that come to your mind?
 
-- What are two issues that you see with using the term "significant" to denote 
-"small" p-values? 
+- What are two issues that you see with using the term "significant" 
+to denote "small" p-values? 
 
 </br> 
 
