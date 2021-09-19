@@ -222,7 +222,12 @@ life.
 
 `r emo::ji("check")` Check-in 1: Introductions (on Discord) 
 
-Introduce yourself in the "Introductions" channel of the Discord Server.
+Introduce yourself in the "Introductions" channel of the Discord Server. 
+Be sure to include:
+
+- the name you prefer for everyone to use
+- your major
+- something you like to do outside of school
 
 ---
 
