@@ -1,20 +1,70 @@
 ---
-title: "Stat 313 - First Synchronous Meeting!"
-author: "Allison Theobold"
-date: "January 13, 2021"
-output: ioslides_presentation
----
+title: "Stat 313 - Data & Study Design"
+date: "September 21, 2021"
+author: "Dr. Allison Theobold"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---        
 
-<style type="text/css">
-slides > slide:not(.nobackground):after {
-  content: '';
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE,
+  tibble.width = 65,
+  width = 65
+  )
+
+# figure height, width, dpi
+knitr::opts_chunk$set(fig.width = 8, 
+                      fig.asp = 0.618,
+                      out.width = "60%",
+                      fig.align = "center",
+                      dpi = 300)
+
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
 }
-</style>
+
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+
+library(emo)
+```
+
+```{r set-theme, include = FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color      = "#b76352", # mango
+  secondary_color    = "#34605f", # bayberry
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  header_color = "#793540", #rhubarb
+  white_color = "#F5F5F5", # lightest color
+  black_color = "#36454F", # darkest color
+  text_font_size = "30px", 
+  link_color = "#696969" #grey
+)
+```
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, 
-                      message = FALSE, 
-                      warning = FALSE)
 library(tidyverse)
 library(openintro)
 library(kableExtra)
@@ -26,50 +76,7 @@ fish <- read_csv("data/BlackfootFish.csv")
 nba <- read_csv("data/NBA_player_of_the_week.csv")
 ```
 
-## Welcome to Our Course
-
-__Group Norms:__
-
-- Zero tolerance for: racism, sexism, homophobia, transphobia, ageism, ableism 
-- Do not make generalizations -- Use "I" statements
-
-- Respect one another
-
-- Intent and impact *both* matter
-
-- Non-judgmental 
-
-- Take space, make space -- Share the air (page) 
-<!-- Challenge yourself to take space if you tend to be quieter, make space if you -->
-<!-- find yourself talking a lot or otherwise taking up space. -->
-<!-- Be aware of your airtime to ensure all voices are heard. -->
-
-- Embrace discomfort
-
-- Make decisions by consensus
-
-## What is Statistics?
-
-> Scientists seek to answer questions using rigorous methods and careful
-> observations. These observations – collected from the likes of field notes,
-> surveys, and experiments – form the backbone of a statistical investigation
-> and are called data.  
-
-> Statistics is the study of how best to collect, analyze,
-> and draw conclusions from data. 
->
-> _Introduction to Modern Statistics_
-
-
-## What Statistics Is To Me 
-
-</br>
-</br>
-
-![](cycle.png)
-
-
-## Data
+.larger[Data]
 
 <center>
 Gender stereotypes in 5-7 year old children
@@ -87,7 +94,9 @@ children_gender_stereo[[2]] %>%
   
 ```
 
-## In Every Context 
+---
+
+.larger[In Every Context]
 
 <center> 
 NBA player of the week from 1985 to 2016
@@ -104,7 +113,9 @@ nba %>%
                 latex_options = "striped")
 ```
 
-## You Could Imagine
+---
+
+.larger[You Could Imagine]
 
 <center>
 Fish Sampled on Blackfoot River
@@ -120,11 +131,15 @@ fish %>%
                 latex_options = "striped")
 ```
 
-## Types of Variables
+---
+
+.larger[Types of Variables]
 
 ![](variables.png)
 
-## 90 Second Writing Exercise
+---
+
+.larger[90 Second Writing Exercise]
 
 Data were collected on thousands of loans made through the Lending Club platform, a platform that allows individuals to lend to other individuals. 
 
@@ -138,14 +153,17 @@ A total of 55 variables were collected on every loan that was made, including in
 __What do you expect this dataframe would look like?__ 
 </center>
 
-## Data Types in `R`
+---
+
+.larger[Data Types in `R`]
 
 ```{r echo = TRUE}
 glimpse(loans_full_schema)
 ```
 
+---
 
-## Sampling Strategies 
+.larger[Sampling Strategies]
 
 <div class="columns-2">
 
@@ -209,7 +227,9 @@ par(par_og) # restore original par
 
 </div>
 
-## Types of Studies
+---
+
+.larger[Types of Studies]
 
 **Experiment** 
 
@@ -224,7 +244,9 @@ par(par_og) # restore original par
 
 - collect data in a way that does not directly interfere with how the data arise
 
-## Relationships Between Variables
+---
+
+.larger[Relationships Between Variables]
 
 <center>
 explanatory variable $\rightarrow$ *might affect* $\rightarrow$ response variable
@@ -249,36 +271,14 @@ association $\neq$ causation
 __What do you need to say that the explanatory variable **causes** a change in
 the response variable?__ 
 
-## Group Exercise
+---
 
-The following scatterplot was created as part of a study evaluating the
-relationship between estimated life expectancy at birth (as of 2014) and
-percentage of internet users (as of 2009) in 208 countries for which such data
-were available.
+.larger[Group Exercises]
 
-```{r, fig.width = 5, fig.height= 3, fig.align = "center"}
-library(scales)
+---
 
-cia_factbook %>% 
-ggplot(aes(y = life_exp_at_birth,
-           x = internet_users/population)) +
-  geom_point(color = COL["blue", "full"], alpha = 0.8) +
-  scale_x_continuous(
-    labels = label_percent(scale = 100),
-    limits = c(0, 1)) +
-  labs(
-    x = "Percent internet users",
-    y = "Life expectancy",
-    title = "Life Expectancy vs. Percent Internet Users", 
-    subtitle = "Data from 2014 from the CIA Factbook"
-    ) +
-  theme_minimal()
-    ```
-
-## Questions for Me
+.larger[Questions for Me]
 
 - Content questions? 
 
 - Course structure questions?  
-
-- Programming in `R` questions? 
