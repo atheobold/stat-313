@@ -74,6 +74,15 @@ class: middle, center
 
 ---
 
+.larger[About Me...]
+
+```{r, echo = FALSE, out.width = "45%", out.height = "20%", fig.show = 'hold', fig.align='default'}
+knitr::include_graphics(c("images/bikes.jpg", "images/wedding.png"))
+```
+
+
+---
+
 class: center, inverse
 
 .gray[.huge[Group Norms]]
