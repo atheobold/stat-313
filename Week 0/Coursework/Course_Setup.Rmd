@@ -14,7 +14,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, include = FALSE}
 library(tidyverse)
-library(flair)
 library(emo)
 ```
 
@@ -24,9 +23,8 @@ Welcome!
 In this coursework, you'll get set up with the Class Discord, learn about what
 is expected of you each week, and hear some tips from me about how to succeed.
 
-[Required Video: Welcome to Stat 313 from Dr. Theobold](http://somup.com/creubsbzlJ)
 
-## Course TODOs
+## Coursework TODOs
 
 `r emo::ji("book")` Readings: 15 minutes 
 
@@ -73,7 +71,7 @@ weekends!
 ## Join the server
 
 
-Join the [Stat 313 Server (https://discord.gg/X9zxC7MH)](https://discord.gg/X9zxC7MH) to start experimenting 
+Join the [Stat 313 Server (https://discord.gg/TupTVEcb)](https://discord.gg/TupTVEcb) to start experimenting 
 with the interface.
 
 When you join the server, you will be given some suggestions to get started.  
