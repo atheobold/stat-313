@@ -30,7 +30,6 @@ options(
 knitr::opts_chunk$set(fig.width = 8, 
                       fig.asp = 0.618,
                       out.width = "60%",
-                      fig.align = "center",
                       dpi = 300)
 
 # fontawesome
@@ -76,7 +75,17 @@ fish <- read_csv("data/BlackfootFish.csv")
 nba <- read_csv("data/NBA_player_of_the_week.csv")
 ```
 
-.larger[Data]
+class: center, inverse
+
+.huge[Data]
+
+![](tidy-1.png)
+
+---
+
+class: center
+
+.larger[Lots of Data]
 
 <center>
 Gender stereotypes in 5-7 year old children
@@ -95,6 +104,28 @@ children_gender_stereo[[2]] %>%
 ```
 
 ---
+
+class: center
+
+.larger[Lots and Lots of Data]
+
+Body girth measurements and skeletal diameter measurements for 247 men and 
+260 women.
+
+```{r, echo = FALSE}
+bdims %>% 
+  sample_n(6) %>% 
+  select(age, wgt, hgt, sex, sho_gi, wai_gi, nav_gi, hip_gi) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = c("striped", "condensed"), 
+                latex_options = "striped")
+```
+
+
+---
+
+
+class: center
 
 .larger[In Every Context]
 
@@ -115,6 +146,8 @@ nba %>%
 
 ---
 
+class: center
+
 .larger[You Could Imagine]
 
 <center>
@@ -133,13 +166,19 @@ fish %>%
 
 ---
 
+class: center, inverse
+
 .larger[Types of Variables]
+
+</br>
 
 ![](variables.png)
 
 ---
 
-.larger[90 Second Writing Exercise]
+class: center 
+
+.larger[#90 Second Writing Exercise]
 
 Data were collected on thousands of loans made through the Lending Club platform, a platform that allows individuals to lend to other individuals. 
 
@@ -148,26 +187,49 @@ A total of 55 variables were collected on every loan that was made, including in
 - the borrower's employment, credit, current financial status, tax filings
 - the loan's details, date of issue, balance, and current status
 
-</br> 
-<center>
-__What do you expect this dataframe would look like?__ 
-</center>
+
+</br>
+
+.large[__What do you expect this dataframe would look like?__]
 
 ---
 
 .larger[Data Types in `R`]
 
+```{r, echo = FALSE}
+loans_full_schema <- loans_full_schema %>% 
+  select(emp_title,
+         emp_length, 
+         state, 
+         annual_income, 
+         verification_income_joint, 
+         delinq_2y,
+         earliest_credit_line) 
+```
+
 ```{r echo = TRUE}
 glimpse(loans_full_schema)
 ```
 
+.pull-left[
+What do you think `dbl` means?  
+
+How is that different from `int`?
+]
+
+.pull.right[
+
+What does `chr` mean?
+
+How might it differ from `fct`?
+]
 ---
+
+class: center, inverse 
 
 .larger[Sampling Strategies]
 
-<div class="columns-2">
-
-```{r pop-to-sample, fig.width = 4.5, fig.height = 5}
+```{r pop-to-sample, fig.align = 'center', echo = FALSE}
 par_og <- par(no.readonly = TRUE) # save original par
 par(mar = rep(0, 4))
 plot(c(0, 2),
@@ -214,43 +276,37 @@ for (i in these) {
 par(par_og) # restore original par
 ```
 
-</br>
-</br>
-
-- Simple random sample
-
-- Stratified random sample
-
-- Cluster sample
-
-- Multistage sample
-
-</div>
-
 ---
 
-.larger[Types of Studies]
+class: inverse 
 
-**Experiment** 
+.huge[Types of Studies]
+
+.pull-left[
+.honey[.larger[Experiment]]
 
 - randomization 
 - replication 
 - controlling
 - blocking
 
-</br>
+]
 
-**Observational Study** 
+.pull-right[
+.mango[.larger[Observational Study]]
 
 - collect data in a way that does not directly interfere with how the data arise
+]
 
 ---
 
-.larger[Relationships Between Variables]
+.center[
+.bayberry[.larger[Relationships Between Variables]]
 
-<center>
+</br>
+
 explanatory variable $\rightarrow$ *might affect* $\rightarrow$ response variable
-</center>
+]
 
 </br>
 
@@ -258,22 +314,51 @@ explanatory variable $\rightarrow$ *might affect* $\rightarrow$ response variabl
 
 - If two variables are associated, then they are said to be __dependent__. 
 
-<!-- - No pair of variables is both associated and independent!  -->
+---
 
-</br>
+class: center, inverse 
 
-<center>
+.huge[Causal Inference]
+
+</br> 
+
 association $\neq$ causation 
-</center>
 
 </br>
 
-__What do you need to say that the explanatory variable **causes** a change in
-the response variable?__ 
+.large[What do you need to say that the explanatory variable .mango[causes] a
+change in the response variable?]
 
 ---
 
-.larger[Group Exercises]
+.larger[Warm-up Exercises]
+
+- What is **S**tatistics?
+
+- What are two similarities and two differences between Statistics and 
+Mathematics? 
+
+---
+
+.larger[Philosophy of Statistics]
+
+- What is the role of Statistics in the progression of science?
+
+- How is dichotomous thinking used in Statistics? What are two 
+benefits and drawbacks of dichotomous thinking?
+
+---
+
+.larger["objective" and "significant"]
+
+- What does it mean for an analysis to be "objective"? Do you believe 
+statistical analyses can be objective? Why or why not?
+
+- What are 4-5 synonyms of "significant" that come to your mind?
+
+- What are two issues that you see with using the term "significant" 
+to denote "small" p-values? 
+
 
 ---
 
