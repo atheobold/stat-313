@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Stat 313 - Data &amp; Study Design</title>
+    <title>Stat 313 - Data, Study Design &amp; Philosophy</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr. Allison Theobold" />
     <meta name="date" content="2021-09-21" />
@@ -19,7 +19,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Stat 313 - Data &amp; Study Design
+# Stat 313 - Data, Study Design &amp; Philosophy
 ### Dr. Allison Theobold
 ### September 21, 2021
 
@@ -32,9 +32,21 @@ class: center, middle, inverse, title-slide
 
 
 
+
+class: middle 
+
+.larger[.hand[Warm-up Exercises (in pairs)]]
+
+- What is **S**tatistics?
+
+- What are two similarities and two differences between Statistics and 
+Mathematics? 
+
+---
+
 class: center, inverse
 
-.huge[Data]
+.huge[Tidy Data]
 
 ![](tidy-1.png)
 
@@ -42,7 +54,7 @@ class: center, inverse
 
 class: center
 
-.larger[Lots of Data]
+.larger[There's Data]
 
 &lt;center&gt;
 Gender stereotypes in 5-7 year old children
@@ -64,58 +76,58 @@ Gender stereotypes in 5-7 year old children
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; nice &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; smart &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; adults &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 120 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; nice &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; adults &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.50 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1.00 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; nice &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; children &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 76 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; smart &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; adults &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; children &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.00 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 73 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; nice &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; adults &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; nice &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; adults &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 75 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; smart &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; children &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.50 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 107 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; nice &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; adults &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.00 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; children &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -144,71 +156,69 @@ Body girth measurements and skeletal diameter measurements for 247 men and
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 86.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 184.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 77.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 184.2 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 123.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 82.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 84.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 101.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 124.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 85.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 92.7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 53.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 165.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 100.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 90.4 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 45.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 159.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 66.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 179.8 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 95.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 57.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 66.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 84.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 66.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97.1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 60.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 161.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 99.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 69.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 87.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 95.4 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 80.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 175.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 167.4 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 113.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 79.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 82.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 98.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 109.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 31 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 163.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 101.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 94.0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 54.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 161.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 49.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 147.2 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 97.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 65.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 77.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 90.5 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 72.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 177.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 124.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 75.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 77.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 94.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 92.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88.5 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-
 ---
-
 
 class: center
 
@@ -233,52 +243,52 @@ NBA player of the week from 1985 to 2016
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Dec 15, 2008 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1998 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dec 10, 2000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1993 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; 6-9 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Al Harrington &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Dec 23, 1984 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1982 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 6-9 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Terry Cummings &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chris Webber &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F-C &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Dec 18, 2017 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2005 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 183cm &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Chris Paul &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; PG &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Feb 23, 1992 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1989 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 6-0 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Tim Hardaway &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; PG &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Apr 5, 1992 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1989 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Jan 19, 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2003 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; 6-1 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Mookie Blaylock &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; PG &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Mo Williams &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; G &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Apr 6, 2008 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1996 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 6-6 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Kobe Bryant &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; SG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Feb 9, 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2013 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Giannis Antetokounmpo &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Apr 8, 2013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2008 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nikola Pekovic &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov 26, 2006 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2003 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6-8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Carmelo Anthony &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Jan 4, 2010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6-9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Kevin Durant &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; SF &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -309,28 +319,37 @@ Fish Sampled on Blackfoot River
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1996 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ScottyBrown &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Bull &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 360 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 420 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1991 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; ScottyBrown &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 165.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 50 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2002 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Johnsrud &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Brown &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 280.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2002 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Johnsrud &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; RBT &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 200 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2004 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Johnsrud &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; WCT &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 85 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 148.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1998 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Johnsrud &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; RBT &lt;/td&gt;
@@ -338,32 +357,31 @@ Fish Sampled on Blackfoot River
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 111 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96.0 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1989 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Johnsrud &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; RBT &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 446.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 770 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 2006 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Johnsrud &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ScottyBrown &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; RBT &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 205 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 100 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1990 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Johnsrud &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; RBT &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 428 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 660 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2002 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Johnsrud &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Bull &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+---
+
+class: center
+
+.huge[.hand[Your Turn]]
+
+.larger[How could a dataset violate the "tidy" principles?]
 
 ---
 
@@ -377,21 +395,45 @@ class: center, inverse
 
 ---
 
-class: center 
+class: middle 
 
-.larger[#90 Second Writing Exercise]
+.huge[Examples]
 
-Data were collected on thousands of loans made through the Lending Club platform, a platform that allows individuals to lend to other individuals. 
+- A person's height (usually) would be a **continuous, numerical** variable 
 
-A total of 55 variables were collected on every loan that was made, including information about: 
+- The number of classes someone takes would be a **discrete, numerical**
+variable
 
-- the borrower's employment, credit, current financial status, tax filings
-- the loan's details, date of issue, balance, and current status
+- A course letter grade would be a **ordinal, categorical** variable 
 
+- The color of someone's hair would be a **regular, categorical** variable
 
-&lt;/br&gt;
+---
 
-.large[__What do you expect this dataframe would look like?__]
+class: center
+
+.huge[.hand[Your Turn]]
+
+.rhubarb[.bitlarger[Suppose researchers have data from 2010 - 2020.]]
+
+.gray[.bitlarger[What type of variable would year be?]]
+
+---
+
+&lt;!-- class: center  --&gt;
+
+&lt;!-- .larger[#90 Second Writing Exercise] --&gt;
+
+&lt;!-- Data were collected on thousands of loans made through the Lending Club platform, a platform that allows individuals to lend to other individuals.  --&gt;
+
+&lt;!-- A total of 55 variables were collected on every loan that was made, including information about:  --&gt;
+
+&lt;!-- - the borrower's employment, credit, current financial status, tax filings --&gt;
+&lt;!-- - the loan's details, date of issue, balance, and current status --&gt;
+
+&lt;!-- &lt;/br&gt; --&gt;
+
+&lt;!-- .large[__What do you expect this dataframe would look like?__] --&gt;
 
 ---
 
@@ -434,7 +476,16 @@ class: center, inverse
 
 .larger[Sampling Strategies]
 
-&lt;img src="chapter1_review_files/figure-html/pop-to-sample-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="week1_review_files/figure-html/pop-to-sample-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center
+
+.huge[.hand[Your Turn]]
+
+.rhubarb[.bitlarger[What types of samples could we collect? Are some methods 
+"better" than other methods?]]
 
 ---
 
@@ -491,16 +542,21 @@ change in the response variable?]
 
 ---
 
-.larger[Warm-up Exercises]
+class: middle 
 
-- What is **S**tatistics?
+.gray[.huge[Philosophy of Statistics]]
 
-- What are two similarities and two differences between Statistics and 
-Mathematics? 
+What is dichotomous thinking?  
+
+What is an example of dichotomous choices?   
+
+--
+
+.rhubarb[How is dichotomous thinking used in Statistics?]
 
 ---
 
-.larger[Philosophy of Statistics]
+.huge[.hand[Your Turn]]
 
 - What is the role of Statistics in the progression of science?
 
@@ -511,22 +567,19 @@ benefits and drawbacks of dichotomous thinking?
 
 .larger["objective" and "significant"]
 
+&lt;/br&gt;
+
 - What does it mean for an analysis to be "objective"? Do you believe 
 statistical analyses can be objective? Why or why not?
 
+&lt;/br&gt;
+
 - What are 4-5 synonyms of "significant" that come to your mind?
+
+&lt;/br&gt;
 
 - What are two issues that you see with using the term "significant" 
 to denote "small" p-values? 
-
-
----
-
-.larger[Questions for Me]
-
-- Content questions? 
-
-- Course structure questions?  
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -1,5 +1,5 @@
 ---
-title: "Stat 313 - Data & Study Design"
+title: "Stat 313 - Data, Study Design & Philosophy"
 date: "September 21, 2021"
 author: "Dr. Allison Theobold"
 output:
@@ -75,9 +75,21 @@ fish <- read_csv("data/BlackfootFish.csv")
 nba <- read_csv("data/NBA_player_of_the_week.csv")
 ```
 
+
+class: middle 
+
+.larger[.hand[Warm-up Exercises (in pairs)]]
+
+- What is **S**tatistics?
+
+- What are two similarities and two differences between Statistics and 
+Mathematics? 
+
+---
+
 class: center, inverse
 
-.huge[Data]
+.huge[Tidy Data]
 
 ![](tidy-1.png)
 
@@ -85,7 +97,7 @@ class: center, inverse
 
 class: center
 
-.larger[Lots of Data]
+.larger[There's Data]
 
 <center>
 Gender stereotypes in 5-7 year old children
@@ -121,9 +133,7 @@ bdims %>%
                 latex_options = "striped")
 ```
 
-
 ---
-
 
 class: center
 
@@ -166,6 +176,14 @@ fish %>%
 
 ---
 
+class: center
+
+.huge[.hand[Your Turn]]
+
+.larger[How could a dataset violate the "tidy" principles?]
+
+---
+
 class: center, inverse
 
 .larger[Types of Variables]
@@ -176,21 +194,45 @@ class: center, inverse
 
 ---
 
-class: center 
+class: middle 
 
-.larger[#90 Second Writing Exercise]
+.huge[Examples]
 
-Data were collected on thousands of loans made through the Lending Club platform, a platform that allows individuals to lend to other individuals. 
+- A person's height (usually) would be a **continuous, numerical** variable 
 
-A total of 55 variables were collected on every loan that was made, including information about: 
+- The number of classes someone takes would be a **discrete, numerical**
+variable
 
-- the borrower's employment, credit, current financial status, tax filings
-- the loan's details, date of issue, balance, and current status
+- A course letter grade would be a **ordinal, categorical** variable 
 
+- The color of someone's hair would be a **regular, categorical** variable
 
-</br>
+---
 
-.large[__What do you expect this dataframe would look like?__]
+class: center
+
+.huge[.hand[Your Turn]]
+
+.rhubarb[.bitlarger[Suppose researchers have data from 2010 - 2020.]]
+
+.gray[.bitlarger[What type of variable would year be?]]
+
+---
+
+<!-- class: center  -->
+
+<!-- .larger[#90 Second Writing Exercise] -->
+
+<!-- Data were collected on thousands of loans made through the Lending Club platform, a platform that allows individuals to lend to other individuals.  -->
+
+<!-- A total of 55 variables were collected on every loan that was made, including information about:  -->
+
+<!-- - the borrower's employment, credit, current financial status, tax filings -->
+<!-- - the loan's details, date of issue, balance, and current status -->
+
+<!-- </br> -->
+
+<!-- .large[__What do you expect this dataframe would look like?__] -->
 
 ---
 
@@ -278,6 +320,15 @@ par(par_og) # restore original par
 
 ---
 
+class: center
+
+.huge[.hand[Your Turn]]
+
+.rhubarb[.bitlarger[What types of samples could we collect? Are some methods 
+"better" than other methods?]]
+
+---
+
 class: inverse 
 
 .huge[Types of Studies]
@@ -331,16 +382,21 @@ change in the response variable?]
 
 ---
 
-.larger[Warm-up Exercises]
+class: middle 
 
-- What is **S**tatistics?
+.gray[.huge[Philosophy of Statistics]]
 
-- What are two similarities and two differences between Statistics and 
-Mathematics? 
+What is dichotomous thinking?  
+
+What is an example of dichotomous choices?   
+
+--
+
+.rhubarb[How is dichotomous thinking used in Statistics?]
 
 ---
 
-.larger[Philosophy of Statistics]
+.huge[.hand[Your Turn]]
 
 - What is the role of Statistics in the progression of science?
 
@@ -351,19 +407,16 @@ benefits and drawbacks of dichotomous thinking?
 
 .larger["objective" and "significant"]
 
+</br>
+
 - What does it mean for an analysis to be "objective"? Do you believe 
 statistical analyses can be objective? Why or why not?
 
+</br>
+
 - What are 4-5 synonyms of "significant" that come to your mind?
+
+</br>
 
 - What are two issues that you see with using the term "significant" 
 to denote "small" p-values? 
-
-
----
-
-.larger[Questions for Me]
-
-- Content questions? 
-
-- Course structure questions?  
