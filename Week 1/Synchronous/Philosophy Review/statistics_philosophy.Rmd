@@ -1,6 +1,6 @@
 ---
-title: "Stat 313 - Data, Study Design & Philosophy"
-date: "September 21, 2021"
+title: "Philosophy of Statistics"
+date: "September 23, 2021"
 author: "Dr. Allison Theobold"
 output:
   xaringan::moon_reader:
@@ -45,6 +45,8 @@ library(xaringanExtra)
 xaringanExtra::use_panelset()
 
 library(emo)
+library(palmerpenguins)
+library(tidyverse)
 ```
 
 ```{r set-theme, include = FALSE}
@@ -62,3 +64,61 @@ style_duo_accent(
   link_color = "#696969" #grey
 )
 ```
+
+class: middle
+
+.huge[Warm-up]
+
+Sketch out what you recall the scientific method / process looking like.
+
+---
+
+class: inverse, center
+
+.huge[.hand[Where does statistics happen?]]
+
+---
+
+class: inverse, center
+
+.honey[
+.huge[
+.hand[
+Why?
+]
+]
+]
+
+---
+
+class: middle 
+
+.bayberry[
+.larger[For a scientific study, what is the purpose of a statistical analysis?] 
+]
+
+---
+
+class: middle, inverse
+
+.larger[What does it mean for an analysis to be objective?]
+
+---
+
+class: middle
+
+.rhubarb[
+.larger[What would help you feel more confident in someone else's statistical 
+analysis?]
+]
+
+---
+
+```{r, echo = FALSE, warning = FALSE, fig.align='center'}
+penguins %>% 
+  ggplot(aes(x = species, y = bill_length_mm)) + 
+  geom_jitter() +
+  labs(x = "Penguin Species", 
+       y = "Bill Length (mm)")
+```
+
