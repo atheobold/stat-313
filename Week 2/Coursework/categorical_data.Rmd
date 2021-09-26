@@ -45,8 +45,6 @@ or stacked barcharts or facets
 
 ## This Week's TODOs
 
-`r emo::ji("play button")` Videos: __ minutes
-
 `r emo::ji("book")` Readings: 30-45 minutes 
 
 `r emo::ji("computer")` Tutorials: 60-75 minutes 
@@ -65,8 +63,40 @@ some of the material is new to you!
 
 `r emo::ji("computer")` [**Required Tutorial:** Language of Data](https://openintro.shinyapps.io/ims-01-data-01)
 
+Please work through __all__ of the topics _except_ Visualizing numerical data. 
+
+</br> 
 
 `r emo::ji("check")` **Check-in 1:** (Due Friday)
+
+1. What function do you use to load in a package in `R`?
+
+<!-- library() -->
+
+2. What helpful function outputs the number of rows (observations), columns 
+(variables), the names of the variables and their data types, and a preview of 
+the first few entries of each variable?
+
+<!-- glimpse() -->
+
+3. A categorical variable could be **correctly** stored as what data types? 
+
+- integer
+- double
+- character
+- factor
+
+4. What function do you use to retain only certain observations in 
+a dataset (remove unwanted observations)? 
+
+- `filter()`
+- `count()`
+- `mutate()`
+
+5. What function did you learn that is used for converting a numerical variable
+to a categorical variable (a process called discretizing)? 
+
+<!-- if_else() -->
 
 </br>
 
@@ -78,35 +108,23 @@ some of the material is new to you!
 
 `r emo::ji("computer")` [**Required Tutorial:** Exploratory Data Analysis, Exploring Categorical Data](https://openintro.shinyapps.io/ims-02-explore-01/)
 
-`r emo::ji("check")` **Check-in 2:** (Due Friday) 
+<!-- `r emo::ji("play button")` **Supplementary Slides**  -->
 
-1. What are useful functions for summarizing categorical variables? 
+<!-- - [Why use ggplot2?]() -->
 
-- `count()`
-- `mean()`
-- `median()`
-- `max()`
+<!-- - [First Steps with ggplot2]() -->
 
-2. Put the following arguments in the order you would use them as inputs to `ggplot()`.
+<!-- - [What is an **aes**thetic?]() -->
 
-- `mapping = aes()`
-- `data = `
-- `geom_***()`
+<!-- - [What is a **facet**?]() -->
 
-3. What function do you use if you want to add a new variable to a dataset? 
+<!-- - [Where do you want your bars?]() -->
 
-- `filter()` 
-- `mutate()` 
-- `count()`
-- `select()`
+<!-- - [What does `group_by()` do?]() -->
 
-4. What orientation of barchart helps you compare the proportions of one 
-categorical variable *across* the levels of another categorical variable? 
+<!-- - [What does `pivot_wider()` do?]() -->
 
-- side-by-side barcharts
-- stacked barcharts
-- faceted barcharts
-
+</br> 
 
 `r emo::ji("scroll")` **Group Concept Discussion Questions** (Due Wednesday) 
 
@@ -141,7 +159,7 @@ email50_updated <- email50 %>%
 ```
 
 Fill in the code with the correct inputs (in place of `[VALUE IF TRUE]` and 
-`[VALUE IF FALSE]`) and explain what the code is doing. 
+`[VALUE IF FALSE]`) **and** explain what is happening in each line of the code.
 
 4. In the Exploring Categorical Data tutorial, you are tasked with finding the 
 proportion of public identity characters that are good. You were given the code
@@ -159,6 +177,37 @@ comics %>%
 Describe what the `group_by()` step does. Why is it necessary to get the 
 correct proportions? 
 
+</br>
+
+`r emo::ji("check")` **Check-in 2:** (Due Friday) 
+
+1. What are useful functions for summarizing categorical variables? 
+
+- `count()`
+- `mean()`
+- `median()`
+- `max()`
+
+2. Put the following arguments in the order you would use them as inputs to `ggplot()`.
+
+- `mapping = aes()`
+- `data = `
+- `geom_bar()`
+
+3. What function do you use if you want to add a new variable to a dataset? 
+
+- `filter()` 
+- `mutate()` 
+- `count()`
+- `select()`
+
+4. What orientation of barchart helps you compare the proportions of one 
+categorical variable *across* the levels of another categorical variable? 
+
+- filled (standardized) barchart
+- side-by-side (dodged) barcharts
+- stacked barcharts
+- faceted barcharts
 
 ---
 

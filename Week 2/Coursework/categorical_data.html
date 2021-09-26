@@ -152,7 +152,6 @@ a.sourceLine {
 </div>
 <div id="this-weeks-todos" class="section level2">
 <h2>This Week’s TODOs</h2>
-<p>▶️ Videos: __ minutes</p>
 <p>📖 Readings: 30-45 minutes</p>
 <p>💻 Tutorials: 60-75 minutes</p>
 <p>✅ Check-ins: 2 (submit on Canvas)</p>
@@ -163,7 +162,38 @@ a.sourceLine {
 <h1>Hello Data</h1>
 <p>Let’s start off by learning some of the fundamentals for working in <code>R</code>. If you are familiar with <code>R</code>, I would still encourage you to give this a try, in case some of the material is new to you!</p>
 <p>💻 <a href="https://openintro.shinyapps.io/ims-01-data-01"><strong>Required Tutorial:</strong> Language of Data</a></p>
+<p>Please work through <strong>all</strong> of the topics <em>except</em> Visualizing numerical data.</p>
+<p></br></p>
 <p>✅ <strong>Check-in 1:</strong> (Due Friday)</p>
+<ol style="list-style-type: decimal">
+<li>What function do you use to load in a package in <code>R</code>?</li>
+</ol>
+<!-- library() -->
+<ol start="2" style="list-style-type: decimal">
+<li>What helpful function outputs the number of rows (observations), columns (variables), the names of the variables and their data types, and a preview of the first few entries of each variable?</li>
+</ol>
+<!-- glimpse() -->
+<ol start="3" style="list-style-type: decimal">
+<li>A categorical variable could be <strong>correctly</strong> stored as what data types?</li>
+</ol>
+<ul>
+<li>integer</li>
+<li>double</li>
+<li>character</li>
+<li>factor</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>What function do you use to retain only certain observations in a dataset (remove unwanted observations)?</li>
+</ol>
+<ul>
+<li><code>filter()</code></li>
+<li><code>count()</code></li>
+<li><code>mutate()</code></li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>What function did you learn that is used for converting a numerical variable to a categorical variable (a process called discretizing)?</li>
+</ol>
+<!-- if_else() -->
 <p></br></p>
 <hr />
 </div>
@@ -171,41 +201,15 @@ a.sourceLine {
 <h1>Exploring Categorical Data</h1>
 <p>📖 <a href="https://openintro-ims.netlify.app/explore-categorical.html"><strong>Required Readingl:</strong> Exploring Categorical Data</a></p>
 <p>💻 <a href="https://openintro.shinyapps.io/ims-02-explore-01/"><strong>Required Tutorial:</strong> Exploratory Data Analysis, Exploring Categorical Data</a></p>
-<p>✅ <strong>Check-in 2:</strong> (Due Friday)</p>
-<ol style="list-style-type: decimal">
-<li>What are useful functions for summarizing categorical variables?</li>
-</ol>
-<ul>
-<li><code>count()</code></li>
-<li><code>mean()</code></li>
-<li><code>median()</code></li>
-<li><code>max()</code></li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>Put the following arguments in the order you would use them as inputs to <code>ggplot()</code>.</li>
-</ol>
-<ul>
-<li><code>mapping = aes()</code></li>
-<li><code>data =</code></li>
-<li><code>geom_***()</code></li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>What function do you use if you want to add a new variable to a dataset?</li>
-</ol>
-<ul>
-<li><code>filter()</code></li>
-<li><code>mutate()</code></li>
-<li><code>count()</code></li>
-<li><code>select()</code></li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
-<li>What orientation of barchart helps you compare the proportions of one categorical variable <em>across</em> the levels of another categorical variable?</li>
-</ol>
-<ul>
-<li>side-by-side barcharts</li>
-<li>stacked barcharts</li>
-<li>faceted barcharts</li>
-</ul>
+<!-- ▶️ **Supplementary Slides**  -->
+<!-- - [Why use ggplot2?]() -->
+<!-- - [First Steps with ggplot2]() -->
+<!-- - [What is an **aes**thetic?]() -->
+<!-- - [What is a **facet**?]() -->
+<!-- - [Where do you want your bars?]() -->
+<!-- - [What does `group_by()` do?]() -->
+<!-- - [What does `pivot_wider()` do?]() -->
+<p></br></p>
 <p>📜 <strong>Group Concept Discussion Questions</strong> (Due Wednesday)</p>
 <ol style="list-style-type: decimal">
 <li>In the chapter readings and the tutorials you’ve learned about different data types. Fill in the associated data types (e.g. character, factor, integer, double) with each type of variable.</li>
@@ -245,7 +249,7 @@ a.sourceLine {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;[VALUE IF TRUE]&quot;</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;[VALUE IF FALSE]&quot;</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>         )</span></code></pre></div>
-<p>Fill in the code with the correct inputs (in place of <code>[VALUE IF TRUE]</code> and <code>[VALUE IF FALSE]</code>) and explain what the code is doing.</p>
+<p>Fill in the code with the correct inputs (in place of <code>[VALUE IF TRUE]</code> and <code>[VALUE IF FALSE]</code>) <strong>and</strong> explain what is happening in each line of the code.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>In the Exploring Categorical Data tutorial, you are tasked with finding the proportion of public identity characters that are good. You were given the code below:</li>
 </ol>
@@ -256,6 +260,43 @@ a.sourceLine {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="fu">c</span>(id, align, prop), </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> align, <span class="at">values_from =</span> prop)</span></code></pre></div>
 <p>Describe what the <code>group_by()</code> step does. Why is it necessary to get the correct proportions?</p>
+<p></br></p>
+<p>✅ <strong>Check-in 2:</strong> (Due Friday)</p>
+<ol style="list-style-type: decimal">
+<li>What are useful functions for summarizing categorical variables?</li>
+</ol>
+<ul>
+<li><code>count()</code></li>
+<li><code>mean()</code></li>
+<li><code>median()</code></li>
+<li><code>max()</code></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Put the following arguments in the order you would use them as inputs to <code>ggplot()</code>.</li>
+</ol>
+<ul>
+<li><code>mapping = aes()</code></li>
+<li><code>data =</code></li>
+<li><code>geom_bar()</code></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>What function do you use if you want to add a new variable to a dataset?</li>
+</ol>
+<ul>
+<li><code>filter()</code></li>
+<li><code>mutate()</code></li>
+<li><code>count()</code></li>
+<li><code>select()</code></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>What orientation of barchart helps you compare the proportions of one categorical variable <em>across</em> the levels of another categorical variable?</li>
+</ol>
+<ul>
+<li>filled (standardized) barchart</li>
+<li>side-by-side (dodged) barcharts</li>
+<li>stacked barcharts</li>
+<li>faceted barcharts</li>
+</ul>
 <hr />
 </div>
 <div id="review-from-last-week" class="section level1">
