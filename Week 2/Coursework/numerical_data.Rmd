@@ -1,0 +1,181 @@
+---
+title: "Week Two: Summarizing & Visualizing Categorical Data"
+author: ""
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library(tidyverse)
+library(flair)
+library(emo)
+
+```
+
+
+Welcome!
+
+In this week's coursework we are going to dive into exploring data, through 
+data summaries and visualizations. We will be using `R` to carry out both of 
+these tasks. We will start with the foundations of working in `R`, using 
+data and installing / loading packages. Next, we will learn tools for
+summarizing and visualizing categorical variables. 
+
+
+## Learning Outcomes 
+
+By the end of this coursework you should be able to:
+
+- describe what a categorical variable is and how these types of variables 
+are stored in `R` 
+- determine whether a variable in a dataset is categorical
+- create categorical variables from numerical variables 
+- summarize categorical variables with frequencies of the different levels
+- create visualizations of one and two categorical variables using side-by-side 
+or stacked barcharts or facets 
+
+
+
+## This Week's TODOs
+
+`r emo::ji("play button")` Videos: __ minutes
+
+`r emo::ji("book")` Readings: 30-45 minutes 
+
+`r emo::ji("computer")` Tutorials: 60-75 minutes 
+
+`r emo::ji("check")` Check-ins: 2 (submit on Canvas)
+
+`r emo::ji("scroll")` Group Discussion Homework: 4 Questions
+
+---
+
+# Hello Data 
+
+Let's start off by learning some of the fundamentals for working in `R`. If you 
+are familiar with `R`, I would still encourage you to give this a try, in case 
+some of the material is new to you! 
+
+`r emo::ji("computer")` [**Required Tutorial:** Language of Data](https://openintro.shinyapps.io/ims-01-data-01)
+
+
+`r emo::ji("check")` **Check-in 1:** (Due Friday)
+
+</br>
+
+---
+
+# Exploring Categorical Data 
+
+`r emo::ji("book")` [**Required Readingl:** Exploring Categorical Data](https://openintro-ims.netlify.app/explore-categorical.html)
+
+`r emo::ji("computer")` [**Required Tutorial:** Exploratory Data Analysis, Exploring Categorical Data](https://openintro.shinyapps.io/ims-02-explore-01/)
+
+`r emo::ji("check")` **Check-in 2:** (Due Friday) 
+
+1. What are useful functions for summarizing categorical variables? 
+
+- `count()`
+- `mean()`
+- `median()`
+- `max()`
+
+2. Put the following arguments in the order you would use them as inputs to `ggplot()`.
+
+- `mapping = aes()`
+- `data = `
+- `geom_***()`
+
+3. What function do you use if you want to add a new variable to a dataset? 
+
+- `filter()` 
+- `mutate()` 
+- `count()`
+- `select()`
+
+4. What orientation of barchart helps you compare the proportions of one 
+categorical variable *across* the levels of another categorical variable? 
+
+- side-by-side barcharts
+- stacked barcharts
+- faceted barcharts
+
+
+`r emo::ji("scroll")` **Group Concept Discussion Questions** (Due Wednesday) 
+
+1.	In the chapter readings and the tutorials you’ve learned about different
+data types. Fill in the associated data types (e.g. character, factor, integer, 
+double) with each type of variable. 
+	
+| Variable    | Data Type in R |
+|-------------|----------------|
+| Categorical variable |       |	
+| Continuous numerical variable | |
+| Discrete numerical variable	  | |
+
+
+2.	Describe in your own terms what the pipe operator (`%>%`) does. 
+
+
+3.	In the Language of Data tutorial, you are tasked with creating a new 
+variable in the `email50` dataset, named `num_char_cat`. You were given the
+code below:
+
+```{r, eval = FALSE}
+# Calculate median number of characters: med_num_char
+med_num_char <- median(email50$num_char)
+
+# Create num_char_cat variable in email50
+email50_updated <- email50 %>%
+  mutate(num_char_cat = if_else(num_char < med_num_char,
+                                "[VALUE IF TRUE]",
+                                "[VALUE IF FALSE]")
+         )
+```
+
+Fill in the code with the correct inputs (in place of `[VALUE IF TRUE]` and 
+`[VALUE IF FALSE]`) and explain what the code is doing. 
+
+4. In the Exploring Categorical Data tutorial, you are tasked with finding the 
+proportion of public identity characters that are good. You were given the code
+below: 
+
+```{r, eval = FALSE}
+comics %>% 
+  count(id, align) %>% 
+  group_by(id) %>% 
+  mutate(prop = n / sum(n)) %>% 
+  pivot_wider(id_cols = c(id, align, prop), 
+              names_from = align, values_from = prop)
+```
+
+Describe what the `group_by()` step does. Why is it necessary to get the 
+correct proportions? 
+
+
+---
+
+# Review from Last Week 
+
+`r emo::ji("microphone")` **Think Out Loud Recording** (Due Sunday)
+
+Record your response to questions exploring a key concept covered during Week 1.
+You will be limited to 2 minutes and 30 seconds, to give you an idea of about
+how long you will have to describe your thinking in an oral exam. 
+
+Don't think that your recording needs to be perfect, I'd rather you use this as
+an opportunity to practice talking through your thinking. Also, I don't want for
+this assignment to take up too much of your time, which making lots of
+recordings would! 
+
+__Prompt:__ What is dichotomous thinking? How is dichotomous thinking used in
+Statistics? What is one benefit and one drawback to dichotomous thinking?
+
+
