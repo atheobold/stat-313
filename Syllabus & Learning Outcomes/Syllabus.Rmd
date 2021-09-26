@@ -400,10 +400,10 @@ what you need to work on as you prepare for the exams
 
 ### Lab Assignments (Due Sundays at midnight)
 
-Labs will be assigned every other week, providing the opportunity to explore 
-the course concepts in the context of real data. Lab assignments will require
-for you to work through the tutorial for the week, thus the tutorials should be
-started early! 
+Labs will be assigned approximately every other week, providing the opportunity 
+to explore the course concepts in the context of real data. Lab assignments will
+require for you to work through the tutorial for the week, thus the tutorials
+should be started early! 
 
 You will complete the lab assignments in the same teams you collaborate with 
 in class. You will access the lab assignment through RStudio Cloud, which you 
@@ -458,6 +458,18 @@ Letter grades will be assigned according to the following minimums: 3.75 (A),
 __Note__: If you have more than three “0” grades due to turning assignments in
 late, un-revised “Rs,” failure to participate in group discussions, or
 missed assignments, the highest grade you will earn for the class is a C-. 
+
+### Lab Assignment Schedule
+
+Lab                                     | Date / Week
+----------------------------------------|--------------
+Lab 1 - Getting Started with RMarkdown  | Week 1 (Sept. 22)
+Lab 2 - Summarizing & Visualizing Categorical Variables  | Week 2 (Sept. 29)
+Lab 3 - Summarizing & Visualizing Numerical Variables  | Week 3 (Oct. 6)
+Lab 4 - Linear Regression in R                         | Week 4 (Oct. 13) 
+Lab 5 - Using the infer package for Inference          | Week 7 (Nov. 3)
+Lab 6 - Inference for Regression                       | Week 8 (Nov. 10)
+Lab 7 - Model Selection                                | Week 9 (Nov. 17)
 
 
 ### Projects
