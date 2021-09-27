@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Introduction to Categorical Data &amp; Visualizations</title>
+    <title>Plotting with ggplot2</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr. Allison Theobold" />
-    <meta name="date" content="2021-09-27" />
+    <meta name="date" content="2021-09-28" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
@@ -17,9 +17,9 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Introduction to Categorical Data &amp; Visualizations
+# Plotting with ggplot2
 ### Dr. Allison Theobold
-### September 27, 2021
+### September 28, 2021
 
 ---
 
@@ -28,105 +28,201 @@ class: center, middle, inverse, title-slide
 
 
 
-class: inverse, middle, center
+class: inverse
 
-.larger[.hand[How would you describe a categorical variable?]]
+.larger[.hand[ggplot2 first steps]]
+
+
+```r
+ggplot(data = mpg) + 
+  geom_bar(mapping = aes(y = manufacturer))
+```
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+
+.larger[Step 1: Start with a blank plot]
+
+
+```r
+ggplot(data = mpg)
+```
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-3-1.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 class: middle, center 
 
-.larger[In `R`...]
+.larger[Step 2: Map variables to **aes**thetics]
 
-categorical variables can have either `character` *or* `factor` data types
 
---
 
-`factor` -- structured &amp; fixed number of levels / options
 
---
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg, mapping = &lt;span style="background-color:#ffff7f"&gt;aes&lt;/span&gt;(y = manufacturer))&lt;/code&gt;
 
-`character` -- unstructured &amp; variable number of levels
-
----
-
-class: middle, center, inverse
-
-.larger[.hand[What types of summaries of categorical variables make sense?]]
-
----
-
-.rhubarb[.huge[A tool bag for data wrangling...]]
-
---
-
-.pull-left[
-- `filter()`
-- `mutate()`
-- `group_by()` 
-]
-
---
-
-.pull-right[
-- `summarize()`
-- `select()`
-- `arrange()`
-]
+&lt;img src="day2_files/figure-html/unnamed-chunk-5-1.png" width="40%" /&gt;
 
 ---
 
 class: middle, center
 
-.rhubarb[.huge[Opinionated Plotting]]
-
----
+.larger[Step 3: Add (`+`) `geom`etric objects]
 
 
-.larger[Why should I use ggplot2?]
 
-.pull-left[
-**Pros** 
 
-- Simple to create complex plots
-
-- Programmatic interface
-
-- Minimal changes to change visualization types 
-
-- Default customizations are desirable
-]
-
-.pull-right[
-![](images/ggplot_logo.png)
-
-**Cons** 
-
-- New syntax to learn! 
-]
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg, mapping = aes(y = manufacturer)) &lt;span style="color:red"&gt;+&lt;/span&gt; &lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;span style="color:blue"&gt;geom&lt;/span&gt;_bar()&lt;/code&gt;
 
 
 ---
 
-.pull-left[
-.larger[`ggplot()`]
+class: middle, center
 
-- Same syntax for every plot
-- Change `geom`etric object for different plots
+.larger[A reusable template]
+
+&lt;/br&gt;
+
+
+```r
+ggplot(data = &lt;DATA&gt;) + 
+  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))
+```
+
+---
+
+class: middle, center
+
+.larger[.hand[What is an **aes**thetic?]]
+
+---
+
+.larger[An aesthetic is a visual property of the objects in your plot.]
+
+&lt;/br&gt;
+
+&gt;"You can convey information about your data by mapping the aesthetics in your
+&gt; plot to the variables in your dataset."
+
+.large[
+- variables on axes 
+- size, shape, or the color of points
 ]
 
---
+---
+
+.larger[Axes]
+
+&lt;center&gt;
+
+
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_bar(mapping = aes(&lt;span style="color:blue"&gt;y = manufacturer&lt;/span&gt;)&lt;br&gt;)&lt;/code&gt;
+
+&lt;/center&gt;
+&lt;/br&gt; 
+
+.large[
+- Maps **`manufacturer`** to &lt;span style="color:blue"&gt;y-axis&lt;/span&gt;
+]
+
+---
+
+.larger[Fill the Bars]
+
+
+
+
+```r
+ggplot(data = mpg) + 
+  geom_bar(mapping = 
+             aes(y = manufacturer, 
+                 fill = cyl)
+           )
+```
+
+&lt;img src="day2_files/figure-html/fill-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+---
+
+.larger[Don't Color the Bars]
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-10-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+
+```r
+ggplot(data = mpg) + 
+  geom_bar(mapping = 
+             aes(y = manufacturer, 
+                 color = cyl)
+           )
+```
+
+---
+
+.larger[Color the Points]
+
+.pull-left[
+&lt;img src="day2_files/figure-html/color-1.png" width="60%" /&gt;
+]
 
 .pull-right[
-.larger["base" R]
 
-Different functions for different types of plots
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_point(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mapping = aes(x = displ,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;y = hwy,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:red"&gt;color = cyl&lt;/span&gt;)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)&lt;/code&gt;
 
-- Scatterplot: `plot()`
-- Boxplot: `boxplot()`
-- Histogram: `hist()` 
-- Density plot: `density()`
-- Bar plot: `barplot()`
+- fill points based on
+the number of **`cyl`**inders the vehicle has
+]
+
+---
+.larger[Shape]
+
+.pull-left[
+&lt;img src="day2_files/figure-html/shape-1.png" width="60%" /&gt;
+]
+
+.pull-right[
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_point(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mapping = aes(x = displ,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;y = hwy,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:purple"&gt;shape = class&lt;/span&gt;))&lt;/code&gt;
+
+- Uses a different &lt;span style="color:purple"&gt;shape&lt;/span&gt; points based on **`class`** of vehicles
+]
+
+---
+
+.larger[Size]
+
+.pull-left[
+&lt;img src="day2_files/figure-html/size-1.png" width="60%" /&gt;
+]
+
+.pull-right[
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_point(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mapping = aes(x = displ, &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;y = hwy, &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:red"&gt;size = cyl&lt;/span&gt;))&lt;/code&gt;
+
+- Uses a different &lt;span style="color:red"&gt;size&lt;/span&gt; points based on **`ncyl`** of the vehicle
+]
+
+---
+
+.larger["Plain" Aesthetics]
+
+.pull-left[
+.large[
+Assign a single `color`, `shape`, or `size` to **all** points 
+]
+
+```r
+ggplot(data = mpg) + 
+  geom_bar(mapping = aes(y = manufacturer), 
+           color = "tomato")
+```
+]
+
+.pull-right[
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-16-1.png" width="60%" /&gt;
 ]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

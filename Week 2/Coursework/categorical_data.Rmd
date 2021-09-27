@@ -104,7 +104,7 @@ to a categorical variable (a process called discretizing)?
 
 # Exploring Categorical Data 
 
-`r emo::ji("book")` [**Required Readingl:** Exploring Categorical Data](https://openintro-ims.netlify.app/explore-categorical.html)
+`r emo::ji("book")` [**Required Reading:** Exploring Categorical Data](https://openintro-ims.netlify.app/explore-categorical.html)
 
 `r emo::ji("computer")` [**Required Tutorial:** Exploratory Data Analysis, Exploring Categorical Data](https://openintro.shinyapps.io/ims-02-explore-01/)
 
