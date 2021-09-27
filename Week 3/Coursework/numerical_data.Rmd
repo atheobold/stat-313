@@ -1,0 +1,75 @@
+---
+title: "Week One: Why Statistics?"
+author: ""
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library(tidyverse)
+library(flair)
+library(emo)
+
+library(unvotes)
+library(lubridate)
+library(DT)
+```
+
+
+Welcome!
+
+In this coursework, you'll get a refresher on the foundational components of 
+statistics and data, investigate how statistics is used in your major, and
+think critically about the philosophy of statistical inference.
+
+## Course TODOs
+
+`r emo::ji("play button")` Watch Video: 20 min
+
+`r emo::ji("book")` Readings: 60-75 minutes 
+
+`r emo::ji("computer")` Activities: 15 min 
+
+`r emo::ji("check")` Check-ins: 1
+
+`r emo::ji("paper")` Group Discussion Homework: 5 Questions
+
+---
+
+`r emo::ji("check")` **Check-in 1:**
+
+
+1. Describe what you see in the plot below. 
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, out.width = "70%", fig.align = 'center'}
+un_votes %>%
+  filter(country %in% c("United States", "Turkey")) %>%
+  inner_join(un_roll_calls, by = "rcid") %>%
+  inner_join(un_roll_call_issues, by = "rcid") %>%
+  mutate(issue = ifelse(issue == "Nuclear weapons and nuclear material",
+                        "Nuclear weapons and materials", issue)) %>%
+  group_by(country, year = year(date), issue) %>%
+  summarize(
+    votes = n(),
+    percent_yes = mean(vote == "yes")
+    ) %>%
+  filter(votes > 5) %>%  # only use records where there are more than 5 votes
+  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +
+    geom_point() +
+    geom_smooth(method = "loess", se = FALSE) +
+    facet_wrap(~ issue) +
+    labs(
+      title = "Percentage of 'Yes' votes in the UN General Assembly",
+      subtitle = "1946 to 2020",
+      y = "% Yes",
+      x = "Year",
+      color = "Country"
+    )
+```
