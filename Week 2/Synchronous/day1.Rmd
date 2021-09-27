@@ -1,5 +1,5 @@
 ---
-title: ".hand[Introduction to Data & Visualizations]"
+title: "Introduction to Categorical Data & Visualizations"
 author: "Dr. Allison Theobold"
 date: "September 27, 2021"
 output:
@@ -66,7 +66,62 @@ style_duo_accent(
 )
 ```
 
-.larger[.hand[Why should I use ggplot2?]]
+class: inverse, middle, center
+
+.larger[.hand[How would you describe a categorical variable?]]
+
+---
+
+class: middle, center 
+
+.larger[In `R`...]
+
+categorical variables can have either `character` *or* `factor` data types
+
+--
+
+`factor` -- structured & fixed number of levels / options
+
+--
+
+`character` -- unstructured & variable number of levels
+
+---
+
+class: middle, center, inverse
+
+.larger[.hand[What types of summaries of categorical variables make sense?]]
+
+---
+
+.rhubarb[.huge[A tool bag for data wrangling...]]
+
+--
+
+.pull-left[
+- `filter()`
+- `mutate()`
+- `group_by()` 
+]
+
+--
+
+.pull-right[
+- `summarize()`
+- `select()`
+- `arrange()`
+]
+
+---
+
+class: middle, center
+
+.rhubarb[.huge[Opinionated Plotting]]
+
+---
+
+
+.larger[Why should I use ggplot2?]
 
 .pull-left[
 **Pros** 
@@ -135,7 +190,7 @@ ggplot(data = mpg)
 
 class: middle, center 
 
-.larger[Step 2: Add (`+`) a `geom`]
+.larger[Step 2: Add (`+`) `geom`etric objects]
 
 </br> 
 </br> 
@@ -188,7 +243,7 @@ ggplot(data = <DATA>) +
 
 ---
 
-class: inverse, middle, center
+class: middle, center
 
 .larger[.hand[What is an **aes**thetic?]]
 
@@ -198,15 +253,12 @@ class: inverse, middle, center
 
 </br>
 
-.large[
-- variables on axes 
-- size, shape, or the color of points
-
-</br>
-
 >"You can convey information about your data by mapping the aesthetics in your
 > plot to the variables in your dataset."
 
+.large[
+- variables on axes 
+- size, shape, or the color of points
 ]
 
 ---
@@ -216,68 +268,51 @@ class: inverse, middle, center
 <center>
 ```{r axes, eval = FALSE, echo = FALSE}
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy))
+  geom_bar(mapping = aes(y = manufacturer)
+)
 ```
 
 ```{r, echo = FALSE}
 decorate_chunk(chunk_name = "axes", eval = FALSE) %>% 
-  flair(pattern = "x = displ", color = "tomato") %>% 
-  flair(pattern = "y = hwy", color = "blue")
+  flair(pattern = "y = manufacturer", color = "blue")
 ```
 
 </center>
 </br> 
 
 .large[
-
-- Maps **`disp`** to `r flair("x-axis", pattern = "x-axis", color = "tomato")`
-- Maps **`hwy`** to `r flair("y-axis", pattern = "y-axis", color = "blue")`
+- Maps **`manufacturer`** to `r flair("y-axis", pattern = "y-axis", color = "blue")`
 ]
 
 ---
 
 .larger[Fill the Bars]
 
-.pull-left[
 ```{r, echo = FALSE}
 mpg <- mpg %>% 
   mutate(cyl = as.factor(cyl))
 ```
 
-```{r fill, echo = FALSE}
+```{r fill, out.width = "40%", fig.align='center'}
 ggplot(data = mpg) + 
   geom_bar(mapping = 
              aes(y = manufacturer, 
                  fill = cyl)
            )
 ```
-]
-
-.pull-right[
-```{r, echo = FALSE}
-decorate_chunk(chunk_name = "fill", eval = FALSE) %>% 
-  flair(pattern = "fill = cyl", color = "green")
-```
-
-- `r flair("fill", pattern = "fill", color = "green")` points based on
-the number of **`cyl`**inders the vehicle has
-]
 
 ---
 
 .larger[Don't Color the Bars]
 
-.pull-left[
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width = "40%", fig.align='center'}
 ggplot(data = mpg) + 
   geom_bar(mapping = 
              aes(y = manufacturer, 
                  color = cyl)
            )
 ```
-]
 
-.pull-right[
 ```{r, eval = FALSE}
 ggplot(data = mpg) + 
   geom_bar(mapping = 
@@ -285,7 +320,6 @@ ggplot(data = mpg) +
                  color = cyl)
            )
 ```
-]
 
 ---
 

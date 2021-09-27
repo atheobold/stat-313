@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>.hand[Introduction to Data &amp; Visualizations]</title>
+    <title>Introduction to Categorical Data &amp; Visualizations</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr. Allison Theobold" />
     <meta name="date" content="2021-09-27" />
@@ -17,7 +17,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# .hand[Introduction to Data &amp; Visualizations]
+# Introduction to Categorical Data &amp; Visualizations
 ### Dr. Allison Theobold
 ### September 27, 2021
 
@@ -28,7 +28,62 @@ class: center, middle, inverse, title-slide
 
 
 
-.larger[.hand[Why should I use ggplot2?]]
+class: inverse, middle, center
+
+.larger[.hand[How would you describe a categorical variable?]]
+
+---
+
+class: middle, center 
+
+.larger[In `R`...]
+
+categorical variables can have either `character` *or* `factor` data types
+
+--
+
+`factor` -- structured &amp; fixed number of levels / options
+
+--
+
+`character` -- unstructured &amp; variable number of levels
+
+---
+
+class: middle, center, inverse
+
+.larger[.hand[What types of summaries of categorical variables make sense?]]
+
+---
+
+.rhubarb[.huge[A tool bag for data wrangling...]]
+
+--
+
+.pull-left[
+- `filter()`
+- `mutate()`
+- `group_by()` 
+]
+
+--
+
+.pull-right[
+- `summarize()`
+- `select()`
+- `arrange()`
+]
+
+---
+
+class: middle, center
+
+.rhubarb[.huge[Opinionated Plotting]]
+
+---
+
+
+.larger[Why should I use ggplot2?]
 
 .pull-left[
 **Pros** 
@@ -103,7 +158,7 @@ ggplot(data = mpg)
 
 class: middle, center 
 
-.larger[Step 2: Add (`+`) a `geom`]
+.larger[Step 2: Add (`+`) `geom`etric objects]
 
 &lt;/br&gt; 
 &lt;/br&gt; 
@@ -142,7 +197,7 @@ ggplot(data = &lt;DATA&gt;) +
 
 ---
 
-class: inverse, middle, center
+class: middle, center
 
 .larger[.hand[What is an **aes**thetic?]]
 
@@ -152,15 +207,12 @@ class: inverse, middle, center
 
 &lt;/br&gt;
 
-.large[
-- variables on axes 
-- size, shape, or the color of points
-
-&lt;/br&gt;
-
 &gt;"You can convey information about your data by mapping the aesthetics in your
 &gt; plot to the variables in your dataset."
 
+.large[
+- variables on axes 
+- size, shape, or the color of points
 ]
 
 ---
@@ -171,44 +223,38 @@ class: inverse, middle, center
 
 
 
-&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_point(mapping = aes(&lt;span style="color:tomato"&gt;x = displ&lt;/span&gt;, &lt;span style="color:blue"&gt;y = hwy&lt;/span&gt;))&lt;/code&gt;
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_bar(mapping = aes(&lt;span style="color:blue"&gt;y = manufacturer&lt;/span&gt;)&lt;br&gt;)&lt;/code&gt;
 
 &lt;/center&gt;
 &lt;/br&gt; 
 
 .large[
-
-- Maps **`disp`** to &lt;span style="color:tomato"&gt;x-axis&lt;/span&gt;
-- Maps **`hwy`** to &lt;span style="color:blue"&gt;y-axis&lt;/span&gt;
+- Maps **`manufacturer`** to &lt;span style="color:blue"&gt;y-axis&lt;/span&gt;
 ]
 
 ---
 
 .larger[Fill the Bars]
 
-.pull-left[
 
 
-&lt;img src="day1_files/figure-html/fill-1.png" width="60%" /&gt;
-]
 
-.pull-right[
+```r
+ggplot(data = mpg) + 
+  geom_bar(mapping = 
+             aes(y = manufacturer, 
+                 fill = cyl)
+           )
+```
 
-&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_bar(mapping = &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;aes(y = manufacturer, &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:green"&gt;fill = cyl&lt;/span&gt;)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)&lt;/code&gt;
-
-- &lt;span style="color:green"&gt;fill&lt;/span&gt; points based on
-the number of **`cyl`**inders the vehicle has
-]
+&lt;img src="day1_files/figure-html/fill-1.png" width="40%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 .larger[Don't Color the Bars]
 
-.pull-left[
-&lt;img src="day1_files/figure-html/unnamed-chunk-11-1.png" width="60%" /&gt;
-]
+&lt;img src="day1_files/figure-html/unnamed-chunk-10-1.png" width="40%" style="display: block; margin: auto;" /&gt;
 
-.pull-right[
 
 ```r
 ggplot(data = mpg) + 
@@ -217,7 +263,6 @@ ggplot(data = mpg) +
                  color = cyl)
            )
 ```
-]
 
 ---
 
@@ -282,7 +327,7 @@ ggplot(data = mpg) +
 
 .pull-right[
 
-&lt;img src="day1_files/figure-html/unnamed-chunk-17-1.png" width="60%" /&gt;
+&lt;img src="day1_files/figure-html/unnamed-chunk-16-1.png" width="60%" /&gt;
 ]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
