@@ -28,67 +28,91 @@ class: center, middle, inverse, title-slide
 
 
 
+class: middle, center
+
+.larger[**Warm-up**]
+
+Fill in the associated data types (e.g. character, factor, integer, double) 
+with each type of variable. 
+
+	
+| Variable    | Data Type in R |
+|-------------|----------------|
+| Categorical variable |       |	
+| Continuous numerical variable | |
+| Discrete numerical variable	  | |
+
+
+---
+
 class: inverse
 
 .larger[.hand[ggplot2 first steps]]
 
 
 ```r
-ggplot(data = mpg) + 
-  geom_bar(mapping = aes(y = manufacturer))
+ggplot(data = mpg, mapping = aes(y = manufacturer)) + 
+  geom_bar()
 ```
 
 &lt;img src="day2_files/figure-html/unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-.larger[Step 1: Start with a blank plot]
+class: center, middle, inverse
+
+.larger[A Plot of Layers]
+
+&lt;img src="images/layers.png" width="60%" /&gt;
+
+---
+
+.larger[Step 1: Start with the data]
 
 
 ```r
 ggplot(data = mpg)
 ```
 
-&lt;img src="day2_files/figure-html/unnamed-chunk-3-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="day2_files/figure-html/unnamed-chunk-4-1.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 class: middle, center 
 
-.larger[Step 2: Map variables to **aes**thetics]
+.larger[Step 2: &lt;span style="color: red;"&gt;Map&lt;/span&gt; variables to &lt;span style="color: blue;"&gt;aes&lt;/span&gt;thetics]
 
 
 
 
-&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg, mapping = &lt;span style="background-color:#ffff7f"&gt;aes&lt;/span&gt;(y = manufacturer))&lt;/code&gt;
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg, &lt;span style="color:red"&gt;map&lt;/span&gt;ping = &lt;span style="color:blue"&gt;aes&lt;/span&gt;(y = manufacturer))&lt;/code&gt;
 
-&lt;img src="day2_files/figure-html/unnamed-chunk-5-1.png" width="40%" /&gt;
-
----
-
-class: middle, center
-
-.larger[Step 3: Add (`+`) `geom`etric objects]
-
-
-
-
-&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg, mapping = aes(y = manufacturer)) &lt;span style="color:red"&gt;+&lt;/span&gt; &lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;span style="color:blue"&gt;geom&lt;/span&gt;_bar()&lt;/code&gt;
-
+&lt;img src="day2_files/figure-html/unnamed-chunk-6-1.png" width="40%" /&gt;
 
 ---
 
 class: middle, center
 
-.larger[A reusable template]
-
-&lt;/br&gt;
+.larger[Step 3: Add &lt;span style="color: purple;"&gt;(+)&lt;/span&gt; &lt;span style="color: blue;"&gt;geom&lt;/span&gt;etric objects]
 
 
-```r
-ggplot(data = &lt;DATA&gt;) + 
-  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))
+
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg, mapping = aes(y = manufacturer)) &lt;span style="color:purple"&gt;+&lt;/span&gt; &lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;span style="color:blue"&gt;geom_bar()&lt;/span&gt;&lt;/code&gt;
+
+
+---
+
+class: middle, center, inverse
+
+.larger[A reusable template
+
 ```
+ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) + 
+  &lt;GEOM_FUNCTION&gt;()
+```
+
+]
 
 ---
 
@@ -107,7 +131,7 @@ class: middle, center
 
 .large[
 - variables on axes 
-- size, shape, or the color of points
+- size, shape, or the color of objects on plot
 ]
 
 ---
@@ -127,28 +151,78 @@ class: middle, center
 - Maps **`manufacturer`** to &lt;span style="color:blue"&gt;y-axis&lt;/span&gt;
 ]
 
+--
+
+&lt;center&gt;
+.rhubarb[.large[What do you expect the plot to look like?]]
+&lt;/center&gt;
+
+---
+
+class: middle, center
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-9-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+.larger[Axes - Part 2]
+
+&lt;center&gt;
+
+
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_boxplot(mapping = aes(&lt;span style="color:blue"&gt;y = manufacturer&lt;/span&gt;, &lt;span style="color:orange"&gt;x = cty&lt;/span&gt;)&lt;br&gt;)&lt;/code&gt;
+
+&lt;/center&gt;
+&lt;/br&gt; 
+
+.large[
+- Maps **`manufacturer`** to &lt;span style="color:blue"&gt;y-axis&lt;/span&gt;
+- Maps **`cty`** to &lt;span style="color:orange"&gt;x-axis&lt;/span&gt;
+]
+
+--
+
+&lt;center&gt;
+.rhubarb[.large[What do you expect the plot to look like?]]
+&lt;/center&gt;
+
+---
+
+class: middle, center
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-11-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
 ---
 
 .larger[Fill the Bars]
 
+&lt;/br&gt;
 
 
 
-```r
-ggplot(data = mpg) + 
-  geom_bar(mapping = 
-             aes(y = manufacturer, 
-                 fill = cyl)
-           )
-```
 
-&lt;img src="day2_files/figure-html/fill-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+
+&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_bar(mapping = aes(y = manufacturer, &lt;span style="color:blue"&gt;fill = cyl&lt;/span&gt;)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)&lt;/code&gt;
+
+--
+
+&lt;center&gt;
+.rhubarb[.large[What do you expect the plot to look like?]]
+&lt;/center&gt;
+
+---
+
+class: center, middle
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 .larger[Don't Color the Bars]
 
-&lt;img src="day2_files/figure-html/unnamed-chunk-10-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+&lt;img src="day2_files/figure-html/unnamed-chunk-15-1.png" width="40%" style="display: block; margin: auto;" /&gt;
 
 
 ```r
@@ -161,69 +235,46 @@ ggplot(data = mpg) +
 
 ---
 
-.larger[Color the Points]
+class: center, middle, inverse
 
-.pull-left[
-&lt;img src="day2_files/figure-html/color-1.png" width="60%" /&gt;
-]
+.larger[Piping]
 
-.pull-right[
-
-&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_point(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mapping = aes(x = displ,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;y = hwy,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:red"&gt;color = cyl&lt;/span&gt;)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)&lt;/code&gt;
-
-- fill points based on
-the number of **`cyl`**inders the vehicle has
-]
-
----
-.larger[Shape]
-
-.pull-left[
-&lt;img src="day2_files/figure-html/shape-1.png" width="60%" /&gt;
-]
-
-.pull-right[
-
-&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_point(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mapping = aes(x = displ,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;y = hwy,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:purple"&gt;shape = class&lt;/span&gt;))&lt;/code&gt;
-
-- Uses a different &lt;span style="color:purple"&gt;shape&lt;/span&gt; points based on **`class`** of vehicles
-]
+![](images/pipe.png)
 
 ---
 
-.larger[Size]
+class: center, middle
 
-.pull-left[
-&lt;img src="day2_files/figure-html/size-1.png" width="60%" /&gt;
-]
+.larger[Same Plot Two Ways]
 
-.pull-right[
+**Option 1**
 
-&lt;code class ='r hljs remark-code'&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;geom_point(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mapping = aes(x = displ, &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;y = hwy, &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;span style="color:red"&gt;size = cyl&lt;/span&gt;))&lt;/code&gt;
-
-- Uses a different &lt;span style="color:red"&gt;size&lt;/span&gt; points based on **`ncyl`** of the vehicle
-]
-
----
-
-.larger["Plain" Aesthetics]
-
-.pull-left[
-.large[
-Assign a single `color`, `shape`, or `size` to **all** points 
-]
 
 ```r
-ggplot(data = mpg) + 
-  geom_bar(mapping = aes(y = manufacturer), 
-           color = "tomato")
+ggplot(data = mpg, mapping = aes(y = manufacturer)) + 
+  geom_bar()
 ```
-]
 
-.pull-right[
 
-&lt;img src="day2_files/figure-html/unnamed-chunk-16-1.png" width="60%" /&gt;
-]
+**Option 2**
+
+```r
+mpg %&gt;% 
+ggplot(mapping = aes(y = manufacturer)) + 
+  geom_bar()
+```
+
+--
+
+.large[.rhubarb[What is the difference?]]
+
+---
+
+class: center, middle, inverse 
+
+.larger[.hand[Your Turn]]
+
+.large[Describe in your own terms what the pipe operator (%&gt;%) does.] 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

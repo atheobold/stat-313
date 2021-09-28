@@ -66,18 +66,45 @@ style_duo_accent(
 )
 ```
 
+class: middle, center
+
+.larger[**Warm-up**]
+
+Fill in the associated data types (e.g. character, factor, integer, double) 
+with each type of variable. 
+
+	
+| Variable    | Data Type in R |
+|-------------|----------------|
+| Categorical variable |       |	
+| Continuous numerical variable | |
+| Discrete numerical variable	  | |
+
+
+---
+
 class: inverse
 
 .larger[.hand[ggplot2 first steps]]
 
 ```{r, fig.align='center', out.width = "50%"}
-ggplot(data = mpg) + 
-  geom_bar(mapping = aes(y = manufacturer))
+ggplot(data = mpg, mapping = aes(y = manufacturer)) + 
+  geom_bar()
 ```
 
 ---
 
-.larger[Step 1: Start with a blank plot]
+class: center, middle, inverse
+
+.larger[A Plot of Layers]
+
+```{r, echo = FALSE, out.width = "60%"}
+knitr::include_graphics("images/layers.png")
+```
+
+---
+
+.larger[Step 1: Start with the data]
 
 ```{r, fig.height = 5, fig.align='center'}
 ggplot(data = mpg)
@@ -87,7 +114,7 @@ ggplot(data = mpg)
 
 class: middle, center 
 
-.larger[Step 2: Map variables to **aes**thetics]
+.larger[Step 2: <span style="color: red;">Map</span> variables to <span style="color: blue;">aes</span>thetics]
 
 ```{r aes, eval = FALSE, echo = FALSE}
 ggplot(data = mpg, mapping = aes(y = manufacturer))
@@ -95,7 +122,9 @@ ggplot(data = mpg, mapping = aes(y = manufacturer))
 
 ```{r, echo = FALSE}
 decorate("aes", eval = FALSE) %>% 
-  flair("aes")
+  flair("aes", color = "blue") %>%
+  flair("map", color = "red")
+  
 ```
 
 ```{r, echo = FALSE, out.width = "40%"}
@@ -106,7 +135,7 @@ ggplot(data = mpg, mapping = aes(y = manufacturer))
 
 class: middle, center
 
-.larger[Step 3: Add (`+`) `geom`etric objects]
+.larger[Step 3: Add <span style="color: purple;">(+)</span> <span style="color: blue;">geom</span>etric objects]
 
 ```{r add, eval = FALSE, echo = FALSE}
 ggplot(data = mpg, mapping = aes(y = manufacturer)) + 
@@ -115,23 +144,23 @@ ggplot(data = mpg, mapping = aes(y = manufacturer)) +
 
 ```{r, echo = FALSE}
 decorate("add", eval = FALSE) %>% 
-  flair("+", color = "red") %>% 
+  flair("+", color = "purple") %>% 
   flair("geom_bar()", color = "blue")
 ```
 
 
 ---
 
-class: middle, center
+class: middle, center, inverse
 
-.larger[A reusable template]
+.larger[A reusable template
 
-</br>
-
-```{r, eval = FALSE}
+```
 ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) + 
   <GEOM_FUNCTION>()
 ```
+
+]
 
 ---
 
@@ -150,7 +179,7 @@ class: middle, center
 
 .large[
 - variables on axes 
-- size, shape, or the color of points
+- size, shape, or the color of objects on plot
 ]
 
 ---
@@ -176,16 +205,96 @@ decorate_chunk(chunk_name = "axes", eval = FALSE) %>%
 - Maps **`manufacturer`** to `r flair("y-axis", pattern = "y-axis", color = "blue")`
 ]
 
+--
+
+<center>
+.rhubarb[.large[What do you expect the plot to look like?]]
+</center>
+
+---
+
+class: middle, center
+
+```{r, echo = FALSE, fig.align = 'center', out.width = "80%"}
+ggplot(data = mpg) + 
+  geom_bar(mapping = aes(y = manufacturer)
+)
+```
+
+---
+
+.larger[Axes - Part 2]
+
+<center>
+```{r axes2, eval = FALSE, echo = FALSE}
+ggplot(data = mpg) + 
+  geom_boxplot(mapping = aes(y = manufacturer, x = cty)
+)
+```
+
+```{r, echo = FALSE}
+decorate_chunk(chunk_name = "axes2", eval = FALSE) %>% 
+  flair(pattern = "y = manufacturer", color = "blue") %>% 
+  flair(pattern = "x = cty", color = "orange")
+```
+
+</center>
+</br> 
+
+.large[
+- Maps **`manufacturer`** to `r flair("y-axis", pattern = "y-axis", color = "blue")`
+- Maps **`cty`** to `r flair("x-axis", pattern = "x-axis", color = "orange")`
+]
+
+--
+
+<center>
+.rhubarb[.large[What do you expect the plot to look like?]]
+</center>
+
+---
+
+class: middle, center
+
+```{r, echo = FALSE, fig.align = 'center', out.width = "80%"}
+ggplot(data = mpg) + 
+  geom_boxplot(mapping = aes(y = manufacturer, x = cty)
+)
+```
+
 ---
 
 .larger[Fill the Bars]
+
+</br>
 
 ```{r, echo = FALSE}
 mpg <- mpg %>% 
   mutate(cyl = as.factor(cyl))
 ```
 
-```{r fill, out.width = "40%", fig.align='center'}
+```{r fill, eval = FALSE, echo = FALSE}
+ggplot(data = mpg) + 
+  geom_bar(mapping = aes(y = manufacturer, fill = cyl)
+           )
+```
+
+```{r, echo = FALSE}
+decorate_chunk(chunk_name = "fill", eval = FALSE) %>% 
+  flair(pattern = "fill = cyl", color = "blue") 
+```
+
+--
+
+<center>
+.rhubarb[.large[What do you expect the plot to look like?]]
+</center>
+
+---
+
+class: center, middle
+
+```{r, fig.align='center', echo = FALSE, out.width = "80%"}
 ggplot(data = mpg) + 
   geom_bar(mapping = 
              aes(y = manufacturer, 
@@ -215,94 +324,41 @@ ggplot(data = mpg) +
 
 ---
 
-.larger[Color the Points]
+class: center, middle, inverse
 
-.pull-left[
-```{r color, echo = FALSE}
-ggplot(data = mpg) + 
-  geom_point(
-    mapping = aes(x = displ,
-                  y = hwy,
-                  color = cyl)
-    )
-```
-]
+.larger[Piping]
 
-.pull-right[
-```{r, echo = FALSE}
-decorate_chunk(chunk_name = "color", eval = FALSE) %>% 
-  flair(pattern = "color = cyl", color = "red")
-```
-
-- `r flair("fill", pattern = "color", color = "red")` points based on
-the number of **`cyl`**inders the vehicle has
-]
-
----
-.larger[Shape]
-
-.pull-left[
-```{r shape, echo = FALSE, warning = FALSE,}
-ggplot(data = mpg) + 
-  geom_point(
-    mapping = aes(x = displ,
-                  y = hwy,
-                  shape = class))
-```
-]
-
-.pull-right[
-```{r, echo = FALSE}
-decorate_chunk(chunk_name = "shape", eval = FALSE) %>% 
-  flair(pattern = "shape = class", color = "purple")
-```
-
-- Uses a different `r flair("shape", pattern = "shape", color = "purple")` points based on **`class`** of vehicles
-]
+![](images/pipe.png)
 
 ---
 
-.larger[Size]
+class: center, middle
 
-.pull-left[
-```{r size, echo = FALSE, warning = FALSE}
-ggplot(data = mpg) + 
-  geom_point(
-    mapping = aes(x = displ, 
-                  y = hwy, 
-                  size = cyl))
-```
-]
+.larger[Same Plot Two Ways]
 
-.pull-right[
-```{r, echo = FALSE}
-decorate_chunk(chunk_name = "size", eval = FALSE) %>% 
-  flair(pattern = "size = cyl", color = "red")
-```
+**Option 1**
 
-- Uses a different `r flair("size", pattern = "size", color = "red")` points based on **`ncyl`** of the vehicle
-]
-
----
-
-.larger["Plain" Aesthetics]
-
-.pull-left[
-.large[
-Assign a single `color`, `shape`, or `size` to **all** points 
-]
 ```{r, eval = FALSE}
-ggplot(data = mpg) + 
-  geom_bar(mapping = aes(y = manufacturer), 
-           color = "tomato")
+ggplot(data = mpg, mapping = aes(y = manufacturer)) + 
+  geom_bar()
 ```
-]
 
-.pull-right[
 
-```{r, echo = FALSE, fig.width = 6, fig.height = 6}
-ggplot(data = mpg) + 
-  geom_bar(mapping = aes(y = manufacturer), 
-           fill = "tomato")
+**Option 2**
+```{r, eval = FALSE}
+mpg %>% 
+ggplot(mapping = aes(y = manufacturer)) + 
+  geom_bar()
 ```
-]
+
+--
+
+.large[.rhubarb[What is the difference?]]
+
+---
+
+class: center, middle, inverse 
+
+.larger[.hand[Your Turn]]
+
+.large[Describe in your own terms what the pipe operator (%>%) does.] 

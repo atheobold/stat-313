@@ -1,0 +1,159 @@
+---
+title: "Plotting Numerical Data"
+author: "Dr. Allison Theobold"
+date: "October __, 2021"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---        
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE,
+  tibble.width = 65,
+  width = 65
+  )
+
+# figure height, width, dpi
+knitr::opts_chunk$set(fig.width = 8, 
+                      fig.asp = 0.618,
+                      out.width = "60%",
+                      dpi = 300)
+
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
+}
+
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+
+library(emo)
+library(palmerpenguins)
+library(tidyverse)
+library(flair)
+```
+
+```{r set-theme, include = FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color      = "#b76352", # mango
+  secondary_color    = "#34605f", # bayberry
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  header_color = "#793540", #rhubarb
+  white_color = "#F5F5F5", # lightest color
+  black_color = "#36454F", # darkest color
+  text_font_size = "30px", 
+  link_color = "#696969" #grey
+)
+```
+
+.larger[Color the Points]
+
+.pull-left[
+```{r color, echo = FALSE}
+ggplot(data = mpg) + 
+  geom_point(
+    mapping = aes(x = displ,
+                  y = hwy,
+                  color = cyl)
+    )
+```
+]
+
+.pull-right[
+```{r, echo = FALSE}
+decorate_chunk(chunk_name = "color", eval = FALSE) %>% 
+  flair(pattern = "color = cyl", color = "red")
+```
+
+- `r flair("fill", pattern = "color", color = "red")` points based on
+the number of **`cyl`**inders the vehicle has
+]
+
+---
+.larger[Shape]
+
+.pull-left[
+```{r shape, echo = FALSE, warning = FALSE,}
+ggplot(data = mpg) + 
+  geom_point(
+    mapping = aes(x = displ,
+                  y = hwy,
+                  shape = class))
+```
+]
+
+.pull-right[
+```{r, echo = FALSE}
+decorate_chunk(chunk_name = "shape", eval = FALSE) %>% 
+  flair(pattern = "shape = class", color = "purple")
+```
+
+- Uses a different `r flair("shape", pattern = "shape", color = "purple")` points based on **`class`** of vehicles
+]
+
+---
+
+.larger[Size]
+
+.pull-left[
+```{r size, echo = FALSE, warning = FALSE}
+ggplot(data = mpg) + 
+  geom_point(
+    mapping = aes(x = displ, 
+                  y = hwy, 
+                  size = cyl))
+```
+]
+
+.pull-right[
+```{r, echo = FALSE}
+decorate_chunk(chunk_name = "size", eval = FALSE) %>% 
+  flair(pattern = "size = cyl", color = "red")
+```
+
+- Uses a different `r flair("size", pattern = "size", color = "red")` points based on **`ncyl`** of the vehicle
+]
+
+---
+
+.larger["Plain" Aesthetics]
+
+.pull-left[
+.large[
+Assign a single `color`, `shape`, or `size` to **all** points 
+]
+```{r, eval = FALSE}
+ggplot(data = mpg) + 
+  geom_bar(mapping = aes(y = manufacturer), 
+           color = "tomato")
+```
+]
+
+.pull-right[
+
+```{r, echo = FALSE, fig.width = 6, fig.height = 6}
+ggplot(data = mpg) + 
+  geom_bar(mapping = aes(y = manufacturer), 
+           fill = "tomato")
+```
+]
