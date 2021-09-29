@@ -96,12 +96,7 @@ glimpse(nycflights)
 
 
 
-1. (b) When were these data collected? 
-<!-- Your response goes below this line! -->
-
-
-
-1. (c) Are there categorical variables in the dataset? If so, what are their names and data types? 
+1. (b) Are there categorical variables in the dataset? If so, what are their names?  
 <!-- Your response goes below this line! -->
 
 

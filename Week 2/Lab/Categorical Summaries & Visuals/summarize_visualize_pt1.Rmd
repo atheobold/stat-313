@@ -1,0 +1,165 @@
+---
+title: "Introduction to Visualizing and Summarizing Data"
+author: "Your Name Here!"
+date: "Due: January 24, 2021 at 11:59pm"
+output: html_document
+---
+
+<!-- The code chunk below is made to make your report look nice. Do not change it! 
+-->
+```{r, include = FALSE}
+knitr::opts_chunk$set(echol = TRUE, 
+                      results = "hold", 
+                      message = FALSE, 
+                      warning = FALSE)
+```
+
+## Getting started
+
+### Load packages
+
+In this lab, we will explore and visualize the data using packages housed in the
+**tidyverse** suite of packages. 
+
+```{r, include = FALSE}
+library(tidyverse)
+```
+
+### The data
+
+In this lab we will work with data from the Star Wars API 
+(<https://swapi.dev/>). The Star Wars API, or "swapi" (Swah-pee) is the world's
+first quantified and programmatically-accessible data source for all the data
+from the Star Wars canon universe!
+
+First, we'll view the `starwars` dataframe. Run the code below to load the 
+data into your R workspace. 
+
+```{r}
+data(starwars)
+```
+
+The data set `starwars` that shows up in your workspace is a *data matrix*,
+with each row representing an *observation* and each column representing a
+*variable*. `R calls this data format a **data frame**, which is a term that
+will be used throughout the labs. For this data set, each *observation* is a
+Star Wars character.
+
+To view the names of the variables, you can use the `names()` function: 
+
+```{r}
+names(starwars)
+```
+
+This returns the names of the variables in this data frame.
+The **codebook** (description of the variables) can be accessed by pulling up
+the help file by typing a `?` before the name of the dataset:
+
+```{r, eval = FALSE}
+?starwars
+```
+
+Remember that you can use `glimpse` to take a quick peek at your data to
+understand its contents better.
+
+```{r}
+glimpse(nycflights)
+```
+
+1. (a) How large is the `starwars` dataset? (i.e. How many rows and columns
+does it have?)
+
+```{r}
+# Your code to answer question 1 goes here! 
+
+```
+
+1. (b) Are there categorical variables in the dataset? If so, what are their
+names?  
+<!-- Your response goes below this line! -->
+
+
+# Accessing the Levels of a Variable
+
+The `gender` variable refers to the gender expression of the character. 
+
+2. What are the distinct levels / values of the `gender` variable? 
+
+```{r}
+# Your code to answer question 2 goes here! 
+
+```
+
+
+# Creating New Variables 
+
+Suppose we want to use the `species` variable to make a new variable called
+`human`. This new variable should have the value of "human" if the `species` of 
+the character is human and "not human" otherwise. 
+
+3. Use the `mutate()` and `if_else()` functions to create a new variable named
+`human` based on the criteria outlined above. 
+
+```{r}
+# Your code to answer question 3 goes here! 
+
+```
+
+
+# Filtering the Data 
+
+Now, we are interested in creating a new dataset that only contains the 
+human characters. 
+
+4, Using the new `human` variable, create a new dataset named
+`human_characters` that only contains observations where the value of `human` 
+is equal to "human". 
+
+Hint: The `filter()` function would be helpful here! 
+
+```{r}
+# Your code to answer question 4 goes here! 
+
+```
+
+# Using the Pipe Operator Instead 
+
+The pipe operator (%>%) allows us to connect our data wrangling steps together. 
+Let's get some practice chaining data wrangling operations together by
+connecting the previous two steps with the pipe operator.
+
+5. Take your code from problems 3 and 4 and combine them so that the two steps
+are connected with a pipe operator. Specifically you should: 
+
+- take the `starwars` data
+- create a new `human` variable
+- filter the data based on the `human` variable
+- save the resulting data as a new dataset named `human_characters`
+
+```{r}
+# Your code to answer question 5 goes here! 
+
+```
+
+----
+
+# Summarizing a Categorical Variable
+
+6. Now, using the `human_characters` dataset you made, summarize the number 
+of characters from each `homeworld`. 
+
+```{r}
+# Your code to answer question 6 goes here! 
+
+```
+
+# Visualizing a Categorical Variable 
+
+7. Create a visualization of the summaries you found in question 6. 
+
+```{r}
+# Your code to answer question 7 goes here! 
+
+```
+
+**Bonus:** Add a second categorical variable to your visualization! 
