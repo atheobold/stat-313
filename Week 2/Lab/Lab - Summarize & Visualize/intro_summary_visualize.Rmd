@@ -5,10 +5,6 @@ date: "Due: January 24, 2021 at 11:59pm"
 output: html_document
 ---
 
-<!-- This is a comment in the report, notice when you knit this text will not appear!  -->
-<!-- To make a comment, highlight the line you want to comment and hit Control + Shift + C (at the same time) or click on the "Code" dropdown menu and select "Comment/Uncomment lines".  -->
-
-
 <!-- The code chunk below is made to make your report look nice. Do not change it! 
 -->
 ```{r, include = FALSE}
