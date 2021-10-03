@@ -1,5 +1,5 @@
 ---
-title: "Week One: Why Statistics?"
+title: "Week Three: Summarizing & Visualizing Numerical Data"
 author: ""
 output:
   prettydoc::html_pretty:
@@ -25,28 +25,66 @@ library(DT)
 
 Welcome!
 
-In this coursework, you'll get a refresher on the foundational components of 
-statistics and data, investigate how statistics is used in your major, and
-think critically about the philosophy of statistical inference.
+In this week's coursework we are going to continuing exploring data, through 
+data summaries and visualizations, focusing specifically on **numerical**
+variables. We will be using the **dplyr** package in `R` to wrangle our data 
+and the **ggplot2** package to created data visualizations. 
 
-## Course TODOs
 
-`r emo::ji("play button")` Watch Video: 20 min
+## Learning Outcomes 
 
-`r emo::ji("book")` Readings: 60-75 minutes 
+By the end of this coursework you should be able to:
 
-`r emo::ji("computer")` Activities: 15 min 
+- outline the differences between numerical and categorical variables
+- describe what type of summary statistic is appropriate for a given  
+distribution of a numerical variable  
+- discuss when it is / is not appropriate to summarize a variable with a mean  
+- create visualizations of one and two numerical variables  
+- discuss the benefits and shortcomings of different visualizations 
 
-`r emo::ji("check")` Check-ins: 1
 
-`r emo::ji("paper")` Group Discussion Homework: 5 Questions
+## This Week's TODOs
+
+`r emo::ji("book")` Reading: 30-45 minutes 
+
+`r emo::ji("computer")` Tutorials: 60-75 minutes 
+
+`r emo::ji("check")` Check-ins: 2 (submit on Canvas)
+
+`r emo::ji("scroll")` Group Discussion Homework: __ Questions
 
 ---
 
-`r emo::ji("check")` **Check-in 1:**
+# Exploring Numerical Data 
+
+`r emo::ji("book")` [**Required Reading:** Exploring Numerical Data](https://openintro-ims.netlify.app/explore-numerical.html)
+
+`r emo::ji("computer")` [**Required Tutorial:** Summarizing with Statistics](https://openintro.shinyapps.io/ims-02-explore-03/)
 
 
-1. Describe what you see in the plot below. 
+`r emo::ji("computer")` [**Required Tutorial:** Exploring Numerical Data](https://openintro.shinyapps.io/ims-02-explore-02/)
+
+
+If you are feeling like you would like to see additional materials on
+wrangling data and creating data visualizations in `R`, the *Modern Dive* 
+textbook has two exellent chapters you can reference. 
+
+`r emo::ji("book")` [**Supplementary Reading:** Data Visualization](https://moderndive.com/2-viz.html)
+
+`r emo::ji("book")` [**Supplementary Reading:** Data Visualization](https://moderndive.com/3-wrangling.html)
+
+---
+
+`r emo::ji("check")` **Check-in: Summarizing with Statistics**
+
+---
+
+`r emo::ji("check")` **Check-in: Visualizing Numerical Data**
+
+
+1. What aesthetics are being used in the following plot?  
+
+Hint: Think about what goes inside of the `aes()` function and what does not. 
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE, out.width = "70%", fig.align = 'center'}
 un_votes %>%
@@ -73,3 +111,11 @@ un_votes %>%
       color = "Country"
     )
 ```
+
+- `x` axis
+- `y` axis
+- `color` 
+- `facet`s
+- `fill`
+- `point`s
+- `line`s
