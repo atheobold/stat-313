@@ -285,7 +285,7 @@ class: center, inverse
 
 .gray[.larger[Faceted Histograms]]
 
-```{r, out.height = "40%", out.width = "60%", fig.align = "center", warning = FALSE}
+```{r, out.height = "30%", out.width = "50%", fig.align = "center", warning = FALSE}
 ggplot(data = penguins, 
        mapping = aes(x = bill_length_mm)) + 
   geom_histogram(binwidth = 3) + 
