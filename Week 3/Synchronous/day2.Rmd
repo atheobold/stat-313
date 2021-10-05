@@ -53,8 +53,6 @@ library(tidyverse)
 library(openintro)
 library(ggridges)
 library(flair)
-library(scales)
-library(gghighlight)
 ```
 
 ```{r set-theme, include = FALSE}
