@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>.hand[What is a geom?]</title>
+    <title>Summarizing Numerical Data</title>
     <meta charset="utf-8" />
-    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <meta name="author" content="Dr. Allison Theobold" />
+    <meta name="date" content="2021-10-05" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="slide-style.css" type="text/css" />
   </head>
@@ -11,91 +17,154 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# .hand[What is a <strong>geom</strong>?]
+# Summarizing Numerical Data
+### Dr. Allison Theobold
+### October 5, 2021
 
 ---
 
 
 
 
-.larger[How to represent the data?]
 
-&lt;img src="geom_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
 
----
 
-.larger[**geom**]
+class: center, middle, inverse 
 
-&gt; "A **geom** is the geometrical object that a plot uses to represent data."   
+Given this distribution... 
 
-&gt; "People often describe plots by the type of geom that the plot uses."
+&lt;img src="day2_files/figure-html/unnamed-chunk-2-1.png" width="60%" /&gt;
 
-&lt;/br&gt;
-
-.large[
-
-| Plot                | geom            |
-|---------------------|-----------------|
-| Boxplot     | boxplot   |
-| Bar plot    | bar       |
-| Line graph  | line      |
-| Scatterplot | point     |
-
-]
+.large[What measure of center would you use? Why?]
 
 ---
 
-.larger[Changing **geom**s]
+class: center, middle 
 
+.huge[Summary Statistics]
 
+--
 
+.bayberry[.larger[Measures of Center]]
 
-&lt;code class ='r hljs remark-code'&gt;# Scatterplot&lt;br&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;span style="color:blue"&gt;geom_point&lt;/span&gt;(mapping = aes(x = displ, y = hwy))&lt;/code&gt;
+.mango[.larger[Measures of Spread]]
 
-&lt;/br&gt;
-
-
-
-
-&lt;code class ='r hljs remark-code'&gt;# Smoothing Curve&lt;br&gt;ggplot(data = mpg) + &lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;span style="color:green"&gt;geom_smooth&lt;/span&gt;(mapping = aes(x = displ, y = hwy))&lt;/code&gt;
 ---
 
-.larger[**geom**s and **mapping**s]
+class: middle 
 
-.large[Different `geom`s take different `mapping` arguments
+.bayberry[.larger[Measures of Center]]
 
 .pull-left[
-- `geom_smooth`: no `shape`, `linetype` instead
-
-![](geom_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+Mean
+  - average of data values
+  - not resistant to outliers
 ]
+
+--
+
+.pull-right[
+Median
+  - middle observation 
+  - resistant to outliers
+]
+
+---
+
+class: center, middle, inverse
+
+.larger[For fairly normal data...]
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-3-1.png" width="60%" /&gt;
+
+---
+
+class: center, middle, inverse 
+
+.larger[For bimodal data...]
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-4-1.png" width="60%" /&gt;
+
+---
+
+class: middle
+
+.mango[.larger[Measures of Spread]]
+
+.pull-left[
+- Variance
+  * average squared distance from the mean
+  * not resistant to outliers
+
+- Range
+  * difference between minimum and maximum
+  * not resistant to outliers
+  
+]
+
+--
 
 .pull-right[
 
-- `geom_bar`: `color` bad, `fill` better
+&lt;/br&gt;
+&lt;/br&gt;
 
-![](geom_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
-]
-]
+- Inner Quartile Range (IQR) 
+
+  * difference between Q1 and Q3
+  * resistant to outliers
+]  
+  
+---
+
+.huge[.hand[Your Turn]]
+
+.larger[What are two benefits and two weaknesses of data summaries and data 
+visualizations?]
 
 ---
 
-.larger[Multiple **geom**s in one plot!]
+class: middle, center, inverse
+
+.larger[Point Estimates &amp; Parameters]
+
+*Parameter*: True value of the statistic for the population of interest  
+
+--
+  
+*Point Estimate*: provides our best guess for the value of the parameter 
+
+--
+
+Estimates based on larger samples tend to be more accurate than those based on smaller samples.
 
 
-```r
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy)) + 
-  geom_smooth(mapping = aes(x = displ, y = hwy))
-```
+---
 
-&lt;img src="geom_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+.larger[.hand[Your Turn]]
+
+.pull-left-wide[
+Describe what you would need to do to replicate the following plot.
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-5-1.png" width="60%" /&gt;
+
+]
+
+--
+
+.pull-right-narrow[
+
+Next...
+
+What are two aspects of this plot that you believe are well done? What are 
+two aspects of the plot that could be improved?  
+]
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
+"highlightStyle": "solarized-light",
 "highlightLines": true,
 "countIncrementalSlides": false,
 "ratio": "16:9",
