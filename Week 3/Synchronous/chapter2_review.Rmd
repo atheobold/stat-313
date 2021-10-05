@@ -1,0 +1,371 @@
+---
+title: "Data Visualization & Data Summary Review"
+date: "January 20, 2021"
+output: ioslides_presentation
+fig_height: 4
+fig_width: 4
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE)
+
+library(palmerpenguins)
+library(tidyverse)
+library(flair)
+library(ggridges)
+library(gridExtra)
+```
+
+## Dataframe Review 
+
+Data were collected on 344 penguins living on three islands
+(Torgersen, Biscoe, and Dream) in the Palmer Archipelago, Antarctica. In 
+addition to which island each penguin lives on, the data contains information on
+the species of the penguin (Adelie, Chinstrap, or Gentoo), its bill length, bill
+depth, and flipper length (measured in millimeters), its body mass (measured in
+grams), its sex (female or male), and its year of capture (2007, 2008, 2009).
+
+<center>
+![](images/penguin.png){
+width=75% }
+</center>
+
+
+## Data Wrangling
+
+- 6 Verbs of Data Wrangling 
+  * `filter()` -- filter out/in observations/rows
+  * `select()` -- select variables/columns
+  * `mutate()` -- modifies the variables in a dataset
+  * `group_by()` -- group data by a categorical variable 
+  * `summarize()` -- create data summaries of variables
+  * `arrange()` -- arrange data in descending/ascending order
+
+## Why Wrangle? 
+
+<center>
+Wrangling = a reproducible workflow for preparing data for analysis
+</center>
+
+</br>
+</br>
+
+- Are you interested in analyzing only one level of a categorical variable? 
+  Use `filter()`!
+- Are you interested in looking at how a relationship changes based on the 
+  level of a categorical variable? Use `group_by()`!
+- Are you interested in presenting your table of data summaries in a way that 
+  makes sense? Use `arrange()`!
+
+## Why Pipe? 
+
+- Clearly express a sequence of multiple operations
+- __Improve code read-ability__
+
+```{r wrangle, include = FALSE}
+penguins %>%
+  filter(sex == "male", year == 2007) %>%
+  group_by(species) %>%
+  summarize(mean_bill_length = mean(bill_length_mm),
+            sd_bill_length = sd(bill_length_mm),
+            obs = n()) %>%
+  arrange(desc(obs))
+```
+
+```{r, echo = FALSE}
+decorate("wrangle") %>%
+  flair("%>%")
+```
+
+```{r, echo = FALSE}
+penguins %>%
+  filter(sex == "male", year == 2007) %>%
+  group_by(species) %>%
+  summarize(mean_bill_length = mean(bill_length_mm),
+            sd_bill_length = sd(bill_length_mm),
+            obs = n()) %>%
+  arrange(desc(obs))
+```
+
+## Data Summaries, Point Estimates, & Parameters
+
+- Mean: $\bar{x}$ and $\mu$
+  * measure the center of a distribution of data
+  * not resistant to outliers
+
+- Variance: $s^2$ and $\sigma^2$
+  * measure of the spread of a distribution of data
+  * not resistant to outliers
+  
+- Point Estimate: provides our best guess for the value of the parameter  
+  * Point estimates based on larger samples tend to be more accurate than those
+  based on smaller samples.
+
+## Univariate (One Variable) Visualizations -- For Numerical Data
+
+- Histogram 
+
+</br>
+
+- Dotplot 
+
+</br>
+
+- Boxplot
+
+</br>
+
+- Density Plot
+
+
+## Histogram
+
+<div class="columns-2">
+
+```{r, message = FALSE, fig.height = 3, fig.width = 4}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram()
+```
+
+</br>
+</br>
+
+- **Do not** plot raw data, plot summaries (counts) of the data! 
+- Higher bars represent where data are relatively more common 
+- Inspect shape of a distribution (skewed or symmetric) 
+- Identify modes
+
+</div>
+
+## Dotplot
+
+<div class="columns-2">
+
+```{r, fig.height = 3, fig.width = 4}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_dotplot()
+```
+
+</br>
+</br>
+
+- One-variable scatterplot
+- y-axis not useful (can remove or change)
+
+</br>
+
+__What can you see in the dot plot that you cannot see in the histogram?__
+
+## Boxplot
+
+<div class="columns-2">
+
+```{r, fig.width = 3, fig.height = 5, echo = FALSE}
+p1 <- penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_dotplot(color = "blue", dotsize = 0.6) + 
+  theme(axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        axis.text.y = element_blank())
+
+p2 <- penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_boxplot()
+
+grid.arrange(p1, p2, nrow = 2, ncol = 1)
+```
+
+- What calculations are necessary to create a boxplot? 
+
+- What are strengths of a boxplot? 
+
+- What are weaknesses of a boxplot?
+
+
+## Density Plot 
+
+<div class="columns-2">
+
+```{r, fig.width = 3, fig.height = 3}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_density()
+```
+
+</br>
+</br>
+</br> 
+
+- A smooth approximation to a variable's distribution 
+- Plots density (as a proportion) on the y-axis
+
+</br> 
+
+- What are the strengths of a density plot?  
+- What are the weaknesses of a density plot? 
+
+
+## Bivariate (Two Variables) Visualizations -- For Numerical Data
+
+</br>
+
+- Side-by-Side Boxplots 
+
+</br>
+
+- Side-by-Side Density Plots (Ridge Plots)
+
+</br>
+
+- Scatterplots 
+
+</br>
+
+- Faceted Histograms 
+
+## Side-by-Side Boxplots
+
+```{r, eval = FALSE}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = species)) + 
+  geom_boxplot()
+
+```
+
+<div class="columns-2">
+
+```{r, fig.width = 4, fig.height = 4, fig.align = "center", echo = FALSE}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = species)) + 
+  geom_boxplot()
+```
+
+</br>
+</br>
+
+Can stack vertically (with categorical variable on `y`-axis) **or** horizontally (with categorical variable on `x`-axis)
+
+## Ridge Plots
+
+```{r, eval = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = species)) + 
+  geom_density_ridges()
+```
+
+
+<div class="columns-2">
+
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center', echo = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, 
+             y = species)) + 
+  geom_density_ridges()
+```
+
+</br> 
+</br> 
+
+- Stacks density plots vertically
+- Categorical variable on `y`-axis
+- Can modify transparency with `alpha`
+
+## Faceted Histograms 
+
+```{r, eval = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram(binwidth = 3) + 
+  facet_wrap(vars(species))
+```
+
+```{r, fig.width = 6, fig.height = 4, fig.align = "center", echo = FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram(binwidth = 3) + 
+  facet_wrap(vars(species))
+```
+
+
+## Scatterplots
+
+```{r, fig.width = 4, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm)) + 
+  geom_point()
+```
+
+## Multivariate Plots 
+
+There are two main methods for adding a third (or fourth) variable into a 
+data visualization: 
+
+- Colors: 
+  * creates colors for every level of a categorical variable
+  * creates a gradient for different values of a quantitative variable
+
+</br>
+
+- Facets: 
+  * creates subplots for every level of a variable
+  * labels each sub-plot with the value of the variable
+
+## Colors in Scatterplots
+
+```{r, fig.width = 6, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = species)) + 
+  geom_point()
+```
+
+## Colors in Ridge Plots
+
+```{r, fig.width = 8, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = species, fill = sex)) + 
+  geom_density_ridges(alpha = 0.3)
+```
+
+## Facets in Scatterplots 
+
+```{r, fig.width = 8, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = sex)) + 
+  geom_point() + 
+  facet_wrap(vars(species))
+```
+
+## Facets in Ridge Plots
+
+```{r, fig.width = 8, fig.height = 4, fig.align = 'center'}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = species, fill = sex)) + 
+  geom_density_ridges(alpha = 0.3) + 
+  facet_wrap(vars(island))
+```
+
+## Your Turn!
+
+Suppose researchers were interested in investigating the relationship between 
+a penguin's `sex` and their `flipper_length`, specifically for penguins from 
+the Biscoe island. 
+
+They are also interested in how this relationship differs by penguin species and
+by the year of capture. 
+
+</br>
+
+- __In your group, decide what data wrangling tasks are necessary to prepare the 
+data for plotting.__
+
+- __Then, decide what visualization you believe would help address these
+researchers' question.__ 
