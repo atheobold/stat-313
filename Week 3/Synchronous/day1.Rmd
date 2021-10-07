@@ -1,5 +1,5 @@
 ---
-title: "Visualizing & Summarizing Numerical Data"
+title: "Visualizing Numerical Data"
 date: "October 4, 2021"
 author: "Dr. Allison Theobold"
 output:

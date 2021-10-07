@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The Flaws of Averages</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Allison Theobold" />
+    <meta name="date" content="2021-10-07" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="slide-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# The Flaws of Averages
+### Dr. Allison Theobold
+### October 7, 2021
+
+---
+
+
+
+
+
+
+
+
+class: center, middle
+
+.larger[**Suppose...**]
+
+--
+
+.large["Overall this instructor was educationally effective."]
+
+.pull-left[
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; quarter &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; average &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2020 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fall &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.53 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2020 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fall &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.36 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2021 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Winter &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.18 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2021 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Winter &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2021 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Spring &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.83 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2021 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Spring &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.41 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2021 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Spring &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.00 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+--
+
+.pull-right[
+&lt;/br&gt; 
+
+.large[What do these averages *mean*?]
+]
+
+---
+
+.huge[The Problem]
+
+.large[It’s incredibly rare for scientists, including statisticians, to explicitly
+think about that conditions underlying their models.] 
+
+&lt;!-- Beyond “checking” higher level assumptions in a stale and automatic fashion.  --&gt;
+
+&lt;!-- I had many conversations in very different contexts with scientists about what --&gt;
+&lt;!-- the average calculated from the data (or mean in a model) could reasonably --&gt;
+&lt;!-- represent and whether that was really what the scientist was after.  --&gt;
+
+---
+
+.larger[Why so much resistance?]
+
+&lt;/br&gt; 
+&lt;/br&gt; 
+
+- Departments hold specific expectations of statistics courses. 
+
+- These expectations are conditional on the assumption that means represent 
+**the** magic quantity of interest 
+
+
+- I'm then expected to educate you to "play the game" in the scientific 
+culture of averages 
+
+
+---
+
+class: center, middle, inverse
+
+![](images/end_of_average.jpg)
+
+---
+
+class: center, middle, inverse
+
+.larger[Averagarianism]
+
+&gt; The primary research method of averagarianism is aggregate, then analyze: 
+&gt; First, combine many people together and look for patterns in the group. Then,
+&gt; use these group patterns (such as averages and other statistics) to analyze
+&gt; and model individuals. The science of the individual instead instructs
+&gt; scientists to analyze, then aggregate: First, look for pattern within each
+&gt; individual. Then, look for ways to combine these individual patterns into
+&gt; collective insight.
+
+&gt; *The End of Average*  Todd Rose
+
+---
+
+class: center, middle, inverse
+
+.larger[What else then?]
+
+&gt; If you could not use averages to evaluate, model, and select individuals,
+&gt; well then...what could you use? 
+&gt;
+&gt; This practical retort underscores the reason that averagarianism has endured
+&gt; for so long and become so deeply ingrained throughout society.
+
+---
+
+.larger["We've always done it this way"]
+
+&lt;/br&gt;
+&lt;/br&gt; 
+
+Methods based on averages are available, easy, convenient, and take little
+creativity — and they are expected in our scientific culture. 
+
+Justification for using averages is simply not demanded — though justification
+for use of anything but averages is incredibly difficult to sell.
+
+---
+
+class: center, inverse
+
+.larger[Some Rules to Play By]
+
+&lt;/br&gt; 
+
+--
+
+.large[Look at and understand your *raw* data *before* aggregating]
+
+--
+
+.large[Boxplots (and such) don't count as visualizing the *raw* data.]
+
+--
+
+.large[We should only average things we are convinced are measuring the same thing.]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
