@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to Linear Regression</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Allison Theobold" />
+    <meta name="date" content="2021-10-10" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="slide-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to Linear Regression
+### Dr. Allison Theobold
+### October 10, 2021
+
+---
+
+
+
+
+
+
+
+class: middle, inverse, center
+
+.larger[Data for Today]
+
+The .honey[ncbirths] dataset is a random sample of 1,000 cases taken from a
+larger dataset collected in North Carolina in 2004. 
+
+Each case describes the birth of a single child born in North Carolina, along
+with various characteristics of the child (e.g. birth weight, length of
+gestation, etc.), the child’s mother (e.g. age, weight gained during pregnancy,
+smoking habits, etc.) and the child’s father (e.g. age). 
+
+&lt;/br&gt;
+
+--
+
+.large[.honey[What do you expect the dataset to look like?]]
+
+
+---
+
+.rhubarb[.larger[Relationships Between Variables]]
+
+- In a statistical model, we generally have one variable that is the output and
+one or more variables that are the inputs. 
+
+.pull-left[
+- Response variable
+  * a.k.a. `\(y\)`, dependent
+  * The quantity you want to understand
+  * In this class -- always numerical
+]
+
+--
+
+.pull-right[
+- Explanatory variable
+  * a.k.a. `\(x\)`, independent, explanatory, predictor
+  * Something you think might be related to the response
+  * Either numerical or categorical
+]
+
+---
+
+.mango[.larger[Visualizing Linear Regression]]
+
+.pull-left[
+- The scatterplot has been called the most "generally useful invention in the
+history of statistical graphics." 
+
+- It is a simple two-dimensional plot in which the two coordinates of each dot
+represent the values of two variables measured on a single observation.
+]
+
+.pull-right[
+&lt;img src="day1_files/figure-html/viz-1.png" width="100%" /&gt;
+]
+
+---
+
+class: center, middle, inverse 
+
+.larger[Characterizing Relationships]
+
+&lt;!-- Scatterplots can reveal characteristics of the relationship between two variables. Any patterns - and deviations from those - we see in these plots could give us some insight into the nature of the underlying phenomenon. Specifically, we look for four things: form, direction, strength, and outliers. --&gt;
+
+Form (e.g. linear, quadratic, non-linear)
+
+Direction (e.g. positive, negative)
+
+Strength (how much scatter/noise?)
+
+Unusual observations (do points not fit the overall pattern?)
+
+---
+
+.hand[.larger[Your Turn]]
+
+.pull-left[
+&lt;img src="day1_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
+]
+
+.pull-right[
+How would your characterize this relationship? 
+
+- shape
+- direction
+- strength 
+- outliers
+]
+
+---
+
+.bayberry[.larger[Summarizing a Linear Relationship]]
+
+.pull-left[
+- Correlation: __strength and direction of a *linear* relationship between two
+*quantitative* variables__
+
+  * Correlation coefficient between -1 and 1
+  * Sign of the correlations shows direction
+  * Magnitude of the correlation shows strength
+]
+
+--
+
+.pull-right[
+
+```r
+ncbirths %&gt;% 
+  filter(is.na(weight) == FALSE, 
+         is.na(weeks) == FALSE, 
+         weeks &gt; 26) %&gt;% 
+  get_correlation(weeks ~ weight)
+```
+
+```
+## # A tibble: 1 x 1
+##     cor
+##   &lt;dbl&gt;
+## 1 0.578
+```
+]
+
+---
+
+class: middle, inverse
+
+.larger[Anscombe Correlations]
+
+&lt;!-- In 1973, statistician Francis Anscombe created a synthetic data set that has --&gt;
+&lt;!-- been used extensively to illustrate concepts related to correlation and --&gt;
+&lt;!-- regression. --&gt;
+
+.pull-left[
+&lt;img src="day1_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
+]
+
+.pull-right[
+
+Four datasets, very different graphical presentations  
+
+- same mean and standard deviation in both `\(x\)` and `\(y\)`
+- same correlation
+- same regression line
+]
+
+--
+
+.center[
+.large[.honey[For which of these relationships is correlation a reasonable summary measure?]]
+]
+
+---
+
+class: middle 
+
+.larger[The Importance of Language]
+
+&lt;/br&gt;
+
+- The word “correlation” has both a precise mathematical definition and a more general definition for typical usage in English. 
+
+--
+
+- These uses are obviously related and generally in sync.
+
+- There are times when these two uses can be conflated and/or misconstrued.
+
+---
+
+.gray[.larger[Linear Regression]]
+
+- Models are ubiquitous in statistics.
+
+  * We often assume that the value of our response variable is some function of
+  our explanatory variable, plus some random noise.
+  
+--
+
+- In this case, we assume the relationship between `\(x\)` and `\(y\)` takes the form 
+of a **linear function**.
+
+&lt;/br&gt;
+
+.center[
+$$
+  response = intercept + slope \cdot explanatory + noise
+$$
+]
+
+
+---
+
+class: inverse, middle
+
+.larger[Two Regression Equations]
+
+.large[.pink[Population Regression Model]]
+
+$$
+  y_i = \beta_0 + \beta_1 \cdot X + \epsilon_i \,, \qquad \epsilon \sim N(0, \sigma)
+$$
+&lt;/br&gt;
+
+--
+
+.large[.honey[Fitted Regression Model]]
+
+$$
+  \hat{y} = b_0 + b_1 \cdot x
+$$
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
