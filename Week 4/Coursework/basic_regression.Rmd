@@ -32,8 +32,16 @@ In this week's coursework we are going to start exploring statistical methods---
 
 By the end of this coursework you should be able to:
 
-
-
+- describe the difference between explanatory and predictive modeling 
+- produce data visualizations for a simple linear regression
+- describe how `R` decides on the "best" regression line
+- fit a simple linear regression in `R`
+- write out an estimated regression line
+- interpret the slope of an estimated regression line
+- interpret the intercept of an estimated regression line
+- describe what an "offset" is in a simple linear regression
+- interpret the offsets of an estimated regression line
+- calculate a residual for an observation
 
 ## This Week's TODOs
 
