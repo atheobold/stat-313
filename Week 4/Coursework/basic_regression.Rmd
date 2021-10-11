@@ -142,8 +142,8 @@ How would you describe this procedure to someone?
 
 3. How do you interpret an intercept coefficient?
 
-- For a 1-unit increase in $x$, the slope is the expected increase in $y$
-- For a 1-unit increase in $x$, the slope is the expected increase in the mean of $y$
+- For a 1-unit increase in $x$, the intercept is the expected increase in $y$
+- For a 1-unit increase in $x$, the intercept is the expected increase in the mean of $y$
 - For an $x$ value of 0, the intercept is the expected value of $y$
 - For an $x$ value of 0, the intercept is the expected value of the mean of $y$ 
 
@@ -151,7 +151,7 @@ How would you describe this procedure to someone?
 
 [explanatory / response] `~` [explanatory / response]
 
-5. What `geom_` adds a linear regression trend line to a scatterplot? 
+5. What `geom_` adds a linear regression line to a scatterplot? 
 
 - `geom_line()`
 - `geom_smoother()`
@@ -169,7 +169,7 @@ $$\hat{y} = b_0 + b_1 x$$
 
 ## Think Out Loud Recording
 
-Record your response to this week's think out loud prompt, exploring a key concept from the content covered during Week 2. You will be limited to 2 minutes and 30 seconds, to give you an idea of about how long you will have to describe your thinking in an oral exam. 
+Record your response to this week's think out loud prompt, exploring a key concept from the content covered during Week 3. You will be limited to 2 minutes and 30 seconds, to give you an idea of about how long you will have to describe your thinking in an oral exam. 
 
 **Prompt:** 
 
