@@ -1,0 +1,77 @@
+---
+title: "Lab 2 - Grading Guide"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+__1. (a) How large is the `nycflights` dataset? (i.e. How many rows and columns does it have?)__
+<!-- Your response goes below this line! -->
+
+
+
+__1. (b) Are there numerical variables in the dataset? If so, what are their names?__  
+<!-- Your response goes below this line! -->
+
+
+__2. Create a histogram of the `dep_delay` variable from the `nycflights` data__ 
+
+```{r histogram}
+# Your code for question 2 goes here! 
+
+
+```
+
+
+__3.  (a) Make two other histograms, one with a `binwidth` of 15 and one with a `binwidth` of 150.__
+
+```{r binwidth}
+# Your  code for question 3 goes here! 
+
+
+```
+
+__3. (b) How do these three histograms compare? Are features revealed in one that are obscured in another?__
+<!-- Your answer goes below this line -- do not remove this!  -->
+
+
+__4. Create a new dataframe named `sfo_flights` that contains only flights whose destination was San Francisco.__ 
+
+```{r}
+# Your code for question 4 goes here! 
+
+
+```
+
+__5.  Use your `sfo_flights` dataset to find the number of flights in July that arrived early.__ 
+
+```{r}
+## Code for exercise 5 here! 
+
+
+```
+
+__6. Find the average departure delays for each month.__ 
+**Bonus:** Arrange these average delays in ascending order. 
+**Hint:** The `arrange()` function is helpful for arranging numbers!
+
+```{r}
+## Code for exercise 6 goes here! 
+
+
+```
+
+__7. Now, rather than calculating means plot the distribution of departure delays, faceted by the month of departure.__
+
+You choose the type of plot you believe is appropriate for visualizing the **distribution** of departure delays. 
+
+```{r}
+## Code for exercise 7 goes here! 
+
+
+```
+
+__8. What information can you obtain from the visualization that you could not from the data summaries?__
+<!-- Your response to this question goes below this line!  -->
