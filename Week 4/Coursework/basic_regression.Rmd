@@ -37,20 +37,19 @@ By the end of this coursework you should be able to:
 
 ## This Week's TODOs
 
-`r emo::ji("book")` Reading: 30-45 minutes 
+`r emo::ji("book")` Reading: 45-60 minutes 
 
-`r emo::ji("computer")` Tutorials: 60-75 minutes 
+`r emo::ji("scroll")` Group Discussion Homework: 8 Questions  
+
+**Note:** These questions will be due on Thursday by 8pm 
 
 `r emo::ji("check")` Check-ins: 1 (submit on Canvas)
-
-`r emo::ji("scroll")` Group Discussion Homework: 8 Questions
-**Note:** These questions will be due on Thursday by 8pm 
 
 ---
 
 # Basic Regression  
 
-`r emo::ji("book")` [**Required Reading:** Basic Regression](https://moderndive.com/5-regression.html)
+`r emo::ji("book")` [**Required Reading:** *Modern Dive*, Basic Regression](https://moderndive.com/5-regression.html)
 
 **Note:** This is a different textbook than we have used the last two weeks! 
 
@@ -86,7 +85,7 @@ ggplot(evals, aes(x = age, y = score)) +
 ```
 
 4. Below is a regression table for the linear regression model of evaluation score as a function of the age of professor.
-Use the regression table to write out the estimated regression line. 
+Use the regression table to write out the estimated regression line for this relationship. 
 
 ```{r, echo = FALSE}
 age_lm <- lm(age ~ score, data = evals) 
@@ -112,8 +111,8 @@ ethnic_lm <- lm(score ~ ethnicity, data = evals)
 get_regression_table(ethnic_lm)
 ```
 
-8. What criteria does `R` use to decide what constitutes the "best" regression line?
-How is this criteria calculated (mathematically)?
+8. What procedure / criteria does `R` use to decide what constitutes the "best" regression line?
+How would you describe this procedure to someone? 
 
 ---
 
@@ -142,7 +141,7 @@ How is this criteria calculated (mathematically)?
 
 4. Match the explanatory and response variables to the correct location in the "formula" syntax. 
 
-variable1 `~` variable2
+[explanatory / response] `~` [explanatory / response]
 
 5. What `geom_` adds a linear regression trend line to a scatterplot? 
 
@@ -152,9 +151,9 @@ variable1 `~` variable2
 - `geom_smooth()`
 
 6. Match the following equations to either (1) the population regression equation or (2) the estimated / sample regression equation. 
-$ \hat{y} = \beta_0 + \beta_1 x$  
+$$\hat{y} = \beta_0 + \beta_1 x$$  
 
-$ \hat{y} = b_0 + b_1 x$  
+$$\hat{y} = b_0 + b_1 x$$  
 
 ---
 
