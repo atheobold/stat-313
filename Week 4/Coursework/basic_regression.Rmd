@@ -165,3 +165,8 @@ Record your response to this week's think out loud prompt, exploring a key conce
 
 **Prompt:** 
 
+Describe to someone two visualizations that can be used to visualize a *single* quantitative variable. Your description should include:
+
+- a summary of what each plot looks like
+- a description of when each plot should / should not be used
+- *at least one* strength and one weakness of each plot
