@@ -61,7 +61,7 @@ By the end of this coursework you should be able to:
 
 **Note:** This is a different textbook than we have used the last two weeks! 
 
-**Don't worry about Section 3.3.3**, it goes a bit too in the weeds for what we are interested in. 
+**Don't worry about Section 5.3.3**, it goes a bit too in the weeds for what we are interested in. 
 
 ---
 
@@ -99,7 +99,7 @@ score as a function of the age of professor.
 Use the regression table to write out the estimated regression line for this relationship. 
 
 ```{r, echo = FALSE}
-age_lm <- lm(age ~ score, data = evals) 
+age_lm <- lm(score ~ age, data = evals) 
 get_regression_table(age_lm)
 ```
 
@@ -165,9 +165,16 @@ How would you describe this procedure to someone?
 - `geom_smooth()`
 
 6. Match the following equations to either (1) the population regression equation or (2) the estimated / sample regression equation. 
-$$\hat{y} = \beta_0 + \beta_1 x$$  
 
-$$\hat{y} = b_0 + b_1 x$$  
+$$y_i = \beta_0 + \beta_1 \cdot x + \epsilon_i$$ 
+
+$$\hat{y} = \beta_0 + \beta_1 \cdot x + \epsilon_i$$  
+
+$$y_i = b_0 + b_1 \cdot x$$
+
+$$\hat{y} = b_0 + b_1 \cdot x$$  
+
+
 
 ---
 
