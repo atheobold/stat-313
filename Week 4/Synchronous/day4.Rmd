@@ -79,6 +79,16 @@ style_duo_accent(
 )
 ```
 
+class: inverse, center
+
+</br>
+
+```{r, out.width = "60%"}
+knitr::include_graphics("images/bumi-fire.jpg")
+```
+
+---
+
 class: center 
 
 .larger[Least Squares]
@@ -165,6 +175,16 @@ class: middle, inverse
 
 ---
 
+class: center, inverse
+
+</br>
+
+```{r, out.width = "60%"}
+knitr::include_graphics("images/bumi-patio.jpg")
+```
+
+---
+
 .larger[Eugenics and the US]
 
 - In 1896 Connecticut made it illegal for people with epilepsy or who were
@@ -209,6 +229,16 @@ knitr::include_graphics("images/hitler.jpg")
 - Believed Germans should do everything possible to make sure their gene pool 
 stayed "pure"
 ]
+
+---
+
+class: center, inverse
+
+</br> 
+
+```{r, out.width = "60%"}
+knitr::include_graphics("images/bumi-water.jpg")
+```
 
 ---
 
