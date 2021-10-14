@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Digging Deeper into Linear Regression</title>
+    <title>The Ugly History of Linear Regression</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr. Allison Theobold" />
-    <meta name="date" content="2021-10-12" />
+    <meta name="date" content="2021-10-14" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
@@ -17,9 +17,9 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Digging Deeper into Linear Regression
+# The Ugly History of Linear Regression
 ### Dr. Allison Theobold
-### October 12, 2021
+### October 14, 2021
 
 ---
 
@@ -29,307 +29,168 @@ class: center, middle, inverse, title-slide
 
 
 
-.hand[.larger[Review]]
+class: center 
+
+.larger[Least Squares]
 
 .pull-left[
-&lt;img src="day2_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
+Published in 1805 by Legendre
+&lt;img src="images/legendre.jpg" width="50%" height="40%" /&gt;
+]
+
+.pull-right[
+and Gauss in 1809
+&lt;img src="images/gauss.jpg" width="50%" height="20%" /&gt;
 ]
 
 --
 
-.pull-right[
-&lt;img src="day2_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
-]
+Used to determine, from astronomical observations, the orbits of bodies about
+the Sun. 
+
+&lt;!-- Mostly comets, but also later the then newly discovered minor planets. --&gt;
 
 ---
 
-.bayberry[.larger[Summarizing a Linear Relationship]]
+.larger["regression"]
 
 .pull-left[
-- Correlation: __strength and direction of a *linear* relationship between two
-*quantitative* variables__
-
-  * Correlation coefficient between -1 and 1
-  * Sign of the correlations shows direction
-  * Magnitude of the correlation shows strength
+![](images/galton.png)
 ]
-
---
 
 .pull-right[
+- Coined by Francis Galton in the 19th century
 
-```r
-births_post26 &lt;- ncbirths %&gt;% 
-  filter(is.na(weight) == FALSE, 
-         is.na(weeks) == FALSE, 
-         weeks &gt; 26)
-
-
-births_post26 %&gt;% 
-  get_correlation(weeks ~ weight)
-```
-
-```
-## # A tibble: 1 × 1
-##     cor
-##   &lt;dbl&gt;
-## 1 0.578
-```
+- Described a biological phenomenon
+  * Heights of children of tall parents tend to be tall, but shorter than
+  their parents
 ]
+
+&lt;!-- A phenomenon also known as regression toward the mean. --&gt;
+
+---
+
+class: center
+
+.larger[A "polymath"]
+
+.pull-left[
+![](images/correlation.jpg)
+]
+
+.pull-right[
+- In Statistics, Galton (1822–1911) is a towering figure.
+
+  * He invented standard deviation, correlation, linear regression, ANOVA
+  
+- Galton's developments and discoveries were fueled in large part by his fascination with the science of heredity.
+]
+
+&lt;!-- Galton was wrestling with the unanswered question of how different traits stayed stable in a population over generations, building on the work of his cousin Charles Darwin, who had published On the Origin of Species in 1859. --&gt;
 
 ---
 
 class: middle, inverse
 
-.larger[Anscombe Correlations]
-
-&lt;!-- In 1973, statistician Francis Anscombe created a synthetic data set that has --&gt;
-&lt;!-- been used extensively to illustrate concepts related to correlation and --&gt;
-&lt;!-- regression. --&gt;
+.larger[The Invention of Eugenics]
 
 .pull-left[
-&lt;img src="day2_files/figure-html/unnamed-chunk-5-1.png" width="100%" /&gt;
+- The science of heredity could help humanity better itself through breeding.
+
+- Based on Greek *eugenes*, meaning "well-born"
+  
+- Galton served as founding president of the British Eugenics Society
 ]
 
 .pull-right[
+&gt; "What nature does blindly, slowly and ruthlessly, man may do providently,
+&gt; quickly, and kindly. As it lies within his power, so it becomes his duty to
+&gt; work in that direction."
 
-Four datasets, very different graphical presentations  
-
-- same mean and standard deviation in both `\(x\)` and `\(y\)`
-- same correlation
-- same regression line
-]
-
---
-
-.center[
-.large[.honey[For which of these relationships is correlation a reasonable summary measure?]]
 ]
 
 ---
 
-class: middle 
+.larger[Eugenics and the US]
 
-.larger[The Importance of Language]
-
-&lt;/br&gt;
-
-- The word “correlation” has both a precise mathematical definition and a more general definition for typical usage in English. 
+- In 1896 Connecticut made it illegal for people with epilepsy or who were
+"feeble-minded" to marry. 
 
 --
 
-- These uses are obviously related and generally in sync.
-
-- There are times when these two uses can be conflated and/or misconstrued.
-
----
-
-.gray[.larger[Linear Regression]]
-
-- Models are ubiquitous in statistics.
-
-  * We often assume that the value of our response variable is some function of
-  our explanatory variable, plus some random noise.
-  
---
-
-- In this case, we assume the relationship between `\(x\)` and `\(y\)` takes the form 
-of a **linear function**.
-
-&lt;/br&gt;
-
-.center[
-$$
-  response = intercept + slope \cdot explanatory + noise
-$$
-]
-
-
----
-
-class: inverse, middle
-
-.larger[Two Regression Equations]
-
-.large[.pink[Population Regression Model]]
-
-$$
-  y_i = \beta_0 + \beta_1 \cdot X + \epsilon_i \,, \qquad \epsilon \sim N(0, \sigma)
-$$
-&lt;/br&gt;
+- John Kellogg established a "pedigree registry" 
 
 --
 
-.large[.honey[Estimated / Fitted Regression Model]]
+- From 1909 to 1979 California sterilized nearly 20,000 residents of the state 
+mental institutions
 
-$$
-  \hat{y} = b_0 + b_1 \cdot x
-$$
+--
+
+- In 1927 the US Supreme Court ruled that sterilization of the handicapped did 
+not violate the Constitution --- "...three generations of imbeciles are enough." 
+
+--
+
+- Between 1970 and 1976 between 25 and 50% of Native Americans were sterilized, 
+many without consent
 
 ---
 
 class: middle
 
-.larger[Coefficient Estimates]
+.larger[And then it spread...]
 
+.pull-left[
+&lt;img src="images/hitler.jpg" width="60%" height="50%" /&gt;
+]
 
-```r
-weeks_lm &lt;- lm(weight ~ weeks, data = births_post26)
+.pull-right[
+- *Mein Kampf* references American eugenics  
   
-get_regression_table(weeks_lm)
-```
-
-```
-## # A tibble: 2 × 7
-##   term      estimate std_error statistic p_value lower_ci upper_ci
-##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1 intercept   -5.34      0.565     -9.45       0   -6.45    -4.23 
-## 2 weeks        0.325     0.015     22.2        0    0.296    0.354
-```
+  * Declared non-Aryan races inferior
+  
+- Believed Germans should do everything possible to make sure their gene pool 
+stayed "pure"
+]
 
 ---
 
-class: middle, inverse
+class: middle, inverse, center
 
-.larger[Our focus (for now...)]
-
-![](images/coefficients.jpg)
-
----
-
-class: center, inverse
-
-.larger[Estimated regression equation]
-
-`$$\hat{y} = b_0 + b_1 \cdot x$$`
+.larger[Would you exist?]
 
 --
 
-.pull-left[
-`\(\hat{y} = \widehat{\text{weight}}\)` 
+.pull.left[
+Is your skin white?
+
+Are you blonde?
+
+Do you have blue eyes?
 ]
 
 --
 
 .pull-right[
-`\(b_0 = -5.34\)`  
+Were your ancestors poor?
 
-`\(b_1 = 0.325\)`
+Are you Muslim, Hindu, Buddhist, Sikh, Tao, or Jewish? 
 
-`\(x = \text{weeks}\)` 
+Are you LGBTQIQ+?
 ]
-
---
-
-&lt;/br&gt;
-
-`$$\widehat{\text{weight}} = -5.34 + 0.325 \cdot \text{weeks}$$`
 
 ---
 
-class: center, middle 
+.larger[More Information]
 
-.larger[.hand[Your Turn]]
-
-
-```r
-weight_gain_lm &lt;- lm(weight ~ gained, data = births_post26)
+- Radiolab Presents: G
+  * “G” is a multi-episode exploration of one of the most dangerous ideas of the
+  past century: the concept of intelligence.
+  * &lt;https://www.wnycstudios.org/podcasts/radiolab/projects/radiolab-presents-g&gt; 
   
-get_regression_table(weight_gain_lm)
-```
-
-```
-## # A tibble: 2 × 7
-##   term      estimate std_error statistic p_value lower_ci upper_ci
-##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1 intercept    6.74      0.102     65.8        0    6.54     6.94 
-## 2 gained       0.015     0.003      4.79       0    0.009    0.021
-```
-
-&lt;/br&gt;
-
-.large[.rhubarb[Write out the estimated regression equation!]]
-
----
-
-class: inverse, center
-
-.larger[Categorical Explanatory Variables]
-
-.pull-left-narrow[
-
-```r
-births_post26 %&gt;% 
-  distinct(habit)
-```
-
-```
-## # A tibble: 2 × 1
-##   habit    
-##   &lt;fct&gt;    
-## 1 nonsmoker
-## 2 smoker
-```
-]
-
---
-
-.pull-right-wide[
-
-```r
-habit_lm &lt;- lm(weight ~ habit, data = births_post26)
-  
-get_regression_table(habit_lm)
-```
-
-```
-## # A tibble: 2 × 7
-##   term     estimate std_error statistic p_value lower_ci upper_ci
-##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1 interce…     7.23     0.047    155.     0        7.14     7.32 
-## 2 habit: …    -0.4      0.13      -3.07   0.002   -0.656   -0.145
-```
-]
-
---
-
-.large[.honey[What is the estimated mean birth weight for nonsmoking mothers?]]
-
----
-
-.larger[Indicator Variables]
-
-$$
-  \hat{y} = b_0 + b_1 \cdot x
-$$
-
---
-
-.pull-left[
-`\(x\)` is a categorical variable
-- `"nonsmoker"`
-- `"smoker"`
-]
-
---
-
-.pull-right[
-Need: 
-- "baseline" mean 
-- "offsets" 
-]
-
---
-
-&lt;/br&gt;
-
-.center[
-`\(1_{smoker}(x) = 1\)` if the mother was a `"smoker"`, 0 otherwise
-]
-
---
-
-`$$\widehat{\text{weight}} = 7.23 - 0.4 \cdot 1_{smoker}(x)$$`
+- How Eugenics shaped Statistics
+  * &lt;https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics&gt; 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
