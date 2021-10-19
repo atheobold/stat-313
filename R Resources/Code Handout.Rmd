@@ -28,9 +28,6 @@ All of the examples below are in the context of the Palmer Penguins, found
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(moderndive)
-library(skimr)
-library(broom)
-
 library(palmerpenguins) 
 ```
 
@@ -46,8 +43,9 @@ glimpse(penguins)
 
 \vspace{0.5cm}
 
-- `skim()` -- shows a summary of the variables in the dataset, summary statistics
-for the quantitative variables, and the number of missing observations. 
+- `skim()` -- shows a summary of the variables in the dataset, summary
+statistics for the quantitative variables, frequencies for the categorical 
+variables, and the number of missing observations. 
 ```{r}
 skim(penguins)
 ```
@@ -75,35 +73,23 @@ cat_variables <- c("Species", "Island", "Sex")
 
 \vspace{0.5cm}
 
-- `data.frame()` -- creates a dataframe based on input variables 
-  * Values for each variable are specified as vectors (using `c()` )
-  * Variables are separated by commas 
-  
-```{r}
-simple <- data.frame(year = c(2000, 2001), 
-                     species = c("Adelie", "Gentoo"), 
-                     island = c("Torgersen", "Dream"))
-```
-  
-\vspace{0.5cm}
-
 ## Verbs of Data Wrangling
 
 - `select()` -- selects variables (columns) from a dataframe 
 ```{r}
-penguins %>% 
-select(species)
+penguins %>%
+  select(species, island, bill_length_mm)
 ```
 
 \vspace{0.5cm}
 
-- `filter()` -- filters observations (rows) out of / into a dataframe, where
-the inputs (arguments) are the conditions to be satisfied in the data that are
-kept 
+- `filter()` -- filters observations (rows) out of / into a dataframe
+  * The inputs (arguments) are the conditions to be satisfied in the data that
+  are kept 
 ```{r}
 ## It's nice to have a new line for each condition, so your code is easier to read!
 penguins %>% 
-filter(species == "Adelie",
+  filter(species == "Adelie",
        body_mass_g > 3000,
        year == 2008)
 
@@ -114,25 +100,27 @@ filter(species == "Adelie",
 - `mutate()` -- creates new variables or modifies existing variables
 ```{r}
 penguins %>% 
-  filter(is.na(bill_length_mm) != TRUE, 
-         is.na(bill_depth_mm) != TRUE) %>% 
-  mutate(body_mass_kg = body_mass_g / 1000)
+  mutate(body_mass_kg = body_mass_g / 1000, 
+         class = if_else(body_mass_kg > 27, "large", 
+                         "not large")
+         )
 ```
 
 \vspace{0.5cm}
 
-- `group_by()` -- groups the dataframe based on levels of a categorical variable, 
-usually used alongside `summarize()`
+- `group_by()` -- groups the dataframe based on levels of a categorical
+variable
+  * Usually used alongside `summarize()`
 
 ```{r, eval = FALSE}
 penguins %>% 
   group_by(island)
 ```
 
-\vspace{0.5cm}
+\newpage
 
-- `summarize()` -- creates data summaries of variables in a dataframe, for grouped 
-summaries use alongside `group_by()`
+- `summarize()` -- creates data summaries of variables in a dataframe
+  * For grouped summaries use after a `group_by()` step!
 
 ```{r}
 penguins %>% 
@@ -142,12 +130,21 @@ penguins %>%
 
 ```
 
-\newpage
+\vspace{0.5cm}
 
-- `arrange()` -- orders a dataframe based on the values of a numerical variable, 
-paired with `desc()` to order in descending order
+- `arrange()` -- orders a dataframe based on the values of a numerical variable
+  * By default arranges the variable in ascending order 
+  * To arrange in descending order, must be paired with `desc()`
 
 ```{r}
+# Ascending order
+penguins %>% 
+  filter(is.na(body_mass_g) != TRUE) %>% 
+  group_by(island) %>% 
+  summarize(mean_mass = mean(body_mass_g)) %>% 
+  arrange(mean_mass)
+
+# Descending order
 penguins %>% 
   filter(is.na(body_mass_g) != TRUE) %>% 
   group_by(island) %>% 
@@ -157,81 +154,58 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- `%>%` -- the "pipe" operator, joins sequences of data wrangling steps together, 
-works with any function that has `data = ` as the first argument 
+- `%>%` -- the "pipe" operator, joins sequences of data wrangling steps together
+  * Works with any function that has `data = ` as the **first** argument 
+  
 ```{r}
 penguins %>%
   select(species, island, body_mass_g, sex, year) %>% 
   filter(island ==   "Torgersen", 
-         is.na(body_mass_g) != TRUE) %>% 
-  group_by(species, year) %>% 
-  summarize(mean_mass = mean(body_mass_g),
-            median_mass = median(body_mass_g),
-            observations = n()) %>% 
-  arrange(desc(mean_mass))
+         is.na(body_mass_g) != TRUE)
 ```
 
 ## Other Data Wrangling Tools
 
 - `count()` -- counts the number of observations (rows) of the different levels 
 of a categorical variable
+
 ```{r}
 penguins %>% 
-count(species)
+  count(species)
 ```
   
-\vspace{0.5cm}
+\newpage
 
-- `mean()` -- finds the mean of a numerical variable, not resistant to `NA` values, 
-so either filter out prior or use `na.omit = TRUE` argument
+- `mean()` -- finds the mean of a numerical variable, not resistant to `NA`
+values, so either filter missing observations out prior or use the built-in 
+`na.omit = TRUE` argument
   * Other summary functions include:
-    +  `var()` -- find the variance of a numerical variable
-    +  `sd()` -- finds the standard deviation of a numerical variable
+    + `var()` -- find the variance of a numerical variable
+    + `sd()` -- finds the standard deviation of a numerical variable
     + `IQR()` -- find the innerquartile range (Q3 - Q1) of a numerical variable
     + `median()` -- finds the median of a numerical variable 
 
 \vspace{0.5cm}
 
-- `cor()` -- finds the correlation between two numerical variables
-  * Can remove the NA values from the variables by specifying that `cor()` 
-  should only `use` the "pairwise.complete.obs". 
-```{r}
-penguins %>% 
-  summarize(correlation = cor(bill_length_mm, bill_depth_mm, 
-                              use = "pairwise.complete.obs")
-  )
-```
-
-\vspace{0.5cm}
-
 - `get_correlation()` -- finds the correlation between two numerical variables
-  * Specified using a formula (`y ~ x`)
-  * Can remove the NA values from the variables by specifying `na.rm = TRUE`
-
+  * Variables are specified with "formula" syntax (e.g., `x ~ y`)
+  * Not resistant to `NA` values, so either filter missing observations out
+  prior or use the built-in `na.omit = TRUE` argument
+  
 ```{r}
 penguins %>% 
-  get_correlation(bill_length_mm ~ bill_depth_mm, na.rm = TRUE)
+  get_correlation(bill_length_mm ~ bill_depth_mm,
+                  na.rm = TRUE) 
 ```
-  
+
 \vspace{0.5cm}
 
 - `is.na()` -- returns a vector of `TRUE` and `FALSE` values corresponding to 
 whether a particular row of a variable was `NA` (missing)
 ```{r}
 penguins %>% 
-  mutate(missing_weight = is.na(body_mass_g))
-```
-
-\vspace{0.5cm}
-
-- `drop.levels()` -- drops the levels of a categorical variable that have no 
-observations in them, useful to use after filtering out levels of a categorical 
-variable, so the only levels that appear are the ones you wanted to keep
-
-```{r, eval = FALSE}
-penguins %>% 
-  filter(species != "Adelie") %>% 
-  droplevels()
+  mutate(missing_weight = is.na(body_mass_g)) %>% 
+  select(body_mass_g, missing_weight)
 ```
 
 \vspace{0.5cm}
@@ -245,21 +219,24 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- `slice_sample()` -- selects rows from the dataframe, based on the value of 
-`n` specified
+<!-- - `slice_sample()` -- selects a specific number of rows from a dataframe -->
+<!--   * The value of `n` states how many rows should be randomly selected -->
 
-```{r}
-penguins %>% 
-  slice_sample(n = 10)
-```
+<!-- ```{r} -->
+<!-- penguins %>%  -->
+<!--   slice_sample(n = 10) -->
+<!-- ``` -->
 
-\vspace{0.5cm}
+<!-- \vspace{0.5cm} -->
 
 - `if_else()` -- function which creates output based on a condition to be 
-satisfied, the first argument is the logical test we wish to perform, the second
-argument is what we want output if the result of the logical test is `TRUE`,
-the third argument is what we want output if the result of the logical test is
-`FALSE`
+satisfied
+  * The first argument is the logical comparison / test we wish to perform
+  * The second argument is what you want output if the result of the logical
+  test are `TRUE`
+  * The third argument is what you want output if the result of the logical test
+  are `FALSE`
+  
 ```{r}
 penguins %>%
   filter(is.na(flipper_length_mm) != TRUE) %>% 
@@ -272,7 +249,7 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- `%in%` -- the "inclusion operator", used to specify 2 or more levels of a 
+- `%in%` -- the "inclusion operator", used to specify two or more levels of a 
 categorical variable that you wish to keep in your data
   * The levels to be kept must be included in a vector (`c()`). 
 
@@ -283,22 +260,24 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- `as.factor()` -- converts a variable from numerical or character into a factor, 
-necessary if fitting a data model or producing a visualization with a numerical 
-variable that you want treated as categorical
+- `as.factor()` -- converts a variable from numerical or character into a factor
+  * This is necessary if fitting a data model or producing a visualization with
+  a numerical variable that you want treated as categorical (e.g., `year`)
   * `as.character()` will also work! 
 
 ```{r}
 penguins %>% 
   mutate(year_chr = as.character(year), 
-         year_fct = as.factor(year))
+         year_fct = as.factor(year)) %>% 
+  select(year, year_chr, year_fct)
 ```
 
   
 ## Data Visualization
 
-* `ggplot()` -- a function to create the shell of a visualization, where 
-specific variables are mapped to different aspects of the plot 
+* `ggplot()` -- a function to create the blank canvas for a visualization
+  * Maps specific variables to different aspects of the plot (e.g., x-axis, 
+  y-axis, color, fill)
 
 ```{r}
 penguins %>% 
@@ -307,28 +286,22 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- `aes()` -- aesthetics that can be used when creating a `ggplot()`, where the 
-aesthetics can either be hard coded (e.g. `color = "blue"`) or associated with 
-a variable (e.g. `color = sex`). 
+- `aes()` -- aesthetics that can be used when creating a `ggplot()`
+  * The aesthetics are **always** associated with a variable (e.g.
+  `color = sex`). 
   * The following are the aesthetic options for *most* plots:
     + `x`
     + `y`
-    + `alpha` -- changes transparency
-    + `color` -- produces colored outline 
-    + `fill` -- fills with color
-    + `group` -- used with categorical variables, similar to color
+    + `color` -- produces colored outline (good for points) 
+    + `fill` -- fills with color (good for barplots and boxplots)
 
 \vspace{0.5cm}
 
-- **`+`** -- an important aspect creating a `ggplot()` is to note that the 
-    `geom_XXX()` function is separated from the `ggplot()` function with a plus
-    sign, `+`.
-  * `ggplot()` plots are constructed in series of layers, where the plus sign
-    separates these layers.  
-  * Generally, the `+` sign can be thought of as the end of a line, so you
-    should always hit enter/return after it. While it is not mandatory to move
-    to the next line for each layer, doing so makes the code a lot easier to
-    organize and read. 
+- **`+`** -- separates "layers" of a `ggplot()`
+  * The `ggplot()` function is separated from the `geom_XXX()` function with a
+  plus sign because they are different layers of a plot
+  * The `+` sign can be thought of as the end of a layer, so you should always
+  hit enter/return after it. 
 
 ```{r, fig.width = 6}
 penguins %>% 
@@ -338,18 +311,26 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- `geom_histogram( )` -- adds a histogram to the plot, 
-where the observations are binned into ranges of values and then frequencies
-of observations are plotted on the y-axis
-  * You can specify the number of bins you want with the `bins` argument 
+## One Variable Plots 
+
+### Histograms 
+- `geom_histogram( )` -- adds a histogram to the plot
+  * Observations are binned into ranges of values and then frequencies 
+  of observations are plotted on the y-axis
+  * You can specify the width of the bins you want with the `binwidth`
+  argument (e.g., `binwidth = 2`)  -- **This is my preference**
+  * Or you can specify the number of bins you want with the `bins` argument 
+  (e.g., `bins = 20`) 
   
 ```{r}
 penguins %>% 
   ggplot(aes(x = bill_length_mm)) + 
-  geom_histogram(bins = 20)
+  geom_histogram(binwidth = 2)
 ```
 
 \vspace{0.5cm}
+
+### Dotplots 
 
 - `geom_dotplot()` -- plots each observation as a dot that's placed at it's
 appropriate value on the x axis, then stacked as other cases take similar values
@@ -361,7 +342,9 @@ penguins %>%
   geom_dotplot(dotsize = 1)
 ```
 
-\newpage
+\vspace{0.5cm}
+
+### Boxplots 
 
 - `geom_boxplot( )` -- adds a boxplot to the plot, where observations are 
 aggregated (summarized), the min, Q1, median, Q3, and maximum are plotted as the
@@ -377,7 +360,9 @@ penguins %>%
   geom_boxplot()
 ```
 
-\vspace{0.5cm}
+\newpage
+
+### Density Plots
 
 - `geom_density()` -- adds a density curve to the plot, where the probability
 density is plotted on the y-axis (so the density curve has a total area of one). 
@@ -392,12 +377,28 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- `geom_smooth()` -- plots a line over a set of points, draws the readers eye 
-to a specific trend
-  * The methods we will use are "lm" for a linear model (straight line), and 
-  "loess" for a wiggly line
-  * By default, the smoother gives you gray SE bars, to remove these add 
-  `se = FALSE` 
+## Two Variable Plots
+
+## Scatterplots 
+
+- `geom_point()` -- adds points to a plot
+  * can change the transparency of the point with `alpha` numbers closer to 0 
+  are more transparent (e.g., `alpha = 0.2`)
+
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) + 
+  geom_point()  
+```
+
+\vspace{0.5cm}
+
+- `geom_smooth()` -- plots a line over a set of points
+  * When used with a `color` variable, produces different lines for different 
+  groups (slopes and intercepts are different)
+  * The methods we will use are "lm" for a linear model (straight line)
+  * By default, the smoother gives you gray SE bars, to remove use the 
+  `se = FALSE` argument for the `geom_smooth()` function
   
 ```{r, fig.width = 6}
 penguins %>% 
@@ -408,8 +409,9 @@ penguins %>%
 
 \vspace{0.5cm}
 
-- `geom_parallel_slopes()` -- fits lines for each group of a categorical variable, 
-but forces the lines to have parallel slopes
+- `geom_parallel_slopes()` -- fits different lines for each group of a
+categorical variable, but forces the lines to have parallel slopes
+
 ```{r, fig.width = 6}
 penguins %>% 
   ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
@@ -417,7 +419,7 @@ penguins %>%
   geom_parallel_slopes() 
 ```
 
-\vspace{0.5cm}
+## Additional Plotting Options
 
 - `labs()` -- specifies the plot labels, possible labels are: x, y, color, fill, 
 title, and subtitle
@@ -432,35 +434,32 @@ penguins %>%
        color = "Penguin Species")
 ```
 
-\newpage
+<!-- - `xlim()` -- specifies the limits of the x-axis, must be specified as a vector -->
+<!-- (`c()`) -->
 
-- `xlim()` -- specifies the limits of the x-axis, must be specified as a vector
-(`c()`)
+<!-- ```{r} -->
+<!-- penguins %>%  -->
+<!--   ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +  -->
+<!--   geom_point() +  -->
+<!--   xlim(c(0, 70)) -->
+<!-- ``` -->
 
-```{r}
-penguins %>% 
-  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
-  geom_point() + 
-  xlim(c(0, 70))
-```
+<!-- \vspace{0.5cm} -->
 
-\vspace{0.5cm}
+<!-- - `ylim()` -- specifies the limits of the y-axis, must be specified as a vector -->
 
-- `ylim()` -- specifies the limits of the y-axis, must be specified as a vector
-
-```{r}
-penguins %>% 
-  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
-  geom_point() + 
-  ylim(c(0, 30))
-```
+<!-- ```{r} -->
+<!-- penguins %>%  -->
+<!--   ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +  -->
+<!--   geom_point() +  -->
+<!--   ylim(c(0, 30)) -->
+<!-- ``` -->
 
 \vspace{0.5cm}
 
 - `facet_wrap()` -- creates subplots of your original plot, based on the levels
 of the variable you input
-  * To facet by one variable, use `~variable`. 
-  * To facet by two variables, use `variable1 ~ variable2`. 
+  * To facet by one variable, use `~ variable`. 
   * If you prefer for your facets to be organized in rows or columns, use the 
   `nrow` and/or `ncol` arguments. 
   
@@ -498,30 +497,10 @@ model
 get_regression_table(model1)
 ```
 
-\vspace{0.5cm}
-
-- `summary()` -- produces a "raw" summary of a regression model
-  * The "untidy" version of a regression summary. 
-  * Includes same information as `get_regression_table()`, but also includes
-  $R^2$ and adjusted $R^2$. 
-
-```{r}
-summary(model2)
-```
-
 \newpage
 
-- `tidy()` -- takes untidy output and creates a nice table! 
-  * Similar to `get_regression_table()`, but doesn't output confidence intervals.
-  * Lives in the **broom** package
-```{r}
-tidy(model2)
-```
-
-\vspace{0.5cm}
-
 - `get_regression_points()` -- provides information on each observation used in
-a `lm()` in a tidy table format
+a tidy table format
   * Produces a table with the variables included in the regression, and the 
   residual associated with each observation
 
@@ -540,23 +519,22 @@ observation in the dataset
 predict(model1)
 
 new_penguin <- data.frame(bill_depth_mm = 200, body_mass_g = 500)
+
 predict(model1, newdata = new_penguin)
 ```
 
 \vspace{0.5cm}
 
-- `augment()` -- produces a tidy table of data values from a regression model
-  * Lives in the **broom** package
-  * Produces a table with the variables included in the regression, and 6 
-  additional columns:
-    + including `.fitted` (predicted y-value for that observation), `.resid`
-    (residual for that observation)
-  * Can make predictions for new observations with the `newdata` argument. 
-```{r}
-augment(model2)
+<!-- - `augment()` -- produces a tidy table of data values from a regression model -->
+<!--   * Lives in the **broom** package -->
+<!--   * Produces a table with the variables included in the regression, and 6  -->
+<!--   additional columns: -->
+<!--     + including `.fitted` (predicted y-value for that observation), `.resid` -->
+<!--     (residual for that observation) -->
+<!--   * Can make predictions for new observations with the `newdata` argument.  -->
+<!-- ```{r} -->
+<!-- augment(model2) -->
 
-new_penguin <- data.frame(bill_depth_mm = 15, sex = "female")
-augment(model2, newdata = new_penguin)
-```
-
-
+<!-- new_penguin <- data.frame(bill_depth_mm = 15, sex = "female") -->
+<!-- augment(model2, newdata = new_penguin) -->
+<!-- ``` -->
