@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Work Day: Coding a Multiple Linear Regression</title>
+    <title>The Future of Science (Hopefully)</title>
     <meta charset="utf-8" />
-    <meta name="date" content="2021-10-20" />
+    <meta name="date" content="2021-10-21" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="slide-style.css" type="text/css" />
   </head>
@@ -16,8 +18,8 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Work Day: Coding a Multiple Linear Regression
-### October 20, 2021
+# The Future of Science (Hopefully)
+### October 21, 2021
 
 ---
 
@@ -27,29 +29,102 @@ class: center, middle, inverse, title-slide
 
 
 
-class: center
+class: center, middle, inverse
 
-.larger[Multiple Linear Regression]
+.huge[.hand[Humans interpret data]]
 
-**Step 1:** Visualize the model using `geom_smooth(method = "lm")`  
+---
+
+.larger[A familiar context]
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; std_error &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; intercept &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 581.281 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.267 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; perc_disadvan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2.780 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.101 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+For a 1% increase in students who are economically disadvantaged, we expect the
+mean SAT math score to decrease by approximately -2.78. 
+
+---
+
+.larger[Your project]
+
+&lt;img src="day4_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle
+.larger[**Hermeneutics**  (hərmə'n(y)o͞odiks]
+
+&gt; *the study of interpretation*
+
+&lt;/br&gt;
+--
+
+.bitlarger[The philosophy of interpretation]
+
+&lt;!-- "Hermeneutics treats interpretation itself as the subject matter and not as  --&gt;
+&lt;!-- auxiliary to the study of something else."  --&gt;
+
+&gt; "Philosophically, hermeneutics concerns the meaning of interpretation--its
+&gt; basic nature, scope and validity, and its place within and implications for
+&gt; human existance." 
+
+---
+
+.larger[**Statistical Hermeneutics**]
+
+&gt; "The study of the interpretation of results and conclusions based on
+&gt; statistical theory, methods, and reasoning."
 
 --
 
-.rhubarb[If lines look similar move to step 2!]  
+- The complexities in interpretations of statistical models, results, etc. are
+often downplayed and taken for granted. 
 
-.mango[If lines look different move to step 3!]  
+- It is not often that we are hit with an *explicit* call to discuss our 
+*implicit* interpretations of the statements that arise from our use of
+statistical methods and results. 
+
+---
+
+class: middle, inverse
+
+.larger[Better for Science]
+
+&gt; "Modern science despite all of the methodological and technological 
+&gt; sophistication, has failed to account for the basic epistemic foundation 
+&gt; on which it lies." 
 
 --
 
-**Step 2:** Visualize the model using `geom_parallel_lines()`
+- Hermeneutics possesses a positive attitude toward the finitude of human 
+understanding. 
 
+  * The concern is not to eradicate our finitude, but to recognize the 
+  consequences of our limits. 
+  
 --
 
-**Step 3:** Fit the regression model with `lm()`
-
---
-
-**Step 4:** Get the coefficients with `get_regression_table()`
+&gt; "This finitude is itself an important opening for the persuit of new and 
+&gt; different meaning." 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

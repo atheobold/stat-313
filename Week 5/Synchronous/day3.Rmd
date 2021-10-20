@@ -82,7 +82,7 @@ class: center
 
 --
 
-.grey[If lines look similar move to step 2!]  
+.rhubarb[If lines look similar move to step 2!]  
 
 .mango[If lines look different move to step 3!]  
 
@@ -96,4 +96,4 @@ class: center
 
 --
 
-**Step 4:** Get the coefficients with `get_coefficient_table()`
+**Step 4:** Get the coefficients with `get_regression_table()`

@@ -1,5 +1,5 @@
 ---
-title: "Justifying Your Decisions"
+title: "The Future of Science (Hopefully)"
 date: "October 21, 2021"
 output:
   xaringan::moon_reader:
@@ -74,9 +74,97 @@ style_duo_accent(
 )
 ```
 
+class: center, middle, inverse
 
-<!-- Give example of report with same slopes but no justification.  -->
+.huge[.hand[Humans interpret data]]
 
-<!-- Ask what is missing.  -->
+---
 
-<!-- Have students outline what they would like to see in a report.  -->
+.larger[A familiar context]
+
+```{r, eco}
+table <- MA_schools %>% 
+  lm(average_sat_math ~ perc_disadvan, data = .) %>% 
+  get_regression_table() %>% 
+  select(term, estimate, std_error)
+
+table %>% 
+  kable() %>% 
+  kableExtra::kable_styling()
+```
+
+For a 1% increase in students who are economically disadvantaged, we expect the
+mean SAT math score to decrease by approximately `r filter(table, term == "perc_disadvan")$estimate`. 
+
+---
+
+.larger[Your project]
+
+```{r}
+MA_schools %>% 
+  ggplot(mapping = aes(x = perc_disadvan, y = average_sat_math, 
+                       color = size)) + 
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "lm", alpha = 0.5) + 
+  labs(x = "Percentage of Students Economically Disadvantaged", 
+       y = "Average SAT Math Score", 
+       color = "Size of School")
+```
+
+---
+
+class: middle
+.larger[**Hermeneutics**  (hərmə'n(y)o͞odiks]
+
+> *the study of interpretation*
+
+</br>
+--
+
+.bitlarger[The philosophy of interpretation]
+
+<!-- "Hermeneutics treats interpretation itself as the subject matter and not as  -->
+<!-- auxiliary to the study of something else."  -->
+
+> "Philosophically, hermeneutics concerns the meaning of interpretation--its
+> basic nature, scope and validity, and its place within and implications for
+> human existance." 
+
+---
+
+.larger[**Statistical Hermeneutics**]
+
+> "The study of the interpretation of results and conclusions based on
+> statistical theory, methods, and reasoning."
+
+--
+
+- The complexities in interpretations of statistical models, results, etc. are
+often downplayed and taken for granted. 
+
+- It is not often that we are hit with an *explicit* call to discuss our 
+*implicit* interpretations of the statements that arise from our use of
+statistical methods and results. 
+
+---
+
+class: middle, inverse
+
+.larger[Better for Science]
+
+> "Modern science despite all of the methodological and technological 
+> sophistication, has failed to account for the basic epistemic foundation 
+> on which it lies." 
+
+--
+
+- Hermeneutics possesses a positive attitude toward the finitude of human 
+understanding. 
+
+  * The concern is not to eradicate our finitude, but to recognize the 
+  consequences of our limits. 
+  
+--
+
+> "This finitude is itself an important opening for the persuit of new and 
+> different meaning." 
