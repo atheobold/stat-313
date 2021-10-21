@@ -114,7 +114,7 @@ MA_schools %>%
 ---
 
 class: middle
-.larger[**Hermeneutics**  (hərmə'n(y)o͞odiks]
+.larger[**Hermeneutics**  hərmə'n(y)o͞odiks]
 
 > *the study of interpretation*
 
