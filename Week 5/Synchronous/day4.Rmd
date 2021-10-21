@@ -93,6 +93,8 @@ table %>%
   kableExtra::kable_styling()
 ```
 
+--
+
 For a 1% increase in students who are economically disadvantaged, we expect the
 mean SAT math score to decrease by approximately `r filter(table, term == "perc_disadvan")$estimate`. 
 
@@ -120,11 +122,6 @@ class: middle
 
 </br>
 --
-
-.bitlarger[The philosophy of interpretation]
-
-<!-- "Hermeneutics treats interpretation itself as the subject matter and not as  -->
-<!-- auxiliary to the study of something else."  -->
 
 > "Philosophically, hermeneutics concerns the meaning of interpretation--its
 > basic nature, scope and validity, and its place within and implications for
@@ -164,7 +161,3 @@ understanding.
   * The concern is not to eradicate our finitude, but to recognize the 
   consequences of our limits. 
   
---
-
-> "This finitude is itself an important opening for the persuit of new and 
-> different meaning." 
