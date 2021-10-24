@@ -4,19 +4,17 @@ library(googlesheets4)
 
 set.seed(1234)
 
-final_exam <- read_sheet("https://docs.google.com/spreadsheets/d/1a9Hl7gT38i8Wk0hwFHcaQ9Ne4_NmhcoOoWfP1c-pm4I/edit#gid=0")
+midterm_exam <- read_sheet("https://docs.google.com/spreadsheets/d/1qka9tHiyiHTWMt_CpkySIaYZXXfKj0ZYN-8BoiKrSps/edit?usp=sharing") %>% 
+  rename(Monday = 'Monday, October 25', 
+         Tuesday = 'Tuesday, October 26')
 
-monday <- final_exam %>% 
+monday <- midterm_exam %>% 
   select(Monday) %>% 
   filter(Monday != "NULL")
 
-tuesday <- final_exam %>% 
+tuesday <- midterm_exam %>% 
   select(Tuesday) %>% 
   filter(Tuesday != "NULL")
-
-wednesday <- final_exam %>% 
-  select(Wednesday) %>% 
-  filter(Wednesday != "NULL")
 
 exam_questions <- function(x, bank){
   q <- rdunif(1, a = 1, b = bank)
@@ -32,9 +30,4 @@ monday_exams <- monday %>%
 tuesday_exams <- tuesday %>% 
   mutate(q1 = map_dbl(Tuesday, exam_questions, bank = 5), 
          q2 = map_dbl(Tuesday, exam_questions, bank = 5)
-  )
-
-wednesday_exams <- wednesday %>% 
-  mutate(q1 = map_dbl(Wednesday, exam_questions, bank = 5), 
-         q2 = map_dbl(Wednesday, exam_questions, bank = 5)
   )
