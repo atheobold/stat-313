@@ -1,37 +1,111 @@
 ---
-title: "Sampling & Inference"
-date: "October 14, 2020"
-output: ioslides_presentation
-fig_height: 4
-fig_width: 4
+title: "Sampling Variability -- The Heart of Inference"
+date: "October 28, 2021"
+author: "Dr. Allison Theobold"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
 ---
 
-<style type="text/css">
-slides > slide:not(.nobackground):after {
-  content: '';
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE,
+  tibble.width = 65,
+  width = 65
+  )
+
+# figure height, width, dpi
+knitr::opts_chunk$set(fig.width = 8, 
+                      fig.asp = 0.618,
+                      out.width = "60%",
+                      dpi = 300, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      fig.align = "center")
+
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
 }
-</style>
 
-```{r setup, include=FALSE}
-set.seed(12345)
-knitr::opts_chunk$set(warning = FALSE, 
-                       message = FALSE, 
-                      fig.width = 5, 
-                      fig.height = 4, 
-                      results = "hold")
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
 
-options(show.signif.stars = FALSE)
+library(emo)
 library(tidyverse)
-library(moderndive)
 library(openintro)
+library(ggridges)
 library(flair)
 library(broom)
 library(gridExtra)
 library(kableExtra)
-library(randomNames)
+library(png)
+library(moderndive)
+
+options(show.signif.stars = FALSE)
+```
+
+```{r set-theme, include = FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color      = "#b76352", # mango
+  secondary_color    = "#34605f", # bayberry
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  header_color = "#793540", #rhubarb
+  white_color = "#F5F5F5", # lightest color
+  black_color = "#36454F", # darkest color
+  text_font_size = "30px", 
+  link_color = "#696969" #grey
+)
 ```
 
 ## Data Context
+
+```{r data}
+
+coaches <- read_csv(here::here("Week 6", "Synchronous", 
+                               "data", "cu_csu_coaches.csv"))
+csu <- coaches %>% 
+  filter(Agency == "California State University")
+
+uc <- coaches %>% 
+  filter(Agency == "University of California")
+
+total_sample <- 150
+csu_n <- ( nrow(csu) / (nrow(csu) + nrow(uc)) ) * total_sample
+uc_n <- ( nrow(uc) / (nrow(uc) + nrow(csu)) ) * total_sample
+
+
+csu_sample <- csu %>% 
+  slice_sample(n = 
+                 floor(csu_n)
+               )
+
+uc_sample <- uc %>% 
+  slice_sample(n = 
+                 floor(uc_n)
+               )
+```
+
 
 Election news is everywhere we look, but gives us an amazing context to explore 
 sampling variability. 
