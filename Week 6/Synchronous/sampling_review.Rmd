@@ -34,7 +34,8 @@ knitr::opts_chunk$set(fig.width = 8,
                       dpi = 300, 
                       warning = FALSE, 
                       message = FALSE, 
-                      fig.align = "center")
+                      fig.align = "center",
+                      echo = FALSE)
 
 # fontawesome
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
@@ -58,6 +59,8 @@ library(gridExtra)
 library(kableExtra)
 library(png)
 library(moderndive)
+library(infer)
+library(scales)
 
 options(show.signif.stars = FALSE)
 ```
@@ -78,221 +81,330 @@ style_duo_accent(
 )
 ```
 
-## Data Context
+
+class: center, middle
+
+![](football.PNG)
 
 ```{r data}
 
 coaches <- read_csv(here::here("Week 6", "Synchronous", 
-                               "data", "cu_csu_coaches.csv"))
+                               "data", "cu_csu_coaches.csv")) %>% 
+  filter('Base Pay' > 0)
+
 csu <- coaches %>% 
   filter(Agency == "California State University")
 
 uc <- coaches %>% 
   filter(Agency == "University of California")
 
-total_sample <- 150
-csu_n <- ( nrow(csu) / (nrow(csu) + nrow(uc)) ) * total_sample
-uc_n <- ( nrow(uc) / (nrow(uc) + nrow(csu)) ) * total_sample
-
-
-csu_sample <- csu %>% 
-  slice_sample(n = 
-                 floor(csu_n)
-               )
-
-uc_sample <- uc %>% 
-  slice_sample(n = 
-                 floor(uc_n)
-               )
 ```
 
+---
 
-Election news is everywhere we look, but gives us an amazing context to explore 
-sampling variability. 
+class: middle, center, inverse
 
-```{r,fig.align='center', out.width= "80%", echo = FALSE}
-knitr::include_graphics("wide_poll.png")
-```
+.large[You have a sample of 25 UC & CSU coach salaries.] 
 
-## Sampling 
+--
 
-We may be interested in the proportion of US citizens voting for a particular 
-candidate, however it is unreasonable to sample every citizen. 
+.large[Would you feel comfortable inferring that the median salary of your
+sample is close to the median salary of *all* UC & CSU coaches?]
 
-- We take a sample of individuals, with the interest in inferring what we found 
-in our sample to a larger population of individuals. 
+--
 
-- We typically only get one sample, but repeated sampling gives us a better idea 
-of the variation in responses. 
+.large[Why or why not?]
 
 
-```{r, echo = FALSE}
+---
 
-polling <- tibble(name = randomNames(30, which.names = "first"), 
-                        biden = rbinom(n = 30, size = 1, prob = 0.522)) %>% 
-  mutate(biden = if_else(biden == 0, "no", "yes"))
-```
+class: middle
 
-## Sampling Variation
+.larger[In your team...]
 
-<div class="columns-2">
+.pull-left[
+.bitlarger[First]
 
-```{r, echo = FALSE}
-polling
-```
+- sample 10 salaries 
+- calculate the median
+
+]
+
+.pull-right[
+.bitlarger[Then]
+
+- sample 25 salaries 
+- calculate the median
+]
+
+
+---
+
+.larger[**Why take more samples?**]
+
+--
+
+.large[Variability is a central focus of the discipline of ***Statistics***!]
+
+--
+
+.large[Making decisions based on limited information is uncomfortable!]
+
+--
+
+.large[
+> You likely weren't willing to infer the population median salary from your
+> sample! 
+
+]
+
+
+---
+
+class: inverse, middle, center
+
+.larger[Sampling Framework]
+
+*population* -- collection of observations / individuals we are interested in  
+
+*population parameter* -- numerical summary about the population that is unknown
+but you wish you knew  
+
+--
+
+*sample* -- a collection of observations from the population  
+
+*sample statistic* -- a summary statistic computed from a sample that 
+*estimates* the unknown population parameter.
+
+---
+
+.larger[Statistical Inference]
+
+There were `r nrow(coaches)` "Head Coaches" at University of California and
+California State Universities in 2019
 
 ```{r}
-polling %>% 
-  count(biden)
+coaches %>% 
+  summarize(median = median(`Total Pay & Benefits`)) %>% 
+  kable(col.names = "Median salary for all coaches") %>% 
+  kable_styling()
 ```
 
+--
 
-## Virtual Sampling 
+Inferring information from your sample onto the population is called
+**statistical inference**. 
 
-```{r, echo = FALSE, cache=TRUE}
-polling_large <- tibble(name = randomNames(2500, which.names = "first"), 
-                        candidate = rbinom(n = 2500, size = 1, prob = 0.522)) %>% 
-  mutate(candidate = if_else(candidate == 0, "Trump", "Biden")
-         )
+--
+
+- If the sampling is done at random
+- the sample is representative of the population
+- any result based on the sample can generalize to the population
+- the point estimate is a “good guess” of the unknown population parameter
+
+---
+
+class: inverse
+
+
+.hand[.larger[Shouldn't one random sample be enough then?]]
+
+
+---
+
+.larger[Virtual Sampling]
+
+```{r, echo = TRUE, eval = FALSE}
+coaches %>% 
+  rep_sample_n(size = 25, reps = 1)
 ```
 
-Technically there are approximately 250,056,000 people in the US who are of 
-voting age. If we had a record of every person and their vote, we could take 
-repeated samples from this database of votes. 
+```{r, echo = FALSE}
+coaches %>% 
+  slice_sample(n = 25) %>% 
+  head() %>% 
+  select(`Employee Name`, `Job Title`, `Total Pay & Benefits`) %>% 
+  kable() %>% 
+  kable_styling()
 
-```{r}
-virtual_poll <- polling_large %>% 
+```
+
+<center>
+
+$\vdots$
+
+---
+
+class: middle, inverse
+
+.large[Distribution of 1000 medians from samples of 25 coaches]
+
+```{r samps, cache = TRUE}
+virtual_samples25 <- coaches %>% 
+  rep_sample_n(size = 25, reps = 1000)
+
+virtual_med25 <- virtual_samples25 %>% 
+  group_by(replicate) %>% 
+  summarize(median = median(`Total Pay & Benefits`)) %>% 
+  mutate(samps = "25")
+
+virtual_samples50 <- coaches %>% 
   rep_sample_n(size = 50, reps = 1000)
-```
 
-```{r, echo = FALSE}
-virtual_poll
-```
-
-
-## Distribution of Proportions for Multiple Samples
-
-<div class="columns-2">
-
-```{r, echo = FALSE}
-virtual_poll %>% 
+virtual_med50 <- virtual_samples50 %>% 
   group_by(replicate) %>% 
-  summarize(n_biden = sum(candidate == "Biden")) %>% 
-  mutate(prop_biden = n_biden / 50) 
-```
+  summarize(median = median(`Total Pay & Benefits`)) %>% 
+  mutate(samps = "50")
 
-```{r, echo = FALSE, fig.width=3}
-virtual_poll %>% 
+virtual_samples100 <- coaches %>% 
+  rep_sample_n(size = 100, reps = 1000)
+
+virtual_med100 <- virtual_samples100 %>% 
   group_by(replicate) %>% 
-  summarize(n_biden = sum(candidate == "Biden")) %>% 
-  mutate(prop_biden = n_biden / 50) %>% 
-  ggplot(aes(x = prop_biden)) + 
-  geom_histogram(bins = 12)
+  summarize(median = median(`Total Pay & Benefits`)) %>% 
+  mutate(samps = "100")
+
+master_samples <- bind_rows(virtual_med25, virtual_med50, virtual_med100) 
 ```
 
-## Sampling Distributions 
+```{r samp-25-plot, out.width = "60%"}
+master_samples %>% 
+ filter(samps == "50") %>% 
+  ggplot(mapping = aes(x = median)) + 
+  geom_histogram(binwidth = 6500, color = "white") + 
+  scale_x_continuous(labels = comma) + 
+  labs(x = "Median Salary")
+
+```
+
+---
+
+class: middle
+
+.larger[Sampling Distributions] 
 
 - Visualize the effect of sampling variation on the distribution of any point
-estimate -- in this case, the sample proportion  
+estimate
+  * In this case, the sample median
+  
+- We can use sampling distributions to make statements about what values we can
+typically expect.
 
-<div class="columns-2">
+--
 
-```{r, echo = FALSE, fig.width = 4, fig.height=4}
-virtual_poll %>% 
-  group_by(replicate) %>% 
-  summarize(n_biden = sum(candidate == "Biden")) %>% 
-  mutate(prop_biden = n_biden / 50) %>% 
-  ggplot(aes(x = prop_biden)) + 
-  geom_dotplot(dotsize = 0.25, color = "blue") + 
-  labs(title = "1000 Samples of Size 50")
-```
+- Be careful! A **sampling distribution** is different from a *sample's
+distribution*! 
 
-</br> 
+---
 
-```{r, echo = FALSE, fig.width = 8, fig.height=4}
+class: middle, inverse
 
-polling %>% 
-  count(biden)
+.large[Distributions of 1000 medians from different sample sizes]
 
-```
-
-## Distribution of Proportions for Different Sample Sizes
-
-```{r, echo = FALSE, warning=FALSE, message=FALSE}
-poll_25 <- polling_large %>% 
-  rep_sample_n(size = 25, reps = 1000) %>% 
-  group_by(replicate) %>% 
-  summarize(n_biden = sum(candidate == "Biden")) %>% 
-  mutate(prop_biden = n_biden / 25) 
-
-poll_50 <- polling_large %>% 
-  rep_sample_n(size = 50, reps = 1000) %>% 
-  group_by(replicate) %>% 
-  summarize(n_biden = sum(candidate == "Biden")) %>% 
-  mutate(prop_biden = n_biden / 50) 
-
-poll_100 <- polling_large %>% 
-  rep_sample_n(size = 100, reps = 1000) %>% 
-  group_by(replicate) %>% 
-  summarize(n_biden = sum(candidate == "Biden")) %>% 
-  mutate(prop_biden = n_biden / 100) 
-```
-
-```{r, echo = FALSE, fig.width = 8}
-plot_25 <- poll_25  %>% 
-  ggplot(aes(x = prop_biden)) + 
-  geom_histogram(bins = 15) + 
-  xlim(c(0.1, 0.9)) +
-  labs(title = "Sample Size 25")
-
-plot_50 <- poll_50  %>% 
-  ggplot(aes(x = prop_biden)) + 
-  geom_histogram(bins = 15) + 
-  xlim(c(0.1, 0.9)) +
-  labs(title = "Sample Size 50")
-
-plot_100 <- poll_100 %>% 
-  ggplot(aes(x = prop_biden)) + 
-  geom_histogram(bins = 15) + 
-  xlim(c(0.1, 0.9)) +
-  labs(title = "Sample Size 100")
-
-
-grid.arrange(plot_25, plot_50, plot_100, nrow = 1)
+.pull-left-wide[
+```{r samp-plots, out.width = "90%"}
+master_samples %>% 
+  mutate(samps = factor(samps, levels = c("25", "50", "100")
+                           )
+         ) %>% 
+  ggplot(mapping = aes(x = median)) + 
+  geom_histogram(binwidth = 6500, color = "white") + 
+  facet_wrap(~samps) + 
+  scale_x_continuous(labels = comma) + 
+  labs(x = "Median Salary")
 
 ```
+]
 
+--
 
-## Standard Deviations for Different Sample Sizes 
+.pull-right-narrow[
+.large[What differences do you see?] 
 
-```{r, echo = FALSE, eval = FALSE}
+]
 
-sds <- poll_25 %>% 
-  summarize(mean = mean(prop_biden), 
-            sd = sd(prop_biden))
+---
 
-sds <-  rbind(sds, 
-        poll_50 %>% 
-  summarize(mean = mean(prop_biden), 
-            sd = sd(prop_biden)))
+.larger[Variability for Different Sample Sizes] 
 
-sds <-  rbind(sds, 
-        poll_100 %>% 
-  summarize(mean = mean(prop_biden), 
-            sd = sd(prop_biden)))
+```{r, echo = FALSE}
+
+master_samples %>% 
+  mutate(samps = factor(samps, levels = c("25", "50", "100")
+                           )
+         ) %>%
+  group_by(samps) %>% 
+  summarize(sd = sd(median)) %>% 
+  kable(col.names = c("Sample Size", "Standard Error of Median")) %>% 
+  kable_styling()
+  
 ```
 
-| Sample Size | Estimate | SD     |
-| ----------- |:--------:| ------:|
-| n = 25      | 0.534    | 0.0986 |
-| n = 50      | 0.529    | 0.0720 |
-| n = 100     | 0.527    | 0.0489 |
+--
+
+- As a general rule, as sample size increases, the standard error decreases.
+
+- Standard errors quantify the variability of point estimates 
+
+--
+
+- Careful! There are important differences between *standard errors* and
+*standard deviations*. 
+
+---
+
+class: center, middle, inverse
+
+.larger[A good guess?]
+
+```{r samp-plots-true-value, out.width = "70%"}
+master_samples %>% 
+  mutate(samps = factor(samps, levels = c("25", "50", "100")
+                           )
+         ) %>% 
+  ggplot(mapping = aes(x = median)) + 
+  geom_histogram(binwidth = 6500, color = "white") + 
+  geom_vline(xintercept = median(coaches$`Total Pay & Benefits`), 
+             color = "red", 
+             lwd = 1.5) +
+  facet_wrap(~samps) + 
+  scale_x_continuous(labels = comma) + 
+  labs(x = "Median Salary")
+
+```
+
+---
 
 
+.larger[Precision & Accuracy] 
 
-
-## Precision & Accuracy 
-
-```{r,fig.align='center', out.width= "60%", echo = FALSE}
+.pull-left[
+```{r,fig.align='center', out.width= "95%", echo = FALSE}
 knitr::include_graphics("precision_accuracy.png")
 ```
+]
+
+--
+
+.pull-right[
+- Random sampling ensures our point estimates are accurate.
+
+</br>
+</br>
+</br>
+
+- Larger sample sizes ensure our point estimates are precise. 
+]
+
+---
+
+class: inverse, middle, center
+
+.huge[.mango[Exit Ticket]]
+
+.large[Summarize why we care about sampling distributions.]
+
+</br>
+
+.large[Tell me one question you still have about sampling distributions.]
