@@ -138,7 +138,7 @@ sample is close to the median salary of *all* UC & CSU coaches?]
 
 ---
 
-.larger[**Why take more samples?**]
+.larger[**Why sample more than once?**]
 
 --
 
