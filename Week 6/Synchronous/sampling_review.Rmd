@@ -102,22 +102,6 @@ uc <- coaches %>%
 
 ---
 
-class: middle, center, inverse
-
-.large[You have a sample of 25 UC & CSU coach salaries.] 
-
---
-
-.large[Would you feel comfortable inferring that the median salary of your
-sample is close to the median salary of *all* UC & CSU coaches?]
-
---
-
-.large[Why or why not?]
-
-
----
-
 class: middle
 
 .larger[In your team...]
@@ -137,6 +121,20 @@ class: middle
 - calculate the median
 ]
 
+---
+
+class: middle, center, inverse
+
+.large[You have a sample of 25 UC & CSU coach salaries.] 
+
+--
+
+.large[Would you feel comfortable inferring that the median salary of your
+sample is close to the median salary of *all* UC & CSU coaches?]
+
+--
+
+.large[Why or why not?]
 
 ---
 
@@ -191,8 +189,6 @@ coaches %>%
   kable_styling()
 ```
 
---
-
 Inferring information from your sample onto the population is called
 **statistical inference**. 
 
@@ -205,10 +201,12 @@ Inferring information from your sample onto the population is called
 
 ---
 
-class: inverse
+class: inverse, center, middle
 
 
-.hand[.larger[Shouldn't one random sample be enough then?]]
+.hand[.large[Shouldn't one random sample be enough then? Isn't 
+that what we use to make confidence intervals and do hypothesis
+tests?]]
 
 
 ---
@@ -293,12 +291,14 @@ typically expect.
 
 --
 
-- Be careful! A **sampling distribution** is different from a *sample's
+<center> 
+</br>
+Be careful! A **sampling distribution** is different from a *sample's
 distribution*! 
 
 ---
 
-class: middle, inverse
+class: middle, inverse, center
 
 .large[Distributions of 1000 medians from different sample sizes]
 
@@ -312,7 +312,10 @@ master_samples %>%
   geom_histogram(binwidth = 6500, color = "white") + 
   facet_wrap(~samps) + 
   scale_x_continuous(labels = comma) + 
-  labs(x = "Median Salary")
+  labs(x = "Median Salary") +
+  theme(axis.text.x = element_text(hjust = 1, 
+                                   vjust = 1, 
+                                   angle = 45))
 
 ```
 ]
@@ -320,6 +323,9 @@ master_samples %>%
 --
 
 .pull-right-narrow[
+</br>
+</br>
+</br>
 .large[What differences do you see?] 
 
 ]
@@ -343,14 +349,15 @@ master_samples %>%
 
 --
 
-- As a general rule, as sample size increases, the standard error decreases.
+- Standard errors quantify the variability of point estimates
 
-- Standard errors quantify the variability of point estimates 
+- As a general rule, as sample size increases, the standard error decreases.
 
 --
 
-- Careful! There are important differences between *standard errors* and
-*standard deviations*. 
+<center>
+Careful! There are important differences between **standard errors**
+and *standard deviations*. 
 
 ---
 
@@ -368,7 +375,7 @@ master_samples %>%
   geom_vline(xintercept = median(coaches$`Total Pay & Benefits`), 
              color = "red", 
              lwd = 1.5) +
-  facet_wrap(~samps) + 
+  facet_wrap(~samps, ) + 
   scale_x_continuous(labels = comma) + 
   labs(x = "Median Salary")
 
@@ -380,7 +387,7 @@ master_samples %>%
 .larger[Precision & Accuracy] 
 
 .pull-left[
-```{r,fig.align='center', out.width= "95%", echo = FALSE}
+```{r,fig.align='center', out.width= "90%", echo = FALSE}
 knitr::include_graphics("precision_accuracy.png")
 ```
 ]
@@ -388,6 +395,7 @@ knitr::include_graphics("precision_accuracy.png")
 --
 
 .pull-right[
+</br>
 - Random sampling ensures our point estimates are accurate.
 
 </br>
