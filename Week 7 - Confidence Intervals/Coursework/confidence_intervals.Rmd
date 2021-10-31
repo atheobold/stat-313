@@ -1,0 +1,128 @@
+---
+title: "Week Five: Statistical Inference, Starting with Confidence Intervals"
+author: ""
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library(tidyverse)
+library(gapminder)
+library(flair)
+library(emo)
+library(openintro)
+library(moderndive)
+library(skimr)
+library(gridExtra)
+```
+
+
+Welcome!
+
+In this week's coursework we are diving into the land of statistical inference. 
+We are going on a bit of a "backwards" journey, starting with confidence 
+intervals instead of hypothesis tests. I am doing this for a reason! I want for
+you to leave this week with the understanding of how the sampling distributions
+from last week connect to the distributions we use to make our confidence 
+intervals. 
+
+
+## Learning Outcomes 
+
+By the end of this coursework you should be able to:
+
+
+
+## This Week's TODOs
+
+`r emo::ji("book")` Reading: 60 - 75 minutes 
+
+`r emo::ji("paper")` Group Discussion Homework: __ questions  
+
+`r emo::ji("check")` Check-ins: __ 
+
+---
+
+# Confidence Intervals  
+
+`r emo::ji("book")` [**Required Reading:** *Modern Dive*, Confidence Intervals](https://moderndive.com/8-confidence-intervals.html)
+
+---
+
+# Group Concept Questions
+
+__Question 1__
+
+What does one dot on a bootstrap distribution represent?
+
+</br>
+
+__Question 2__ 
+
+When we resample with replacement from our original sample what are we assuming
+about our original sample?
+
+</br>
+
+__Question 3__ 
+
+Why do we resample *with replacement* when creating a bootstrap distribution? 
+Why can an observation be selected more than once?  
+
+</br>
+
+__Question 5__
+
+What is the relationship between a bootstrap distribution and a sampling 
+distribution?
+
+</br>
+
+__Question 6__
+
+In a bootstrap distribution we resample with replacement from our observed data
+the same number of times as samples in the original data. If we were to change
+our sample size in the process of creating a bootstrap distribution, what would
+happen? 
+
+</br>
+
+__Question 7__
+
+How is a bootstrap distribution used to find a confidence interval?
+
+</br>
+
+__Question 8__
+
+What is one similarity and one difference between using a bootstrap 
+distribution to find a confidence interval versus using a t-distribution? 
+
+<!-- Sim: -->
+<!-- Both approximate the true sampling distribution -->
+
+<!-- Diff: -->
+<!-- Bootstraps resample to approximate the distribution, t-distributions use  -->
+<!-- mathematical properties to approximate the distribution -->
+
+
+---
+
+# Check-in: 1
+
+
+# Check-in: 2
+
+
+---
+
+# Think Out Loud Recording 
+
+<!-- Something about sampling variability and sampling distributions -->
