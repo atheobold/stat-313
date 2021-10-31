@@ -88,7 +88,7 @@ class: center, middle
 
 ```{r data}
 
-coaches <- read_csv(here::here("Week 6", "Synchronous", 
+coaches <- read_csv(here::here("Week 6 - Midterms & Sampling", "Synchronous", 
                                "data", "cu_csu_coaches.csv")) %>% 
   filter('Base Pay' > 0)
 
