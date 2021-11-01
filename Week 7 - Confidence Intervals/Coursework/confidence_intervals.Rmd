@@ -106,7 +106,7 @@ distribution of the samples were left skewed?
 
 ### R Tutorial `r emo::ji("computer")` 
 
-Do __only__ Sections 1 and 2! <https://rstudio.csm.calpoly.edu/infer_CI_tutorial/>
+Do __only__ Sections 1 and 2! <https://allisontheobold.shinyapps.io/infer_CI_tutorial>
 
 </br>
 
@@ -171,7 +171,7 @@ to construct confidence intervals using the standard error method?
 
 ### `r emo::ji("computer")` R tutorial 
 
-Now do Sections 3 and 4! <https://rstudio.csm.calpoly.edu/infer_CI_tutorial/>
+Now do Sections 3 and 4! <https://allisontheobold.shinyapps.io/infer_CI_tutorial>
 
 ---
 
