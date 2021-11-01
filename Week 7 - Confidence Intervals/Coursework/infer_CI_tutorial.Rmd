@@ -22,10 +22,8 @@ library(learnr)
 options(scipen = 999)
 ```
 
-```{r data, include = FALSE}
-coaches_master <- read_csv(here::here("Week 7 - Confidence Intervals",
-                                      "Coursework", "data",
-                                      "cu_csu_coaches.csv")) %>% 
+```{r data, echo = FALSE}
+coaches_master <- read_csv("data/cu_csu_coaches.csv") %>% 
   filter('Base Pay' > 0)
 
 coaches <- coaches_master %>% 
@@ -58,9 +56,9 @@ glimpse(coaches)
 
 ```
 
-# Section 1 
+## Section 1 
 
-## Starting with one sample
+### Starting with one sample
 
 For our investigation, we are interested in estimating the median salary for 
 all CSU and UC coaches. In class we talked about creating the sampling 
@@ -125,12 +123,12 @@ coaches %>%
   geom_histogram(binwidth = 75000)
 ```
 
-# Section 2
+## Section 2
 
 Now, let's take our single sample of 50 and see what we might have gotten from 
 other random samples! 
 
-## One Resample 
+### One Resample 
 
 We'll start with getting one bootstrap resample. To do this we take our original 
 sample (stored in the `coaches` dataset) and resample with replacement 50 times. 
@@ -168,7 +166,7 @@ function to find the median of this resample.
 **Hint:** Remember to use the `one_resample` dataset!
 </div>
 
-## Multiple Resamples 
+### Multiple Resamples 
 
 Now, let's take what we learned about creating and summarizing one bootstrap
 resample and scale it up! 
@@ -222,7 +220,7 @@ multiple_resamples %>%
   summarize(median = median(`Total Pay & Benefits`))
 ```
  
-# Section 3
+## Section 3
 
 For confidence intervals, we'd like to have a method that is a bit more 
 dynamic than what we've been doing with `rep_sample_n()`, `group_by()`, and 
@@ -309,7 +307,7 @@ coaches_resample <- coaches %>%
   calculate(stat = "median")
 ```
 
-# Section 4
+## Section 4
 
 Alright, our final step is to use our bootstrap statistics to calculate a 
 confidence interval for the true median salary of all CSU and UC head coaches. 
