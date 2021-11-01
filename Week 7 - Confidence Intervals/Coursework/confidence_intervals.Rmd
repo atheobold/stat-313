@@ -38,6 +38,13 @@ intervals.
 
 By the end of this coursework you should be able to:
 
+- describe what a bootstrap distribution is
+- detail how a bootstrap distribution is made
+- explain how a bootstrap distribution relates to a sampling distribution
+- use R to: generate a bootstrap distribution, visualize the bootstrap
+distribution, & calculate the resulting confidence interval
+- outline what a confidence interval is estimating
+- diagnose incorrect interpretations of a confidence interval
 
 
 ## This Week's TODOs
@@ -97,7 +104,7 @@ distribution of the samples were left skewed?
 
 ## Section 8.2
 
-### R Tutorial `r emo::ji("computer")`
+### R Tutorial `r emo::ji("computer")` -- Currently experiencing issues, check back soon!
 
 Do __only__ Sections 1 and 2! <https://rstudio.csm.calpoly.edu/infer_CI_tutorial/>
 
@@ -162,7 +169,7 @@ to construct confidence intervals using the standard error method?
 
 ## Section 8.4 
 
-### `r emo::ji("computer")` R tutorial
+### `r emo::ji("computer")` R tutorial -- Currently experiencing issues, check back soon!
 
 Now do Sections 3 and 4! <https://rstudio.csm.calpoly.edu/infer_CI_tutorial/>
 

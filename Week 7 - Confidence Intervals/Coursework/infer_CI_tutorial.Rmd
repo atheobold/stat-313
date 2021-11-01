@@ -1,17 +1,28 @@
 ---
 title: "Creating a Bootstrap Distribution with infer"
-output: learnr::tutorial
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center", 
+                      fig.height = 3, 
+                      fig.width = 5,
+                      echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE)
+
 library(tidyverse)
-library(moderndive)
 library(infer)
 library(learnr)
 
 options(scipen = 999)
+```
 
+```{r data, include = FALSE}
 coaches_master <- read_csv(here::here("Week 7 - Confidence Intervals",
                                       "Coursework", "data",
                                       "cu_csu_coaches.csv")) %>% 
