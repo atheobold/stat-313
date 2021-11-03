@@ -1,0 +1,32 @@
+---
+title: 'Lab 3: Inference for Regression'
+author: "Your Name Here!"
+date: "Due by Sunday, November 8 at 11:59pm"
+output: html_document
+---
+
+Great for log transformation homework!!! 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse) ## for data wrangling & visualization
+library(moderndive) ## for regression table
+library(infer) ## for simulation based methods
+
+library(fivethirtyeight) ## for data -- you need to install first! 
+```
+
+# Data 
+
+```{r}
+bechdel %>% 
+  glimpse()
+
+bechdel %>% 
+  ggplot(aes(x = log(budget), y = log(domgross_2013))) + 
+  geom_point()
+
+```
+
+
