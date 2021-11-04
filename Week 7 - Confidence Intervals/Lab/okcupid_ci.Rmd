@@ -1,5 +1,5 @@
 ---
-title: "Lab 2: Confidence Intervals and OkCupid"
+title: "Lab 4: Confidence Intervals and OkCupid"
 author: "Your names here!"
 output: html_document
 ---
@@ -143,7 +143,7 @@ statistic you are interested in
 
 Let's give this a try! 
 
-__5. Generate a bootstrap distribution of differences in means from 1000 bootstrap resamples.__
+__5. Generate a bootstrap distribution of differences in means from 500 bootstrap resamples.__
 
 ```{r boot-dist, cache = TRUE}
 # Code to generate bootstrap distribution
@@ -161,7 +161,7 @@ statistics you calculated above.
 Keep in mind, your bootstrap statistics need to be **stored in an object** in 
 order for you to visualize them! 
 
-__6. Use the `visualize()` function to create a simple histogram of your 1000 bootstrap statistics.__
+__6. Use the `visualize()` function to create a simple histogram of your 500 bootstrap statistics.__
 
 ```{r}
 # Code to visualize bootstrap statistics
@@ -182,7 +182,7 @@ So, I think this could be a great instance to use an 80% confidence interval.
 __7. Use the `get_confidence_interval()` function to find the 80% confidence interval from your bootstrap distribution. Be sure to use the percentile method!__
 
 ```{r confidence-interval}
-# Code to obtain a 90% percentile based confidence interval
+# Code to obtain a 80% percentile based confidence interval
 
 
 ```
