@@ -1,5 +1,6 @@
 ---
-title: "Comparing Many Means with ANOVA"
+title: "Small Group Collaboration - Session 7"
+date: "November 5, 2020"
 output: ioslides_presentation
 ---
 
@@ -11,342 +12,313 @@ slides > slide:not(.nobackground):after {
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, 
-                      message = FALSE, 
                       fig.width = 4, 
-                      fig.height = 4)
-library(tidyverse) 
-library(palmerpenguins)
-library(gridExtra)
+                      fig.height = 4, 
+                      message = FALSE)
+library(tidyverse)
 library(openintro)
+library(gridExtra)
+library(moderndive)
 library(infer)
-library(broom)
-library(RColorBrewer)
+library(gapminder)
 
-evals_small <- evals %>% 
-  group_by(prof_id) %>% 
-  sample_n(size = 1) %>% 
-  ungroup()
+income <- read_csv("data/income_per_person_gdppercapita_ppp_inflation_adjusted.csv") %>% 
+  pivot_longer(-country, names_to = "year", values_to = "income")
 
+math <- read_csv("data/math_achievement_8th_grade.csv") %>% 
+  pivot_longer(-country, names_to = "year", values_to = "grade_8_math_score")
+
+income_math <- income %>% 
+  left_join(math, by = c("country", "year")) %>% 
+  filter(!is.na(grade_8_math_score), 
+         year == 2007, 
+         income < 90000, ## Removing Kuwait and Qatar
+         country != "Bahrain", 
+         country != "Oman", 
+         country != "Saudi Arabia")  
+
+obs_slope <- income_math %>% 
+  specify(grade_8_math_score ~ income) %>% 
+  calculate(stat = "slope")
+
+set.seed(1234)
 ```
 
+## Data 
 
-## Goal of an ANOVA
+These data come from the Gapminder Foundation, an organization interested in 
+increasing the use and understanding of statistics and other information about
+social, economic and environmental development at local, national and global
+levels.
 
-Analysis of variance (ANOVA) compares the means of three of more groups to 
-detect if the means of the groups are different. 
+- Math Achievement -- Average score in the international TIMSS test for children 
+in the 8th grade 
+- Income -- Gross domestic product per person adjusted for differences in
+purchasing power (in 2011 international dollars)
 
-  - ANOVA assess the differences in the group means relative to the 
-variability in the observations within each group. 
+We will be analyzing data form 42 countries from across the world from 2007. 
 
-</br> 
+## Exploratory Visualization 
 
-Ideally, we'd like to see:  
+```{r, echo = FALSE, fig.width=8}
+raw <- income_math %>% 
+  ggplot(aes(x = income, y = grade_8_math_score)) + 
+  geom_point() + 
+  labs(x = "Income (GDP per Person)", 
+       y = "8th Grade TIMSS Average Score")
 
-- large differences in the means of the groups 
-- small amounts of variability within each group
+smooth <- income_math %>% 
+  ggplot(aes(x = income, y = grade_8_math_score)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  labs(x = "Income (GDP per Person)", 
+       y = "")
 
-## Visualizing Differences 
-
-<div class="columns-2">
-
-```{r, echo = FALSE, echo = FALSE}
-penguins %>% 
-  ggplot(aes(x = bill_length_mm, y = island)) + 
-  geom_violin(aes(fill = island)) + 
-  geom_jitter(width = 0.2) +
-  theme(legend.position = "none") + 
-  scale_fill_brewer(palette = "RdPu") + 
-  labs(x = "Bill Length (mm)", 
-       y = "Island")
+grid.arrange(raw, smooth, nrow = 1)
 ```
 
-```{r, echo = FALSE}
-evals_small %>% 
-  ggplot(aes(x = rank, y = score)) + 
-  geom_violin(aes(fill = rank)) + 
-  geom_jitter(width = 0.2) +
-  theme(legend.position = "none") + 
-  scale_fill_brewer(palette = "GnBu") + 
-  labs(x = "Professor Rank", 
-       y = "Evaluation Score")
-```
+## Fitting a Linear Regression 
 
-</div>
-
-<center> 
-
-What can you say about the differences between the groups?  
-
-What can you say about the variability within the groups? 
-
-
-## Hypotheses 
-
-ANOVA uses a single hypothesis test to assess whether the means across many
-groups are equal. 
-
-- What would be the null hypothesis for the `evals` dataset?  
-  * What is the population parameter associated with the null hypothesis? 
-
-- What would be the alternative hypothesis for the `evals` dataset? 
-
-
-## Model Conditions for ANOVA
-
-Before performing an ANOVA, there are three conditions we must check: 
-
-- the observations are independent *within* and *across* groups  
-
-- the data within each group should be nearly normal 
-
-- the variability across the groups should be similar
-
-</br>
-</br> 
-<center> 
-What decisions would you reach for the conditions of the `penguins` and `evals`
-datasets? 
-
-## Sum of Squares 
-
-<div class="columns-2">
-
-```{r, echo = FALSE}
-means <- evals_small %>% 
-  group_by(rank) %>% 
-  summarise(mean_score = mean(score))
-
-evals_small %>% 
-  ggplot(aes(x = rank, y = score)) + 
-  geom_violin(aes(fill = rank)) + 
-  geom_jitter() +
-  theme(legend.position = "none") + 
-  scale_fill_brewer(palette = "GnBu") + 
-  labs(x = "Professor Rank", 
-       y = "Evaluation Score") + 
-  geom_segment(x = 0.5, y = 4.2, xend = 1.5, yend = 4.2, color = "red") +
-  geom_segment(x = 1.5, y = 4, xend = 2.5, yend = 4, color = "red") +
-  geom_segment(x = 2.5, y = 4.09, xend = 3.5, yend = 4.09, color = "red") 
-
-```
-
-<center> 
-
-- What do the red lines represent? 
-  * How are those used in the sum of squares calculation?  
-
-</br> 
-
-- What do the points represent? 
-  * How are those used in the sum of squares calculation? 
-
-## Decomposing an ANOVA Table 
-
-```{r, echo = FALSE}
-aov(score ~ rank, data = evals) %>% 
-  tidy()
+```{r}
+income_math_lm <- lm(grade_8_math_score ~ income, data = income_math)
+get_regression_table(income_math_lm)
 ```
 
 </br> 
 
-- What do the two *rows* correspond to? 
+- How would you interpret the coefficient on `income`? 
+- What does the `std_error` column represent?  
+- How is the `statistic` for `income` calculated?  
 
-<!-- (i.e. Which is the "between group" measure and which is the "within group" measure?S) -->
+## Model Conditions 
 
-- What is the difference between `sumsq` and `meansq`? 
+```{r, echo = FALSE, fig.width=8}
+line <- income_math_lm %>% 
+  ggplot(aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed")
 
-- How is the `statistic` calculated?  
+norm <- income_math_lm  %>% 
+  ggplot(aes(x = .resid)) +
+  geom_histogram(bins = 8)
 
-- How is the `p.value` calculated? 
+grid.arrange(line, norm, nrow = 1)
+```
 
-## Randomization Test for ANOVA 
+What decisions would you reach about the model conditions? 
 
-If the null hypothesis is true, then the evaluation score of each professor 
-should represent their true teaching ability.
+## Hypothesis Test 
 
-</br>
+- What are the hypothesis for testing for a linear relationship between income 
+and grade 8 math scores?  
 
-- How would you create a simulated null distribution to test for a difference in
-evaluation scores between the different ranks of professors?  
+- What population parameter are we interested in making inference about?
 
+## Permutation Distribution 
 
-- How is this process the same or different from a simulating a null distribution 
-for a difference in means?
+- What steps would be used to create the null distribution below?  
 
-
-## Visualizing the Null Distribution 
-
-<div class="columns-2">
-
-```{r, echo = FALSE}
-set.seed(12345)
-
-null_dist <- evals_small %>% 
-  specify(score ~ rank) %>% 
+```{r, echo = FALSE, fig.align='center', fig.width=6}
+null <- income_math %>% 
+  specify(grade_8_math_score ~ income) %>% 
   hypothesise(null = "independence") %>% 
-  generate(reps = 2000, type = "permute") %>% 
-  calculate(stat = "F")
+  generate(reps = 1000, type = "permute") %>% 
+  calculate(stat = "slope") 
 
-obs_F <- evals_small %>% 
-  specify(score ~ rank) %>% 
-  calculate(stat = "F")
-
-null_dist %>% 
-  visualise()  
-#  shade_p_value(obs_stat = obs_F, direction = "greater")
+null %>% 
+  visualize() 
 ```
 
-</br>
+## Obtaining a p-value
+
+- Given the distribution of permuted slopes, what information do you need to 
+calculate the p-value for the hypothesis test? 
+
+- What $\alpha$ would you choose for the test? Why? 
+
+- Given the p-value below, what decision would you make regarding your hypotheses? 
+
+- What would you conclude about the relationship? 
+
+</br> 
+<center>
+```{r, echo = FALSE}
+get_p_value(null, obs_stat = obs_slope, direction = "two-sided")
+```
+
+## Interpretting a p-value 
+
+The p-value above gives the following warning: 
+
+`Warning message: Please be cautious in reporting a p-value of 0. This result is an approximation based on the number of reps chosen in the generate() step.`
+
 </br> 
 
-- Why are there no negative values on the distribution?  
+- What does this mean? 
 
-- Why is the peak of the distribution at 1?   
+- For a distribution that used 1,000 reps, how would you interpret a p-value of 0? 
 
-- How would you calculate the p-value for the hypothesis test based on this
-distribution? 
+- How would you change this interpretation to use a probability statement instead?
 
-## Making a Conclusion 
+## Confidence Intervals & p-values  
 
-```{r, echo = FALSE}
-set.seed(12345)
-
-null_dist %>% 
-  get_p_value(obs_stat = obs_F, direction = "greater")
-```
-
+</br> 
 </br> 
 <center> 
 
-Based on the p-value above, what conclusion would you reach for this 
-hypothesis test?  
+Given the decision you reached for the hypothesis test, what range of values 
+do you think are plausible for $\beta_1$? Why? 
 
-Why do you suspect that the p-value using an $F$-distribution is much lower 
-(0.0679)?
+<!-- ## Boostrap Distribution -->
 
-## Comparing with a Parametric Test
+<!-- - What do each of the values plotted in the bootstrap distribution represent?   -->
 
-- How would the process we just carried out differ, if we chose to use an 
-$F$-distribution instead of simulating the null distribution? 
+<!-- - Where is the bootstrap distribution centered? Why?  -->
 
-- What are benefits of using an $F$-distribution?  
+<!-- ```{r, echo = FALSE, fig.align='center', fig.width=6} -->
+<!-- bootstrap <- income_math %>%  -->
+<!--   specify(grade_8_math_score ~ income) %>%  -->
+<!--   generate(reps = 1000, type = "bootstrap") %>%  -->
+<!--   calculate(stat = "slope")  -->
 
-- What are the costs of using an $F$-distribution?  
+<!-- bootstrap %>%  -->
+<!--   visualize() +  -->
+<!--   labs(x = "Re-sampled Slope Estimate") -->
 
+<!-- ``` -->
 
-## Code Used in Collaboration 
+<!-- ## Calculating a Confidence Interval  -->
 
-All of the slides after this slide are for the `R` code that was used during this presentation! 
+<!-- </br>  -->
 
-## Penguin Visualizations
+<!-- - We have three methods for calculating a confidence interval, what are they?  -->
+<!--   * What are the differences between the three methods?  -->
+<!--   * Which would you choose?   -->
+
+<!-- ## Comparing Confidence Intervals  -->
+
+<!-- <div class="columns-2"> -->
+
+<!-- ```{r, echo = FALSE, fig.height=3.5} -->
+<!-- percentile_ci <- get_confidence_interval(bootstrap, level = 0.95) -->
+
+<!-- se_ci <- get_confidence_interval(bootstrap, level = 0.95,  -->
+<!--                                  type = "se", point_estimate = obs_slope) -->
+
+<!-- t_ci <- get_regression_table(income_math_lm) %>% -->
+<!--     filter(term == "income") %>%  -->
+<!--   select(lower_ci, upper_ci) -->
+
+<!-- confidence_intervals <- rbind(percentile_ci,  -->
+<!--                               se_ci,  -->
+<!--                               t_ci) %>%  -->
+<!--   mutate(type = c("Percentile", "SE", "Theoretical")) %>%  -->
+<!--   select(type, lower_ci, upper_ci) -->
+
+<!-- confidence_intervals -->
+
+<!-- visualize(bootstrap) +  -->
+<!--   labs(x = "Re-sampled Slope Estimate",  -->
+<!--        title = "Bootstrap Distribution",  -->
+<!--        color = "Legend") + -->
+<!--   shade_confidence_interval(endpoints = percentile_ci, fill = NULL,  -->
+<!--                             linetype = "solid", color = "red") +  -->
+<!--   shade_confidence_interval(endpoints = se_ci, fill = NULL,  -->
+<!--                             linetype = "dashed", color = "blue") + -->
+<!--   shade_confidence_interval(endpoints = t_ci, fill = NULL,  -->
+<!--                             linetype = "dotted", color = "black") -->
+
+<!-- # scale_color_manual(name = "CI", -->
+<!-- # values = c( "Percentile" = "blue", "SE" = "red", "t-based" = "orange"), -->
+<!-- # labels = c("Percentile", "SE", "t-based")) -->
+
+<!-- ``` -->
+
+<!-- <center>  -->
+<!-- </br>  -->
+<!-- </br>  -->
+
+<!-- What are the differences between the three methods?  -->
+
+<!-- Do you believe certain methods are "better" than others in this case?   -->
+
+<!-- ## Interpreting a Confidence Interval  -->
+
+<!-- Let's assume you chose the percentile method to calculate your confidence  -->
+<!-- interval (shown below).  -->
+
+<!-- <center> -->
+<!-- ```{r, echo = FALSE} -->
+<!-- percentile_ci -->
+<!-- ``` -->
+<!-- </center> -->
+
+<!-- </br>  -->
+
+<!-- - What value are we 95% confident is contained in the interval?   -->
+
+<!-- - How then would you interpret this confidence interval?   -->
+
+<!-- - What do we mean when we say we're "95% confident"?  -->
+
+## Code Used in this Session 
+
+- Visualizations 
 
 ```{r, eval = FALSE}
-penguins %>% 
-  ggplot(aes(x = bill_length_mm, y = island)) + 
-  geom_violin(aes(fill = island)) + 
-  geom_jitter() +
-  theme(legend.position = "none") + 
-  scale_fill_brewer(palette = "RdPu")
+raw <- income_math %>% 
+  ggplot(aes(x = income, y = grade_8_math_score)) + 
+  geom_point() + 
+  labs(x = "Income (GDP per Person)", 
+       y = "8th Grade TIMSS Average Score")
+
+smooth <- income_math %>% 
+  ggplot(aes(x = income, y = grade_8_math_score)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  labs(x = "Income (GDP per Person)", 
+       y = "")
 ```
 
-## Evals Visualization 
+## Model Conditions -- Code
 
 ```{r, eval = FALSE}
-evals %>% 
-  ggplot(aes(x = rank, y = score)) + 
-  geom_violin(aes(fill = rank)) + 
-  geom_jitter() +
-  theme(legend.position = "none") + 
-  scale_fill_brewer(palette = "GnBu")
+line <- income_math_lm %>% 
+  ggplot(aes(x = .fitted, y = .resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, 
+             color = "red", 
+             linetype = "dashed")
+
+norm <- income_math_lm  %>% 
+  ggplot(aes(x = .resid)) +
+  geom_histogram(bins = 8)
 
 ```
 
-
-## Sum of Squares 
-
-```{r, eval = FALSE}
-means <- evals_small %>% 
-  group_by(rank) %>% 
-  summarise(mean_score = mean(score))
-
-evals_small %>% 
-  ggplot(aes(x = rank, y = score)) + 
-  geom_violin(aes(fill = rank)) + 
-  geom_jitter() +
-  theme(legend.position = "none") + 
-  scale_fill_brewer(palette = "GnBu") + 
-  labs(x = "Professor Rank", 
-       y = "Evaluation Score") + 
-  geom_segment(x = 0.5, y = 4.2, xend = 1.5, yend = 4.2, color = "red") +
-  geom_segment(x = 1.5, y = 4, xend = 2.5, yend = 4, color = "red") +
-  geom_segment(x = 2.5, y = 4.09, xend = 3.5, yend = 4.09, color = "red") 
-
-```
-
-## ANOVA Table
+## Null Distribution -- Code
 
 ```{r, eval = FALSE}
-aov(score ~ rank, data = evals) %>% 
-  tidy()
-```
-
-
-## Null Distribution
-
-```{r, eval = FALSE}
-null_dist <- evals_small %>% 
-  specify(score ~ rank) %>% 
+null <- income_math %>% 
+  specify(grade_8_math_score ~ income) %>% 
   hypothesise(null = "independence") %>% 
-  generate(reps = 2000, type = "permute") %>% 
-  calculate(stat = "F")
+  generate(reps = 1000, type = "permute") %>% 
+  calculate(stat = "slope") 
 
-obs_F <- evals_small %>% 
-  specify(score ~ rank) %>% 
-  calculate(stat = "F")
-
-null_dist %>% 
-  visualise() + 
-  shade_p_value(obs_stat = obs_F, direction = "greater")
+null %>% 
+  visualize() 
 ```
 
-## p-value Calculation 
+## p-value -- Code
 
 ```{r, eval = FALSE}
-null_dist %>% 
-  get_p_value(obs_stat = obs_F, direction = "greater")
+
+obs_slope <- income_math %>% 
+  specify(grade_8_math_score ~ income) %>% 
+  calculate(stat = "slope")
+
+get_p_value(null, 
+            obs_stat = obs_slope, 
+            direction = "two-sided")
 ```
-
-
-
-```{r, echo=FALSE, eval=FALSE}
-set.seed(123)
-
-a1 <- rnorm(100, mean = 2, sd = 0.25)
-a2 <- rnorm(100, mean = 3, sd = 0.25)
-a3 <- rnorm(100, mean = 4, sd = 0.25)
-a <- abs(c(a1, a2, a3))
-
-b1 <- rnorm(100, mean = 2, sd = 0.5)
-b2 <- rnorm(100, mean = 3, sd = 0.5)
-b3 <- rnorm(100, mean = 4, sd = 0.5)
-b <- c(b1, b2, b3)
-
-d1 <- rnorm(100, mean = 2, sd = 1)
-d2 <- rnorm(100, mean = 3, sd = 1)
-d3 <- rnorm(100, mean = 4, sd = 1)
-d <- c(d1, d2, d3)
-
-y <- c(a, b, d)
-x <- factor(rep(c(rep("teaching", 100), rep("tenure track", 100), rep("tenured", 100)), 3))
-z <- c(rep("I", 300), rep("II", 300), rep("III", 300))
-
-df <- tibble(x = x, y = y, z = z)
-
-ggplot(df, aes(x = y, y = x)) +
-  geom_violin() +
-  facet_grid( ~ z) + 
-  labs(x = "Score", 
-       y = "Rank")
-```
-
 
