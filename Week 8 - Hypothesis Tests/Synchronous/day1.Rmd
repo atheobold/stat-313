@@ -1,0 +1,79 @@
+---
+title: "`r emo::ji('scientist')` P-values & Hypothesis Tests"
+date: "November 8, 2021" 
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+```{r set-theme, include=FALSE}
+library(xaringanthemer)
+library(xaringan)
+library(knitr)
+library(tidyverse)
+library(moderndive)
+library(openintro)
+library(infer)
+library(flair)
+library(broom)
+library(gridExtra)
+library(kableExtra)
+
+set.seed(12345)
+knitr::opts_chunk$set(warning = FALSE, 
+                       message = FALSE, 
+                      fig.width = 5, 
+                      fig.height = 4, 
+                      results = "hold")
+
+options(show.signif.stars = FALSE)
+
+style_duo_accent(
+  primary_color      = "#0F4C81", # pantone classic blue
+  secondary_color    = "#B6CADA", # pantone baby blue
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  text_font_size     = "30px"
+)
+
+evals_small <- evals %>% 
+  group_by(prof_id) %>% 
+  sample_n(size = 1) %>% 
+  ungroup()
+
+obs_slope <- evals_small %>% 
+  specify(score ~ age) %>% 
+  calculate(stat = "slope")
+
+bootstrap_slope <- evals_small %>% 
+  specify(formula = score ~ age) %>%
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "slope")
+
+null_slope <- evals_small %>% 
+  specify(formula = score ~ age) %>%
+  hypothesise(null = "independence") %>% 
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "slope")
+```
+
+.huge-text[you...]
+
+.large[
+- understand sampling variability
+- know about confidence intervals
+- want to know how p-values fit in
+]
+
