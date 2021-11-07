@@ -1,0 +1,91 @@
+---
+title: "Stat 313: ANOVA Project"
+author: "Names here! Include both first and last names!"
+date: "Date submitted here!"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+## Do not change this code chunk! 
+## This has settings for how I want your report to look!
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      fig.align = "center")
+## This makes it so your code will not print to the page, which makes your report look more professional! 
+```
+
+```{r, include = FALSE}
+## Insert the code to include the packages you wish to use here!
+
+
+```
+
+```{r, include = FALSE}
+## Read in the data! 
+## To use similar code to the previous project, store the data file in the SAME folder as this RMarkdown document
+
+profiles <- read_csv("DIRECTIONS TO DATA HERE")
+```
+
+
+```{r, include = FALSE}
+## This is where you should write code to filter out the profiles that are not male users! 
+## Save this new dataset into a variable, so you can use it later! 
+
+```
+
+
+# Introduction 
+<!-- TODO: -->
+<!-- 1. Include a background description of the data. -->
+<!-- 2. Articulate the research questions of interest -- be specific! -->
+
+
+
+# Statistical Methods
+<!-- TODOs: -->
+<!-- Describe the response and explanatory variables. -->
+
+<!-- Provide a table summarizing the number of observations for every combination -->
+<!-- of marital status and sexual orientation (i.e. available & bisexual, married & -->
+<!-- gay, etc.). -->
+
+<!-- Provide a description of who is the most represented group in the data and  -->
+<!--   who is the least represented group.  -->
+
+<!-- Provide a data visualization of the relationship between height and marital status. Discuss the relationship seen in the plot, making direct reference to aspects of the plot.  -->
+
+<!-- Provide an additional data visualization of the relationship between height and marital status, differentiated by sexual orientation.  -->
+
+<!-- Describe what statistical method will be used to address the question of interest, and why this method is appropriate.-->
+
+<!-- Check model conditions for statistical model chosen. Include all necessary plots! -->
+
+
+
+# Summary of Statistical Findings 
+<!-- TODOs: -->
+<!-- What is your conclusion for the questions of interest? Namely, "Do self reported heights of male users differ by marital status?".  -->
+
+<!-- Provide estimates and interpretations of the differences in self-reported height for each marital status.   -->
+
+<!-- What is your conclusion for the second question of interest? Namely, "Does the relationship between a male user's self-reported height and marital status differs by sexual orientation?".  -->
+
+
+
+# Data Ethics
+<!-- TODOs: -->
+<!-- What are the ethical implications of scraping users information from the internet without their permission? Are these issues remedied by "de-identifying" the data?  -->
+
+<!-- What are the ethical implications of providing users with the limited options of gender and sexual orientation? How has Okcupid addressed this issue?  -->
+
+
+
+# Scope of Inference 
+<!-- TODO: -->
+<!-- 1. Who can the results of this investigation be applied to? Why?  -->
+<!-- 2. What can be said about the relationship between height and marital status? Why? -->
+
+
