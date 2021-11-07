@@ -47,26 +47,6 @@ style_duo_accent(
   code_font_google   = google_font("Source Code Pro"),
   text_font_size     = "30px"
 )
-
-evals_small <- evals %>% 
-  group_by(prof_id) %>% 
-  sample_n(size = 1) %>% 
-  ungroup()
-
-obs_slope <- evals_small %>% 
-  specify(score ~ age) %>% 
-  calculate(stat = "slope")
-
-bootstrap_slope <- evals_small %>% 
-  specify(formula = score ~ age) %>%
-  generate(reps = 1000, type = "bootstrap") %>% 
-  calculate(stat = "slope")
-
-null_slope <- evals_small %>% 
-  specify(formula = score ~ age) %>%
-  hypothesise(null = "independence") %>% 
-  generate(reps = 1000, type = "bootstrap") %>% 
-  calculate(stat = "slope")
 ```
 
 .huge-text[you...]
