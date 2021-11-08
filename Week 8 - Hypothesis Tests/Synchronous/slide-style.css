@@ -74,8 +74,16 @@ h4 {
   color: var(--peach-quartz);
 }
 
+.stucco {
+  color: var(--stucco);
+}
+
 .rstudio-blue{
   color: #3686D3
+}
+
+.grey {
+  color: var(--monument);
 }
 
 /* Font sizes */

@@ -52,8 +52,149 @@ style_duo_accent(
 .huge-text[you...]
 
 .large[
-- understand sampling variability
-- know about confidence intervals
+- understand the importance of sampling variability
+- know about using confidence intervals to estimate a range of plausible values
+for the population parameter
 - want to know how p-values fit in
 ]
+
+---
+
+class: center, middle, inverse
+
+.hand[.bitlarger[What if I want to know if the population parameter differs from a 
+specific value?]]
+
+--
+
+.larger[.pink[hypothesis test]]
+
+---
+
+class: center, middle 
+
+.huge-text[Goal:] 
+
+.large[Assess how different what we saw in our data is from what could have
+happened if the null hypothesis was true] 
+
+---
+
+class: center, middle, inverse
+
+.larger[Permutation Distribution]
+
+--
+
+Uses the original sample to generate new samples that might have occurred if 
+the null hypothesis was true. 
+
+--
+
+.rstudio-blue[We can use the statistics from these samples to approximate the
+true sampling distribution under the null!]
+
+---
+
+class: middle
+
+.bitlarger[**What could have happened under the null?**]
+
+--
+
+Like before, we are interested in knowing how a statistic varies from sample to 
+sample.
+
+--
+
+Again, knowing a statistic's behavior helps us make better / more informed
+decisions!
+
+--
+
+This helps us know what statistics are more or less likely to occur if the 
+null hypothesis is true.
+
+---
+
+class: inverse, center
+
+.huge-text[p-values]
+
+--
+
+.large[Quantify how "surprising" what we saw in our data is, if the null
+hypothesis was true]
+
+---
+
+class: middle, center
+
+.large[**Permutation Resamples**]
+
+--
+
+From your original sample, shuffle your observations together. 
+
+--
+
+Create new groups of observations (permuting the labels). 
+
+--
+
+<center>
+This is your .pink[permuted resample]. 
+</center>
+
+--
+
+Repeat this process many, many times. 
+
+--
+
+Calculate a numerical summary (e.g., mean, median) for each permuted resample. 
+
+--
+
+<center>
+These are your .pink[permuted statistics]. 
+</center>
+
+
+---
+
+class: inverse, center
+
+.bitlarger[Permutation Distribution]
+
+--
+
+.large[*definition*: a distribution of the .rstudio-blue[permuted statistics]
+from every .rstudio-blue[permuted resample]]
+
+--
+
+.large[Displays the variability in the statistic that could have happened with 
+repeated sampling, **if the null hypothesis was true**.] 
+
+--
+
+.large[.grey[Approximates the true sampling distribution under the
+null!]]
+
+---
+
+.larger[How do I get my p-value?]
+
+--
+
+.large[We compare the observed statistic with the statistics produced assuming 
+the null hypothesis was true.]
+
+--
+
+.large[A p-value summarizes the *probability* of obtaining a sample statistic
+as or more extreme than what we observed, **if the null hypothesis was true**.
+
+
 
