@@ -1,6 +1,6 @@
 ---
 title: "Obtaining & Interpreting p-values"
-date: "November 2, 2021"
+date: "November 9, 2021"
 author: "Dr. Allison Theobold"
 output:
   xaringan::moon_reader:
@@ -154,7 +154,7 @@ class: middle
 
 --
 
-.large[__Step 3:__ `generate()` bootstrap resamples]
+.large[__Step 3:__ `generate()` permuted resamples]
 
 --
 
@@ -388,7 +388,7 @@ class: middle, center
 --
 
 > "The probability of observing a difference in median salaries as or more
-> extreme than what was observed is approximately 0, if there was no
+> extreme than what was observed is approximately 0.2%, if there was no
 > relationship between university system and salary. 
 
 

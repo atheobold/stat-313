@@ -4,7 +4,7 @@
     <title>Obtaining &amp; Interpreting p-values</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr. Allison Theobold" />
-    <meta name="date" content="2021-11-02" />
+    <meta name="date" content="2021-11-09" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
@@ -19,7 +19,7 @@ class: center, middle, inverse, title-slide
 
 # Obtaining &amp; Interpreting p-values
 ### Dr. Allison Theobold
-### November 2, 2021
+### November 9, 2021
 
 ---
 
@@ -73,7 +73,7 @@ class: middle
 
 --
 
-.large[__Step 3:__ `generate()` bootstrap resamples]
+.large[__Step 3:__ `generate()` permuted resamples]
 
 --
 
@@ -246,17 +246,10 @@ get_p_value(null, obs_stat = diff_median, direction = "both")
 ```
 
 ```
-## Warning: Please be cautious in reporting a p-value of 0.
-## This result is an approximation based on the number of `reps`
-## chosen in the `generate()` step. See `?get_p_value()` for more
-## information.
-```
-
-```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1       0
+## 1   0.002
 ```
 
 ---
@@ -268,7 +261,7 @@ class: middle, center
 --
 
 &gt; "The probability of observing a difference in median salaries as or more
-&gt; extreme than what was observed is approximately 0, if there was no
+&gt; extreme than what was observed is approximately 0.2%, if there was no
 &gt; relationship between university system and salary. 
 
 
