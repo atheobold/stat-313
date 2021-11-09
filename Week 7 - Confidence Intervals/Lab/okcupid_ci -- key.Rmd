@@ -1,5 +1,5 @@
 ---
-title: "Lab 2: Confidence Intervals and OkCupid -- Key"
+title: "Lab 4: Confidence Intervals and OkCupid -- Key"
 author: "By: Dr. Theobold"
 output: html_document
 ---
@@ -14,58 +14,7 @@ library(infer)
 library(here)
 ```
 
-## Data 
-
-The data consists of the public profiles of 59,946 OkCupid users who were living
-within 25 miles of San Francisco, had active profiles during a period in the
-2010s, were online in the previous year, and had at least one picture in their
-profile.
-Using a Python script, data were scraped from users' public profiles.
-Any non-publicly facing information such as messaging was not accessible.
-Variables include typical user information (such as sex, sexual orientation,
-age, and ethnicity) and lifestyle variables (such as diet, drinking habits,
-smoking habits). Note that random noise was added to the age variable for 
-de-identification purposes.
-
-
-## Introducing the here package
-
-Very rarely are the data we want to work with stored in an R package.
-So, it would be helpful to know how to read a spreadsheet into R!
-
-One of my all time favorite packages is the **here** package.
-The here package is made to help make it easy to tell R how to navigate to
-files.
-When we read data into R, we need two things.
-First, we need a function that interprets data files and second, we need to tell
-R where the data live.
-
-With the here package, you specify how to get to the data 
-**relative to where the RMarkdown file is stored.** That means, we need to tell
-R to first look inside the data folder, and then to look at the
-profiles_revised.csv file.
-Thus, the code to read in the data looks something like this:
-
-> here("data", "profiles_revised.csv")
-
-Notice, the names of each folder and file are enclosed in quotations.
-The different steps along the path are separated with commas. 
-This code tells R how to find your data! 
-
 ## Reading in the Data
-
-Now that we know how to tell R how to get to our dataset, we need to use a 
-function to interpret the dataset we specified in our `here()` path.
-Our file is a .csv (comma separated values) spreadsheet. 
-This type of format has a specific function to go with it, the `read_csv()` 
-function! 
-
-The `read_csv()` function takes one argument, the path to the dataset. 
-Remember, we used the `here()` function to declare the path to our dataset. 
-So, all we need to do is insert our `here()` path as an argument in
-`read_csv()`. 
-
-Let's give it a try! 
 
 __1. Insert the path to read in the dataset!__ 
 
@@ -75,20 +24,12 @@ profiles <- read_csv(here("Week 7 - Confidence Intervals", "Lab",
                           "data", "profiles_revised.csv"))
 ```
 
+__Either full credit or a redo.__ 
+
+Redo if path is not specified with `here()` function!
+
 
 ## Filtering Data
-
-For this lab, we are going to investigate the difference in self-reported body
-height between *male* users who labeled their body type as "average" versus
-"athletic". 
-
-There were only two possible sexual identities given, male and female.
-So, we will need to filter out the users who identified as female
-(coded as "f").
-
-There were 12 different body types selected by users.
-We need to weed out all of the users who **did not** identify as either 
-"athletic" or "average". 
 
 __2. Write the code to filter the `profiles` dataset, so it only contains observations that meet the following criteria:__ 
 
@@ -103,19 +44,21 @@ profiles_final <- profiles %>%
 
 ```
 
+__4__
+
+Write correct `filter()` statements
+
+__3__
+
+Write two separate `filter()` statements
+
+__Redo__
+
+If they miss or have an incorrect filter
+
+</br>
 
 ## Visualizing Relationships
-
-Now that we have all of the data wrangling done, let's visualize some
-relationships!
-
-We are interested in whether self-reported height differs by body type.
-This type of investigation is similar to what we saw yesterday with the Adelie
-and Chinstrap penguins. 
-So, our visualization should allow for us to visualize the distribution of the
-self-reported heights for each of these two groups (average vs. athletic). 
-
-Let's give it a go! 
 
 __3. Create faceted histograms of the distribution of self-reported heights between these two body types.__ 
 
@@ -128,45 +71,57 @@ profiles_final %>%
   
 ```
 
+__4__
+
+For code given above. 
+
+_Consider giving comments on code "readability"._ 
+
+__Redo__
+
+If do not use faceting. 
+If do not use histograms.
+
+</br> 
 
 __4. Do you believe there is a difference in self-reported height between the two body types? Why or why not? Base your argument on the plot above!__
 <!-- Your response to this question goes below this line! -->
 
 *The distributions look about the same! The have nearly the same center, somewhere around 74 inches and roughly similar spread. It appears the there are more people who reported unusually tall heights in the athletic group than the average group.* 
 
+__4__
+
+- Argument states that the distributions appear to have the same center. 
+- Argument states that the distributions appear to have similar spread.
+
+__Redo__
+
+- Argument talks about either center or spread, but not both. 
+- Argument suggests the distributions are different.
+
+</br> 
+
 ## Bootstrap Distribution
-
-Well, let's see what variability we might get in the difference in mean heights
-for other samples we might have gotten from the population. 
-As a refresher, when we use resampling to obtain our bootstrap distribution, our
-steps look like the following:
-
-Step 1: `specify()` the response and explanatory variables
-
-Step 2: `generate()` lots of bootstrap resamples
-
-Step 3: `calculate()` for each of the `generated()` samples, calculate the
-statistic you are interested in
-
-
-Let's give this a try! 
 
 __5. Generate a bootstrap distribution of differences in means from 1000 bootstrap resamples.__
 
 ```{r boot-dist, cache = TRUE}
 boot_dist <- profiles_final %>% 
   specify(response = height, explanatory = body_type) %>% 
-  generate(reps = 1000, type = "bootstrap") %>% 
+  generate(reps = 500, type = "bootstrap") %>% 
   calculate(stat = "diff in means")
 ```
 
+__4__
 
-Alright, now that we have the boostrap distribution, let's see what it looks
-like! 
-Let's use the `visualize()` function to make a quick visualization of the
-statistics you calculated above. 
-Keep in mind, your bootstrap statistics need to be **stored in an object** in 
-order for you to visualize them! 
+For code above. 
+
+__Redo__
+
+If code is missing any components.  
+_Note:_ I said it was okay to have 500 reps instead of 1000. 
+
+</br> 
 
 __6. Use the `visualize()` function to create a simple histogram of your 1000 bootstrap statistics.__
 
@@ -175,18 +130,26 @@ __6. Use the `visualize()` function to create a simple histogram of your 1000 bo
 
 visualise(boot_dist)
 
+# OR 
+
+boot_dist %>% 
+  ggplot(mapping = aes(x = stat)) + 
+  geom_histogram()
+
 ```
 
+__4__ 
 
+For using the `visualize()` function *or* using `ggplot()` with
+`geom_histogram()`
+
+__Redo__
+
+If do not use either of these methods. 
+
+</br>
 
 ## Confidence Interval 
-
-The next step to obtain our confidence interval!
-First we need to determine what percentage of statistics we want to keep in the
-confidence interval. 90%? 95%? 99%? 80%?
-This seems like a study where we care a bit less about our interval capturing
-the true value, at least compared to something like a medical study.
-So, I think this could be a great instance to use an 80% confidence interval. 
 
 __7. Use the `get_confidence_interval()` function to find the 80% confidence interval from your bootstrap distribution. Be sure to use the percentile method!__
 
@@ -194,17 +157,46 @@ __7. Use the `get_confidence_interval()` function to find the 80% confidence int
 get_confidence_interval(boot_dist, level = 0.80, type = "percentile")
 ```
 
+__4__
+
+For code above.
+
+__3__
+
+If use `level = 0.95`. 
+
+__Redo__
+
+If use `type = "se"`
+
+</br>
+
 __8. Interpret the confidence interval you obtained in part 7. Make sure to include the context of the data!__
 <!-- Your response to this question goes below this line! -->
 
 *We are 80% confident that the true difference in mean self-reported height between athletic and average body types lies between 0.555 and 0.662, when taking athletic - average.*
 
+__4__
+
+Has all of the following components:
+
+- States 80% confidence
+- States the parameter of interest (difference in mean self-reported height
+between athletic and average body types)
+- States the range of values found above
+- States the order of subtraction (athletic - average)
+
+__3__
+
+Has all of the above components *except* for the order of subtraction.  
+
+__Redo__
+
+Otherwise
+
+</br>
 
 ## Bootstrap Assumptions
-
-A bootstrap distribution aims to simulate the variability we'd get from other 
-samples from our population. However, the accuracy of these samples relies on
-the quality of our original sample. 
 
 __9. Based on the information given, how do you feel about the assumption a bootstrap distribution makes about the original sample? What issues do you believe might prevent this assumption being appropriate?)__
 <!-- Your response to this question goes below this line! -->
@@ -213,3 +205,18 @@ __9. Based on the information given, how do you feel about the assumption a boot
 
 *Because of the nature of how the data were collected, there are a variety of ways the sample could be biased. For example, this sample doesn't include users without profile pictures or who hadn't been online in over a year. These biases make it so that I wouldn't feel comfortable saying that this sample is "representative" of some broader population, even if that population is OkCupid users who lived by San Francisco in the 2010s.* 
 
+__4__
+
+The statement should say that the bootstrap assumption about the sample being
+representative of the population is not valid. The statement should include the
+following information: 
+
+- This was a non-random sample
+- The sample is not representative of other OkCupid users
+
+The statement should include *at least* one __reasonable__ issue that would 
+bias this sample (e.g., scraping, profile picture, location, last online, etc.)
+
+__Redo__
+
+If missing any of the components
