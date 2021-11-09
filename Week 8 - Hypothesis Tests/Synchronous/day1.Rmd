@@ -194,7 +194,14 @@ the null hypothesis was true.]
 --
 
 .large[A p-value summarizes the *probability* of obtaining a sample statistic
-as or more extreme than what we observed, **if the null hypothesis was true**.
+as or more extreme than what we observed, **if the null hypothesis was true**.]
 
+---
 
+.larger[Exit Ticket]
 
+.large[**What is one similarity and one difference between**]
+
+.pull-left[a permutation distribution] 
+
+.pull-right[a bootstrap distribution.]
