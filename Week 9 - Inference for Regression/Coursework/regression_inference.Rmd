@@ -1,0 +1,227 @@
+---
+title: "Week Eight: Statistical Inference with Hypothesis Tests"
+author: ""
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library(tidyverse)
+library(emo)
+library(gridExtra)
+```
+
+
+Welcome!
+
+In this week's coursework we are putting all of the pieces we've learned 
+together: linear regression, confidence intervals, and p-values! We are going 
+to use your knowledge of linear regression to make inferences about the value 
+of the population slope. 
+
+We are going to use permutation distributions to obtain other slope statistics
+that we could have observed **if the null hypothesis was true**. We are going to
+use bootstrap distributions to obtain other slope statistics we could have 
+observed from repeated samples from the population. Then, we will use these 
+distributions to make inferences about the value of the population slope
+($\beta$).
+
+
+## Learning Outcomes 
+
+By the end of this coursework you should be able to:
+
+<!-- p-values -->
+<!-- - describe what a permutation distribution is -->
+<!-- - detail how a permutation distribution is made -->
+<!-- - describe how permuting assumes the null hypothesis is true -->
+<!-- - explain how a permutation distribution relates to a sampling distribution -->
+<!-- - use R to:  -->
+<!--   * generate a permutation distribution -->
+<!--   * visualize the permutation distribution -->
+<!--   * calculate the observed statistic -->
+<!--   * calculate the resulting p-value -->
+<!-- - outline what a p-value represents -->
+<!-- - diagnose misinterpretations of a p-value -->
+
+<!-- Confidence intervals -->
+<!-- - describe what a bootstrap distribution is -->
+<!-- - detail how a bootstrap distribution is made -->
+<!-- - explain how a bootstrap distribution relates to a sampling distribution -->
+<!-- - use R to: generate a bootstrap distribution, visualize the bootstrap -->
+<!-- distribution, & calculate the resulting confidence interval -->
+<!-- - outline what a confidence interval is estimating -->
+<!-- - diagnose incorrect interpretations of a confidence interval -->
+
+
+
+---
+
+## This Week's TODOs
+
+`r emo::ji("book")` Reading: 60 - 75 minutes 
+
+`r emo::ji("video")` Video: 8 minutes
+
+`r emo::ji("paper")` Group Discussion Homework: 9 questions  
+
+`r emo::ji("check")` Check-ins: 2
+
+---
+
+# Hypothesis Tests 
+
+`r emo::ji("book")` [**Required Reading:** *Modern Dive*, Inference for Regression ](https://moderndive.com/10-inference-for-regression.html)
+
+---
+
+The TODO tasks are broken up by the section of the textbook. Each section has
+either (1) group concept questions or (2) check-in questions. 
+
+## Section 10.1 - Regression Refresher
+
+1. What parameter are we (typically) interested in for linear regression? What 
+symbol do we use to notate this parameter? 
+
+</br>
+
+## Section 10.2 - Interpreting Regression Tables
+
+### `r emo::ji("paper")` Group Concept Questions
+
+2. What does the "standard error" output in the regression table *mean*? i.e. 
+What does this value represent? 
+
+3. How is the "statistic" in the regression table found? How does this differ 
+from the observed slope? 
+
+4. The null hypothesis for testing a slope is $\beta = 0.$ What does this 
+hypothesis *mean* (i.e. what are you testing)?
+
+</br> 
+
+### `r emo::ji("check")` Check-in: Interpreting Regression Tables
+
+<!-- SE -->
+
+<!-- Statistic -->
+
+<!-- p-value -->
+
+<!-- CI -->
+
+</br>
+
+## Section 10.3 - Conditions for Inference for Regression
+
+### `r emo::ji("video")` Independence Violations
+
+Video link: <http://somup.com/crX20q0hwW>
+
+### `r emo::ji("paper")` Group Concept Questions
+
+5. What are three ways that observations could not be independent? 
+
+6. Can we ever *prove* that these conditions for inference are "met"? Why or 
+why not?
+
+</br>
+
+### `r emo::ji("check")` Check-in: Conditions for Inference
+
+1. What are the required conditions for linear regression?  
+
+- linear relationship between $x$ and $y$ 
+- a random sample was taken
+- independence of variables
+- independence of observations 
+- a large sample was collected
+- normality of residuals
+- normality of observations
+- equal variance of residuals
+
+2. Which of the following would violate the condition of independence?
+
+- repeated observations on the same person 
+- collecting a non-random sample
+- observations are related in time (temporal correlation)  
+- observations are geographically related (spatial correlation)
+- observations are biologically related 
+
+3. Which of the following would violate the condition of normality? 
+
+```{r, echo = FALSE}
+
+set.seed(12345)
+
+norm <- tibble(value = rnorm(n = 50)
+               )
+
+t <- tibble(value = rt(n = 50, df = 15)
+            )
+
+beta1 <- tibble(value = rbeta(n = 50, shape1 = 2, shape2 = 5)
+               ) %>% 
+  mutate(value = value - mean(value))
+
+beta2 <- tibble(value = rbeta(n = 50, shape1 = 4, shape2 = 10)
+            ) %>% 
+  mutate(value = value - mean(value))
+
+
+p1 <- norm %>% 
+  ggplot(aes(x = value)) + 
+  geom_histogram(binwidth = 0.4) +
+  labs(title = "Plot 1")
+
+p2 <- t %>% 
+  ggplot(aes(x = value)) + 
+  geom_histogram(binwidth = 0.75) +
+  labs(title = "Plot 2")
+
+p3 <- beta1 %>% 
+  ggplot(aes(x = value)) + 
+  geom_histogram(binwidth = 0.07) +
+  labs(title = "Plot 3")
+
+p4 <- beta2 %>% 
+  ggplot(aes(x = value)) + 
+  geom_histogram(binwidth = 0.08) + 
+  labs(title = "Plot 4")
+
+grid.arrange(p1, p2, p3, p4, nrow = 2)
+
+```
+
+
+4. Which of the following would violate the condition of equal variance?
+
+- observations that (when plotted) look like a cloud of points
+- observations that look like a funnel
+- observations that look like a sine wave
+
+5. What condition for inference are simulation-based methods more resistant to? 
+
+Type in the letter corresponding to the condition: L, I, N, or E. 
+
+</br>
+
+## Section 10.4 - Simulation Based Inference for Regression
+
+### `r emo::ji("paper")` Group Concept Questions
+
+7. How is the p-value in the regression table found? How does this differ from 
+simulation-based methods?
+
+8. How is the confidence interval in the regression table found? How does this
+differ from simulation-based methods?
+
+9. Why would someone choose to use simulation-based methods over theoretical
+($t$-based) methods? 

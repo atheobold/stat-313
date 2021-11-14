@@ -38,6 +38,18 @@ distribution to compare what we saw in our data and decide if what we saw was
 
 By the end of this coursework you should be able to:
 
+- describe what a permutation distribution is
+- detail how a permutation distribution is made
+- describe how permuting assumes the null hypothesis is true
+- explain how a permutation distribution relates to a sampling distribution
+- use R to: 
+  * generate a permutation distribution
+  * visualize the permutation distribution
+  * calculate the observed statistic
+  * calculate the resulting p-value
+- outline what a p-value represents
+- diagnose misinterpretations of a p-value
+
 ---
 
 ## This Week's TODOs
