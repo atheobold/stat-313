@@ -1,0 +1,175 @@
+---
+title: "Lab 5: Conducting Hypothesis Tests"
+author: "Your group's names here!"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+
+library(openintro)
+
+library(infer)
+
+library(skimr)
+```
+
+Every two years, the Centers for Disease Control and Prevention conduct the
+Youth Risk Behavior Surveillance System (YRBSS) survey, where it takes data from
+high schoolers (9th through 12th grade), to analyze health patterns.
+You will work with a selected group of variables from a random sample of
+observations during one of the years the YRBSS was conducted.
+
+Load the `yrbss` data set into your workspace.
+
+```{r load-data}
+data(yrbss)
+```
+
+There are observations on 13 different variables, some categorical and some
+numerical.
+The meaning of each variable can be found by bringing up the help file:
+
+```{r help, eval = FALSE}
+?yrbss
+```
+
+__1.  What are the cases in this data set? How many cases are there in our sample?__
+<!-- Your answer goes below this line! -->
+
+
+Remember that you can answer this question by viewing the data in the data 
+viewer or by using the following command:
+
+```{r str, eval = FALSE}
+glimpse(yrbss)
+```
+
+
+## Exploratory data analysis
+
+You will first start with analyzing the weight of the participants in kilograms,
+saved in the `weight` variable.
+
+The `skim()` function from the **skimr** package produces nice summaries of the
+variables in the dataset, separating categorical (character) variables from 
+quantitative variables.
+
+```{r summary}
+yrbss %>% 
+  skim()
+```
+
+__2.  How many observations are we missing weights from?__
+
+
+
+Next, consider the possible relationship between a high schooler's weight and
+their physical activity.
+Plotting the data is a useful first step because it helps us quickly visualize
+trends, identify strong associations, and develop research questions.
+
+First, let's create a new variable `physical_3plus`, which will be coded as
+either "yes" if the student is physically active for *at least* 3 days a week,
+and "no" if not.
+
+__3. Create a new variable named `physical_3plus` in the `yrbss` dataset, based on the qualifications above.__
+
+```{r new-var}
+# Code for question 3 goes here!
+
+
+```
+
+__4.  Make faceted histograms of the `weight` for the different values of `physical_3plus`. Is there a relationship between these two variables? What did you expect and why?__
+
+```{r faceted-histograms}
+# Code for question 4 goes here! 
+
+
+```
+
+The histograms allow for us to compare the distributions of weight between the 
+different groups of physical activity. We might also be interested in knowing 
+what the mean weight is for each group. 
+
+__5. Calculate the mean weight for the different levels of `physical_3plus`.__
+__Keep in mind, there are observations with missing values, so you will need to use the `na.rm = TRUE` argument inside the `mean()` function.__ 
+
+```{r means}
+# Code for question 5 goes here! 
+
+
+```
+
+There is an observed difference, but is this difference unlikely to have
+occurred if there was no difference in the weight between the two groups? 
+
+In order to answer this question we will conduct a hypothesis test.
+
+## Inference
+
+__6.  Write the hypotheses for testing if the average weights are different for those who exercise at least times a week and those who don't.__
+<!-- Your answer goes below this line! -->
+
+
+
+Next, we will work through creating a permutation distribution using tools from
+the **infer** package.
+
+But first, we need to find the observed difference in means, which we will save
+as `obs_diff`.
+
+```{r obs-stat, warning = FALSE}
+obs_diff <- yrbss %>%
+  specify(response = weight, explanatory = physical_3plus) %>%
+  calculate(stat = "diff in means", order = c("yes", "no"))
+```
+
+Recall that the `specify()` function is used to specify the variables you are
+considering, and you can use the `calculate()` function to specify the
+`stat`istic you want to calculate and the `order` of subtraction you want to
+use.
+
+For this hypothesis, the statistic you are searching for is the difference in
+means, with the order being `yes - no`.
+
+After you have calculated your observed statistic, you need to create a
+permutation distribution of statistics that might have occurred if the null 
+hypothesis was true. This distribution is created by shuffling the observed
+weights into new `physical_3plus` groups, labeled "yes" and "no"
+
+__7. Generate 500 permuted statistics for the permutation distribution and save these statistics in an object named `null_dist`.__
+
+```{r null-dist}
+# Code for question 7 goes here! 
+
+
+```
+
+We can visualize this null distribution with the following code:
+
+```{r}
+visualise(null_dist) 
+```
+
+__8. Use the `shade_p_value()` function to add a vertical red line to the plot above, demonstrating where the observed difference in means (`obs_diff`) falls on the distribution.__
+
+<!-- Add your code to the plot above! -->
+
+
+
+Now that you have calculated the observed statistic and generated a permutation
+distribution, you can calculate the p-value for your hypothesis test using the
+function `get_p_value()` from the infer package.
+
+```{r pvalue}
+null_dist %>%
+  get_p_value(obs_stat = obs_diff, direction = "two sided")
+```
+
+__9. What warning message do you get? Why do you think you get this warning message?__
+
+
+
+__10. Interpret the p-value you obtained in the context of this study.__  
