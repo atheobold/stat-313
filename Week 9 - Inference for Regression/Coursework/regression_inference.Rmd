@@ -38,29 +38,27 @@ distributions to make inferences about the value of the population slope
 
 By the end of this coursework you should be able to:
 
-<!-- p-values -->
-<!-- - describe what a permutation distribution is -->
-<!-- - detail how a permutation distribution is made -->
-<!-- - describe how permuting assumes the null hypothesis is true -->
-<!-- - explain how a permutation distribution relates to a sampling distribution -->
-<!-- - use R to:  -->
-<!--   * generate a permutation distribution -->
-<!--   * visualize the permutation distribution -->
-<!--   * calculate the observed statistic -->
-<!--   * calculate the resulting p-value -->
-<!-- - outline what a p-value represents -->
-<!-- - diagnose misinterpretations of a p-value -->
+- outline what hypotheses we use to test for a linear relationship
+- describe how a permutation distribution for a slope statistic is made
+  * connect the null hypothesis with how observations are permuted
+- describe how a bootstrap distribution for a slope statistic is made
+- interpret a p-value in the context of a linear relationship 
+- interpret a confidence interval in the context of a linear relationship
+- explain the similarities and differences between parametric ($t$-based)
+methods and non-parametric (simulation-based) methods
 
-<!-- Confidence intervals -->
-<!-- - describe what a bootstrap distribution is -->
-<!-- - detail how a bootstrap distribution is made -->
-<!-- - explain how a bootstrap distribution relates to a sampling distribution -->
-<!-- - use R to: generate a bootstrap distribution, visualize the bootstrap -->
-<!-- distribution, & calculate the resulting confidence interval -->
-<!-- - outline what a confidence interval is estimating -->
-<!-- - diagnose incorrect interpretations of a confidence interval -->
+- use R to:
+  * generate a permutation distribution for a slope
+  * visualize the permutation distribution
+  * calculate the observed slope statistic
+  * calculate a p-value for a hypothesis test
 
-
+  * generate a bootstrap distribution for a slope
+  * visualize the bootstrap distribution  
+  * calculate the resulting confidence interval  
+  
+  * fit a linear regression
+  * obtain a regression table from a linear model 
 
 ---
 
@@ -70,7 +68,7 @@ By the end of this coursework you should be able to:
 
 `r emo::ji("video")` Video: 8 minutes
 
-`r emo::ji("paper")` Group Discussion Homework: 9 questions  
+`r emo::ji("paper")` Group Concept Questions: 8 questions  
 
 `r emo::ji("check")` Check-ins: 2
 
@@ -87,10 +85,12 @@ either (1) group concept questions or (2) check-in questions.
 
 ## Section 10.1 - Regression Refresher
 
+### `r emo::ji("paper")` Group Concept Questions 
+
 1. What parameter are we (typically) interested in for linear regression? What 
 symbol do we use to notate this parameter? 
 
-</br>
+---
 
 ## Section 10.2 - Interpreting Regression Tables
 
@@ -111,13 +111,42 @@ hypothesis *mean* (i.e. what are you testing)?
 
 <!-- SE -->
 
-<!-- Statistic -->
+1. In a regression table, what does the "std_error" value associated with the 
+slope represent?
 
-<!-- p-value -->
+- the estimated standard deviation of the sampling distribution
+- the standard deviation of the sample
+- the standard error of the sample
+- the standard deviation of the bootstrap distribution
 
-<!-- CI -->
+2. In a regression table, how is the "std_error" value calculated? 
 
-</br>
+- the standard deviation of the sample
+- a mathematical formula
+- the standard deviation of the bootstrap distribution
+
+3. In a regression table, what is the "statistic" value associated with the 
+slope?
+
+- the sample slope
+- a $t$-statistic 
+- a bootstrap statistic
+- a $z$-statistic
+
+4. In a regression table, how is the p-value calculated?
+
+- using a $t$-distribution
+- using a permutation distribution with 1000 resamples
+- using a bootstrap distribution with 1000 resamples
+- using a Normal distribution 
+
+5. What percentage confidence interval is output in a regression table?
+
+- 90%
+- 95% 
+- 99%
+
+---
 
 ## Section 10.3 - Conditions for Inference for Regression
 
@@ -125,11 +154,11 @@ hypothesis *mean* (i.e. what are you testing)?
 
 Video link: <http://somup.com/crX20q0hwW>
 
+</br>
+
 ### `r emo::ji("paper")` Group Concept Questions
 
-5. What are three ways that observations could not be independent? 
-
-6. Can we ever *prove* that these conditions for inference are "met"? Why or 
+5. Can we ever *prove* that these conditions for inference are "met"? Why or 
 why not?
 
 </br>
@@ -211,17 +240,26 @@ grid.arrange(p1, p2, p3, p4, nrow = 2)
 
 Type in the letter corresponding to the condition: L, I, N, or E. 
 
-</br>
+---
 
 ## Section 10.4 - Simulation Based Inference for Regression
 
 ### `r emo::ji("paper")` Group Concept Questions
 
-7. How is the p-value in the regression table found? How does this differ from 
+6. How is the p-value in the regression table found? How does this differ from 
 simulation-based methods?
 
-8. How is the confidence interval in the regression table found? How does this
+7. How is the confidence interval in the regression table found? How does this
 differ from simulation-based methods?
 
-9. Why would someone choose to use simulation-based methods over theoretical
+8. Why would someone choose to use simulation-based methods over theoretical
 ($t$-based) methods? 
+
+---
+
+# Think Out Loud Recording 
+
+Describe two similarities and two differences between using simulation-based
+methods and theoretical methods to obtain a p-value for testing if there is 
+a linear relationship between two variables. 
+
