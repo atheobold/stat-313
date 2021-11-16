@@ -31,11 +31,6 @@ Sudan and Syria.
 Rankings for other significant countries include Canada (6th), Germany (9th),
 the United Kingdom and the United States (tied for 17th).
 
-Geographically, North America and Oceania are house some of the countries 
-labeled as the most "free." 
-In this lab, you'll be analyzing the human freedom scores from these regions, 
-for 2016. 
-Your aim will be to estimate what the true difference in 
 
 # Getting Started
 

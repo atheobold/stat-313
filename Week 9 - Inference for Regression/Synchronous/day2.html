@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>👨‍🌾 Doing Inference for Linear Regression</title>
+    <meta charset="utf-8" />
+    <meta name="date" content="2021-11-16" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="slide-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 👨‍🌾 Doing Inference for Linear Regression
+### November 16, 2021
+
+---
+
+
+
+
+
+
+class: center, middle, inverse
+
+.huge[Human Freedom]
+
+--
+
+.large[Serves as a rough measure for the relationships between the different
+types of freedom including: freedom of movement, speech, assembly and religion,
+as well as economic freedom, the ability of individuals to make their own
+economic decisions without government or crony interference.]
+
+&lt;!-- In 2020, New Zealand toped the Human Freedom Index, followed by Switzerland, --&gt;
+&lt;!-- Hong Kong, Denmark and Australia. --&gt;
+&lt;!-- The five least-free countries are (in descending order) Iran, Yemen, Venezuela, --&gt;
+&lt;!-- Sudan and Syria. --&gt;
+&lt;!-- Rankings for other significant countries include Canada (6th), Germany (9th), --&gt;
+&lt;!-- the United Kingdom and the United States (tied for 17th). --&gt;
+
+---
+
+class: center, middle
+
+.larger[Visualizing the Linear Relationship]
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-2-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center, middle
+
+.larger[Estimating the Linear Relationship]
+
+
+```r
+pf_lm &lt;- lm(pf_score ~ pf_expression_control, data = hfi)
+
+get_regression_table(pf_lm)
+```
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; std_error &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p_value &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; lower_ci &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; upper_ci &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; intercept &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.617 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.057 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80.360 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.504 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.730 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pf_expression_control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.491 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48.847 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.472 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.511 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+class: middle, center
+
+.larger[But first!]
+
+.larger[We need to check the conditions.]
+
+--
+
+**L**inear relationship
+
+--
+
+**I**dependence of observations
+
+--
+
+**N**ormality of residuals
+
+--
+
+**E**qual variance of residuals
+
+---
+
+class: center, middle
+
+.larger[**N**ormality of Residuals]
+
+
+```r
+get_regression_points(pf_lm) %&gt;% 
+  ggplot(mapping = aes(x = residual)) + 
+  geom_histogram(binwidth = 0.6) 
+```
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-6-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center, middle
+
+.larger[**E**qual Variance of Residuals]
+
+
+```r
+get_regression_points(pf_lm) %&gt;% 
+  ggplot(mapping = aes(y = residual, x = pf_score_hat)) + 
+  geom_jitter()
+```
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-8-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center
+
+.larger[**Testing for a Linear Relationship**]
+
+&lt;/br&gt; 
+
+&gt; .large[What would our null and alternative hypotheses be?]
+
+&gt; .large[The null hypothesis for testing a slope is `\(\beta = 0.\)` What does this
+hypothesis *mean* (i.e. what are you testing)?]
+
+---
+
+class: center
+
+.larger[**Permutation Distribution for the Slope**]
+
+
+
+```r
+hfi %&gt;% 
+  specify(response = pf_score, explanatory = pf_expression_control) %&gt;% 
+  hypothesize(null = "independence") %&gt;% 
+  generate(reps = 1000, type = "permute") %&gt;% 
+  calculate(stat = "slope")
+```
+
+
+---
+
+class: center
+
+.larger[Visualizing the Distribution]
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-10-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center
+
+.larger[Statistic of Interest]
+
+.pull-left[
+&lt;img src="day2_files/figure-html/unnamed-chunk-11-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;/br&gt;
+
+![](images/statistic.jpg)
+]
+
+--
+
+&gt; How is the "statistic" in the regression table found? How does this differ 
+from the observed slope? 
+
+---
+
+class: center
+
+.larger[p-value]
+
+.pull-left[
+&lt;img src="day2_files/figure-html/unnamed-chunk-12-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;/br&gt;
+
+![](images/p-value.jpg)
+]
+
+--
+
+&gt; How is the p-value in the regression table found? How does this differ from 
+simulation-based methods?
+
+---
+
+class: center, middle, inverse
+
+.larger[What range of values might the population parameter lie between?]
+
+---
+
+class: center
+
+.larger[Bootstrapping!]
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-13-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center
+
+.larger[**Bootstrap Distribution for the Slope**]
+
+
+```r
+hfi %&gt;% 
+  specify(response = pf_score, explanatory = pf_expression_control) %&gt;% 
+  generate(reps = 1000, type = "bootstrap") %&gt;% 
+  calculate(stat = "slope")
+```
+
+
+---
+
+class: center, middle
+
+.larger[Visualizing the Distribution]
+
+&lt;img src="day2_files/figure-html/unnamed-chunk-15-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center
+
+.larger[**95% Confidence Interval**]
+
+.pull-left[
+&lt;img src="day2_files/figure-html/unnamed-chunk-16-1.png" width="95%" style="display: block; margin: auto;" /&gt;&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; lower_ci &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; upper_ci &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 0.4718513 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5115329 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+
+&lt;/br&gt;
+
+![](images/CI.jpg)
+]
+
+---
+
+class: center, middle, inverse
+
+.hand[.huge[Why so similar?]]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
