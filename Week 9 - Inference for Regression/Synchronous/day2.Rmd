@@ -178,6 +178,12 @@ class: middle, center
 
 ---
 
+class: center, middle, inverse
+
+.hand[.huge[What about independence?]]
+
+---
+
 class: center, middle
 
 .larger[**N**ormality of Residuals]
