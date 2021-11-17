@@ -1,7 +1,6 @@
 ---
-title: Inference for to Linear Regression
-author: YOUR NAME HERE!
-date: "Due: Sunday, November 21 by 11:59pm"
+title: Inference for to Linear Regression - Key
+author: Dr. Theobold
 output: html_document
 ---
 
@@ -39,6 +38,7 @@ Let's load the packages!
 library(tidyverse)
 library(moderndive)
 library(openintro)
+library(infer)
 ```
 
 # The data
@@ -48,7 +48,10 @@ The data we're working with is in the openintro package and it's called `hfi`, s
 __1.  The dataset has **a lot** of variables, but we are only interested in four: hf_score, pf_score, year, and region. *Select* these variables from the hfi dataframe, and assign the result to a dataframe named hfi_small.__ 
 
 ```{r}
-## Fill in the code necessary for question 1 
+## Fill in the code necessary for question 2 
+
+hfi_small <- hfi %>% 
+  select(pf_score, hf_score, year, region)
 
 ```
 
@@ -58,7 +61,7 @@ We can use the `drop_na()` function to get an idea of how many observations have
 __2. Use the drop_na() function to create another new dataframe named hfi_small_clean that **does not** contain any missing values.__ 
 
 ```{r}
-hfi_small_clean <- drop_na(____)
+hfi_small_clean <- drop_na(hfi_small)
 
 ```
 
@@ -69,15 +72,24 @@ __3. (b) Does the relationship look linear? How strong is the relationship?__
 Hint: This is a great instance to use `geom_jitter()`!  
 <!-- Your response goes here! Do not remove this line! -->
 
+*The relationship appears linear, and is fairly strong!*
+
 
 ```{r}
-## Code for question 3
+## Code for question 4
+hfi_small_clean %>%
+  ggplot(mapping = aes(y = hf_score, x = pf_score)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm") +
+  facet_wrap(~year)
 
 ```
 
 __4. Now, add a facet for each year in the dataset. Does it appear that this relationship changes over time?__
 
 <!-- Change your code from Question 4. Only your response goes here! -->
+
+*It looks like the overall trend is similar across the years, but some years have more variability in these scores than others. For example, 2008 is fairly tightly clustered around the regression line, but 2016 has a bit more variability in lower personal freedom scores.*
 
 
 # Modeling the Relationship Between Human Freedom and Personal Freedom 
@@ -97,6 +109,7 @@ to the independence condition.
 __5. Given that we're accounting for year, do you believe it is reasonable to assume these observations are independent? Why or why not?__
 <!-- Your response goes below this line! -->
 
+*There could still be some geographical similarities that have not been accounted for. For example, the European Union has regulatory measures that could make the observations of countries share information.* 
 
 To perform a residual analysis, we first need to fit the multiple linear 
 regression. We are interested in determining if the relationship between 
@@ -106,7 +119,7 @@ to the interaction model we used before!
 __6. Fill in the code below to fit a multiple linear regression, which allows for an interaction between year and ef_score.__
 
 ```{r}
-pf_lm <- lm(hf_score ~ ____, data = hfi)
+pf_lm <- lm(hf_score ~ pf_score * year , data = hfi)
 ```
 
 Next, you'll use the code below to diagnose the *normality* and *equal variance* conditions. 
@@ -118,9 +131,8 @@ get_regression_points(pf_lm) %>%
 ```
 
 __7. Based on the plot above, do you believe the normality condition is violated? Why or why not?__
-<!-- Your response goes here! Do not remove this line! -->
 
-
+*I would not say that this condition is violated. It appears that the distribution of the residuals is centered at 0 and bell-shaped and symmetric.*
 
 ```{r}
 get_regression_points(pf_lm) %>% 
@@ -131,8 +143,8 @@ get_regression_points(pf_lm) %>%
 ```
 
 __8. Based on the plot above, do you believe the equal variance condition is violated? Why or why not?__
-<!-- Your response goes here! Do not remove this line! -->
 
+*While the plot does not look great, I don't see any major issues. The residuals are fairly small, ranging from -1 to 1, across the majority of the regression line (in red). There may be slightly less variability in the larger values of human freedom scores (hf_score_hat), but not enough to warrant concerns.*
 
 
 ## Hypothesis Test for the Slope 
@@ -155,20 +167,24 @@ H_A: the true relationship between x and y *does* differ by z
 __9. Using the template above, write out the null and alternative hypotheses we are testing, in the context of these data.__   
 <!-- Your response goes here! Do not remove this line! -->
 
+*H_0: the relationship between human freedom score and personal freedom does not differ by year*
 
+*H_A: the relationship between human freedom score and personal freedom does differ by year*
 
 
 __10. Report the p-value for this hypothesis test. What would you conclude for this test?__   
 Hint 1: Deciding to reject or not **is not** a conclusion, you need to specify which hypothesis seems more plausible **and** what that means in the context of these data!   
-Hint 2: Stating you reject the null hypothesis requires that you specify the significance threshold that was used.
+Hint 2: Stating you reject the null hypothesis requires that you specify an $\alpha$ that was used.
 Hint 3: There should be no use of the term "significant" in your conclusion. 
 <!-- Your response goes here! Do not remove this line! -->
 
+*Based on the regression table below, the p-value for this test is approximately 0. Thus, we would conclude that the null hypothesis seems unlikely to be true. At an alpha of 0.01, I would reject the null hypothesis and conclude that there is evidence the relationship between human freedom score and personal freedom does differ by year.* 
 
 
 ```{r}
 ## Code for finding the p-value goes below this line! 
 
+get_regression_table(pf_lm)
 
 ```
 
@@ -176,7 +192,9 @@ Hint 3: There should be no use of the term "significant" in your conclusion.
 __11. How would you interpret this interaction term?__
 __Give this your best shot! I will be grading based on the ideas you present.__
 __See if you can make connections between this coefficient and what you saw with a categorical explanatory variable.__
-<!-- Your response goes here! Do not remove this line! -->
 
+*The interaction is interpreted as adjusting the slope based on the year of the observation. The data has years from 2008 to 2016, and year is considered as a continuous numerical variable. So, we would plug in the year and obtain the amount we need to adjust the slope by.* 
+
+*We notice that the interaction is negative, meaning we are always adjusting our slope down from the "baseline". For 2008, we would decrease the slope by $2008 \times -0.006 = 12.048$, resulting in a slope on pf_score of $13.2 - 12.048 = 1.152$. For 2016, we would decrease the slope by $2016 \times -0.006 = 12.096$, resulting in a slope on pf_score of $13.2 - 12.096 = 1.104.$*
 
 
