@@ -1,6 +1,6 @@
 ---
-title: "Lab 5: Conducting Hypothesis Tests"
-author: "Your group's names here!"
+title: "Lab 5: Conducting Hypothesis Tests - Key"
+author: "Dr. Theobold"
 output: html_document
 ---
 
@@ -39,14 +39,14 @@ __1.  What are the cases in this data set? How many cases are there in our sampl
 
 *A case in the dataset is one high schooler. There are a total of 13583 cases / observations in the dataset.*
 
+**4**: meets the following 
 
-Remember that you can answer this question by viewing the data in the data 
-viewer or by using the following command:
+- states a case is one student / high schooler
+- states there are 13583 cases 
 
-```{r str}
-glimpse(yrbss)
-```
+**Redo** -- all other cases
 
+</br>
 
 ## Exploratory data analysis
 
@@ -57,7 +57,7 @@ The `skim()` function from the **skimr** package produces nice summaries of the
 variables in the dataset, separating categorical (character) variables from 
 quantitative variables.
 
-```{r summary}
+```{r summary, eval = FALSE}
 yrbss %>% 
   skim()
 ```
@@ -66,15 +66,9 @@ __2.  How many observations are we missing weights from?__
 
 *There are 1004 missing values for the `weight` variable.*
 
+**Grade a 4 or a redo**
 
-Next, consider the possible relationship between a high schooler's weight and
-their physical activity.
-Plotting the data is a useful first step because it helps us quickly visualize
-trends, identify strong associations, and develop research questions.
-
-First, let's create a new variable `physical_3plus`, which will be coded as
-either "yes" if the student is physically active for *at least* 3 days a week,
-and "no" if not.
+</br>
 
 __3. Create a new variable named `physical_3plus` in the `yrbss` dataset, based on the qualifications above.__
 
@@ -86,9 +80,13 @@ yrbss <- yrbss %>%
          )
 ```
 
+**Grade a 4 or a redo**
+
+</br>
+
 __4.  Make faceted histograms of the `weight` for the different values of `physical_3plus`. Is there a relationship between these two variables? What did you expect and why?__
 
-```{r faceted-histograms}
+```{r faceted-histograms, warning = FALSE}
 # Code for question 2 goes here! 
 yrbss %>% 
   ggplot(mapping = aes(x = weight)) + 
@@ -96,9 +94,20 @@ yrbss %>%
   facet_wrap(~physical_3plus)
 ```
 
-The histograms allow for us to compare the distributions of weight between the 
-different groups of physical activity. We might also be interested in knowing 
-what the mean weight is for each group. 
+*These distributions appear to be quite similar, which was surprising to me! It appears that regardless of whether the students exercised for at least three days (yes) or not (no), they have distributions with similar centers (around 70) and similar spreads.*
+
+**4** -- meets the following:
+- has correct plot 
+- states centers are similar 
+- states spreads are similar
+
+**3** -- meets the following:
+- has correct plot 
+- states either the centers **or** the spreads are similar, but not both
+
+**Redo** -- all other cases
+
+</br>
 
 __5. Calculate the mean weight for the different levels of `physical_3plus`.__
 __Keep in mind, there are observations with missing values, so you will need to use the `na.rm = TRUE` argument inside the `mean()` function.__ 
@@ -109,30 +118,35 @@ yrbss %>%
   summarise(mean_weight = mean(weight, na.rm = TRUE))
 ```
 
-There is an observed difference, but is this difference unlikely to have
-occurred if there was no difference in the weight between the two groups? 
+**Grade a 4 or a redo**
 
-In order to answer this question we will conduct a hypothesis test.
+</br>
 
 ## Inference
 
 __6.  Write the hypotheses for testing if the average weights are different for those who exercise at least times a week and those who don't.__
 <!-- Your answer goes below this line! -->
 
-*Null hypothesis: the mean weight for students who are physically active for 
-at least three days __is the same__ as the mean weight for students who are not 
-physically active for at least three days
+*Null hypothesis: the true mean weight for students who are physically active for 
+at least three days __is the same__ as the true mean weight for students who are not 
+physically active for at least three days*
 
-*Alternative hypothesis: the mean weight for students who are physically active
-for at least three days __is different__ from the mean weight for students who
+*Alternative hypothesis: the true mean weight for students who are physically active
+for at least three days __is different__ from the true mean weight for students who
 are not physically active for at least three days*
 
+**4** -- meets the following: 
 
-Next, we will work through creating a permutation distribution using tools from
-the **infer** package.
+- includes = in the null hypothesis (in words or using = notation)
+- includes not = in the alternative (in words or using != notation)
+- includes the statistic of interest -- difference in mean weight between the 
+two groups
+- states the parameter in terms of words (true mean) or notation (mu)
 
-But first, we need to find the observed difference in means, which we will save
-as `obs_diff`.
+**3** -- satisfies all of the components for a 4, but doesn't include the 
+parameter
+
+**Redo** -- all other cases
 
 ```{r obs-stat, warning = FALSE}
 obs_diff <- yrbss %>%
@@ -140,18 +154,7 @@ obs_diff <- yrbss %>%
   calculate(stat = "diff in means", order = c("yes", "no"))
 ```
 
-Recall that the `specify()` function is used to specify the variables you are
-considering, and you can use the `calculate()` function to specify the
-`stat`istic you want to calculate and the `order` of subtraction you want to
-use.
-
-For this hypothesis, the statistic you are searching for is the difference in
-means, with the order being `yes - no`.
-
-After you have calculated your observed statistic, you need to create a
-permutation distribution of statistics that might have occurred if the null 
-hypothesis was true. This distribution is created by shuffling the observed
-weights into new `physical_3plus` groups, labeled "yes" and "no"
+</br>
 
 __7. Generate 500 permuted statistics for the permutation distribution and save these statistics in an object named `null_dist`.__
 
@@ -163,23 +166,22 @@ null_dist <- yrbss %>%
   calculate(stat = "diff in means", order = c("yes", "no"))
 ```
 
-We can visualize this null distribution with the following code:
+**Grade a 4 or a redo**
 
-```{r}
+</br>
+
+__8. Use the `shade_p_value()` function to add a vertical red line to the plot above, demonstrating where the observed difference in means (`obs_diff`) falls on the distribution.__
+
+```{r, warning = FALSE}
 visualise(null_dist) + 
   shade_p_value(obs_stat = obs_diff, direction = "two sided")
 ```
 
-__8. Use the `shade_p_value()` function to add a vertical red line to the plot above, demonstrating where the observed difference in means (`obs_diff`) falls on the distribution.__
+**Grade a 4 or a redo**
 
-<!-- Add your code to the plot above! -->
+</br>
 
-
-Now that you have calculated the observed statistic and generated a permutation
-distribution, you can calculate the p-value for your hypothesis test using the
-function `get_p_value()` from the infer package.
-
-```{r inf-weight-habit-ht-pvalue}
+```{r inf-weight-habit-ht-pvalue, warning = FALSE}
 null_dist %>%
   get_p_value(obs_stat = obs_diff, direction = "two sided")
 ```
@@ -190,6 +192,18 @@ __9. What warning message do you get? Why do you think you get this warning mess
 message is because the p-value depends on the number of reps generated. There
 could be too few statistics on the distribution to get an accurate p-value.*
 
+**4** -- meets the following:
+
+- states the p-value is 0
+- states the p-value depends on the number of reps chosen
+- states we may need more reps to get an accurate p-value
+
+**3** -- satisfies the components for a 4, but does not state that they may need
+to generate more reps for an accurate p-value
+
+**Redo** -- all other cases
+
+</br>
 
 __10. Interpret the p-value you obtained in the context of this study.__
 __Do not make statements about rejecting / failing to reject the null!__
@@ -199,3 +213,18 @@ a difference in mean weights as or more extreme than we saw, if there is no
 difference in weight between these groups, is extremely low. This suggests that
 the null hypothesis is likely not true, as our observed statistic is unlikely 
 to have occurred in this universe.* 
+
+**4** -- meets the following:
+
+- states the probability of observing a difference in means as or more extreme 
+than what was observed is essentially 0. 
+- states that this suggests the null hypothesis is not plausible / reasonable / 
+isn't true **or** 
+- states that this suggests the alternative hypothesis is more plausible than 
+the null hypothesis
+
+**3** -- satisfies the components for a 4, but does not connect to the plausibility of the null hypothesis
+
+**Redo** -- all other cases
+
+**If they state they reject the null hypothesis, they get a redo.**
