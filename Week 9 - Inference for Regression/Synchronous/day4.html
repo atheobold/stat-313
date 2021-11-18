@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>🌌 Extending Regression into ANOVA</title>
+    <meta charset="utf-8" />
+    <meta name="date" content="2021-11-18" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="slide-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 🌌 Extending Regression into ANOVA
+### November 18, 2021
+
+---
+
+
+
+
+
+
+
+class: middle, inverse, center
+
+
+.larger[.hand[What if year was categorical?]]
+
+---
+
+class: center
+
+
+
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; std_error &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p_value &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; lower_ci &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; upper_ci &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; intercept &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.421 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.169 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.392 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.088 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.753 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pf_score &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.764 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.023 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33.847 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.719 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.808 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; year_f: 2009 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.244 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.238 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.024 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.306 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.224 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.711 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; year_f: 2010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.477 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.230 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.079 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.027 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.928 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; year_f: 2011 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.554 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.225 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.457 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.014 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.111 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.996 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; year_f: 2012 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.521 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.223 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.336 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.020 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.083 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.959 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; year_f: 2013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.564 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.223 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.530 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.012 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.126 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.001 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pf_score:year_f2009 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.032 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.032 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.996 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.319 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.094 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.031 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pf_score:year_f2010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.060 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.031 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1.965 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.050 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.121 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pf_score:year_f2011 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.067 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.030 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2.216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.027 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.126 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.008 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pf_score:year_f2012 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.030 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2.060 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.040 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.121 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.003 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pf_score:year_f2013 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.067 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.030 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2.226 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.026 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.126 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.008 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+class: center, middle, inverse
+
+.larger[.hand[How would you test if the slopes were different?]]
+
+
+---
+
+class: center, middle
+
+.huge[ANOVA!]
+
+--
+
+.larger[Big idea: Test if **at least one** mean differs in a group of 3 or more] 
+
+
+---
+
+class: center, middle
+
+
+
+
+
+&lt;code class ='r hljs remark-code'&gt;&lt;span style="background-color:#ffff7f"&gt;anova&lt;/span&gt;(pf_lm)&lt;/code&gt;
+
+```
+
+## Analysis of Variance Table
+## 
+## Response: hf_score
+##                  Df Sum Sq Mean Sq   F value Pr(&gt;F)
+## pf_score          1 792.35  792.35 7025.5049 &lt;2e-16
+## year_f            5   0.69    0.14    1.2275 0.2941
+## pf_score:year_f   5   0.86    0.17    1.5268 0.1788
+## Residuals       886  99.92    0.11
+
+```
+
+
+---
+
+class: center, middle
+
+.larger[Breaking down variability in **y**]
+
+&lt;img src="day4_files/figure-html/unnamed-chunk-5-1.png" width="60%" height="50%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+class: center, middle, inverse
+
+.larger[A new distribution]
+
+
+&lt;img src="day4_files/figure-html/unnamed-chunk-6-1.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, inverse
+
+.larger[Two degrees of freedom!]
+
+.pull-left[
+![](images/f_num_df.png)
+]
+
+.pull-right[
+![](images/f_denom_df.png)
+]
+
+
+---
+
+class: center, middle
+
+.huge[ANOVA is everywhere!]
+
+--
+
+.larger["Overall F-test" for Regression]
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; F-Statistic &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Numerator Degrees of Freedom &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Denominator Degrees of Freedom &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p-value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 639.9342 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 886 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
