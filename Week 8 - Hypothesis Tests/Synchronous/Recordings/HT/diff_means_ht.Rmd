@@ -1,0 +1,163 @@
+---
+title: "Randomization Test for a Difference in Means"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE)
+library(tidyverse) 
+library(openintro)
+library(infer)
+
+classdata <- classdata %>% 
+  filter(lecture %in% c("a", "b")) %>% 
+    mutate(exam = lecture)
+
+```
+
+## Differences in Exam Scores
+
+An instructor decided to run two slight variations of the same exam. Prior to
+passing out the exams, she shuffled the exams together to ensure each student
+received a random version.
+
+Anticipating complaints from students who took Version B, she would like to
+evaluate whether the difference observed in the groups is so large that it
+provides convincing evidence that Version B was more difficult (on average) than
+Version A.
+
+<center>
+__Construct hypotheses to evaluate whether the observed difference in sample
+means, $\bar{x}_A - \bar{x}_B = 3.1$, is due to chance.__ 
+
+(We will later evaluate these hypotheses using $\alpha = 0.01$.)
+
+## Observed Difference
+
+```{r}
+classdata %>% 
+  group_by(exam) %>%
+  summarize(mean_score = mean(m1), 
+            sd_score = sd(m1))
+```
+
+## Exploratory Visualization 
+
+```{r boxplotTwoVersionsOfExams, warning=FALSE, fig.width=7, echo = FALSE}
+classdata %>%
+  ggplot(aes(x = exam, y = m1, color = exam)) +
+  geom_violin() +
+  geom_jitter(width = 0.2) +
+  theme(legend.position = "none") +
+  labs(x = "Exam", 
+       y = "Score")
+```
+
+## Assumptions About the Null Hypothesis 
+
+- The shuffling process assumes the null hypothesis is true -- that there is no
+effect of the treatment 
+  * In this example, the null hypothesis is that exam A and exam B are equally
+  difficult. 
+  * We expect that students' score on each exam should represent their true
+  ability on that material -- it shouldn't matter which exam they took.
+
+## Building a Null Distribution 
+
+- For every shuffle, we calculate the re-randomized difference in means 
+($\bar{x}_A - \bar{x}_B$). 
+- A distribution of these statistics gives us an idea of the variability we'd 
+expect just by chance. 
+
+</br> 
+
+<center> 
+
+```{r randexams, warning = FALSE, eval = FALSE}
+null_dist <- classdata %>% 
+  specify(m1 ~ exam) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("a", "b")) 
+```
+
+## Visualizing the Null Distribution 
+
+```{r, echo = FALSE}
+null_dist <- classdata %>% 
+  specify(m1 ~ exam) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("a", "b")) 
+
+obs_diff <- classdata %>% 
+  filter(lecture %in% c("a", "b")) %>%
+  specify(m1 ~ lecture) %>%
+  calculate(stat = "diff in means", order = c("a", "b")) %>% 
+  pull()
+```
+
+```{r, fig.height = 4}
+null_dist %>% 
+  visualize() 
+```
+
+## Calculating the p-value
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+null_dist <- classdata %>% 
+  filter(lecture %in% c("a", "b")) %>%
+  specify(m1 ~ lecture) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("a", "b")) 
+```
+
+```{r, fig.width=4, fig.height=3, eval = FALSE}
+obs_diff <- classdata %>% 
+  specify(m1 ~ exam) %>%
+  calculate(stat = "diff in means", order = c("a", "b"))
+
+null_dist %>% 
+  visualize() + 
+  geom_vline(xintercept = obs_diff, color = "red")
+```
+
+```{r, echo = FALSE, fig.width=4, fig.height=3, fig.align='center'}
+obs_diff <- classdata %>% 
+  specify(m1 ~ exam) %>%
+  calculate(stat = "diff in means", order = c("a", "b")) %>% 
+  pull()
+
+null_dist %>% 
+  visualize() + 
+  geom_vline(xintercept = obs_diff, color = "red")
+```
+
+
+## Making a Decision
+
+```{r, eval = FALSE}
+null_dist %>% 
+  get_p_value(obs_stat = obs_diff, direction = "greater")
+```
+
+```{r, echo = FALSE}
+null_dist %>% 
+  get_p_value(obs_stat = obs_diff, direction = "greater")
+```
+
+- We specified that we would use $\alpha = 0.01$.
+
+- Since the p-value is larger than $\alpha$, we do not reject the null hypothesis. 
+
+- We conclude that the data do not provide convincing evidence that exam B is
+more difficult than exam A. 
+
