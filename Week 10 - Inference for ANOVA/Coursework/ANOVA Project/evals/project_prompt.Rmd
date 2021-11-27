@@ -103,8 +103,8 @@ answer the question(s) you pose here.
 This section should lay out the steps, decisions, and logic leading to the
 statistical model you will use to answer the research question of interest.
 
-- (2 pts) Provide a summary table of the mean **and** standard deviation for the 
-course evaluation scores of each attractiveness group. 
+- (2 pts) Provide a summary table of the mean, standard deviation, and sample
+size for the course evaluation scores of each attractiveness group. 
 
 - (1.5 pts) Produce a data visualization exploring the relationship between 
 course evaluation score and attractiveness group. 

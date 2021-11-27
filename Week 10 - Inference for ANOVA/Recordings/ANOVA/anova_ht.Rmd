@@ -59,7 +59,7 @@ Before performing an ANOVA, there are three conditions we must check:
 
 - the observations are independent within and across groups  
 
-- the data within each group are nearly normal 
+- the responses within each group are nearly normal 
 
 - the variability across the groups is similar
 

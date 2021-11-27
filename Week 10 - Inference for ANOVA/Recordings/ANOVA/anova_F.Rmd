@@ -32,7 +32,8 @@ Conditions:
 
 - Independent observations within and across groups  
 
-- Approximately normal distributions within each group & similar variability across groups
+- Approximately normal distributions within each group & similar variability
+across groups
   * Sufficiently "large" samples 
   * No extreme outliers
 

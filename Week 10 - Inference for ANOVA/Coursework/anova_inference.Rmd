@@ -41,20 +41,27 @@ permutation distributions of $F$-statistics that we could have observed
 
 By the end of this coursework you should be able to:
 
-- outline what hypotheses we use to test for a linear relationship
-- describe how a permutation distribution for a slope statistic is made
-  * connect the null hypothesis with how observations are permuted
-- describe how a bootstrap distribution for a slope statistic is made
-- interpret a p-value in the context of a linear relationship 
-- interpret a confidence interval in the context of a linear relationship
-- explain the similarities and differences between parametric ($t$-based)
+- describe what an ANOVA tests for 
+- use a visualization to outline how the following are calculated: 
+  * total sum of squares
+  * group sum of squares
+  * residual sum of squares
+
+- describe why the mean squares of groups is called the "between group
+variability" 
+- describe why the mean square error is called the "within group variability" 
+- outline how an F-statistic is calculated
+- explain what a "large" or a "small" F-statistic indicates
+
+- describe the conditions for performing an ANOVA procedure
+- outline when it is appropriate to use an $F$-distribution in an ANOVA
+- explain the similarities and differences between parametric ($F$-based)
 methods and non-parametric (simulation-based) methods
 
-
 - use R to:
-  * generate a permutation distribution for a slope
+  * generate a permutation distribution for F-statistics
   * visualize the permutation distribution
-  * calculate the observed slope statistic
+  * calculate the observed F-statistic statistic
   * calculate a p-value for a hypothesis test
 
 
@@ -68,7 +75,7 @@ methods and non-parametric (simulation-based) methods
 
 `r emo::ji("paper")` Group Discussion Homework: ANOVA Project  
 
-`r emo::ji("check")` Check-ins: 1
+`r emo::ji("check")` Check-ins: 2
 
 ---
 
@@ -78,24 +85,88 @@ methods and non-parametric (simulation-based) methods
 
 ---
 
-## 22.1 -- Case Study
-
-
----
-
-## 22.2 -- Randomization Tests for Comparing Many Means
+## Randomization Tests for Comparing Many Means
 
 `r emo::ji("computer")` [R Tutorial](https://openintro.shinyapps.io/ims-05-infer-08/)
 
 ---
 
-## 22.3 -- Mathematical Model for Comparing Many Means
+## Mathematical Model for Comparing Many Means
 
+### `r emo::ji("check")` Check-in: Components of an ANOVA
 
+1. Which of the following are true about the mean squares between groups?
+
+- it is a standardized measure of the variability in responses between groups
+- it compares the mean of each group to the overall mean across all groups
+- it compares the observations within each group to the mean of that group
+- it is used as the numerator in an F-statistic
+- it is used as the denominator in an F-statistic
+- it is found by dividing the sum of squares between groups by the number of 
+groups minus 1 ($k$ - 1)
+- it is found by dividing the sum of squares between groups by the sample size
+minus the number of groups ($n - k$)
+
+2. Which of the following are true about the mean square errors?
+
+- it is a standardized measure of the variability in responses within each 
+group
+- it compares the mean of each group to the overall mean across all groups
+- it compares the observations within each group to the mean of that group
+- it is used as the numerator in an F-statistic
+- it is used as the denominator in an F-statistic
+- it is found by dividing the sum of square errors by the number of groups
+minus 1 ($k$ - 1)
+- it is found by dividing the sum of square errors by the sample size minus 
+the number of groups ($n - k$)
+
+3. An F-statistic uses which formula? 
+
+- $\frac{MSG}{MSE}$
+- $\frac{SSG}{SSE}$
+- $\frac{MSE}{MSG}$
+- $\frac{SSE}{SSG}$
+
+3. Ideally, in an ANOVA we'd like to see... (select all that apply)
+
+- large variability in the means of the groups 
+- small variability in the means of the groups 
+- large variability in the observations within each group
+- small variability in the observations within each group
+
+4. If the null hypothesis that the means of four groups are all the same is
+rejected using ANOVA at a 5% significance level, then... (select all that apply)
+
+- we can then conclude that all the means are different from one another.
+
+- the variability between groups is higher than the variability within groups.
+
+- the pairwise analysis will identify at least one pair of means that are
+significantly different.
+
+- an appropriate $\alpha$ to be used in pairwise comparisons is
+$\frac{0.05}{4} = 0.0125$ since there are four groups.
+ 
 ---
 
-## 22.4 -- Chapter Review 
+## Chapter Review 
 
+### `r emo::ji("check")` Check-in: ANOVA Conditions
+
+**These are all true or false questions, so you will be given _one_ attempt for 
+this quiz**
+
+1. As the total sample size increases, the degrees of freedom for the residuals
+increases.
+
+2, The constant variance condition can be somewhat relaxed when the sample sizes
+are similar across groups.
+
+3. The independence assumption can be relaxed when the total sample size is
+large.
+
+4. The normality condition is very important when the sample sizes of each 
+group are small. 
 
 ---
 
@@ -107,5 +178,11 @@ methods and non-parametric (simulation-based) methods
 
 ## Think Out Loud
 
+Take one concept you have worked on this quarter that you struggled to
+understand, and explain how the struggle itself was valuable.
 
+In the context of this question, describe the struggle and how you overcame the
+struggle. You might also discuss whether struggling built aspects of character
+in you (e.g. endurance, self-confidence, competence to solve new problems) and
+how these virtues might benefit you in later ventures.
 
