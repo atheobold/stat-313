@@ -1,5 +1,5 @@
 ---
-title: "Week Eight: Statistical Inference with Hypothesis Tests"
+title: "Week Nine: Inference for Linear Regression"
 author: ""
 output:
   prettydoc::html_pretty:

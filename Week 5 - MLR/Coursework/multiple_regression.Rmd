@@ -65,7 +65,7 @@ a multiple linear regression model
 
 ---
 
-# Basic Regression  
+# Multiple Regression  
 
 `r emo::ji("book")` [**Required Reading:** *Modern Dive*, Multiple Regression](https://moderndive.com/6-multiple-regression.html)
 

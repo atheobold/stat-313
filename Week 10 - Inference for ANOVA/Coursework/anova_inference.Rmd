@@ -1,0 +1,111 @@
+---
+title: "Week Ten: Inference for Many Means (ANOVA)"
+author: ""
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library(tidyverse)
+library(emo)
+library(gridExtra)
+```
+
+
+Welcome!
+
+In this week's coursework we are wrapping up the quarter by investigating how 
+we can use the inference we've learned in a new context---comparing multiple 
+means. These comparisons have a specific name, ANalysis of VAriance (ANOVA). 
+
+
+We are going to use all of the simulation-based methods we learned previously 
+for this new context. An ANOVA relies on a new statistic, the $F$-statistic, to 
+summarize how different 3 or more means are from each other. 
+
+The primary focus of an ANOVA is to detect if the means of 3 or more groups are 
+different. Because of this we focus on hypothesis tests for a difference in the 
+group means and **do not** use confidence intervals. We will generate
+permutation distributions of $F$-statistics that we could have observed
+**if the null hypothesis was true** (there is no difference in the group means).
+
+
+## Learning Outcomes 
+
+By the end of this coursework you should be able to:
+
+- outline what hypotheses we use to test for a linear relationship
+- describe how a permutation distribution for a slope statistic is made
+  * connect the null hypothesis with how observations are permuted
+- describe how a bootstrap distribution for a slope statistic is made
+- interpret a p-value in the context of a linear relationship 
+- interpret a confidence interval in the context of a linear relationship
+- explain the similarities and differences between parametric ($t$-based)
+methods and non-parametric (simulation-based) methods
+
+
+- use R to:
+  * generate a permutation distribution for a slope
+  * visualize the permutation distribution
+  * calculate the observed slope statistic
+  * calculate a p-value for a hypothesis test
+
+
+---
+
+## This Week's TODOs
+
+`r emo::ji("book")` Reading: 45-60 minutes 
+
+`r emo:ji("computer")` Tutorial: 30-45 minutes
+
+`r emo::ji("paper")` Group Discussion Homework: ANOVA Project  
+
+`r emo::ji("check")` Check-ins: 1
+
+---
+
+## Comparing Multiple Means
+
+`r emo::ji("book")` [**Required Reading:** *IMS*, Inference for Comparing Many Means](https://openintro-ims.netlify.app/inference-many-means.html)
+
+---
+
+## 22.1 -- Case Study
+
+
+---
+
+## 22.2 -- Randomization Tests for Comparing Many Means
+
+`r emo::ji("computer")` [R Tutorial](https://openintro.shinyapps.io/ims-05-infer-08/)
+
+---
+
+## 22.3 -- Mathematical Model for Comparing Many Means
+
+
+---
+
+## 22.4 -- Chapter Review 
+
+
+---
+
+## Group Project
+
+**Details will be announced in class on Monday and posted here afterward.** 
+
+---
+
+## Think Out Loud
+
+
+
