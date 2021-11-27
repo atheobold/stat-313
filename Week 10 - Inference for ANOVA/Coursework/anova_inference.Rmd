@@ -8,7 +8,7 @@ output:
     css: styles.css
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -71,7 +71,7 @@ methods and non-parametric (simulation-based) methods
 
 `r emo::ji("book")` Reading: 45-60 minutes 
 
-`r emo:ji("computer")` Tutorial: 30-45 minutes
+`r emo::ji("computer")` Tutorial: 30-45 minutes
 
 `r emo::ji("paper")` Group Discussion Homework: ANOVA Project  
 
@@ -81,13 +81,13 @@ methods and non-parametric (simulation-based) methods
 
 ## Comparing Multiple Means
 
-`r emo::ji("book")` [**Required Reading:** *IMS*, Inference for Comparing Many Means](https://openintro-ims.netlify.app/inference-many-means.html)
+### `r emo::ji("book")` [**Required Reading:** *IMS*, Inference for Comparing Many Means](https://openintro-ims.netlify.app/inference-many-means.html)
 
 ---
 
 ## Randomization Tests for Comparing Many Means
 
-`r emo::ji("computer")` [R Tutorial](https://openintro.shinyapps.io/ims-05-infer-08/)
+### `r emo::ji("computer")` [Comparing many means with ANOVA - R Tutorial](https://openintro.shinyapps.io/ims-05-infer-08/)
 
 ---
 
@@ -123,18 +123,21 @@ the number of groups ($n - k$)
 3. An F-statistic uses which formula? 
 
 - $\frac{MSG}{MSE}$
+
 - $\frac{SSG}{SSE}$
+
 - $\frac{MSE}{MSG}$
+
 - $\frac{SSE}{SSG}$
 
-3. Ideally, in an ANOVA we'd like to see... (select all that apply)
+4. Ideally, in an ANOVA we'd like to see... (select all that apply)
 
 - large variability in the means of the groups 
 - small variability in the means of the groups 
 - large variability in the observations within each group
 - small variability in the observations within each group
 
-4. If the null hypothesis that the means of four groups are all the same is
+5. If the null hypothesis that the means of four groups are all the same is
 rejected using ANOVA at a 5% significance level, then... (select all that apply)
 
 - we can then conclude that all the means are different from one another.
@@ -159,8 +162,8 @@ this quiz**
 1. As the total sample size increases, the degrees of freedom for the residuals
 increases.
 
-2, The constant variance condition can be somewhat relaxed when the sample sizes
-are similar across groups.
+2. The constant variance condition can be somewhat relaxed when the sample sizes
+are large.
 
 3. The independence assumption can be relaxed when the total sample size is
 large.
@@ -172,14 +175,14 @@ group are small.
 
 ## Group Project
 
-**Details will be announced in class on Monday and posted here afterward.** 
+**Detailed instructions can be found on Canvas.** 
 
 ---
 
 ## Think Out Loud
 
-Take one concept you have worked on this quarter that you struggled to
-understand, and explain how the struggle itself was valuable.
+**Take one concept you have worked on this quarter that you struggled to
+understand, and explain how the struggle itself was valuable.**
 
 In the context of this question, describe the struggle and how you overcame the
 struggle. You might also discuss whether struggling built aspects of character
