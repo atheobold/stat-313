@@ -1,0 +1,98 @@
+---
+title: "Your title here!"
+author: "Your names here!"
+output: html_document
+---
+
+```{r, include = FALSE}
+# Packages for data and visualizations
+library(tidyverse)
+library(openintro)
+
+# Packages for making nice looking ANOVA output
+library(broom)
+library(knitr)
+
+# Code to generate new dataset for analysis!
+evals_new <- evals %>% 
+  group_by(prof_id) %>% 
+  sample_n(size = 1, replace = FALSE) %>% 
+  mutate(attr_cat = case_when(bty_avg < 4 ~ "low", 
+                              bty_avg >= 4 & bty_avg <= 7 ~ "medium", 
+                              bty_avg > 7 ~ "high")
+         )
+```
+
+
+# Introduction
+
+<!-- Take your original Introduction from the Midterm Project and spice it up!
+<!-- At a bare minimum your revised Introduction should include:
+<!--   * a persuasive argument as to *why* this investigation is worthwhile
+<!--   * substantial background of the data context, the unit of study, number
+of observations)  -->
+
+<!-- Clearly outline the question(s) of interest you will address with the 
+statistical analysis.  -->
+
+
+
+# Statistical Methods 
+
+<!-- Provide a summary table of the mean, standard deviation, and sample -->
+<!-- size for the course evaluation scores of each attractiveness group.  -->
+
+<!-- Produce a data visualization exploring the relationship between  -->
+<!-- course evaluation score and attractiveness group.  -->
+
+<!-- Produce another visualization that incorporates your chosen -->
+<!-- categorical variable into your previous visualization.  -->
+
+<!-- Describe what you see in the visualizations, making direct references to
+the plots!  -->
+
+<!-- For each of your research questions, outline what statistical model -->
+<!-- you will use to address the question.  -->
+  
+<!-- Check all model conditions for the statistical methods you used.  -->
+
+
+
+# Summary of Statistical Findings
+
+<!-- What is your conclusion for the first research question? Namely, "Does the
+mean course evaluation score differ for at least one attractiveness group?"  -->
+
+<!-- Interpret **in the context of the data** the p-value associated with 
+attr_cat in your ANOVA table.  -->
+
+<!-- What is your conclusion for the second research question? Namely, "Does the
+relationship between course evaluation scores and attractiveness differ based on
+___?".   -->
+
+<!-- Interpret __in the context of the data__ the p-value associated with the interaction term in your ANOVA table.  -->
+
+  
+# Scope of Inference
+
+<!-- At a bare minimum, your revisions should incorporate: -->
+<!-- - the feedback I provided
+<!-- - a description of the population of interest
+<!-- - a description of the sample selected
+<!-- - a justification as to who the results of the study can be inferred to
+<!-- - a description of the relationships found in the analysis
+<!-- - a justification as to whether causal statements can be made
+<!-- - a conclusion about what type of relationships can be inferred
+
+
+# Study Limitations 
+
+<!-- What limitations do you see from how attractiveness was scored for each
+professor?  -->
+
+<!-- What limitations do you see from how gender was included in this 
+study?  -->
+
+<!-- What limitations do you see from how ethnicity was included in this 
+study?  -->
+

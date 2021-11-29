@@ -1,0 +1,66 @@
+---
+title: "Final Project Rubric"
+output: pdf_document
+---
+
+# Introduction -- **Total Points Earned:**
+
+| Section | Points Total | Points Earned |
+|---------|--------------|---------------|
+|Give a brief background of the research problem and how the data were
+collected. Make sure to describe who the unit of study is. | 2 |  | 
+|  |  |
+|Clearly outline the question(s) of interest you will address with the
+statistical analysis. | 3  |  |
+
+# Statistical Methods -- **Total Points Earned:**
+
+| Section | Points Total | Points Earned |
+|---------|--------------|---------------|
+| Describe the response and explanatory variables. | 1 |  | 
+|  |  |
+| Provide a summary table of both the mean and median of evaluation scores and average beauty scores. | 2 |  |
+|  |  |
+| Produce data visualizations exploring the relationship(s) you are interested in investigating. | 2 | |
+|  |  |
+| Describe what you see in the visualizations, making direct references to the plots! | 1 | 
+|  |  |
+
+\newpage 
+
+| Section | Points Total | Points Earned |
+|---------|--------------|---------------|
+| Outline the appropriate statistical model you will use to answer
+the question(s) of interest that you stated previously. | 4 |  |
+
+# Summary of Statistical Findings-- **Total Points Earned:**
+
+| Section | Points Total | Points Earned |
+|---------|--------------|---------------|
+| What is your conclusion for the questions of interest? | 5 |  | 
+|  |  |
+| Using the coefficients you obtained, write out the estimated 
+regression equation for each level of your categorical variable. | 2 |  |
+|  |  |
+| Interpret __in the context of the data__ the coefficients from each regression equation. | 3 |  |
+
+
+# Scope of Inference -- **Total Points Earned:**
+
+| Section | Points Total | Points Earned |
+|---------|--------------|---------------|
+| Were the observations randomly selected from some larger population? Based on the sampling method used, what larger population can you infer these results to? | 2 |  |
+|  |  |
+| Was the explanatory variable randomly assigned to observations? Based on the study design, are cause-and-effect statements justified? | 2 |  |
+|  |  |
+| Statements specific to the language of the data | 1 |  |
+
+
+
+# Project Presentation -- **Total Points Earned:**
+
+| Section | Points Total | Points Earned |
+|---------|--------------|---------------|
+| Your report should not have any spelling errors! To check for spelling errors in RStudio, click the green check mark button with ABC over it, next to the "Knit" button.  | 1 |  | 
+|  |  |
+| Your report should look as neat and professional as possible. Make sure that your figures don't end up in the middle of your paragraphs, and that your sections have headings. | 2 |  |
