@@ -55,6 +55,10 @@ hfi_small <- hfi %>%
 
 ```
 
+**4** -- Uses `select()` to include only the listed variables
+
+**Redo** -- Otherwise
+
 
 We can use the `drop_na()` function to get an idea of how many observations have missing data. The function looks row by row through the data to decide what rows should be kept. If there is an `NA` value in a row, that row is discarded. The result is a dataframe where there are no missing values for any of the variables. 
 
@@ -65,15 +69,16 @@ hfi_small_clean <- drop_na(hfi_small)
 
 ```
 
-# Visualizing the Relationship Between Economic Freedom and Personal Freedom 
+**4** -- Uses `drop_na()` to remove the missing observations from the
+`hfi_small` dataset
 
-__3. (a) Plot the relationship between `ef_score` (x) and `pf_score` (y), including a linear regression line.__
-__3. (b) Does the relationship look linear? How strong is the relationship?__
-Hint: This is a great instance to use `geom_jitter()`!  
-<!-- Your response goes here! Do not remove this line! -->
+**Redo** -- Otherwise
 
-*The relationship appears linear, and is fairly strong!*
+</br>
 
+# Visualizing the Relationship Between Human Freedom and Personal Freedom 
+
+__3. (a) Plot the relationship between `pf_score` (x) and `hf_score` (y), including a linear regression line.__
 
 ```{r}
 ## Code for question 4
@@ -85,12 +90,49 @@ hfi_small_clean %>%
 
 ```
 
+
+**4** -- Has all of the following:
+
+- `hf_score` on y-axis
+- `pf_score` on x-axis
+- points with either `geom_point()` or `geom_jitter()`
+- `geom_smooth(method = "lm")` line added 
+
+**3** -- Has all of the above except for a regression line
+
+**Redo** -- Otherwise
+
+</br>
+
+__3. (b) Does the relationship look linear? How strong is the relationship?__
+Hint: This is a great instance to use `geom_jitter()`!  
+<!-- Your response goes here! Do not remove this line! -->
+
+*The relationship appears linear, and is fairly strong!*
+
+**4** -- states something similar to above 
+
+**Redo** -- if does not state the relationship appears linear
+
+</br>
+
 __4. Now, add a facet for each year in the dataset. Does it appear that this relationship changes over time?__
 
 <!-- Change your code from Question 4. Only your response goes here! -->
 
 *It looks like the overall trend is similar across the years, but some years have more variability in these scores than others. For example, 2008 is fairly tightly clustered around the regression line, but 2016 has a bit more variability in lower personal freedom scores.*
 
+**4** -- Has all of the following:
+
+- adds a `facet_wrap(~year)` to the previous code
+- states that the trend looks similar across the years
+- talks about differences in variability across the years
+
+**3** -- Meets the above criteria but **does not** discuss variability
+
+**Redo** -- Otherwise
+
+</br>
 
 # Modeling the Relationship Between Human Freedom and Personal Freedom 
 
@@ -100,6 +142,8 @@ time.
 
 Our statistical method will be driven by the conditions for our linear
 regression. 
+
+</br>
 
 ## Checking Conditions 
 
@@ -111,6 +155,11 @@ __5. Given that we're accounting for year, do you believe it is reasonable to as
 
 *There could still be some geographical similarities that have not been accounted for. For example, the European Union has regulatory measures that could make the observations of countries share information.* 
 
+
+**4** -- Has all of the following:
+
+</br>
+
 To perform a residual analysis, we first need to fit the multiple linear 
 regression. We are interested in determining if the relationship between 
 pf_score and ef_score is different for different years. This should sound similar
@@ -121,6 +170,13 @@ __6. Fill in the code below to fit a multiple linear regression, which allows fo
 ```{r}
 pf_lm <- lm(hf_score ~ pf_score * year , data = hfi)
 ```
+
+**4** -- Has interaction (`pf_score * year`) as explanatory variables
+
+**Redo** -- Otherwise
+
+</br>
+
 
 Next, you'll use the code below to diagnose the *normality* and *equal variance* conditions. 
 
@@ -134,6 +190,20 @@ __7. Based on the plot above, do you believe the normality condition is violated
 
 *I would not say that this condition is violated. It appears that the distribution of the residuals is centered at 0 and bell-shaped and symmetric.*
 
+**4** -- Has the following:
+
+- Condition is not violated
+- Distribution appears symmetric
+- Distribution is centered at 0
+- References long left tail but decides it's not too bad
+
+**3** -- Meets all of the above criteria but does not discuss the left tail
+
+**Redo** -- Otherwise
+
+</br>
+
+
 ```{r}
 get_regression_points(pf_lm) %>% 
   ggplot(mapping = aes(y = residual, x = hf_score_hat)) + 
@@ -145,6 +215,21 @@ get_regression_points(pf_lm) %>%
 __8. Based on the plot above, do you believe the equal variance condition is violated? Why or why not?__
 
 *While the plot does not look great, I don't see any major issues. The residuals are fairly small, ranging from -1 to 1, across the majority of the regression line (in red). There may be slightly less variability in the larger values of human freedom scores (hf_score_hat), but not enough to warrant concerns.*
+
+</br>
+
+**4** -- Has the following:
+
+- Discusses size of residuals ranging from -1 to 1
+- Mentions how values on the left and on the right have smaller residuals than 
+the middle
+- Decides that the condition is not violated
+
+**3** -- Has all of the above but does not mention the size of the residuals
+
+**Redo** -- Otherwise
+
+</br>
 
 
 ## Hypothesis Test for the Slope 
@@ -171,6 +256,19 @@ __9. Using the template above, write out the null and alternative hypotheses we 
 
 *H_A: the relationship between human freedom score and personal freedom does differ by year*
 
+</br>
+
+**4** -- The hypotheses have the following:
+
+- labeled H0 and HA
+- references "the relationship between human freedom score and personal freedom"
+- in the null states that this relationship does differ by year
+- in the alternative states that this relationship does differ by year
+
+**Redo** -- Otherwise
+
+</br>
+
 
 __10. Report the p-value for this hypothesis test. What would you conclude for this test?__   
 Hint 1: Deciding to reject or not **is not** a conclusion, you need to specify which hypothesis seems more plausible **and** what that means in the context of these data!   
@@ -179,6 +277,20 @@ Hint 3: There should be no use of the term "significant" in your conclusion.
 <!-- Your response goes here! Do not remove this line! -->
 
 *Based on the regression table below, the p-value for this test is approximately 0. Thus, we would conclude that the null hypothesis seems unlikely to be true. At an alpha of 0.01, I would reject the null hypothesis and conclude that there is evidence the relationship between human freedom score and personal freedom does differ by year.* 
+
+</br>
+
+**4** -- Has the following:
+
+- states the p-value is approximately 0
+- states the null is unlikely to be true **or** 
+- rejects the null **and** states the $\alpha$ threshold used
+- concludes that the relationship between human freedom score and personal
+freedom does differ by year
+
+**Redo** -- Otherwise
+
+</br>
 
 
 ```{r}
@@ -197,4 +309,19 @@ __See if you can make connections between this coefficient and what you saw with
 
 *We notice that the interaction is negative, meaning we are always adjusting our slope down from the "baseline". For 2008, we would decrease the slope by $2008 \times -0.006 = 12.048$, resulting in a slope on pf_score of $13.2 - 12.048 = 1.152$. For 2016, we would decrease the slope by $2016 \times -0.006 = 12.096$, resulting in a slope on pf_score of $13.2 - 12.096 = 1.104.$*
 
+</br> 
+
+**4** -- Has the following:
+
+- Talks about how year is continuous
+- Talks about how year is used to adjust the slope on `pf_score`
+- References how the slope being negative means the later years have smaller 
+slopes than the earlier years
+
+**3** -- Has the first two components from above, but doesn't connect the
+negative coefficient to smaller slopes for later years
+
+**Redo** -- Otherwise
+
+</br>
 
