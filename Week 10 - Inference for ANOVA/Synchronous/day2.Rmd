@@ -154,7 +154,7 @@ group_means <- evals_small %>%
 evals %>% 
   ggplot(aes(x = rank, y = score, fill = rank)) + 
   geom_boxplot(alpha = 0.2) + 
-  geom_jitter(width = 0.2, alpha = 0.5) +
+  geom_jitter(width = 0.2, alpha = 0.75) +
   geom_hline(yintercept = overall_mean, 
              color = "red", 
              linetype = "dashed", 
@@ -254,8 +254,8 @@ the $F$-distribution to approximate the shape of the true sampling distribution.
 
 - An $F$-distribution is a variant of the $t$-distribution, and is also defined by degrees of freedom. 
   * This distribution is defined by __two__ different degrees of freedom:  
-    1. from the numerator (MSG) 
-    2. from the denominator (MSE)
+    1. from the numerator (MSG) : $k - 1$
+    2. from the denominator (MSE) : $n - k$ 
 
 ---
 

@@ -113,7 +113,7 @@ course evaluation score and attractiveness group.
 categorical variable into your previous visualization. 
   * Hint: Use either `fill` or `facet` to accomplish this!
 
-- (1 pt) Describe what you see in the visualizations, making direct references
+- (2 pts) Describe what you see in the visualizations, making direct references
   to the plots! 
 
 - (4 pts) For each of your research questions, outline what statistical model
@@ -122,7 +122,7 @@ will use an ANOVA" will earn you very few points. I expect you to be specific
 about **_why_** the method being used are appropriate for the question at hand
 (e.g. types of variables). 
   
-- (5 pts) Check all model conditions for the statistical methods you used. 
+- (4 pts) Check all model conditions for the statistical methods you used. 
   * Describe what each condition is __in the context of these data__. 
   * Reference and include appropriate plots necessary for checking the model
   conditions. 
@@ -235,9 +235,9 @@ your report, please post questions to Discord and I will respond ASAP.
 they are discussed__* not at the end of the report. 
 
 **Note on Model Output:** Please try to make the output from the statistical
-models look as nice as possible. Use the `broom()` function from the
+models look as nice as possible. Use the `tidy()` function from the
 **broom** package and the `kable()` function from the **knitr** package to tidy
-up the output of the `anova()` function. The code should look like the
+up the output of the `aov()` function. The code should look like the
 following: 
 
 ```{r, eval = FALSE}

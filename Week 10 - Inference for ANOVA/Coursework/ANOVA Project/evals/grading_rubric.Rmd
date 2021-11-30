@@ -7,55 +7,77 @@ output: pdf_document
 
 | Section | Points Total | Points Earned |
 |---------|--------------|---------------|
-|Give a brief background of the research problem and how the data were
-collected. Make sure to describe who the unit of study is. | 2 |  | 
-|  |  |
-|Clearly outline the question(s) of interest you will address with the
-statistical analysis. | 3  |  |
+| Take your original Introduction from the Midterm Project and spice it up! At a bare minimum your revised Introduction should include:  
+a persuasive argument as to *why* this investigation is worthwhile, substantial background of the data (e.g., year of collection, institutional context, the unit of study, number of observations) | 2 |  |
+|  |  |  |
+| Clearly outline the question(s) of interest you will address with the statistical analysis. | 3 |  |
+
+\newpage
 
 # Statistical Methods -- **Total Points Earned:**
 
 | Section | Points Total | Points Earned |
 |---------|--------------|---------------|
-| Describe the response and explanatory variables. | 1 |  | 
+| Provide a summary table of the mean, standard deviation, and sample size for the course evaluation scores of each attractiveness group. | 2 |  | 
 |  |  |
-| Provide a summary table of both the mean and median of evaluation scores and average beauty scores. | 2 |  |
+| Produce a data visualization exploring the relationship between course evaluation score and attractiveness group. | 1.5 |  |
 |  |  |
-| Produce data visualizations exploring the relationship(s) you are interested in investigating. | 2 | |
+| Produce another visualization that incorporates your chosen categorical variable into your previous visualization. | 1.5 | |
 |  |  |
-| Describe what you see in the visualizations, making direct references to the plots! | 1 | 
+| Describe what you see in the visualizations, making direct references to the plots! | 2 | 
 |  |  |
+| For each of your research questions, outline what statistical model you will use to address the question. |  |  |
+|  |  |  |
+| Check all model conditions for the statistical methods you used. | 4 |  | 
+|  |  |  |
 
-\newpage 
-
-| Section | Points Total | Points Earned |
-|---------|--------------|---------------|
-| Outline the appropriate statistical model you will use to answer
-the question(s) of interest that you stated previously. | 4 |  |
+\newpage
 
 # Summary of Statistical Findings-- **Total Points Earned:**
 
 | Section | Points Total | Points Earned |
 |---------|--------------|---------------|
-| What is your conclusion for the questions of interest? | 5 |  | 
+| What is your conclusion for the first research question? Namely, "Does the mean course evaluation score differ for at least one attractiveness group?"  | 2 |  | 
 |  |  |
-| Using the coefficients you obtained, write out the estimated 
-regression equation for each level of your categorical variable. | 2 |  |
+| Interpret __in the context of the data__ the p-value associated with 
+`attr_cat` in your ANOVA table. | 3 |  |
 |  |  |
-| Interpret __in the context of the data__ the coefficients from each regression equation. | 3 |  |
+| What is your conclusion for the second research question? Namely, "Does the relationship between course evaluation scores and attractiveness differ based on \underline{\hspace{0.5cm}}?" | 2 |  |
+|  |  |  |
+| Interpret __in the context of the data__ the p-value associated with the interaction term in your ANOVA table. | 3 |  |
 
+\newpage
 
 # Scope of Inference -- **Total Points Earned:**
 
+Take your original Scope of Inference from the Midterm Project and spice it up!
+At a bare minimum, your revisions should incorporate:
+
+- the feedback I provided
+- a description of the population of interest
+- a description of the sample selected
+- a justification as to who the results of the study can be inferred to 
+- a description of the relationships found in the analysis
+- a justification as to whether causal statements can be made
+- a conclusion about what type of relationships can be inferred
+
+| Points Total | Points Earned |
+|--------------|---------------|
+| 5 |  |
+|   |  |
+
+# Study Limitations -- **Total Points Earned:**
+
 | Section | Points Total | Points Earned |
 |---------|--------------|---------------|
-| Were the observations randomly selected from some larger population? Based on the sampling method used, what larger population can you infer these results to? | 2 |  |
-|  |  |
-| Was the explanatory variable randomly assigned to observations? Based on the study design, are cause-and-effect statements justified? | 2 |  |
-|  |  |
-| Statements specific to the language of the data | 1 |  |
+| What limitations do you see from how attractiveness was scored for each professor? | 2 | |
+|  |  |  |
+| What limitations do you see from how gender was included in this study? | 1.5 |  |
+|  |  |  |
+| What limitations do you see from how ethnicity was included in this study? | 1.5 |  |
+|  |  |  |
 
-
+\newpage
 
 # Project Presentation -- **Total Points Earned:**
 

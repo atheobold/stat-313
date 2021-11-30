@@ -116,7 +116,7 @@ aov(score ~ rank, data = evals_small) %&gt;%
 ```
 
 ```
-## # A tibble: 2 x 6
+## # A tibble: 2 × 6
 ##   term         df  sumsq meansq statistic p.value
 ##   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 ## 1 rank          2  0.401  0.201     0.546   0.581
@@ -139,7 +139,7 @@ evals_small %&gt;%
 ```
 ## Response: score (numeric)
 ## Explanatory: rank (factor)
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##    stat
 ##   &lt;dbl&gt;
 ## 1 0.546
@@ -188,8 +188,8 @@ the `\(F\)`-distribution to approximate the shape of the true sampling distribut
 
 - An `\(F\)`-distribution is a variant of the `\(t\)`-distribution, and is also defined by degrees of freedom. 
   * This distribution is defined by __two__ different degrees of freedom:  
-    1. from the numerator (MSG) 
-    2. from the denominator (MSE)
+    1. from the numerator (MSG) : `\(k - 1\)`
+    2. from the denominator (MSE) : `\(n - k\)` 
 
 ---
 
@@ -218,7 +218,7 @@ aov(score ~ rank, data = evals_small) %&gt;%
 ```
 
 ```
-## # A tibble: 2 x 6
+## # A tibble: 2 × 6
 ##   term         df  sumsq meansq statistic p.value
 ##   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 ## 1 rank          2  0.401  0.201     0.546   0.581
