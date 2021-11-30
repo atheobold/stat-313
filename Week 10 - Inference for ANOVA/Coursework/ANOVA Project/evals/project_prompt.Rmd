@@ -243,7 +243,7 @@ following:
 ```{r, eval = FALSE}
 
 anova(model_name) %>% 
-  broom() %>% 
+  tidy() %>% 
   kable()
 ```
 
