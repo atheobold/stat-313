@@ -37,7 +37,7 @@ eliminating p-value thresholds?
 
 \vspace{0.25cm}
 
-5. What is a sampling distribution? How are randomization and bootstrap
+5. What is a sampling distribution? How are permutation and bootstrap
 distributions used to approximate a sampling distribution? 
 
 
