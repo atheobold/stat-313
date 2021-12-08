@@ -1,71 +1,33 @@
+
 library(tidyverse)
 library(googlesheets4)
 
 set.seed(1234)
 
-exams <- read_sheet("https://docs.google.com/spreadsheets/d/1J0T2UOAPta5huJ-qYCYyN28M9Fr7zcD1IcNLy6mFxrA/edit#gid=0")
+midterm_exam <- read_sheet("https://docs.google.com/spreadsheets/d/1qka9tHiyiHTWMt_CpkySIaYZXXfKj0ZYN-8BoiKrSps/edit?usp=sharing") %>% 
+  rename(Monday = 'Monday, October 25', 
+         Tuesday = 'Tuesday, October 26')
 
-exam_function <- function(x, a = 1, end){
-  n = length(x)
-  q1 <- rdunif(length(x), a = a, b = end)
-  q2 <- rdunif(length(x), a = a, b = end)
-  
-  tibble(students = x,
-         question1 = q1, 
-         question2 = q2)  
+monday <- midterm_exam %>% 
+  select(Monday) %>% 
+  filter(Monday != "NULL")
+
+tuesday <- midterm_exam %>% 
+  select(Tuesday) %>% 
+  filter(Tuesday != "NULL")
+
+exam_questions <- function(x, bank){
+  q <- rdunif(1, a = 1, b = bank)
+  return(q)
 }
 
-#### MONDAY
 
-monday_students <- exams %>% 
-  select(Monday) %>% 
-  filter(Monday != "NULL", 
-         nchar(Monday) > 1) %>% 
-  mutate(student_name = word(Monday, 1)) %>% 
-  select(student_name)
+monday_exams <- monday %>% 
+  mutate(q1 = map_dbl(Monday, exam_questions, bank = 5), 
+         q2 = map_dbl(Monday, exam_questions, bank = 5)
+         )
 
-monday <- exam_function(monday_students, end = 6)  
-
-#### TUESDAY 
-
-tuesday_students <- exams %>% 
-  select(Tuesday) %>% 
-  filter(Tuesday != "NULL", 
-         nchar(Tuesday) > 1) %>% 
-  mutate(student_name = word(Tuesday, 1)) %>% 
-  select(student_name)
-
-tuesday <- tibble(students = tuesday_students, question1 = tuesday_q1, 
-                 question2 = tuesday_q2)  
-
-#### WEDNESDAY 
-wednesday_students <- exams %>% 
-  select(Wednesday) %>% 
-  filter(Wednesday != "NULL", 
-         nchar(Wednesday) > 1) %>% 
-  mutate(student_name = word(Wednesday, 1)) %>% 
-  select(student_name)
-
-wednesday <- exam_function(wednesday_students, end = 6)
-
-
-#### THURSDAY
-thursday_students <- exams %>% 
-  select(Thursday) %>% 
-  filter(Thursday != "NULL", 
-         nchar(Thursday) > 1) %>% 
-  mutate(student_name = word(Thursday, 1)) %>% 
-  select(student_name)
-
-thursday <- exam_function(thursday_students, end = 6)  
-  
-#### FRIDAY
-friday_students <- exams %>% 
-  select(Friday) %>% 
-  filter(Friday != "NULL", 
-         nchar(Friday) > 1) %>% 
-  mutate(student_name = word(Friday, 1)) %>% 
-  select(student_name)
-
-friday <- exam_function(friday_students, end = 6)
-
+tuesday_exams <- tuesday %>% 
+  mutate(q1 = map_dbl(Tuesday, exam_questions, bank = 5), 
+         q2 = map_dbl(Tuesday, exam_questions, bank = 5)
+  )
