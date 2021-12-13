@@ -81,7 +81,7 @@ Suppose an experiment is designed to use blocking to account for a possible conf
 |------:|:---------|--------|
 treatment | 4.25 | 0.035 |
 block     | 3.5  | 0.015 | 
-treatment:block | 2.5 | 0.01 | 
+treatment:block | 2.5 | 0.001 | 
 
 </br>
 
