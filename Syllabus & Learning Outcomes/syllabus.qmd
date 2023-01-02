@@ -1,16 +1,27 @@
 ---
 title: 'STAT 313: Applied Experimental Design and Regression Models'
-author: "Winter 2023"
-output: rmdformats::readthedown
+subtitle: "Winter 2023"
+format: 
+  html: 
+    self-contained: true
+    theme: minty
+    fontsize: 1em
+    mainfont: sans-serif
+    number-sections: true
+    number-depth: 2
+    code-block-bg: "#76b5c5"
+    highlight-style: monochrome
+editor: visual
+execute: 
+  echo: true
+  warning: false
+  message: false
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,
-                      warning = FALSE,
-                      message = FALSE)
+```{r setup}
+#| include: false
 
 library(RColorBrewer)
-library(PridePalettes)
 library(DiagrammeR)
 library(tidyverse)
 
@@ -20,35 +31,32 @@ brewer_pal <- brewer.pal(n = 8, name = "Purples")
 ```
 
 
-## Instructor Contact Information
+# Instructor Information
 
-- Allison Theobold, Ph.D
+**Dr. Allison Theobold**
+
 -	Email: atheobol@calpoly.edu
 -	Office: Building 25 Office 105 (by Statistics Department Office) 
 
-## Course Info
+# Course Info
 
-**Room:** 
-
-- M, T, R  -- Constr Innovations Center C202
-- W -- Kennedy Library 0111B
+**Room:** Baker Science (Building 180), Room 272
 
 **Times:** 
 
-- Section 01: 8:10-9:00am
-- Section 02: 9:10-10:00am
+- Section 01: 2:10-4:00pm
+- Section 02: 4:10-6:00pm
 
 
-## Office Hours
+# Office Hours
 
 Day        | Time
 -----------|------------------
-Tuesdays   | 1:00 pm – 2:30 pm (in-person and / or Discord)
-Wednesdays | 7 – 8 pm (on Discord)
-Thursdays  | 1:00 pm – 2:30 pm (in-person and / or Discord)
+Tuesdays   | 1:00 pm – 2:30 pm (in-person)
+Thursdays  | 1:00 pm – 2:30 pm (in-person)
 
-I am available for individual appointments on Tuesdays and Thursdays outside of
-these time slots, but appointments __must__ be made made _at least_ 24 hours
+I am available for individual appointments on Wednesdays from 3:30 to 4:00pm. 
+Appointments to meet __must__ be made made _at least_ 24 hours
 in advance through Calendly, using the following link: 
 <https://calendly.com/allisontheobold> 
 
@@ -79,7 +87,7 @@ will join the Stat 313 workspace, and then be able to access the course homework
 and lab assignments. We will be walking through this in the first week of lab!](course images/rstudio.png){width=40%}
 
 <center>
-**I strongly advise you to pay for the $5 per month plan with RStudio
+**I strongly advise you to pay for the $5 per month plan with RStudio 
 Cloud. The free plan only gives you 25 hours of working on projects a month, and
 I don't want anyone to run out of time and not be able to complete their 
 assignment!** 
@@ -93,7 +101,7 @@ Class Setup materials for more information on how to effectively use this server
 
 ---
 
-## Welcoming Classroom
+# Welcoming Classroom
 
 I value diversity, inclusion and equity in this (and every) class. I hold the
 fundamental belief that everyone is fully capable of learning and doing 
@@ -105,7 +113,7 @@ community.
 
 ---
 
-## Course Description and Learning Objectives 
+# Course Description and Learning Objectives 
 
 _Catalog Description_: Applications of statistics for students not majoring in
 statistics or mathematics. Analysis of variance including one-way
@@ -113,20 +121,43 @@ classification, randomized blocks, and factorial designs; multiple regression,
 model diagnostics, and model comparison. Prerequisite: Stat 217, Stat 218,
 Stat 221 or Stat 312
 
-_Expected Outcomes_:   
+_Expected Outcomes_: 
 
-- Students will be able to identify, describe, and contrast different study 
-designs:
+By the end of the course you will be able to:
+
+- identify, describe, and contrast different study designs:
   * observational studies
   * one-factor completely randomized designs
   * randomized complete block designs
 
-- Analyze and interpret the results of analysis of variance (ANOVA) from
-different study designs, including multiple comparisons of means
+- use software to fit an analysis of variance (ANOVA) model 
 
-- Analyze and interpret the results of simple linear regression models, and
-multiple linear regression models using both quantitative and categorical 
-predictor variables.
+- interpret the results of an ANOVA model
+
+- perform a follow-up analysis of multiple means 
+
+- describe why an adjustment is needed when performing a multiple comparison
+analysis
+
+- use software to fit a simple linear regression (SLR) model 
+
+- interpret the results of an SLR model
+
+- use software to fit an additive multiple linear regression
+(MLR) model 
+
+- interpret the results of an additive MLR model
+
+- compare an additive MLR model with a SLR model
+
+- use software to fit an interactive multiple linear regression
+(MLR) model 
+
+- interpret the results of an interactive MLR model
+
+- compare an interactive MLR model with an additive MLR model
+
+- 
 
 - Understand and know how to use variable selection techniques in regression.
 
@@ -660,4 +691,5 @@ ask for clarification.
 
 For more information about what constitutes cheating and plagiarism, please see
 https://academicprograms.calpoly.edu/content/academicpolicies/Cheating.
+
 
