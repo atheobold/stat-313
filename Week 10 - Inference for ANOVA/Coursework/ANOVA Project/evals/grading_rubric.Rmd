@@ -26,7 +26,7 @@ a persuasive argument as to *why* this investigation is worthwhile, substantial 
 |  |  |
 | Describe what you see in the visualizations, making direct references to the plots! | 2 | 
 |  |  |
-| For each of your research questions, outline what statistical model you will use to address the question. |  |  |
+| For each of your research questions, outline what statistical model you will use to address the question. | 4 |  |
 |  |  |  |
 | Check all model conditions for the statistical methods you used. | 4 |  | 
 |  |  |  |

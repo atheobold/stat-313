@@ -1,0 +1,691 @@
+---
+title: 'STAT 313: Applied Experimental Design and Regression Models'
+subtitle: "Winter 2023"
+format: 
+  html: 
+    self-contained: true
+    theme: minty
+    fontsize: 1em
+    mainfont: sans-serif
+    number-sections: true
+    number-depth: 2
+    code-block-bg: "#76b5c5"
+    highlight-style: monochrome
+editor: visual
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| include: false
+
+library(RColorBrewer)
+library(DiagrammeR)
+library(tidyverse)
+
+pride_pal <- c("#e40303", "#ff8c00", "#ffed00",
+               "#008026", "#004dff", "#750787")
+brewer_pal <- brewer.pal(n = 8, name = "Purples")
+```
+
+
+# Instructor Information
+
+**Dr. Allison Theobold**
+
+-	Email: atheobol@calpoly.edu
+-	Office: Building 25 Office 105 (by Statistics Department Office) 
+
+# Course Info
+
+**Room:** Baker Science (Building 180), Room 272
+
+**Times:** 
+
+- Section 01: 2:10-4:00pm
+- Section 02: 4:10-6:00pm
+
+
+# Office Hours
+
+Day        | Time
+-----------|------------------
+Tuesdays   | 1:00 pm – 2:30 pm (in-person)
+Wednesdays | 2:00 pm - 3:00 pm (in-person)
+Thursdays  | 1:00 pm – 2:30 pm (in-person)
+
+I am available for individual appointments on Wednesdays from 3:00 to 3:30pm. 
+Appointments to meet __must__ be made made _at least_ 24 hours
+in advance through Calendly, using the following link: 
+<https://calendly.com/allisontheobold> 
+
+---
+
+# Required Materials 
+
+For this course we will be using one main textbook, accompanied by additional 
+resources. The textbooks we are using are free, but have the option to obtain 
+a printed copy if you wish. 
+
+## Textbooks 
+
+![Çetinkaya-Rundel and Hardin, __Introduction to Modern Statistics__. 
+<https://openintro-ims.netlify.app/>](course images/ims.png){width=30%}
+
+![Ismay & Kim, __Modern Dive: Statistical Inference via Data Science__. 
+<https://moderndive.com>](course images/modern_dive_cover.png){width=20%} 
+
+## Required Technology 
+
+![`R` is the statistical software we will be using in this course 
+(<https://cran.r-project.org/>)](course images/R.jpeg){width=30%}
+
+![Posit is the most popular way to interact with the `R` software. We will be 
+interacting with Posit through Posit Cloud (https://Posit.cloud/). You 
+will join the Stat 313 workspace, and then be able to access the course homework
+and lab assignments. We will be walking through this in the first week of lab!](course images/Posit.png){width=40%}
+
+<center>
+**I strongly advise you to pay for the $5 per month plan with Posit 
+Cloud. The free plan only gives you 25 hours of working on projects a month, and
+I don't want anyone to run out of time and not be able to complete their 
+assignment!** 
+</center>
+
+</br>
+
+![For questions of general interest, such as course clarifications or conceptual
+questions, please use the Class Discord Server. Refer to the Day One
+Class Setup materials for more information on how to effectively use this server.](course images/discord.jpeg){width=20%} 
+
+---
+
+# Welcoming Classroom
+
+I value diversity, inclusion and equity in this (and every) class. I hold the
+fundamental belief that everyone is fully capable of learning and doing 
+statistics. There is more than one way to address a statistical 
+problem, and our learning will be richer by being open to different ideas,
+rejecting stereotypes, and being aware of---in order to minimize---our biases.
+I look forward to getting to know you all as individuals and as a learning
+community. 
+
+---
+
+# Course Description and Learning Objectives 
+
+_Catalog Description_: Applications of statistics for students not majoring in
+statistics or mathematics. Analysis of variance including one-way
+classification, randomized blocks, and factorial designs; multiple regression,
+model diagnostics, and model comparison. Prerequisite: Stat 217, Stat 218,
+Stat 221 or Stat 312
+
+## Learning Targets
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+**Data Visualization & Summarization**
+
+- create visualizations for one and two numerical variables
+
+- use facets and / or color to include additional variables into a visualization
+
+- calculate numerical summaries of variables
+
+- find summaries of variables across multiple groups
+
+**Working with Data & Reproducibility**
+
+- select necessary columns from a dataset
+
+- filter rows from a dataset for numerical and categorical variables
+
+- modify existing numerical and categorical variables and / or create new 
+variables
+
+- create professional-looking, reproducible analyses using Posit projects, 
+Quarto documents, and the **here** package
+
+**Linear Models & Model Selection**
+
+- explain why simple linear regression (SLR), multiple linear regression (MLR), 
+and analysis of variance (ANOVA) are all members of the linear model family
+
+- identify which linear model is appropriate for a given research question
+
+- describe the conditions required to obtain reliable estimates from linear
+models
+
+- use visualizations, summary statistics, and critical thinking to evaluate if
+linear model conditions are violated
+
+- identify methods to remedy condition violations
+
+- fit additive and interactive linear models in R
+
+- interpret the coefficient estimates of a linear model
+
+- use visualizations and model selection techniques to determine if a 
+specific variable should be included in a model 
+
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="45%"}
+
+**Study Design**
+
+- distinguish between an experiment and an observational study
+
+- identify sources of variation and describe how to account for them
+
+- explain differences in sampling methods and contrast the inferences they
+permit
+
+- argue what population a given sample is representative of
+
+
+**Fundamentals of Statistical Inference**
+
+- identify the parameter of interest for a given linear model and associated
+research question
+
+- outline the null ($H_0$) and alternative ($H_A$) hypotheses for a given 
+research question
+
+- describe what a null distribution is and how it is used to obtain a p-value
+
+- interpret a p-value in the context of a research question
+
+- use a p-value to make a decision about a hypothesis test and reach a 
+conclusion about a research question
+
+- distinguish between Type I and Type II errors
+
+- describe how sample size, significance level, and sampling variability effect
+Type I and Type II errors
+
+- outline the strengths and weaknesses of significance testing
+
+- describe what a bootstrap distribution is and how it is used to obtain a 
+confidence interval
+
+- interpret a confidence interval in the context of the parameter of interest
+
+- describe the connection between confidence intervals and hypothesis testing
+
+:::
+
+::::
+
+---
+
+# Course Organization
+
+This class is organized into six units. The skills learned at the beginning of
+the course will carry throughout the remainder of the course. I hope that you
+are able to see the connections between the topics of the different units, since
+they are all part of one big family---the regression family!
+
+
+## Unit 1: Foundations of Statistics (Week 1)
+
+This introductory unit has three big tasks, (1) review statistical and data 
+oriented concepts you have (likely) seen before, (2) think critically about 
+**why** statistics is used in science, and (3) think about **how**
+(historically) statistics has been used for inference.  
+
+Reading: Chapters 1 and 2 in *Introduction to Modern Statistics* (*IMS*), 
+with supplementary articles
+
+
+## Unit 2: Exploratory Data Analysis (Weeks 2 & 3)
+
+This unit focuses on building skills for working with and visualizing different 
+types of data. First, we will focus on categorical data--creating summary 
+tables and barcharts. Next, we will turn our attention to numerical 
+data--calculating summary statistics, histograms, scatterplots, and linegraphs. 
+
+This unit will pair:
+
+- Chapter 5 in *IMS* with Chapter 2 (sections 1-7) in *Modern Dive*
+- Chapter 4 in *IMS* with Chapter 2 (section 8) in *Modern Dive*
+
+
+## Unit 3: Regression Modeling (Weeks 4 & 5)
+
+In this unit we *finally* begin exploring statistical methods. You will put the
+tools you learned for wrangling and visualizing to work in the context of 
+linear regression. We will start in a (likely) familiar context--linear
+regression. Once we've explored the concepts of "simple" / basic regression 
+we will turn up the heat and add some additional explanatory variables with 
+multiple linear regression. 
+
+This unit will pair:
+
+- Chapter 7 in *IMS* with Chapter 5 in *Modern Dive*
+- Chapter 8 in *IMS* with Chapter 6 in *Modern Dive*
+
+
+## Unit 4: Foundations of Statistical Inference (Weeks 6 & 7)
+
+This unit will start with Chapter 7 in *Modern Dive*, setting the stage for why
+Statisticians care so much about variability. We will then use these ideas to 
+walk through chapters 11 through 13 in *Introduction to Modern Statistics*, 
+exploring different methods for summarizing the variability we might expect 
+to see in different samples. 
+
+We will use these avenues to explore concepts you have seen before: hypothesis 
+tests and confidence intervals. However, the main focus of these concepts will
+be on the idea of sampling variability **not** significance testing. We will
+visit the ideas of p-values and significance testing, with a emphasis on making 
+(and justifying) sound scientific decisions. 
+
+
+## Unit 5: Inference for Regression (Week 8 & 9)
+
+Now that we've discussed the ideas behind sampling variability and statistical 
+inference, we'll explore these ideas in the context of linear regression. We 
+will explore simple linear regression first, looking at how we can assess how 
+"good" of a job our explanatory variable does in explaining the response 
+variable. Next we'll discuss how we can extend these ideas to a regression with 
+multiple explanatory variables--using model selection criteria. 
+
+This unit will explore:
+
+- Chapter 24 in *IMS* with Chapter 10 in *Modern Dive* 
+- Chapter 25 in *IMS* 
+
+
+## Unit 6: ANOVA a (Boring) Case of Regression (Week 10)
+
+To wrap up the quarter, we will look at a special case of linear 
+regression--ANOVA. In this special case, our regression will include **only** 
+categorical variables as explanatory variables. We will first review how we 
+compare the means of two groups and then connect with what we learned about
+categorical variables in multiple linear to conceptualize how we can compare 
+the means of three or more groups. 
+
+This unit will explore Chapter 21 and 22 in *IMS*
+
+---
+
+# Course Components 
+
+Canvas will be your resource for the course materials necessary for each week. 
+There will be a published "coursework" page which you can access through RStudio
+Connect. The page will walk you through what you are expected to do each week, 
+including:
+
+- textbook reading
+- lecture videos
+- homework questions
+- quiz questions
+
+Discord will be your resource for course discussions and questions.
+
+Posit Cloud will be your resource for course lab assignments 
+
+- data sets
+- lab assignments
+- group projects
+- software resources
+
+Zoom will be used for the midterm and final oral exams. 
+
+## Communication 
+
+Every Sunday evening there will be an announcement on Canvas letting you know
+what is due over the next week, and the material we will be covering. The module 
+for each week will be released on Sunday evening, so you can look over the 
+content and see what the plan is for the week. 
+
+We will use Discord to manage questions and responses regarding course content. 
+There are channels for the different components of each week (e.g., Week 1 Lab 
+Assignment). Please __do not__ send an email about homework questions or
+questions about the course material. It is incredibly helpful for others in the
+course to see the questions you have and the responses to those questions.
+I will try to answer any questions posted to Discord within 3-4 hours (unless 
+it is posted at midnight). If you think you can answer another student’s
+question, please respond! 
+
+Generally, I will work **either** Saturday or Sunday each weekend, and will work 
+from approximately 7am to 5pm during the week. I will attempt to respond
+to emails in 24 hours, but emails sent on a Saturday night may not be responded
+to until Monday morning. If you don't hear back from me in 48 hours, assume I
+did not receive your email and resend it!
+
+---
+
+# Weekly Schedule 
+
+Each week in STAT 313 will, for the most part, look something like this:
+
+**Individual Expectations**
+
+```{r, fig.align = 'center'}
+knitr::include_graphics('course images/individual_process.jpg')
+```
+
+**Group Expectations**
+
+```{r, fig.align = 'center'}
+knitr::include_graphics('course images/group_process.jpg')
+```
+
+## Individual Assignments 
+
+### Readings and Videos
+
+I favor a "flipped classroom," since I believe it give you more hands on 
+experiences working through the concepts we are learning. Thus, you should 
+expect to dedicate time early in the week to reading the course material and 
+watching the necessary videos.
+
+
+### Weekly Quizzes (Due Fridays at midnight)
+
+Each week there will be a short (~10 questions) quiz over the reading and 
+videos from the week. These quizzes are intended to ensure that you grasped the 
+key concepts from the week's readings. The quizzes are not timed, so you can 
+feel free to check your answers with the textbook and/or videos if you so wish.
+You can attempt the quizzes three times before the deadline! 
+
+### Tutorials
+
+On the lab assignment weeks, I will assign a set of tutorials focusing on
+specific skills in `R`. These tutorials provide a review of the concepts covered
+in the textbook, give examples of how to work with data in `R`, and have hand-on
+exercises where you will need to write the `R` code necessary to complete a
+given task (with hints provided). 
+
+The tutorials are work at your own pace, so you can complete them all at once or
+slowly throughout the week. The lab assignments will require for you to put the
+skills you learned in the tutorials to work, so completing the tutorial is 
+necessary to complete the `R` code in each lab assignment.  
+
+### Statistical Critiques
+
+### Midterm & Final Projects
+
+There will be two projects throughout the quarter, where you will be asked to 
+apply the statistical concepts you have learned in the context of real data. 
+Each of these projects will be done in the teams you have been working with in 
+class. More details will be provided during class.
+
+## Team-based Assignments
+
+### Lab Assignments (Due Sundays at midnight)
+
+Labs will be assigned approximately every other week, providing the opportunity 
+to explore the course concepts in the context of real data. Lab assignments will
+require for you to work through the tutorial for the week, thus the tutorials
+should be started early! 
+
+You will complete the lab assignments in the same teams you collaborate with 
+in class. You will access the lab assignment through Posit Cloud, which you 
+will be walked through during the first lab. Your group will be expected to 
+submit your completed lab on Canvas. You will need to submit __both__ the HTML
+and RMarkdown documents. 
+
+#### Lab Assignment Grading 
+
+I expect that you will approach each lab assignment seriously, investing 
+the necessary time and energy to prepare your responses. Different from what 
+you may have experienced, lab assignments are graded for "mastery" of the 
+concepts. The degree to which you "mastered" each question is assessed with 
+the following four-point scale. 
+
+Score   | Justification
+--------|--------------
+Successful | The solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error is trivial.
+Growing | The solution shows growth toward mastering the topic; however, it is incorrect and/or incomplete. 
+Not Assessable | Solution is missing or insubstantial, or the solution was attempted using an inappropriate methodology for the problem type.
+
+Each Lab Assignment is aligned to multiple learning targets, which describe what
+you should be able to do after taking this course. You’ll receive a score for
+each problem on an assignment according to the **SGN** rubric above, as well as
+feedback to help you improve.
+
+After the first submission, you will have the option to retry any problems for
+which you scored a **G**. A written reflection on how your understanding of the
+problem changed will accompany any revision. If you receive an N on a problem,
+or if you don’t earn an S by the second try, you can make an appointment with me
+to meet during my office hours (or another agreed-upon time) to create a
+reassessment strategy. You can schedule up to one meeting per week. 
+
+You can submit **up to one** revised Lab Assignment per week, until Sunday, 
+March 19 at 11:59 pm. 
+
+### Lab Assignment Schedule
+
+Lab                                     | Week
+----------------------------------------|--------------
+Lab 1 - Getting Started with RMarkdown  | Week 1 
+Lab 2 - Summarizing & Visualizing Categorical Variables  | Week 2 
+Lab 3 - Summarizing & Visualizing Numerical Variables  | Week 3 
+Lab 4 - Linear Regression in R                         | Week 4  
+Lab 5 - Using the infer package for Inference          | Week 7 
+Lab 6 - Inference for Regression                       | Week 8 
+Lab 7 - Model Selection                                | Week 9 
+
+
+---
+
+# Working in Teams 
+
+## Team Member Roles
+
+Your team will be rotating group roles each week, so that one person does 
+not act as the "team manager" for more than one week. Instead the following roles
+will circulate each week, so that each member of the group is able to complete 
+each role.
+
+| Role         | Responsibilities | 
+|---------------|------------------|
+| Manager | Responsible for organizing the team work: making sure all roles were assigned and clear, scheduling meetings, and leading discussion of lab assignment problems. During the group discussions the editor is responsible for making sure everyone has a chance to contribute, asking quiet team members to speak up, asking loud team members to listen to others, and bringing the conversation back to the lab assignment if it deviates. |
+| Recorder | Responsible for collecting, organizing, and recording answers to the assignment during the discussions, compiling the summary of the answers discussed, sending summary to editor. |
+| Editor | Responsible for reviewing the draft summary provided by the case reporter, sharing the summary with the team, soliciting feedback from the team, and submitting the final assignment by the deadline. |
+| Clarifier  | During the team meeting the clarifier should assist the group by paraphrasing the ideas presented by other group members, e.g. “Let me make sure I understand...”. The clarifier is responsible for making sure that everyone in the group understands the solutions to the problems. |
+
+
+There will be confidential peer evaluations completed every two weeks. I will 
+use these to check-in on each group's dynamics and ensure that everyone feels 
+their voice is being heard. 
+
+## Team Meetings
+
+There will be time in each class for your team to work on the assignment for 
+the week, however this time will not be sufficient to complete the assignments.
+Therefore, every group is expected to meet for at least 2-hours outside of
+class. 
+
+__If you are not in attendance for *more than one* of your team meetings that 
+week, you will be expected to complete that week's assignment on your own.__ 
+
+My hope is that each member of the group looks over the week's assignment on
+Monday while reading the week's chapter(s). Then, each member should have some 
+initial ideas to propose by Tuesday's team meeting. During this meeting the 
+reporter can begin the process of writing up the group's ideas. The reporter 
+will then provide the editor with their summary of the group's ideas. As a 
+team, you can choose to work together or independently on the assignment's 
+problems between course meetings. The manager is responsible for scheduling
+additional meetings, so that the editor is able to submit the assignment on
+time. 
+
+---
+
+#    Grade Breakdown
+
+Your grade in STAT 313 will contain the following components.
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE, eval = TRUE}
+grades <- tribble(
+  ~category,  ~percent,
+  "Homework", 5, 
+  "Think Out Loud Recordings", 5,
+  "Quizzes", 10,
+  "Labs", 15,
+  "Projects", 15,
+  "Midterm", 25, 
+  "Final", 25
+  ) 
+
+grades <- grades %>% 
+  mutate(category = factor(category, 
+                           levels = c("Homework", "Think Out Loud Recordings", 
+                                      "Quizzes", "Labs", "Projects", 
+                                      "Midterm", "Final")
+                           )
+  )
+
+grades$location <- rep(1, 7)
+
+grades %>% 
+  ggplot(aes(x = location, y = percent)) +
+  geom_col(aes(fill = category), 
+           col = 'black') + 
+  guides(fill = FALSE) + 
+  geom_text(aes(x = rep(1, 7),
+                label = c('Group Discussions / Weekly Homework (5%)',
+                          'Think Out Loud Recordings (5%)',
+                          'Weekly Quizzes (10%)',
+                          'Lab Assignments (15%)',
+                          'Group Projects (15%)',
+                          'Oral Midterm (25%)',
+                          'Oral Final (25%)'),
+                y = c(98, 93, 85, 72, 58, 38, 13))) +
+  labs(x = '', y = 'Cumulative percent') + 
+  theme(axis.text.x = element_blank()) +
+  scale_fill_manual(values = brewer_pal)
+
+```
+
+__Note__: If you have more than three “0” grades due to turning assignments in
+late, un-revised “Rs,” failure to participate in group collaborations, or
+missed assignments, the highest grade you will earn for the class is a C-. 
+
+---
+
+# Other Policies
+
+## What if I need to turn something in late?
+
+Assignments and redos are expected to be submitted on time. However, every
+student will be permitted to submit **one** individual assignment 24 hours late
+without question. You do not need to contact me to use this allowance, but if
+you find yourself in a position where you have used this allowance and you 
+cannot complete another assignment by the due date,
+__you are expected to email me__. Once you email me, we can work together to
+find a deadline that is fair to both you and other students. If I do not hear
+from you, I will take a 5% reduction in score for every day an assignment is
+late, up to four days
+
+[Deadline Extension Google Form](https://forms.gle/9LLe6EoiLUvFEsJaA)
+
+<!-- insert blurb about five tokens -->
+
+## What if I need to miss class?
+
+I encourage you to attend every class session, but policies are for narcs. I put
+a great deal of time into making each class session engaging and worth your
+time. Attendance in this course is not explicitly required, but it degrades 
+your team's trust in you when they don't see you in class. 
+
+Here’s what you should do if you do miss a class:
+
+- Talk to a classmate to figure out what information you missed
+- Check Canvas for any necessary handouts or changes to assignments
+- Email me with any questions you have after reviewing notes and handouts
+
+If you miss a bunch of classes, please come talk to me. I’m working from the
+assumption that you care and are trying, but something is getting in your way
+(health issues? depression / anxiety? college stress?); let’s figure out what
+that is and how I can help. 
+
+## What if I have accommodations or feel that accommodations would be beneficial to my learning?
+
+I enthusiastically support the mission of Disability Resource Center to make
+education accessible to all. I design all my courses with accessibility at the forefront of my thinking, but if you have any suggestions for ways I can make
+things more accessible, please let me know. Come talk to me if you need
+accommodation for your disabilities. I honor self-diagnosis: let’s talk to each
+other about how we can make the course as accessible as possible. See also the
+standard syllabus statements, which include more information about formal
+processes.
+
+## How can I expect to be treated in this course? 
+
+Following Ihab Hassan, I strive to teach statistics so that people will stop
+killing each other. In my classroom, diversity and individual differences are respected, appreciated, and recognized as a source of strength. Students in this
+class are encouraged and expected to speak up and participate during class
+meetings, and to carefully and respectfully listen to each other. During the
+first few weeks of class, we’ll work together to create a set of norms that will
+govern our interactions with each other, to ensure that we’re always respectful
+of everyone.
+
+So that everyone feels comfortable participating, every member of this class
+must show respect for every other member of this class. Any attitude or belief
+that espouses the superiority of one group of people over another is not welcome
+in my classroom. Such beliefs are directly destructive to the sense of community
+that we strive to create, and will sabotage our ability to learn from each other
+(and thus sabotage the entire structure of the course).
+
+In summary: Be good to each other.
+
+## What consititutes plagiarism in a statistics class? 
+
+Paraphrasing or quoting another’s work without citing the source is a form of
+academic misconduct. This included the `R` code produced by someone else! 
+Writing code is like writing a paper, it is obvious if you copied-and-pasted 
+a sentence from someone else into your paper because the way each person writes 
+is different. 
+
+Even inadvertent or unintentional misuse or appropriation of another's work
+(such as relying heavily on source material that is not expressly acknowledged)
+is considered plagiarism. If you are struggling with writing the `R` code for
+an assignment, please reach out to me. I would prefer that I get to help you
+rather than you spending hours Googling things and get nowhere! 
+
+Any incident of dishonesty, copying or plagiarism will be reported to the Office
+of Student Rights and Responsibilities. Cheating or plagiarism will earn you a
+grade of **N** on the problem or assignment and will remove your ability to
+submit revisions for that assignment. 
+
+If you have any questions about using and citing sources, you are expected to
+ask for clarification. 
+
+For more information about what constitutes cheating and plagiarism, please see
+https://academicprograms.calpoly.edu/content/academicpolicies/Cheating.
+
+## I’m having difficulty paying for food and rent, what can I do? 
+
+If you have difficulty affording groceries or accessing sufficient food to eat
+every day, or if you lack a safe and stable place to live, and you believe this
+may affect your performance in the course, I urge you to contact the Dean of 
+Students for support. Furthermore, please notify me if you are comfortable in
+doing so. This will enable me to advocate for you and to connect you with other
+campus resources. 
+
+## My mental health is impairing my ability to engage in my classes, what should I do?
+
+National surveys of college students have consistently found that stress, sleep
+problems, anxiety, depression, interpersonal concerns, death of a significant
+other and alcohol use are among the top ten health impediments to academic
+performance. If you are experiencing any mental health issues, I and Cal Poly 
+are here to help you. Cal Poly's Counseling Services (805-756-2511) is a free 
+and confidential resource for assistance, support and advocacy. 
+
+## Someone is threatening me, what can I do? 
+
+I will listen and believe you if someone is threatening you. I will help you get
+the help you need. I commit to changing campus culture that responds poorly to
+dating violence and stalking. 
+
+

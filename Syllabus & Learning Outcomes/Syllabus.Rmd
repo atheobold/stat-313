@@ -1,6 +1,6 @@
 ---
 title: 'STAT 313: Applied Experimental Design and Regression Models'
-author: "Fall 2021"
+author: "Winter 2023"
 output: rmdformats::readthedown
 ---
 
