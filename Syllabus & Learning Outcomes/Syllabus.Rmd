@@ -208,7 +208,7 @@ This unit will pair:
 - Chapter 8 in *IMS* with Chapter 6 in *Modern Dive*
 
 
-## Unit 4: Foundations of Statistical Inference (Weeks 6 & 7)
+## Unit 4: Foundations of Statistical Inference (Weeks 6 and 7)
 
 This unit will start with Chapter 7 in *Modern Dive*, setting the stage for why
 Statisticians care so much about variability. We will then use these ideas to 
