@@ -297,7 +297,8 @@ You will complete the lab assignments in the same teams you collaborate with in
 class. You will access the lab assignment through Posit Cloud, which you will be
 walked through during the first lab. Your group will be expected to submit your
 completed lab on Canvas. You will need to submit **both** the HTML and Quarto
-documents.
+documents. The individual assigned as the Report Manager (described below) will
+submit the team's completed Lab assignment by **Sunday at midnight.**
 
 **Success / Growing Grading**
 
