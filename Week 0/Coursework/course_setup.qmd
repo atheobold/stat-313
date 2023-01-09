@@ -293,25 +293,25 @@ are due by ____, and Tutorials are due by ____.
 **Question 4:** If you receive a "Growing" on a Lab Assignment or a Critique, 
 what should you do?
 
-**Question 5:** For revisions on Lab Assignments and Challenges to be considered
+**Question 5:** For revisions on Lab Assignments and Critiques to be considered
 that week they need to be turned in with:
 
 **Question 6:** You have finished the week's Concept Quiz, and you want
-to know if you did it right.  You ask your friend, and she says, "Oh, I got 
+to know if you did it right.  You ask your friend, and they say, "Oh, I got 
 *Luke Skywalker* as my answer."  This is a violation of the Academic Honesty
 policy. 
 
 **Question 7:** You and a friend have been working on Critique 1 together. You
-finish up and want to go to bed, but she is still a little confused.  You email
-her your file, and say, "Don't copy this, just look how I did it so you can
-figure it out." Have you violated Academic Honesty policies?
+finish up and want to go to bed, but they are still a little confused.  You
+email them your file, and say, "Don't copy this, just look how I did it so you
+can figure it out." Have you violated Academic Honesty policies?
 
-**Question 8:** You have been working on the R code for your Midterm Project for
-what feels like forever and it seems like you are making little to no progress.
-You type your question into Google and "Wham!" the first result is a Stack
-Overflow page with a solution. You copy-and-paste the solution from the Stack
-Overflow page into your Midterm Project submission and do not reference that you
-used an outside source. You have violated the Academic Honesty policy. 
+**Question 8:** You have been working on making a visualization for your Midterm
+Project for what feels like forever and it seems like you are making little to
+no progress. You type the prompt into Google and "Wham!" the first result is a
+Stack Overflow page with a solution. You copy-and-paste the solution from the
+Stack Overflow page into your Midterm Project and do not reference that you used
+an outside source. You have violated the Academic Honesty policy. 
 
 **Question 9:** Name one of the course learning targets that makes you excited.
 
