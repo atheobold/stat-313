@@ -17,6 +17,15 @@ library(learnr)
 tutorial_options(exercise.timelimit = 60)
 ```
 
+### General information on Wednesday labs
+
+Each Wednesday you will complete a lab in class with your group. Questions are
+selected from each lab to be turned in on Canvas (one submission per group).
+The questions to be submitted on Canvas are bolded in the lab.  As you work
+through the lab with your group have the Canvas lab assignment open so that you
+can answer those questions as you go.  Today's activity is Lab 0 in Gradescope for practice submitting as a group.
+
+
 ## Welcome
 
 This is a demo tutorial that was made using an RMarkdown file and compiled 
