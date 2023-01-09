@@ -2,8 +2,6 @@
 title: "Midterm Project Guidelines"
 author: "Stat 313"
 output: pdf_document
-bibliography: ref.bib
-nocite: '@*'
 ---
 
 # Write-Up Guidelines
