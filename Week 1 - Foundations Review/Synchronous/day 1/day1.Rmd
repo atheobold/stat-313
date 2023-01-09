@@ -99,65 +99,6 @@ B.S. in Mathematics from Colorado Mesa University
 
 ---
 
-class: center, inverse
-
-.gray[.huge[Group Norms]]
-
---
-
-</br> 
-
-.honey[.bitlarger[I expect that as a class we *all* abide by a set of group norms.]]
-
----
-
-class: middle 
-
-- .honey[Zero tolerance for any "ism": racism, sexism, homophobia, transphobia, ageism, ableism, xenophobia, religious prejudice]  
-
---
-
-- .rhubarb[Speak for yourself and your own experience -- use “I” statements
-  * When we generalize from our experience we risk shutting other people down.]
-
---
-
-- .dark-blue[Respect one another]
-
---
-
--	.gray[Listen respectfully when others are speaking, even if you don’t agree.]
-
---
-
--	.pink[One speaker at a time.] 
-
---
-
--	.bayberry[Be gentle with each other when disagreeing.]
-
----
-
-- .dark-blue[Non-judgmental 
-  * There are no "dumb" questions]
-  
---
-
-- .mango[Take space, make space -- Share the air  
-  * Challenge yourself to take space if you tend to be quieter,
-  make space if you find yourself talking a lot or otherwise taking up space.  
-  * Be aware of your airtime to ensure all voices are heard.]
-
---
-
-- .bayberry[Embrace discomfort]
-
---
-
-- .gray[Make decisions by consensus]
-
----
-
 class: inverse, center
 
 .larger[What is Statistics?]
@@ -191,47 +132,17 @@ class: center, inverse
 
 class: middle 
 
-.larger[What you can expect]
+.larger[What you can expect in STAT 313]
 
-6 units separated by statistical concepts / methods 
+This course will teach you the fundamentals of linear models---**simple linear 
+regression, multiple linear regression, and analysis of variance**---and 
+experimental design. You will extend the concepts covered in your Stat I course,
+to:
 
---
-
-- Unit 1: Foundations of Statistics 
-
-- Unit 2: Exploratory Data Analysis
-
-- Unit 3: Regression Modeling 
-
-- Unit 4: Foundations of Statistical Inference  
-
-- Unit 5: Inference for Regression 
-
-- Unit 6: A Special Case of Regression (ANOVA)
-
----
-
-class: inverse, center
-
-.huge[
-.hand[Course Structure] 
-]
-
----
-
-class: inverse, center
-
-.larger[Individual Expectations]
-
-![](images/individual_process.jpg)
-
----
-
-class: inverse, center
-
-.larger[Team Expectations]
-
-![](images/group_process.jpg)
+* work with data (in R)
+* create data visualizations (in R)
+* create data summaries (in R) 
+* create & critique statistical analyses
 
 ---
 
@@ -239,7 +150,7 @@ class: inverse, center
 
 </br> 
 
-- Coding is a **huge** part of what doing statistics looks like
+Coding is a **huge** part of how doing statistics in the wild looks.
 
 --
 
@@ -252,48 +163,137 @@ class: inverse, center
 --
 
 - Use your peers to support your learning 
+ 
+---
+
+class: inverse, center, middle
+
+.larger[
+.hand[A Bit About Subversive Grading] 
+]
+
 
 ---
 
-.larger[**Working in Teams**]
+class: center, inverse, middle
 
-</br> 
-
-- I believe learning is social
-
---
-
-- Explaining our thinking to others solidifies our understanding
-
---
-
-- We can grow from the perspectives of others 
-
---
-
-- We can support each other 
+![](images/four_pillars.png)
 
 ---
 
-class: center
 
-.larger[**Oral Exams**]
+class: middle 
 
-</br> 
+.larger[Course Components]
 
---
+.pull-left-narrow[
+*Before Class*
 
-**Emphasis on articulating your understanding**
+- Reading Guides
+- Concept Quizzes
+- R Tutorials
+]
 
---
+.pull-right-wide[
+.pull-left[
 
-</br> 
+*During Class* 
 
-**Flexibility to use examples familiar to you**
+- Team Conceptual Questions
+- Lab Assignments 
+]
+.pull-right[
+*Outside of Class* 
+
+- Statistical Critiques
+- Midterm Project
+- Final Project
+]
+]
 
 ---
 
-.huge-text[Break]
+class: middle, inverse
+
+.larger[How Smart are You?]
+
+What *criteria* would you use to *rank* yourself compared to everyone else
+in this class?
+
+Saying "this is not possible" or "this is not something we should be trying to
+do" is not an acceptable answer for this exercise. I want actual criteria!
+
+Be prepared to share some possible criteria. 
+
+---
+
+.larger[Cooperative Learning]
+
+is a structured form of small-group learning
+
+--
+
+- Roles relate to **how** the work should be done
+  * Roles **are not** about breaking up the work intellectually
+  
+- Roles allow each person to contribute to the group in significant ways
+  * Each person's participation is necessary to complete the task
+
+---
+
+.bitlarger[Group Norms]
+
+.pull-left[
+
+- Zero tolerance for: racism, sexism, homophobia, transphobia, ageism, ableism 
+
+- Respect one another
+
+- Intent and impact *both* matter
+]
+
+.pull-right[
+
+- Non-judgmental 
+
+- Take space, make space -- Share the air (page) 
+
+- Embrace discomfort
+
+- Make decisions by consensus
+]
+
+---
+
+.bitlarger[How We Learn Together]
+
+.pull-left[
+
+- No one is done until everyone is done
+
+- You have the *right* to ask **anyone** in your group for help
+
+- You have the *duty* to help **anyone** in your group who asks for help
+
+]
+
+.pull-right[
+
+- Helping someone means explaining your thinking **not** giving answers or doing
+the work for them
+
+- Provide a justification when you make a statement
+
+- Think and work together -- don't divide up the work
+
+]
+
+---
+class: inverse, center
+
+.huge[
+.hand[Break] 
+]
 
 ---
 
@@ -312,7 +312,7 @@ class: center, inverse
 
 .huge[Tidy Data]
 
-![](tidy-1.png)
+![](images/tidy-1.png)
 
 ---
 
@@ -397,21 +397,32 @@ fish %>%
 
 ---
 
-class: center
+class: middle, inverse
 
-.huge[.hand[Your Turn]]
+.larger[Your Turn]
 
-.larger[How could a dataset violate the "tidy" principles?]
+Data were collected on thousands of loans made through the Lending Club
+platform, a platform that allows individuals to lend to other individuals.
+
+A total of 55 variables were collected on every loan that was made, including
+information about:
+
+- the borrower's employment, credit, current financial status, tax filings
+- the loan's details, date of issue, balance, and current status
+
+</br>
+
+.large[.mango[What do you expect this dataframe would look like?]]
 
 ---
 
-class: center, inverse
+class: center
 
 .larger[Types of Variables]
 
 </br>
 
-![](variables.png)
+![](images/variables.png)
 
 ---
 
@@ -430,30 +441,13 @@ variable
 
 ---
 
-class: center
+class: center, inverse
 
 .huge[.hand[Your Turn]]
 
-.rhubarb[.bitlarger[Suppose researchers have data from 2010 - 2020.]]
+.mango[.bitlarger[Suppose researchers have data from 2010 - 2020.]]
 
 .gray[.bitlarger[What type of variable would year be?]]
-
----
-
-<!-- class: center  -->
-
-<!-- .larger[#90 Second Writing Exercise] -->
-
-<!-- Data were collected on thousands of loans made through the Lending Club platform, a platform that allows individuals to lend to other individuals.  -->
-
-<!-- A total of 55 variables were collected on every loan that was made, including information about:  -->
-
-<!-- - the borrower's employment, credit, current financial status, tax filings -->
-<!-- - the loan's details, date of issue, balance, and current status -->
-
-<!-- </br> -->
-
-<!-- .large[__What do you expect this dataframe would look like?__] -->
 
 ---
 
@@ -488,7 +482,7 @@ How might it differ from `fct`?
 ]
 ---
 
-class: center, inverse 
+class: center
 
 .larger[Sampling Strategies]
 
@@ -541,11 +535,11 @@ par(par_og) # restore original par
 
 ---
 
-class: center
+class: center, inverse
 
 .huge[.hand[Your Turn]]
 
-.rhubarb[.bitlarger[What types of samples could we collect? Are some methods 
+.honey[.bitlarger[What types of samples could we collect? Are some methods 
 "better" than other methods?]]
 
 ---
@@ -611,34 +605,27 @@ What is dichotomous thinking?
 
 What is an example of dichotomous choices?   
 
---
-
-.rhubarb[How is dichotomous thinking used in Statistics?]
-
 ---
+
+class: middle, inverse
 
 .huge[.hand[Your Turn]]
 
-- What is the role of Statistics in the progression of science?
+.large[.honey[How is dichotomous thinking used in Statistics?]]
 
-- How is dichotomous thinking used in Statistics? What are two 
-benefits and drawbacks of dichotomous thinking?
+.large[.pink[How is dichotomous thinking used in Statistics? What are two 
+benefits and drawbacks of dichotomous thinking?]]
 
 ---
 
-.larger["objective" and "significant"]
+class: middle, inverse
+
+.huge[The S-word]
+
+.large[.honey[What are 4-5 synonyms of "significant" that come to your mind?]]
 
 </br>
 
-- What does it mean for an analysis to be "objective"? Do you believe 
-statistical analyses can be objective? Why or why not?
-
-</br>
-
-- What are 4-5 synonyms of "significant" that come to your mind?
-
-</br>
-
-- What are two issues that you see with using the term "significant" 
-to denote "small" p-values? 
+.large[.pink[What are two issues that you see with using the term "significant" 
+to denote "small" p-values?]]
 
