@@ -1,8 +1,9 @@
 ---
 title: "Week 1 Reading Guide"
-format: 
-  html:
-    self-contained: true
+format: docx
+#format: 
+#  html:
+#    self-contained: true
 editor: visual
 ---
 

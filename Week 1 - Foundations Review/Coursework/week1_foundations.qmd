@@ -1,21 +1,23 @@
 ---
-title: "Week One: Foundations of Statistics"
-subtitle: "Winter 2023"
-format: 
-  html: 
+title: 'Week One: Foundations of Statistics'
+subtitle: Winter 2023
+format:
+  html:
     self-contained: true
     theme: minty
     fontsize: 1em
-    mainfont: sans-serif
+    mainfont: "sans-serif"
     number-sections: true
     section-divs: true
-    code-block-bg: "#76b5c5"
+    code-block-bg: '#76b5c5'
     highlight-style: monochrome
 editor: visual
-execute: 
+execute:
   echo: true
   warning: false
   message: false
+resource_files:
+- _week1_reading.html
 ---
 
 ```{r packages}
@@ -82,7 +84,7 @@ data!
 
 ## Chapter Reading Guides
 
-`r emo::ji("pen")` [Week 1 Reading Guide](_week1_reading.html)
+`r emo::ji("pen")` [Week 1 Reading Guide](atheobold.github.io/stat-313/Week%201%20-%20Foundations%20Review/Coursework/_week1_reading.html)
 
 ## `r emo::ji("check")` Check-in
 
