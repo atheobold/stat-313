@@ -85,14 +85,18 @@ printed copy if you wish.
 ::: columns
 ::: {.column width="45%"}
 
-![Çetinkaya-Rundel and Hardin, **Introduction to Modern Statistics**. <https://openintro-ims.netlify.app/>](course images/ims.png){width="30%"}
+![Çetinkaya-Rundel and Hardin, **Introduction to Modern Statistics**. <https://openintro-ims.netlify.app/>](course images/ims.png)
+
+
 :::
 
 ::: {.column width="5%"}
+<!-- empty space -->
 :::
 
 ::: {.column width="45%"}
-![Ismay & Kim, **Modern Dive: Statistical Inference via Data Science**. <https://moderndive.com>](course images/modern_dive_cover.png){width="20%"}
+![Ismay & Kim, **Modern Dive: Statistical Inference via Data Science**. <https://moderndive.com>](course images/modern_dive_cover.png)
+:::
 :::
 
 ## Required Technology
@@ -100,19 +104,23 @@ printed copy if you wish.
 ::: columns
 ::: {.column width="30%"}
 
-![`R` is the statistical software we will be using in this course (<https://cran.r-project.org/>)](course images/R.jpeg){width="30%"}
-:::
-
-::: {.column widht="30%"}
-![RStudio is the most popular way to interact with the `R` software. We will be interacting with RStudio through [Posit Cloud](https://posit.cloud/) (Posit is the company that owns RStudio). You will join the Stat 313 workspace, and then be able to access the course homework and lab assignments. We will be walking through this in the first week of lab!](course images/rstudio.png){width="40%"}
-
-**I strongly advise you to pay for the \$5 per month plan with Posit Cloud. The free plan only gives you 25 hours of working on projects a month, and I don't want anyone to run out of time and not be able to complete their assignment!**
+![`R` is the statistical software we will be using in this course (<https://cran.r-project.org/>)](course images/R.jpeg){width="50%"}
 :::
 
 ::: {.column width="30%"}
-![For questions of general interest, such as course clarifications or conceptual questions, please use the Class Discord Server. Refer to the Day One Class Setup materials for more information on how to effectively use this server.](course images/discord.jpeg){width="20%"}
+![RStudio is the most popular way to interact with the `R` software. We will be interacting with RStudio through [Posit Cloud](https://posit.cloud/) (Posit is the company that owns RStudio). You will join the Stat 313 workspace, and then be able to access the course homework and lab assignments. We will be walking through this in the first week of lab!](course images/rstudio.png){width="75%"}
+:::
+
+::: {.column width="30%"}
+![For questions of general interest, such as course clarifications or conceptual questions, please use the Class Discord Server. Refer to the Day One Class Setup materials for more information on how to effectively use this server.](course images/discord.jpeg){width="50%"}
 :::
 :::
+
+
+::: {.callout-caution}
+I strongly advise you to pay for the \$5 per month plan with Posit Cloud. The free plan only gives you 25 hours of working on projects a month, and I don't want anyone to run out of time and not be able to complete their assignment!
+:::
+
 
 # Course goals
 
