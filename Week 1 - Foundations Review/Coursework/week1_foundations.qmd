@@ -17,7 +17,7 @@ execute:
   warning: false
   message: false
 resource_files:
-- _week1_reading.html
+  - _week1_reading.html
 ---
 
 ```{r packages}
@@ -82,9 +82,10 @@ data!
 
 `r emo::ji("book")` [**Required Reading:** statistics versus Statistics ](https://critical-inference.com/statistics-vs-statistics/)
 
-## Chapter Reading Guides
+## `r emo::ji("pen")` Week 1 Reading Guide
 
-`r emo::ji("pen")` [Week 1 Reading Guide](atheobold.github.io/stat-313/Week%201%20-%20Foundations%20Review/Coursework/_week1_reading.html)
+Access the Word and HTML versions of the Week 1 Reading Guide on Canvas, under
+the Week 1 module. 
 
 ## `r emo::ji("check")` Check-in
 
