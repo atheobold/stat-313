@@ -36,8 +36,7 @@ brewer_pal <- brewer.pal(n = 8, name = "Purples")
 
 *Catalog Description*: Applications of statistics for students not majoring in statistics or mathematics. Analysis of variance including one-way classification, randomized blocks, and factorial designs; multiple regression, model diagnostics, and model comparison. Prerequisite: Stat 217, Stat 218, Stat 221 or Stat 312
 
-**What will class be like?** 
-We will spend class time exploring statistics concepts and tools and using those tools to answer questions, often with real data. This will happen in small-group work, full-class discussions, or mini lectures. We'll often explore data with technology, so **please bring a laptop**! There will also be time in class to discuss research articles that draw on the statistics topics we study.
+**What will class be like?** We will spend class time exploring statistics concepts and tools and using those tools to answer questions, often with real data. This will happen in small-group work, full-class discussions, or mini lectures. We'll often explore data with technology, so **please bring a laptop**! There will also be time in class to discuss research articles that draw on the statistics topics we study.
 
 # Welcoming Classroom
 
@@ -67,27 +66,19 @@ I value diversity, inclusion and equity in this (and every) class. I hold the fu
 | Wednesdays | 2:00 pm - 3:00 pm (in-person)  |
 | Thursdays  | 1:00 pm -- 2:30 pm (in-person) |
 
-I am available for individual appointments on Wednesdays from 3:00 to 3:30pm.
-Appointments to meet **must** be made made *at least* 24 hours in advance
-through Calendly, using the following link: 
-<https://calendly.com/allisontheobold>
+I am available for individual appointments on Wednesdays from 3:00 to 3:30pm. Appointments to meet **must** be made made *at least* 24 hours in advance through Calendly, using the following link: <https://calendly.com/allisontheobold>
 
 ------------------------------------------------------------------------
 
 # Required Materials
 
-For this course we will be using one main textbook, accompanied by additional
-resources. The textbooks we are using are free, but have the option to obtain a
-printed copy if you wish.
+For this course we will be using one main textbook, accompanied by additional resources. The textbooks we are using are free, but have the option to obtain a printed copy if you wish.
 
 ## Textbooks
 
 ::: columns
 ::: {.column width="45%"}
-
-![Çetinkaya-Rundel and Hardin, **Introduction to Modern Statistics**. <https://openintro-ims.netlify.app/>](course images/ims.png)
-
-
+![Çetinkaya-Rundel and Hardin, **Introduction to Modern Statistics**. <https://openintro-ims.netlify.app/>](course%20images/ims.png)
 :::
 
 ::: {.column width="5%"}
@@ -95,7 +86,7 @@ printed copy if you wish.
 :::
 
 ::: {.column width="45%"}
-![Ismay & Kim, **Modern Dive: Statistical Inference via Data Science**. <https://moderndive.com>](course images/modern_dive_cover.png)
+![Ismay & Kim, **Modern Dive: Statistical Inference via Data Science**. <https://moderndive.com>](course%20images/modern_dive_cover.png)
 :::
 :::
 
@@ -103,24 +94,21 @@ printed copy if you wish.
 
 ::: columns
 ::: {.column width="30%"}
-
-![`R` is the statistical software we will be using in this course (<https://cran.r-project.org/>)](course images/R.jpeg){width="50%"}
+![`R` is the statistical software we will be using in this course (<https://cran.r-project.org/>)](course%20images/R.jpeg){width="50%"}
 :::
 
 ::: {.column width="30%"}
-![RStudio is the most popular way to interact with the `R` software. We will be interacting with RStudio through [Posit Cloud](https://posit.cloud/) (Posit is the company that owns RStudio). You will join the Stat 313 workspace, and then be able to access the course homework and lab assignments. We will be walking through this in the first week of lab!](course images/rstudio.png){width="75%"}
+![RStudio is the most popular way to interact with the `R` software. We will be interacting with RStudio through [Posit Cloud](https://posit.cloud/) (Posit is the company that owns RStudio). You will join the Stat 313 workspace, and then be able to access the course homework and lab assignments. We will be walking through this in the first week of lab!](course%20images/rstudio.png){width="75%"}
 :::
 
 ::: {.column width="30%"}
-![For questions of general interest, such as course clarifications or conceptual questions, please use the Class Discord Server. Refer to the Day One Class Setup materials for more information on how to effectively use this server.](course images/discord.jpeg){width="50%"}
+![For questions of general interest, such as course clarifications or conceptual questions, please use the Class Discord Server. Refer to the Day One Class Setup materials for more information on how to effectively use this server.](course%20images/discord.jpeg){width="50%"}
 :::
 :::
 
-
-::: {.callout-caution}
+::: callout-caution
 I strongly advise you to pay for the \$5 per month plan with Posit Cloud. The free plan only gives you 25 hours of working on projects a month, and I don't want anyone to run out of time and not be able to complete their assignment!
 :::
-
 
 # Course goals
 
@@ -130,8 +118,7 @@ I strongly advise you to pay for the \$5 per month plan with Posit Cloud. The fr
 
 -   create visualizations for one and two numerical variables
 
--   use facets and / or color to include additional variables into a
-visualization
+-   use facets and / or color to include additional variables into a visualization
 
 -   calculate numerical summaries of variables
 
@@ -143,25 +130,19 @@ visualization
 
 -   filter rows from a dataset for numerical and categorical variables
 
--   modify existing numerical and categorical variables and / or create new
-variables
+-   modify existing numerical and categorical variables and / or create new variables
 
--   create professional-looking, reproducible analyses using Posit projects,
-Quarto documents, and the **here** package
+-   create professional-looking, reproducible analyses using Posit projects, Quarto documents, and the **here** package
 
 **Linear Models & Model Selection**
 
--   explain why simple linear regression (SLR), multiple linear regression
-(MLR), and analysis of variance (ANOVA) are all members of the linear model
-family
+-   explain why simple linear regression (SLR), multiple linear regression (MLR), and analysis of variance (ANOVA) are all members of the linear model family
 
 -   identify which linear model is appropriate for a given research question
 
--   describe the conditions required to obtain reliable estimates from linear
-models
+-   describe the conditions required to obtain reliable estimates from linear models
 
--   use visualizations, summary statistics, and critical thinking to evaluate if
-linear model conditions are violated
+-   use visualizations, summary statistics, and critical thinking to evaluate if linear model conditions are violated
 
 -   identify methods to remedy condition violations
 
@@ -169,8 +150,7 @@ linear model conditions are violated
 
 -   interpret the coefficient estimates of a linear model
 
--   use visualizations and model selection techniques to determine if a specific
-variable should be included in a model
+-   use visualizations and model selection techniques to determine if a specific variable should be included in a model
 :::
 
 ::: {.column width="5%"}
@@ -184,35 +164,29 @@ variable should be included in a model
 
 -   identify sources of variation and describe how to account for them
 
--   explain differences in sampling methods and contrast the inferences they
-permit
+-   explain differences in sampling methods and contrast the inferences they permit
 
 -   argue what population a given sample is representative of
 
 **Fundamentals of Statistical Inference**
 
--   identify the parameter of interest for a given linear model and associated
-research question
+-   identify the parameter of interest for a given linear model and associated research question
 
--   outline the null ($H_0$) and alternative ($H_A$) hypotheses for a given
-research question
+-   outline the null ($H_0$) and alternative ($H_A$) hypotheses for a given research question
 
 -   describe what a null distribution is and how it is used to obtain a p-value
 
 -   interpret a p-value in the context of a research question
 
--   use a p-value to make a decision about a hypothesis test and reach a
-conclusion about a research question
+-   use a p-value to make a decision about a hypothesis test and reach a conclusion about a research question
 
 -   distinguish between Type I and Type II errors
 
--   describe how sample size, significance level, and sampling variability
-effect Type I and Type II errors
+-   describe how sample size, significance level, and sampling variability effect Type I and Type II errors
 
 -   outline the strengths and weaknesses of significance testing
 
--   describe what a bootstrap distribution is and how it is used to obtain a 
-confidence interval
+-   describe what a bootstrap distribution is and how it is used to obtain a confidence interval
 
 -   interpret a confidence interval in the context of the parameter of interest
 
@@ -224,93 +198,49 @@ confidence interval
 
 # What assessments will there be?
 
-The main idea of assessment in this course is communication and feedback. There
-are several different types of assessments or assignments in this class, but
-they will all allow you to check your own understanding and progress towards the
-learning goals, get in-depth feedback from me, and let me know where to spend
-more time or approach something differently.
+The main idea of assessment in this course is communication and feedback. There are several different types of assessments or assignments in this class, but they will all allow you to check your own understanding and progress towards the learning goals, get in-depth feedback from me, and let me know where to spend more time or approach something differently.
 
-Each one is described briefly here, grouped into categories by course goal. See
-["How do I earn a grade?"]() for an explanation of how these contribute to your
-final grade. Our class schedule with topics and assessments is [here]().
-
-<!-- figure out how to link to other sections -->
+Each one is described briefly here, grouped into categories by course goal. See 
+@sec-grades for an explanation of how these contribute to your final grade. Our
+class schedule with topics is in @sec-schedule. 
 
 ## Interpret and use statistical concepts
 
 ### Readings and videos (every week)
 
-I favor a "flipped classroom," as it gives you more time to clarify and solidify
-statistical concepts through hands-on exercises. Each week, you will read the
-required chapter(s), completing a required reading guide to walk you through the
-central concepts for each week. You are required to submit your completed 
-reading guides by Monday at midnight.
+I favor a "flipped classroom," as it gives you more time to clarify and solidify statistical concepts through hands-on exercises. Each week, you will read the required chapter(s), completing a required reading guide to walk you through the central concepts for each week. You are required to submit your completed reading guides by Monday at midnight.
 
 ### Concept quizzes (every week)
 
-Each week there will be a short (~10 questions) quiz over the reading and videos
-from the week. These quizzes are intended to ensure that you grasped the key
-concepts from the week's readings. The quizzes are not timed, so you can feel
-free to check your answers with the textbook and / or videos if you so wish. The
-quizzes are **marked on completion** as complete or incomplete. You are required
-to complete the concept quiz by Tuesday at noon.
+Each week there will be a short (\~10 questions) quiz over the reading and videos from the week. These quizzes are intended to ensure that you grasped the key concepts from the week's readings. The quizzes are not timed, so you can feel free to check your answers with the textbook and / or videos if you so wish. The quizzes are **marked on completion** as complete or incomplete. You are required to complete the concept quiz by Tuesday at noon.
 
 ### Tutorials (every week)
 
-You can think of the tutorials as an "interactive" textbook, as they interweave
-statistical ideas alongside examples of how to work with data in `R` and
-hands-on exercises writing the `R` code necessary to complete a given task. 
-Each exercise has hints available if you get stuck! 
+You can think of the tutorials as an "interactive" textbook, as they interweave statistical ideas alongside examples of how to work with data in `R` and hands-on exercises writing the `R` code necessary to complete a given task. Each exercise has hints available if you get stuck!
 
-The tutorials are work at your own pace, so you can complete them all at once or
-slowly throughout the week. The lab assignments will require for you to put the
-skills you learned in the tutorials to work, so you are required to complete
-each week's tutorial **before** Thursday's lab. 
+The tutorials are work at your own pace, so you can complete them all at once or slowly throughout the week. The lab assignments will require for you to put the skills you learned in the tutorials to work, so you are required to complete each week's tutorial **before** Thursday's lab.
 
-The tutorials are **marked on completion** as complete or incomplete. You will
-submit a screenshot of the completion page at the end of the tutorial to confirm
-that you completed the tutorial for the week. You are required to complete the
-tutorial by Thursdays at noon. 
+The tutorials are **marked on completion** as complete or incomplete. You will submit a screenshot of the completion page at the end of the tutorial to confirm that you completed the tutorial for the week. You are required to complete the tutorial by Thursdays at noon.
 
 ## Critically evaluate the use of Statistics
 
 ### Statistical critiques (every 2-weeks)
 
-These assignments are case studies in which you will evaluate a data
-visualization or statistical analysis, determining how well-performed and
-presented the analysis was and making recommendations for improving or using the
-analysis. Critiques are due roughly 1-week after they are assigned and should
-take **1-2 hours**. You will **receive feedback** and a mark of **Success** or
-**Growing** (elaborated more on later), and you will be able to revise based on
-that feedback. There will be **four** total critiques.
+These assignments are case studies in which you will evaluate a data visualization or statistical analysis, determining how well-performed and presented the analysis was and making recommendations for improving or using the analysis. Critiques are due roughly 1-week after they are assigned and should take **1-2 hours**. You will **receive feedback** and a mark of **Success** or **Growing** (elaborated more on later), and you will be able to revise based on that feedback. There will be **four** total critiques.
 
 ## Perform statistical analyses to answer research questions
 
 ### Lab Assignments (every week)
 
-Labs will be assigned on Thursday every week, providing the opportunity to
-explore the course concepts in the context of real data. Lab assignments will
-require for you to work through the tutorial for the week, thus the tutorials
-are due before the start of class on Thursday. 
+Labs will be assigned on Thursday every week, providing the opportunity to explore the course concepts in the context of real data. Lab assignments will require for you to work through the tutorial for the week, thus the tutorials are due before the start of class on Thursday.
 
-You will complete the lab assignments in the same teams you collaborate with in
-class. You will access the lab assignment through Posit Cloud, which you will be
-walked through during the first lab. Your group will be expected to submit your
-completed lab on Canvas. You will need to submit **both** the HTML and Quarto
-documents. The individual assigned as the Report Manager (described below) will
-submit the team's completed Lab assignment by **Sunday at midnight.**
+You will complete the lab assignments in the same teams you collaborate with in class. You will access the lab assignment through Posit Cloud, which you will be walked through during the first lab. Your group will be expected to submit your completed lab on Canvas. You will need to submit **both** the HTML and Quarto documents. The individual assigned as the Report Manager (described below) will submit the team's completed Lab assignment by **Sunday at midnight.**
 
 **Success / Growing Grading**
 
-I expect that you will approach each lab assignment seriously, investing the
-necessary time and energy to prepare your responses. Different from what you may
-have experienced, lab assignments are graded for "proficiency" of specific 
-learning targets, which describe what you should be able to do after taking this
-course. You'll receive a score for each problem on an assignment according to
-the **Success** / **Not Yet** rubric below, as well as feedback to help you
-improve.
+I expect that you will approach each lab assignment seriously, investing the necessary time and energy to prepare your responses. Different from what you may have experienced, lab assignments are graded for "proficiency" of specific learning targets, which describe what you should be able to do after taking this course. You'll receive a score for each problem on an assignment according to the **Success** / **Not Yet** rubric below, as well as feedback to help you improve.
 
-| Score                     | Justification                               |
+| Score      | Justification                                                                                                           |
 |---------------------------|---------------------------------------------|
 | Successful | The solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error is trivial. |
 | Growing    | The solution shows growth toward mastering the topic; however, it is incorrect and/or incomplete.                       |
@@ -319,140 +249,77 @@ improve.
 
 ### Midterm & Final Projects
 
-There will be two projects throughout the quarter, where you will be asked to
-synthesize the statistical concepts you have learned in a formal statistical
-report. Your critiques will help guide you toward how you do / don't want your
-report to look. Each project will be done independently, and requires you to 
-submit a project proposal and draft report before the final deadline. You are 
-encouraged to use the feedback received on these assignments to improve your
-final report. The final reports will be graded as Excellent, Satisfactory,
-Progressing, or No Credit based on a rubric that will be shared with the initial
-assignment. 
+There will be two projects throughout the quarter, where you will be asked to synthesize the statistical concepts you have learned in a formal statistical report. Your critiques will help guide you toward how you do / don't want your report to look. Each project will be done independently, and requires you to submit a project proposal and draft report before the final deadline. You are encouraged to use the feedback received on these assignments to improve your final report. The final reports will be graded as Excellent, Satisfactory, Progressing, or No Credit based on a rubric that will be shared with the initial assignment.
 
-# Grade Breakdown
+# Grade Breakdown {#sec-grades}
 
-|                  | A-level              | B-level              | C-level              | D-level              |
-|----------------|--------------|--------------|--------------|--------------|
-| Guided Reading   | Regular Completion   | Regular Completion   | Irregular Completion | Irregular Completion |
-| Concept Quizzes  | at least 9 completed | at least 8 completed | at least 7 completed | 6 or fewer completed |
-| Tutorials        | at least 9 completed | at least 8 completed | at least 7 completed | 6 or fewer completed |
-| Critiques & Lab Assignments  |  at least 11 Satisfactory | at least 10 Satisfactory | at least 8 Satisfactory | at least 6 Satisfactory |
-| Peer Evaluations |  2 completed | 2 completed | at least 1 completed | at least 1 completed |
-| Midterm Project  |  Excellent |  Satisfactory | Progressing | Not Completed |
-| Final Project  |  Excellent |  Satisfactory | Progressing | Not Completed |
+|                             | A-level                  | B-level                  | C-level                 | D-level                 |
+|---------------|---------------|---------------|---------------|---------------|
+| Guided Reading              | Regular Completion       | Regular Completion       | Irregular Completion    | Irregular Completion    |
+| Concept Quizzes             | at least 9 completed     | at least 8 completed     | at least 7 completed    | 6 or fewer completed    |
+| Tutorials                   | at least 9 completed     | at least 8 completed     | at least 7 completed    | 6 or fewer completed    |
+| Critiques & Lab Assignments | at least 11 Satisfactory | at least 10 Satisfactory | at least 8 Satisfactory | at least 6 Satisfactory |
+| Peer Evaluations            | 2 completed              | 2 completed              | at least 1 completed    | at least 1 completed    |
+| Midterm Project             | Excellent                | Satisfactory             | Progressing             | Not Completed           |
+| Final Project               | Excellent                | Satisfactory             | Progressing             | Not Completed           |
 
 <!-- how many tutorials are assigned? -->
 
-I will set + / - grades based on how close you are to the next higher (or lower)
-letter grade. For example, if you meet all the criteria for an A but only 
-completed 10 satisfactory labs and critiques, you would earn an A-. 
+I will set + / - grades based on how close you are to the next higher (or lower) letter grade. For example, if you meet all the criteria for an A but only completed 10 satisfactory labs and critiques, you would earn an A-.
 
 ### Completing Revisions
 
-After the first submission of your lab or critique, you will have the option to
-retry any problems for which you scored a **Growing (G)**. A written reflection
-on how your understanding of the problem changed will accompany any revision. If
-you don't earn a **Success** by the second try, you can make an appointment with
-me to meet during my office hours (or another agreed-upon time) to create a
-reassessment strategy. You can schedule up to one meeting per week.
+After the first submission of your lab or critique, you will have the option to retry any problems for which you scored a **Growing (G)**. A written reflection on how your understanding of the problem changed will accompany any revision. If you don't earn a **Success** by the second try, you can make an appointment with me to meet during my office hours (or another agreed-upon time) to create a reassessment strategy. You can schedule up to one meeting per week.
 
-You can submit **up to one** revised Lab Assignment or Critique per week, until
-Sunday, March 19 at 11:59 pm.
-
+You can submit **up to one** revised Lab Assignment or Critique per week, until Sunday, March 19 at 11:59 pm.
 
 ------------------------------------------------------------------------
 
 # Classroom community and policies
 
-### Weekly expectations 
+### Weekly expectations
 
-Every Sunday evening there will be an announcement on Canvas letting you know
-what is due over the next week, and the material we will be covering. The module
-for each week will be released on Friday by 5pm, so you can look over the
-content and see what the plan is for the week.
+Every Sunday evening there will be an announcement on Canvas letting you know what is due over the next week, and the material we will be covering. The module for each week will be released on Friday by 5pm, so you can look over the content and see what the plan is for the week.
 
-### Getting help 
+### Getting help
 
-**Discord:** We will use Discord to manage questions and responses regarding
-course content.
-There are channels for the different components of each week (e.g., Week 1 Lab
-Assignment). Please **do not** send an email about homework questions or
-questions about the course material. It is incredibly helpful for others in the
-course to see the questions you have and the responses to those questions. I
-will try to answer any questions posted to Discord within 3-4 hours (unless it
-is posted at midnight). If you think you can answer another student's question,
-please respond!
+**Discord:** We will use Discord to manage questions and responses regarding course content. There are channels for the different components of each week (e.g., Week 1 Lab Assignment). Please **do not** send an email about homework questions or questions about the course material. It is incredibly helpful for others in the course to see the questions you have and the responses to those questions. I will try to answer any questions posted to Discord within 3-4 hours (unless it is posted at midnight). If you think you can answer another student's question, please respond!
 
-**Email:** I do my best to reply to emails promptly and helpfully. However, I
-receive *a lot* of emails. To help both you and me, here are some specific 
-expectations about emails: 
+**Email:** I do my best to reply to emails promptly and helpfully. However, I receive *a lot* of emails. To help both you and me, here are some specific expectations about emails:
 
-- Please tell me what course and section (by time or number) you are in!
-- If you email me between 9am and 4pm on Monday through Friday, I'll try my best
-to reply to you on the *same* day. 
--  If you email me outside of those hours, I will do my best to respond to you 
-by the *next working* day. For my own mental health, I **do not** work on
-weekends. Thus, if you send an email after 4pm on Friday or during the weekend,
-you will not receive a response until Monday morning. 
-- If your question is much easier to discuss face-to-face, I may ask you to meet
-with me in my office or on Discord (at a time that works for both of us) rather
-than answering directly in an email. 
-- Include any relevant photos / screenshots / error messages / PDFs / links with
-your email.
+-   Please tell me what course and section (by time or number) you are in!
+-   If you email me between 9am and 4pm on Monday through Friday, I'll try my best to reply to you on the *same* day.
+-   If you email me outside of those hours, I will do my best to respond to you by the *next working* day. For my own mental health, I **do not** work on weekends. Thus, if you send an email after 4pm on Friday or during the weekend, you will not receive a response until Monday morning.
+-   If your question is much easier to discuss face-to-face, I may ask you to meet with me in my office or on Discord (at a time that works for both of us) rather than answering directly in an email.
+-   Include any relevant photos / screenshots / error messages / PDFs / links with your email.
 
 # Well-being, Access, and Accommodations
 
 ## What if I have accommodations or feel that accommodations would be beneficial to my learning?
 
-I enthusiastically support the mission of Disability Resource Center to make
-education accessible to all. I design all my courses with accessibility at the
-forefront of my thinking, but if you have any suggestions for ways I can make
-things more accessible, please let me know. Come talk to me if you need
-accommodation for your disabilities. I honor self-diagnosis: let's talk to each
-other about how we can make the course as accessible as possible. See also the
-standard syllabus statements, which include more information about formal
-processes.
+I enthusiastically support the mission of Disability Resource Center to make education accessible to all. I design all my courses with accessibility at the forefront of my thinking, but if you have any suggestions for ways I can make things more accessible, please let me know. Come talk to me if you need accommodation for your disabilities. I honor self-diagnosis: let's talk to each other about how we can make the course as accessible as possible. See also the standard syllabus statements, which include more information about formal processes.
 
 ## I'm having difficulty paying for food and rent, what can I do?
 
-If you have difficulty affording groceries or accessing sufficient food to eat
-every day, or if you lack a safe and stable place to live, and you believe this
-may affect your performance in the course, I urge you to contact the Dean of
-Students for support. Furthermore, please notify me if you are comfortable in
-doing so. This will enable me to advocate for you and to connect you with other
-campus resources.
+If you have difficulty affording groceries or accessing sufficient food to eat every day, or if you lack a safe and stable place to live, and you believe this may affect your performance in the course, I urge you to contact the Dean of Students for support. Furthermore, please notify me if you are comfortable in doing so. This will enable me to advocate for you and to connect you with other campus resources.
 
 ## My mental health is impairing my ability to engage in my classes, what should I do?
 
-National surveys of college students have consistently found that stress, sleep
-problems, anxiety, depression, interpersonal concerns, death of a significant 
-other and alcohol use are among the top ten health impediments to academic
-performance. If you are experiencing any mental health issues, I and Cal Poly 
-are here to help you. Cal Poly's Counseling Services (805-756-2511) is a free
-and confidential resource for assistance, support and advocacy.
+National surveys of college students have consistently found that stress, sleep problems, anxiety, depression, interpersonal concerns, death of a significant other and alcohol use are among the top ten health impediments to academic performance. If you are experiencing any mental health issues, I and Cal Poly are here to help you. Cal Poly's Counseling Services (805-756-2511) is a free and confidential resource for assistance, support and advocacy.
 
 ## Someone is threatening me, what can I do?
 
-I will listen and believe you if someone is threatening you. I will help you get
-the help you need. I commit to changing campus culture that responds poorly to
-dating violence and stalking.
+I will listen and believe you if someone is threatening you. I will help you get the help you need. I commit to changing campus culture that responds poorly to dating violence and stalking.
 
 ## What if I can't arrange for childcare?
 
-If you are responsible for childcare on short notice, you are welcome to bring
-children to class with you. If you are a lactating parent, you many take breaks
-to feed your infant or express milk as needed. If I can support yo in navigating
-parenting, coursework, and other obligations in any way, please let me know. 
+If you are responsible for childcare on short notice, you are welcome to bring children to class with you. If you are a lactating parent, you many take breaks to feed your infant or express milk as needed. If I can support yo in navigating parenting, coursework, and other obligations in any way, please let me know.
 
-# Attendance, Extensions, and Technology 
-
+# Attendance, Extensions, and Technology
 
 ## What if I need to miss class?
 
-I encourage you to attend every class session, but policies are for narcs. I put
-a great deal of time into making each class session engaging and worth your
-time. Attendance in this course is not explicitly required, but it degrades your
-team's trust in you when they don't see you in class.
+I encourage you to attend every class session, but policies are for narcs. I put a great deal of time into making each class session engaging and worth your time. Attendance in this course is not explicitly required, but it degrades your team's trust in you when they don't see you in class.
 
 Here's what you should do if you do miss a class:
 
@@ -460,56 +327,27 @@ Here's what you should do if you do miss a class:
 -   Check Canvas for any necessary handouts or changes to assignments
 -   Email me with any questions you have after reviewing notes and handouts
 
-If you miss a bunch of classes, please come talk to me. I'm working from the
-assumption that you care and are trying, but something is getting in your way
-(health issues? depression / anxiety? college stress?); let's figure out what
-that is and how I can help.
+If you miss a bunch of classes, please come talk to me. I'm working from the assumption that you care and are trying, but something is getting in your way (health issues? depression / anxiety? college stress?); let's figure out what that is and how I can help.
 
 ## What if I need to turn something in late?
 
-Assignments are expected to be submitted on time. However, every student will be
-permitted to submit up to **three** individual assignments up to 1-week late, 
-by completing the [deadline extension form](https://forms.gle/9LLe6EoiLUvFEsJaA).
-When you complete the deadline extension form you will be required to state 
-(1) what assignment you need an extension for, and (2) your proposed new 
-deadline. **Your new deadline must be within 1-week of the original 
-deadline.** All deadline extensions must be done through the form, so I can 
-keep track of who has used their allotment of extensions. 
+Assignments are expected to be submitted on time. However, every student will be permitted to submit up to **three** individual assignments up to 1-week late, by completing the [deadline extension form](https://forms.gle/9LLe6EoiLUvFEsJaA). When you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. **Your new deadline must be within 1-week of the original deadline.** All deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions.
 
-## Do I need to bring a computer to class? 
+## Do I need to bring a computer to class?
 
-You are allowed to use technology in the classroom! In fact, we will often do so
-as part of in-class activities. However, our class is held in a computer
-laboratory, so bringing a laptop is not required. You are permitted to use the
-lab computers, but if you would like to take notes on your computer / surface
- you are welcome to bring it to class. 
+You are allowed to use technology in the classroom! In fact, we will often do so as part of in-class activities. However, our class is held in a computer laboratory, so bringing a laptop is not required. You are permitted to use the lab computers, but if you would like to take notes on your computer / surface you are welcome to bring it to class.
 
 # Exceptations, Respect, and Integrity
 
 ## How can I expect to be treated in this course?
 
-Following Ihab Hassan, I strive to teach statistics so that people will stop
-killing each other. In my classroom, diversity and individual differences are a
-sources of strength. One of the greatest failures of Statistics, historically 
-and in the present, has been the exclusion of voices from the field. **Everyone
-here can learn from each other, and doing so is vital to the structure of the
-course.** Significant portions of this course involve group work and discussion
-in class. Some discussions will touch on sensitive topics. **So that everyone
-feels comfortable participating in these activities, we must listen to each
-other and treat each other with respect.** Any attitude or belief
-that espouses the superiority of one group of people over another is not welcome
-in my classroom. Such beliefs are directly destructive to the sense of community
-that we strive to create, and will sabotage our ability to learn from each other
-(and thus sabotage the entire structure of the course).
+Following Ihab Hassan, I strive to teach statistics so that people will stop killing each other. In my classroom, diversity and individual differences are a sources of strength. One of the greatest failures of Statistics, historically and in the present, has been the exclusion of voices from the field. **Everyone here can learn from each other, and doing so is vital to the structure of the course.** Significant portions of this course involve group work and discussion in class. Some discussions will touch on sensitive topics. **So that everyone feels comfortable participating in these activities, we must listen to each other and treat each other with respect.** Any attitude or belief that espouses the superiority of one group of people over another is not welcome in my classroom. Such beliefs are directly destructive to the sense of community that we strive to create, and will sabotage our ability to learn from each other (and thus sabotage the entire structure of the course).
 
 In summary: Be good to each other.
 
 ### Working in teams
 
-Your team will be rotating group roles each week, so that one person does not
-act as the "team manager" for more than one week. Instead the following roles
-will circulate each week, so that each member of the group is able to complete
-each role.
+Your team will be rotating group roles each week, so that one person does not act as the "team manager" for more than one week. Instead the following roles will circulate each week, so that each member of the group is able to complete each role.
 
 <!-- update based on 331 roles -->
 
@@ -521,10 +359,7 @@ each role.
 
 ### Peer evaluations
 
-There will be confidential peer evaluations completed every three weeks. I will
-use these to check-in on each group's dynamics and ensure that everyone feels
-their voice is being heard.
-
+There will be confidential peer evaluations completed every three weeks. I will use these to check-in on each group's dynamics and ensure that everyone feels their voice is being heard.
 
 ## What consititutes plagiarism in a statistics class?
 
@@ -538,8 +373,7 @@ If you have any questions about using and citing sources, you are expected to as
 
 For more information about what constitutes cheating and plagiarism, please see https://academicprograms.calpoly.edu/content/academicpolicies/Cheating.
 
-
-# Course Organization
+# Course Organization {#sec-schedule}
 
 This class is organized into six units. The skills learned at the beginning of the course will carry throughout the remainder of the course. I hope that you are able to see the connections between the topics of the different units, since they are all part of one big family---the regression family!
 
@@ -589,4 +423,3 @@ To wrap up the quarter, we will look at a special case of linear regression--ANO
 This unit will explore Chapter 21 and 22 in *IMS*
 
 ## Weekly Schedule
-
