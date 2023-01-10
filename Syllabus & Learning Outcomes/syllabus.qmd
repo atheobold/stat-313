@@ -18,17 +18,6 @@ execute:
   message: false
 ---
 
-```{r setup}
-#| include: false
-
-library(RColorBrewer)
-library(DiagrammeR)
-library(tidyverse)
-
-pride_pal <- c("#e40303", "#ff8c00", "#ffed00",
-               "#008026", "#004dff", "#750787")
-brewer_pal <- brewer.pal(n = 8, name = "Purples")
-```
 
 **Instructor: Dr. Allison Theobold** -- call me [**Dr. Theobold**](https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing) or Dr. T! I use **she / they** pronouns.
 
@@ -238,13 +227,13 @@ You will complete the lab assignments in the same teams you collaborate with in 
 
 I expect that you will approach each lab assignment seriously, investing the necessary time and energy to prepare your responses. Different from what you may have experienced, lab assignments are graded for "proficiency" of specific learning targets, which describe what you should be able to do after taking this course. You'll receive a score for each problem on an assignment according to the **Success** / **Not Yet** rubric below, as well as feedback to help you improve.
 
-+-------------------------+-------------------------------------------------------------------------------------------------------------------------+
-| Score                   | Justification                                                                                                           |
-+=========================+=========================================================================================================================+
-| Successful              | The solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error is trivial. |
-+-------------------------+-------------------------------------------------------------------------------------------------------------------------+
-| Growing                 | The solution shows growth toward mastering the topic; however, it is incorrect and/or incomplete.                       |
-+-------------------------+-------------------------------------------------------------------------------------------------------------------------+
++--------------+-------------------------------------------------------------------------------------------------------------------------+
+| Score        | Justification                                                                                                           |
++==============+=========================================================================================================================+
+| Successful   | The solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error is trivial. |
++--------------+-------------------------------------------------------------------------------------------------------------------------+
+| Growing      | The solution shows growth toward mastering the topic; however, it is incorrect and/or incomplete.                       |
++--------------+-------------------------------------------------------------------------------------------------------------------------+
 
 ## Synthesize statistical ideas
 
@@ -361,16 +350,13 @@ Your team will be rotating group roles each week, so that one person does not ac
 +---------------------------------------------------+-------------------------------------------------------------------------------------------+
 | **Facilitator**                                   | **Recorder / Reporter**                                                                   |
 |                                                   |                                                                                           |
-| **Manages team progress through the task**        | **Manages in-class report**                                                               |
+| **Manages team progress through the task**        | **Manages in-class report**                                                               |
 |                                                   |                                                                                           |
 | -   Leads discussion                              | -   Responsible for organizing and recording answers to the assignment during discussions |
 |                                                   |                                                                                           |
-| ```{=html}                                        | ```{=html}                                                                                |
-| <!-- -->                                          | <!-- -->                                                                                  |
-| ```                                               | ```                                                                                       |
 | -   Makes sure everyone understands the task      | -   Compiles a summary of the solutions discussed                                         |
 |                                                   |                                                                                           |
-| -   Checks in with group members                  | -   Sends summary to report edito**r**                                                    |
+| -   Checks in with group members                  | -   Sends summary to report editor                                                        |
 |                                                   |                                                                                           |
 | -   Keeps the group moving forward                |                                                                                           |
 +---------------------------------------------------+-------------------------------------------------------------------------------------------+
@@ -380,9 +366,6 @@ Your team will be rotating group roles each week, so that one person does not ac
 |                                                   |                                                                                           |
 | -   Asks professor [*team*]{.underline} questions | -   Encourages participation                                                              |
 |                                                   |                                                                                           |
-| ```{=html}                                        | ```{=html}                                                                                |
-| <!-- -->                                          | <!-- -->                                                                                  |
-| ```                                               | ```                                                                                       |
 | -   Reviews draft summary provided by reporter    | -   Enforces norms                                                                        |
 |                                                   |                                                                                           |
 | -   Solicits feedback from the team               | -   Brings conversation back if it deviates                                               |
@@ -422,39 +405,27 @@ Reading: Chapters 1 and 2 in *Introduction to Modern Statistics* (*IMS*), with s
 
 This unit focuses on building skills for working with and visualizing different types of data. First, we will focus on categorical data--creating summary tables and barcharts. Next, we will turn our attention to numerical data--calculating summary statistics, histograms, scatterplots, and linegraphs.
 
-This unit will pair:
-
--   Chapter 5 in *IMS* with Chapter 2 (sections 1-7) in *Modern Dive*
--   Chapter 4 in *IMS* with Chapter 2 (section 8) in *Modern Dive*
+Reading: Chapters 4 & 5 in *IMS* and Chapter 2 in *Modern Dive*
 
 ## Unit 3: Regression Modeling (Weeks 4 & 5)
 
 In this unit we *finally* begin exploring statistical methods. You will put the tools you learned for wrangling and visualizing to work in the context of linear regression. We will start in a (likely) familiar context--linear regression. Once we've explored the concepts of "simple" / basic regression we will turn up the heat and add some additional explanatory variables with multiple linear regression.
 
-This unit will pair:
+Reading: 
 
--   Chapter 7 in *IMS* with Chapter 5 in *Modern Dive*
--   Chapter 8 in *IMS* with Chapter 6 in *Modern Dive*
+-   Chapter 7 in *IMS* and Chapter 5 in *Modern Dive*
+-   Chapter 8 in *IMS* and Chapter 6 in *Modern Dive*
 
-## Unit 4: Foundations of Statistical Inference (Weeks 6 & 7)
+## Unit 4: Model Selection & Inference for Regression (Weeks 6 & 7)
 
-This unit will start with Chapter 7 in *Modern Dive*, setting the stage for why Statisticians care so much about variability. We will then use these ideas to walk through chapters 11 through 13 in *Introduction to Modern Statistics*, exploring different methods for summarizing the variability we might expect to see in different samples.
+This unit focuses on how we decide what variables should be included in our regression models and what we can say about the final models we obtain. We will explore these ideas using concepts you have seen before: hypothesis tests and confidence intervals. We will visit the ideas of p-values and significance testing, with a emphasis on making (and justifying) sound scientific decisions with the intention of obtaining the *best* regression model we can. 
 
-We will use these avenues to explore concepts you have seen before: hypothesis tests and confidence intervals. However, the main focus of these concepts will be on the idea of sampling variability **not** significance testing. We will visit the ideas of p-values and significance testing, with a emphasis on making (and justifying) sound scientific decisions.
+## Unit 5: Condition Violations (Week 8)
 
-## Unit 5: Inference for Regression (Week 8 & 9)
+There are occasions where the conditions required for linear regression are violated. Rather than throwing up our hands and saying "Oh, well!", we can use variable transformations to lessen condition violations. This unit will explore the use of log transformations to remedy non-linear relationships and non-constant variance. 
 
-Now that we've discussed the ideas behind sampling variability and statistical inference, we'll explore these ideas in the context of linear regression. We will explore simple linear regression first, looking at how we can assess how "good" of a job our explanatory variable does in explaining the response variable. Next we'll discuss how we can extend these ideas to a regression with multiple explanatory variables--using model selection criteria.
-
-This unit will explore:
-
--   Chapter 24 in *IMS* with Chapter 10 in *Modern Dive*
--   Chapter 25 in *IMS*
-
-## Unit 6: ANOVA a (Boring) Case of Regression (Week 10)
+## Unit 6: ANOVA a Categorical Case of Regression (Weeks 9 & 10)
 
 To wrap up the quarter, we will look at a special case of linear regression--ANOVA. In this special case, our regression will include **only** categorical variables as explanatory variables. We will first review how we compare the means of two groups and then connect with what we learned about categorical variables in multiple linear to conceptualize how we can compare the means of three or more groups.
 
 This unit will explore Chapter 21 and 22 in *IMS*
-
-## Weekly Schedule
