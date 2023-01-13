@@ -1,0 +1,240 @@
+---
+title: "Summarizing Numerical Data"
+date: "October 5, 2021"
+author: "Dr. Allison Theobold"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE,
+  tibble.width = 65,
+  width = 65
+  )
+
+# figure height, width, dpi
+knitr::opts_chunk$set(fig.width = 8, 
+                      fig.asp = 0.618,
+                      out.width = "60%",
+                      dpi = 300, 
+                      warning = FALSE, 
+                      message = FALSE)
+
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
+}
+
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+
+library(emo)
+library(palmerpenguins)
+library(tidyverse)
+library(openintro)
+library(ggridges)
+library(flair)
+```
+
+```{r set-theme, include = FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color      = "#b76352", # mango
+  secondary_color    = "#34605f", # bayberry
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  header_color = "#793540", #rhubarb
+  white_color = "#F5F5F5", # lightest color
+  black_color = "#36454F", # darkest color
+  text_font_size = "30px", 
+  link_color = "#696969" #grey
+)
+```
+
+class: center, middle, inverse 
+
+Given this distribution... 
+
+```{r, echo = FALSE}
+penguins %>% 
+  ggplot(aes(x = body_mass_g)) + 
+  geom_histogram(binwidth = 200) + 
+  labs(x = "Body Mass (grams)")
+```
+
+.large[What measure of center would you use? Why?]
+
+---
+
+class: center, middle 
+
+.huge[Summary Statistics]
+
+--
+
+.bayberry[.larger[Measures of Center]]
+
+.mango[.larger[Measures of Spread]]
+
+---
+
+class: middle 
+
+.bayberry[.larger[Measures of Center]]
+
+.pull-left[
+Mean
+  - average of data values
+  - not resistant to outliers
+]
+
+--
+
+.pull-right[
+Median
+  - middle observation 
+  - resistant to outliers
+]
+
+---
+
+class: center, middle, inverse
+
+.larger[For fairly normal data...]
+
+```{r, echo = FALSE}
+
+x_bar <- mean(penguins$body_mass_g, na.rm = TRUE)
+m <- median(penguins$body_mass_g, na.rm = TRUE)
+
+penguins %>% 
+  ggplot(aes(x = body_mass_g)) + 
+  geom_histogram(binwidth = 200) + 
+  geom_vline(xintercept = x_bar, color = "red", lwd = 1) +
+  geom_vline(xintercept = m, color = "blue", lwd = 1) +
+  geom_text(x = 3800, y = 20, label = "Median", color = "blue", size = 5) + 
+  geom_text(x = 4400, y = 15, label = "Mean", color = "red", size = 5) + 
+  labs(x = "Body Mass (grams)")
+```
+
+---
+
+class: center, middle, inverse 
+
+.larger[For bimodal data...]
+
+```{r, echo = FALSE}
+
+x_bar <- mean(penguins$bill_length_mm, na.rm = TRUE)
+m <- median(penguins$bill_length_mm, na.rm = TRUE)
+
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram(binwidth = 2) + 
+  geom_vline(xintercept = x_bar, color = "red", lwd = 1) +
+  geom_vline(xintercept = m, color = "blue", lwd = 1) +
+  geom_text(x = 47, y = 20, label = "Median", color = "blue", size = 5) + 
+  geom_text(x = 42, y = 15, label = "Mean", color = "red", size = 5) + 
+  labs(x = "Bill Length (grams)")
+```
+
+---
+
+class: middle
+
+.mango[.larger[Measures of Spread]]
+
+.pull-left[
+- Variance
+  * average squared distance from the mean
+  * not resistant to outliers
+
+- Range
+  * difference between minimum and maximum
+  * not resistant to outliers
+  
+]
+
+--
+
+.pull-right[
+
+</br>
+</br>
+
+- Inner Quartile Range (IQR) 
+
+  * difference between Q1 and Q3
+  * resistant to outliers
+]  
+  
+---
+
+.huge[.hand[Your Turn]]
+
+.larger[What are two benefits and two weaknesses of data summaries and data 
+visualizations?]
+
+---
+
+class: middle, center, inverse
+
+.larger[Point Estimates & Parameters]
+
+*Parameter*: True value of the statistic for the population of interest  
+
+--
+  
+*Point Estimate*: provides our best guess for the value of the parameter 
+
+--
+
+Estimates based on larger samples tend to be more accurate than those based on smaller samples.
+
+
+---
+
+.larger[.hand[Your Turn]]
+
+.pull-left-wide[
+Describe what you would need to do to replicate the following plot.
+
+```{r, echo = FALSE}
+nycflights %>%
+  filter(carrier %in% c("AA", "UA", "DL")) %>% 
+  ggplot(aes(x = dep_delay, y = arr_delay, color = carrier)) + 
+  geom_point()
+```
+
+]
+
+--
+
+.pull-right-narrow[
+
+Next...
+
+What are two aspects of this plot that you believe are well done? What are 
+two aspects of the plot that could be improved?  
+]
+

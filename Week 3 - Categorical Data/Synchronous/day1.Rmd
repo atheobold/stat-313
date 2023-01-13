@@ -1,0 +1,168 @@
+---
+title: "Introduction to Categorical Data & Visualizations"
+author: "Dr. Allison Theobold"
+date: "September 27, 2021"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---        
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE,
+  tibble.width = 65,
+  width = 65
+  )
+
+# figure height, width, dpi
+knitr::opts_chunk$set(fig.width = 8, 
+                      fig.asp = 0.618,
+                      out.width = "60%",
+                      dpi = 300)
+
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
+}
+
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+
+library(emo)
+library(palmerpenguins)
+library(tidyverse)
+library(flair)
+```
+
+```{r set-theme, include = FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color      = "#b76352", # mango
+  secondary_color    = "#34605f", # bayberry
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  header_color = "#793540", #rhubarb
+  white_color = "#F5F5F5", # lightest color
+  black_color = "#36454F", # darkest color
+  text_font_size = "30px", 
+  link_color = "#696969" #grey
+)
+```
+
+class: inverse, middle, center
+
+.larger[.hand[How would you describe a categorical variable?]]
+
+---
+
+class: middle, center 
+
+.larger[In `R`...]
+
+categorical variables can have either `character` *or* `factor` data types
+
+--
+
+`factor` -- structured & fixed number of levels / options
+
+--
+
+`character` -- unstructured & variable number of levels
+
+---
+
+class: middle, center, inverse
+
+.larger[.hand[What types of summaries of categorical variables make sense?]]
+
+---
+
+.rhubarb[.huge[A tool bag for data wrangling...]]
+
+--
+
+.pull-left[
+- `filter()`
+- `mutate()`
+- `group_by()` 
+]
+
+--
+
+.pull-right[
+- `summarize()`
+- `select()`
+- `arrange()`
+]
+
+---
+
+class: middle, center
+
+.rhubarb[.huge[Opinionated Plotting]]
+
+---
+
+
+.larger[Why should I use ggplot2?]
+
+.pull-left[
+**Pros** 
+
+- Simple to create complex plots
+
+- Programmatic interface
+
+- Minimal changes to change visualization types 
+
+- Default customizations are desirable
+]
+
+.pull-right[
+![](images/ggplot_logo.png)
+
+**Cons** 
+
+- New syntax to learn! 
+]
+
+
+---
+
+.pull-left[
+.larger[`ggplot()`]
+
+- Same syntax for every plot
+- Change `geom`etric object for different plots
+]
+
+--
+
+.pull-right[
+.larger["base" R]
+
+Different functions for different types of plots
+
+- Scatterplot: `plot()`
+- Boxplot: `boxplot()`
+- Histogram: `hist()` 
+- Density plot: `density()`
+- Bar plot: `barplot()`
+]
