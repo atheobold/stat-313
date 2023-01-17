@@ -5,6 +5,7 @@ date: "The date goes here!"
 format: 
   html:
     self-contained: true
+    code-tools: true
 editor: visual
 execute: 
   echo: true
@@ -55,28 +56,6 @@ the help file by typing a `?` before the name of the dataset:
 ?nycflights
 ```
 
-One of the variables refers to the carrier (i.e. airline) of the flight, which
-is coded according to the following system.
-
--   `carrier`: Two letter carrier abbreviation.
-
-    -   `9E`: Endeavor Air Inc.
-    -   `AA`: American Airlines Inc.
-    -   `AS`: Alaska Airlines Inc.
-    -   `B6`: JetBlue Airways
-    -   `DL`: Delta Air Lines Inc.
-    -   `EV`: ExpressJet Airlines Inc.
-    -   `F9`: Frontier Airlines Inc.
-    -   `FL`: AirTran Airways Corporation
-    -   `HA`: Hawaiian Airlines Inc.
-    -   `MQ`: Envoy Air
-    -   `OO`: SkyWest Airlines Inc.
-    -   `UA`: United Air Lines Inc.
-    -   `US`: US Airways Inc.
-    -   `VX`: Virgin America
-    -   `WN`: Southwest Airlines Co.
-    -   `YV`: Mesa Airlines Inc.
-
 Remember that you can use `glimpse()` to take a quick peek at your data to
 understand its contents better.
 
@@ -123,6 +102,11 @@ argument inside of `geom_histogram()`, like so: `geom_histogram(binwidth = 15)`
 
 ## SFO Dstinations 
 
+One of the variables refers to the destination (i.e. airport) of the flight,
+which have three letter abbreviations. For example, flights into Los 
+Angeles have a `dest` of `"LAX"`, flights into San Francisco have a `dest` of
+`"SFO"`, and flights into Chicago (O'Hare) have a `dest` of `"ORD"`. 
+
 If you want to visualize only on delays of flights headed to Los Angeles, you
 need to first `filter()` the data for flights with that destination 
 (`filter(dest == "LAX")`) and then make a histogram of the departure delays of
@@ -148,7 +132,7 @@ San Francisco.
 # Your code for question 4 goes here! 
 
 sfo_flights <- filter(nycflights, 
-                      dest == "SFO")
+                      dest == )
 ```
 
 ### Multiple Data Filters 
@@ -172,7 +156,6 @@ can use the `|` instead of the comma.
 into SFO in July that arrived early. What does the result tell you?
 
 ```{r}
-#| eval: false
 ## Code for exercise 5 here! 
 
 filter(sfo_flights, 
@@ -241,7 +224,7 @@ the `sfo_flights` dataset:
 
 **Question 7** -- Now, rather than calculating summary statistics, plot the distribution of arrival delays for the `sfo_flights` dataset. Choose the type of
 plot you believe is appropriate for visualizing the **distribution** of
-departure delays. 
+departure delays. Be sure to give your visualization nice axis labels!
 
 ```{r arr-delay-plot}
 ## Code for exercise 7 goes here! 

@@ -1,0 +1,95 @@
+---
+title: "Regression Modeling in R"
+format: docx
+editor: visual
+---
+
+
+## Data Modeling 
+
+- `lm()` -- fits a linear model to a dataset
+  * You specify the variables as a formula (`y ~ x`), where `y` is your 
+  response variable and `x` is your explanatory variable
+  * The second argument is the name of the dataset (`data = penguins`)
+```{r}
+## Two quantitative explanatory variables
+model1 <- lm(bill_length_mm ~ bill_depth_mm + body_mass_g, data = penguins)
+
+## One quantitative and one categorical explanatory variable
+model2 <- lm(bill_length_mm ~ bill_depth_mm + sex, data = penguins)
+```
+  
+\vspace{0.5cm}
+
+- `get_regression_table()` -- produces a tidy table output of a regression 
+model
+  * Output includes coefficients, standard errors, p-values, and confidence
+  intervals
+  
+```{r}
+get_regression_table(model1)
+```
+
+\vspace{0.5cm}
+
+- `summary()` -- produces a "raw" summary of a regression model
+  * The "untidy" version of a regression summary. 
+  * Includes same information as `get_regression_table()`, but also includes
+  $R^2$ and adjusted $R^2$. 
+
+```{r}
+summary(model2)
+```
+
+\newpage
+
+- `tidy()` -- takes untidy output and creates a nice table! 
+  * Similar to `get_regression_table()`, but doesn't output confidence intervals.
+  * Lives in the **broom** package
+```{r}
+tidy(model2)
+```
+
+\vspace{0.5cm}
+
+- `get_regression_points()` -- provides information on each observation used in
+a `lm()` in a tidy table format
+  * Produces a table with the variables included in the regression, and the 
+  residual associated with each observation
+
+```{r}
+get_regression_points(model1)
+```
+
+
+\vspace{0.5cm}
+
+- `predict()` -- produces an untidy vector of the predicted y-values for each
+observation in the dataset
+  * Can make predictions for new observations with the `newdata` argument. 
+  
+```{r}
+predict(model1)
+
+new_penguin <- data.frame(bill_depth_mm = 200, body_mass_g = 500)
+predict(model1, newdata = new_penguin)
+```
+
+\vspace{0.5cm}
+
+- `augment()` -- produces a tidy table of data values from a regression model
+  * Lives in the **broom** package
+  * Produces a table with the variables included in the regression, and 6 
+  additional columns:
+    + including `.fitted` (predicted y-value for that observation), `.resid`
+    (residual for that observation)
+  * Can make predictions for new observations with the `newdata` argument. 
+```{r}
+augment(model2)
+
+new_penguin <- data.frame(bill_depth_mm = 15, sex = "female")
+augment(model2, newdata = new_penguin)
+```
+
+
+

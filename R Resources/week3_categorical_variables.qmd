@@ -1,0 +1,97 @@
+---
+title: "Untitled"
+format: docx
+editor: visual
+---
+
+- `c()` -- the "concatenate" function combines inputs to form a vector, the 
+values have to be the same data type. 
+
+```{r}
+cat_variables <- c("Species", "Island", "Sex")
+```
+
+
+- `group_by()` -- groups the dataframe based on levels of a categorical 
+variable (usually used alongside `summarize()` or `count()`)
+
+```{r, eval = FALSE}
+penguins %>% 
+  group_by(island)
+```
+
+- `count()` -- counts the number of observations (rows) in different levels of a 
+categorical variable (can be used with `group_by()` to include two categorical 
+variables) 
+
+```{r}
+penguins %>% 
+  count(island)
+
+penguins %>% 
+  group_by(island) %>% 
+  count(species)
+```
+
+
+- `if_else()` -- function which creates output based on a condition to be 
+satisfied, the first argument is the logical test we wish to perform, the second
+argument is what we want output if the result of the logical test is `TRUE`,
+the third argument is what we want output if the result of the logical test is
+`FALSE`
+```{r}
+penguins %>%
+  filter(is.na(flipper_length_mm) != TRUE) %>% 
+  mutate(large_flipper = 
+           if_else(flipper_length_mm >= mean(flipper_length_mm),
+                   "above average",
+                   "below average")
+         )
+```
+
+\vspace{0.5cm}
+
+- `as.factor()` -- converts a variable from numerical or character into a factor, 
+necessary if fitting a data model or producing a visualization with a numerical 
+variable that you want treated as categorical
+  * `as.character()` will also work! 
+
+```{r}
+penguins %>% 
+  mutate(year_chr = as.character(year), 
+         year_fct = as.factor(year))
+```
+
+  
+
+
+# Faceted Histograms
+
+ggplot(data = <NAME OF DATASET>, 
+       mapping = aes(x = <NAME OF NUMERICAL VARIABLE>)) + 
+  geom_histogram(binwidth = <WIDTH OF BINS>) + 
+  facet_wrap(~<NAME OF CATEGORICAL VARIABLE>) +
+  labs(x = "<TITLE FOR THE X-AXIS>")
+
+Note: A histogram must have the variable on the x-axis! 
+
+Side-by-Side Boxplots
+
+ggplot(data = <NAME OF DATASET>, 
+       mapping = aes(x = <NAME OF VARIABLE>, y = <NAME OF VARIABLE>)
+       ) + 
+  geom_boxplot() + 
+  labs(x = "<TITLE FOR THE X-AXIS>", 
+       y = "<TITLE FOR THE Y-AXIS>")
+
+Note: For horizontally stacked boxplots, the categorical variable should be on the x-axis. For vertically stacked boxplots, the categorical variable should be on the y-axis. 
+
+ 
+Calculating Summary Statistics for One Numerical Variable and One Categorical Variable
+
+favstats(<NAME OF NUMERICAL VARIABLE> ~ <NAME OF CATEGORICAL VARIABLE>,
+         data = <NAME OF DATASET>)
+
+Note: The ~ must be included! 
+
+
