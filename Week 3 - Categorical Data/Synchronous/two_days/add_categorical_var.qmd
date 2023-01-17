@@ -1,0 +1,146 @@
+---
+title: "Incorporating Categorical Variables"
+format: revealjs
+editor: visual
+---
+
+
+## Side-by-Side Boxplots {.scrollable}
+
+::: columns
+::: {.column width="50"}
+```{r horizontal-boxplot}
+#| fig-width: 6
+#| fig-height: 3.5
+#| fig-align: center
+#| echo: true
+ggplot(data = penguins,
+       mapping = aes(y = bill_length_mm,
+                     x = species)) +
+  geom_boxplot() + 
+  labs(x = "Penguin Species", 
+       y = "Bill Length (mm)")
+```
+:::
+
+::: {.column width="50"}
+```{r vertical-boxplot}
+#| fig-width: 6
+#| fig-height: 3.5
+#| fig-align: center
+#| echo: true
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm,
+                     y = species)) +
+  geom_boxplot() + 
+  labs(y = "Penguin Species", 
+      x  = "Bill Length (mm)")
+
+```
+:::
+:::
+
+. . .
+
+<center>
+
+::: {style="color: #ba9645;"}
+**Which do you prefer?**
+:::
+
+</center>
+
+## Faceted Histograms
+
+```{r facet-hist}
+#| fig-width: 8
+#| fig-height: 4
+#| fig-align: center
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|4"
+
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm)) +
+  geom_histogram(binwidth = 3) +
+  facet_wrap(~ species) +
+  labs(x = "Bill Length (mm)", 
+       title = "Frequency of Captured Penguins by Species")
+```
+
+## Colors in Boxplots
+
+```{r boxplot-color}
+#| fig-width: 6
+#| fig-height: 3.5
+#| fig-align: center
+#| echo: true
+#| code-line-numbers: "|4,9"
+
+ggplot(data = penguins,
+       mapping = aes(y = bill_length_mm,
+                     x = species,
+                     color = sex)
+       ) +
+  geom_boxplot() +
+  labs(x = "Penguin Species", 
+       y = "Bill Length (mm)", 
+       color = "Sex")
+```
+
+## Facets in Boxplots
+
+```{r boxplot-facets}
+#| fig-width: 8
+#| fig-height: 3.5
+#| fig-align: center
+#| echo: true
+#| code-line-numbers: "|6"
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm,
+                     y = species,
+                     fill = sex)) +
+  geom_boxplot(alpha = 0.3) +
+  facet_wrap(~ island) + 
+  labs(x = "Bill Depth (mm)", 
+       y = "Bill Length (mm)", 
+       fill = "Sex")
+```
+
+## Facets & Color in Scatterplots
+
+```{r scatterplot-facets}
+#| fig-width: 8
+#| fig-height: 8
+#| fig-align: center
+#| echo: true
+#| code-line-numbers: "|6"
+
+ggplot(data = penguins,
+       mapping = aes(y = bill_length_mm,
+                     x = bill_depth_mm,
+                     color = sex)) +
+  geom_point() +
+  facet_wrap(~ species) + 
+  labs(x = "Bill Depth (mm)", 
+       y = "Bill Length (mm)", 
+       color = "Sex")
+  
+```
+
+## Your Turn
+
+Describe what you would need to do to replicate the following plot.
+
+```{r}
+#| echo: false
+nycflights %>%
+  filter(carrier %in% c("AA", "UA", "DL")) %>% 
+  ggplot(aes(x = dep_delay, y = arr_delay, color = carrier)) + 
+  geom_point()
+```
+
+. . .
+
+What are two aspects of this plot that you believe are well done? What are 
+two aspects of the plot that could be improved?  

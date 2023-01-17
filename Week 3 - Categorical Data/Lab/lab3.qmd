@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+
+## Grouped Summaries 
+
+Another useful technique is quickly calculating summary statistics for various
+groups in your data frame. For example, we can modify the above command using
+the `group_by()` function to get the same summary stats for each origin airport:
+
+```{r}
+sfo_feb_flights %>%
+  group_by(origin) %>%
+  summarise(median_dd = median(dep_delay), 
+            iqr_dd = IQR(dep_delay), 
+            n_flights = n())
+```
+
+Here, we first grouped the data by `origin` and __then__ calculated the summary
+statistics.
+
+
+**Question 6** -- Find the average departure delays for each month. 
+**Bonus:** Arrange these average delays in ascending order. 
+**Hint:** The `arrange()` function is helpful for arranging numbers!
+
+```{r}
+## Code for exercise 6 goes here! 
+
+
+```
