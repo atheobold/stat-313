@@ -126,6 +126,10 @@ ggplot(data = penguins,
 :::
 :::
 
+##  {background-color="#000000"}
+
+![](images/boxplot_horst.png)
+
 ## Density Plot
 
 ::: columns
