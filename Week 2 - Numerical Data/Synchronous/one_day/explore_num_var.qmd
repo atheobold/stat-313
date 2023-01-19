@@ -29,7 +29,7 @@ library(gridExtra)
 #| echo: false
 penguins %>% 
   ggplot(aes(x = bill_length_mm, y = species, fill = sex)) + 
-  geom_density_ridges(alpha = 0.5, scale = 1) + 
+  geom_boxplot(alpha = 0.5, scale = 1) + 
   labs(x = "Bill Length (mm)", 
        y = "Penguin Species", 
        fill = "Penguin Sex")
@@ -42,7 +42,7 @@ What are the `aes`thetics in this plot?
 
 What `geom`etric object is being plotted?
 
-##  {background-color="#34605f"}
+##  {background-color="#D4D4D4"}
 
 ::: {style="margin-top: 100px; font-size: 2em; color: #000000;"}
 Univariate (One Variable) Visualizations -- For Numerical Data
@@ -63,7 +63,7 @@ Univariate (One Variable) Visualizations -- For Numerical Data
 #| fig-width: 5
 #| fig-align: center
 #| echo: true
-#| code-line-numbers: "|3"
+#| code-line-numbers: "|20"
 
 ggplot(data = penguins, mapping = aes(x = bill_length_mm)) + 
   geom_histogram() +
@@ -141,7 +141,8 @@ ggplot(data = penguins,
 #| code-line-numbers: "|3"
 ggplot(data = penguins,
        mapping = aes(x = bill_length_mm)) +
-  geom_density()
+  geom_density() +
+  labs(x = "Bill Length (mm)")
 ```
 :::
 
@@ -151,7 +152,7 @@ ggplot(data = penguins,
 :::
 :::
 
-##  {background-color="#34605f"}
+##  {background-color="#D4D4D4"}
 
 ::: {style="margin-top: 100px; font-size: 2em; color: #000000;"}
 Bivariate (Two Variables) Visualizations -- For Numerical Data
@@ -186,7 +187,7 @@ ggplot(data = penguins,
        y = "Bill Length (mm)")
 ```
 
-##  {background-color="#34605f"}
+##  {background-color="#D4D4D4"}
 
 ::: {style="margin-top: 100px; font-size: 2em; color: #000000;"}
 Multivariate Plots
@@ -251,11 +252,9 @@ ggplot(data = penguins,
 ## Facets in Scatterplots -- Categorical Variable
 
 ```{r scatterplot-facets-cat}
-#| fig-width: 8
-#| fig-height: 8
 #| fig-align: center
 #| echo: true
-#| code-line-numbers: "|6"
+#| code-line-numbers: "|5"
 
 ggplot(data = penguins,
        mapping = aes(y = bill_length_mm,
@@ -270,11 +269,9 @@ ggplot(data = penguins,
 ## Facets in Scatterplots -- Numerical Variable
 
 ```{r scatterplot-facets-num}
-#| fig-width: 8
-#| fig-height: 8
 #| fig-align: center
 #| echo: true
-#| code-line-numbers: "|6"
+#| code-line-numbers: "|5"
 
 ggplot(data = penguins,
        mapping = aes(y = bill_length_mm,
@@ -288,7 +285,69 @@ ggplot(data = penguins,
 
 # Summarizing Numerical Data
 
-##  {background-color="#34605f"}
+## 
+
+<center>
+::: {style="font-size: 1.25em;"}
+Measures of Center
+:::
+</center>
+
+::: columns
+::: {.column width="55%"}
+::: {style="color:#ba9645;"}
+**Not Resistant**
+:::
+
+Mean
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: {style="color:#ba9645;"}
+**Resistant**
+:::
+
+Median
+:::
+:::
+
+. . .
+
+</br>
+
+<center>
+::: {style="font-size: 1.25em;"}
+Measures of Spread
+:::
+</center>
+
+::: columns
+::: {.column width="55%"}
+::: {style="color:#ba9645;"}
+**Not Resistant**
+:::
+
+Variance
+
+Range
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: {style="color:#ba9645;"}
+**Resistant**
+:::
+
+Inner Quartile Range (IQR)
+:::
+:::
+
+##  {background-color="#D4D4D4"}
 
 ::: {style="margin-top: 100px; font-size: 2em; color: #000000;"}
 Given this distribution...
@@ -310,33 +369,6 @@ penguins %>%
 What measure of center would you use? Why?
 :::
 
-## Summary Statistics
-
-. . .
-
--   Measures of Center
-
-. . .
-
--   Measures of Spread
-
-## Measures of Center
-
-::: columns
-::: {.column width="50%"}
-**Mean**
-
--   average of data values
--   not resistant to outliers
-:::
-
-::: {.column width="50%"}
-**Median**
-
--   middle observation
--   resistant to outliers
-:::
-:::
 
 ## For right skewed data...
 
@@ -371,37 +403,6 @@ penguins %>%
   geom_text(x = 42, y = 15, label = "Mean", color = "red", size = 5) + 
   labs(x = "Bill Length (grams)")
 ```
-
-## Measures of Spread
-
-::: columns
-::: {.column width="55%"}
-::: {style="color:#ba9645;"}
-**Not Resistant**
-:::
-
-</br>
-
-**Variance**: average squared distance from the mean
-
-</br>
-
-**Range**: difference between minimum and maximum
-:::
-
-::: {.column width="5%"}
-:::
-
-::: {.column width="40%"}
-::: {style="color:#ba9645;"}
-**Resistant**
-:::
-
-</br>
-
-**Inner Quartile Range (IQR)**: difference between Q1 and Q3
-:::
-:::
 
 ## Point Estimates & Parameters
 
