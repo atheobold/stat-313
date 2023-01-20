@@ -18,7 +18,6 @@ execute:
   message: false
 ---
 
-
 **Instructor: Dr. Allison Theobold** -- call me [**Dr. Theobold**](https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing) or Dr. T! I use **she / they** pronouns.
 
 # What is this class?
@@ -227,13 +226,13 @@ You will complete the lab assignments in the same teams you collaborate with in 
 
 I expect that you will approach each lab assignment seriously, investing the necessary time and energy to prepare your responses. Different from what you may have experienced, lab assignments are graded for "proficiency" of specific learning targets, which describe what you should be able to do after taking this course. You'll receive a score for each problem on an assignment according to the **Success** / **Not Yet** rubric below, as well as feedback to help you improve.
 
-+--------------+-------------------------------------------------------------------------------------------------------------------------+
-| Score        | Justification                                                                                                           |
-+==============+=========================================================================================================================+
-| Successful   | The solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error is trivial. |
-+--------------+-------------------------------------------------------------------------------------------------------------------------+
-| Growing      | The solution shows growth toward mastering the topic; however, it is incorrect and/or incomplete.                       |
-+--------------+-------------------------------------------------------------------------------------------------------------------------+
++------------+-------------------------------------------------------------------------------------------------------------------------+
+| Score      | Justification                                                                                                           |
++============+=========================================================================================================================+
+| Successful | The solution to the problem is correct, legible, and easy to follow, with all reasoning provided. Any error is trivial. |
++------------+-------------------------------------------------------------------------------------------------------------------------+
+| Growing    | The solution shows growth toward mastering the topic; however, it is incorrect and/or incomplete.                       |
++------------+-------------------------------------------------------------------------------------------------------------------------+
 
 ## Synthesize statistical ideas
 
@@ -329,7 +328,7 @@ If you miss a bunch of classes, please come talk to me. I'm working from the ass
 
 ## What if I need to turn something in late?
 
-Assignments are expected to be submitted on time. However, every student will be permitted to submit up to **three** individual assignments up to 1-week late, by completing the [deadline extension form](https://forms.gle/9LLe6EoiLUvFEsJaA). When you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. **Your new deadline must be within 1-week of the original deadline.** All deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions.
+Assignments are expected to be submitted on time. However, every student will be permitted to submit up to **three** individual assignments up to 1-week late, by completing the [deadline extension form](https://forms.gle/9LLe6EoiLUvFEsJaA). When you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. **Your new deadline must be within 1-week of the original deadline.** All deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions. All late work submitted without a deadline extension will receive a penalty of 5% per day for up to four (4) days. __This means if you did not submit a deadline extension request, you cannot turn in work more than four days past the deadline.__
 
 ## Do I need to bring a computer to class?
 
@@ -411,18 +410,18 @@ Reading: Chapters 4 & 5 in *IMS* and Chapter 2 in *Modern Dive*
 
 In this unit we *finally* begin exploring statistical methods. You will put the tools you learned for wrangling and visualizing to work in the context of linear regression. We will start in a (likely) familiar context--linear regression. Once we've explored the concepts of "simple" / basic regression we will turn up the heat and add some additional explanatory variables with multiple linear regression.
 
-Reading: 
+Reading:
 
 -   Chapter 7 in *IMS* and Chapter 5 in *Modern Dive*
 -   Chapter 8 in *IMS* and Chapter 6 in *Modern Dive*
 
 ## Unit 4: Model Selection & Inference for Regression (Weeks 6 & 7)
 
-This unit focuses on how we decide what variables should be included in our regression models and what we can say about the final models we obtain. We will explore these ideas using concepts you have seen before: hypothesis tests and confidence intervals. We will visit the ideas of p-values and significance testing, with a emphasis on making (and justifying) sound scientific decisions with the intention of obtaining the *best* regression model we can. 
+This unit focuses on how we decide what variables should be included in our regression models and what we can say about the final models we obtain. We will explore these ideas using concepts you have seen before: hypothesis tests and confidence intervals. We will visit the ideas of p-values and significance testing, with a emphasis on making (and justifying) sound scientific decisions with the intention of obtaining the *best* regression model we can.
 
 ## Unit 5: Condition Violations (Week 8)
 
-There are occasions where the conditions required for linear regression are violated. Rather than throwing up our hands and saying "Oh, well!", we can use variable transformations to lessen condition violations. This unit will explore the use of log transformations to remedy non-linear relationships and non-constant variance. 
+There are occasions where the conditions required for linear regression are violated. Rather than throwing up our hands and saying "Oh, well!", we can use variable transformations to lessen condition violations. This unit will explore the use of log transformations to remedy non-linear relationships and non-constant variance.
 
 ## Unit 6: ANOVA a Categorical Case of Regression (Weeks 9 & 10)
 
