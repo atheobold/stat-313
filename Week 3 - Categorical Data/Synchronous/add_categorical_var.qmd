@@ -1,9 +1,55 @@
 ---
 title: "Incorporating Categorical Variables"
-format: revealjs
+format: 
+  revealjs:
+    logo: images/dplyr.png
+    theme: night
+    self-contained: true
 editor: visual
 ---
 
+
+.larger[.hand[How would you describe a categorical variable?]]
+
+---
+
+.larger[In `R`...]
+
+categorical variables can have either `character` *or* `factor` data types
+
+--
+
+`factor` -- structured & fixed number of levels / options
+
+--
+
+`character` -- unstructured & variable number of levels
+
+---
+
+.larger[.hand[What types of summaries of categorical variables make sense?]]
+
+---
+
+.rhubarb[.huge[A tool bag for data wrangling...]]
+
+--
+
+.pull-left[
+- `filter()`
+- `mutate()`
+- `group_by()` 
+]
+
+--
+
+.pull-right[
+- `summarize()`
+- `select()`
+- `arrange()`
+]
+
+---
 
 ## Side-by-Side Boxplots {.scrollable}
 
@@ -142,5 +188,24 @@ nycflights %>%
 
 . . .
 
-What are two aspects of this plot that you believe are well done? What are 
-two aspects of the plot that could be improved?  
+What are two aspects of this plot that you believe are well done? What are two aspects of the plot that could be improved?
+
+
+---
+
+## Break
+
+## Warm-up
+
+Fill in the associated data types (e.g. character, factor, integer, double) 
+with each type of variable. 
+
+	
+| Variable    | Data Type in R |
+|-------------|----------------|
+| Categorical variable |       |	
+| Continuous numerical variable | |
+| Discrete numerical variable	  | |
+
+
+---
