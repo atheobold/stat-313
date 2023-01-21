@@ -1,18 +1,15 @@
 ---
 title: "Week Two: Incorporating Categorical Variables"
-author: ""
-output:
-  prettydoc::html_pretty:
-    theme: tactile
-    highlight: github
-    css: styles.css
+format: 
+  html:
+    self-contained: true
+editor: visual
+execute: 
+  echo: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r, include = FALSE}
+```{r packages}
+#| include: false
 library(tidyverse)
 library(flair)
 library(emo)

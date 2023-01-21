@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 3 Reading Guide: Adding in Categorical Variables</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="week3_reading_guide_files/libs/clipboard/clipboard.min.js"></script>
+<script src="week3_reading_guide_files/libs/quarto-html/quarto.js"></script>
+<script src="week3_reading_guide_files/libs/quarto-html/popper.min.js"></script>
+<script src="week3_reading_guide_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="week3_reading_guide_files/libs/quarto-html/anchor.min.js"></script>
+<link href="week3_reading_guide_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="week3_reading_guide_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="week3_reading_guide_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="week3_reading_guide_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="week3_reading_guide_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 3 Reading Guide: Adding in Categorical Variables</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="ims-chapter-4-section-6" class="level2">
+<h2 class="anchored" data-anchor-id="ims-chapter-4-section-6">IMS – Chapter 4, Section 6</h2>
+<p>In Figure 4.8, which data display do you prefer?</p>
+<p><br></p>
+<p>What is a strength of the stacked boxplots?</p>
+<p><br></p>
+<p>What is a weakness of the stacked boxplots?</p>
+<p><br></p>
+<p>What is a strength of side-by-side boxplots?</p>
+<p><br></p>
+<p>What is a weakness of side-by-side boxplots?</p>
+<p><br></p>
+<p>What is a <strong>ridge plot</strong>?</p>
+<p><br></p>
+</section>
+<section id="chapter-3-data-wrangling" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-3-data-wrangling">Chapter 3 – Data Wrangling</h2>
+</section>
+<section id="the-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipe">The Pipe (<code>%&gt;%</code>)</h2>
+<p>How would you write the following pipe operation in <strong>one</strong> line?</p>
+<pre><code>x %&gt;% 
+  f() %&gt;% 
+  g() %&gt;% 
+  h()</code></pre>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Think about how</p>
+<pre><code>x %&gt;% 
+  f() </code></pre>
+<p>can be written as f(x).</p>
+</div>
+</div>
+</section>
+<section id="filter" class="level2">
+<h2 class="anchored" data-anchor-id="filter"><code>filter()</code></h2>
+<p>What does the <code>filter()</code> function do?</p>
+<p><br></p>
+<p>How would you describe the following <code>filter()</code> statement <strong>in words</strong>?</p>
+<pre><code>filter(origin == "JFK" | dest == "SEA", 
+       month &gt;= 10)</code></pre>
+<p><br></p>
+<p>What does the <code>%in%</code> do in the following code?</p>
+<pre><code>filter(dest %in% c("SEA", "SFO", "PDX", "BTV", "BDL")</code></pre>
+<p><br></p>
+</section>
+<section id="summarize" class="level2">
+<h2 class="anchored" data-anchor-id="summarize"><code>summarize()</code></h2>
+<p>What does the <code>summarize()</code> function do?</p>
+<p><br></p>
+<p>You will write lines of code that look like:</p>
+<pre><code>  summarize(mean = mean(temp, na.rm = TRUE), 
+            std_dev = sd(temp, na.rm = TRUE))</code></pre>
+<p>What does the name (e.g., <code>mean</code>, <code>std_dev</code>) on the right hand side of the <code>=</code> sign correspond to?</p>
+<p><br></p>
+<p>What does the code (e.g., <code>mean(temp, na.rm = TRUE)</code>) on the left hand side of the <code>=</code> sign correspond to?</p>
+<p><br></p>
+</section>
+<section id="group_by" class="level2">
+<h2 class="anchored" data-anchor-id="group_by"><code>group_by()</code></h2>
+<p>What does the <code>group_by()</code> function do?</p>
+<p><br></p>
+<p>When you <code>group_by()</code> a variable before <code>summarize()</code> what happens?</p>
+<p><br></p>
+<p>What happens when you group by more than one variable in <code>group_by()</code>?</p>
+<p><br></p>
+</section>
+<section id="mutate" class="level2">
+<h2 class="anchored" data-anchor-id="mutate"><code>mutate()</code></h2>
+<p>What does the <code>mutate()</code> function do?</p>
+<p><br></p>
+<p>Suppose we wanted to create a new variable in the <code>penguins</code> dataset that took the original <code>body_mass_g</code> variable and converted it to kilograms. How would that code look?</p>
+<p><br></p>
+</section>
+<section id="arrange" class="level2">
+<h2 class="anchored" data-anchor-id="arrange"><code>arrange()</code></h2>
+<p>What does the <code>arrange()</code> function do?</p>
+<p><br></p>
+<p>What order are the rows organized by default when you use <code>arrange()</code>?</p>
+<p><br></p>
+<p>What would you do if you wanted the rows to be organized in descending order?</p>
+<p><br></p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
