@@ -10,49 +10,45 @@ In Figure 4.8, which data display do you prefer?
 
 </br>
 
-What is a strength of the stacked boxplots? 
+What is a strength of the stacked boxplots?
 
 </br>
 
-What is a weakness of the stacked boxplots? 
+What is a weakness of the stacked boxplots?
 
 </br>
 
-What is a strength of side-by-side boxplots? 
+What is a strength of stacked histograms?
 
 </br>
 
-What is a weakness of side-by-side boxplots? 
+What is a weakness of stacked histograms?
 
 </br>
 
 What is a **ridge plot**?
 
-</br> 
+</br>
 
 ## Chapter 3 -- Data Wrangling
 
 ## The Pipe (`%>%`)
 
-How would you write the following pipe operation in **one** line? 
+How would you write the following pipe operation in **one** line?
 
-```
-x %>% 
-  f() %>% 
-  g() %>% 
-  h()
-```
+    x %>% 
+      f() %>% 
+      g() %>% 
+      h()
 
-::: {.callout-tip}
+::: callout-tip
 Think about how
 
-```
-x %>% 
-  f() 
-```
-can be written as f(x). 
-:::
+    x %>% 
+      f() 
 
+can be written as f(x).
+:::
 
 ## `filter()`
 
@@ -62,18 +58,14 @@ What does the `filter()` function do?
 
 How would you describe the following `filter()` statement **in words**?
 
-```
-filter(origin == "JFK" | dest == "SEA", 
-       month >= 10)
-```
+    filter(origin == "JFK" | dest == "SEA", 
+           month >= 10)
 
 </br>
 
 What does the `%in%` do in the following code?
 
-```
-filter(dest %in% c("SEA", "SFO", "PDX", "BTV", "BDL")
-```
+    filter(dest %in% c("SEA", "SFO", "PDX", "BTV", "BDL")
 
 </br>
 
@@ -85,21 +77,16 @@ What does the `summarize()` function do?
 
 You will write lines of code that look like:
 
-```
-  summarize(mean = mean(temp, na.rm = TRUE), 
-            std_dev = sd(temp, na.rm = TRUE))
-```
+      summarize(mean = mean(temp, na.rm = TRUE), 
+                std_dev = sd(temp, na.rm = TRUE))
 
-What does the name (e.g., `mean`, `std_dev`) on the right hand side of the `=` 
-sign correspond to?
+What does the name (e.g., `mean`, `std_dev`) on the right hand side of the `=` sign correspond to?
 
 </br>
 
-What does the code (e.g., `mean(temp, na.rm = TRUE)`) on the left hand side of
-the `=` sign correspond to?
+What does the code (e.g., `mean(temp, na.rm = TRUE)`) on the left hand side of the `=` sign correspond to?
 
 </br>
-
 
 ## `group_by()`
 
@@ -121,9 +108,7 @@ What does the `mutate()` function do?
 
 </br>
 
-Suppose we wanted to create a new variable in the `penguins` dataset that took 
-the original `body_mass_g` variable and converted it to kilograms. How would 
-that code look?
+Suppose we wanted to create a new variable in the `penguins` dataset that took the original `body_mass_g` variable and converted it to kilograms. How would that code look?
 
 </br>
 
