@@ -1,10 +1,24 @@
 ---
 title: "Lab 2 - Grading Guide"
-format: html
+format: 
+  html:
+    self-contained: true
 editor: visual
 execute: 
   eval: false
 ---
+
+Q1 (a)   
+Q1 (b)   
+Q2   
+Q3 (a)   
+Q3 (b)   
+Q4   
+Q5   
+Q6  
+Q7    
+Q8  
+
 
 ## 1 (a)
 __How large is the `nycflights` dataset? (i.e. How many rows and columns does it have?)__
@@ -114,8 +128,7 @@ differences and / or how smaller bins make it easier to see differences
 
 **Growing**:
 
-- If description seems to be referring to the binwidth and how it makes wider /
-narrower bins, but is not very clear
+- If description only references how the bins are larger or smaller, but doesn't talk about shape the distribution 
 - Only talks about how the y-axis scale changes
 
 *Feedback:* For Question 3(b), your discussion should address how the binwidth affects the shape of the distribution or what you are able to see.  
@@ -165,6 +178,10 @@ to SFO.
 
 *Feedback:* For Question 5, what does the 45 refer to? 
 
+- If they interpret 45 and 16 as flight numbers
+
+*Feedback:* For Question 5, the 45 and the 16 refer to the size of the filtered dataset. What does that tell you in terms of the number of flights that satisfied your criteria out of the sfo_flights dataset? 
+
 - If they don't say how many SFO flights there were to begin with (1345)
 
 *Feedback:* For Question 5, how many SFO flight were there to begin with?
@@ -196,18 +213,19 @@ summarise(sfo_flights,
 ::: {.callout-note}
 - I'd give full credit for using either the `nycflights` dataset or the 
 `sfo_flights` dataset
+:::
 
-- I'd write a comment if they didn't name their summary, suggesting they do 
-since it makes arranging much easier!
+- If they don't name their summary statistics
 
-- I'd write a comment if they left in the `n = n()` calculation, since it wasn't requested.
+*Feedback:* For Question 6, the output of your summary statistics looks a lot nicer if you give them names! (like the example that was given)
 
 - I'd write a comment if they used `_dd` in their names, since it should be `_ad` for the arrival delays. 
-:::
+
+*Feedback:* For Question 6, it would be more clear to use _ad at the end of your names, since you are summarizing the arrival delays (not the departure delays). 
 
 **Growing**: 
 
-- If they didn't calculate one of the four statistics
+*Feedback:* For Question 6, you were asked to provide four (4) statistics! 
 
 ## 7 
 
@@ -237,15 +255,15 @@ using the `nycflights` dataset
 
 - Uses `geom_boxplot()`
 
-*Feedback:* For Question 6, we need to use a geom which allows for us to see the *shape* of the distribution. Boxplots hide distributions with multiple modes, so what type of plot would be better?
+*Feedback:* For Question 7, we need to use a geom which allows for us to see the *shape* of the distribution. Boxplots hide distributions with multiple modes, so what type of plot would be better?
 
 - Doesn't change x-axis label
 
-*Feedback:* For Question 6, you were asked to give your visualization nice axis labels. 
+*Feedback:* For Question 7, you were asked to give your visualization nice axis labels. 
 
 - Doesn't include units (minutes) in axis label
 
-*Feedback:* For Question 6, it is important for the axis label to contain the units of the variable. What units were the arrival delays measured in?
+*Feedback:* For Question 7, it is important for the axis label to contain the units of the variable. What units were the arrival delays measured in?
 
 ## 8 
 
@@ -259,9 +277,11 @@ __What information can you obtain from the visualization that you could not from
 **Growing**: 
 
 - Response addresses either skew or modes, but not both
-- Response doesn't address the shape of the distribution
+
+*Feedback:* For Question 8, you should address the shape of the distribution, which includes the skew and the mode(s).
+
 - Response doesn't make much sense
 
-*Feedback:* For Question 6, what can you *see* in the visualization that was not apparent from the data summaries?
+*Feedback:* For Question 8, what can you *see* in the visualization that was not apparent from the data summaries?
 
 
