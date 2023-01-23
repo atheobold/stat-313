@@ -6,52 +6,326 @@ format:
     theme: night
     self-contained: true
 editor: visual
+execute: 
+  echo: false
 ---
 
+```{r set-up}
+#| include: false
 
-.larger[.hand[How would you describe a categorical variable?]]
+library(lterdatasampler)
+library(tidyverse)
+library(palmerpenguins)
 
----
+vertebrates_full_code <- and_vertebrates |> 
+  mutate(section = if_else(section == "CC", 
+                           "clear cut forest",
+                           "upstream old growth coniferous forest"
+                           )
+         ) 
 
-.larger[In `R`...]
+trout <- vertebrates_full_code |> 
+  filter(species == "Cutthroat trout")
+
+salamander <- vertebrates_full_code |> 
+  filter(species != "Cutthroat trout")
+```
+
+##  {background-color="#D4D4D4"}
+
+<center>
+
+::: {style="margin-top: 100px; font-size: 3em; color: #000000;"}
+How would you describe a categorical variable?
+:::
+
+</center>
+
+## In `R`...
 
 categorical variables can have either `character` *or* `factor` data types
 
---
+</br>
+
+. . .
 
 `factor` -- structured & fixed number of levels / options
 
---
+- can be ordered or unordered
+
+</br>
+
+. . .
 
 `character` -- unstructured & variable number of levels
 
----
+- is inherently unordered
+  
 
-.larger[.hand[What types of summaries of categorical variables make sense?]]
+##  {background-color="#D4D4D4"}
 
----
+::: {style="font-size: 1.25em;"}
+Fill in the associated data types (e.g. character, factor, integer, double) with each type of variable.
+:::
 
-.rhubarb[.huge[A tool bag for data wrangling...]]
+| Variable                      | Data Type in R |
+|-------------------------------|----------------|
+| Categorical variable          |                |
+| Continuous numerical variable |                |
+| Discrete numerical variable   |                |
 
---
 
-.pull-left[
-- `filter()`
-- `mutate()`
-- `group_by()` 
-]
+## `dplyr` -- a tool bag for data wrangling 
 
---
+::: columns
+::: {.column width="40%"}
+![](images/dplyr.png)
+:::
 
-.pull-right[
-- `summarize()`
-- `select()`
-- `arrange()`
-]
+::: {.column width="5%"}
+:::
 
----
+::: {.column width="55%"}
+`filter()`
 
-## Side-by-Side Boxplots {.scrollable}
+`select()`
+
+`mutate()`
+
+`summarize()`
+
+`arrange()`
+
+`group_by()`
+:::
+:::
+
+##  {background-color="#D4D4D4"}
+
+::: {style="font-size: 2em; color: #000000;"}
+Brainstorm definitions for each verb
+:::
+
+::: columns
+::: {.column width="30%"}
+`filter()`
+
+`select()`
+
+`mutate()`
+
+`group_by()`
+
+`summarize()`
+
+`arrange()`
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="65%"}
+:::
+:::
+
+## 
+
+::: columns
+::: {.column width="55"}
+::: {style="font-size: 1.5em;"}
+The Pipe `|>`
+:::
+:::
+
+::: {.column width="15%"}
+:::
+
+::: {.column width="15%"}
+```{r}
+knitr::include_graphics("images/pipe.png")
+```
+:::
+
+::: {.column width="15%"}
+```{r}
+knitr::include_graphics("images/not_a_pipe.jpg")
+```
+:::
+:::
+
+<center>![](images/pipe_process.png)</center>
+
+## 
+
+::: {style="margin-top: 100px; font-size: 2em;"}
+If you wanted means for each level of a categorical variable, what would you do? 
+:::
+
+## Trout Size
+
+::: {style="font-size: 0.75em;"}
+The HJ Andrews Experimental Forest houses one of the larges long-term ecological
+research stations, specifically researching cutthroat trout and salamanders in 
+clear cut or old growth sections of Mack Creek.
+:::
+
+</br>
+
+```{r}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: false
+trout |> 
+  group_by(section) |> 
+  summarize(mean_length = mean(length_1_mm, na.rm = TRUE)
+            )
+```
+
+. . .
+
+</br>
+
+<center>
+::: {style="font-size: 0.75em;"}
+**Why `na.rm = TRUE`?**
+:::
+</center>
+
+## Classifying Channel Types
+
+::: {style="font-size: 0.75em;"}
+The channels of the Mack Creek which were sampled were classified into the following groups: 
+:::
+
+::: columns
+::: {.column width="15%"}
+`"C"` 
+
+`"I"` 
+
+`"IP"` 
+
+`"P"` 
+
+`"R"` 
+
+`"S"`
+
+`"SC"`
+
+`NA`
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="80%"}
+cascade
+
+riffle
+
+isolated pool
+
+pool
+
+rapid
+
+step (small falls)
+
+side channel
+
+not sampled by unit
+:::
+:::
+
+## `filter()`-ing Specific Channel Types
+
+::: {style="font-size: 0.9em;"}
+The majority of the Cutthroat trout were captured in cascades (C), pools (P), 
+and side channels (SC). Suppose we want to only retain these levels of the 
+`unittype` variable. 
+:::
+
+. . .
+
+</br>
+
+<center>
+**What would you do?**
+</center>
+
+. . .
+
+</br>
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+trout |> 
+  filter(unittype %in% c("C", "P", "SC"))
+```
+
+. . .
+
+</br>
+
+<center>
+**Why use `%in%` instead of `==`?**
+</center>
+
+## Incorporating Categorical Variables into Data Visualizations
+
+::: {.incremental}
+- As a variable on the `x`- or `y`-axis
+
+- As a `color` / `fill`
+
+- As a facet
+:::
+
+## Salamander Size
+
+```{r}
+#| echo: true
+#| out-width: 80%
+#| out-height: 60%
+#| fig-align: center
+#| output-location: fragment
+#| code-line-numbers: false
+
+salamander |> 
+  ggplot(mapping = aes(x = length_2_mm)) + 
+  geom_histogram(binwidth = 14) + 
+  labs(x = "Snout to Tail Length (mm)")
+```
+
+. . .
+
+::: {style="font-size: 0.75em;"}
+How would this histogram look if there was no variation in salamander length? 
+:::
+. . .
+
+::: {style="font-size: 0.75em;"}
+What are possible causes for the variation in salamander length?
+:::
+
+## Faceted Histograms
+
+```{r facet-hist}
+#| echo: true
+#| code-line-numbers: "|4"
+#| out-width: 95%
+
+salamander |> 
+  ggplot(mapping = aes(x = length_1_mm)) + 
+  geom_histogram(binwidth = 14) + 
+  facet_wrap(~ section, scales = "free") +
+  labs(x = "Snout to Tail Length (mm)")
+```
+
+## Side-by-Side Boxplots
 
 ::: columns
 ::: {.column width="50"}
@@ -60,118 +334,102 @@ categorical variables can have either `character` *or* `factor` data types
 #| fig-height: 3.5
 #| fig-align: center
 #| echo: true
-ggplot(data = penguins,
-       mapping = aes(y = bill_length_mm,
-                     x = species)) +
+#| code-line-numbers: false
+
+salamander |> 
+  ggplot(mapping = aes(x = length_1_mm, 
+                       y = species)
+         ) + 
   geom_boxplot() + 
-  labs(x = "Penguin Species", 
-       y = "Bill Length (mm)")
+  labs(x = "Snout to Tail Length (mm)", 
+       y = "Salamander Species") 
 ```
 :::
 
 ::: {.column width="50"}
 ```{r vertical-boxplot}
 #| fig-width: 6
-#| fig-height: 3.5
+#| fig-height: 6
 #| fig-align: center
 #| echo: true
-ggplot(data = penguins,
-       mapping = aes(x = bill_length_mm,
-                     y = species)) +
+#| code-line-numbers: false
+
+salamander |> 
+  ggplot(mapping = aes(y = length_1_mm, 
+                       x = species)
+         ) + 
   geom_boxplot() + 
-  labs(y = "Penguin Species", 
-      x  = "Bill Length (mm)")
+  labs(y = "Snout to Tail Length (mm)", 
+       x = "Salamander Species")
 
 ```
 :::
 :::
 
-. . .
+<!-- . . . -->
 
-<center>
-
-::: {style="color: #ba9645;"}
-**Which do you prefer?**
-:::
-
-</center>
-
-## Faceted Histograms
-
-```{r facet-hist}
-#| fig-width: 8
-#| fig-height: 4
-#| fig-align: center
-#| echo: true
-#| output-location: fragment
-#| code-line-numbers: "|4"
-
-ggplot(data = penguins,
-       mapping = aes(x = bill_length_mm)) +
-  geom_histogram(binwidth = 3) +
-  facet_wrap(~ species) +
-  labs(x = "Bill Length (mm)", 
-       title = "Frequency of Captured Penguins by Species")
-```
+<!-- ::: {style="color: #ba9645;"} -->
+<!-- **Which do you prefer?** -->
+<!-- ::: -->
 
 ## Colors in Boxplots
 
 ```{r boxplot-color}
-#| fig-width: 6
-#| fig-height: 3.5
 #| fig-align: center
 #| echo: true
-#| code-line-numbers: "|4,9"
+#| code-line-numbers: false
+#| output-location: fragment
 
-ggplot(data = penguins,
-       mapping = aes(y = bill_length_mm,
-                     x = species,
-                     color = sex)
-       ) +
-  geom_boxplot() +
-  labs(x = "Penguin Species", 
-       y = "Bill Length (mm)", 
-       color = "Sex")
+salamander |> 
+  ggplot(mapping = aes(x = length_1_mm, 
+                       y = species, 
+                       color = unittype)
+         ) + 
+  geom_boxplot() + 
+  labs(x = "Snout to Tail Length (mm)", 
+       y = "Salamander Species", 
+       color = "Channel Type")
 ```
 
 ## Facets in Boxplots
 
 ```{r boxplot-facets}
-#| fig-width: 8
-#| fig-height: 3.5
 #| fig-align: center
 #| echo: true
-#| code-line-numbers: "|6"
-ggplot(data = penguins,
-       mapping = aes(x = bill_length_mm,
-                     y = species,
-                     fill = sex)) +
-  geom_boxplot(alpha = 0.3) +
-  facet_wrap(~ island) + 
-  labs(x = "Bill Depth (mm)", 
-       y = "Bill Length (mm)", 
-       fill = "Sex")
+#| code-line-numbers: false
+#| output-location: fragment
+
+salamander |> 
+  ggplot(mapping = aes(x = length_1_mm, 
+                       y = species, 
+                       color = section)
+         ) + 
+  geom_boxplot() + 
+  facet_wrap(~ unittype) + 
+  labs(x = "Snout to Tail Length (mm)", 
+       y = "Salamander Species", 
+       color = "Section in Mack Creek")
 ```
 
 ## Facets & Color in Scatterplots
 
 ```{r scatterplot-facets}
-#| fig-width: 8
-#| fig-height: 8
 #| fig-align: center
 #| echo: true
-#| code-line-numbers: "|6"
+#| code-line-numbers: false
+#| output-location: fragment
 
-ggplot(data = penguins,
-       mapping = aes(y = bill_length_mm,
-                     x = bill_depth_mm,
-                     color = sex)) +
-  geom_point() +
-  facet_wrap(~ species) + 
-  labs(x = "Bill Depth (mm)", 
-       y = "Bill Length (mm)", 
-       color = "Sex")
-  
+salamander |> 
+  ggplot(mapping = aes(x = length_1_mm, 
+                       y = weight_g, 
+                       color = section)
+         ) + 
+  geom_point() + 
+  facet_wrap(~species) +
+  labs(y = "Snout to Tail Length (mm)", 
+       x = "Year", 
+       color = "Salamander Species")
+
 ```
 
 ## Your Turn
@@ -180,32 +438,25 @@ Describe what you would need to do to replicate the following plot.
 
 ```{r}
 #| echo: false
-nycflights %>%
-  filter(carrier %in% c("AA", "UA", "DL")) %>% 
-  ggplot(aes(x = dep_delay, y = arr_delay, color = carrier)) + 
-  geom_point()
+#| fig-align: center
+
+trout %>%
+  filter(unittype %in% c("R", "I", "S")) %>% 
+  ggplot(aes(x = length_1_mm, y = weight_g, color = unittype)) + 
+  geom_jitter(alpha = 0.5) + 
+  labs(x = "Length (mm)", 
+       y = "Weight (g)", 
+       color = "Channel \nClassification") + 
+  theme_light()
 ```
 
 . . .
 
-What are two aspects of this plot that you believe are well done? What are two aspects of the plot that could be improved?
+What is one aspect of this plot that you believe is well done? What is one 
+aspect of the plot that could be improved?
 
+##  {background-color="#D4D4D4"}
 
----
-
-## Break
-
-## Warm-up
-
-Fill in the associated data types (e.g. character, factor, integer, double) 
-with each type of variable. 
-
-	
-| Variable    | Data Type in R |
-|-------------|----------------|
-| Categorical variable |       |	
-| Continuous numerical variable | |
-| Discrete numerical variable	  | |
-
-
----
+::: {style="margin-top: 100px; font-size: 4em; color: #000000;"}
+Break
+:::
