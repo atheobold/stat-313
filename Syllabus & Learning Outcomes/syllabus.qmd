@@ -8,6 +8,8 @@ format:
     fontsize: 1em
     mainfont: sans-serif
     number-sections: true
+    number-depth: 2
+    table-of-contents: true
     section-divs: true
     code-block-bg: "#76b5c5"
     highlight-style: monochrome
@@ -270,6 +272,15 @@ After the first submission of your lab or critique, you will have the option to 
 
 You can submit **up to one** revised Lab Assignment or Critique per week, until Sunday, March 19 at 11:59 pm.
 
+#### Reflections on Your Learning
+
+Revisions **must** include a reflection describing how you revised your thinking when completing your revision. It’s not enough to say "[x] was wrong, so I fixed it"---you have to talk about why you got [x] wrong in the first place and what you learned that changed your mind. What do you know now that you didn’t know before? Who or what helped you learn?
+
+- If your revision does not include reflections, I’ll ask you to add them.
+- See some examples of really good reflections [here](https://docs.google.com/document/d/1JNR3cVONeEPwe7umURI1gv0w9qbMz5fyC_S2_qXkHII/edit?usp=sharing) -- they’re (mostly) from an introductory statistics class, but I think you’ll get the idea.
+
+**Submit your revision to the same assignment box on Canvas as your original. This helps me keep track of any outstanding revisions each person has.**
+
 ------------------------------------------------------------------------
 
 # Classroom community and policies
@@ -328,7 +339,7 @@ If you miss a bunch of classes, please come talk to me. I'm working from the ass
 
 ## What if I need to turn something in late?
 
-Assignments are expected to be submitted on time. However, every student will be permitted to submit up to **three** individual assignments up to 1-week late, by completing the [deadline extension form](https://forms.gle/9LLe6EoiLUvFEsJaA). When you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. **Your new deadline must be within 1-week of the original deadline.** All deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions. All late work submitted without a deadline extension will receive a penalty of 5% per day for up to four (4) days. __This means if you did not submit a deadline extension request, you cannot turn in work more than four days past the deadline.__
+Assignments are expected to be submitted on time. However, every student will be permitted to submit up to **three** individual assignments up to 1-week late, by completing the [deadline extension form](https://forms.gle/9LLe6EoiLUvFEsJaA). When you complete the deadline extension form you will be required to state (1) what assignment you need an extension for, and (2) your proposed new deadline. **Your new deadline must be within 1-week of the original deadline.** All deadline extensions must be done through the form, so I can keep track of who has used their allotment of extensions. All late work submitted without a deadline extension will receive a penalty of 5% per day for up to four (4) days. **This means if you did not submit a deadline extension request, you cannot turn in work more than four days past the deadline.**
 
 ## Do I need to bring a computer to class?
 
