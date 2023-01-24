@@ -1,0 +1,168 @@
+---
+title: "Group Collaboration -- Week 3"
+date: "January 24, 2023"
+format: 
+  html: 
+    self-contained: true
+editor: visual
+---
+
+# Suncreen & Skin Cancer
+
+Green et al. (1999). Daily sunscreen application and betacarotene
+supplementation in prevention of basal-cell and squamous-cell carcinomas of the
+skin: a randomised controlled trial, *The Lancet*, 354(*9180*): 723-729. 
+
+## Methods
+
+In a community-based randomised trial with a 2 by 2 factorial design, individuals
+were assigned to four treatment groups: daily application of a sun protection
+factor 15-plus sunscreen to the head, neck, arms, and hands, and betacarotene
+supplementation (30 mg per day); sunscreen plus placebo tablets; betacarotene
+only; or placebo only. Participants were 1621 residents of Nambour in southeast
+Queensland, Australia. The endpoints after 4·5 years of follow-up were the
+incidence of basal-cell and squamous-cell carcinomas both in terms of people
+treated for newly diagnosed disease and in terms of the numbers of tumours that
+occurred. Analysis of the effect of sunscreen was based only on skin cancers
+that developed on sites of daily application. All analyses were by intention to
+treat.
+
+## Questions for Discussion 
+
+</br>
+</br>
+
+__1. Identify the main research question of the study.__
+
+</br>
+</br>
+
+__2. Who were the subjects in this study, and how many were included?__
+
+</br>
+</br>
+
+__3. What are the variables in the study? Identify each variable as numerical or
+categorical. If numerical, state whether the variable is discrete or continuous.
+If categorical, state whether the variable is regular or ordinal.__ 
+
+</br>
+</br>
+
+__4. Was blocking included in this study? If not, what variable do you believe 
+would have been wise to consider as a blocking variable?__
+
+</br>
+</br>
+
+__5. Identify the population of interest and the sample in this study.__
+
+</br>
+</br>
+
+__6. What type of study was this?__
+
+</br>
+</br>
+
+__7. Were the patients blinded to their treatment? Was this study double-blind?__
+
+</br>
+</br>
+
+
+## Findings
+
+1383 participants underwent full skin examination by a dermatologist in the
+follow-up period. 250 of them developed 758 new skin cancers during the
+follow-up period. There were no significant differences in the incidence of
+first new skin cancers between groups randomly assigned daily sunscreen and no
+daily sunscreen (basal-cell carcinoma 2588 vs 2509 per 100,000; rate ratio 1.03
+[95% CI 0.73–1.46]; squamous-cell carcinoma 876 vs 996 per 100,000; rate ratio
+0.88 [0.50–1.56]). Similarly, there was no significant difference between the
+betacarotene and placebo groups in incidence of either cancer (basal-cell
+carcinoma 3954 vs 3806 per 100,000; 1.04 [0.73–1.27]; squamous-cell carcinoma
+1508 vs 1146 per 100,000; 1.35 [0.84–2.19]). In terms of the number of tumours,
+there was no effect on incidence of basal-cell carcinoma by sunscreen use or by
+betacarotene but the incidence of squamous-cell carcinoma was significantly
+lower in the sunscreen group than in the no daily sunscreen group (1115 vs 1832
+per 100,000; 0·61 [0.46–0.81]).
+
+</br>
+</br>
+
+__8. The researchers stated that "there was no effect on incidence of basal-cell
+carcinoma by sunscreen use." Given the study design, can the researchers 
+make causal statements about carcinoma and sunscreen use? 
+
+</br>
+</br>
+
+__9. Can the results of the study be generalized to the population at large?__
+
+</br>
+</br>
+
+__10. These researchers concluded the use of sunscreen or betacarotene had
+"no effect" because their observed differences resulted in a p-value that was
+greater than 0.05. What issues do you see with this interpretation?__
+
+</br>
+</br>
+
+__11. In March of 2016 the American Statistical Association released a statement 
+on the use of "statistical significance" and p-values. In the statement, the 
+authors outline the following six key misconceptions and misuse of p-values:__
+
+1. P-values can indicate how incompatible the data are with a specified
+statistical model.
+
+2. P-values do not measure the probability that the studied hypothesis is true,
+or the probability that the data were produced by random chance alone.
+
+3. Scientific conclusions and business or policy decisions should not be based
+only on whether a p-value passes a specific threshold.
+
+4. Proper inference requires full reporting and transparency.
+
+5. A p-value, or statistical significance, does not measure the size of an
+effect or the importance of a result.
+
+6. By itself, a p-value does not provide a good measure of evidence regarding a
+model or hypothesis. 
+
+
+
+__Which of these misconceptions do you believe apply to this study?__
+
+</br>
+</br>
+</br>
+
+# Alternative Study 
+
+Stern RS, Weinstein MC, Baker SG. (1986). Risk reduction for nonmelanoma skin
+cancer with childhood sunscreen use. *Arch Dermatol*, 122(*5*): 537–545.
+
+Exposure to ultraviolet radiation is the principle cause of basal and squamous
+cell carcinomas of the skin, which are the most frequent tumors occurring in
+white residents of the United States. Using a mathematical model based on
+epidemiologic data, we quantified the potential benefits of using a sunscreen
+with a sun protective factor of 15 and estimate that regular use of such a
+sunscreen during the first 18 years of life would reduce the lifetime incidence
+of these tumors by 78%. Additional benefits of sunscreen use during childhood
+include reduced risk of sunburn, retarding the pace of skin aging, and possible
+reduction in melanoma risk. We recommend that pediatricians encourage sunscreen
+use and sun avoidance as a regular part of pediatric preventive health care.
+
+</br>
+
+__12. Why do you believe the 1999 study found that sunscreen had "no effect" on 
+basal-cell carcinoma, when this 1986 found that "regular use of sunscreen would
+reduce the incidence of tumors by 78%"?__
+
+</br>
+</br>
+
+
+
