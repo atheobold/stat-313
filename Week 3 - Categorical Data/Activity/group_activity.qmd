@@ -1,6 +1,7 @@
 ---
 title: "Group Collaboration -- Week 3"
 date: "January 24, 2023"
+author: "Your group's names here:"
 format: 
   docx: 
     self-contained: true
@@ -79,7 +80,7 @@ In a community-based randomised trial with a 2 by 2 factorial design, individual
 
 6.  By itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis.
 
-**Which of these misconceptions do you believe apply to this study?**
+**Circle the misconceptions you believe apply to this study.**
 
 </br> </br> </br>
 
