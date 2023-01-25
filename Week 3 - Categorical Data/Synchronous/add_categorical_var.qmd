@@ -15,19 +15,18 @@ execute:
 
 library(lterdatasampler)
 library(tidyverse)
-library(palmerpenguins)
 
-vertebrates_full_code <- and_vertebrates |> 
+vertebrates_full_code <- and_vertebrates %>% 
   mutate(section = if_else(section == "CC", 
                            "clear cut forest",
                            "upstream old growth coniferous forest"
                            )
          ) 
 
-trout <- vertebrates_full_code |> 
+trout <- vertebrates_full_code %>% 
   filter(species == "Cutthroat trout")
 
-salamander <- vertebrates_full_code |> 
+salamander <- vertebrates_full_code %>% 
   filter(species != "Cutthroat trout")
 ```
 
@@ -51,7 +50,7 @@ categorical variables can have either `character` *or* `factor` data types
 
 `factor` -- structured & fixed number of levels / options
 
-- can be ordered or unordered
+-   can be ordered or unordered
 
 </br>
 
@@ -59,8 +58,7 @@ categorical variables can have either `character` *or* `factor` data types
 
 `character` -- unstructured & variable number of levels
 
-- is inherently unordered
-  
+-   is inherently unordered
 
 ##  {background-color="#D4D4D4"}
 
@@ -74,8 +72,7 @@ Fill in the associated data types (e.g. character, factor, integer, double) with
 | Continuous numerical variable |                |
 | Discrete numerical variable   |                |
 
-
-## `dplyr` -- a tool bag for data wrangling 
+## `dplyr` -- a tool bag for data wrangling
 
 ::: columns
 ::: {.column width="40%"}
@@ -133,7 +130,7 @@ Brainstorm definitions for each verb
 ::: columns
 ::: {.column width="55"}
 ::: {style="font-size: 1.5em;"}
-The Pipe `|>`
+The Pipe `%>%`
 :::
 :::
 
@@ -158,15 +155,13 @@ knitr::include_graphics("images/not_a_pipe.jpg")
 ## 
 
 ::: {style="margin-top: 100px; font-size: 2em;"}
-If you wanted means for each level of a categorical variable, what would you do? 
+If you wanted means for each level of a categorical variable, what would you do?
 :::
 
 ## Trout Size
 
 ::: {style="font-size: 0.75em;"}
-The HJ Andrews Experimental Forest houses one of the larges long-term ecological
-research stations, specifically researching cutthroat trout and salamanders in 
-clear cut or old growth sections of Mack Creek.
+The HJ Andrews Experimental Forest houses one of the larges long-term ecological research stations, specifically researching cutthroat trout and salamanders in clear cut or old growth sections of Mack Creek.
 :::
 
 </br>
@@ -175,8 +170,8 @@ clear cut or old growth sections of Mack Creek.
 #| echo: true
 #| output-location: fragment
 #| code-line-numbers: false
-trout |> 
-  group_by(section) |> 
+trout %>% 
+  group_by(section) %>% 
   summarize(mean_length = mean(length_1_mm, na.rm = TRUE)
             )
 ```
@@ -186,28 +181,30 @@ trout |>
 </br>
 
 <center>
+
 ::: {style="font-size: 0.75em;"}
 **Why `na.rm = TRUE`?**
 :::
+
 </center>
 
 ## Classifying Channel Types
 
 ::: {style="font-size: 0.75em;"}
-The channels of the Mack Creek which were sampled were classified into the following groups: 
+The channels of the Mack Creek which were sampled were classified into the following groups:
 :::
 
 ::: columns
 ::: {.column width="15%"}
-`"C"` 
+`"C"`
 
-`"I"` 
+`"I"`
 
-`"IP"` 
+`"IP"`
 
-`"P"` 
+`"P"`
 
-`"R"` 
+`"R"`
 
 `"S"`
 
@@ -241,18 +238,14 @@ not sampled by unit
 ## `filter()`-ing Specific Channel Types
 
 ::: {style="font-size: 0.9em;"}
-The majority of the Cutthroat trout were captured in cascades (C), pools (P), 
-and side channels (SC). Suppose we want to only retain these levels of the 
-`unittype` variable. 
+The majority of the Cutthroat trout were captured in cascades (C), pools (P), and side channels (SC). Suppose we want to only retain these levels of the `unittype` variable.
 :::
 
 . . .
 
 </br>
 
-<center>
-**What would you do?**
-</center>
+<center>**What would you do?**</center>
 
 . . .
 
@@ -262,7 +255,7 @@ and side channels (SC). Suppose we want to only retain these levels of the
 #| eval: false
 #| echo: true
 #| code-line-numbers: false
-trout |> 
+trout %>% 
   filter(unittype %in% c("C", "P", "SC"))
 ```
 
@@ -270,46 +263,52 @@ trout |>
 
 </br>
 
-<center>
-**Why use `%in%` instead of `==`?**
-</center>
+<center>**Why use `%in%` instead of `==`?**</center>
 
 ## Incorporating Categorical Variables into Data Visualizations
 
-::: {.incremental}
-- As a variable on the `x`- or `y`-axis
+::: incremental
+-   As a variable on the `x`- or `y`-axis
 
-- As a `color` / `fill`
+-   As a `color` / `fill`
 
-- As a facet
+-   As a facet
 :::
 
 ## Salamander Size
 
+::: columns
+::: {.column width="55%"}
 ```{r}
 #| echo: true
-#| out-width: 80%
-#| out-height: 60%
+#| fig-width: 4
+#| fig-height: 4
 #| fig-align: center
-#| output-location: fragment
 #| code-line-numbers: false
 
-salamander |> 
-  ggplot(mapping = aes(x = length_2_mm)) + 
+ggplot(data = salamander, 
+       mapping = aes(x = length_2_mm)) + 
   geom_histogram(binwidth = 14) + 
   labs(x = "Snout to Tail Length (mm)")
 ```
-
-. . .
-
-::: {style="font-size: 0.75em;"}
-How would this histogram look if there was no variation in salamander length? 
 :::
-. . .
 
-::: {style="font-size: 0.75em;"}
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+::: {style="font-size: 0.9em;"}
+</br>
+
+How would this histogram look if there was no variation in salamander length?
+
+</br>
+
 What are possible causes for the variation in salamander length?
 :::
+:::
+:::
+
 
 ## Faceted Histograms
 
@@ -318,8 +317,8 @@ What are possible causes for the variation in salamander length?
 #| code-line-numbers: "|4"
 #| out-width: 95%
 
-salamander |> 
-  ggplot(mapping = aes(x = length_1_mm)) + 
+ggplot(data = salamander, 
+       mapping = aes(x = length_1_mm)) + 
   geom_histogram(binwidth = 14) + 
   facet_wrap(~ section, scales = "free") +
   labs(x = "Snout to Tail Length (mm)")
@@ -336,9 +335,9 @@ salamander |>
 #| echo: true
 #| code-line-numbers: false
 
-salamander |> 
-  ggplot(mapping = aes(x = length_1_mm, 
-                       y = species)
+ggplot(data = salamander, 
+       mapping = aes(x = length_1_mm, 
+                     y = species)
          ) + 
   geom_boxplot() + 
   labs(x = "Snout to Tail Length (mm)", 
@@ -349,14 +348,14 @@ salamander |>
 ::: {.column width="50"}
 ```{r vertical-boxplot}
 #| fig-width: 6
-#| fig-height: 6
+#| fig-height: 4
 #| fig-align: center
 #| echo: true
 #| code-line-numbers: false
 
-salamander |> 
-  ggplot(mapping = aes(y = length_1_mm, 
-                       x = species)
+ggplot(data = salamander, 
+       mapping = aes(y = length_1_mm, 
+                     x = species)
          ) + 
   geom_boxplot() + 
   labs(y = "Snout to Tail Length (mm)", 
@@ -366,12 +365,6 @@ salamander |>
 :::
 :::
 
-<!-- . . . -->
-
-<!-- ::: {style="color: #ba9645;"} -->
-<!-- **Which do you prefer?** -->
-<!-- ::: -->
-
 ## Colors in Boxplots
 
 ```{r boxplot-color}
@@ -379,9 +372,11 @@ salamander |>
 #| echo: true
 #| code-line-numbers: false
 #| output-location: fragment
+#| fig-width: 8
+#| fig-height: 3.5
 
-salamander |> 
-  ggplot(mapping = aes(x = length_1_mm, 
+ggplot(data = salamander, 
+       mapping = aes(x = length_1_mm, 
                        y = species, 
                        color = unittype)
          ) + 
@@ -391,16 +386,16 @@ salamander |>
        color = "Channel Type")
 ```
 
-## Facets in Boxplots
+## Facets & Colors in Boxplots
 
 ```{r boxplot-facets}
 #| fig-align: center
 #| echo: true
 #| code-line-numbers: false
-#| output-location: fragment
+#| output-location: slide
 
-salamander |> 
-  ggplot(mapping = aes(x = length_1_mm, 
+ggplot(data = salamander, 
+       mapping = aes(x = length_1_mm, 
                        y = species, 
                        color = section)
          ) + 
@@ -417,10 +412,10 @@ salamander |>
 #| fig-align: center
 #| echo: true
 #| code-line-numbers: false
-#| output-location: fragment
+#| output-location: slide
 
-salamander |> 
-  ggplot(mapping = aes(x = length_1_mm, 
+ggplot(data = salamander, 
+       mapping = aes(x = length_1_mm, 
                        y = weight_g, 
                        color = section)
          ) + 
@@ -433,8 +428,6 @@ salamander |>
 ```
 
 ## Your Turn
-
-Describe what you would need to do to replicate the following plot.
 
 ```{r}
 #| echo: false
@@ -452,8 +445,11 @@ trout %>%
 
 . . .
 
-What is one aspect of this plot that you believe is well done? What is one 
-aspect of the plot that could be improved?
+What are the aesthetics included in this plot?
+
+. . .
+
+What is one aspect of this plot that you believe is well done? What is one aspect of the plot that could be improved?
 
 ##  {background-color="#D4D4D4"}
 
