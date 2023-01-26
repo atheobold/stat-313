@@ -14,12 +14,8 @@ library(tidyverse)
 ```
 
 ::: {style="font-size: 1.25em;"}
-Suppose Cal Poly is interested in summarizing the demographics of their
-undergraduate students. They have designed the following quesion asking about
-student's gender identity:
+Suppose Cal Poly is interested in summarizing the demographics of their undergraduate students. They have designed the following question asking about student's gender identity:
 :::
-
-</br>
 
 . . .
 
@@ -35,10 +31,9 @@ student's gender identity:
 Who benefits from these options?
 
 Who suffers from these options?
-
 :::
 
-## {background-color="D4D4D4"}
+##  {background-color="D4D4D4"}
 
 ::: {style="font-size: 3em; color: #063970"}
 Data Feminism
@@ -53,14 +48,14 @@ Data Feminism
 :::
 
 ::: {.column width="40%"}
-::: {style="font-size: 1.25em;"}
-- Data science by whom?
+::: {style="font-size: 1.15em;"}
+-   Data science by whom?
 
-- Data science for whom?
+-   Data science for whom?
 
-- Data sets about whom?
+-   Data sets about whom?
 
-- Data science with whose values? 
+-   Data science with whose values?
 :::
 :::
 :::
@@ -79,8 +74,6 @@ Data Feminism
 ![](images/data_feminism_book.jpg)
 :::
 :::
-
-
 
 ## 
 
@@ -107,7 +100,7 @@ Challenge power
 knitr::include_graphics("images/data_file.PNG")
 ```
 
-##
+## 
 
 ::: {style="font-size: 2.5em;"}
 An aura objectivity
@@ -115,16 +108,13 @@ An aura objectivity
 
 ```{r}
 #| echo: false
-#| out-width: 60%
-#| out-height: 30%
+#| out-width: 40%
+#| out-height: 20%
 knitr::include_graphics("images/active_shooters.PNG")
 ```
 
 ::: {style="font-size: 0.75em;"}
-> "We focus on four conventions which imbue visualizations with a sense of
-> objectivity, transparency and facticity. These include: (a) two-dimensional
-> viewpoints, (b) clean layouts, (c) geometric shapes and lines, (d) the
-inclusion of data sources." 
+> "We focus on four conventions which imbue visualizations with a sense of objectivity, transparency and facticity. These include: (a) two-dimensional viewpoints, (b) clean layouts, (c) geometric shapes and lines, (d) the inclusion of data sources."
 >
 > *The work that visualization communications do*
 :::
