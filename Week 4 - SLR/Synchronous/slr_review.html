@@ -31,6 +31,9 @@ class: center, middle, inverse, title-slide
 
 
 
+
+
+
 class: middle, inverse, center
 
 .larger[Data for Today]
@@ -95,8 +98,6 @@ class: center, middle, inverse
 
 .larger[Characterizing Relationships]
 
-&lt;!-- Scatterplots can reveal characteristics of the relationship between two variables. Any patterns - and deviations from those - we see in these plots could give us some insight into the nature of the underlying phenomenon. Specifically, we look for four things: form, direction, strength, and outliers. --&gt;
-
 Form (e.g. linear, quadratic, non-linear)
 
 Direction (e.g. positive, negative)
@@ -122,19 +123,18 @@ How would your characterize this relationship?
 - outliers
 ]
 
-
 ---
 
-.hand[.larger[Review]]
-
-.pull-left[
-&lt;img src="slr_review_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
-]
+.hand[.bitlarger[What if you added another variable?]]
 
 --
 
+.pull-left[
+&lt;img src="slr_review_files/figure-html/unnamed-chunk-3-1.png" width="90%" /&gt;
+]
+
 .pull-right[
-&lt;img src="slr_review_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
+&lt;img src="slr_review_files/figure-html/unnamed-chunk-4-1.png" width="90%" /&gt;
 ]
 
 ---
@@ -156,9 +156,8 @@ How would your characterize this relationship?
 
 ```r
 births_post26 &lt;- ncbirths %&gt;% 
-  filter(is.na(weight) == FALSE, 
-         is.na(weeks) == FALSE, 
-         weeks &gt; 26)
+  drop_na(weight, weeks) %&gt;% 
+  filter(weeks &gt; 26)
 
 
 births_post26 %&gt;% 
@@ -179,12 +178,19 @@ class: middle, inverse
 
 .larger[Anscombe Correlations]
 
-&lt;!-- In 1973, statistician Francis Anscombe created a synthetic data set that has --&gt;
-&lt;!-- been used extensively to illustrate concepts related to correlation and --&gt;
-&lt;!-- regression. --&gt;
-
 .pull-left[
-&lt;img src="slr_review_files/figure-html/unnamed-chunk-6-1.png" width="100%" /&gt;
+
+```r
+anscombe &lt;- anscombe %&gt;%
+  mutate(id = 1:nrow(.)) %&gt;%
+  pivot_longer(cols = -id, names_to = "key", values_to = "value") %&gt;%
+  separate(key, into = c("variable", "set"), sep = 1) %&gt;%
+  pivot_wider(names_from = variable, values_from = value)
+
+ggplot(data = anscombe, aes(x = x, y = y)) +
+  geom_point() +
+  facet_wrap(~set)
+```
 ]
 
 .pull-right[
@@ -214,9 +220,9 @@ class: middle
 
 --
 
-- These uses are obviously related and generally in sync.
+  * These uses are obviously related and generally in sync.
 
-- There are times when these two uses can be conflated and/or misconstrued.
+  * There are times when these two uses can be conflated and/or misconstrued.
 
 ---
 
@@ -240,27 +246,21 @@ $$
 $$
 ]
 
-
 ---
 
 class: inverse, middle
 
-.larger[Two Regression Equations]
-
-.large[.pink[Population Regression Model]]
-
-$$
-  y_i = \beta_0 + \beta_1 \cdot X + \epsilon_i \,, \qquad \epsilon \sim N(0, \sigma)
-$$
-&lt;/br&gt;
-
---
-
-.large[.honey[Estimated / Fitted Regression Model]]
+.larger[.honey[Estimated / Fitted Regression Model]]
 
 $$
   \hat{y} = b_0 + b_1 \cdot x
 $$
+
+--
+
+.center[
+.large[.honey[Why does this equation have a hat on y?]]
+]
 
 ---
 
@@ -302,31 +302,50 @@ class: center, inverse
 
 --
 
-.pull-left[
-`\(\hat{y} = \widehat{\text{weight}}\)` 
-]
+
+```r
+get_regression_table(weeks_lm)
+```
+
+```
+## # A tibble: 2 × 7
+##   term      estimate std_error statistic p_value lower_ci upper…¹
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+## 1 intercept   -5.34      0.565     -9.45       0   -6.45   -4.23 
+## 2 weeks        0.325     0.015     22.2        0    0.296   0.354
+## # … with abbreviated variable name ¹​upper_ci
+```
+
+.large[.honey[Write out the estimated regression equation!]]
+
+---
+
+class: center, middle
+
+.large[.hand[How do you interpret the intercept value of -5.34?]]
 
 --
 
-.pull-right[
-`\(b_0 = -5.34\)`  
+.large[.hand[How do you interpret the slope value of 0.325?]]
 
-`\(b_1 = 0.325\)`
+---
 
-`\(x = \text{weeks}\)` 
-]
+class: center, middle
+
+.larger[Obtaining Residuals]
 
 --
 
-&lt;/br&gt;
+`\(\widehat{weight} = -5.34 + 0.325 \cdot weeks\)`
 
-`$$\widehat{\text{weight}} = -5.34 + 0.325 \cdot \text{weeks}$$`
+.rhubarb[What would the residual be for a pregnancy that lasted 39 weeks and whose
+baby weighed 7.63 pounds?]
 
 ---
 
 class: center, middle 
 
-.larger[.hand[Your Turn]]
+.larger[A different explanatory variable]
 
 
 ```r
@@ -346,7 +365,13 @@ get_regression_table(weight_gain_lm)
 
 &lt;/br&gt;
 
-.large[.rhubarb[Write out the estimated regression equation!]]
+.large[.rhubarb[Write out this estimated regression equation!]]
+
+---
+
+class: center, inverse, middle
+
+.larger[.hand[How would you choose which model was better?]]
 
 ---
 
@@ -354,7 +379,6 @@ class: inverse, center
 
 .larger[Categorical Explanatory Variables]
 
-.pull-left-narrow[
 
 ```r
 births_post26 %&gt;% 
@@ -368,32 +392,6 @@ births_post26 %&gt;%
 ## 1 nonsmoker
 ## 2 smoker
 ```
-]
-
---
-
-.pull-right-wide[
-
-```r
-habit_lm &lt;- lm(weight ~ habit, data = births_post26)
-  
-get_regression_table(habit_lm)
-```
-
-```
-## # A tibble: 2 × 7
-##   term          estimate std_er…¹ stati…² p_value lower…³ upper…⁴
-##   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 intercept         7.23    0.047  155.     0       7.14    7.32 
-## 2 habit: smoker    -0.4     0.13    -3.07   0.002  -0.656  -0.145
-## # … with abbreviated variable names ¹​std_error, ²​statistic,
-## #   ³​lower_ci, ⁴​upper_ci
-```
-]
-
---
-
-.large[.honey[What is the estimated mean birth weight for nonsmoking mothers?]]
 
 ---
 
@@ -427,9 +425,33 @@ Need:
 `\(1_{smoker}(x) = 1\)` if the mother was a `"smoker"`, 0 otherwise
 ]
 
+---
+
+class: center, inverse, middle
+
+.larger[A different equation]
+
+
+```r
+habit_lm &lt;- lm(weight ~ habit, data = births_post26)
+  
+get_regression_table(habit_lm)
+```
+
+```
+## # A tibble: 2 × 7
+##   term          estimate std_er…¹ stati…² p_value lower…³ upper…⁴
+##   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 intercept         7.23    0.047  155.     0       7.14    7.32 
+## 2 habit: smoker    -0.4     0.13    -3.07   0.002  -0.656  -0.145
+## # … with abbreviated variable names ¹​std_error, ²​statistic,
+## #   ³​lower_ci, ⁴​upper_ci
+```
+
 --
 
-`$$\widehat{\text{weight}} = 7.23 - 0.4 \cdot 1_{smoker}(x)$$`
+.large[.honey[What is the estimated mean birth weight for nonsmoking mothers?]]
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
