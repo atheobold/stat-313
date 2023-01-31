@@ -179,18 +179,7 @@ class: middle, inverse
 .larger[Anscombe Correlations]
 
 .pull-left[
-
-```r
-anscombe &lt;- anscombe %&gt;%
-  mutate(id = 1:nrow(.)) %&gt;%
-  pivot_longer(cols = -id, names_to = "key", values_to = "value") %&gt;%
-  separate(key, into = c("variable", "set"), sep = 1) %&gt;%
-  pivot_wider(names_from = variable, values_from = value)
-
-ggplot(data = anscombe, aes(x = x, y = y)) +
-  geom_point() +
-  facet_wrap(~set)
-```
+&lt;img src="slr_review_files/figure-html/unnamed-chunk-6-1.png" width="100%" /&gt;
 ]
 
 .pull-right[

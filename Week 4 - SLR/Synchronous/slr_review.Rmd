@@ -254,7 +254,7 @@ class: middle, inverse
 .larger[Anscombe Correlations]
 
 .pull-left[
-```{r, eval = FALSE, out.width = "100%"}
+```{r, echo = FALSE, out.width = "100%"}
 anscombe <- anscombe %>%
   mutate(id = 1:nrow(.)) %>%
   pivot_longer(cols = -id, names_to = "key", values_to = "value") %>%
