@@ -4,48 +4,16 @@ format: html
 editor: visual
 ---
 
+`r emo::ji("scroll")` Group Concept Questions
 
-`r emo::ji("scroll")` Group Concept Questions 
-
-1.	What are two types of data modeling? What purpose does each serve? What type
-of data modeling have you seen before? 
-
-2.	The plot below suffers from what we call "overplotting". Describe what overplotting is and how it can be remedied. 
-
-```{r, echo = FALSE}
-ggplot(evals, aes(x = bty_avg, y = score)) +
-  geom_point() +
-  labs(x = "Beauty Score", 
-       y = "Teaching Score",
-       title = "Scatterplot of relationship of teaching and beauty scores")
-```
-
- 
-3. Below is a plot of the relationship between the age of the professor and
-their teaching evaluations. 
-Describe the relationship you see.
-Does the relationship between age and evaluation scores appear to be stronger or weaker than the relationship with beauty scores? 
-
-```{r, echo = FALSE}
-ggplot(evals, aes(x = age, y = score)) +
-  geom_jitter() +
-  labs(x = "Age of Professor", 
-       y = "Teaching Score",
-       title = "Scatterplot of relationship of teaching scores and age")
-```
-
-4. Below is a regression table for the linear regression model of evaluation
-score as a function of the age of professor.
-Use the regression table to write out the estimated regression line for this relationship. 
+4.  Below is a regression table for the linear regression model of evaluation score as a function of the age of professor. Use the regression table to write out the estimated regression line for this relationship.
 
 ```{r, echo = FALSE}
 age_lm <- lm(score ~ age, data = evals) 
 get_regression_table(age_lm)
 ```
 
-5. Below is information on one professor from the `evals` dataset.
-Compute the residual for this professor based on the regression line you found
-in #4. 
+5.  Below is information on one professor from the `evals` dataset. Compute the residual for this professor based on the regression line you found in #4.
 
 ```{r, echo = FALSE}
 evals %>% 
@@ -53,18 +21,13 @@ evals %>%
   sample_n(size = 1)
 ```
 
-6. What does the term "offset" mean in a linear regression with a categorical explanatory variable? 
+6.  What does the term "offset" mean in a linear regression with a categorical explanatory variable?
 
-7. The `evals` data has a variable named `ethnicity` with levels `"minority"`
-and `"not minority"`. 
-Using the table below, write down the estimated mean evaluation score for
-professors of these two different ethnicity groups. 
+7.  The `evals` data has a variable named `ethnicity` with levels `"minority"` and `"not minority"`. Using the table below, write down the estimated mean evaluation score for professors of these two different ethnicity groups.
 
 ```{r, echo = FALSE}
 ethnic_lm <- lm(score ~ ethnicity, data = evals)
 get_regression_table(ethnic_lm)
 ```
 
-8. What procedure / criteria does `R` use to decide what constitutes the "best" regression line?
-How would you describe this procedure to someone? 
-
+8.  What procedure / criteria does `R` use to decide what constitutes the "best" regression line? How would you describe this procedure to someone?

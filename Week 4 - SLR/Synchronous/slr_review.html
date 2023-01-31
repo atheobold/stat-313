@@ -3,8 +3,7 @@
   <head>
     <title>Introduction to Linear Regression</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Dr. Allison Theobold" />
-    <meta name="date" content="2021-10-10" />
+    <meta name="author" content="STAT 313" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
@@ -17,9 +16,12 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Introduction to Linear Regression
-### Dr. Allison Theobold
-### October 10, 2021
+]
+.author[
+### STAT 313
+]
 
 ---
 
@@ -84,7 +86,7 @@ represent the values of two variables measured on a single observation.
 ]
 
 .pull-right[
-&lt;img src="day1_files/figure-html/viz-1.png" width="100%" /&gt;
+&lt;img src="slr_review_files/figure-html/viz-1.png" width="100%" /&gt;
 ]
 
 ---
@@ -108,7 +110,7 @@ Unusual observations (do points not fit the overall pattern?)
 .hand[.larger[Your Turn]]
 
 .pull-left[
-&lt;img src="day1_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
+&lt;img src="slr_review_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
 ]
 
 .pull-right[
@@ -119,6 +121,315 @@ How would your characterize this relationship?
 - strength 
 - outliers
 ]
+
+
+---
+
+.hand[.larger[Review]]
+
+.pull-left[
+&lt;img src="slr_review_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
+]
+
+--
+
+.pull-right[
+&lt;img src="slr_review_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
+]
+
+---
+
+.bayberry[.larger[Summarizing a Linear Relationship]]
+
+.pull-left[
+- Correlation: __strength and direction of a *linear* relationship between two
+*quantitative* variables__
+
+  * Correlation coefficient between -1 and 1
+  * Sign of the correlations shows direction
+  * Magnitude of the correlation shows strength
+]
+
+--
+
+.pull-right[
+
+```r
+births_post26 &lt;- ncbirths %&gt;% 
+  filter(is.na(weight) == FALSE, 
+         is.na(weeks) == FALSE, 
+         weeks &gt; 26)
+
+
+births_post26 %&gt;% 
+  get_correlation(weeks ~ weight)
+```
+
+```
+## # A tibble: 1 × 1
+##     cor
+##   &lt;dbl&gt;
+## 1 0.578
+```
+]
+
+---
+
+class: middle, inverse
+
+.larger[Anscombe Correlations]
+
+&lt;!-- In 1973, statistician Francis Anscombe created a synthetic data set that has --&gt;
+&lt;!-- been used extensively to illustrate concepts related to correlation and --&gt;
+&lt;!-- regression. --&gt;
+
+.pull-left[
+&lt;img src="slr_review_files/figure-html/unnamed-chunk-6-1.png" width="100%" /&gt;
+]
+
+.pull-right[
+
+Four datasets, very different graphical presentations  
+
+- same mean and standard deviation in both `\(x\)` and `\(y\)`
+- same correlation
+- same regression line
+]
+
+--
+
+.center[
+.large[.honey[For which of these relationships is correlation a reasonable summary measure?]]
+]
+
+---
+
+class: middle 
+
+.larger[The Importance of Language]
+
+&lt;/br&gt;
+
+- The word “correlation” has both a precise mathematical definition and a more general definition for typical usage in English. 
+
+--
+
+- These uses are obviously related and generally in sync.
+
+- There are times when these two uses can be conflated and/or misconstrued.
+
+---
+
+.gray[.larger[Linear Regression]]
+
+- Models are ubiquitous in statistics.
+
+  * We often assume that the value of our response variable is some function of
+  our explanatory variable, plus some random noise.
+  
+--
+
+- In this case, we assume the relationship between `\(x\)` and `\(y\)` takes the form 
+of a **linear function**.
+
+&lt;/br&gt;
+
+.center[
+$$
+  response = intercept + slope \cdot explanatory + noise
+$$
+]
+
+
+---
+
+class: inverse, middle
+
+.larger[Two Regression Equations]
+
+.large[.pink[Population Regression Model]]
+
+$$
+  y_i = \beta_0 + \beta_1 \cdot X + \epsilon_i \,, \qquad \epsilon \sim N(0, \sigma)
+$$
+&lt;/br&gt;
+
+--
+
+.large[.honey[Estimated / Fitted Regression Model]]
+
+$$
+  \hat{y} = b_0 + b_1 \cdot x
+$$
+
+---
+
+class: middle
+
+.larger[Coefficient Estimates]
+
+
+```r
+weeks_lm &lt;- lm(weight ~ weeks, data = births_post26)
+  
+get_regression_table(weeks_lm)
+```
+
+```
+## # A tibble: 2 × 7
+##   term      estimate std_error statistic p_value lower_ci upper…¹
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+## 1 intercept   -5.34      0.565     -9.45       0   -6.45   -4.23 
+## 2 weeks        0.325     0.015     22.2        0    0.296   0.354
+## # … with abbreviated variable name ¹​upper_ci
+```
+
+---
+
+class: middle, inverse
+
+.larger[Our focus (for now...)]
+
+![](images/coefficients.jpg)
+
+---
+
+class: center, inverse
+
+.larger[Estimated regression equation]
+
+`$$\hat{y} = b_0 + b_1 \cdot x$$`
+
+--
+
+.pull-left[
+`\(\hat{y} = \widehat{\text{weight}}\)` 
+]
+
+--
+
+.pull-right[
+`\(b_0 = -5.34\)`  
+
+`\(b_1 = 0.325\)`
+
+`\(x = \text{weeks}\)` 
+]
+
+--
+
+&lt;/br&gt;
+
+`$$\widehat{\text{weight}} = -5.34 + 0.325 \cdot \text{weeks}$$`
+
+---
+
+class: center, middle 
+
+.larger[.hand[Your Turn]]
+
+
+```r
+weight_gain_lm &lt;- lm(weight ~ gained, data = births_post26)
+  
+get_regression_table(weight_gain_lm)
+```
+
+```
+## # A tibble: 2 × 7
+##   term      estimate std_error statistic p_value lower_ci upper…¹
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+## 1 intercept    6.74      0.102     65.8        0    6.54    6.94 
+## 2 gained       0.015     0.003      4.79       0    0.009   0.021
+## # … with abbreviated variable name ¹​upper_ci
+```
+
+&lt;/br&gt;
+
+.large[.rhubarb[Write out the estimated regression equation!]]
+
+---
+
+class: inverse, center
+
+.larger[Categorical Explanatory Variables]
+
+.pull-left-narrow[
+
+```r
+births_post26 %&gt;% 
+  distinct(habit)
+```
+
+```
+## # A tibble: 2 × 1
+##   habit    
+##   &lt;fct&gt;    
+## 1 nonsmoker
+## 2 smoker
+```
+]
+
+--
+
+.pull-right-wide[
+
+```r
+habit_lm &lt;- lm(weight ~ habit, data = births_post26)
+  
+get_regression_table(habit_lm)
+```
+
+```
+## # A tibble: 2 × 7
+##   term          estimate std_er…¹ stati…² p_value lower…³ upper…⁴
+##   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 intercept         7.23    0.047  155.     0       7.14    7.32 
+## 2 habit: smoker    -0.4     0.13    -3.07   0.002  -0.656  -0.145
+## # … with abbreviated variable names ¹​std_error, ²​statistic,
+## #   ³​lower_ci, ⁴​upper_ci
+```
+]
+
+--
+
+.large[.honey[What is the estimated mean birth weight for nonsmoking mothers?]]
+
+---
+
+.larger[Indicator Variables]
+
+$$
+  \hat{y} = b_0 + b_1 \cdot x
+$$
+
+--
+
+.pull-left[
+`\(x\)` is a categorical variable
+- `"nonsmoker"`
+- `"smoker"`
+]
+
+--
+
+.pull-right[
+Need: 
+- "baseline" mean 
+- "offsets" 
+]
+
+--
+
+&lt;/br&gt;
+
+.center[
+`\(1_{smoker}(x) = 1\)` if the mother was a `"smoker"`, 0 otherwise
+]
+
+--
+
+`$$\widehat{\text{weight}} = 7.23 - 0.4 \cdot 1_{smoker}(x)$$`
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -168,6 +479,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
