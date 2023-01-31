@@ -418,6 +418,17 @@ class: center, inverse, middle
 
 .larger[.hand[How would you choose which model was better?]]
 
+--
+
+```{r}
+births_post26 %>% 
+  drop_na(weight, gained, weeks) %>% 
+  summarize(cor_weeks = cor(weight, weeks), 
+            R_sq_weeks = cor_weeks^2, 
+            cor_gained = cor(weight, gained),
+            R_sq_gained = cor_gained^2)
+```
+
 ---
 
 class: inverse, center
