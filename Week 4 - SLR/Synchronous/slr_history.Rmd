@@ -1,6 +1,6 @@
 ---
 title: "The Ugly History of Linear Regression"
-date: "October 14, 2021"
+date: "February 2, 2023"
 author: "Dr. Allison Theobold"
 output:
   xaringan::moon_reader:
