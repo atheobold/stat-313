@@ -9,7 +9,7 @@ resources:
   - reading_guide/week4_reading_guide.docx
 ---
 
-```{r, include = FALSE}
+```{r}
 #| include: false
 
 library(gapminder)
@@ -22,8 +22,6 @@ library(skimr)
 Welcome!
 
 In this week's coursework we are going to start exploring statistical methods---linear regression. We will start with the "basic" case or simple linear regression, with a single quantitative explanatory variable and a quantitative response. We will review the concepts behind linear regression, learn how to visualize regression models, and practice obtaining the estimated regression lines in `R`.
-
-<!-- TODO: use images from here https://allisonhorst.com/linear-regression-dragons -->
 
 ## Learning Outcomes
 
