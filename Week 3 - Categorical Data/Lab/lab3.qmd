@@ -74,6 +74,8 @@ Alright, you should have found that there is more than one species included in t
 
 **Question 4** -- Use the `filter()` function to include *only* observations on Cutthroat trout.
 
+**The only part you need to remove is the ...! Keep the `trout <-`!** 
+
 ```{r fish-filter}
 trout <- ...
 ```
@@ -82,16 +84,17 @@ trout <- ...
 
 **Question 5** -- Use the `filter()` function again to include *only* trout whose `length_1_mm` is greater than 4 inches (or 101 mm).
 
+**The only part you need to remove is the ...! Keep the `trout <-`!** 
+
 ```{r removing-uncatchable-fish}
 trout <- ...
-
 ```
 
 # Data Visualizations
 
 Alright, now that we've gotten our data ready for analysis, let's start with some visualizations
 
-**Question 6** -- Using `ggplot()` create a visualization of the *distribution* of the lengths of the Cutthroat trout.
+**Question 6** -- Using `ggplot()` create a visualization of the *distribution* of the lengths of the Cutthroat trout (from the `trout` dataset you `filter`ed above).
 
 ```{r}
 
@@ -107,7 +110,7 @@ As introduced in *Introduction to Modern Statistics*, a ridge plot essentially h
 
 In R, we use the `geom_density_ridges()` function from the **ggridges** package to create a ridge plot. Yes, this is new, but don't worry! The function has the same layout as things you've seen before.
 
-**Question 8** -- Fill in the code below to create a ridge plot comparing the lengths of Cutthroat trout between the different types of channels (`unittype`).
+**Question 8** -- Fill in the code below to create a ridge plot comparing the lengths of Cutthroat trout between the different types of channels (`unittype`). Use the `trout` dataset you `filter`ed above!
 
 *Be sure to add nice axis labels to your plot, which describe the variables being plotted (and their units)!*
 
@@ -134,15 +137,14 @@ ggplot(data = fish,
 
 Paired with visualizations, summary statistics can provide a clearer picture for the comparisons we are interested in. To obtain summary statistics for different groups of a categorical variable, we need to use our friend the `group_by()` function.
 
-**Question 11** -- Find the average length of Cutthroat trout from the different channel types (`unittype`).
+**Question 11** -- Find the average length of Cutthroat trout from the different channel types (`unittype`). Use the `trout` dataset from Question 5! 
 
 ```{r channel-avg}
 
 
 ```
 
-**Question 12** -- Find the average length of Cutthroat trout from the different
-channel types (`unittype`) **and** forest `section`
+**Question 12** -- Find the average length of Cutthroat trout from the different channel types (`unittype`) **and** forest `section`. Use the `trout` dataset from Question 5! 
 
 ```{r channel-section-avg}
 
