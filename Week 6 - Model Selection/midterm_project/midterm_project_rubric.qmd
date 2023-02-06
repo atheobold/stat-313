@@ -1,0 +1,5 @@
+---
+title: "Midterm Project Rubric"
+format: html
+editor: visual
+---
