@@ -1,28 +1,22 @@
 ---
-output: pdf_document
+title: "Model Justification"
+format: pdf
+editor: visual
+execute: 
+  echo: false
+  message: false
+  warning: false
 ---
 
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(fig.width = 8, 
-                      fig.asp = 0.618,
-                      out.width = "70%",
-                      dpi = 300, 
-                      warning = FALSE, 
-                      message = FALSE, 
-                      fig.align = "center", 
-                      echo = FALSE)
+```{r}
+#| include: false
 
-library(emo)
 library(tidyverse)
 library(openintro)
-library(gridExtra)
 library(moderndive)
 
-options(show.signif.stars = FALSE)
 ```
-
-<!-- Give example of report with same slopes but no justification.  -->
 
 This study seeks to investigate how the relationship between average SAT math
 scores and the percentage of students who are economically disadvantaged 
