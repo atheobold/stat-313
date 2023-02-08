@@ -25,10 +25,9 @@ library(moderndive)
 
 ## Introduction
 
-## Methods 
+## Methods
 
 ### Variables
-
 
 ### Data Visualizations
 
@@ -46,21 +45,17 @@ library(moderndive)
 
 ## Findings
 
-### Multiple Linear Regression Model 
+### Multiple Linear Regression Model
 
 ```{r lm}
-## Code to fit a linear regression
+## Code to fit your multiple linear regression model
 
-## Code to get coefficient table from linear regression
+## Code to get coefficient table from regression model
 
 ```
 
 ### Model Interpretations
 
-
 ### Model Conclusions
 
-
-## Scope of Inference 
-
-
+## Scope of Inference

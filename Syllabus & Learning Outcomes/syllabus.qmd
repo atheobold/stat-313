@@ -50,10 +50,10 @@ I value diversity, inclusion and equity in this (and every) class. I hold the fu
 
 ### Office Hours
 
-| Day        | Time                           |
-|------------|--------------------------------|
+| Day        | Time                            |
+|------------|---------------------------------|
 | Tuesdays   | 12:30 pm -- 1:30 pm (in-person) |
-| Wednesdays | 2:00 pm - 3:00 pm (in-person)  |
+| Wednesdays | 2:00 pm - 3:00 pm (in-person)   |
 | Thursdays  | 12:30 pm -- 1:30 pm (in-person) |
 
 I am available for individual appointments on Wednesdays from 3:00 to 3:30pm. Appointments to meet **must** be made made *at least* 24 hours in advance through Calendly, using the following link: <https://calendly.com/allisontheobold>
@@ -244,27 +244,31 @@ There will be two projects throughout the quarter, where you will be asked to sy
 
 # Grade Breakdown {#sec-grades}
 
-+-----------------------------+--------------------------+--------------------------+-------------------------+-------------------------+
-|                             | A-level                  | B-level                  | C-level                 | D-level                 |
-+=============================+==========================+==========================+=========================+=========================+
-| Guided Reading              | Regular Completion       | Regular Completion       | Irregular Completion    | Irregular Completion    |
-+-----------------------------+--------------------------+--------------------------+-------------------------+-------------------------+
-| Concept Quizzes             | at least 9 completed     | at least 8 completed     | at least 7 completed    | 6 or fewer completed    |
-+-----------------------------+--------------------------+--------------------------+-------------------------+-------------------------+
-| Tutorials                   | at least 9 completed     | at least 8 completed     | at least 7 completed    | 6 or fewer completed    |
-+-----------------------------+--------------------------+--------------------------+-------------------------+-------------------------+
-| Critiques & Lab Assignments | at least 11 Satisfactory | at least 10 Satisfactory | at least 8 Satisfactory | at least 6 Satisfactory |
-+-----------------------------+--------------------------+--------------------------+-------------------------+-------------------------+
-| Peer Evaluations            | 2 completed              | 2 completed              | at least 1 completed    | at least 1 completed    |
-+-----------------------------+--------------------------+--------------------------+-------------------------+-------------------------+
-| Midterm Project             | Excellent                | Satisfactory             | Progressing             | Not Completed           |
-+-----------------------------+--------------------------+--------------------------+-------------------------+-------------------------+
-| Final Project               | Excellent                | Satisfactory             | Progressing             | Not Completed           |
-+-----------------------------+--------------------------+--------------------------+-------------------------+-------------------------+
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+|                                | A-level                     | B-level                 | C-level                 | D-level                 |
++================================+=============================+=========================+=========================+=========================+
+| **Reading Guides (11 total)**  | at least 10 completed       | at least 9 completed    | at least 7 completed    | 6 or fewer completed    |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Concept Quizzes \            | at least 14 completed       | at least 12 completed   | at least 10 completed   | 9 or fewer completed    |
+| (15 total)**                   |                             |                         |                         |                         |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Tutorials\                   | at least 13 completed       | at least 11 completed   | at least 10 completed   | 8 or fewer completed    |
+| (14 total)**                   |                             |                         |                         |                         |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Critiques & Lab Assignments\ | at least 9 Satisfactory[^1] | at least 8 Satisfactory | at least 7 Satisfactory | 6 or fewer Satisfactory |
+| (10 total)**                   |                             |                         |                         |                         |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Peer Evaluations\            | 2 completed                 | 2 completed             | at least 1 completed    | at least 1 completed    |
+| (2 total)**                    |                             |                         |                         |                         |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Midterm Project**            | Excellent                   | Satisfactory            | Progressing             | Not Completed           |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Final Project**              | Excellent                   | Satisfactory            | Progressing             | Not Completed           |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
 
-<!-- how many tutorials are assigned? -->
+[^1]: A "Satisfactory" lab or critique ocurrs when **every** problem has been marked *Satisfactory.*
 
-I will set + / - grades based on how close you are to the next higher (or lower) letter grade. For example, if you meet all the criteria for an A but only completed 10 satisfactory labs and critiques, you would earn an A-.
+I will set + / - grades based on how close you are to the next higher (or lower) letter grade. For example, if you meet all the criteria for an A but only completed 8 satisfactory labs and critiques, you would earn an A-. Similarly, if you meet all the criteria for an A, but received a Satisfactory on a project -- with more sections receiving an Excellent than Satisfactory -- you would earn an A-.
 
 ### Completing Revisions
 
