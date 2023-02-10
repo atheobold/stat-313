@@ -45,19 +45,22 @@ large sample of professors from The University of Texas at Austin. The original
 data set published in *Beauty in the Classroom* (Hamermesh & Parker, 2005) are
 available through the **openintro** R package. 
 
+For this project, I will focus on three variables: the average attractiveness of 
+the professor, the professor's average course evaluation score, and the
+professor's gender. The study had six students rate the attractiveness of each
+professor based on their picture from 1 (lowest) to 10 (highest). The average of
+these six scores is the average attractiveness variable used for this project. 
+Each professor 
+
+
 I am interested in these data because I have read numerous papers on how 
 teaching evaluations to be biased against women and people of color. Many of
 these papers, similar to the *Beauty in the Classroom* article, propose that 
 student evaluations often reflect biases in favor of non-teaching related
 characteristics, such as the physical appearance of the instructor. These data
 allow for me to explore the relationship between professor's attractiveness and
-their teaching evaluations. 
-
-For this project, I will focus on two variables: the average attractiveness of 
-the professor and the professor's average course evaluation score. The study had
-six students rate the attractiveness of each professor based on their picture 
-from 1 (lowest) to 10 (highest). The average of these six scores is the variable
-used for this project. 
+their teaching evaluations and investigate if this relationship differs based 
+on the gender of the professor. 
 
 ## Data Visualization
 <!-- In this section you create three visualizations of your data -->
