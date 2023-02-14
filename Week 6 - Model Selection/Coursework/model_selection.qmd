@@ -12,11 +12,10 @@ resources:
   - reading_guide/week6_reading_guide.docx
 ---
 
-
 #### Reading Guides
 
-- [Word Doc](reading_guide/week6_reading_guide.docx)
-- [HTML](reading_guide/week6_reading_guide.html)
+-   [Word Doc](reading_guide/week6_reading_guide.docx)
+-   [HTML](reading_guide/week6_reading_guide.html)
 
 ```{r}
 #| include: false
@@ -328,7 +327,7 @@ To get a better estimate, we use the adjusted $R^2$!
 
 The adjusted R-squared is computed as:
 
-$$R^2_{adj} = 1 - \frac{\text{var(residuals)} / (n - k - 1)}{\text{var}(y) / (n - 1)}$$ $$R^2_{adj} = 1 - \frac{\text{var(residuals)}}{\text{var}(y)} \times \frac{(n - k - 1)}{(n - 1)}$$ where $n$ is the number of observations used to fit the model and $k$ is the number of predictor variables in the model. Remember that a categorical predictor with $p$ levels will contribute $p - 1$ to the number of variables in the model because we need $p - 1$ offsets!
+$$R^2_{adj} = 1 - \frac{\text{var(residuals)} / (n - k - 1)}{\text{var}(y) / (n - 1)}$$ $$R^2_{adj} = 1 - \frac{\text{var(residuals)}}{\text{var}(y)} \times \frac{(n - 1)}{(n - k - 1)}$$ where $n$ is the number of observations used to fit the model and $k$ is the number of predictor variables in the model. Remember that a categorical predictor with $p$ levels will contribute $p - 1$ to the number of variables in the model because we need $p - 1$ offsets!
 :::
 
 Because $k$ is never negative, the adjusted $R^2$ will be smaller -- often times just a little smaller -- than the unadjusted $R^2$. The reasoning behind the adjusted $R^2$ lies in the degrees of freedom associated with each variance, which is equal to $n - k - 1$ in the multiple regression context. If we were to make predictions for new data using our current model, we would find that the unadjusted $R^2$ would tend to be slightly overly optimistic, while the adjusted $R^2$ formula helps correct this bias.
