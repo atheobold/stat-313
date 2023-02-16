@@ -32,25 +32,13 @@ editor: visual
 
 ##  {background-color="#B6CADA"}
 
-```{r, echo = FALSE, out.width = "80%"}
-knitr::include_graphics("images/feminist.png")
-```
+</br>
 
-> Feminist: the person who believes in the social, political, and economic
-> equality of the sexes
-
-## 
-
-::: {style="font-size: 2em; color: #000000;"}
-Feminism as Action
+<center>
+::: {style="font-size: 5em; color: #000000;"}
+**Data is Power**
 :::
-
-
-> Belief in and advocacy of the political, economic, and social
-> equality of the women and men (and non-binary people) through organized
-> activity on behalf of women's rights and interests. 
-> 
-> Merriam Webster
+</center>
 
 ## 
 
@@ -79,12 +67,6 @@ Focuses on the distribution of **power** --- Who has it and who doesn't
 :::
 :::
 
-##  {background-color="#B6CADA"}
-
-::: {style="font-size: 4em; color: #000000;"}
-Data is Power
-:::
-
 ##
 
 ::: {style="font-size: 1.25em; color: #000000;"}
@@ -103,11 +85,14 @@ Data is Power
 
 ![](images/books.jpg)
 
+##
+
+![Joy Buolamwini found that she had to put on a white mask for the facial detection program to "see" her face.](images/buolamwini.jpg)
+
+## 
+
+![](images/google.png)
 
 ##
 
 ![](images/cars.jpg)
-
-##
-
-![Joy Buolamwini found that she had to put on a white mask for the facial detection program to "see" her face.](images/buolamwini.jpg)
