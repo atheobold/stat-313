@@ -84,7 +84,7 @@ Every model you fit will have the *same* format:
 
     name_of_model <- lm(score ~ <variable>, data = evals_train)
 
-But, the name of the model will need to change. I've started the proces for you, using the naming style of `one_` followed by the variable name (e.g., `one_id`, `one_bty`, etc.).
+But, the name of the model will need to change. I've started the process for you, using the naming style of `one_` followed by the variable name (e.g., `one_id`, `one_bty`, etc.).
 
 ```{r all-one-variable-models}
 
@@ -135,12 +135,12 @@ Again, the name of the model will need to change. This round, you are on your ow
 
 ```
 
-Alright, now you should have 11 more models to compare! Like before, you need to inspect the adjusted $R^2$ values to see which of these 10 models is the "top" model.
+Alright, now you should have 11 more models to compare! Like before, you need to inspect the adjusted $R^2$ values to see which of these 101models is the "top" model.
 
 **Rules: You can only add a variable to the model if it improves adjusted** $R^2$ by at least 1% (0.01) from the model you chose in Question 1.
 
 ```{r two-variable-model-summaries}
-## Code to compare all 10 models you fit goes here!
+## Code to compare all 11 models you fit goes here!
 
 
 
