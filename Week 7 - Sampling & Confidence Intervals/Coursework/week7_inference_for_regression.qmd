@@ -1,0 +1,32 @@
+---
+title: "Week 7 -- Inference for Linear Regression"
+format: html
+editor: visual
+---
+
+
+**6. Match the following equations to either (1) the population regression
+equation or (2) the estimated / sample regression equation.**
+
+::: columns
+::: {.column width="50%"}
+**population regression equation**
+
+</br>
+
+**estimated / sample regression equation** 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+$$\hat{y} = \beta_0 + \beta_1 \cdot x$$ 
+
+$$y = \beta_0 + \beta_1 \cdot x$$  
+
+$$\hat{y} = b_0 + b_1 \cdot x$$
+
+$$y = b_0 + b_1 \cdot x$$ 
+:::
+:::

@@ -1,0 +1,229 @@
+---
+title: "Week Eight: Statistical Inference with Hypothesis Tests"
+author: ""
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library(tidyverse)
+library(emo)
+```
+
+
+Welcome!
+
+In this week's coursework we are **finally** talking about p-values! What we
+learned last week should have helped make the connection between a sampling 
+distribution and a bootstrap (resampling) distribution. Hopefully, you
+understand that we create confidence intervals based on the values of the 
+statistic we saw in other samples. 
+
+This week we are going to connect these ideas to the framework of hypothesis 
+testing. Hypothesis testing requires an additional component we didn't see 
+last week, the null hypothesis. We will learn how we integrate the null
+hypothesis in our resampling procedure to create a sampling distribution that 
+could have happened if the null hypothesis was true. We will use this
+distribution to compare what we saw in our data and decide if what we saw was
+"rare" or not. 
+
+## Learning Outcomes 
+
+By the end of this coursework you should be able to:
+
+- describe what a permutation distribution is
+- detail how a permutation distribution is made
+- describe how permuting assumes the null hypothesis is true
+- explain how a permutation distribution relates to a sampling distribution
+- use R to: 
+  * generate a permutation distribution
+  * visualize the permutation distribution
+  * calculate the observed statistic
+  * calculate the resulting p-value
+- outline what a p-value represents
+- diagnose misinterpretations of a p-value
+
+---
+
+## This Week's TODOs
+
+`r emo::ji("book")` Reading: 60 - 75 minutes 
+
+<!-- `r emo::ji("computer")` Tutorial: 45 - 60 minutes -->
+
+`r emo::ji("paper")` Group Discussion Homework: 7 questions  
+
+`r emo::ji("check")` Check-ins: 2
+
+---
+
+# Hypothesis Tests 
+
+`r emo::ji("book")` [**Required Reading:** *Modern Dive*, Hypothesis Testing](https://moderndive.com/9-hypothesis-testing.html)
+
+---
+
+This week, I'm breaking up the TODO tasks by section of the textbook. Each 
+section has either (1) group concept questions, (2) an R tutorial, or (3) 
+check-in questions. 
+
+## Section 9.1 
+
+# `r emo::ji("paper")` Group Discussion Question
+
+1. Why is the distribution of shuffled differences in promotion rates (in Figure
+9.6) centered at 0?
+
+---
+
+## Section 9.2
+
+# `r emo::ji("check")` Check-in: Understanding Hypothesis Tests 
+
+1. Which of the following is **always** true for hypothesis statements? 
+
+- They are about sample statistics.
+- They are about population parameters.
+- They are about differences in groups.
+- They are about relationships between variables.
+
+2. Which of the following are true about a null distribution?
+
+- It is a distribution of statistics. 
+- It is a distribution of observations. 
+- The values on the distribution represent what might have happened if the 
+null hypothesis was true. 
+- The values on the distribution represent what might have happened if the 
+alternative hypothesis was true. 
+
+3. Which of the following are true about a p-value?
+
+- It is a probability. 
+- It quantifies how "surprising" our data are. 
+- It is calculated assuming the null hypothesis is true. 
+- It is calculated assuming the alternative hypothesis is true. 
+- It compares the observed statistic to a distribution of values that could 
+have happened if the null was true. 
+- It is the probability the null hypothesis is true.
+
+---
+
+## Section 9.3
+
+# `r emo::ji("paper")` Group Discussion Questions
+
+2. When creating a null distribution, what are the sequence of functions you 
+use? 
+
+3. Why is the `hypothesize()` function used to make a null distribution but not 
+for a bootstrap distribution?
+
+4. What does the `null = "independence"` input in `hypothesize()` mean? What is 
+it assuming about the variables declared in the `specify()` step?
+
+5. A null distribution is created by resampling the original data
+*without replacement*. How is this resampling done? How does this connect to 
+the null hypothesis? 
+
+<!-- </br>  -->
+
+<!-- # `r emo::ji("computer")` Tutorial -->
+
+<!-- Work through this short tutorial giving you experience coding the process  -->
+<!-- discussed in this section.  -->
+
+<!-- Tutorial: <link> -->
+
+---
+
+
+## Section 9.4
+
+# `r emo::ji("check")` Check-in: Interpreting Hypothesis Tests 
+
+1. Which of the following are true about a small p-value?  
+
+- The sample statistic was large. 
+- The sample size was large. 
+- The sample statistic is unlikely to have happened by chance. 
+- The sample statistic is unlikely to have happened if the null hypothesis was true. 
+
+2. If you obtain a large p-value, what can you conclude about your hypotheses?
+
+- The null hypothesis is true. 
+- The alternative hypothesis is true. 
+- We cannot say the null hypothesis is false. 
+- We cannot say the alternative hypothesis is false. 
+
+3. If you obtained a small p-value (e.g., 0.02), what could you say about your 
+confidence interval? 
+
+- It would contain the true population parameter. 
+- It would contain the sample statistic. 
+- It would not contain the null hypothesized value. 
+- It would contain the null hypothesized value. 
+
+4. Match each procedure to the question it addresses. 
+
+__confidence intervals__    _hypothesis tests_ 
+
+- Is the value of the parameter different from a specified quantity?
+- What are plausible values for the population parameter?
+
+5. If the probability of a Type I error goes down, what can you say about the
+probability of a Type II error?
+
+- The probability of a Type II error goes down. 
+- The probability of a Type II error goes up. 
+- The probability of a Type II error stays the same. 
+
+---
+
+# `r emo::ji("paper")` Group Discussion Questions
+
+6. What is the relationship between $\alpha$ and a Type I error? Why is one 
+benefit and one cost of choosing a smaller value of $\alpha$ versus a larger
+value of $\alpha$?
+
+---
+
+## Section 9.6
+
+This section references many articles addressing the "p-value" crisis. I would
+like for **everyone** to read the ASA's *original* statement on p-values and 
+statistical significance. It is crazy that this statement is over 5 years old, 
+and a lot has happened since. But, I think this statement captures some of the 
+*critical* misconceptions and misinterpretations of p-values. 
+
+[ASA Statement on Statistical Significance and p-values](https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf)
+
+# `r emo::ji("paper")` Group Discussion Questions
+
+7. Pick one of the misinterpretations of p-values and talk about *why* it is a
+misinterpretation. 
+
+---
+
+## Think Out Loud
+
+Look at the research article you found in Week 1. Turn to the analysis section 
+and hunt for a statement with a p-value. Carefully read this statement and the
+surrounding mathematical information (e.g., p < 0.001). 
+
+In your recording I expect you to discuss:
+
+- What p-value was obtained by the authors (for this analysis)?
+- What p-value threshold was used?
+- What was said about why that threshold was chosen?
+- How did the authors present the results of their statistical analysis?
+  * What conclusions were reached?
+  * Was the p-value interpreted in the context of the study?
+  * Was the observed statistic discussed? 
+  

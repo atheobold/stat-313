@@ -1,0 +1,232 @@
+---
+title: "Simulation based inference versus Theoretical methods"
+date: "November 4, 2021"
+author: "Dr. Allison Theobold"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE,
+  tibble.width = 65,
+  width = 65
+  )
+
+# figure height, width, dpi
+knitr::opts_chunk$set(fig.width = 8, 
+                      fig.asp = 0.618,
+                      out.width = "60%",
+                      dpi = 300, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      fig.align = "center",
+                      echo = FALSE)
+
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
+}
+
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+
+library(emo)
+library(tidyverse)
+library(openintro)
+library(flair)
+library(palmerpenguins)
+library(broom)
+library(gridExtra)
+library(kableExtra)
+library(moderndive)
+library(infer)
+library(scales)
+library(ggridges)
+
+options(show.signif.stars = FALSE)
+```
+
+```{r set-theme, include = FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color      = "#b76352", # mango
+  secondary_color    = "#34605f", # bayberry
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  header_color = "#793540", #rhubarb
+  white_color = "#F5F5F5", # lightest color
+  black_color = "#36454F", # darkest color
+  text_font_size = "30px", 
+  link_color = "#696969" #grey
+)
+```
+
+```{r boot-t}
+
+coaches <- read_csv("data/cu_csu_coaches.csv")
+
+sample <- coaches %>% 
+  sample_n(size = 25, replace = FALSE)
+
+sampling <- coaches %>% 
+  rep_sample_n(size = 25, reps = 100000) %>% 
+  group_by(replicate) %>% 
+  summarise(mean = mean(`Total Pay & Benefits`))
+  
+  
+boot <- sample %>% 
+  specify(response = `Total Pay & Benefits`) %>% 
+  generate(reps = 10000, type = "bootstrap") %>% 
+  calculate(stat = "mean")
+
+boot_se <- sd(boot$stat)
+true_se <- sd(sampling$mean) 
+samp_se <- sd(sample$`Total Pay & Benefits`) / sqrt(nrow(coaches))
+
+```
+
+
+class: center, middle, inverse
+
+.huge[.hand[Why bootstrap?]]
+
+---
+
+class: middle
+
+.larger[.bayberry[Theoretical methods...]]
+
+--
+
+.large[Rely on mathematics to approximate the sampling distribution.]
+
+--
+
+.large[In many cases there exists a formula that approximates the standard
+error!]
+
+
+---
+
+.larger[.mango[To obtain a confidence interval...]]
+
+--
+
+.large[
+1. Compute the point estimate / sample statistic 
+
+2. Compute the approximation to the standard error
+
+3. Compute the margin of error 
+
+4. Compute both endpoints of the confidence interval
+]
+
+---
+
+.larger[.rhubarb[Why not always use theoretical methods?]]
+
+--
+
+.large[Theory-based methods only hold if the sampling distribution is normally
+shaped.] 
+
+--
+
+.large[The normality of a sampling distribution depends **heavily** on model
+conditions.]
+
+
+---
+
+.larger[What are these "conditions"?]
+
+--
+
+.pull-left[For a single mean, we are assuming:
+
+- Independence -- The observations in the sample must be independent. 
+
+- Normality -- The observations come from a normally distributed population. 
+]
+
+--
+
+.pull-right[
+```{r, out.width = "100%"}
+coaches %>% 
+  ggplot(aes(x = `Total Pay & Benefits`)) +
+  geom_histogram() + 
+  scale_x_continuous(labels = comma)
+```
+]
+
+---
+
+class: center, middle
+
+.larger[.gray[A Comparison]]
+
+.large[In general, when the conditions associated with a using theoretical
+methods are violated, these formulas will underestimate the true standard error
+of the sampling distribution.]
+
+--
+
+```{r}
+
+ses <- tibble(Theoretical = samp_se, 
+              Bootstrap = boot_se, 
+              True = true_se)
+
+ses %>% 
+  kable() %>% 
+  kable_styling()
+  
+```
+
+---
+
+class: center
+
+.huge[.mango[Why?]]
+
+--
+
+```{r}
+sampling %>% 
+  ggplot(aes(x = mean)) + 
+  geom_histogram() +
+  scale_x_continuous(labels = comma) + 
+  labs("Mean Salary")
+
+```
+
+---
+
+class: inverse, middle, center
+
+.larger[What is one similarity and one difference between using a bootstrap 
+distribution to find a confidence interval versus using a t-distribution?]
+
+

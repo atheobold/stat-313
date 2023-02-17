@@ -1,0 +1,138 @@
+---
+title: "Sampling Variability - Big Picture Takeaways"
+date: "February 9, 2021"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      echo = FALSE, 
+                      fig.width = 4, 
+                      fig.height = 4, 
+                      message = FALSE)
+library(tidyverse)
+library(openintro)
+library(gridExtra)
+library(moderndive)
+library(infer)
+```
+
+## Sampling 
+
+We may be interested in the true relationship between average beauty and course 
+evaluation scores for all of the faculty at the university of Texas at Austin. 
+
+- We take a sample of individuals, with the interest in inferring what we found 
+in our sample to a larger population of individuals. 
+
+- We typically only get one sample, but repeated sampling gives us a better idea 
+of the variation in responses. 
+
+
+## Virtual Sampling 
+
+```{r, echo = TRUE}
+evals %>% 
+  count()
+```
+
+```{r, eval = FALSE, echo = TRUE}
+evals %>% 
+  rep_sample_n(size = 50)
+```
+
+
+## Sampling Distributions 
+
+Visualize the effect of sampling variation on the distribution of any point
+estimate -- in this case, the sample slope  
+
+```{r, echo = FALSE, fig.width = 4, fig.height = 4, fig.align = 'center'}
+evals %>% 
+  specify(formula = score ~ age) %>%
+  generate(reps = 1000, type = "bootstrap") %>% 
+  calculate(stat = "slope") %>% 
+  ggplot(aes(x = stat)) + 
+  geom_dotplot(dotsize = 0.3, color = "blue") + 
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_blank()) + 
+  labs(y = "", 
+       x = "Slope on Age")
+```
+
+## Distribution of Slopes for Different Sample Sizes
+
+```{r, echo = FALSE, warning=FALSE, message=FALSE}
+samp_25 <- evals %>% 
+  rep_sample_n(size = 25, reps = 5000) %>% 
+  group_by(replicate) %>% 
+  summarize(slope = sd(score)/sd(bty_avg) * cor(score, bty_avg)) 
+            
+samp_50 <- evals %>% 
+  rep_sample_n(size = 50, reps = 5000) %>% 
+  group_by(replicate) %>% 
+  summarize(slope = sd(score)/sd(bty_avg) * cor(score, bty_avg)) 
+
+samp_100 <- evals %>% 
+  rep_sample_n(size = 250, reps = 5000) %>% 
+  group_by(replicate) %>% 
+  summarize(slope = sd(score)/sd(bty_avg) * cor(score, bty_avg)) 
+```
+
+```{r, echo = FALSE, fig.width = 8}
+plot_25 <- samp_25  %>% 
+  ggplot(aes(x = slope)) + 
+  geom_histogram(bins = 15) + 
+  #xlim(c(0.1, 0.9)) +
+  labs(title = "Sample Size 25")
+
+plot_50 <- samp_50  %>% 
+  ggplot(aes(x = slope)) + 
+  geom_histogram(bins = 23) + 
+  #xlim(c(0.1, 0.9)) +
+  labs(title = "Sample Size 50")
+
+plot_100 <- samp_100 %>% 
+  ggplot(aes(x = slope)) + 
+  geom_histogram() + 
+  #xlim(c(0.1, 0.9)) +
+  labs(title = "Sample Size 100")
+
+
+grid.arrange(plot_25, plot_50, plot_100, nrow = 1)
+
+```
+
+
+## Standard Deviations for Different Sample Sizes 
+
+```{r, echo = FALSE, eval = FALSE}
+
+sds <- samp_25 %>% 
+  summarize(mean = mean(slope), 
+            sd = sd(slope))
+
+sds <-  rbind(sds, 
+        samp_50 %>% 
+  summarize(mean = mean(slope), 
+            sd = sd(slope)))
+
+sds <-  rbind(sds, 
+        samp_100 %>% 
+  summarize(mean = mean(slope), 
+            sd = sd(slope)))
+```
+
+| Sample Size | Estimate | SD     |
+| ----------- |:--------:| ------:|
+| n = 25      | 0.0669   | 0.0749 |
+| n = 50      | 0.0659    | 0.0501	|
+| n = 100     | 0.0666    | 0.0159 |
+
+

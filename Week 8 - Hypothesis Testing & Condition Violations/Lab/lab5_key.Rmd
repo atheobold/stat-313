@@ -1,0 +1,230 @@
+---
+title: "Lab 5: Conducting Hypothesis Tests - Key"
+author: "Dr. Theobold"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+
+library(openintro)
+
+library(infer)
+
+library(skimr)
+```
+
+Every two years, the Centers for Disease Control and Prevention conduct the
+Youth Risk Behavior Surveillance System (YRBSS) survey, where it takes data from
+high schoolers (9th through 12th grade), to analyze health patterns.
+You will work with a selected group of variables from a random sample of
+observations during one of the years the YRBSS was conducted.
+
+Load the `yrbss` data set into your workspace.
+
+```{r load-data}
+data(yrbss)
+```
+
+There are observations on 13 different variables, some categorical and some
+numerical.
+The meaning of each variable can be found by bringing up the help file:
+
+```{r help}
+?yrbss
+```
+
+__1.  What are the cases in this data set? How many cases are there in our sample?__
+<!-- Your answer goes below this line! -->
+
+*A case in the dataset is one high schooler. There are a total of 13583 cases / observations in the dataset.*
+
+**4**: meets the following 
+
+- states a case is one student / high schooler
+- states there are 13583 cases 
+
+**Redo** -- all other cases
+
+</br>
+
+## Exploratory data analysis
+
+You will first start with analyzing the weight of the participants in kilograms,
+saved in the `weight` variable.
+
+The `skim()` function from the **skimr** package produces nice summaries of the
+variables in the dataset, separating categorical (character) variables from 
+quantitative variables.
+
+```{r summary, eval = FALSE}
+yrbss %>% 
+  skim()
+```
+
+__2.  How many observations are we missing weights from?__
+
+*There are 1004 missing values for the `weight` variable.*
+
+**Grade a 4 or a redo**
+
+</br>
+
+__3. Create a new variable named `physical_3plus` in the `yrbss` dataset, based on the qualifications above.__
+
+```{r new-var}
+yrbss <- yrbss %>% 
+  mutate(physical_3plus = if_else(physically_active_7d > 2, 
+                                  "yes", 
+                                  "no")
+         )
+```
+
+**Grade a 4 or a redo**
+
+</br>
+
+__4.  Make faceted histograms of the `weight` for the different values of `physical_3plus`. Is there a relationship between these two variables? What did you expect and why?__
+
+```{r faceted-histograms, warning = FALSE}
+# Code for question 2 goes here! 
+yrbss %>% 
+  ggplot(mapping = aes(x = weight)) + 
+  geom_histogram(binwidth = 13) + 
+  facet_wrap(~physical_3plus)
+```
+
+*These distributions appear to be quite similar, which was surprising to me! It appears that regardless of whether the students exercised for at least three days (yes) or not (no), they have distributions with similar centers (around 70) and similar spreads.*
+
+**4** -- meets the following:
+- has correct plot 
+- states centers are similar 
+- states spreads are similar
+
+**3** -- meets the following:
+- has correct plot 
+- states either the centers **or** the spreads are similar, but not both
+
+**Redo** -- all other cases
+
+</br>
+
+__5. Calculate the mean weight for the different levels of `physical_3plus`.__
+__Keep in mind, there are observations with missing values, so you will need to use the `na.rm = TRUE` argument inside the `mean()` function.__ 
+
+```{r by-means}
+yrbss %>%
+  group_by(physical_3plus) %>%
+  summarise(mean_weight = mean(weight, na.rm = TRUE))
+```
+
+**Grade a 4 or a redo**
+
+</br>
+
+## Inference
+
+__6.  Write the hypotheses for testing if the average weights are different for those who exercise at least times a week and those who don't.__
+<!-- Your answer goes below this line! -->
+
+*Null hypothesis: the true mean weight for students who are physically active for 
+at least three days __is the same__ as the true mean weight for students who are not 
+physically active for at least three days*
+
+*Alternative hypothesis: the true mean weight for students who are physically active
+for at least three days __is different__ from the true mean weight for students who
+are not physically active for at least three days*
+
+**4** -- meets the following: 
+
+- includes = in the null hypothesis (in words or using = notation)
+- includes not = in the alternative (in words or using != notation)
+- includes the statistic of interest -- difference in mean weight between the 
+two groups
+- states the parameter in terms of words (true mean) or notation (mu)
+
+**3** -- satisfies all of the components for a 4, but doesn't include the 
+parameter
+
+**Redo** -- all other cases
+
+```{r obs-stat, warning = FALSE}
+obs_diff <- yrbss %>%
+  specify(response = weight, explanatory = physical_3plus) %>%
+  calculate(stat = "diff in means", order = c("yes", "no"))
+```
+
+</br>
+
+__7. Generate 500 permuted statistics for the permutation distribution and save these statistics in an object named `null_dist`.__
+
+```{r inf-weight-habit-ht-null, tidy=FALSE, warning = FALSE}
+null_dist <- yrbss %>%
+  specify(response = weight, explanatory = physical_3plus) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 500, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("yes", "no"))
+```
+
+**Grade a 4 or a redo**
+
+</br>
+
+__8. Use the `shade_p_value()` function to add a vertical red line to the plot above, demonstrating where the observed difference in means (`obs_diff`) falls on the distribution.__
+
+```{r, warning = FALSE}
+visualise(null_dist) + 
+  shade_p_value(obs_stat = obs_diff, direction = "two sided")
+```
+
+**Grade a 4 or a redo**
+
+</br>
+
+```{r inf-weight-habit-ht-pvalue, warning = FALSE}
+null_dist %>%
+  get_p_value(obs_stat = obs_diff, direction = "two sided")
+```
+
+__9. What warning message do you get? Why do you think you get this warning message?__
+
+*The warning message says to be cautious about reporting a p-value of 0. This 
+message is because the p-value depends on the number of reps generated. There
+could be too few statistics on the distribution to get an accurate p-value.*
+
+**4** -- meets the following:
+
+- states the p-value is 0
+- states the p-value depends on the number of reps chosen
+- states we may need more reps to get an accurate p-value
+
+**3** -- satisfies the components for a 4, but does not state that they may need
+to generate more reps for an accurate p-value
+
+**Redo** -- all other cases
+
+</br>
+
+__10. Interpret the p-value you obtained in the context of this study.__
+__Do not make statements about rejecting / failing to reject the null!__
+
+*With a p-value of approximately 0, we can say that the probability of observing
+a difference in mean weights as or more extreme than we saw, if there is no
+difference in weight between these groups, is extremely low. This suggests that
+the null hypothesis is likely not true, as our observed statistic is unlikely 
+to have occurred in this universe.* 
+
+**4** -- meets the following:
+
+- states the probability of observing a difference in means as or more extreme 
+than what was observed is essentially 0. 
+- states that this suggests the null hypothesis is not plausible / reasonable / 
+isn't true **or** 
+- states that this suggests the alternative hypothesis is more plausible than 
+the null hypothesis
+
+**3** -- satisfies the components for a 4, but does not connect to the plausibility of the null hypothesis
+
+**Redo** -- all other cases
+
+**If they state they reject the null hypothesis, they get a redo.**

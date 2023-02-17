@@ -1,0 +1,108 @@
+---
+title: "Bootstrap Confidence Interval for a Difference in Means"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE)
+library(tidyverse) 
+library(openintro)
+library(infer)
+
+classdata <- classdata %>% 
+  filter(lecture %in% c("a", "b")) %>% 
+    mutate(exam = lecture)
+
+```
+
+## Confidence Intervals 
+
+- Hypothesis tests provide "yes" or "no" answers. 
+
+- Confidence intervals provide "how much" answers. 
+  * In this scenario, we are instead interested in estimating the unknown value
+  of a population parameter.
+
+</br> 
+
+- For this example, a confidence interval can be used to the range of values 
+that seem plausible for the difference in the mean exam scores 
+($\mu_A - \mu_B$). 
+
+
+## Assumptions Behind a Bootstrap
+
+- Here, we are assuming that the scores earned on the exam are representative of 
+the population of all scores students may have earned on these exams. 
+
+- We want to estimate what scores other students may have earned taking exam A 
+and exam B. 
+
+- The process of bootstrapping is applied to *each* group separately. 
+  * This assumes the exam scores for each group are representative of all
+  possible scores students would have earned on each exam. 
+  
+## Creating a Bootstrap Distribution
+
+- For every resample, we calculate the difference in means   
+($\bar{x}_A - \bar{x}_B$). 
+
+```{r bootexams, warning = FALSE}
+boot <- classdata %>% 
+  specify(m1 ~ exam) %>%
+  generate(reps = 2000, type = "bootstrap") %>%
+  calculate(stat = "diff in means", order = c("a", "b"))
+```
+
+## Visualizing the Bootstrap Distribution 
+
+- A distribution of these bootstrap statistics gives us an idea of the 
+variability we'd expect in repeated samples from the population. 
+
+```{r, fig.width = 4, fig.align='center', fig.height=3}
+boot %>% 
+  visualise()
+```
+
+## Calculating a Confidence Interval 
+
+```{r bootviz, warning = FALSE, fig.width = 5, echo = FALSE, fig.align='center', fig.height=3}
+endpoints <- boot %>% 
+  summarize(q2.5 = quantile(stat, 0.025), 
+            q97.5 = quantile(stat, 0.975)
+  )
+
+boot %>% 
+  visualise() +
+  shade_confidence_interval(endpoints = c(endpoints$q2.5, endpoints$q97.5))
+```
+
+```{r}
+boot %>% 
+  get_confidence_interval(level = 0.95)
+```
+
+## Interpretting a Confidence Interval 
+
+The confidence interval was calculated to be (-1.92, 8.06).
+
+</br> 
+
+When interpreting the confidence interval we need to remember what the population 
+parameter we are estimating is. 
+
+- Here, we are interested in the difference in the mean score on exam A and 
+  exam B for all of the students. 
+
+</br> 
+
+We are 95% confident that the mean score for *all* students taking exam A is
+between 1.92 percent lower to 8.06 percent higher than the mean score of all
+students taking exam B. 
