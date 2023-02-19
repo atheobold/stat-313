@@ -1,0 +1,53 @@
+---
+title: "Week 7 -- Confidence Intervals for the Slope"
+format: 
+  html:
+    self-contained: true
+    table-of-contents: true
+    number-sections: true
+    number-depth: 3
+editor: visual
+bibliography: references.bib
+execute: 
+  echo: false
+resources: 
+  - reading_guide/week7_reading_guide_CI.docx
+  - reading_guide/week7_reading_guide_CI.html
+---
+
+```{r set-up}
+#| include: false
+
+library(tidyverse)
+library(moderndive)
+library(infer)
+
+p_red <- bowl %>%
+  summarize(mean(color == "red")) %>%
+  pull()
+n_balls_sample <- 50L
+```
+
+This week's reading is a compilation of [Chapter 8](https://moderndive.com/8-confidence-intervals.html) from *ModernDive* [@kim2020], [Chapter 24](openintro-ims.netlify.app/inf-model-slr.html) from *Introduction to Modern Statistics* [@ims], with a smattering of my own ideas.
+
+### Reading Guide
+
+Download the reading guide as a [Word Document here](reading_guide/week7_reading_guide_CI.docx)
+
+Download the reading guide as an [HTML file here](reading_guide/week7_reading_guide_CI.html)
+
+### Sampling Review
+
+In the last reading, we studied the concept of sampling variation. Using the example of estimating the proportion of red balls in a bowl, we started with a "tactile" exercise where a shovel was used to draw a sample of balls from the bowl. While we could have performed an exhaustive count of **all** the balls in the bowl, this would have been a tedious process. So instead, we used a shovel to extract a sample of balls and used the resulting proportion that were red as an *estimate*. Furthermore, we made sure to mix the bowl's contents before every use of the shovel. Because of the randomness created by the mixing, different uses of the shovel yielded different proportions red and hence different estimates of the proportion of the bowl's balls that are red.
+
+We then used R to mimick this "tactile" sampling process. Using our computer's random number generator, we were able to quickly mimick the tactile sampling procedure a large number of times. Moreover, we were able to explore how different our results would be if we used different sized shovels, with 25, 50, and 100 slots. When we visualized the results of these three different shovel sizes, we saw that as the sample size increased, the variation in the estimates ($\widehat{p}$) decreased.
+
+These visualizations of the repeated sampling from the bowl have a special name in Statistics -- a *sampling distribution*. These distributions all us to study how our estimates (\$\widehat{p}) varied from one sample to another; in other words, we wanted to study the effect of *sampling variation*. Once we had over 1,000 different estimates, we quantified the variation of these estimates using their standard deviation, which also has a special name in Statistics -- the *standard error*. Visually we saw the spread of the sampling distributions get narrower as the sample size increased, which was reiterated by the standard errors -- the standard errors decreased as the sample size increased. This decrease in spread of the sampling distribution gives us more *precise* estimates that varied less around the center.
+
+We then tied these sampling concepts to the statistical terminology and mathematical notation related to sampling. Our *study population* was the large bowl with $N$ = `r nrow(bowl)` balls, while the *population parameter*, the unknown quantity of interest, was the population proportion $p$ of the bowl's balls that were red. Since performing a *census* would be expensive in terms of time and energy, we instead extracted a *sample* of size $n$ = 50. The *point estimate*, also known as a *sample statistic*, used to estimate $p$ was the sample proportion $\widehat{p}$ of these 50 sampled balls that were red. Furthermore, since the sample was obtained at *random*, it can be considered as *unbiased* and *representative* of the population. Thus any results based on the sample could be *generalized* to the population. Therefore, the proportion of the shovel's balls that were red was a "good guess" of the proportion of the bowl's balls that are red. In other words, we used the sample to *infer* about the population.
+
+However, we acknowledged that both the tactile and virtual sampling exercises are not what one would do in real life; this was merely an activity used to study the effects of sampling variation. In a real-life situation, we would not take 1,000s of samples of size $n$, but rather take a *single* representative sample that's as large as possible. Additionally, we knew that the true proportion of the bowl's balls that were red was `r p_red*100`%. In a real-life situation, we will not know what this value is. Because if we did, then why would we take a sample to estimate it?
+
+So how does one quantify the effects of sampling variation when you only have a *single sample* to work with? You cannot directly study the effects of sampling variation when you only have one sample. One common method to study this is *bootstrapping resampling*, which will be the focus of the earlier sections of this reading.
+
+Furthermore, what if we would like not only a single estimate of the unknown population parameter, but also a *range of highly plausible* values? For example, when you read about political polls, they tell you the percent of all Californians who support a specific measure, but in addition to this estimate they provide the poll's "margin of error". This margin of error can be used to construct a range of plausible values for the true percentage of people who support a specific measure. This range of plausible values is what's known as a *confidence interval*, which will be the focus of the later sections of this reading.
