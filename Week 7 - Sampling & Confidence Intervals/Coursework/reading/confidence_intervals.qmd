@@ -25,6 +25,8 @@ library(openintro)
 library(moderndive)
 library(infer)
 
+# Set output digit precision
+options(scipen = 999) # , digits = 4)
 set.seed(1234)
 
 p_red <- bowl %>%
@@ -49,7 +51,7 @@ Download the reading guide as an [HTML file here](reading_guide/week7_reading_gu
 
 In the last reading, we studied the concept of sampling variation. Using the example of estimating the proportion of red balls in a bowl, we started with a "tactile" exercise where a shovel was used to draw a sample of balls from the bowl. While we could have performed an exhaustive count of **all** the balls in the bowl, this would have been a tedious process. So instead, we used a shovel to extract a sample of balls and used the resulting proportion that were red as an *estimate*. Furthermore, we made sure to mix the bowl's contents before every use of the shovel. Because of the randomness created by the mixing, different uses of the shovel yielded different proportions red and hence different estimates of the proportion of the bowl's balls that are red.
 
-We then used R to mimick this "tactile" sampling process. Using our computer's random number generator, we were able to quickly mimick the tactile sampling procedure a large number of times. Moreover, we were able to explore how different our results would be if we used different sized shovels, with 25, 50, and 100 slots. When we visualized the results of these three different shovel sizes, we saw that as the sample size increased, the variation in the estimates ($\widehat{p}$) decreased.
+We then used R to mimic this "tactile" sampling process. Using our computer's random number generator, we were able to quickly mimic the tactile sampling procedure a large number of times. Moreover, we were able to explore how different our results would be if we used different sized shovels, with 25, 50, and 100 slots. When we visualized the results of these three different shovel sizes, we saw that as the sample size increased, the variation in the estimates ($\widehat{p}$) decreased.
 
 These visualizations of the repeated sampling from the bowl have a special name in Statistics -- a *sampling distribution*. These distributions all us to study how our estimates (\$\widehat{p}) varied from one sample to another; in other words, we wanted to study the effect of *sampling variation*. Once we had over 1,000 different estimates, we quantified the variation of these estimates using their standard deviation, which also has a special name in Statistics -- the *standard error*. Visually we saw the spread of the sampling distributions get narrower as the sample size increased, which was reiterated by the standard errors -- the standard errors decreased as the sample size increased. This decrease in spread of the sampling distribution gives us more *precise* estimates that varied less around the center.
 
@@ -187,6 +189,7 @@ When sampling with replacement, not every observation is guaranteed to be sample
 :::
 
 @fig-compare-dist compares the relationship between mother's age and baby birth weight from our resample with the relationship in our original sample. 
+
 ```{r}
 #| echo: true
 #| label: fig-compare-dist
@@ -241,9 +244,9 @@ resample_table |>
 
 ```
 
-For the resampled dataset, the relationship between mother's age and baby birth weight is much weaker than in the orginal sample, with an estimated slope of $b_1 =$ `r filter(resample_table, term == "mage")$estimate`. 
+For the resampled dataset, the relationship between mother's age and baby birth weight is much weaker than in the original sample, with an estimated slope of $b_1 =$ `r filter(resample_table, term == "mage")$estimate`. 
 
-What if we repeated this resampling exercise many times? Would we obtain the same slope each time? In other words, would our guess at the slope for the relationship between mother's age and birth weight for all births in the US in 2014 exactly `r filter(resample_table, term == "mage")$estimate` every time? Just as we did in the last chapter, let’s perform this resampling activity with the help of some of our friends: 35 friends in total.
+What if we repeated this resampling exercise many times? Would we obtain the same slope each time? In other words, would our guess at the slope for the relationship between mother's age and birth weight for all births in the US in 2014 exactly `r filter(resample_table, term == "mage")$estimate` every time? 
 
 ## Computer simulation and resampling
 
@@ -252,6 +255,7 @@ It should be very clear that tactile resampling with a dataset with 1,000 observ
 ### Virtually resampling once
 
 First, let’s perform the virtual analog of resampling once. Recall that the `births14` dataset included in the **openintro** package contains the 1,000 birth records from the original study. Furthermore, recall in the last chapter that we used the `rep_sample_n()` function as a virtual shovel to sample balls from our virtual bowl of 2400 balls as follows:
+
 ```{r}
 virtual_shovel <- rep_sample_n(bowl, 
                                size = 50, 
@@ -271,9 +275,9 @@ virtual_resample <- rep_sample_n(births14,
 
 ```
 
-Observe how we explicitly set the `replace` argument to `TRUE` in order to tell `rep_sample_n()` that we would like to sample birth records *with replcement*. Had we not kept `replace = FALSE`, we would have done resampling *without replacement*. Additionally, we changed the sample `size`, as we need to create a sample with the *same* size as the original sample which had 1,000 observations. 
+Observe how we explicitly set the `replace` argument to `TRUE` in order to tell `rep_sample_n()` that we would like to sample birth records *with replacement*. Had we not kept `replace = FALSE`, we would have done resampling *without replacement*. Additionally, we changed the sample `size`, as we need to create a sample with the *same* size as the original sample which had 1,000 observations. 
 
-Let’s look at only the first 10 out of 1000 rows of `virtual_resample`:
+Let’s look at only the first 10 out of 1,000 rows of `virtual_resample`:
 
 ```{r virtual-resample-preview}
 #| echo: true
@@ -346,9 +350,9 @@ Third, the **infer** workflow is much simpler for conducting inference when you 
 
 Let's now illustrate the sequence of verbs necessary to construct a confidence interval for $\b_1$, the slope of the relationship between mother's age and baby's birth weight for all US births in 2014.
 
-#### 1. `specify` variables {#sec-specify}
+#### 1. `specify()` variables {#sec-specify}
 
-!["Diagram of the specify() verb."](images/specify.png){#fig-infer-specify}
+!["Diagram of `specify()`ing variables."](images/specify.png){#fig-infer-specify}
 
 As shown in @fig-infer-specify, the `specify()` function is used to choose which variables in a data frame will be the focus of our statistical inference. We do this by `specify`ing the `response` argument. For example, in our `births14` data frame, the response variable of interest is `weight` and the explanatory variable is `mage`:
 
@@ -359,19 +363,19 @@ births14 %>%
           explanatory = mage)
 ```
 
-Notice how the dataset got smaller, now there are only two columns where before there were `r ncol(births14)`. You should also notice the messages above the dataset (`Response: weight (numeric)` and `Explanatory: mage`). These are *meta-data* about the grouping structure of the dataset, declaring which variable has been assigned to the explantory / response. 
+Notice how the dataset got smaller, now there are only two columns where before there were `r ncol(births14)`. You should also notice the messages above the dataset (`Response: weight (numeric)` and `Explanatory: mage`). These are *meta-data* about the grouping structure of the dataset, declaring which variable has been assigned to the explanatory / response. 
 
 ::: {.callout-note}
 This is similar to how the `group_by()` verb from `dplyr` doesn't change the data, but only adds "grouping" meta-data, as we saw in Week 3. 
 :::
 
-#### 2. `generate` replicates {#sec-generate}
+#### 2. `generate()` replicates {#sec-generate}
 
-!["Diagram of generate() replicates."](images/generate.png){#fig-infer-generate}
+!["Diagram of `generate()` replicates."](images/generate.png){#fig-infer-generate}
 
 After we `specify()` the variables of interest, we pipe the results into the `generate()` function to generate replicates. @fig-infer-generate shows how this is combined with `specify()` to start the pipeline. In other words, repeat the resampling process a large number of times, similar to how we collected 35 different samples of balls from the bowl. 
 
-The `generate()` function's first argument is `reps`, which sets the number of replicates we would like to generate. Suppose we were interested in obtaining 50 different resamples (each of 1000 birth records). Then, we would we set `reps = 50`, telling **infer** that we are interested in obtaining 50 different resamples, each with 1000 observations. 
+The `generate()` function's first argument is `reps`, which sets the number of replicates we would like to generate. Suppose we were interested in obtaining 50 different resamples (each of 1,000 birth records). Then, we would we set `reps = 50`, telling **infer** that we are interested in obtaining 50 different resamples, each with 1,000 observations. 
 
 ```{r}
 n_virtual_resample <- 50
@@ -427,9 +431,9 @@ rep_sample_n(births14,
 :::
 :::
 
-#### 3. `calculate` summary statistics {#sec-calculate}
+#### 3. `calculate()` summary statistics {#sec-calculate}
 
-![Diagram of calculate() summary statistics.](images/calculate.png){#fig-calculate}
+![Diagram of calculate()d summary statistics.](images/calculate.png){#fig-calculate}
 
 After we `generate()` many replicates of bootstrap resampling with replacement, we next want to summarize each of the `r n_virtual_resample` resamples of size `r nrow(births14)` to a single sample statistic value. As seen in @fig-calculate, the `calculate()` function does this.
 
@@ -455,9 +459,9 @@ bootstrap_distribution
 
 Observe that the resulting data frame has `r n_virtual_resample` rows and two columns. The `replicate` column corresponds to the `r n_virtual_resample` replicates and the `stat` column corresponds to the estimated slope for each resample. 
 
-#### 4. `visualize` the results {-}
+#### 4. `visualize()` the results {-}
 
-![Diagram of visualize() results.](images/visualize.png){#fig-visualize}
+![Diagram of closing the entire process by visualize()ing the results.](images/visualize.png){#fig-visualize}
 
 The `visualize()`verb provides a quick way to visualize the bootstrap distribution as a histogram of the numerical `stat` variable's values. The pipeline of the main **infer** verbs used for exploring bootstrap distribution results is shown in @fig-infer-visualize.  
 
@@ -507,26 +511,196 @@ ggplot(data = bootstrap_distribution,
 :::
 
 
-
 ::: {.callout-caution}
-Careful! It might sound tempting to ditch the `ggplot()` code altogether now that you know of a simpler approach. The `visualize()` function only works for a spefic case -- a data frame containing a distribution of `calculate()`d statistics. 
+Careful! It might sound tempting to ditch the `ggplot()` code altogether now that you know of a simpler approach. The `visualize()` function only works for a specific case -- a data frame containing a distribution of `calculate()`d statistics. 
 :::
 
 Let's recap the steps of the **infer** workflow for constructing a bootstrap distribution and then visualizing it in @fig-infer-workflow-ci.
 
 ![infer package workflow for resampling](images/ci_diagram.png){#fig-infer-workflow-ci}
 
-### Virtually resampling 1000 times
+### Virtually resampling 1,000 times
+
+To change from resampling 50 times to resampling 1,000 times, only one line of code needs to change---the number of `reps`. In the code process below, we've chained together the entire **infer** pipeline, connecting the specify, generate, calculate, and visualize steps. 
+
+```{r entire-infer}
+#| label: fig-infer-1000
+#| fig-cap: "Bootstrap distribution with 1,000 replicates."
+#| echo: true
+
+bootstrap_1000 <- births14 |> 
+  specify(response = weight, 
+          explanatory = mage) |> 
+  generate(reps = 1000, 
+           type = "bootstrap") |> 
+  calculate(stat = "slope") 
+
+visualize(bootstrap_1000) + 
+  labs(x = "Bootstrap Slope Statistic", 
+       y = "Bootstrap Distribution of 1,000 Resamples")
+```
+
+::: {.callout-note}
+# Changing axis labels
+
+Notice you can still use the `labs()` function to change your axis labels. Notice that you still need to connect the axis labels with the plot using a `+` sign.  
+:::
+
+What do you notice about this distribution? What distribution does it resemble? Why is that the case?
 
 ### Connection to sampling distributions
 
-<!-- In fact, the histogram of sample means from 35 resamples in Figure 8.11 is called the bootstrap distribution. It is an approximation to the sampling distribution of the sample mean, in the sense that both distributions will have a similar shape and similar spread. In fact in the upcoming Section 8.7, we’ll show you that this is the case. Using this bootstrap distribution, we can study the effect of sampling variation on our estimates. In particular, we’ll study the typical “error” of our estimates, known as the standard error. -->
+The histogram of sample slopes in @fig-infer-1000 is called the **bootstrap distribution**. The bootstrap distribution is an *approximation* to the sampling distribution of sample slopes. 
+
+If you recall back to the last chapter, a sampling distribution was a distribution of statistics from repeatedly *sampling* from the **population**. However, a bootstrap distribution is a distribution of statistics from repeatedly *resampling* from the **sample**. This may seem rather strange, how can a distribution based entirely on the sample approximate a distribution based on the population? That's a great question! 
+
+The bootstrapping process hinges on the belief that the sample is representative of the population. Meaning, there are not systematic differences between the sample and the population. For example, if there were no young mothers in the sample of 1,000 birth records in the `births14` dataset. If we have a random sample, however, then on average our sample should look very similar to our population. Meaning, the individuals in the sample can "stand in" for individuals in the population with similar characteristics. So, we can think of repeatedly *resampling* from our sample as a similar process as sampling from the population. 
+
+::: {.callout-caution collapse="true"}
+### No guaranteed representation
+The process of randomly sampling **does not** guarantee that smaller groups of observations will *always* appear in the sample. Rather, by randomly sampling from the population, on average the representation of individuals in the sample should reflect the proportion of individuals in the population. 
+
+To me, this feels rather uncomfortable as a random sample assumes that you can generalize from the sample onto the population from which it was drawn. This means you are generalizing the observations of a few individuals onto the entire population of similar individuals. For example, if you were to collect a random sample of Cal Poly students, it is likely your sample would include very few Black students (as Cal Poly is a predominantly white institution). But, if your sample was random, statistically you could infer from your small sample of Black students onto the entire population of Black students at Cal Poly. That seems kind of iffy to me. 
+:::
 
 ## Understanding confidence intervals
 
-### Precentile method
+Let's start this section with an analogy involving fishing. Say you are trying to catch a fish. On the one hand, you could use a spear, while on the other you could use a net. Using the net will probably allow you to catch more fish! 
 
-### Standard error method
+In the `births14` investigation, we are trying to estimate the population slope for the relationship between mother's age and baby's birth weight ($\beta_1$) for **all** babies born in the US in 2014. Think of the value of $\beta_1$ as a fish.
+
+On the one hand, we could use the appropriate *point estimate/sample statistic* to estimate $\beta_1$, which we saw in @tbl-births-slr is the sample slope $b_1$. Based on our sample of `r nrow(births14)` birth records, the sample slope was `r filter(births_table, term == "mage")$estimate`. Think of using this value as "fishing with a spear."
+
+What would "fishing with a net" correspond to? Look at the bootstrap distribution in @fig-infer-1000 once more. Between which values would you say that "most" sample slopes lie?  While this question is somewhat subjective, saying that most sample slopes lie between 0 and 0.03 would not be unreasonable. Think of this interval as the "net."
+
+What we've just illustrated is the concept of a *confidence interval*, which I'll abbreviate with "CI" throughout this chapter. As opposed to a point estimate / sample statistic that estimates the value of an unknown population parameter with a single value, a *confidence interval* gives what can be interpreted as a range of plausible values. Going back to our analogy, point estimates / sample statistics can be thought of as spears, whereas confidence intervals can be thought of as nets. 
+
+![Analogy of difference between point estimates and confidence intervals.](images/point_estimate_vs_conf_int.png){#fig-spear-net}
+
+Our proposed interval of 0 to 0.03 was constructed by eye and was thus somewhat subjective. We now introduce two methods for constructing such intervals in a more exact fashion: the *percentile method* and the *standard error method*.
+
+Both methods for confidence interval construction share some commonalities. First, they are both constructed from a bootstrap distribution, as you constructed in the previous section and visualized in @fig-infer-1000.
+
+Second, they both require you to specify the *confidence level*. Commonly used confidence levels include 90%, 95%, and 99%.  All other things being equal, higher confidence levels correspond to wider confidence intervals, and lower confidence levels correspond to narrower confidence intervals. 
+
+```{r bootstrap-1000-percentile-interval}
+percentile_ci <- get_confidence_interval(bootstrap_1000, level = 0.95)
+```
+
+
+### Percentile method {#sec-percentile-method}
+
+One method to construct a 95% confidence interval is to use the middle 95% of values of the bootstrap distribution. We can do this by computing the 2.5th and 97.5th percentiles, which are `r round(percentile_ci[["lower_ci"]], digits = 4)` and `r round(percentile_ci[["upper_ci"]], digits = 4)`, respectively. This is known as the *percentile method* for constructing confidence intervals. 
+
+For now, let's focus only on the concepts behind a percentile method constructed confidence interval; we'll show you the code that computes these values in the next section.
+
+Let's mark these percentiles on the bootstrap distribution with vertical lines in @fig-percentile-method. About 95% of the `slope` variable values in `bootstrap_1000` fall between `r round(percentile_ci[["lower_ci"]], digits = 4)` and `r round(percentile_ci[["upper_ci"]], digits = 4)`, with 2.5% to the left of the leftmost line and 2.5% to the right of the rightmost line. 
+
+```{r percentile-method-CI}
+#| label: fig-percentile-method
+#| fig-cap: "Percentile method 95% confidence interval. Interval endpoints marked by vertical lines." 
+
+ggplot(bootstrap_1000, aes(x = stat)) +
+  geom_histogram(binwidth = 0.005, color = "white") +
+  labs(x = "Resample sample slope statistics") + 
+  geom_vline(xintercept = percentile_ci[[1, 1]], linewidth = 1.5, color = "blue") +
+  geom_vline(xintercept = percentile_ci[[1, 2]], linewidth = 1.5, color = "blue")
+```
+
+### Standard error method {#se-method}
+
+```{r bootstrap-1000-se-interval}
+obs_slope <- births14 %>% 
+  specify(response = weight, 
+          explanatory = mage) %>% 
+  calculate(stat = "slope") %>% 
+  pull(stat)
+  
+  
+standard_error_ci <- bootstrap_1000 %>% 
+  get_confidence_interval(type = "se", 
+                          point_estimate = obs_slope, 
+                          level = 0.95)
+
+bootstrap_se <- bootstrap_1000 %>%
+  summarize(se = sd(stat)) %>%
+  pull(se)
+```
+
+Recall in the last chapter we saw that if a numerical variable follows a normal distribution, or, in other words, the histogram of this variable is bell-shaped, then roughly 95% of values fall between $\pm$ `r qnorm(0.975) %>% round(2)` standard deviations of the mean. Given that our bootstrap distribution based on `r nrow(bootstrap_1000)` resamples with replacement in @fig-infer-1000 is normally shaped, let's use this fact about normal distributions to construct a confidence interval in a different way.
+
+First, recall the bootstrap distribution has a mean equal to `r mean(bootstrap_1000$stat) %>% round(3)`. This value almost coincides exactly with the value of the sample slope $b_1$ of our original `r nrow(births14)` birth records `r filter(births_table, term == "mage")$estimate`. Second, let's compute the standard deviation of the bootstrap distribution using the bootstrap slope statistics stored in the `stat` column of the `bootstrap_1000` data frame:
+
+```{r}
+#| echo: true
+bootstrap_1000 %>% 
+  summarize(SE = sd(stat))
+```
+
+What is this value? Recall that the bootstrap distribution is an approximation to the sampling distribution. Thus, the variability of the sampling distribution may be approximated by the variability of the resampling distribution. Recall also that the standard deviation of a sampling distribution has a special name: the *standard error*. Putting these two facts together, we can say that `r bootstrap_se %>% round(5)` is an approximation of the standard error of $b_1$.  
+
+Traditional theory-based methodologies for inference also have formulas for standard errors, assuming some conditions are not violated. In this method, we are not using a formula to get our standard error, but using the standard error of the bootstrap distribution. Thus, using our 95% rule of thumb about normal distributions, we can use the following formula to determine the lower and upper endpoints of a 95% confidence interval for $\beta_1$:
+
+$$
+b_1 \pm `r qnorm(0.975) %>% round(2)` \times SE = (b_1 - `r qnorm(0.975) %>% round(2)` \times SE, b_1 + `r qnorm(0.975) %>% round(2)` \times SE)
+$$
+
+$$= (`r filter(births_table, term == "mage")$estimate` - `r qnorm(0.975) %>% round(2)` \times `r bootstrap_se %>% round(3)`, `r filter(births_table, term == "mage")$estimate` + `r qnorm(0.975) %>% round(2)` \times `r bootstrap_se %>% round(3)`)
+$$
+
+$$= (`r filter(births_table, term == "mage")$estimate  - (qnorm(0.975) %>% round(2) * bootstrap_se %>% round(3))`, `r filter(births_table, term == "mage")$estimate + (qnorm(0.975) %>% round(2) * bootstrap_se %>% round(3))`)
+$$
+
+::: {.callout-note}
+To use the bootstrap standard error in this formula the bootstrap distribution **must** be bell shaped and symmetric. This is often the case with bootstrap distributions, especially those in which the original distribution of the sample is not highly skewed, however it is not always the case. Next week, we'll go deeper into the explorations of model conditions. 
+:::
+
+Let's now add the SE method confidence interval with dashed lines in @fig-percentile-and-se-method.
+
+```{r percentile-and-se-method}
+#| label: fig-percentile-and-se-method 
+#| fig-cap: "Comparing two 95% confidence interval methods."
+
+both_CI <- bind_rows(
+  # long percentile CI
+  percentile_ci %>% 
+  pivot_longer(cols = everything(), 
+               names_to = "endpoint", 
+               values_to = "value") %>% 
+  mutate(type = "percentile"), 
+  # long SE CI
+  standard_error_ci %>%
+  pivot_longer(cols = everything(), 
+               names_to = "endpoint", 
+               values_to = "value") %>% 
+  mutate(type = "SE")
+)
+
+ggplot(data = bootstrap_1000, 
+       mapping = aes(x = stat)) +
+  geom_histogram(binwidth = 0.005, color = "white") +
+  labs(x = "Bootstrap Slope Statistic", 
+       title = "Percentile method CI (solid green lines) \n SE method CI (dashed blue lines)") +
+  geom_vline(xintercept = percentile_ci[[1, 1]], 
+             linewidth = 1, 
+             color = "darkgreen") +
+  geom_vline(xintercept = percentile_ci[[1, 2]], 
+             linewidth = 1, 
+             color = "darkgreen") +
+  geom_vline(xintercept = standard_error_ci[[1, 1]], 
+             linetype = "dashed", 
+             linewidth = 1, 
+             color = "blue") +
+  geom_vline(xintercept = standard_error_ci[[1, 2]], 
+             linetype = "dashed", 
+             linewidth = 1, 
+             color = "blue")
+```
+
+We see that both methods produce nearly identical 95% confidence intervals for $\beta_1$ with the percentile method yielding $(`r round(percentile_ci[["lower_ci"]], 4)`, `r round(percentile_ci[["upper_ci"]], 4)`)$ while the standard error method produces $(`r round(standard_error_ci[["lower_ci"]], 4)`, `r round(standard_error_ci[["upper_ci"]], 4)`)$. 
+
+Now that we've introduced the concept of confidence intervals and laid out the intuition behind two methods for constructing them, let's explore the code that allows us to construct them. 
+
 
 ## Constructing confidence intervals
 
@@ -535,6 +709,13 @@ Recall how we introduced two different methods for constructing 95% confidence i
 #### Percentile method with **infer**
 
 #### Standard error method with **infer**
+
+
+These are automatically calculated when `level` is provided with `level = 0.95` being the default. (95% of the values in a standard normal distribution fall within `r qnorm(0.975) %>% round(2)` standard deviations of the mean, so $multiplier = `r qnorm(0.975) %>% round(2)`$ for `level = 0.95`, for example.) 
+
+This $\bar{x} \pm (multiplier * SE)$ formula is implemented in the `get_confidence_interval()` function as shown with our pennies problem using the bootstrap distribution's variability as an approximation for the sampling distribution's variability. We'll see more on this approximation shortly.
+Note that the center of the confidence interval (the `point_estimate`) must be provided for the standard error confidence interval.
+
 
 ## Interpreting confidence intervals
 
