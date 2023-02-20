@@ -10,6 +10,8 @@ editor: visual
 bibliography: references.bib
 execute: 
   echo: false
+  message: false
+  warning: false
 resources: 
   - reading_guide/week7_reading_guide_CI.docx
   - reading_guide/week7_reading_guide_CI.html
@@ -19,13 +21,20 @@ resources:
 #| include: false
 
 library(tidyverse)
+library(openintro)
 library(moderndive)
 library(infer)
+
+set.seed(1234)
 
 p_red <- bowl %>%
   summarize(mean(color == "red")) %>%
   pull()
 n_balls_sample <- 50L
+
+births14 <- births14 |> 
+  mutate(ID = 1:n()) |> 
+  relocate(ID, mage, weight)
 ```
 
 This week's reading is a compilation of [Chapter 8](https://moderndive.com/8-confidence-intervals.html) from *ModernDive* [@kim2020], [Chapter 24](openintro-ims.netlify.app/inf-model-slr.html) from *Introduction to Modern Statistics* [@ims], with a smattering of my own ideas.
@@ -51,3 +60,486 @@ However, we acknowledged that both the tactile and virtual sampling exercises ar
 So how does one quantify the effects of sampling variation when you only have a *single sample* to work with? You cannot directly study the effects of sampling variation when you only have one sample. One common method to study this is *bootstrapping resampling*, which will be the focus of the earlier sections of this reading.
 
 Furthermore, what if we would like not only a single estimate of the unknown population parameter, but also a *range of highly plausible* values? For example, when you read about political polls, they tell you the percent of all Californians who support a specific measure, but in addition to this estimate they provide the poll's "margin of error". This margin of error can be used to construct a range of plausible values for the true percentage of people who support a specific measure. This range of plausible values is what's known as a *confidence interval*, which will be the focus of the later sections of this reading.
+
+
+## Baby Birth Weights
+
+Medical researchers may be interested in the relationship between baby birth weight and the age of the mother, so as to provide medical interventions for specific age groups if it is found that they are associated with lower birth weights. 
+
+Every year, the US releases to the public a large data set containing information on births recorded in the country. The `births14`[http://openintrostat.github.io/openintro/reference/births14.html] dataset is a random sample of 1,000 cases from  one such dataset released in 2014.
+
+### Observed data
+
+@fig-births-slr visualizes the relationship between `mage` and `weight` for this sample of 1,000 birth records.  
+
+```{r births-slr-plot}
+#| label: fig-births-slr
+#| fig-cap: "Weight of baby at birth (in lbs) as explained by mother's age."
+#| echo: true
+#| 
+
+ggplot(data = births14, 
+       mapping = aes(x = mage, y = weight)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Mother's Age", 
+       y = "Birth Weight of Baby (lbs)")
+```
+
+@tbl-births-slr displays the estimated regression coefficients for modeling the relationship between `mage` and `weight` for this sample of 1,000 birth records. 
+
+```{r births-slr-code}
+#| echo: true
+#| eval: false
+
+births_lm <- lm(weight ~ mage, data = births14)
+
+get_regression_table(births_lm)
+```
+
+```{r}
+#| label: tbl-births-slr
+#| tbl-cap: "The least squares estimates of the intercept and slope for modeling the relationship between birth weight and mother's age."
+
+births_lm <- lm(weight ~ mage, data = births14)
+
+births_table <- get_regression_table(births_lm) 
+
+births_table |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+
+```
+
+
+Based on these coefficients, the estimated regression equation is:
+
+$$ \widehat{\text{birth weight}} = -3.598 + 0.279 \times \text{weeks of pregnancy}$$
+
+::: {.callout-note}
+We will let $\beta_1$ represent the slope of the relationship between baby birth weight and mother's age for **every** baby born in the US in 2014. We will estimate $\beta_1$ using the `births14` dataset, labeling the estimate $b_1$ (just as we did in Week 4). 
+:::
+
+::: {.callout-caution}
+A **parameter** is the value of the statistic of interest for the entire **population**. 
+
+We typically estimate the parameter using a "point estimate" from a sample of data. The point estimate is also referred to as the **statistic**. 
+:::
+
+### Variability of the statistic
+
+This sample of 1,000 births is only one of possibly tens of thousands of possible samples that could have been taken from the large dataset released in 2014. So, then we might wonder how different our regression equation would be if we had a different sample. There is no reason to believe that $\beta_1$ is 0.279, but there is also no reason to believe that $\beta_1$ is particularly far away from $b_1 =$ 0.279. 
+
+Just this week you read about how estimates, such as $b_1$, are prone to sampling variation -- the variability from sample to sample. For example, if we took a different sample of 1,000 births, would we obtain a slope of exactly 0.279? No, that seems fairly unlikely. We might obtain a slope of 0.29 or 0.26, or even 0.35! 
+
+When we studied the effects of sampling variation, we took many samples, something that was easily done with a shovel and a bowl of red and white balls. In this case, however, how would we obtain another sample? Well, we would need to go to the source of the data---the large public dataset released in 2014---and take another random sample of 1,000 observations. Maybe we don't have access to that original dataset of 2014 births, how could we study the effects of sampling variation using our single sample? We will do so using a technique known as **bootstrap resampling with replacement**, which we now illustrate.
+
+### Resampling once
+
+![Step 1: Write out mother's ages and birth weights on 1,000 slips of paper representing one of the 1,000 births included in the original sample. ](images/baby-postit.jpg){#fig-baby-post-it}
+
+**Step 1**: Print out 1,000 identically sized slips of paper (or post-it notes) representing the sample of 1,000 babies in our sample. On each piece of paper, write the mother's age and the birth weight of the baby. @fig-baby-post-it displays six of these such papers.  
+
+**Step 2**: Put the 1,000 slips of paper into a hat as seen in @fig-hat. 
+
+![Step 2: Putting 1,000 slips of paper (post-its) in a hat.](images/hat.JPG){#fig-hat}
+
+**Step 3**: Mix the hat's contents and draw one slip of paper at random, as seen in @fig-draw-out. Record the mother's age and birth weight, as printed on the paper. 
+
+![Step 3: Drawing one slip of paper at random.](images/draw-out2.jpg){#fig-draw-out}
+
+**Step 4**: Put the slip of paper back in the hat! In other words, replace it as seen in @fig-put-back. 
+
+![Step 4: Replacing slip of paper.](images/put-back.jpg){#fig-put-back}
+
+**Step 5**: Repeat Steps 3 and 4 a total of 999 more times, resulting in 1,000 recorded mother's ages and baby birth weights. 
+
+What we just performed was a *resampling* of the original sample of 1,000 birth weights. We **are not** sampling 1,000 birth weights from the population of all 2014 US births as we did for our original sample. Instead, we are mimicking this process by resampling 1,000 birth weights from our original sample.
+
+Now ask yourselves, why did we replace our resampled slip of paper back into the hat in Step 4? Because if we left the slip of paper out of the hat each time we performed Step 4, we would end up with the **same** 1,000 birth weights! In other words, replacing the slips of paper induces *sampling variation*.
+
+Being more precise with our terminology, we just performed a *resampling with replacement* from the original sample of 1,000 birth weights. Had we left the slip of paper out of the hat each time we performed Step 4, this would be *resampling without replacement*.
+
+Let's study our sample of 1,000 resampled birth weights and mother's ages. First, I've made a table of the number of times each observation (birth record) was resampled. @tbl-resample-id displays the birth records that were resampled the most often. Based on the table, it appears that record IDs 71 and 534 were resampled six times. 
+
+```{r births-resample}
+#| label: tbl-resample-id
+#| tbl-cap: "Frequencies of how often a given birth record (ID) was resampled." 
+
+resample1<- births14 |> 
+  mutate(ID = 1:n()) |> 
+  relocate(ID) |> 
+  rep_sample_n(size = 1000, replace = TRUE) |> 
+  ungroup()
+
+resample1 |> 
+  count(ID) |> 
+  slice_max(order_by = n, n = 10) |>  
+  pivot_wider(names_from = ID, values_from = n) |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+
+```
+::: {.callout-tip}
+# Remember 
+
+When sampling with replacement, not every observation is guaranteed to be sampled. So, some observations from the original sample may never appear in the resample, whereas others may appear multiple times. 
+:::
+
+@fig-compare-dist compares the relationship between mother's age and baby birth weight from our resample with the relationship in our original sample. 
+```{r}
+#| echo: true
+#| label: fig-compare-dist
+#| fig-cap: "Comparing relationship between `mage` and `weight` in the resampled birth records compared to the relationship seen in the original sample of birth records."
+#| fig-subcap:
+#|   - "Original Sample of 1,000 Birth Records"
+#|   - "Resample of 1,000 Birth Records"
+#| layout-nrow: 1
+
+ggplot(data = births14, 
+       mapping = aes(x = mage, y = weight)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Mother's Age", 
+       y = "Birth Weight (lbs)")
+
+ggplot(data = resample1, 
+       mapping = aes(x = mage, y = weight)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Mother's Age", 
+       y = "Birth Weight (lbs)")
+
+```
+
+Observed in @fig-compare-dist that while the general shape of both relationships are similar, they are not identical. 
+
+Recall, from the previous section that the sample slope ($b_1$) from the original sample was `r filter(births_table, term == "weeks")$estimate`. What about for our resample? Based on the scatterplot, what would your guess be? Larger than before? Smaller than before?
+
+Let's look at the coefficient estimates for the resampled dataset. @tbl-births-resample displays the estimated regression coefficients for modeling the relationship between `mage` and `weight` for the resample of 1,000 birth records. 
+
+```{r births-resample-code}
+#| echo: true
+#| eval: false
+
+resample_lm <- lm(weight ~ mage, data = resample1)
+
+get_regression_table(resample_lm)
+```
+
+```{r}
+#| label: tbl-births-resample
+#| tbl-cap: "The least squares estimates of the intercept and slope for modeling the relationship between birth weight and mother's age, for the *resample* of 1,000 birth records."
+
+resample_lm <- lm(weight ~ mage, data = resample1)
+
+resample_table <- get_regression_table(resample_lm)
+
+resample_table |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+
+```
+
+For the resampled dataset, the relationship between mother's age and baby birth weight is much weaker than in the orginal sample, with an estimated slope of $b_1 =$ `r filter(resample_table, term == "mage")$estimate`. 
+
+What if we repeated this resampling exercise many times? Would we obtain the same slope each time? In other words, would our guess at the slope for the relationship between mother's age and birth weight for all births in the US in 2014 exactly `r filter(resample_table, term == "mage")$estimate` every time? Just as we did in the last chapter, let’s perform this resampling activity with the help of some of our friends: 35 friends in total.
+
+## Computer simulation and resampling
+
+It should be very clear that tactile resampling with a dataset with 1,000 observations would be extremely time consuming, nothing we would want to ask our friends to do. A computer, however, would be happy to do this process for us! 
+
+### Virtually resampling once
+
+First, let’s perform the virtual analog of resampling once. Recall that the `births14` dataset included in the **openintro** package contains the 1,000 birth records from the original study. Furthermore, recall in the last chapter that we used the `rep_sample_n()` function as a virtual shovel to sample balls from our virtual bowl of 2400 balls as follows:
+```{r}
+virtual_shovel <- rep_sample_n(bowl, 
+                               size = 50, 
+                               replace = FALSE, 
+                               reps = 1)
+
+```
+
+Let’s modify this code to perform the resampling *with replacement* from the 1,000 birth records in the original sample:
+
+```{r virtual-sample-code}
+#| echo: true
+virtual_resample <- rep_sample_n(births14, 
+                                 size = 1000,
+                                 replace = TRUE, 
+                                 reps = 1)
+
+```
+
+Observe how we explicitly set the `replace` argument to `TRUE` in order to tell `rep_sample_n()` that we would like to sample birth records *with replcement*. Had we not kept `replace = FALSE`, we would have done resampling *without replacement*. Additionally, we changed the sample `size`, as we need to create a sample with the *same* size as the original sample which had 1,000 observations. 
+
+Let’s look at only the first 10 out of 1000 rows of `virtual_resample`:
+
+```{r virtual-resample-preview}
+#| echo: true
+virtual_resample
+```
+
+The `replicate` variable only takes on the value of 1 corresponding to us only having `reps = 1`, the `ID` variable indicates which of the 1,000 birth records was resampled, and `mage` and `weight` denote mother's age and the baby's birth weight, respectively. 
+
+Let’s now compute the slope for the relationship between mother's age and baby's birth weight for this resample:
+
+```{r virtual-resample-lm}
+#| echo: true
+#| eval: false
+virtual_resample_lm <- lm(weight ~ mage, data = virtual_resample)
+
+get_regression_table(virtual_resample_lm)
+```
+
+```{r virtual-resample-lm-table}
+#| label: tbl-virtual-resample-lm
+#| tbl-cap: "The least squares estimates of the intercept and slope for modeling the relationship between birth weight and mother's age, for the virtual resample of 1,000 birth records."
+
+virtual_resample_lm <- lm(weight ~ mage, data = virtual_resample)
+
+virtual_resample_table <- get_regression_table(virtual_resample_lm)
+
+virtual_resample_table |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+```
+
+As we saw when we did our tactile resampling exercise, @tbl-virtual-resample-lm shows that the estimated slope is different from the slope of our original sample of `r filter(resample_table, term == "mage")$estimate`. 
+
+### **infer** package workflow
+
+Unfortunately, our process of virtual resampling relies on us fitting a linear regression for each `rep`licate of our `virtual_resample` dataset. This gets a bit tricky coding wise, as we would need to fit 35 different linear regressions if we had 35 different resamples of our data. 
+
+Enter, **infer**, an R package for statistical inference. **infer** makes efficient use of the `%>%` pipe operator we learned in Week 3 to spell out the sequence of steps necessary to perform statistical inference in a "tidy" and transparent fashion. Furthermore, just as the **dplyr** package provides functions with verb-like names to perform data wrangling, the **infer** package provides functions with intuitive verb-like names to perform statistical inference.
+
+Let's go back to our original slope. Previously, we computed the value of the sample slope $b_1$ using the `lm()` function:
+
+```{r slr-repeat}
+#| eval: false
+#| echo: true
+
+births_lm <- lm(weight ~ mage, data = births14)
+
+get_regression_table(births_lm)
+
+```
+
+We'll see that we can also do this using **infer** functions `specify()` and `calculate()`: 
+
+```{r infer-slope}
+#| eval: false
+#| echo: true
+virtual_resample %>% 
+  specify(response = weight, 
+          explanatory = mage) %>% 
+  calculate(stat = "slope")
+```
+
+You might be asking yourself: "Isn't the **infer** code longer? Why would I use that code?". While not immediately apparent, you'll see that there are three chief benefits to the **infer** workflow as opposed to the `lm()` function workflow we had previously.
+
+First, the **infer** verb names better align with the overall resampling framework you need to understand to construct confidence intervals and to conduct hypothesis tests. We'll see flowchart diagrams of this framework in the upcoming @fig-infer-workflow-ci.
+
+Second, you can jump back and forth seamlessly between confidence intervals and hypothesis testing with minimal changes to your code. This will become apparent next week, when we also use **infer** to conduct hypothesis tests for the slope statistic. 
+
+Third, the **infer** workflow is much simpler for conducting inference when you have *more than one variable*, meaning we can extend what we've learned for simple linear regression to multiple linear regression models.  
+
+Let's now illustrate the sequence of verbs necessary to construct a confidence interval for $\b_1$, the slope of the relationship between mother's age and baby's birth weight for all US births in 2014.
+
+#### 1. `specify` variables {#sec-specify}
+
+!["Diagram of the specify() verb."](images/specify.png){#fig-infer-specify}
+
+As shown in @fig-infer-specify, the `specify()` function is used to choose which variables in a data frame will be the focus of our statistical inference. We do this by `specify`ing the `response` argument. For example, in our `births14` data frame, the response variable of interest is `weight` and the explanatory variable is `mage`:
+
+```{r}
+#| echo: true
+births14 %>% 
+  specify(response = weight, 
+          explanatory = mage)
+```
+
+Notice how the dataset got smaller, now there are only two columns where before there were `r ncol(births14)`. You should also notice the messages above the dataset (`Response: weight (numeric)` and `Explanatory: mage`). These are *meta-data* about the grouping structure of the dataset, declaring which variable has been assigned to the explantory / response. 
+
+::: {.callout-note}
+This is similar to how the `group_by()` verb from `dplyr` doesn't change the data, but only adds "grouping" meta-data, as we saw in Week 3. 
+:::
+
+#### 2. `generate` replicates {#sec-generate}
+
+!["Diagram of generate() replicates."](images/generate.png){#fig-infer-generate}
+
+After we `specify()` the variables of interest, we pipe the results into the `generate()` function to generate replicates. @fig-infer-generate shows how this is combined with `specify()` to start the pipeline. In other words, repeat the resampling process a large number of times, similar to how we collected 35 different samples of balls from the bowl. 
+
+The `generate()` function's first argument is `reps`, which sets the number of replicates we would like to generate. Suppose we were interested in obtaining 50 different resamples (each of 1000 birth records). Then, we would we set `reps = 50`, telling **infer** that we are interested in obtaining 50 different resamples, each with 1000 observations. 
+
+```{r}
+n_virtual_resample <- 50
+```
+
+The second argument `type` determines the type of computer simulation we'd like to perform. We set this to `type = "bootstrap"` indicating that we want to perform bootstrap resampling, meaning the resampling should be done *with replacement*. You'll see different options for `type` when we learn about hypothesis testing next week.  
+
+```{r infer-generate-code}
+#| echo: true
+births14 %>% 
+  specify(response = weight, 
+          explanatory = mage) %>% 
+  generate(reps = 50, 
+           type = "bootstrap")
+```
+
+Observe that the resulting data frame has `r scales::comma(nrow(births14) * n_virtual_resample)` rows. This is because we performed resampling of `r nrow(births14)` birth records with replacement `r n_virtual_resample` times and `r nrow(births14)` $\times$ `r n_virtual_resample` = `r scales::comma(nrow(births14) * n_virtual_resample)`. 
+
+The variable `replicate` indicates which resample each row belongs to. So it has the value `1` `r nrow(births14)` times, the value `2` `r nrow(births14)` times, all the way through to the value `r n_virtual_resample` `r nrow(births14)` times. 
+
+**Comparing with original workflow**: Note that the steps of the **infer** workflow so far produce the same results as the original workflow using the `rep_sample_n()` function we saw earlier. In other words, the following two code chunks produce similar results:
+
+::: columns
+::: {.column width="45%"}
+**infer** workflow
+```{r infer-vs-rep}
+#| eval: false
+#| echo: true
+births14 %>%
+  specify(response = weight, 
+          explanatory = mage) %>% 
+  generate(reps = 50, 
+           type = "bootstrap") 
+             
+```
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+Original workflow
+
+```{r rep-vs-infer}
+#| eval: false
+#| echo: true
+
+rep_sample_n(births14, 
+             size = 1000, 
+             replace = TRUE,
+             reps = 50)
+```
+:::
+:::
+
+#### 3. `calculate` summary statistics {#sec-calculate}
+
+![Diagram of calculate() summary statistics.](images/calculate.png){#fig-calculate}
+
+After we `generate()` many replicates of bootstrap resampling with replacement, we next want to summarize each of the `r n_virtual_resample` resamples of size `r nrow(births14)` to a single sample statistic value. As seen in @fig-calculate, the `calculate()` function does this.
+
+In our case, we want to calculate the slope between mother's age and baby's birth weight for each bootstrap resample of size `r nrow(births14)`. To do so, we set the `stat` argument to `"slope"`. 
+
+::: {.callout-tip}
+You can also set the `stat` argument to a variety of other common summary statistics, like `"median"`, `"sum"`, `"sd"` (standard deviation), and `"prop"` (proportion). To see a list of all possible summary statistics you can use, type `?calculate` and read the help file.
+:::
+
+Let's save the result in a data frame called `bootstrap_distribution` and explore its contents:
+
+```{r births-infer-process-code}
+#| echo: true
+
+bootstrap_distribution <- births14 %>% 
+  specify(response = weight, 
+          explanatory = mage) %>% 
+  generate(reps = 50) %>% 
+  calculate(stat = "slope")
+
+bootstrap_distribution
+```
+
+Observe that the resulting data frame has `r n_virtual_resample` rows and two columns. The `replicate` column corresponds to the `r n_virtual_resample` replicates and the `stat` column corresponds to the estimated slope for each resample. 
+
+#### 4. `visualize` the results {-}
+
+![Diagram of visualize() results.](images/visualize.png){#fig-visualize}
+
+The `visualize()`verb provides a quick way to visualize the bootstrap distribution as a histogram of the numerical `stat` variable's values. The pipeline of the main **infer** verbs used for exploring bootstrap distribution results is shown in @fig-infer-visualize.  
+
+```{r visualize-code}
+#| eval: false
+#| echo: true
+visualize(bootstrap_distribution)
+```
+
+```{r boostrap-distribution-infer}
+#| label: fig-infer-visualize
+#| fig-cap: "Bootstrap distribution of slope statistics from 50 bootstrap resamples."
+visualize(bootstrap_distribution) 
+```
+
+::: {.callout-tip}
+The `visualize()` function can take many other arguments which we'll see momentarily to customize the plot further. It also works with helper functions to do the shading of the histogram values corresponding to the confidence interval values.
+:::
+
+**Comparing with original workflow**: In fact, `visualize()` is a *wrapper function* for the `ggplot()` function that uses a `geom_histogram()` layer. That's a lot of fancy language which means that the `visualize()` function does the **same** thing as we did previously with `ggplot()`, just with fewer steps. 
+
+
+::: columns
+::: {.column width="45%"}
+**infer** workflow
+```{r infer-vs-ggplot}
+#| eval: false
+#| echo: true
+visualize(bootstrap_distribution)
+```
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="50%"}
+Original workflow
+
+```{r ggplot-vs-infer}
+#| eval: false
+#| echo: true
+ggplot(data = bootstrap_distribution,
+       mapping = aes(x = stat)) +
+  geom_histogram()
+```
+:::
+:::
+
+
+
+::: {.callout-caution}
+Careful! It might sound tempting to ditch the `ggplot()` code altogether now that you know of a simpler approach. The `visualize()` function only works for a spefic case -- a data frame containing a distribution of `calculate()`d statistics. 
+:::
+
+Let's recap the steps of the **infer** workflow for constructing a bootstrap distribution and then visualizing it in @fig-infer-workflow-ci.
+
+![infer package workflow for resampling](images/ci_diagram.png){#fig-infer-workflow-ci}
+
+### Virtually resampling 1000 times
+
+### Connection to sampling distributions
+
+<!-- In fact, the histogram of sample means from 35 resamples in Figure 8.11 is called the bootstrap distribution. It is an approximation to the sampling distribution of the sample mean, in the sense that both distributions will have a similar shape and similar spread. In fact in the upcoming Section 8.7, we’ll show you that this is the case. Using this bootstrap distribution, we can study the effect of sampling variation on our estimates. In particular, we’ll study the typical “error” of our estimates, known as the standard error. -->
+
+## Understanding confidence intervals
+
+### Precentile method
+
+### Standard error method
+
+## Constructing confidence intervals
+
+Recall how we introduced two different methods for constructing 95% confidence intervals for an unknown population parameter in Section \@ref(ci-build-up): the *percentile method* and the *standard error method*. Let's now check out the **infer** package code that explicitly constructs these. There are also some additional neat functions to visualize the resulting confidence intervals built-in to the **infer** package!
+
+#### Percentile method with **infer**
+
+#### Standard error method with **infer**
+
+## Interpreting confidence intervals
+
+### Did the net capture the fish?
+
+### Precise and shorthand interpretation
+
+### Withd of confidence intervals
