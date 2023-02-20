@@ -5,3 +5,23 @@ format:
     self-contained: true
 editor: visual
 ---
+
+## 8.1 & 8.2 
+
+**What is the chief difference between a bootstrap distribution and a sampling distribution?**
+
+**Looking at the bootstrap distribution for the sample slope in Figure 13, between what two values would you say most values lie?**
+
+
+## 8.3 
+
+**What condition about the bootstrap distribution must be met for us to be able to construct confidence intervals using the standard error method?**
+
+
+**Say we wanted to construct a 68% confidence interval instead of a 95% confidence interval for $\beta_1$. Describe what changes are needed to make this happen.**
+
+::: {.callout-tip}
+Hint: I suggest you look at the normal distribution rules from the last chapter.
+:::
+
+
