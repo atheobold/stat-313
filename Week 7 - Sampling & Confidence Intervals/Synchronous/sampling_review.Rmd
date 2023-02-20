@@ -1,0 +1,418 @@
+---
+title: "Sampling Variability -- The Heart of Inference"
+date: "October 28, 2021"
+author: "Dr. Allison Theobold"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slide-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE,
+  tibble.width = 65,
+  width = 65
+  )
+
+# figure height, width, dpi
+knitr::opts_chunk$set(fig.width = 8, 
+                      fig.asp = 0.618,
+                      out.width = "60%",
+                      dpi = 300, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      fig.align = "center",
+                      echo = FALSE)
+
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
+}
+
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+
+library(emo)
+library(tidyverse)
+library(openintro)
+library(ggridges)
+library(flair)
+library(broom)
+library(gridExtra)
+library(kableExtra)
+library(png)
+library(moderndive)
+library(infer)
+library(scales)
+
+options(show.signif.stars = FALSE)
+```
+
+```{r set-theme, include = FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color      = "#b76352", # mango
+  secondary_color    = "#34605f", # bayberry
+  header_font_google = google_font("Raleway"),
+  text_font_google   = google_font("Raleway", "300", "300i"),
+  code_font_google   = google_font("Source Code Pro"),
+  header_color = "#793540", #rhubarb
+  white_color = "#F5F5F5", # lightest color
+  black_color = "#36454F", # darkest color
+  text_font_size = "30px", 
+  link_color = "#696969" #grey
+)
+```
+
+
+class: center, middle
+
+![](football.PNG)
+
+```{r data}
+
+coaches <- read_csv(here::here("Week 6 - Midterms & Sampling", "Synchronous", 
+                               "data", "cu_csu_coaches.csv")) %>% 
+  filter('Base Pay' > 0)
+
+csu <- coaches %>% 
+  filter(Agency == "California State University")
+
+uc <- coaches %>% 
+  filter(Agency == "University of California")
+
+```
+
+---
+
+class: middle
+
+.larger[In your team...]
+
+.pull-left[
+.bitlarger[First]
+
+- sample 10 salaries 
+- calculate the median
+
+]
+
+.pull-right[
+.bitlarger[Then]
+
+- sample 25 salaries 
+- calculate the median
+]
+
+---
+
+class: middle, center, inverse
+
+.large[You have a sample of 25 UC & CSU coach salaries.] 
+
+--
+
+.large[Would you feel comfortable inferring that the median salary of your
+sample is close to the median salary of *all* UC & CSU coaches?]
+
+--
+
+.large[Why or why not?]
+
+---
+
+.larger[**Why sample more than once?**]
+
+--
+
+.large[Variability is a central focus of the discipline of ***Statistics***!]
+
+--
+
+.large[Making decisions based on limited information is uncomfortable!]
+
+--
+
+.large[
+> You likely weren't willing to infer the population median salary from your
+> sample! 
+
+]
+
+
+---
+
+class: inverse, middle, center
+
+.larger[Sampling Framework]
+
+*population* -- collection of observations / individuals we are interested in  
+
+*population parameter* -- numerical summary about the population that is unknown
+but you wish you knew  
+
+--
+
+*sample* -- a collection of observations from the population  
+
+*sample statistic* -- a summary statistic computed from a sample that 
+*estimates* the unknown population parameter.
+
+---
+
+.larger[Statistical Inference]
+
+There were `r nrow(coaches)` "Head Coaches" at University of California and
+California State Universities in 2019
+
+```{r}
+coaches %>% 
+  summarize(median = median(`Total Pay & Benefits`)) %>% 
+  kable(col.names = "Median salary for all coaches") %>% 
+  kable_styling()
+```
+
+Inferring information from your sample onto the population is called
+**statistical inference**. 
+
+--
+
+- If the sampling is done at random
+- the sample is representative of the population
+- any result based on the sample can generalize to the population
+- the point estimate is a “good guess” of the unknown population parameter
+
+---
+
+class: inverse, center, middle
+
+
+.hand[.large[Shouldn't one random sample be enough then? Isn't 
+that what we use to make confidence intervals and do hypothesis
+tests?]]
+
+
+---
+
+.larger[Virtual Sampling]
+
+```{r, echo = TRUE, eval = FALSE}
+coaches %>% 
+  rep_sample_n(size = 25, reps = 1)
+```
+
+```{r, echo = FALSE}
+coaches %>% 
+  slice_sample(n = 25) %>% 
+  head() %>% 
+  select(`Employee Name`, `Job Title`, `Total Pay & Benefits`) %>% 
+  kable() %>% 
+  kable_styling()
+
+```
+
+<center>
+
+$\vdots$
+
+---
+
+class: middle, inverse
+
+.large[Distribution of 1000 medians from samples of 25 coaches]
+
+```{r samps, cache = TRUE}
+virtual_samples25 <- coaches %>% 
+  rep_sample_n(size = 25, reps = 1000)
+
+virtual_med25 <- virtual_samples25 %>% 
+  group_by(replicate) %>% 
+  summarize(median = median(`Total Pay & Benefits`)) %>% 
+  mutate(samps = "25")
+
+virtual_samples50 <- coaches %>% 
+  rep_sample_n(size = 50, reps = 1000)
+
+virtual_med50 <- virtual_samples50 %>% 
+  group_by(replicate) %>% 
+  summarize(median = median(`Total Pay & Benefits`)) %>% 
+  mutate(samps = "50")
+
+virtual_samples100 <- coaches %>% 
+  rep_sample_n(size = 100, reps = 1000)
+
+virtual_med100 <- virtual_samples100 %>% 
+  group_by(replicate) %>% 
+  summarize(median = median(`Total Pay & Benefits`)) %>% 
+  mutate(samps = "100")
+
+master_samples <- bind_rows(virtual_med25, virtual_med50, virtual_med100) 
+```
+
+```{r samp-25-plot, out.width = "60%"}
+master_samples %>% 
+ filter(samps == "50") %>% 
+  ggplot(mapping = aes(x = median)) + 
+  geom_histogram(binwidth = 6500, color = "white") + 
+  scale_x_continuous(labels = comma) + 
+  labs(x = "Median Salary")
+
+```
+
+---
+
+class: middle
+
+.larger[Sampling Distributions] 
+
+- Visualize the effect of sampling variation on the distribution of any point
+estimate
+  * In this case, the sample median
+  
+- We can use sampling distributions to make statements about what values we can
+typically expect.
+
+--
+
+<center> 
+</br>
+Be careful! A **sampling distribution** is different from a *sample's
+distribution*! 
+
+---
+
+class: middle, inverse, center
+
+.large[Distributions of 1000 medians from different sample sizes]
+
+.pull-left-wide[
+```{r samp-plots, out.width = "90%"}
+master_samples %>% 
+  mutate(samps = factor(samps, levels = c("25", "50", "100")
+                           )
+         ) %>% 
+  ggplot(mapping = aes(x = median)) + 
+  geom_histogram(binwidth = 6500, color = "white") + 
+  facet_wrap(~samps) + 
+  scale_x_continuous(labels = comma) + 
+  labs(x = "Median Salary") +
+  theme(axis.text.x = element_text(hjust = 1, 
+                                   vjust = 1, 
+                                   angle = 45))
+
+```
+]
+
+--
+
+.pull-right-narrow[
+</br>
+</br>
+</br>
+.large[What differences do you see?] 
+
+]
+
+---
+
+.larger[Variability for Different Sample Sizes] 
+
+```{r, echo = FALSE}
+
+master_samples %>% 
+  mutate(samps = factor(samps, levels = c("25", "50", "100")
+                           )
+         ) %>%
+  group_by(samps) %>% 
+  summarize(sd = sd(median)) %>% 
+  kable(col.names = c("Sample Size", "Standard Error of Median")) %>% 
+  kable_styling()
+  
+```
+
+--
+
+- Standard errors quantify the variability of point estimates
+
+- As a general rule, as sample size increases, the standard error decreases.
+
+--
+
+<center>
+Careful! There are important differences between **standard errors**
+and *standard deviations*. 
+
+---
+
+class: center, middle, inverse
+
+.larger[A good guess?]
+
+```{r samp-plots-true-value, out.width = "70%"}
+master_samples %>% 
+  mutate(samps = factor(samps, levels = c("25", "50", "100")
+                           )
+         ) %>% 
+  ggplot(mapping = aes(x = median)) + 
+  geom_histogram(binwidth = 6500, color = "white") + 
+  geom_vline(xintercept = median(coaches$`Total Pay & Benefits`), 
+             color = "red", 
+             lwd = 1.5) +
+  facet_wrap(~samps, ) + 
+  scale_x_continuous(labels = comma) + 
+  labs(x = "Median Salary")
+
+```
+
+---
+
+
+.larger[Precision & Accuracy] 
+
+.pull-left[
+```{r,fig.align='center', out.width= "90%", echo = FALSE}
+knitr::include_graphics("precision_accuracy.png")
+```
+]
+
+--
+
+.pull-right[
+</br>
+- Random sampling ensures our point estimates are accurate.
+
+</br>
+</br>
+</br>
+
+- Larger sample sizes ensure our point estimates are precise. 
+]
+
+---
+
+class: inverse, middle, center
+
+.huge[.mango[Exit Ticket]]
+
+.large[Summarize why we care about sampling distributions.]
+
+</br>
+
+.large[Tell me one question you still have about sampling distributions.]
