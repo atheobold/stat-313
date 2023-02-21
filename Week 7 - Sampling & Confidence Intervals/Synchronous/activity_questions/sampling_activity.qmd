@@ -1,6 +1,9 @@
 ---
 title: "Exploring Sampling Concepts"
-format: pdf
+format: 
+  docx: 
+    self-contained: true
+  #pdf
   #html:
 editor: visual
 ---
