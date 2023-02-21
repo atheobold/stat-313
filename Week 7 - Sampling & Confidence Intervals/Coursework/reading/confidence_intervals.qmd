@@ -334,7 +334,7 @@ We'll see that we can also do this using **infer** functions `specify()` and `ca
 ```{r infer-slope}
 #| eval: false
 #| echo: true
-virtual_resample %>% 
+births14 %>% 
   specify(response = weight, 
           explanatory = mage) %>% 
   calculate(stat = "slope")
