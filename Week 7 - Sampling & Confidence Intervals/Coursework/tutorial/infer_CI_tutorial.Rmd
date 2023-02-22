@@ -71,7 +71,7 @@ are interested in estimating the value of the true median salary of all CSU and
 UC head coaches, given a sample of 50 coaches. 
 
 The population median salary of all CSU and UC coaches is: 
-`r median(coaches_master$'Total Pay & Benefits')`. Let's see how close our
+`r median(coaches_master$'Total Pay & Benefits') %>% scales::dollar()`. Let's see how close our
 sample median is to this population median! 
 
 Use the `summarize()` function to calculate the median ``Total Pay & Benefits``
@@ -99,27 +99,27 @@ Create a histogram of the salaries from the sample of 50 coaches. I've given you
 some code to start with, but you'll need to add to it! 
 
 ```{r first-plot, exercise = TRUE}
-coaches %>% 
-  ggplot(mapping = aes(x = ___)) 
+ggplot(data = coaches, 
+       mapping = aes(x = ___)) 
 ```
 
 ```{r first-plot-hint-1}
 # Use the numerical variable we are interested in!
-coaches %>% 
-  ggplot(mapping = aes(x = `Total Pay & Benefits`)) 
+ggplot(data = coaches, 
+       mapping = aes(x = `Total Pay & Benefits`)) 
 ```
 
 ```{r first-plot-hint-2}
 # Add a histogram to the plot
-coaches %>% 
-  ggplot(mapping = aes(x = `Total Pay & Benefits`)) + 
+ggplot(data = coaches, 
+       mapping = aes(x = `Total Pay & Benefits`)) +
   geom_histogram()
 ```
 
 ```{r first-plot-hint-3}
 # Make the histogram look a bit better with binwidths! 
-coaches %>% 
-  ggplot(mapping = aes(x = `Total Pay & Benefits`)) + 
+ggplot(data = coaches, 
+       mapping = aes(x = `Total Pay & Benefits`)) + 
   geom_histogram(binwidth = 75000)
 ```
 
@@ -132,30 +132,33 @@ other random samples!
 
 We'll start with getting one bootstrap resample. To do this we take our original 
 sample (stored in the `coaches` dataset) and resample with replacement 50 times. 
-The `rep_sample_n()` function from the **moderndive** package helps us obtain 
+The `rep_sample_n()` function from the **infer** package helps us obtain 
 one of these resamples. All we need to do is specify the `size` and `replace`
 arguments. 
 
-Keep in mind: how large your resample should be and whether you should sample 
-with or without replacement
+*Keep in mind: how large your resample should be and whether you should sample 
+with or without replacement*
 
 ```{r one-resample, exercise = TRUE}
-one_resample <- coaches %>% 
-  rep_sample_n(size = ___, replace = ___)
+one_resample <- rep_sample_n(coaches, 
+                             size = ___, 
+                             replace = ___)
 ```
 
 ```{r one-resample-hint-1}
-one_resample <- coaches %>% 
-  rep_sample_n(size = 50, replace = ___)
+one_resample <- rep_sample_n(coaches, 
+                             size = 50, 
+                             replace = ___)
 ```
 
 ```{r one-resample-hint-2}
-one_resample <- coaches %>% 
-  rep_sample_n(size = 50, replace = TRUE)
+one_resample <- rep_sample_n(coaches, 
+                             size = 50, 
+                             replace = TRUE)
 ```
 
 Let's compare our resample with our original sample. Your original sample had 
-a median of `r median(coaches$'Total Pay & Benefits')`. Use the `summarize()`
+a median of `r median(coaches_master$'Total Pay & Benefits') %>% scales::dollar()`. Use the `summarize()`
 function to find the median of this resample. 
 
 ```{r one-resample-median, exercise = TRUE}
@@ -178,20 +181,26 @@ the number of resamples we want with the `reps` argument.
 Modify your previous code to create 500 bootstrap resamples. 
 
 ```{r multiple-resamples, exercise = TRUE}
-multiple_resamples <- coaches %>% 
-  rep_sample_n(size = ___, replace = ___, reps = ___)
+multiple_resamples <- rep_sample_n(coaches, 
+                                   size = ___, 
+                                   replace = ___, 
+                                   reps = ___)
 ```
 
 ```{r multiple-resamples-hint-1}
 # These are the options we used for one resample! 
-multiple_resamples <- coaches %>% 
-  rep_sample_n(size = 50, replace = TRUE, reps = ___)
+multiple_resamples <- rep_sample_n(coaches, 
+                                   size = 50, 
+                                   replace = TRUE, 
+                                   reps = ___)
 ```
 
 ```{r multiple-resamples-hint-2}
 # We want 500 resamples! 
-multiple_resamples <- coaches %>% 
-  rep_sample_n(size = 50, replace = TRUE, reps = 500)
+multiple_resamples <- rep_sample_n(coaches, 
+                                   size = 50, 
+                                   replace = TRUE, 
+                                   reps = 500)
 ```
 
 Now that we have 500 resamples we need to summarize each sample with a single 

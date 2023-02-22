@@ -36,7 +36,7 @@ uc <- coaches %>%
 
 ```
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #000000;"}
 In your team...
@@ -44,27 +44,24 @@ In your team...
 
 ::: columns
 ::: {.column width="45%"}
-
 ::: {style="font-size: 2em; color: #000000;"}
 **First**
 :::
 
-- sample 10 salaries 
-- calculate the median
+-   sample 10 salaries
+-   calculate the median
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="45%"}
-
 ::: {style="font-size: 2em; color: #000000;"}
 **Then**
 :::
 
-- sample 25 salaries 
-- calculate the median
-
+-   sample 25 salaries
+-   calculate the median
 :::
 :::
 
@@ -78,8 +75,7 @@ You have a sample of 25 UC & CSU coach salaries.
 
 </br>
 
-Would you feel comfortable inferring that the median salary of your
-sample is close to the median salary of *all* UC & CSU coaches?
+Would you feel comfortable inferring that the median salary of your sample is close to the median salary of *all* UC & CSU coaches?
 
 . . .
 
@@ -89,7 +85,7 @@ sample is close to the median salary of *all* UC & CSU coaches?
 
 Why or why not?
 
-##
+## 
 
 ::: {style="font-size: 3em; color: #0F4C81;"}
 **Why sample more than once?**
@@ -105,9 +101,7 @@ Making decisions based on limited information is uncomfortable!
 
 . . .
 
-> You likely weren't willing to infer the population median salary from your
-> sample! 
-
+> You likely weren't willing to infer the population median salary from your sample!
 
 ##  {background-color="#B6CADA"}
 
@@ -115,55 +109,40 @@ Making decisions based on limited information is uncomfortable!
 Sampling Framework
 :::
 
-*population* -- collection of observations / individuals we are interested in  
+*population* -- collection of observations / individuals we are interested in
 
-*population parameter* -- numerical summary about the population that is unknown
-but you wish you knew  
+*population parameter* -- numerical summary about the population that is unknown but you wish you knew
 
 . . .
 
 </br>
 
-*sample* -- a collection of observations from the population  
+*sample* -- a collection of observations from the population
 
-*sample statistic* -- a summary statistic computed from a sample that 
-*estimates* the unknown population parameter.
+*sample statistic* -- a summary statistic computed from a sample that *estimates* the unknown population parameter.
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #000000;"}
 Statistical Inference
 :::
 
-There were `r nrow(coaches)` "Head Coaches" at University of California and
-California State Universities in 2019
+There were `r nrow(coaches)` "Head Coaches" at University of California and California State Universities in 2019
 
 </br>
 
 ::: columns
 ::: {.column width="45%"}
-```{r}
-coaches %>% 
-  summarize(median = median(`Total Pay & Benefits`)) %>% 
-  mutate(median = 
-           str_c("$",
-                 str_sub(median, start = 1, end = 3), 
-                 ",",
-                 str_sub(median, start = 4, end = 6)
-                 )
-         ) %>% 
-  knitr::kable(col.names = "Median salary for all coaches") %>% 
-  kableExtra::kable_styling()
-```
+**Median salary for all coaches**
 
+`r median(coaches$'Total Pay & Benefits') %>% scales::dollar()`
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="45%"}
-Inferring information from your sample onto the population is called
-**statistical inference**. 
+Inferring information from your sample onto the population is called **statistical inference**.
 :::
 :::
 
@@ -173,16 +152,14 @@ Inferring information from your sample onto the population is called
 Statistical Inference Reasoning
 :::
 
-
-- If the sampling is done at random
-- the sample is representative of the population
-- any result based on the sample can generalize to the population
-- the point estimate is a “good guess” of the unknown population parameter
+-   If the sampling is done at random
+-   the sample is representative of the population
+-   any result based on the sample can generalize to the population
+-   the point estimate is a "good guess" of the unknown population parameter
 
 ##  {background-color="#B6CADA"}
 
-</br>
-</br>
+</br> </br>
 
 ::: {style="font-size: 2em; color: #000000;"}
 Shouldn't one random sample be enough then? Isn't that what we use to make confidence intervals and do hypothesis tests?
@@ -193,7 +170,6 @@ Shouldn't one random sample be enough then? Isn't that what we use to make confi
 ::: {style="font-size: 2em; color: #000000;"}
 Virtual Sampling
 :::
-
 
 ```{r rep-sample-code}
 #| echo: true
@@ -270,7 +246,8 @@ master_samples %>%
  filter(samps == "50") %>% 
   ggplot(mapping = aes(x = median)) + 
   geom_histogram(binwidth = 6500, color = "white") + 
-  scale_x_continuous(labels = comma) + 
+  scale_x_continuous(labels = label_comma()
+                     ) + 
   labs(x = "Median Salary")
 
 ```
@@ -281,18 +258,15 @@ master_samples %>%
 Sampling Distributions
 :::
 
-- Visualize the effect of sampling variation on the distribution of any point
-estimate
-  * In this case, the sample median
-  
-- We can use sampling distributions to make statements about what values we can
-typically expect.
+-   Visualize the effect of sampling variation on the distribution of any point estimate
+    -   In this case, the sample median
+-   We can use sampling distributions to make statements about what values we can typically expect.
 
 . . .
 
-<center> 
-Be careful! A **sampling distribution** is different from a *sample's
-distribution*! 
+<center>
+
+Be careful! A **sampling distribution** is different from a *sample's distribution*!
 
 ##  {background-color="#B6CADA"}
 
@@ -323,7 +297,7 @@ master_samples %>%
 
 **What differences do you see?**
 
-##
+## 
 
 ::: {style="font-size: 1.75em; color: #000000;"}
 Variability for Different Sample Sizes
@@ -350,10 +324,9 @@ master_samples %>%
 . . .
 
 ::: {style="font-size: 0.85em; color: #000000;"}
+-   Standard errors quantify the variability of point estimates
 
-- Standard errors quantify the variability of point estimates
-
-- As a general rule, as sample size increases, the standard error decreases.
+-   As a general rule, as sample size increases, the standard error decreases.
 :::
 
 . . .
@@ -361,8 +334,7 @@ master_samples %>%
 <center>
 
 ::: {style="font-size: 0.85em; color: #000000;"}
-Careful! There are important differences between **standard errors**
-and *standard deviations*. 
+Careful! There are important differences between **standard errors** and *standard deviations*.
 :::
 
 ##  {background-color="#B6CADA"}
@@ -370,7 +342,6 @@ and *standard deviations*.
 ::: {style="font-size: 2em; color: #000000;"}
 A good guess?
 :::
-
 
 ```{r samp-plots-true-value}
 #| out-width: 70%
@@ -390,7 +361,7 @@ master_samples %>%
 
 ```
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #000000;"}
 Precision & Accuracy
@@ -405,15 +376,13 @@ Precision & Accuracy
 :::
 
 ::: {.column width="40%"}
-- Random sampling ensures our point estimates are accurate.
+-   Random sampling ensures our point estimates are accurate.
 
 </br>
 
-- Larger sample sizes ensure our point estimates are precise. 
-
+-   Larger sample sizes ensure our point estimates are precise.
 :::
 :::
-
 
 ##  {background-color="#B6CADA"}
 
