@@ -115,7 +115,7 @@ get_regression_summaries(one_language)
 
 ```
 
-**1. What model was your top model?**
+**1. What model was your top model? Specifically, what variable was selected to be included in your top model?**
 
 ### Step 2
 
@@ -146,7 +146,7 @@ Alright, now you should have 11 more models to compare! Like before, you need to
 
 ```
 
-**2. What model was your top model?**
+**2. What model was your top model? Specifically, what variables are included in your top model?**
 
 ### Step 3
 
@@ -187,7 +187,7 @@ evals_train %>%
 
 The output of this code is the variable that has the highest adjusted $R^2$. Compare this value to the value of your "top" model from Step 3 and see if it improved adjusted\*\* $R^2$ by at least 1% (0.01). If so, this variable should be added. If not, then your model from Step 2 is the "best" model!
 
-**3. What model was your top model?**
+**3. What model was your top model? Specifically, what variables are included in your top model?**
 
 ### Step 4
 
@@ -211,7 +211,7 @@ evals_train %>%
 
 The output of this code is the variable that has the highest adjusted $R^2$. Compare this value to the value of your "top" model from Step 3 and see if it improved adjusted\*\* $R^2$ by at least 1% (0.01). If so, this variable should be added. If not, then your model from Step 3 is the "best" model!
 
-**4. What model was your top model?**
+**4. What model was your top model? Specifically, what variables are included in your top model?**
 
 ### Step 5
 
@@ -235,7 +235,7 @@ evals_train %>%
 
 The output of this code is the variable that has the highest adjusted $R^2$. Compare this value to the value of your "top" model from Step 4 and see if it improved adjusted\*\* $R^2$ by at least 1% (0.01). If so, this variable should be added. If not, then your model from Step 3 is the "best" model!
 
-**5. What model was your top model?**
+**5. What model was your top model? Specifically, what variables are included in your top model?**
 
 ### Step 6
 
@@ -259,7 +259,7 @@ evals_train %>%
 
 The output of this code is the variable that has the highest adjusted $R^2$. Compare this value to the value of your "top" model from Step 5 and see if it improved adjusted\*\* $R^2$ by at least 1% (0.01). If so, this variable should be added. If not, then your model from Step 3 is the "best" model!
 
-**6. What model was your top model?**
+**6. What model was your top model? Specifically, what variables are included in your top model?**
 
 ## Testing Your Top Model
 

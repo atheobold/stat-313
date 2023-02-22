@@ -142,15 +142,13 @@ evals_train %>%
 ## FIVE VARIABLES
 
 evals_train %>% 
-  map(.f = ~lm(score ~ .x + eval_completion + pic_color + gender + rank, data = evals_train)) %>% 
+  map(.f = ~lm(score ~ .x + eval_completion + pic_color + gender + rank + age, data = evals_train)) %>% 
   map_df(.f = ~get_regression_summaries(.x)$adj_r_squared) %>% 
   select(-ID, -score, -eval_completion, -pic_color, -gender, -rank) %>% 
   pivot_longer(cols = everything(), 
                names_to = "variable", 
                values_to = "adj_r_sq") %>% 
   slice_max(adj_r_sq)
-
-## 0.131 for age -- DONE!
 
 
 ## FOUR VARIABLES -- CHOOSING BEAUTY
