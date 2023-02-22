@@ -1,0 +1,14 @@
+---
+title: "Confidence Intervals -- Real Life Sampling Distributions"
+format: 
+  revealjs:
+    self-contained: true
+editor: visual
+---
+
+```{r set-up}
+library(tidyverse)
+library(infer)
+library(scales)
+library(stringr)
+```
