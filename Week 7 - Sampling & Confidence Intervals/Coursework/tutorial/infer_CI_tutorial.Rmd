@@ -45,7 +45,7 @@ coaches_resample <- coaches %>%
 
 Per the California Privacy Rights Act (CPRA), the salaries of employees of
 the state of California are required to be public. We will revisit the 2019 
-salaries of head coaches from CSU and UC universities introduced last week. 
+salaries of head coaches from CSU and UC universities introduced this week. 
 
 First, let's load the `coaches` data set into your workspace and take a look at
 what the data look like.

@@ -60,6 +60,7 @@ library(png)
 library(moderndive)
 library(infer)
 library(scales)
+library(palmerpenguins)
 
 options(show.signif.stars = FALSE)
 ```
