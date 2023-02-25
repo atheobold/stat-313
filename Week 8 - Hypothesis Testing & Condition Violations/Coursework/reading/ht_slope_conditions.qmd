@@ -1,0 +1,361 @@
+---
+title: "Week 8 -- Hypothesis Test for Slope & Inference Conditions"
+format: 
+  html:
+    self-contained: true
+    table-of-contents: true
+    number-sections: true
+    number-depth: 3
+editor: visual
+bibliography: references.bib
+execute: 
+  echo: false
+  message: false
+  warning: false
+resources: 
+  - reading_guide/week7_reading_guide_CI.docx
+  - reading_guide/week7_reading_guide_CI.html
+---
+
+```{r set-up}
+#| include: false
+
+library(tidyverse)
+library(openintro)
+library(moderndive)
+library(infer)
+
+# Set output digit precision
+options(scipen = 999) # , digits = 4)
+set.seed(1234)
+
+births14 <- births14 |> 
+  mutate(ID = 1:n()) |> 
+  relocate(ID, mage, weight)
+
+obs_slope <- births14 %>% 
+  specify(response = weight, explanatory = mage) %>% 
+  calculate(stat = "slope") %>% 
+  pull(stat)
+
+my_theme <- theme(axis.title.x = element_text(size = 18), 
+                  axis.title.y = element_text(size = 18), 
+                  axis.text.x = element_text(size = 14), 
+                  axis.text.y = element_text(size = 14), 
+                  
+                  )
+```
+
+In this week's coursework we are **finally** talking about p-values! What we learned last week should have helped make the connection between a sampling distribution and a bootstrap (resampling) distribution. Hopefully, you understand that we create confidence intervals based the statistics we saw in other samples.
+
+This week we are going to connect these ideas to the framework of hypothesis testing. Hypothesis testing requires an additional component we didn't see last week---the null hypothesis. We will learn how we integrate the null hypothesis in our resampling procedure to create a sampling distribution that could have happened if the null hypothesis was true. We will use this distribution to compare what we saw in our data and evaluate the plausibility of competing hypotheses.
+
+This reading will walk you through the general framework for understanding hypothesis tests. By understanding this general framework, you'll be able to adapt it to many different scenarios. The same can be said for confidence intervals. There was one general framework that applies to all confidence intervals. I believe this focus on the conceptual framework is better for long-term learning than focusing on specific details for specific instances.
+
+::: column-margin
+::: callout-note
+This week's reading is a compilation of [Chapter 8](https://moderndive.com/8-confidence-intervals.html) from *ModernDive* [@kim2020], [Chapter 24](openintro-ims.netlify.app/inf-model-slr.html) from *Introduction to Modern Statistics* [@ims], with a smattering of my own ideas.
+:::
+:::
+
+## Reading Guide
+
+Download the reading guide as a [Word Document here](reading_guide/week8reading_guide_HT.docx)
+
+Download the reading guide as an [HTML file here](reading_guide/week8_reading_guide_HT.html)
+
+# Birth weights & mother'sage
+
+Last week we considered the question of assessing the relationship between a baby's birth weight and the age of the mother. To explore this relationship, we used the [`births14`](http://openintrostat.github.io/openintro/reference/births14.html) dataset--a random sample of 1,000 cases from a large public dataset of all US birth records released in 2014. 
+
+```{r data-preview}
+births14 %>% 
+  slice_sample(n = 10) %>% 
+  DT::datatable(caption = "A sample of 10 rows from the births14 dataset.")
+```
+
+
+## Observed data
+
+@fig-births-slr visualizes the relationship between `mage` and `weight` for this sample of 1,000 birth records.
+
+```{r births-slr-plot}
+#| label: fig-births-slr
+#| fig-cap: "Weight of baby at birth (in lbs) as explained by mother's age."
+#| echo: true
+#| 
+
+ggplot(data = births14, 
+       mapping = aes(x = mage, y = weight)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Mother's Age", 
+       y = "Birth Weight of Baby (lbs)") + 
+  my_theme
+```
+
+@tbl-births-slr displays the estimated regression coefficients for modeling the relationship between `mage` and `weight` for this sample of 1,000 birth records.
+
+```{r births-slr-code}
+#| echo: true
+#| eval: false
+
+births_lm <- lm(weight ~ mage, data = births14)
+
+get_regression_table(births_lm)
+```
+
+```{r}
+#| label: tbl-births-slr
+#| tbl-cap: "The least squares estimates of the intercept and slope for modeling the relationship between baby's birth weight and mother's age."
+
+births_lm <- lm(weight ~ mage, data = births14)
+
+births_table <- get_regression_table(births_lm) 
+
+births_table |> 
+  select(term:estimate) %>% 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+
+```
+
+Based on these coefficients, the estimated regression equation is:
+
+$$ \widehat{\text{birth weight}} = -6.793 + 0.014 \times \text{mother's age}$$
+
+Based on the regression equation, it appear that for every year older a mother is, we would expect the mean birth weight to increase by approximately 0.014 lbs. This seems like a small value, which is confirmed when we increase the mother's age by 10-years, which is associated with a 0.14 lb increase in birth weight. 
+
+## Research question
+
+This raises the question of whether this change is "large^[I prefer to use the term meaningful.] enough" to suggest that there **is** a relationship between the birth weight of a baby and the age of the mother. Could we obtain a slope statistic of 0.279 occur just by chance, in a hypothetical world where there is no relationship between a baby's birth weight and a mother's age? In other words, what role does *sampling variation* play in this hypothetical world? To answer this question, we'll again rely on a computer to run *simulations*. 
+
+## Simulating data
+
+First, try to imagine a hypothetical universe where there is no relationship between the birth weight of a baby and a mother's age. In such a hypothetical universe, the birth weight of a baby would be entirely determined from other variables (e.g., genetics, mother's habits, etc.)
+
+Bringing things back to the `births14` data frame, the `mage` variable would thus be an irrelevant label, as is has no relationship with the birth weight of the baby. Since is has no bearing on the birth weight, we could randomly reassign these ages by "shuffling" them!
+
+To illustrate this idea, let’s narrow our focus to six arbitrarily chosen birth records (of the 1,000) @tbl-shuffled-mage. The `weight` column displays the birth weight of the baby. The `mage` column displays the age of the mother. However, in our hypothesized universe there is no relationship between a baby's birth weight and a mother's age, so it would be of no consequence to randomly "shuffle" the values of `mage`. The `shuffled_mage` column shows one such possible random shuffling. 
+
+```{r births-shuffle}
+#| label: tbl-shuffled-mage
+#| tbl-cap: "One example of shuffling mage variable."
+
+births14 %>% 
+  slice_sample(n = 6) %>% 
+  select(ID, weight, mage) %>% 
+  mutate(shuffled_mage = sample(mage)) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+Again, such random shuffling of the `mage` label only makes sense in our hypothesized universe where there is no relationship between the birth weight of a baby and a mother's age. How could we extend this shuffling of the `mage` variable to all 1,000 birth records by hand? 
+
+One way would be writing the 1,000 `weight`s and `mage`s on a set of 1,000 cards. We would then rip each card in half, as we are assuming there is no relationship between these variables. We would then be left with 1,000 `weight` cards in one hat and 1,000 `mage` cards in a *different* hat. You could then draw one card out of the `weight` hat and one card out of the `mage` hat and staple them together to make a new (`weight`, `mage`) ordered pair. This process of drawing one card out of each hat and stapling them together would be repeated until 
+
+I've done one such reshuffling and plotted the original dataset and the shuffled dataset side-by-side in @fig-original-shuffle-comparison. It appears that the slope of the regression line for the shuffled data is much less steep (closer to horizontal) than in the original data.
+
+```{r original-shuffle-comparison}
+#| label: fig-original-shuffle-comparison
+#| fig-cap: "Scatterplots of relationship between baby's birth weight and mother's age."
+#| fig-subcap:
+#|   - "Original values of mother's age"
+#|   - "Shuffled values of mother's age"
+#| layout-nrow: 1
+
+shuffled_births14 <- births14 %>% 
+  mutate(shuffled_mage = sample(mage))
+
+ggplot(data = births14, 
+       mapping = aes(x = mage, y = weight)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Mother's Age", 
+       y = "Birth Weight of Baby (lbs)") + 
+  my_theme
+  
+
+ggplot(data = shuffled_births14, 
+      mapping = aes(x = shuffled_mage, y = weight)) + 
+  geom_jitter() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Mother's Age", 
+       y = "Birth Weight of Baby (lbs)") + 
+  my_theme
+```
+
+Let's compare these slope estimates between the two datasets:
+
+```{r shuffled-slope}
+#| echo: true
+shuffled_births14 %>% 
+  specify(response = weight, explanatory = mage) %>% 
+  calculate(stat = "slope")
+```
+
+So, in this hypothetical universe where there is no relationship between a baby's birth weight and a mother's age, we obtained a slope of 0.0142. 
+
+Notice that this slope statistic is not the same as the slope statistic of 0.014 that we originally observed. This is once again due to *sampling variation*. How can we better understand the effect of this sampling variation? By repeating this shuffling several times!
+
+## Shuffling 10 times
+
+Alright, I've carried out the process of shuffling the dataset 9 more times. @tbl-ten-shuffled-mage displays the results of these shufflings. 
+
+```{r nine-shuffles}
+#| label: tbl-ten-shuffled-mage
+#| tbl-cap: "One example of shuffling mage variable."
+
+shuffled_births14 <- births14 %>% 
+  mutate(shuffle1 = sample(mage), 
+         shuffle2 = sample(mage),
+         shuffle3 = sample(mage),
+         shuffle4 = sample(mage),
+         shuffle5 = sample(mage),
+         shuffle6 = sample(mage),
+         shuffle7 = sample(mage), 
+         shuffle8 = sample(mage), 
+         shuffle9 = sample(mage), 
+         shuffle10 = sample(mage)
+         )
+
+shuffled_births14 %>% 
+  slice_sample(n = 6) %>% 
+  select(ID, weight, mage, shuffle1:shuffle10) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+<!-- lineup plot -->
+
+For each of these 10 shuffles, I computed the slope statistic, and in @fig-ten-shuffles I display their distribution in a histogram. I've also marked the observed slope statistic with a dark red line.
+
+```{r}
+#| label: fig-ten-shuffles
+#| fig-cap: "Distribution of shuffled slope statistics."
+
+randomize_10 <- births14 %>% 
+  specify(response = weight, explanatory = mage) %>% 
+  hypothesise(null = "independence") %>% 
+  generate(reps = 10, type = "permute") %>% 
+  calculate(stat = "slope")
+
+ggplot(randomize_10, mapping = aes(x = stat)) +
+  geom_histogram(binwidth = 0.005) +
+  geom_vline(xintercept = obs_slope, lwd = 1.5, color = "red")
+```
+
+Before we discuss the distribution of the histogram, we need to remember one key detail: this histogram represents relationship between a baby's birth weight and mother's age that one would observe in our hypothesized universe where there is no relationship between these variables. 
+
+Observe first that the histogram is roughly centered at 0, which makes sense. A slope of 0 means there is no relationship between a baby's birth weight and mother's age, which is exactly what our hypothetical universe assumes! 
+
+However, while the values are centered at 0, there is variation about 0. This is because even in a hypothesized universe of no relationship between a baby's birth weight and mother's age, you will still likely observe a slight relationship because of chance sampling variation. Looking at the histogram in @fig-ten-shuffles, such differences could even be as extreme as 0.02. 
+
+Turning our attention to what we observed in the `births14` dataset: the observed slope of 0.014 is is marked with a vertical dark line. Ask yourself: in a hypothesized world of no relationship between a baby's birth weight and mother's age, how likely would it be that we observe this slope statistic? That's hard to say! It looks like there is only one statistic larger than the observed statistic out of ten, but that means we would expect to see a statistic bigger than what we saw 10% of the time in this hypothetical universe. To me, something happening 10% of the time doesn't seem like a rare event. 
+
+## What just happened?
+
+What we just demonstrated in this activity is the statistical procedure known as hypothesis testing using a permutation test. The term “"permutation" is the mathematical term for "shuffling": taking a series of values and reordering them randomly, as you did with the `mage` values. 
+
+In fact, permutations are another form of resampling, like the bootstrap method you performed last week. While the bootstrap method involves resampling *with* replacement, permutation methods involve resampling *without* replacement.
+
+Think back to the exercise involving the slips of paper representing the 1,000 birth records from last week. After sampling a paper, you put the paper back into the hat. However, in this scenario, once we drew a `weight` and `age` card they were stapled together and never redrawn. 
+
+In our example, we saw that the observed slope in the `births14` dataset was
+somewhat inconsistent with the hypothetical universe, but only slightly. Thus, I would not be inclined to say that the observed relationship between a baby's birth weight and a mother's age (seen in the `births14` dataset) is that different from what I would expect to see if there was no relationship between these variables. 
+
+# Hypothesis tests
+
+Much like the terminology, notation, and definitions relating to sampling you saw last week, there are a lot of terminology, notation, and definitions related to hypothesis testing as well. Learning these may seem like a very daunting task at first. However, with practice, practice, and more practice, anyone can master them. 
+
+First, a **hypothesis** is a statement about the value of an unknown population parameter. In our example, our population parameter of interest is the slope of the relationship between baby's birth weight and mother's age for **every** baby born in the US in 2014. This parameter is notated 
+with $\beta_1$. 
+
+Hypothesis tests can involve any of the population parameters. You may have seen hypothesis tests for means or proportions previously, and later in this class we will discuss tests for many means (ANOVA).
+
+Second, a **hypothesis test** consists of a test between two competing hypotheses: (1) a **null hypothesis** $H_0$ (pronounced "H-naught") versus (2) an **alternative hypothesis** $H_A$ (sometimes denoted $H_1$). 
+
+Generally the null hypothesis is a claim that there is "no effect" or "no relationship." In many cases, the null hypothesis represents the status quo or a situation that nothing interesting is happening. Furthermore, generally the alternative hypothesis is the claim the experimenter or researcher wants to establish or find evidence to support. It is viewed as a "competing" hypothesis to the null hypothesis $H_0$. In our birth weights example, an appropriate hypothesis test would be:
+
+<center>
+
+$H_0:$ there is no relationship between a baby's birth weight and a mother's age
+
+$H_A:$ there is a relationship between a baby's birth weight and a mother's age
+
+</center>
+
+Note some of the choices we have made. First, we set the null hypothesis $H_0$ to be that there is no relationship between a baby's birth weight and a mother's age and the competing alternative hypothesis $H_A$ to be that there is a relationship between a baby's birth weight and a mother's age.
+While it would not be wrong in principle to reverse the two, it is a convention in statistical inference that the null hypothesis is set to reflect a "null" situation where "nothing is going on." 
+
+As we discussed earlier, in this case, $H_0$ corresponds to there being no 
+relationship between a baby's birth weight and a mother's age. Furthermore, we set $H_A$ to be that there is a relationship between a baby's birth weight and a mother's age, which does not state what direction that relationship may be. This is called a **two-sided alternative**, whereas an alternative hypothesis which indicates the direction of the relationship (e.g., as age increases birth weight decreases) is called a **one-sided alternative**. 
+
+We can re-express the formulation of our hypothesis test using the mathematical notation for our population parameter of interest, the slope of the relationship between a baby's birth weight and a mother's age for all babies born in the US in 2014 -- $\beta_1$:
+
+<center>
+
+$H_0: \beta_1 = 0$
+
+$H_A: \beta_1 \neq 0$
+
+</center>
+
+Observe how the alternative hypothesis $H_A$ is two-sided with $\beta_1 \neq 0$. Had we opted for a one-sided alternative, we would have set $\beta_1 > 0$ or $\beta_1 > 0$. To keep things simple for now, we'll stick with the  simpler two-sided alternative. We will discuss why I believe it is better for science to do two-sided tests later this week in your Statistical Critique.
+
+Third, a **test statistic** is a *point estimate / sample statistic* formula used for hypothesis testing. Note that a sample statistic is merely a summary statistic based on a sample of observations. Fourth, the **observed test statistic** is the value of the test statistic that we observed in real life. In our case, we computed this value using the data saved in the `births14` data frame. It was the observed slope for the relationship between baby birth weights and mother's age $b_1 =$ `r round(obs_slope, 3)`. 
+
+Fifth, the **null distribution** is the sampling distribution of the test statistic *assuming the null hypothesis $H_0$ is true*. Ooof! That's a long one! Let's unpack it slowly. The key to understanding the null distribution is that the null hypothesis $H_0$ is *assumed* to be true. We're not saying that $H_0$ is true at this point, we're only assuming it to be true for hypothesis testing purposes. In our case, this corresponds to our hypothesized universe of no relationship between baby birth weights and mother's age. Assuming the null hypothesis $H_0$, also stated as "Under $H_0$," how does the test statistic vary due to sampling variation? In our case, how will the slope statistics $b_1$ vary due to sampling under $H_0$? Recall from last week that distributions displaying how point estimates vary due to sampling variation are called *sampling distributions*. The only additional thing to keep in mind about null distributions is that they are sampling distributions *assuming the null hypothesis $H_0$ is true*. 
+
+In our case, we previously visualized a null distribution in @fig-ten-shuffles, which we re-display in @fig-ten-shuffles-revised
+using our new notation and terminology. It is the distribution of the `r nrow(randomize_10)` sample slopes computed *assuming* a hypothetical universe of no relationship between baby birth weights and mother's age. I've marked the value of the observed test statistic of `r obs_slope` with a vertical line.
+
+```{r null-distribution-2}
+#| label: fig-ten-shuffles-revised
+#| fig-cap: "Null distribution and observed test statistic."
+
+ggplot(randomize_10, mapping = aes(x = stat)) +
+  geom_histogram(binwidth = 0.005, color = "white") +
+  geom_vline(xintercept = obs_slope, lwd = 1.5, color = "red") +
+  labs(x = expression(paste("Sample slope statistic ", b[1])))
+```
+
+Sixth, the **$p$-value** is the probability of obtaining a test statistic just as extreme or more extreme than the observed test statistic *assuming the null hypothesis $H_0$ is true*. Double ooof! Let's unpack this slowly as well. You can think of the $p$-value as a quantification of "surprise": assuming $H_0$ is true, how surprised are we with what we observed? Or in our case, in our hypothesized universe of no relationship between baby birth weights and mother's age, how surprised are we that we observed a slope statistic `r obs_slope` from our collected samples assuming $H_0$ is true? Very surprised? Somewhat surprised? Not surprised? 
+
+The $p$-value quantifies this probability, or in the case of our `r nrow(randomize_10)` slope statistics in @fig-ten-shuffles-revised, what proportion had a more "extreme" result? Here, extreme is defined in terms of the alternative hypothesis $H_A$ that there is a relationship between baby birth weights and mother's age, which does not state a direction. So, we need to look for statistics in **both tails**, for positive relationships and negative relationships. 
+
+```{r ten-shuffle-p-value}
+num <- sum(randomize_10$stat >= obs_slope)
+denom <- nrow(randomize_10)
+p_val <- round(num / denom, 3)
+```
+
+::: {.column-margin}
+::: {.callout-caution}
+# Accepting the null
+
+Careful! Failing to reject the null hypothesis is not the same as accepting the null hypothesis! You cannot state that someone is innocent just because there was not sufficient evidence they were guilty. 
+:::
+:::
+
+In this case, `r sum(randomize_10$stat >= obs_slope)` times out of `r nrow(randomize_10)`, we obtained a difference in proportion greater than or equal to the observed slope of `r obs_slope`. As I suggested before, this event doesn't seem that rare as it could occur 10% of the time. As our observed slope is not vastly different from what we would expect to occur if the null was true, we should *fail to reject* the hypothesized universe. 
+
+Seventh and lastly, in many hypothesis testing procedures, it is commonly recommended to set the **significance level** of the test beforehand.  It is denoted by the Greek letter $\alpha$ (pronounced "alpha"). This value acts as a cutoff on the $p$-value, where if the $p$-value falls below $\alpha$, we would "reject the null hypothesis $H_0$." Alternatively, if the $p$-value does not fall below $\alpha$, we would "fail to reject $H_0$." 
+
+While different fields tend to use different values of $\alpha$, some commonly used values for $\alpha$ are 0.1, 0.01, and 0.05; with 0.05 being the choice people often make without putting much thought into it. We'll talk more about $\alpha$ significance levels in @sec-ht-interpretation, but first let's fully conduct the hypothesis test corresponding to our `births14` example using the `infer` package.
+
+# Conducting a hypothesis test
+
+# Interpreting a hypothesis test {#sec-ht-interpretation}
+
+## Only two outcomes
+
+## Types of errors
+
+# Connecting with confidence intervals
+
+# Theory-based hypothesis tests
+
+# Checking Model Conditions
+
+# References
