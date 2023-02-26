@@ -74,7 +74,7 @@ Download the reading guide as a [Word Document here](reading_guide/week8reading_
 
 Download the reading guide as an [HTML file here](reading_guide/week8_reading_guide_HT.html)
 
-# Birth weights & mother'sage
+# Birth weights & mother's age
 
 Last week we considered the question of assessing the relationship between a baby's birth weight and the age of the mother. To explore this relationship, we used the [`births14`](http://openintrostat.github.io/openintro/reference/births14.html) dataset--a random sample of 1,000 cases from a large public dataset of all US birth records released in 2014.
 
@@ -96,7 +96,7 @@ births14 %>%
 
 ggplot(data = births14, 
        mapping = aes(x = mage, y = weight)) + 
-  geom_point() + 
+  geom_jitter() + 
   geom_smooth(method = "lm") +
   labs(x = "Mother's Age", 
        y = "Birth Weight of Baby (lbs)") + 
@@ -133,11 +133,11 @@ Based on these coefficients, the estimated regression equation is:
 
 $$ \widehat{\text{birth weight}} = -6.793 + 0.014 \times \text{mother's age}$$
 
-Based on the regression equation, it appear that for every year older a mother is, we would expect the mean birth weight to increase by approximately 0.014 lbs. This seems like a small value, which is confirmed when we increase the mother's age by 10-years, which is associated with a 0.14 lb increase in birth weight.
+Based on the regression equation, it appear that for every year older a mother is, we would expect the mean birth weight to increase by approximately `r obs_slope` lbs. This seems like a small value, which is confirmed when we increase the mother's age by 10-years, which is associated with a `r obs_slope * 10` lb increase in birth weight.
 
 ## Research question
 
-This raises the question of whether this change is "large[^1] enough" to suggest that there **is** a relationship between the birth weight of a baby and the age of the mother. Could we obtain a slope statistic of 0.279 occur just by chance, in a hypothetical world where there is no relationship between a baby's birth weight and a mother's age? In other words, what role does *sampling variation* play in this hypothetical world? To answer this question, we'll again rely on a computer to run *simulations*.
+This raises the question of whether this change is "large[^1] enough" to suggest that there **is** a relationship between the birth weight of a baby and the age of the mother. Could we obtain a slope statistic of ` r obs_slope` occur just by chance, in a hypothetical world where there is no relationship between a baby's birth weight and a mother's age? In other words, what role does *sampling variation* play in this hypothetical world? To answer this question, we'll again rely on a computer to run *simulations*.
 
 [^1]: I prefer to use the term meaningful.
 
@@ -205,9 +205,9 @@ shuffled_births14 %>%
   calculate(stat = "slope")
 ```
 
-So, in this hypothetical universe where there is no relationship between a baby's birth weight and a mother's age, we obtained a slope of 0.0142.
+So, in this hypothetical universe where there is no relationship between a baby's birth weight and a mother's age, we obtained a slope of `r obs_slope`.
 
-Notice that this slope statistic is not the same as the slope statistic of 0.014 that we originally observed. This is once again due to *sampling variation*. How can we better understand the effect of this sampling variation? By repeating this shuffling several times!
+Notice that this slope statistic is not the same as the slope statistic of `r obs_slope` that we originally observed. This is once again due to *sampling variation*. How can we better understand the effect of this sampling variation? By repeating this shuffling several times!
 
 ## Shuffling 10 times
 
@@ -262,7 +262,7 @@ Observe first that the histogram is roughly centered at 0, which makes sense. A 
 
 However, while the values are centered at 0, there is variation about 0. This is because even in a hypothesized universe of no relationship between a baby's birth weight and mother's age, you will still likely observe a slight relationship because of chance sampling variation. Looking at the histogram in @fig-ten-shuffles, such differences could even be as extreme as 0.02.
 
-Turning our attention to what we observed in the `births14` dataset: the observed slope of 0.014 is is marked with a vertical dark line. Ask yourself: in a hypothesized world of no relationship between a baby's birth weight and mother's age, how likely would it be that we observe this slope statistic? That's hard to say! It looks like there is only one statistic larger than the observed statistic out of ten, but that means we would expect to see a statistic bigger than what we saw 10% of the time in this hypothetical universe. To me, something happening 10% of the time doesn't seem like a rare event.
+Turning our attention to what we observed in the `births14` dataset: the observed slope of `r obs_slope` is is marked with a vertical dark line. Ask yourself: in a hypothesized world of no relationship between a baby's birth weight and mother's age, how likely would it be that we observe this slope statistic? That's hard to say! It looks like there is only one statistic larger than the observed statistic out of ten, but that means we would expect to see a statistic bigger than what we saw 10% of the time in this hypothetical universe. To me, something happening 10% of the time doesn't seem like a rare event.
 
 ## What just happened?
 
@@ -278,9 +278,7 @@ In our example, we saw that the observed slope in the `births14` dataset was som
 
 Much like the terminology, notation, and definitions relating to sampling you saw last week, there are a lot of terminology, notation, and definitions related to hypothesis testing as well. Learning these may seem like a very daunting task at first. However, with practice, practice, and more practice, anyone can master them.
 
-First, a **hypothesis** is a statement about the value of an unknown population parameter. In our example, our population parameter of interest is the slope of the relationship between baby's birth weight and mother's age for **every** baby born in the US in 2014. This parameter is notated with $\beta_1$.
-
-Hypothesis tests can involve any of the population parameters. You may have seen hypothesis tests for means or proportions previously, and later in this class we will discuss tests for many means (ANOVA).
+First, a **hypothesis** is a statement about the value of an unknown population parameter. In our example, our population parameter of interest is the slope of the relationship between baby's birth weight and mother's age for **every** baby born in the US in 2014. This parameter is notated with $\beta_1$. Hypothesis tests can involve any of the population parameters. You may have seen hypothesis tests for means or proportions previously, and later in this class we will discuss tests for many means (ANOVA).
 
 Second, a **hypothesis test** consists of a test between two competing hypotheses: (1) a **null hypothesis** $H_0$ (pronounced "H-naught") versus (2) an **alternative hypothesis** $H_A$ (sometimes denoted $H_1$).
 
@@ -350,7 +348,7 @@ Seventh and lastly, in many hypothesis testing procedures, it is commonly recomm
 
 While different fields tend to use different values of $\alpha$, some commonly used values for $\alpha$ are 0.1, 0.01, and 0.05; with 0.05 being the choice people often make without putting much thought into it. We'll talk more about $\alpha$ significance levels in @sec-ht-interpretation, but first let's fully conduct the hypothesis test corresponding to our `births14` example using the `infer` package.
 
-# Conducting a hypothesis test
+# Conducting a hypothesis test using **infer** {#infer-workflow-ht}
 
 Last week, you learned how to to construct confidence intervals using the **infer** R package. The infer package contains a workflow for constructing confidence intervals which emphasizes each of the steps in the underlying process. In @fig-infer-ci, we see that this workflow is comprised of functions whose names describe what they do: 
 
@@ -359,17 +357,15 @@ Last week, you learned how to to construct confidence intervals using the **infe
 1. `calculate()` the summary statistic of interest.
 1. `visualize()` the resulting bootstrap distribution and confidence interval.
 
-![Process for constructing confidence intervals with the infer package.](images/whole_process_ci.png){#fig-infer-ci}
+![Process for constructing **confidence intervals** with the infer package.](images/whole_process_ci.png){#fig-infer-ci}
 
 This week, we'll see how we can modify this process to instead conduct hypothesis tests. You'll notice that the basic outline of the workflow is almost identical, except for an additional `hypothesize()` step between the `specify()` and `generate()` steps, as can be seen in @fig-infer-ht.
 
-![Process for conducting hypothesis tests with the infer package.](images/whole_process_ht.png){#fig-infer-ht}
+![Process for conducting **hypothesis tests** with the infer package.](images/whole_process_ht.png){#fig-infer-ht}
 
-Throughout this section, we'll use a pre-specified significance level $\alpha$ = 0.05 for our hypothesis tests. I'll leave the discussion on the choice of this $\alpha$ value until later on in @sec-errors. 
+Throughout this section, we'll use a pre-specified significance level $\alpha$ = 0.05 for our hypothesis tests. I'll leave the discussion on the choice of this $\alpha$ value until later on in @sec-choosing-alpha. 
 
-## `infer` package workflow {#infer-workflow-ht}
-
-### 1. `specify()` variables
+## `specify()` variables
 
 Recall that we use the `specify()` verb to specify the response variable and, if needed, any explanatory variables for our study. In this case, since we are interested in the linear relationship between a baby's birth weight and a mother's age, we set `weight` as the response variable and `mage` as the explanatory variable. 
 
@@ -382,14 +378,14 @@ births14 %>%
 
 Again, notice how the `births14` data itself doesn't change, but the `Response: weight (numeric)` and `Explanatory: mage (numeric)` *meta-data* do. This is similar to how the `group_by()` verb from `dplyr` doesn't change the data, but only adds "grouping" meta-data, as we saw in Week 3. 
 
-### 2. `hypothesize()` the null
+## `hypothesize()` the null
 
 In order to conduct hypothesis tests using the `infer` workflow, we need a new step not present for confidence intervals: `hypothesize()`. Recall from @sec-understanding-ht that our hypothesis test was
 
 <center>
 $H_0: \beta_1 = 0$
 
-$H_A: \beta_1 \newq 0$
+$H_A: \beta_1 \neq 0$
 </center>
 
 In other words, the null hypothesis $H_0$ corresponding to our "hypothesized universe" stated that there was no relationship between a baby's birth weight and a mother's age. We set this null hypothesis $H_0$ in our `infer` workflow using the `hypothesize()` function. We do, however, need to declare what we are assuming about the relationship between our variables. For our regression we are assuming there is no relationship between our variables or that they are`"independent"`.  
@@ -404,13 +400,13 @@ births14 %>%
 
 Again, the data has not changed yet. In fact, we've just added one additional piece of *meta-data* the null hypothesis we are assuming. 
 
-### 3. `generate()` replicates
+## `generate()` replicates
 
 ```{r nreps}
 n_reps <- 1000L
 ```
 
-After we `hypothesize()` the null hypothesis, we `generate()` replicates of "shuffled" datasets assuming the null hypothesis is true. We do this by repeating the shuffling exercise you performed in Section @sec-ht-activity several times. Instead of merely doing it 10 times, let's use the computer to repeat this `r n_reps` times by setting ``reps = `r n_reps` `` in the `generate()` function. However, unlike for confidence intervals where we generated replicates using `type = "bootstrap"` resampling with replacement, we'll now perform shuffles/permutations by setting `type = "permute"`. Recall that shuffles / permutations are a kind of resampling, but unlike the bootstrap method, they involve resampling *without* replacement. 
+After we `hypothesize()` the null hypothesis, we `generate()` replicates of "shuffled" datasets assuming the null hypothesis is true. We do this by repeating the shuffling exercise you performed in  @sec-ht-activity several times. Instead of merely doing it 10 times, let's use the computer to repeat this `r n_reps` times by setting ``reps = `r n_reps` `` in the `generate()` function. However, unlike for confidence intervals where we generated replicates using `type = "bootstrap"` resampling with replacement, we'll now perform shuffles/permutations by setting `type = "permute"`. Recall that shuffles / permutations are a kind of resampling, but unlike the bootstrap method, they involve resampling *without* replacement. 
 
 ```{r generate}
 #| eval: true
@@ -423,9 +419,9 @@ births_generate <- births14 %>%
 births_generate
 ```
 
-Observe that the resulting data frame has `r nrow(births_generate) %>% scales::comma()` rows. This is because we performed shuffles / permutations for each of the `r nrow(births)` rows `r n_reps` times and $`r (nrow(births)*n_reps) %>% scales::comma()` = `r n_reps` \cdot `r nrow(births)`$. If you explore the `births_generate` data frame, you would notice that the variable `replicate` indicates which resample each row belongs to. So it has the value `1` `r nrow(births)` times, the value `2` `r nrow(births)` times, all the way through to the value `r n_reps` `r nrow(births)` times. 
+Observe that the resulting data frame has `r nrow(births_generate) %>% scales::comma()` rows. This is because we performed shuffles / permutations for each of the `r nrow(births14)` rows `r n_reps` times and $`r (nrow(births14)*n_reps) %>% scales::comma()` = `r n_reps` \cdot `r nrow(births14)`$. If you explore the `births_generate` data frame, you would notice that the variable `replicate` indicates which resample each row belongs to. So it has the value `1` `r nrow(births14)` times, the value `2` `r nrow(births14)` times, all the way through to the value `r n_reps` `r nrow(births14)` times. 
 
-### 4. `calculate()` summary statistics
+## `calculate()` summary statistics
 
 Now that we have generated `r n_reps` replicates of "shuffles" assuming the null hypothesis is true, let's `calculate()` the appropriate summary statistic for each of our `r n_reps` shuffles. From @sec-understanding-ht, point estimates related to hypothesis testing have a specific name: *test statistics*. Since the unknown population parameter of interest is the relationship between baby birth weights and mother's ages for all births in the US in 2014, $\beta_1$, the test statistic here is the sample slope, $b_1$. For each of our `r n_reps` shuffles, we can calculate this test statistic by setting `stat = "slope"`.
 
@@ -454,14 +450,17 @@ Going with option two, the process would look like this:
 
 ```{r obs-slope}
 #| echo: true
+#| eval: false
 obs_slope <- births14 %>% 
   specify(response = weight, explanatory = mage) %>% 
   calculate(stat = "slope")
+```
 
+```{r}
 obs_slope
 ```
 
-### 5. `visualize()` the p-value
+## `visualize()` the p-value
 
 The final step is to measure how surprised we are by a slope of `r obs_slope` in a hypothesized universe where there is no relationship between a baby's birth weight and a mother's age. If the observed slope of `r obs_slope` is highly unlikely, then we would be inclined to reject the validity of our hypothesized universe. 
 
@@ -560,7 +559,7 @@ Thus a Type I error corresponds to incorrectly putting a truly innocent person i
 
 ![Type I and Type II errors in hypothesis tests.](images/gt_error_table_ht.png){#fig-trial-errors-table-ht}
 
-## How do we choose alpha? {#choosing-alpha}
+## How do we choose alpha? {#sec-choosing-alpha}
 
 If we are using a sample to make inferences about a population, we run the risk of making errors. For confidence intervals, a corresponding "error" would be constructing a confidence interval that does not contain the true value of the population parameter. For hypothesis tests, this would be making either a Type I or Type II error. Obviously, we want to minimize the probability of either error; we want a small probability of making an incorrect conclusion:
 
@@ -711,10 +710,10 @@ However, the most important observation to make in the previous formula is that 
 
 ### Test statistic {#regression-test-statistic}
 
-The fourth column of the regression table in @tab-regression, `statistic`, corresponds to a *test statistic* relating to the following *hypothesis test*:
+The fourth column of the regression table in @tbl-regression, `statistic`, corresponds to a *test statistic* relating to the following *hypothesis test*:
 
 <center>
-$ H_0: \beta_1 = 0$ 
+$H_0: \beta_1 = 0$ 
 
 $H_A: \beta_1 \neq 0$
 </center>
@@ -751,7 +750,12 @@ Again recalling our terminology, notation, and definitions related to hypothesis
 
 > A *p-value* is the probability of obtaining a test statistic just as extreme or more extreme than the observed test statistic *assuming the null hypothesis $H_0$ is true*.
 
-Recall that you can intuitively think of the $p$-value as quantifying how "extreme" the observed fitted slope of $b_1$ = `r obs_slope` is in a "hypothesized universe" where there is no relationship between a baby's birth weight and a mother's age. 
+Recall that you can intuitively think of the $p$-value as quantifying how "extreme" the observed fitted slope of $b_1$ = `r round(obs_slope, digits = 3)` is in a "hypothesized universe" where there is no relationship between a baby's birth weight and a mother's age. 
+
+::: {.callout-tip}
+If you're a bit rusty on the $t$-distribution, [here](https://www.jmp.com/en_us/statistics-knowledge-portal/t-test/t-distribution.html#:~:text=The%20shape%20of%20the%20t,more%20like%20a%20z%2Ddistribution) is an article describing how degrees of freedom relate to the shape of the $t$-distribution. 
+:::
+
 More precisely, however, the $p$-value corresponds to how extreme the observed test statistic of `r obs_slope` is when compared to the appropriate *null distribution*. Recall from @sec-understanding-ht, that a null distribution is the sampling distribution of the test statistic *assuming the null hypothesis $H_0$ is true*. It can be mathematically proven that a $t$-distribution with degrees of freedom equal to $df = n - 2 = `r nrow(births14)` - 2 = `r nrow(births14) - 2`$ is a reasonable approximation to the null distribution, if certain conditions for inference are not violated. We will discuss these conditions shortly in @sec-conditions. 
 
 
@@ -829,7 +833,7 @@ Conditions **L**, **N**, and **E** can be verified through what is known as a *r
 Recall our definition of a residual: it is the *observed value* minus the *fitted value* denoted by $y - \widehat{y}$. Recall that residuals can be thought of as the error or the "lack-of-fit" between the observed value $y$ and the fitted value $\widehat{y}$ on the regression line in @fig-births-slr. In @fig-residual-example, we illustrate one particular residual out of `r nrow(births14)` using an arrow, as well as its corresponding observed and fitted values using a circle and a square, respectively.
 
 ```{r residual-example}
-#| label: fig:residual-example
+#| label: fig-residual-example
 #| fig-cap: "Example of observed value, fitted value, and residual."
 
 # Pick out one particular point to drill down on
@@ -870,7 +874,7 @@ ggplot(data = births14,
            )
 ```
 
-Furthermore, we can automate the calculation of all $n$ = `r nrow(births14)` residuals by applying the `get_regression_points()` function to our saved regression model in `births_lm`. Observe how the resulting values of `residual` are roughly equal to `score - score_hat` (there is potentially a slight difference due to rounding error).
+Furthermore, we can automate the calculation of all $n$ = `r nrow(births14)` residuals by applying the `get_regression_points()` function to our saved regression model in `births_lm`. Observe how the resulting values of `residual` are roughly equal to `mage - mage_hat` (there is potentially a slight difference due to rounding error).
 
 ```{r regression-points}
 #| echo: true
@@ -886,7 +890,7 @@ A *residual analysis* is used to verify conditions **L**, **N**, and **E** and c
 
 ### Linearity of relationship
 
-The first condition is that the relationship between the outcome variable $y$ and the explanatory variable $x$ must be **L**inear. Recall the scatterplot in Figure \@ref(fig:regline) where we had the explanatory variable $x$ as "beauty" score and the outcome variable $y$ as teaching score. Would you say that the relationship between $x$ and $y$ is linear? It's hard to say because of the scatter of the points about the line. In the authors' opinions, we feel this relationship is "linear enough."
+The first condition is that the relationship between the outcome variable $y$ and the explanatory variable $x$ must be **L**inear. Recall the scatterplot in  @fig-births-slr where we had the explanatory variable $x$ as mother's age and the outcome variable $y$ as baby's birth weight. Would you say that the relationship between $x$ and $y$ is linear? It's hard to say because of the scatter of the points about the line. In my opinion, this relationship is "linear enough."
 
 Let's present an example where the relationship between $x$ and $y$ is clearly not linear in @fig-non-linear. In this case, the points clearly follow a curved relationship, more closely resembling a [logarithmic scale](https://www.rapidtables.com/math/algebra/logarithm/logarithm-graph.html). In this case, any results from an inference for regression would not be valid.
 
@@ -913,10 +917,10 @@ The second condition is that the residuals must be **I**ndependent. In other wor
 
 For the `evals` dataset, while there is data on `r nrow(evals)` courses, these `r nrow(evals)` courses were actually taught by `r evals %>% select(prof_ID) %>% n_distinct()` unique instructors. In other words, the same professor is often included more than once in our data. For a professor in the `evals` data who taught multiple classes, it seems reasonable to expect that their teaching scores will be related to each other. If a professor gets a high `score` in one class, chances are fairly good they'll get a high `score` in another. This dataset thus provides different information than if we had `r nrow(evals)` unique instructors teaching the `r nrow(evals)` courses.
 
-In this case, we say there exists *dependence* between observations. The first four courses taught by professor 1 are dependent, the next 3 courses taught by professor 2 are related, and so on. So in this case, the independence condition is violated. The most appropriate analysis would take into account that we have *repeated measures* for the same profs, but that is beyond the scope of this class. What we could do, however, is devise a method to collapse the multiple observations for each professor into **one** observation. This could be done a variety of ways:
+In this case, we say there exists *dependence* between observations. So in this case, the independence condition is violated. The most appropriate analysis would take into account that we have *repeated measures* for the same profs, but that is beyond the scope of this class. What we could do, however, is devise a method to collapse the multiple observations for each professor into **one** observation. This could be done a variety of ways:
 
 - randomly selecting one observation per professor
-- taking the mean of their `score`s^[Taking the mean of observations assumes they are inherently similar, so we shouldn't calculate the mean of evaluation scores that are very different!]
+- taking the mean of their scores^[Taking the mean of observations assumes they are inherently similar, so we shouldn't calculate the mean of evaluation scores that are very different!]
 - selecting the maximum / minimum / median value 
 
 ### Normality of residuals
@@ -927,6 +931,7 @@ The simplest way to check the normality of the residuals is to look at a histogr
 
 ```{r error-hist}
 #| echo: true
+#| eval: false
 
 regression_points <- get_regression_points(births_lm)
 
@@ -1001,13 +1006,13 @@ ggplot(data = regression_points,
 
 You can think of @fig-equal-var a modified version of the plot with the regression line in @fig-births-slr, but with the regression line flattened out to $y=0$. Looking at this plot, would you say that the spread of the residuals around the line at $y=0$ is constant across all values of the explanatory variable $x$ of mother's age? This question is rather qualitative and subjective in nature, thus different people may respond with different answers. For example, some people might say that there is slightly more variation in the residuals for ages between 20 and 40 than for ages below 20 and above 40. However, it can be argued that there isn't a *drastic* non-constancy. Moreover, this could be an artifact of having smaller numbers of younger / older mothers in the sample. 
 
-In Figure @fig-non-equal-variance-residuals I present an example where the residuals clearly do not have equal variance across all values of the explanatory variable $x$.
+In @fig-non-equal-variance-residuals I present an example where the residuals clearly do not have equal variance across all values of the explanatory variable $x$.
 
 ```{r equal-variance-residuals}
 #| label: fig-non-equal-variance-residuals
 #| fig-cap: "Example of clearly non-equal variance."
 
-evals%>%
+evals %>%
   mutate(eps = (rnorm(n(), 0, 0.075 * bty_avg^2)) * 0.4) %>%
   ggplot(aes(x = bty_avg, y = eps)) +
   geom_point() +
