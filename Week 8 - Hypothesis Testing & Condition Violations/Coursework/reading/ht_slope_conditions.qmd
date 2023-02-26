@@ -13,8 +13,8 @@ execute:
   message: false
   warning: false
 resources: 
-  - reading_guide/week7_reading_guide_CI.docx
-  - reading_guide/week7_reading_guide_CI.html
+  - reading_guide/week8_reading_guide.docx
+  - reading_guide/week8_reading_guide.html
 ---
 
 ```{r set-up}
@@ -70,9 +70,9 @@ This week's reading is a compilation of [Chapter 8](https://moderndive.com/8-con
 
 ## Reading Guide
 
-Download the reading guide as a [Word Document here](reading_guide/week8reading_guide_HT.docx)
+Download the reading guide as a [Word Document here](reading_guide/week8reading_guide.docx)
 
-Download the reading guide as an [HTML file here](reading_guide/week8_reading_guide_HT.html)
+Download the reading guide as an [HTML file here](reading_guide/week8_reading_guide.html)
 
 # Birth weights & mother's age
 
