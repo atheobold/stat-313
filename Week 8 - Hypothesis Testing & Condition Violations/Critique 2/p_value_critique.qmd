@@ -8,9 +8,11 @@ format:
     table-of-contents: true
     toc-depth: 2
     number-sections: true
-    number-depth: 2
+    number-depth: 1
 editor: visual
 ---
+
+![](significant.jpeg)
 
 ## Assignment Details
 
@@ -47,7 +49,7 @@ For this section, you are required to:
 Note, you are required to *justify* why you believe the selected misinterpretations apply to your article's statistical argument(s).
 :::
 
-# Part Two: Learning More about the Backlash Against $p$-values
+# Part Three: Learning More about the Backlash Against $p$-values
 
 > "Over time it appears the p-value has become a gatekeeper for whether work is publishable. This apparent editorial bias leads to the
 ‘file-drawer effect,’ in which research with statistically significant outcomes are much more likely to get published, while other work that might well be just as important scientifically is never seen in print. It also leads to practices called by such names as ‘p-hacking’ and ‘data dredging’ that emphasize the search for small p-values over other statistical and scientific reasoning."
@@ -61,7 +63,7 @@ In March of 2019, Valentin Amrhein, Sander Greenland, Blake McShane and more tha
 1. it incentivizes researchers to do whatever it takes to obtain "significant" p-values, even through dishonest means
 2. it dismisses the importance of results where no "significant" effects are found
  
-First, go to the website for the journal where your article was published. Now, find their criteria for publication. If you are having a difficult time finding these criteria, it may be simpler to Google "<title of journal> publication criteria," substituting the name of your journal. 
+First, go to the website for the journal where your article was published. Now, find their criteria for publication. If you are having a difficult time finding these criteria, it may be simpler to Google "*title of journal* publication criteria," substituting the name of your journal. 
 
 Search through the criteria and see if there are requirements for (1) the "significance" of the findings and (2) the availability of the data and / or analyses. Describe what you find! 
 
@@ -69,11 +71,7 @@ Search through the criteria and see if there are requirements for (1) the "signi
 Feel free to type out what you find while searching the journal or simply copy-and-paste the criteria you find listed on their website. 
 :::
 
-# Part Three: Improving Statistical Arguments
-
-::: {.column-margin}
-![](significant.jpeg)
-:::
+# Part Four: Improving Statistical Arguments
 
 > "The use of 'significance' in reporting statistical results is fraught with problems—but they could be solved with a simple change in practice."
 > Megan Higgs
@@ -83,7 +81,7 @@ More and more journals are retiring the use of statistical significance as a req
 
 For this section you are required to :
 
-- read [*Do We Really Need the S-Word?](https://www.americanscientist.org/article/do-we-really-need-the-s-word) by Dr. Megan Higgs
+- read [*Do We Really Need the S-Word?*](https://www.americanscientist.org/article/do-we-really-need-the-s-word) by Dr. Megan Higgs
 - name **at least one** aspect of the interpretation from your article you believe is clear / understandable
 - name **at least one** aspect of the interpretation from your article could be improved to be more clear / understandable
 
