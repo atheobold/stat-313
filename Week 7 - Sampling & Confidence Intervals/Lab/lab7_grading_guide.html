@@ -2667,6 +2667,10 @@ Note
 <p>They are not required to include a regression line, but if they do, great!</p>
 </div>
 </div>
+<p><em>If they don’t have axis labels with the units</em>:</p>
+<blockquote class="blockquote">
+<p>It is important to include an axis label stating what the units of each variable are!</p>
+</blockquote>
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
@@ -2755,7 +2759,7 @@ Note
 <li><strong>confidence</strong>: they are 85% confident</li>
 <li><strong>statistic</strong>: the slope between water temperature and latitude</li>
 <li><strong>population</strong>: for all marshes along the eastern US</li>
-<li><strong>interval</strong>: is between <lower bound> and <upper bound></upper></lower></li>
+<li><strong>interval</strong>: is between [lower bound] and [upper bound]</li>
 </ul>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -2780,7 +2784,7 @@ Note
 </blockquote>
 <p><em>If they have state an incorrect population</em>:</p>
 <blockquote class="blockquote">
-<p>What population were these 13 marshes drawn from?</p>
+<p>What population were these 13 marshes drawn from? What population does your confidence interval apply to?</p>
 </blockquote>
 </section>
 <section id="question-10" class="level2">
@@ -2790,7 +2794,28 @@ Note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_confidence_interval</span>(bootstrap_dist, </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">level =</span> <span class="fl">0.85</span>, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">point_estimate =</span> obs_slope)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">point_estimate =</span> obs_slope, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">type =</span> <span class="st">&quot;se&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>If they don’t have <code>type = &quot;se&quot;</code></em>:</p>
+<blockquote class="blockquote">
+<p>What method do you want the function to use when calculating your confidence interval? Percentile intervals are the default!</p>
+</blockquote>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If they type in the actual number for the estimated slope rather than using the <code>obs_slope</code> object, you can give them this reminder:</p>
+<blockquote class="blockquote">
+<p>It is better practice not to “hard-code” numbers in our code, but to reference values stored in objects. This makes our code more resistant to changes in the dataset.</p>
+</blockquote>
+</div>
 </div>
 </section>
 <section id="question-11" class="level2">
@@ -2814,7 +2839,7 @@ Note
 <p><strong>To earn a Success:</strong></p>
 <ul>
 <li>states whether they do / do not believe the sample of 13 marshes is representative of all marshes along the eastern US</li>
-<li>justifies why</li>
+<li>justifies why using something something that is true?</li>
 </ul>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -2829,6 +2854,14 @@ Note
 <p>I’m willing to be pretty flexible here, but the key aspect is that they need to <strong>justify</strong> their reasoning.</p>
 </div>
 </div>
+<p><em>If their justification is not reasonable</em>:</p>
+<blockquote class="blockquote">
+<p>Where were these 13 marshes located geographically? Do you believe that these 13 marshes are representative of the broader population they were sampled from?</p>
+</blockquote>
+<p><em>If their justification is about the shape of the bootstrap distribution</em>:</p>
+<blockquote class="blockquote">
+<p>You are on the right track, we need for the sample to be representative of the population from which it was sampled. However, we cannot assess the representativeness of a sample using a bootstrap distribution. This can only be assessed by inspecting how the data were collected.</p>
+</blockquote>
 </section>
 
 </main>
