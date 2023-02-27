@@ -1,5 +1,5 @@
 ---
-title: "Lab 4: Confidence Intervals for Water Temperature and Latitude"
+title: "Lab 7: Confidence Intervals for Water Temperature and Latitude"
 author: "The names of your group members here!"
 format: 
   html:
@@ -158,4 +158,4 @@ Just for fun, let's compare the confidence we obtained using a percentile method
 
 A bootstrap distribution aims to simulate the variability we'd get from other samples from our population. However, the accuracy of these samples relies on the quality of our original sample.
 
-**11. Based on the information given, how do you feel about the assumption a bootstrap distribution makes about the original sample? What issues do you believe might prevent this assumption being appropriate?)**
+**12. Based on the information given, how do you feel about the assumption a bootstrap distribution makes about the original sample? What issues do you believe might prevent this assumption being appropriate?)**

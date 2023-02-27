@@ -1,5 +1,5 @@
 ---
-title: "Lab 4: Confidence Intervals for Water Temperature and Latitude"
+title: "Lab 7: Confidence Intervals for Water Temperature and Latitude"
 author: "Key by Dr. Theobold"
 format: 
   html:
@@ -174,6 +174,6 @@ get_confidence_interval(bootstrap_dist,
 
 A bootstrap distribution aims to simulate the variability we'd get from other samples from our population. However, the accuracy of these samples relies on the quality of our original sample.
 
-**11. Based on the information given, how do you feel about the assumption a bootstrap distribution makes about the original sample? What issues do you believe might prevent this assumption being appropriate?)**
+**12. Based on the information given, how do you feel about the assumption a bootstrap distribution makes about the original sample? What issues do you believe might prevent this assumption being appropriate?)**
 
 *The assumption is that the sample is random / representative of the population. I don't honestly know enough about the representative-ness of the 13 marshes selected for this study, but I imagine there is a great deal of variability.*
