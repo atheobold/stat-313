@@ -21,6 +21,35 @@ null_dist <- hbr_maples %>%
   calculate(stat = "slope") 
 ```
 
+::: {style="font-size: 3em; color: #FFFFFF;"}
+Weeks 8, 9, & 10
+:::
+
+::: columns
+::: {.column width="30%"}
+**Week 8**
+
+- Learn about hypothesis testing for slope
+- Critique use of p-values for statistical arguments
+:::
+
+::: {.column width="30%"}
+**Week 9**
+
+- Learn about one-way ANOVA
+- Get started on first portion of Final Project
+:::
+
+::: {.column width="30%"}
+**Week 10**
+
+- Learn about two-way ANOVA
+- Finish Final Project
+:::
+:::
+
+
+##
 
 ::: {style="font-size: 4em; color: #FFFFFF;"}
 you...
@@ -225,10 +254,10 @@ a bootstrap distribution
 :::
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
-Exploring the `hbr_maples` dataset! 
+Exploring the `hbr_maples` dataset!
 :::
 
 ::: columns
@@ -246,7 +275,7 @@ Exploring the `hbr_maples` dataset!
 :::
 :::
 
-##
+## 
 
 ```{r seedlings-slr}
 #| echo: false
@@ -279,7 +308,7 @@ ggplot(data = hbr_maples,
 **What condition do we need to be worried about?**
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 Modeling the relationship between stem length and stem dry mass
@@ -315,12 +344,14 @@ How do I know what is likely to happen if the null is true?
 . . .
 
 <center>
+
 ::: {style="font-size: 3em; color: #0F4C81;"}
 Permuting!
 :::
+
 </center>
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 **Generating a permuted resample**
@@ -328,27 +359,25 @@ Permuting!
 
 . . .
 
-__Step 1:__ `specify()` your response and explanatory variables
+**Step 1:** `specify()` your response and explanatory variables
 
 . . .
 
-__Step 2:__ `hypothesize()` what would happen under the null
+**Step 2:** `hypothesize()` what would happen under the null
 
 . . .
 
-__Step 3:__ `generate()` permuted resamples
+**Step 3:** `generate()` permuted resamples
 
 . . .
 
-__Step 4:__ `calculate()` the statistic of interest
-
+**Step 4:** `calculate()` the statistic of interest
 
 ## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 Declare your variables!
 :::
-
 
 ```{r specify}
 #| eval: false
@@ -359,7 +388,7 @@ hbr_maples %>%
           explanatory = stem_length)
 ```
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 State your hypothesis!
@@ -383,12 +412,13 @@ hbr_maples %>%
 
 </br>
 
-::: {.callout-tip}
+::: callout-tip
 # Independence of variables
+
 Note! This is different from assuming your observations are independent!
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 Generate your resamples!
@@ -422,7 +452,7 @@ hbr_maples %>%
 :::
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 `infer` will let you know if you missed something!
@@ -439,12 +469,10 @@ hbr_maples %>%
 
 </br>
 
-```
-Error: Permuting should be done only when doing independence hypothesis test. See `hypothesize()`.
-In addition: Warning message:
-You have given `type = "permute"`, but `type` is expected to be `"bootstrap"`.
-This workflow is untested and the results may not mean what you think they mean. 
-```
+    Error: Permuting should be done only when doing independence hypothesis test. See `hypothesize()`.
+    In addition: Warning message:
+    You have given `type = "permute"`, but `type` is expected to be `"bootstrap"`.
+    This workflow is untested and the results may not mean what you think they mean. 
 
 ## 
 
@@ -470,12 +498,9 @@ hbr_maples %>%
 Your turn!
 :::
 
-- Why is the `hypothesize()` function used to make a null distribution but not 
-for a bootstrap distribution?
+-   Why is the `hypothesize()` function used to make a null distribution but not for a bootstrap distribution?
 
-- What does the `null = "independence"` input in `hypothesize()` mean? What is 
-it assuming about the variables declared in the `specify()` step?
-
+-   What does the `null = "independence"` input in `hypothesize()` mean? What is it assuming about the variables declared in the `specify()` step?
 
 ## 
 
@@ -490,20 +515,20 @@ visualise(null_dist) +
   labs(x = "Permuted Slope Statistic for Linear Relationship between \nStem Length and Stem Dry Mass")
 ```
 
-##
+## 
 
 ::: {style="font-size: 2.5em; color: #FFFFFF;"}
 Is our observed statistic unlikely under the null?
 :::
 
-</br> 
+</br>
 
 . . .
 
 ::: {style="font-size: 1.5em; color: #FFFFFF;"}
-__Step 1:__ Calculate observed statistic
+**Step 1:** Calculate observed statistic
 
-__Step 2:__ Find observed statistic on permutation distribution
+**Step 2:** Find observed statistic on permutation distribution
 :::
 
 ## 
@@ -523,7 +548,7 @@ obs_slope <- hbr_maples %>%
   calculate(stat = "slope") 
 ```
 
-##
+## 
 
 ```{r null-dist-with-obs-slope}
 #| echo: true
@@ -563,7 +588,7 @@ get_p_value(null_dist,
 Why did we get a warning?
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 How do we interpret a p-value?
@@ -573,21 +598,21 @@ How do we interpret a p-value?
 
 > ["The probability of observing a slope statistic (for the relationship between stem length and stem dry mass) as or more extreme than what was observed is less than 1 in 1000, if there was no relationship between a sugar maple's stem length and stem dry mass.]{style="color: #0F4C81;"}
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 Classic interpretation mistakes
 :::
 
-</br> 
+</br>
 
-> "The probability that the null hypothesis is true is about 0%." 
+> "The probability that the null hypothesis is true is about 0%."
 
 </br>
 
 </br>
 
-> "The probability that the data were produced by random chance alone is about 0%." 
+> "The probability that the data were produced by random chance alone is about 0%."
 
 ##  {background-color="#B6CADA"}
 
@@ -604,4 +629,3 @@ Suppose we obtained a p-value of 0.6.
 ::: {style="font-size: 2em; color: #0F4C81;"}
 How would we interpret this value?
 :::
-
