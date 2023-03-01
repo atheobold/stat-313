@@ -137,7 +137,7 @@ Based on the regression equation, it appear that for every year older a mother i
 
 ## Research question
 
-This raises the question of whether this change is "large[^1] enough" to suggest that there **is** a relationship between the birth weight of a baby and the age of the mother. Could we obtain a slope statistic of ` r obs_slope` occur just by chance, in a hypothetical world where there is no relationship between a baby's birth weight and a mother's age? In other words, what role does *sampling variation* play in this hypothetical world? To answer this question, we'll again rely on a computer to run *simulations*.
+This raises the question of whether this change is "large[^1] enough" to suggest that there **is** a relationship between the birth weight of a baby and the age of the mother. Could we obtain a slope statistic of `r obs_slope` occur just by chance, in a hypothetical world where there is no relationship between a baby's birth weight and a mother's age? In other words, what role does *sampling variation* play in this hypothetical world? To answer this question, we'll again rely on a computer to run *simulations*.
 
 [^1]: I prefer to use the term meaningful.
 
@@ -350,12 +350,12 @@ While different fields tend to use different values of $\alpha$, some commonly u
 
 # Conducting a hypothesis test using **infer** {#infer-workflow-ht}
 
-Last week, you learned how to to construct confidence intervals using the **infer** R package. The infer package contains a workflow for constructing confidence intervals which emphasizes each of the steps in the underlying process. In @fig-infer-ci, we see that this workflow is comprised of functions whose names describe what they do: 
+Last week, you learned how to to construct confidence intervals using the **infer** R package. The infer package contains a workflow for constructing confidence intervals which emphasizes each of the steps in the underlying process. In @fig-infer-ci, we see that this workflow is comprised of functions whose names describe what they do:
 
-1. `specify()` the variables of interest in your data frame.
-1. `generate()` replicates of bootstrap resamples with replacement.
-1. `calculate()` the summary statistic of interest.
-1. `visualize()` the resulting bootstrap distribution and confidence interval.
+1.  `specify()` the variables of interest in your data frame.
+2.  `generate()` replicates of bootstrap resamples with replacement.
+3.  `calculate()` the summary statistic of interest.
+4.  `visualize()` the resulting bootstrap distribution and confidence interval.
 
 ![Process for constructing **confidence intervals** with the infer package.](images/whole_process_ci.png){#fig-infer-ci}
 
@@ -363,11 +363,11 @@ This week, we'll see how we can modify this process to instead conduct hypothesi
 
 ![Process for conducting **hypothesis tests** with the infer package.](images/whole_process_ht.png){#fig-infer-ht}
 
-Throughout this section, we'll use a pre-specified significance level $\alpha$ = 0.05 for our hypothesis tests. I'll leave the discussion on the choice of this $\alpha$ value until later on in @sec-choosing-alpha. 
+Throughout this section, we'll use a pre-specified significance level $\alpha$ = 0.05 for our hypothesis tests. I'll leave the discussion on the choice of this $\alpha$ value until later on in @sec-choosing-alpha.
 
 ## `specify()` variables
 
-Recall that we use the `specify()` verb to specify the response variable and, if needed, any explanatory variables for our study. In this case, since we are interested in the linear relationship between a baby's birth weight and a mother's age, we set `weight` as the response variable and `mage` as the explanatory variable. 
+Recall that we use the `specify()` verb to specify the response variable and, if needed, any explanatory variables for our study. In this case, since we are interested in the linear relationship between a baby's birth weight and a mother's age, we set `weight` as the response variable and `mage` as the explanatory variable.
 
 ```{r specify}
 #| echo: true
@@ -376,19 +376,21 @@ births14 %>%
   specify(response = weight, explanatory = mage) 
 ```
 
-Again, notice how the `births14` data itself doesn't change, but the `Response: weight (numeric)` and `Explanatory: mage (numeric)` *meta-data* do. This is similar to how the `group_by()` verb from `dplyr` doesn't change the data, but only adds "grouping" meta-data, as we saw in Week 3. 
+Again, notice how the `births14` data itself doesn't change, but the `Response: weight (numeric)` and `Explanatory: mage (numeric)` *meta-data* do. This is similar to how the `group_by()` verb from `dplyr` doesn't change the data, but only adds "grouping" meta-data, as we saw in Week 3.
 
 ## `hypothesize()` the null
 
 In order to conduct hypothesis tests using the `infer` workflow, we need a new step not present for confidence intervals: `hypothesize()`. Recall from @sec-understanding-ht that our hypothesis test was
 
 <center>
+
 $H_0: \beta_1 = 0$
 
 $H_A: \beta_1 \neq 0$
+
 </center>
 
-In other words, the null hypothesis $H_0$ corresponding to our "hypothesized universe" stated that there was no relationship between a baby's birth weight and a mother's age. We set this null hypothesis $H_0$ in our `infer` workflow using the `hypothesize()` function. We do, however, need to declare what we are assuming about the relationship between our variables. For our regression we are assuming there is no relationship between our variables or that they are`"independent"`.  
+In other words, the null hypothesis $H_0$ corresponding to our "hypothesized universe" stated that there was no relationship between a baby's birth weight and a mother's age. We set this null hypothesis $H_0$ in our `infer` workflow using the `hypothesize()` function. We do, however, need to declare what we are assuming about the relationship between our variables. For our regression we are assuming there is no relationship between our variables or that they are`"independent"`.
 
 ```{r hypothesize}
 #| echo: true
@@ -398,7 +400,7 @@ births14 %>%
   hypothesize(null = "independence")
 ```
 
-Again, the data has not changed yet. In fact, we've just added one additional piece of *meta-data* the null hypothesis we are assuming. 
+Again, the data has not changed yet. In fact, we've just added one additional piece of *meta-data* the null hypothesis we are assuming.
 
 ## `generate()` replicates
 
@@ -406,7 +408,7 @@ Again, the data has not changed yet. In fact, we've just added one additional pi
 n_reps <- 1000L
 ```
 
-After we `hypothesize()` the null hypothesis, we `generate()` replicates of "shuffled" datasets assuming the null hypothesis is true. We do this by repeating the shuffling exercise you performed in  @sec-ht-activity several times. Instead of merely doing it 10 times, let's use the computer to repeat this `r n_reps` times by setting ``reps = `r n_reps` `` in the `generate()` function. However, unlike for confidence intervals where we generated replicates using `type = "bootstrap"` resampling with replacement, we'll now perform shuffles/permutations by setting `type = "permute"`. Recall that shuffles / permutations are a kind of resampling, but unlike the bootstrap method, they involve resampling *without* replacement. 
+After we `hypothesize()` the null hypothesis, we `generate()` replicates of "shuffled" datasets assuming the null hypothesis is true. We do this by repeating the shuffling exercise you performed in @sec-ht-activity several times. Instead of merely doing it 10 times, let's use the computer to repeat this `r n_reps` times by setting `` reps = `r n_reps` `` in the `generate()` function. However, unlike for confidence intervals where we generated replicates using `type = "bootstrap"` resampling with replacement, we'll now perform shuffles/permutations by setting `type = "permute"`. Recall that shuffles / permutations are a kind of resampling, but unlike the bootstrap method, they involve resampling *without* replacement.
 
 ```{r generate}
 #| eval: true
@@ -419,7 +421,7 @@ births_generate <- births14 %>%
 births_generate
 ```
 
-Observe that the resulting data frame has `r nrow(births_generate) %>% scales::comma()` rows. This is because we performed shuffles / permutations for each of the `r nrow(births14)` rows `r n_reps` times and $`r (nrow(births14)*n_reps) %>% scales::comma()` = `r n_reps` \cdot `r nrow(births14)`$. If you explore the `births_generate` data frame, you would notice that the variable `replicate` indicates which resample each row belongs to. So it has the value `1` `r nrow(births14)` times, the value `2` `r nrow(births14)` times, all the way through to the value `r n_reps` `r nrow(births14)` times. 
+Observe that the resulting data frame has `r nrow(births_generate) %>% scales::comma()` rows. This is because we performed shuffles / permutations for each of the `r nrow(births14)` rows `r n_reps` times and $`r (nrow(births14)*n_reps) %>% scales::comma()` = `r n_reps` \cdot `r nrow(births14)`$. If you explore the `births_generate` data frame, you would notice that the variable `replicate` indicates which resample each row belongs to. So it has the value `1` `r nrow(births14)` times, the value `2` `r nrow(births14)` times, all the way through to the value `r n_reps` `r nrow(births14)` times.
 
 ## `calculate()` summary statistics
 
@@ -439,14 +441,14 @@ null_distribution <- births14 %>%
 null_distribution
 ```
 
-Observe that we have `r n_reps` values of `stat`, each representing one  instance of $b_1$ in a hypothesized world of no relationship between these variables. Observe as well that we chose the name of this data frame carefully: `null_distribution`. Recall once again from @sec-understanding-ht that sampling distributions when the null hypothesis $H_0$ is assumed to be true have a special name: the *null distribution*. 
+Observe that we have `r n_reps` values of `stat`, each representing one instance of $b_1$ in a hypothesized world of no relationship between these variables. Observe as well that we chose the name of this data frame carefully: `null_distribution`. Recall once again from @sec-understanding-ht that sampling distributions when the null hypothesis $H_0$ is assumed to be true have a special name: the *null distribution*.
 
-What was the *observed* relationship between a baby's birth weight and a mother's age in the `births14` dataset? In other words, what was the *observed test statistic* $b_1$? We could calculate this statistic two ways: 
+What was the *observed* relationship between a baby's birth weight and a mother's age in the `births14` dataset? In other words, what was the *observed test statistic* $b_1$? We could calculate this statistic two ways:
 
-1. fitting a `lm()` and grabbing the coefficients using `get_regression_table()`
-2. using infer to `calculate()` the observed statistic
+1.  fitting a `lm()` and grabbing the coefficients using `get_regression_table()`
+2.  using infer to `calculate()` the observed statistic
 
-Going with option two, the process would look like this: 
+Going with option two, the process would look like this:
 
 ```{r obs-slope}
 #| echo: true
@@ -462,7 +464,7 @@ obs_slope
 
 ## `visualize()` the p-value
 
-The final step is to measure how surprised we are by a slope of `r obs_slope` in a hypothesized universe where there is no relationship between a baby's birth weight and a mother's age. If the observed slope of `r obs_slope` is highly unlikely, then we would be inclined to reject the validity of our hypothesized universe. 
+The final step is to measure how surprised we are by a slope of `r obs_slope` in a hypothesized universe where there is no relationship between a baby's birth weight and a mother's age. If the observed slope of `r obs_slope` is highly unlikely, then we would be inclined to reject the validity of our hypothesized universe.
 
 We start by visualizing the *null distribution* of our `r n_reps` values of $b_1$ using `visualize()` in @fig-null-distribution-infer. Recall that these are values of the sample slope assuming $H_0$ is true.
 
@@ -474,9 +476,9 @@ visualize(null_distribution) +
   labs(x = "Permuted (Shuffled) Slope Statistic")
 ```
 
-Let's now add what happened in real life to @fig-null-distribution-infer, the observed slope for the relationship between baby birth weights and mother's ages of `r obs_slope`. Instead of merely adding a vertical line using `geom_vline()`, let's use the `shade_p_value()` function with `obs_stat` set to the observed test statistic (observed slope statistic) value we saved in `obs_slope`. 
+Let's now add what happened in real life to @fig-null-distribution-infer, the observed slope for the relationship between baby birth weights and mother's ages of `r obs_slope`. Instead of merely adding a vertical line using `geom_vline()`, let's use the `shade_p_value()` function with `obs_stat` set to the observed test statistic (observed slope statistic) value we saved in `obs_slope`.
 
-Furthermore, we'll set the `direction = "two-sided"` reflecting our alternative hypothesis $H_A: \beta_1 \neq 0$, stating that there is a relationship between a baby's birth weight and a mother's age. As stated in @sec-understanding-ht, a two-sided hypothesis test does not make any assumptions about the direction of the relationship, meaning $\beta_1 < 0$ and $\beta_1 > 0$ are equally plausible. So, when calculating statistics that are "more extreme" than what we observed, we need to look in *both* tails. 
+Furthermore, we'll set the `direction = "two-sided"` reflecting our alternative hypothesis $H_A: \beta_1 \neq 0$, stating that there is a relationship between a baby's birth weight and a mother's age. As stated in @sec-understanding-ht, a two-sided hypothesis test does not make any assumptions about the direction of the relationship, meaning $\beta_1 < 0$ and $\beta_1 > 0$ are equally plausible. So, when calculating statistics that are "more extreme" than what we observed, we need to look in *both* tails.
 
 ```{r null-distribution-infer-2}
 #| echo: true
@@ -488,9 +490,9 @@ visualize(null_distribution, bins = 10) +
   shade_p_value(obs_stat = obs_slope, direction = "two-sided")
 ```
 
-In the resulting @fig-null-distribution-infer-2, the solid dark line marks `r obs_slope`. However, what does the shaded-region correspond to? This is the *$p$-value*. Recall the definition of the $p$-value from @sec-understanding-ht:
+In the resulting @fig-null-distribution-infer-2, the solid dark line marks `r obs_slope`. However, what does the shaded-region correspond to? This is the $p$-value. Recall the definition of the $p$-value from @sec-understanding-ht:
 
-> A $p$-value is the probability of obtaining a test statistic just as or more extreme than the observed test statistic *assuming the null hypothesis $H_0$ is true*.
+> A $p$-value is the probability of obtaining a test statistic just as or more extreme than the observed test statistic *assuming the null hypothesis* $H_0$ is true.
 
 So judging by the shaded region in @fig-null-distribution-infer-2, it seems we would somewhat rarely observe a slope statistic of `r obs_slope` or more extreme in a hypothesized universe where there is no relationship between a baby's birth weight and a mother's age. In other words, the $p$-value is somewhat small. Hence, we might be inclined to reject this hypothesized universe, or using statistical language we would "reject $H_0$."
 
@@ -507,35 +509,36 @@ p_value <- null_distribution %>%
   mutate(p_value = round(p_value, 3))
 ```
 
-Keeping the definition of a $p$-value in mind, the probability of observing a slope statistic as large as `r round(obs_slope, digits = 3)` or something more extreme due to sampling variation alone in the null distribution is `r pull(p_value)` = `r pull(p_value) * 100`%. Since this $p$-value is smaller than our pre-specified significance level $\alpha$ =  0.05, we reject the null hypothesis $H_0: \beta_1 = 0$. 
-In other words, this $p$-value is sufficiently small to reject our hypothesized universe where there is no relationship between a baby's birth weight and a mother's age. We instead have sufficient evidence to suggest that there is in fact a relationship between these two variables. Observe that whether we reject the null hypothesis $H_0$ or not depends in large part on our choice of significance level $\alpha$, as if we had chosen an $\alpha$ of 0.01, we would have had insufficient evidence to reject the null hypothesis. We'll discuss this more in @sec-errors.
+Keeping the definition of a $p$-value in mind, the probability of observing a slope statistic as large as `r round(obs_slope, digits = 3)` or something more extreme due to sampling variation alone in the null distribution is `r pull(p_value)` = `r pull(p_value) * 100`%. Since this $p$-value is larger than our pre-specified significance level $\alpha$ = 0.05, we fail to reject the null hypothesis $H_0: \beta_1 = 0$. In other words, this $p$-value **is not** small enough to reject our hypothesized universe where there is no relationship between a baby's birth weight and a mother's age. Notice how our interpretation of this p-value does not state that we *accept* the null hypothesis. Rather, we have insufficient evidence to reject it. I will discuss these differences more in @sec-trial.
+
+Observe that whether we reject the null hypothesis $H_0$ or not depends in large part on our choice of significance level $\alpha$, as if we had chosen an $\alpha$ of 0.1, we would have had sufficient evidence to reject the null hypothesis. We'll discuss this more in @sec-errors.
 
 # Interpreting a hypothesis test {#sec-ht-interpretation}
 
-Interpreting the results of hypothesis tests is one of the more challenging aspects of this method for statistical inference. In this section, we focus on ways to help with deciphering the process and address some common misconceptions. 
+Interpreting the results of hypothesis tests is one of the more challenging aspects of this method for statistical inference. In this section, we focus on ways to help with deciphering the process and address some common misconceptions.
 
 ## Two possible outcomes {#sec-trial}
 
 In @sec-understanding-ht, we mentioned that given a pre-specified significance level $\alpha$ there are two possible outcomes of a hypothesis test:
 
-* If the $p$-value is less than $\alpha$, then we *reject* the null hypothesis $H_0$ in favor of $H_A$.
-* If the $p$-value is greater than or equal to $\alpha$, we *fail to reject* the null hypothesis $H_0$.
+-   If the $p$-value is less than $\alpha$, then we *reject* the null hypothesis $H_0$ in favor of $H_A$.
+-   If the $p$-value is greater than or equal to $\alpha$, we *fail to reject* the null hypothesis $H_0$.
 
 Unfortunately, the latter result is often misinterpreted as "accepting the null hypothesis $H_0$." While at first glance it may seem that the statements "failing to reject $H_0$" and "accepting $H_0$" are equivalent, there actually is a subtle difference. Saying that we "accept the null hypothesis $H_0$" is equivalent to stating that "we think the null hypothesis $H_0$ is true." However, saying that we "fail to reject the null hypothesis $H_0$" is saying something else: "While $H_0$ might still be false, we don't have enough evidence to say so." In other words, there is an absence of enough proof. However, the absence of proof is not proof of absence. 🧐
 
 To further shed light on this distinction, let's use the United States criminal justice system as an analogy. A criminal trial in the United States is a similar situation to hypothesis tests whereby a choice between two contradictory claims must be made about a defendant who is on trial:
 
-1. The defendant is truly either "innocent" or "guilty."
-2. The defendant is presumed "innocent until proven guilty." 
-3. The defendant is found guilty only if there is *strong evidence* that the defendant is guilty. The phrase "beyond a reasonable doubt" is often used as a guideline for determining a cutoff for when enough evidence exists to find the defendant guilty.
-4. The defendant is found to be either "not guilty" or "guilty" in the ultimate verdict.
+1.  The defendant is truly either "innocent" or "guilty."
+2.  The defendant is presumed "innocent until proven guilty."
+3.  The defendant is found guilty only if there is *strong evidence* that the defendant is guilty. The phrase "beyond a reasonable doubt" is often used as a guideline for determining a cutoff for when enough evidence exists to find the defendant guilty.
+4.  The defendant is found to be either "not guilty" or "guilty" in the ultimate verdict.
 
-In other words, _not guilty_ verdicts are not suggesting the defendant is _innocent_, but instead that "while the defendant may still actually be guilty, there wasn't enough evidence to prove this fact." Now let's make the connection with hypothesis tests:
+In other words, *not guilty* verdicts are not suggesting the defendant is *innocent*, but instead that "while the defendant may still actually be guilty, there wasn't enough evidence to prove this fact." Now let's make the connection with hypothesis tests:
 
-1. Either the null hypothesis $H_0$ or the alternative hypothesis $H_A$ is true.
-2. Hypothesis tests are conducted assuming the null hypothesis $H_0$ is true.
-3. We reject the null hypothesis $H_0$ in favor of $H_A$ only if the evidence found in the sample suggests that $H_A$ is true. The significance level $\alpha$ is used as a guideline to set the threshold on just how strong of evidence we require. 
-4. We ultimately decide to either "fail to reject $H_0$" or "reject $H_0$." 
+1.  Either the null hypothesis $H_0$ or the alternative hypothesis $H_A$ is true.
+2.  Hypothesis tests are conducted assuming the null hypothesis $H_0$ is true.
+3.  We reject the null hypothesis $H_0$ in favor of $H_A$ only if the evidence found in the sample suggests that $H_A$ is true. The significance level $\alpha$ is used as a guideline to set the threshold on just how strong of evidence we require.
+4.  We ultimately decide to either "fail to reject $H_0$" or "reject $H_0$."
 
 So while gut instinct may suggest "failing to reject $H_0$" and "accepting $H_0$" are equivalent statements, they are not. "Accepting $H_0$" is equivalent to finding a defendant innocent. However, courts do not find defendants "innocent," but rather they find them "not guilty." Putting things differently, defense attorneys do not need to prove that their clients are innocent, rather they only need to prove that clients are not "guilty beyond a reasonable doubt".
 
@@ -543,15 +546,15 @@ So going back to the `births14` dataset, recall that our hypothesis test was $H_
 
 ## Types of errors {#sec-errors}
 
-Unfortunately, there is some chance a jury or a judge can make an incorrect decision in a criminal trial by reaching the wrong verdict. For example, finding a truly innocent defendant "guilty". Or on the other hand, finding a truly guilty defendant "not guilty." This can often stem from the fact that prosecutors don't have access to all the relevant evidence, but instead are limited to whatever evidence the police can find. 
+Unfortunately, there is some chance a jury or a judge can make an incorrect decision in a criminal trial by reaching the wrong verdict. For example, finding a truly innocent defendant "guilty". Or on the other hand, finding a truly guilty defendant "not guilty." This can often stem from the fact that prosecutors don't have access to all the relevant evidence, but instead are limited to whatever evidence the police can find.
 
-The same holds for hypothesis tests. We can make incorrect decisions about a population parameter because we only have a sample of data from the population and thus sampling variation can lead us to incorrect conclusions. 
+The same holds for hypothesis tests. We can make incorrect decisions about a population parameter because we only have a sample of data from the population and thus sampling variation can lead us to incorrect conclusions.
 
 There are two possible erroneous conclusions in a criminal trial: either (1) a truly innocent person is found guilty or (2) a truly guilty person is found not guilty. Similarly, there are two possible errors in a hypothesis test: either (1) rejecting $H_0$ when in fact $H_0$ is true, called a **Type I error** or (2) failing to reject $H_0$ when in fact $H_0$ is false, called a **Type II error**. Another term used for "Type I error" is "false positive," while another term for "Type II error" is "false negative."
 
 This risk of error is the price researchers pay for basing inference on a sample instead of performing a census on the entire population. But as we've seen in our numerous examples and activities so far, censuses are often very expensive and other times impossible, and thus researchers have no choice but to use a sample. Thus in any hypothesis test based on a sample, we have no choice but to tolerate some chance that a Type I error will be made and some chance that a Type II error will occur.
 
-To help understand the concepts of Type I error and Type II errors, we apply these terms to our criminal justice analogy in @fig-trial-errors-table. 
+To help understand the concepts of Type I error and Type II errors, we apply these terms to our criminal justice analogy in @fig-trial-errors-table.
 
 ![Type I and Type II errors in criminal trials.](images/gt_error_table.png){#fig-trial-errors-table}
 
@@ -563,20 +566,20 @@ Thus a Type I error corresponds to incorrectly putting a truly innocent person i
 
 If we are using a sample to make inferences about a population, we run the risk of making errors. For confidence intervals, a corresponding "error" would be constructing a confidence interval that does not contain the true value of the population parameter. For hypothesis tests, this would be making either a Type I or Type II error. Obviously, we want to minimize the probability of either error; we want a small probability of making an incorrect conclusion:
 
-- The probability of a Type I Error occurring is denoted by $\alpha$. The value of $\alpha$ is called the *significance level* of the hypothesis test, which we defined in @sec-understanding-ht. 
-- The probability of a Type II Error is denoted by $\beta$. The value of $1-\beta$ is known as the *power* of the hypothesis test. 
+-   The probability of a Type I Error occurring is denoted by $\alpha$. The value of $\alpha$ is called the *significance level* of the hypothesis test, which we defined in @sec-understanding-ht.
+-   The probability of a Type II Error is denoted by $\beta$. The value of $1-\beta$ is known as the *power* of the hypothesis test.
 
 In other words, $\alpha$ corresponds to the probability of incorrectly rejecting $H_0$ when in fact $H_0$ is true. On the other hand, $\beta$ corresponds to the probability of incorrectly failing to reject $H_0$ when in fact $H_0$ is false.
 
-Ideally, we want $\alpha = 0$ and $\beta = 0$, meaning that the chance of making either error is 0. However, this can never be the case in any situation where we are sampling for inference. There will always be the possibility of making either error when we use sample data. Furthermore, these two error probabilities are inversely related. As the probability of a Type I error goes down, the probability of a Type II error goes up. 
+Ideally, we want $\alpha = 0$ and $\beta = 0$, meaning that the chance of making either error is 0. However, this can never be the case in any situation where we are sampling for inference. There will always be the possibility of making either error when we use sample data. Furthermore, these two error probabilities are inversely related. As the probability of a Type I error goes down, the probability of a Type II error goes up.
 
-What is typically done in practice is to fix the probability of a Type I error by pre-specifying a significance level $\alpha$ and then try to minimize $\beta$. In other words, we will tolerate a certain fraction of incorrect rejections of the null hypothesis $H_0$, and then try to minimize the fraction of incorrect non-rejections of $H_0$. 
+What is typically done in practice is to fix the probability of a Type I error by pre-specifying a significance level $\alpha$ and then try to minimize $\beta$. In other words, we will tolerate a certain fraction of incorrect rejections of the null hypothesis $H_0$, and then try to minimize the fraction of incorrect non-rejections of $H_0$.
 
-So for example if we used $\alpha$ = 0.01, we would be using a hypothesis testing procedure that in the long run would incorrectly reject the null hypothesis $H_0$ one percent of the time. This is analogous to setting the confidence level of a confidence interval. 
+So for example if we used $\alpha$ = 0.01, we would be using a hypothesis testing procedure that in the long run would incorrectly reject the null hypothesis $H_0$ one percent of the time. This is analogous to setting the confidence level of a confidence interval.
 
-So what value should you use for $\alpha$? Different fields have different conventions, but some commonly used values include 0.10, 0.05, 0.01, and 0.001. However, it is important to keep in mind that if you use a relatively small value of $\alpha$, then all things being equal, $p$-values will have a harder time being less than $\alpha$. Thus we would reject the null hypothesis less often. In other words, we would reject the null hypothesis $H_0$ only if we have *very strong* evidence to do so. This is known as a "conservative" test. 
+So what value should you use for $\alpha$? Different fields have different conventions, but some commonly used values include 0.10, 0.05, 0.01, and 0.001. However, it is important to keep in mind that if you use a relatively small value of $\alpha$, then all things being equal, $p$-values will have a harder time being less than $\alpha$. Thus we would reject the null hypothesis less often. In other words, we would reject the null hypothesis $H_0$ only if we have *very strong* evidence to do so. This is known as a "conservative" test.
 
-On the other hand, if we used a relatively large value of $\alpha$, then all things being equal, $p$-values will have an easier time being less than $\alpha$. Thus we would reject the null hypothesis more often. In other words, we would reject the null hypothesis $H_0$ even if we only have *mild* evidence to do so. This is known as a "liberal" test. 
+On the other hand, if we used a relatively large value of $\alpha$, then all things being equal, $p$-values will have an easier time being less than $\alpha$. Thus we would reject the null hypothesis more often. In other words, we would reject the null hypothesis $H_0$ even if we only have *mild* evidence to do so. This is known as a "liberal" test.
 
 # Comparison with confidence intervals {#comparing-infer-workflows}
 
@@ -604,7 +607,7 @@ bootstrap_distribution <- births14 %>%
   calculate(stat = "slope")
 ```
 
-Using this `bootstrap_distribution`, let's first compute the percentile-based confidence intervals, the same way we did last week: 
+Using this `bootstrap_distribution`, let's first compute the percentile-based confidence intervals, the same way we did last week:
 
 ```{r}
 percentile_ci <- bootstrap_distribution %>% 
@@ -621,11 +624,11 @@ visualize(bootstrap_distribution) +
   shade_confidence_interval(endpoints = percentile_ci)
 ```
 
-Notice a key value that is not included in the 95% confidence interval for $\beta_1$: the value 0. In other words, a difference of 0 is not included in our net, suggesting that the slope of the regression line is not 0. 
+Notice a key value that is not included in the 95% confidence interval for $\beta_1$: the value 0. In other words, a difference of 0 is not included in our net, suggesting that the slope of the regression line is not 0.
 
-::: {.column-margin}
-::: {.callout-tip}
-If there is no linear relationship between two variables, then as $x$ increases nothing should happen with $y$. This corresponds to the slope of the regression line being 0. 
+::: column-margin
+::: callout-tip
+If there is no linear relationship between two variables, then as $x$ increases nothing should happen with $y$. This corresponds to the slope of the regression line being 0.
 :::
 :::
 
@@ -651,9 +654,9 @@ visualize(bootstrap_distribution) +
 
 ## Statistical versus practical significance
 
-You might be wondering, how could we have rejected the null hypothesis that $\beta_1 = 0$, when the lower bound of our confidence interval is **really** close to 0. That's a great question! This question gets at the heart of the difference between statistical and practical significance. 
+You might be wondering, how could we have rejected the null hypothesis that $\beta_1 = 0$, when the lower bound of our confidence interval is **really** close to 0. That's a great question! This question gets at the heart of the difference between statistical and practical significance.
 
-Statistical significance is defined by a $p$-value being smaller than some predetermined $\alpha$ threshold. However, the size of a p-value is not synonymous with the "effect size". By this I mean, a study can obtain a small $p$-value but have the estimated effect of the variable(s) be so small they would not be practically meaningful. In the context of the `births14` data, our hypothesis test concluded that there is a relationship between baby birth weights and mother's ages. Yet, based on the confidence interval, the estimated increase in birth weight for a 10-year increase in age is at most 0.2 lbs. I would not believe that the medical profession needs to provide medical interventions for younger mothers whose babies would have lower birth weights. 
+Statistical significance is defined by a $p$-value being smaller than some predetermined $\alpha$ threshold. However, the size of a p-value is not synonymous with the "effect size". By this I mean, a study can obtain a small $p$-value but have the estimated effect of the variable(s) be so small they would not be practically meaningful. In the context of the `births14` data, our hypothesis test concluded that there is a relationship between baby birth weights and mother's ages. Yet, based on the confidence interval, the estimated increase in birth weight for a 10-year increase in age is at most 0.2 lbs. I would not believe that the medical profession needs to provide medical interventions for younger mothers whose babies would have lower birth weights.
 
 This is why I frequently favor confidence intervals over hypothesis tests, as they allow for you to assess *both* the statistical significance--by checking if the null hypothesized value is included in the interval---**and** the practical significance--by assessing the size of the estimated effect.
 
@@ -661,13 +664,13 @@ This is why I frequently favor confidence intervals over hypothesis tests, as th
 
 # Theory-based hypothesis tests & confidence intervals
 
-We've so far focused only on obtaining confidence intervals and p-values using simulation-based methods, where we resampled from our original dataset. There is, however, another method we could have used to do both these things. This method is called a "theory-based" method, which relies on probability models, probability distributions, and a few assumptions to approximate the sampling and null distributions. This is in contrast to the approaches we’ve used thus far, where we relied on computer simulations to construct the bootstrap and null distribution.
+We've so far focused only on obtaining confidence intervals and p-values using simulation-based methods, where we resampled from our original dataset. There is, however, another method we could have used to do both these things. This method is called a "theory-based" method, which relies on probability models, probability distributions, and a few assumptions to approximate the sampling and null distributions. This is in contrast to the approaches we've used thus far, where we relied on computer simulations to construct the bootstrap and null distribution.
 
-These traditional theory-based methods have been used for decades mostly because researchers didn’t have access to computers that could run thousands of calculations quickly and efficiently. Now that computing power is much cheaper and more accessible, simulation-based methods are much more feasible. However, researchers in many fields continue to use theory-based methods. Hence, I make it a point to include an example here. As we’ll see in this section, any theory-based method is ultimately an approximation to the simulation-based method. 
+These traditional theory-based methods have been used for decades mostly because researchers didn't have access to computers that could run thousands of calculations quickly and efficiently. Now that computing power is much cheaper and more accessible, simulation-based methods are much more feasible. However, researchers in many fields continue to use theory-based methods. Hence, I make it a point to include an example here. As we'll see in this section, any theory-based method is ultimately an approximation to the simulation-based method.
 
 ## Interpreting regression tables {#regression-interp}
 
-Previously, when we interpreted a regression table, like the one shown in @tbl-regression, we focused entirely on the `term` and `estimate` columns. Let's now shift our attention to the remaining columns: `std_error`, `statistic`, `p_value`, `lower_ci` and `upper_ci`. 
+Previously, when we interpreted a regression table, like the one shown in @tbl-regression, we focused entirely on the `term` and `estimate` columns. Let's now shift our attention to the remaining columns: `std_error`, `statistic`, `p_value`, `lower_ci` and `upper_ci`.
 
 ```{r regression-table}
 #| label: tbl-regression
@@ -688,15 +691,15 @@ R, the programming language has been around since roughly 1997, a period when co
 
 ### Standard error {#regression-se}
 
-The third column of the regression table in @tbl-regression, `std_error`, corresponds to the *standard error* of our estimates. Recall the definition of **standard error** we saw last week: 
+The third column of the regression table in @tbl-regression, `std_error`, corresponds to the *standard error* of our estimates. Recall the definition of **standard error** we saw last week:
 
 > The *standard error* is the standard deviation of any point estimate computed from a sample.
 
 So what does this mean in terms of the fitted slope $b_1$ = `r obs_slope`? This value is just one possible value of the fitted slope resulting from *this particular sample* of $n$ = `r nrow(births14)` birth records. However, if we collected a different sample of $n$ = `r nrow(births14)` birth records, we will almost certainly obtain a different fitted slope $b_1$. This is due to *sampling variability*.
 
-Say we hypothetically collected `r n_reps` such birth records, computed the `r n_reps` resulting values of the fitted slope $b_1$, and visualized them in a histogram. This would be a visualization of the *sampling distribution* of $b_1$, which we defined last week. Further recall that the standard deviation of the *sampling distribution* of $b_1$ has a special name: the *standard error*. 
+Say we hypothetically collected `r n_reps` such birth records, computed the `r n_reps` resulting values of the fitted slope $b_1$, and visualized them in a histogram. This would be a visualization of the *sampling distribution* of $b_1$, which we defined last week. Further recall that the standard deviation of the *sampling distribution* of $b_1$ has a special name: the *standard error*.
 
-Last week, we used the `infer` package to construct the bootstrap distribution for $b_1$ in this case. Recall that the bootstrap distribution is an *approximation* to the sampling distribution in that they have a similar shape. Since they have a similar shape, they have similar *standard errors*. However, unlike the sampling distribution, the bootstrap distribution is constructed from a *single* sample, which is a practice more aligned with what's done in real life. 
+Last week, we used the `infer` package to construct the bootstrap distribution for $b_1$ in this case. Recall that the bootstrap distribution is an *approximation* to the sampling distribution in that they have a similar shape. Since they have a similar shape, they have similar *standard errors*. However, unlike the sampling distribution, the bootstrap distribution is constructed from a *single* sample, which is a practice more aligned with what's done in real life.
 
 Rather than resampling from our original sample to create a bootstrap distribution, we could have instead used theory-based methods to estimated the standard error of the sampling distribution. In particular, there is a formula for the standard error of the fitted slope $b_1$:
 
@@ -704,31 +707,33 @@ $$\text{SE}_{b_1} = \dfrac{\dfrac{s_y}{s_x} \cdot \sqrt{1-r^2}}{\sqrt{n-2}}$$
 
 As with many formulas in statistics, there's a lot going on here, so let's first break down what each symbol represents. First $s_x$ and $s_y$ are the *sample standard deviations* of the explanatory variable `mage` and the response variable `weight`, respectively. Second, $r$ is the sample *correlation coefficient* between `mage` and `weight`. This was computed as `r cor(births14$weight, births14$mage) %>% round(3)`. Lastly, $n$ is the number of pairs of points (birth weight, mother's age) in the `births14` data frame, here `r nrow(births14)`.
 
-To put this formula into words, the standard error of $b_1$ depends on the relationship between the variability of the response variable and the variability of the explanatory variable as measured in the $s_y / s_x$ term. Next, it looks into how the two variables relate to each other in the $\sqrt{1-r^2}$ term. 
+To put this formula into words, the standard error of $b_1$ depends on the relationship between the variability of the response variable and the variability of the explanatory variable as measured in the $s_y / s_x$ term. Next, it looks into how the two variables relate to each other in the $\sqrt{1-r^2}$ term.
 
-However, the most important observation to make in the previous formula is that there is an $n - 2$ in the denominator. In other words, as the sample size $n$ increases, the standard error $\text{SE}_{b_1}$ decreases. Just as we demonstrated last week, when we increase our sample size the amount of sampling variation of the fitted slope $b_1$ will depend on the sample size $n$. In particular, as the sample size increases, both the sampling and bootstrap distributions narrow and the standard error $\text{SE}_{b_1}$ decreases. Hence, our estimates of $b_1$ for the true population slope $\beta_1$ get more and more *precise*. 
+However, the most important observation to make in the previous formula is that there is an $n - 2$ in the denominator. In other words, as the sample size $n$ increases, the standard error $\text{SE}_{b_1}$ decreases. Just as we demonstrated last week, when we increase our sample size the amount of sampling variation of the fitted slope $b_1$ will depend on the sample size $n$. In particular, as the sample size increases, both the sampling and bootstrap distributions narrow and the standard error $\text{SE}_{b_1}$ decreases. Hence, our estimates of $b_1$ for the true population slope $\beta_1$ get more and more *precise*.
 
 ### Test statistic {#regression-test-statistic}
 
 The fourth column of the regression table in @tbl-regression, `statistic`, corresponds to a *test statistic* relating to the following *hypothesis test*:
 
 <center>
-$H_0: \beta_1 = 0$ 
+
+$H_0: \beta_1 = 0$
 
 $H_A: \beta_1 \neq 0$
+
 </center>
 
-Here, our *null hypothesis* $H_0$ assumes that the population slope $\beta_1$ is 0. If the population slope $\beta_1$ is truly 0, then this is saying that there is *no relationship* between a baby's birth weight and a mother's age for *all* births in the US in 2014. In other words, $x$ = mother's age would have no associated effect on $y$ = baby's birth weight. 
+Here, our *null hypothesis* $H_0$ assumes that the population slope $\beta_1$ is 0. If the population slope $\beta_1$ is truly 0, then this is saying that there is *no relationship* between a baby's birth weight and a mother's age for *all* births in the US in 2014. In other words, $x$ = mother's age would have no associated effect on $y$ = baby's birth weight.
 
-The *alternative hypothesis* $H_A$, on the other hand, assumes that the population slope $\beta_1$ is not 0, meaning it could be either positive or negative. This suggests either a positive or negative relationship between a baby's birth weight and a mother's age. Recall we called such alternative hypotheses *two-sided*. 
+The *alternative hypothesis* $H_A$, on the other hand, assumes that the population slope $\beta_1$ is not 0, meaning it could be either positive or negative. This suggests either a positive or negative relationship between a baby's birth weight and a mother's age. Recall we called such alternative hypotheses *two-sided*.
 
-::: {.column-margin}
-::: {.callout-caution}
-By convention, all hypothesis testing for regression assumes two-sided alternatives. 
+::: column-margin
+::: callout-caution
+By convention, all hypothesis testing for regression assumes two-sided alternatives.
 :::
 :::
 
-The `statistic` column in the regression table is a tricky one, however. It corresponds to a standardized *t-test statistic*. The *null distribution* can be mathematically proven to be a *$t$-distribution*, under specific conditions (described in @sec-conditions). R uses the following *$t$-statistic* as the test statistic for hypothesis testing:
+The `statistic` column in the regression table is a tricky one, however. It corresponds to a standardized *t-test statistic*. The *null distribution* can be mathematically proven to be a $t$-distribution, under specific conditions (described in @sec-conditions). R uses the following $t$-statistic as the test statistic for hypothesis testing:
 
 $$
 t = \dfrac{ b_1 - \beta_1}{ \text{SE}_{b_1}}
@@ -740,74 +745,75 @@ $$
 t = \dfrac{ b_1 - 0}{ \text{SE}_{b_1}} = \dfrac{ b_1 }{ \text{SE}_{b_1}}
 $$
 
-What are the values of $b_1$ and $\text{SE}_{b_1}$? They are in the `estimate` and `std_error` column of the regression table in @tbl-regression. Thus the value of `r slope_table$statistic` in the table is computed as `r slope_table$estimate` / `r slope_table$std_error` = `r round(slope_table$estimate / slope_table$std_error, digits = 3)`. Note there is a difference due to some rounding error here. 
+What are the values of $b_1$ and $\text{SE}_{b_1}$? They are in the `estimate` and `std_error` column of the regression table in @tbl-regression. Thus the value of `r slope_table$statistic` in the table is computed as `r slope_table$estimate` / `r slope_table$std_error` = `r round(slope_table$estimate / slope_table$std_error, digits = 3)`. Note there is a difference due to some rounding error here.
 
 ### p-value
 
-The fifth column of the regression table in @tbl-regression, `p_value`, corresponds to the *p-value* of the hypothesis test $H_0: \beta_1 = 0$ versus  $H_A: \beta_1 \neq 0$. 
+The fifth column of the regression table in @tbl-regression, `p_value`, corresponds to the *p-value* of the hypothesis test $H_0: \beta_1 = 0$ versus $H_A: \beta_1 \neq 0$.
 
 Again recalling our terminology, notation, and definitions related to hypothesis tests we introduced in @sec-understanding-ht, let's focus on the definition of the $p$-value:
 
-> A *p-value* is the probability of obtaining a test statistic just as extreme or more extreme than the observed test statistic *assuming the null hypothesis $H_0$ is true*.
+> A *p-value* is the probability of obtaining a test statistic just as extreme or more extreme than the observed test statistic *assuming the null hypothesis* $H_0$ is true.
 
-Recall that you can intuitively think of the $p$-value as quantifying how "extreme" the observed fitted slope of $b_1$ = `r round(obs_slope, digits = 3)` is in a "hypothesized universe" where there is no relationship between a baby's birth weight and a mother's age. 
+Recall that you can intuitively think of the $p$-value as quantifying how "extreme" the observed fitted slope of $b_1$ = `r round(obs_slope, digits = 3)` is in a "hypothesized universe" where there is no relationship between a baby's birth weight and a mother's age.
 
-::: {.callout-tip}
-If you're a bit rusty on the $t$-distribution, [here](https://www.jmp.com/en_us/statistics-knowledge-portal/t-test/t-distribution.html#:~:text=The%20shape%20of%20the%20t,more%20like%20a%20z%2Ddistribution) is an article describing how degrees of freedom relate to the shape of the $t$-distribution. 
+::: callout-tip
+If you're a bit rusty on the $t$-distribution, [here](https://www.jmp.com/en_us/statistics-knowledge-portal/t-test/t-distribution.html#:~:text=The%20shape%20of%20the%20t,more%20like%20a%20z%2Ddistribution) is an article describing how degrees of freedom relate to the shape of the $t$-distribution.
 :::
 
-More precisely, however, the $p$-value corresponds to how extreme the observed test statistic of `r obs_slope` is when compared to the appropriate *null distribution*. Recall from @sec-understanding-ht, that a null distribution is the sampling distribution of the test statistic *assuming the null hypothesis $H_0$ is true*. It can be mathematically proven that a $t$-distribution with degrees of freedom equal to $df = n - 2 = `r nrow(births14)` - 2 = `r nrow(births14) - 2`$ is a reasonable approximation to the null distribution, if certain conditions for inference are not violated. We will discuss these conditions shortly in @sec-conditions. 
-
+More precisely, however, the $p$-value corresponds to how extreme the observed test statistic of `r obs_slope` is when compared to the appropriate *null distribution*. Recall from @sec-understanding-ht, that a null distribution is the sampling distribution of the test statistic *assuming the null hypothesis* $H_0$ is true. It can be mathematically proven that a $t$-distribution with degrees of freedom equal to $df = n - 2 = `r nrow(births14)` - 2 = `r nrow(births14) - 2`$ is a reasonable approximation to the null distribution, if certain conditions for inference are not violated. We will discuss these conditions shortly in @sec-conditions.
 
 ### Confidence interval
 
-The two rightmost columns of the regression table in @tbl-regression, `lower_ci` and `upper_ci`, correspond to the endpoints of the 95% *confidence interval* for the population slope $\beta_1$. What are the calculations that went into computing the two endpoints of the 95% confidence interval for $\beta_1$? 
+The two rightmost columns of the regression table in @tbl-regression, `lower_ci` and `upper_ci`, correspond to the endpoints of the 95% *confidence interval* for the population slope $\beta_1$. What are the calculations that went into computing the two endpoints of the 95% confidence interval for $\beta_1$?
 
-Recall from the SE method for constructing confidence intervals, for any distribution that resemble a Normal Distribution^[meaning they are bell shaped and symmetric], we could use the empiracle rule to create a 95% confidence interval:
+Recall from the SE method for constructing confidence intervals, for any distribution that resemble a Normal Distribution[^2], we could use the empiracle rule to create a 95% confidence interval:
+
+[^2]: meaning they are bell shaped and symmetric
 
 ```{r multiplier}
 z_star <- qnorm(0.975) %>% round(2)
 ```
 
-<center>
-$b_1 \pm SE_{b_1} \times$ `r z_star`
-</center>
+<center>$b_1 \pm SE_{b_1} \times$ `r z_star`</center>
 
 </br>
 
 What is the value of the standard error $SE_{b_1}$? It is in fact in the third column of the regression table in @tbl-regression: `r slope_table$std_error`. Plugging in the respective values, we have:
 
 <center>
-`r slope_table$estimate` $\pm$  `r slope_table$std_error` $\times$ `r z_star`
 
-`r slope_table$estimate` $\pm$  `r slope_table$std_error * z_star`
+`r slope_table$estimate` $\pm$ `r slope_table$std_error` $\times$ `r z_star`
+
+`r slope_table$estimate` $\pm$ `r slope_table$std_error * z_star`
 
 (`r slope_table$estimate - (slope_table$std_error * z_star)`, `r slope_table$estimate + (slope_table$std_error * z_star)`)
+
 </center>
 
 </br>
 
-This closely matches the $(`r slope_table$lower_ci`, `r slope_table$upper_ci`)$ confidence interval in the last two columns of @tbl-regression, with slight differences due to rounding. 
+This closely matches the $(`r slope_table$lower_ci`,`r slope_table$upper_ci`)$ confidence interval in the last two columns of @tbl-regression, with slight differences due to rounding.
 
 Much like p-values, the results of this confidence interval also are only valid if the conditions for inference are not violated.
 
 ## Conclusion
 
-Don't worry if you're feeling a little overwhelmed at this point. There is a lot of background theory to understand before you can fully make sense of the equations for theory-based methods. That being said, theory-based methods and simulation-based methods for constructing confidence intervals and conducting hypothesis tests often yield consistent results. As mentioned before, in my opinion, two large benefits of simulation-based methods over theory-based are that (1) they are easier for people new to statistical inference to understand, and (2) they also work in situations where theory-based methods and mathematical formulas don't exist. 
+Don't worry if you're feeling a little overwhelmed at this point. There is a lot of background theory to understand before you can fully make sense of the equations for theory-based methods. That being said, theory-based methods and simulation-based methods for constructing confidence intervals and conducting hypothesis tests often yield consistent results. As mentioned before, in my opinion, two large benefits of simulation-based methods over theory-based are that (1) they are easier for people new to statistical inference to understand, and (2) they also work in situations where theory-based methods and mathematical formulas don't exist.
 
 ## Everything is one test
 
-While this is a lot to digest, especially the first time you encounter hypothesis testing, the nice thing is that once you understand this general framework, then you can understand *any* hypothesis test. In a famous blog post, computer scientist Allen Downey called this the  ["There is only one test"](http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html) framework, for which he created the flowchart displayed in @fig-htdowney. 
+While this is a lot to digest, especially the first time you encounter hypothesis testing, the nice thing is that once you understand this general framework, then you can understand *any* hypothesis test. In a famous blog post, computer scientist Allen Downey called this the ["There is only one test"](http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html) framework, for which he created the flowchart displayed in @fig-htdowney.
 
 ![Allen Downey's hypothesis testing framework.](images/there_is_only_one_test.png){#fig-htdowney}
 
-Notice its similarity with the "hypothesis testing with `infer`" diagram you saw in @fig-infer-ht. That's because the `infer` package was explicitly designed to match the "There is only one test" framework. So if you can understand the framework, you can easily generalize these ideas for all hypothesis testing scenarios. 
+Notice its similarity with the "hypothesis testing with `infer`" diagram you saw in @fig-infer-ht. That's because the `infer` package was explicitly designed to match the "There is only one test" framework. So if you can understand the framework, you can easily generalize these ideas for all hypothesis testing scenarios.
 
 # Checking Model Conditions {#sec-conditions}
 
-Recall last week how we stated that we could only use the standard-error-based method for constructing confidence intervals if the bootstrap distribution was bell shaped. Similarly, there are certain conditions that cannot be violated for the results of our hypothesis tests and confidence intervals to have meaning. 
+Recall last week how we stated that we could only use the standard-error-based method for constructing confidence intervals if the bootstrap distribution was bell shaped. Similarly, there are certain conditions that cannot be violated for the results of our hypothesis tests and confidence intervals to have meaning.
 
-::: {.callout-caution}
+::: callout-caution
 Notice how I'm saying the conditions cannot be viola ted and not that the conditions need to be met? To me, this language is very similar to the difference between failing to reject the null and accepting the null. Let's pose these two options as hypotheses:
 
 $H_0$: the conditions are met
@@ -817,14 +823,14 @@ $H_A$: the conditions are violated
 If we have insufficient evidence to say that the conditions are violated, then that's all we can say. We cannot say that the conditions are met, as that would be equivalent to saying that we've accepted our null hypothesis!
 :::
 
-## Conditions for regression 
+## Conditions for regression
 
-For inference for regression, there are four conditions that cannot be violated. Note the first four letters of these conditions are highlighted in bold in what follows: **LINE**. This can serve as a nice reminder of what to check for whenever you perform linear regression. 
+For inference for regression, there are four conditions that cannot be violated. Note the first four letters of these conditions are highlighted in bold in what follows: **LINE**. This can serve as a nice reminder of what to check for whenever you perform linear regression.
 
-1. **L**inearity of relationship between variables
-1. **I**ndependence of the residuals
-1. **N**ormality of the residuals
-1. **E**quality of variance of the residuals
+1.  **L**inearity of relationship between variables
+2.  **I**ndependence of the residuals
+3.  **N**ormality of the residuals
+4.  **E**quality of variance of the residuals
 
 Conditions **L**, **N**, and **E** can be verified through what is known as a *residual analysis*. Condition **I** can only be verified through an understanding of how the data was collected.
 
@@ -887,10 +893,9 @@ regression_points
 
 A *residual analysis* is used to verify conditions **L**, **N**, and **E** and can be performed using appropriate data visualizations. While there are more sophisticated statistical approaches that can also be done, we'll focus on the much simpler approach of looking at plots.
 
-
 ### Linearity of relationship
 
-The first condition is that the relationship between the outcome variable $y$ and the explanatory variable $x$ must be **L**inear. Recall the scatterplot in  @fig-births-slr where we had the explanatory variable $x$ as mother's age and the outcome variable $y$ as baby's birth weight. Would you say that the relationship between $x$ and $y$ is linear? It's hard to say because of the scatter of the points about the line. In my opinion, this relationship is "linear enough."
+The first condition is that the relationship between the outcome variable $y$ and the explanatory variable $x$ must be **L**inear. Recall the scatterplot in @fig-births-slr where we had the explanatory variable $x$ as mother's age and the outcome variable $y$ as baby's birth weight. Would you say that the relationship between $x$ and $y$ is linear? It's hard to say because of the scatter of the points about the line. In my opinion, this relationship is "linear enough."
 
 Let's present an example where the relationship between $x$ and $y$ is clearly not linear in @fig-non-linear. In this case, the points clearly follow a curved relationship, more closely resembling a [logarithmic scale](https://www.rapidtables.com/math/algebra/logarithm/logarithm-graph.html). In this case, any results from an inference for regression would not be valid.
 
@@ -910,7 +915,6 @@ lterdatasampler::and_vertebrates %>%
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-
 ### Independence of residuals
 
 The second condition is that the residuals must be **I**ndependent. In other words, the different observations in our data must be independent of one another.
@@ -919,15 +923,17 @@ For the `evals` dataset, while there is data on `r nrow(evals)` courses, these `
 
 In this case, we say there exists *dependence* between observations. So in this case, the independence condition is violated. The most appropriate analysis would take into account that we have *repeated measures* for the same profs, but that is beyond the scope of this class. What we could do, however, is devise a method to collapse the multiple observations for each professor into **one** observation. This could be done a variety of ways:
 
-- randomly selecting one observation per professor
-- taking the mean of their scores^[Taking the mean of observations assumes they are inherently similar, so we shouldn't calculate the mean of evaluation scores that are very different!]
-- selecting the maximum / minimum / median value 
+-   randomly selecting one observation per professor
+-   taking the mean of their scores[^3]
+-   selecting the maximum / minimum / median value
+
+[^3]: Taking the mean of observations assumes they are inherently similar, so we shouldn't calculate the mean of evaluation scores that are very different!
 
 ### Normality of residuals
 
 The third condition is that the residuals should follow a **N**ormal distribution. Furthermore, the center of this distribution should be 0. In other words, sometimes the regression model will make positive errors: $y - \widehat{y} > 0$. Other times, the regression model will make equally negative errors: $y - \widehat{y} < 0$. However, *on average* the errors should equal 0 and their shape should be similar to that of a bell.
 
-The simplest way to check the normality of the residuals is to look at a histogram, which we visualize in @fig-model1residualshist. 
+The simplest way to check the normality of the residuals is to look at a histogram, which we visualize in @fig-model1residualshist.
 
 ```{r error-hist}
 #| echo: true
@@ -1004,7 +1010,7 @@ ggplot(data = regression_points,
   geom_hline(yintercept = 0, col = "blue", size = 1)
 ```
 
-You can think of @fig-equal-var a modified version of the plot with the regression line in @fig-births-slr, but with the regression line flattened out to $y=0$. Looking at this plot, would you say that the spread of the residuals around the line at $y=0$ is constant across all values of the explanatory variable $x$ of mother's age? This question is rather qualitative and subjective in nature, thus different people may respond with different answers. For example, some people might say that there is slightly more variation in the residuals for ages between 20 and 40 than for ages below 20 and above 40. However, it can be argued that there isn't a *drastic* non-constancy. Moreover, this could be an artifact of having smaller numbers of younger / older mothers in the sample. 
+You can think of @fig-equal-var a modified version of the plot with the regression line in @fig-births-slr, but with the regression line flattened out to $y=0$. Looking at this plot, would you say that the spread of the residuals around the line at $y=0$ is constant across all values of the explanatory variable $x$ of mother's age? This question is rather qualitative and subjective in nature, thus different people may respond with different answers. For example, some people might say that there is slightly more variation in the residuals for ages between 20 and 40 than for ages below 20 and above 40. However, it can be argued that there isn't a *drastic* non-constancy. Moreover, this could be an artifact of having smaller numbers of younger / older mothers in the sample.
 
 In @fig-non-equal-variance-residuals I present an example where the residuals clearly do not have equal variance across all values of the explanatory variable $x$.
 
@@ -1026,18 +1032,17 @@ Observe how the spread of the residuals increases as the value of $x$ increases.
 
 Let's list our four conditions for inference for regression again and indicate whether or not they were violated in our analysis:
 
-1. **L**inearity of relationship between variables: No
-1. **I**ndependence of residuals: No
-1. **N**ormality of residuals: Slight left-skew, but not too concerning
-1. **E**quality of variance: No
+1.  **L**inearity of relationship between variables: No
+2.  **I**ndependence of residuals: No
+3.  **N**ormality of residuals: Slight left-skew, but not too concerning
+4.  **E**quality of variance: No
 
-So what does this mean for the results of our confidence intervals and hypothesis tests in @sec-ht-interpretation? Since none of the conditions were viola ted, we can have faith in the confidence intervals and $p$-values calculated before. If, however, any of these conditions were violated, we would need to pause and reconsider our model. 
+So what does this mean for the results of our confidence intervals and hypothesis tests in @sec-ht-interpretation? Since none of the conditions were viola ted, we can have faith in the confidence intervals and $p$-values calculated before. If, however, any of these conditions were violated, we would need to pause and reconsider our model.
 
-When the **I**ndependence condition is violated, there exist dependencies between the observations in the dataset. To remedy this, you will need to use a statistical model which accounts for this dependency structure. One such technique is called hierarchical/multilevel modeling, which you may learn about in more advanced statistics courses. 
+When the **I**ndependence condition is violated, there exist dependencies between the observations in the dataset. To remedy this, you will need to use a statistical model which accounts for this dependency structure. One such technique is called hierarchical/multilevel modeling, which you may learn about in more advanced statistics courses.
 
-When conditions **L**, **N**, **E** are violated, it often means there is a shortcoming in our model. For example, it may be the case that using only a single explanatory variable is insufficient. We may need to incorporate more explanatory variables in a multiple regression model as we did in previously, or perhaps use a transformation of one or more of your variables, or use an entirely different modeling technique. To learn more about addressing such shortcomings, you’ll have to take a class on or read up on more advanced regression modeling methods.
+When conditions **L**, **N**, **E** are violated, it often means there is a shortcoming in our model. For example, it may be the case that using only a single explanatory variable is insufficient. We may need to incorporate more explanatory variables in a multiple regression model as we did in previously, or perhaps use a transformation of one or more of your variables, or use an entirely different modeling technique. To learn more about addressing such shortcomings, you'll have to take a class on or read up on more advanced regression modeling methods.
 
 The conditions for inference in regression problems are a key part of regression analysis that are of vital importance to the processes of constructing confidence intervals and conducting hypothesis tests. However, it is often the case with regression analysis in the real world that some of these conditions may be violated. Furthermore, as you saw, there is a level of subjectivity in the residual analyses to verify the **L**, **N**, and **E** conditions. So what can you do? As a statistics educator, I advocate for transparency in communicating all results. This lets the stakeholders of any analysis know about a model's shortcomings or whether the model is "good enough." So while this checking of assumptions has lead to some fuzzy "it depends" results, we decided as authors to show you these scenarios to help prepare you for difficult statistical decisions you may need to make down the road.
-
 
 # References

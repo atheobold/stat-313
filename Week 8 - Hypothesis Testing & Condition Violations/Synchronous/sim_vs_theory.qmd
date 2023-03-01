@@ -1,0 +1,50 @@
+---
+title: "`r emo::ji('scientist')` Simulation-Based Methods versus Theory-Based Methods"
+format: 
+  revealjs:
+    theme: dark
+    self-contained: true
+editor: visual
+---
+
+```{r set-up}
+library(tidyverse)
+library(infer)
+library(moderndive)
+library(lterdatasampler)
+```
+
+
+
+.larger[.rhubarb[Why not always use theoretical methods?]]
+
+--
+
+.large[Theory-based methods only hold if the sampling distribution is normally
+shaped.] 
+
+--
+
+.large[The normality of a sampling distribution depends **heavily** on model
+conditions.]
+
+##
+
+.larger[What are these "conditions"?]
+
+--
+
+.pull-left[For a single mean, we are assuming:
+
+- Independence -- The observations in the sample must be independent. 
+
+- Normality -- The observations come from a normally distributed population. 
+]
+
+##
+
+.larger[.gray[A Comparison]]
+
+.large[In general, when the conditions associated with a using theoretical
+methods are violated, these formulas will underestimate the true standard error
+of the sampling distribution.]

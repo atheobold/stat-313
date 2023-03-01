@@ -6,12 +6,8 @@ output: html_document
 
 ```{r setup, include = FALSE}
 library(tidyverse)
-
 library(openintro)
-
 library(infer)
-
-library(skimr)
 ```
 
 Every two years, the Centers for Disease Control and Prevention conduct the
