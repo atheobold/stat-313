@@ -12,39 +12,198 @@ library(tidyverse)
 library(infer)
 library(moderndive)
 library(lterdatasampler)
+
+my_theme <- theme(axis.title.x = element_text(size = 18), 
+                  axis.title.y = element_text(size = 18), 
+                  axis.text.x = element_text(size = 12), 
+                  axis.text.y = element_text(size = 12))
+
+obs_slope <- evals %>% 
+  specify(response = score, 
+          explanatory = bty_avg) %>% 
+  calculate(stat = "slope")
 ```
 
+::: {style="font-size: 4em; color: #FFFFFF;"}
+What did we just do?
+:::
 
+## 
 
-.larger[.rhubarb[Why not always use theoretical methods?]]
+::: {style="font-size: 2em; color: #FFFFFF;"}
+We carried out a hypothesis test!
+:::
 
---
+::: columns
+::: {.column width="35%"}
+$$H_0: \beta_1 = 0$$
 
-.large[Theory-based methods only hold if the sampling distribution is normally
-shaped.] 
+$$H_A: \beta_1 \neq 0$$
+:::
 
---
+::: {.column width="5%"}
+:::
 
-.large[The normality of a sampling distribution depends **heavily** on model
-conditions.]
+::: {.column width="60%"}
+```{r evals-slr}
+#| message: false
+#| fig-align: center
+
+ggplot(data = evals, 
+       mapping = aes(x = bty_avg, y = score)) +
+  geom_jitter() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Average Beauty Score", 
+       y = "Course Evaluation Score") +
+  my_theme
+```
+:::
+:::
+
+::: {style="font-size: 1em; color: #B6CADA;"}
+What do these hypotheses mean *in words*?
+:::
+
+## 
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+By creating a permutation distribution!
+:::
+
+```{r evals-permute}
+#| echo: true
+null_dist <- evals %>% 
+  specify(response = score, 
+          explanatory = bty_avg) %>% 
+  hypothesise(null = "independence") %>% 
+  generate(reps = 1000, type = "permute") %>% 
+  calculate(stat = "slope")
+```
+
+. . .
+
+</br>
+
+::: {style="font-size: 1.5em; color: #B6CADA;"}
+What is happening in the `generate()` step?
+:::
 
 ##
 
-.larger[What are these "conditions"?]
+::: {style="font-size: 2em; color: #FFFFFF;"}
+And visualizing where our observed statistic fell on the distribution
+:::
 
---
+::: columns
+::: {.column width="60%"}
+```{r}
+visualise(null_dist) +
+  shade_p_value(obs_stat = obs_slope, direction = "two-sided") +
+  labs(x = "Permuted Slope Statistic")
+```
 
-.pull-left[For a single mean, we are assuming:
+:::
 
-- Independence -- The observations in the sample must be independent. 
+::: {.column width="5%"}
+:::
 
-- Normality -- The observations come from a normally distributed population. 
-]
+::: {.column width="35%"}
+::: {style="font-size: 1.5em; color: #B6CADA;"}
+What would you estimate the p-value to be?
+:::
+:::
+:::
 
 ##
 
-.larger[.gray[A Comparison]]
+::: {style="font-size: 2em; color: #FFFFFF;"}
+And calculated the p-value
+:::
 
-.large[In general, when the conditions associated with a using theoretical
-methods are violated, these formulas will underestimate the true standard error
-of the sampling distribution.]
+::: columns
+::: {.column width="60%"}
+```{r}
+#| echo: true
+
+get_p_value(null_dist, 
+            obs_stat = obs_slope, 
+            direction = "two-sided")
+```
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="35%"}
+::: {style="font-size: 1.5em; color: #B6CADA;"}
+</br>
+</br>
+What would you decide for your hypothesis test?
+:::
+:::
+:::
+
+##
+
+::: {style="font-size: 2.5em; color: #FFFFFF;"}
+How would this process have changed if we used theory-based methods instead?
+:::
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+Approximating the permutation distribution
+:::
+
+::: columns
+::: {.column width="40%"}
+A $t$-distribution can be a reasonable approximation for the permutation distribution if certain conditions are not violated. 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+
+:::
+:::
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+
+
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+
+
+
+.larger\[.rhubarb\[Why not always use theoretical methods?\]\]
+
+--
+
+.large\[Theory-based methods only hold if the sampling distribution is normally shaped.\]
+
+--
+
+.large\[The normality of a sampling distribution depends **heavily** on model conditions.\]
+
+## 
+
+.larger\[What are these "conditions"?\]
+
+--
+
+.pull-left\[For a single mean, we are assuming:
+
+-   Independence -- The observations in the sample must be independent.
+
+-   Normality -- The observations come from a normally distributed population. \]
+
+## 
+
+.larger\[.gray\[A Comparison\]\]
+
+.large\[In general, when the conditions associated with a using theoretical methods are violated, these formulas will underestimate the true standard error of the sampling distribution.\]
