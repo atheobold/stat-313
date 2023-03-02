@@ -88,7 +88,7 @@ null_dist <- evals %>%
 What is happening in the `generate()` step?
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 And visualizing where our observed statistic fell on the distribution
@@ -101,7 +101,6 @@ visualise(null_dist) +
   shade_p_value(obs_stat = obs_slope, direction = "two-sided") +
   labs(x = "Permuted Slope Statistic")
 ```
-
 :::
 
 ::: {.column width="5%"}
@@ -114,7 +113,7 @@ What would you estimate the p-value to be?
 :::
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 And calculated the p-value
@@ -136,20 +135,18 @@ get_p_value(null_dist,
 
 ::: {.column width="35%"}
 ::: {style="font-size: 1.5em; color: #B6CADA;"}
-</br>
-</br>
-What would you decide for your hypothesis test?
+</br> </br> What would you decide for your hypothesis test?
 :::
 :::
 :::
 
-##
+## 
 
 ::: {style="font-size: 2.5em; color: #FFFFFF;"}
 How would this process have changed if we used theory-based methods instead?
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
 Approximating the permutation distribution
@@ -157,53 +154,323 @@ Approximating the permutation distribution
 
 ::: columns
 ::: {.column width="40%"}
-A $t$-distribution can be a reasonable approximation for the permutation distribution if certain conditions are not violated. 
+A $t$-distribution can be a reasonable approximation for the permutation distribution if certain conditions are not violated.
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="55%"}
+```{r t-distribution}
+plot(c(-5, 5),
+     c(0, dnorm(0)),
+      type = "n", 
+     ylab = "", 
+     xlab = "",
+     axes = FALSE
+     )
 
+at <- seq(-10, 10, 2)
+axis(1, at)
+axis(1, at - 1, rep("", length(at)), tcl = -0.1)
+abline(h = 0)
+COL. <- openintro::fadeColor(openintro::IMSCOL["blue", "full"], c("FF", "89", "68", "4C", "33"))
+COLt <- openintro::fadeColor(openintro::IMSCOL["blue", "full"], c("FF", "AA", "85", "60", "45"))
+DF <- c("normal", 8, 4, 2, 1)
+X <- seq(-10, 10, 0.02)
+Y <- dnorm(X)
+lines(X, Y, col = COL.[1])
+for (i in 2:5) {
+  Y <- dt(X, as.numeric(DF[i]))
+  lines(X, Y, col = COL.[i], lwd = 1.5)
+}
+legend(2.5, 0.4,
+  legend = c(
+    DF[1],
+    paste("t, df = ", DF[2:5], sep = "")
+  ),
+  col = COL.,
+  text.col = COLt,
+  lty = rep(1, 5),
+  lwd = 1.5
+)
+
+```
+
+:::
+:::
+
+## 
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+What about the observed statistic?
+:::
+
+::: {.panel-tabset}
+
+## Before 
+
+```{r obs-slop}
+#| echo: true
+obs_slope <- evals %>% 
+  specify(response = score, 
+          explanatory = bty_avg) %>% 
+  calculate(stat = "slope")
+```
+
+```{r}
+obs_slope
+```
+
+## Now
+
+```{r obs-t}
+#| echo: true
+
+evals_lm <- lm(score ~ bty_avg,
+               data = evals)
+
+get_regression_table(evals_lm)
+```
+
+:::
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+How did R calculate the p-value?
+:::
+
+```{r}
+get_regression_table(evals_lm)
+```
+
+## 
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+Why not always use theoretical methods?
+:::
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+Theory-based methods only hold if the sampling distribution is normally shaped.
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+The normality of a sampling distribution depends **heavily** on model conditions.
+:::
+:::
+
+## 
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+What are these "conditions"?
+:::
+
+. . .
+
+::: columns
+::: {.column width="40%"}
+For linear regression we are assuming...
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+**L**inear relationship between $x$ and $y$
+
+</br>
+
+**I**ndepdent observations
+
+</br>
+
+**N**ormality of residuals
+
+</br>
+
+**E**qual variance of residuals
+:::
+:::
+
+## 
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+**L**inear relationship between $x$ and $y$
+:::
+
+```{r}
+#| fig-align: center
+
+and_vertebrates %>%
+  filter(species != "Cascade torrent salamander") %>% 
+  ggplot(mapping = aes(x = length_1_mm, 
+                       y = weight_g, 
+                       color = species)) +
+  geom_point() + 
+  labs(x = "Length (mm)", 
+       y = "Weight (g)") +
+  my_theme
+```
+
+. . .
+
+**What should we do?**
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+Variable transformation!
+:::
+
+```{r transform}
+#| fig-align: center
+
+and_vertebrates %>%
+  filter(species != "Cascade torrent salamander") %>% 
+  ggplot(mapping = aes(x = length_1_mm, 
+                       y = weight_g, 
+                       color = species)) +
+  geom_point() + 
+  labs(x = "Log Transformed Length (mm)", 
+       y = "Log Transformed Weight (g)") +
+  scale_x_log10() +
+  scale_y_log10() +
+  my_theme
+```
+
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+**I**ndependence of observations
+:::
+
+::: columns
+::: {.column width="40%"}
+The `evals` dataset contains `r nrow(evals)` observations on `r distinct(evals, prof_ID) %>% nrow()` professors. Meaning, professors have **multiple** observations. 
+
+</br>
+
+*What can we do?*
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+**Best** -- use a random effects model
+
+**Reasonable** -- collapse the multiple scores into a single score
 :::
 :::
 
 ##
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
+**N**ormality of residuals
+:::
 
+```{r non-normal}
+
+fish <- and_vertebrates %>%
+  filter(!species %in% c("Cascade torrent salamander", "Coastal giant salamander")) 
+
+curved_lm <- lm(weight_g ~ length_1_mm, data = fish)
+
+get_regression_points(curved_lm) %>% 
+  ggplot(mapping = aes(x = residual)) + 
+  geom_histogram() + 
+  labs(x = "Residual") +
+  my_theme
+```
+
+. . .
+
+**What should we do?**
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+Variable transformation!
+:::
+
+```{r normal}
+
+fish <- and_vertebrates %>%
+  filter(!species %in% c("Cascade torrent salamander", "Coastal giant salamander"))
+
+not_curved_lm <- lm(log(weight_g) ~ log(length_1_mm), data = fish)
+
+broom::augment(not_curved_lm) %>% 
+  ggplot(mapping = aes(x = .resid)) + 
+  geom_histogram(binwidth = 0.1) + 
+  labs(x = "Residual") +
+  xlim(c(-0.5, 0.5)) +
+  my_theme
+```
 
 
 ##
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
+**E**qual variance of residuals
+:::
 
+```{r non-constant-variance}
+#| fig-align: center
 
+ggplot(data = hbr_maples, 
+       mapping = aes(x = stem_length, y = stem_dry_mass)
+       ) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    x = "Stem Length (mm)",
+    y = "Stem Dry Mass (g)",
+    title = "Sugar Maple Seedlings in Hubbard Brook LTER"
+  ) +
+  theme_minimal() + 
+  my_theme
+```
 
-.larger\[.rhubarb\[Why not always use theoretical methods?\]\]
+. . .
 
---
-
-.large\[Theory-based methods only hold if the sampling distribution is normally shaped.\]
-
---
-
-.large\[The normality of a sampling distribution depends **heavily** on model conditions.\]
+**What should we do?**
 
 ## 
 
-.larger\[What are these "conditions"?\]
+::: {style="font-size: 2em; color: #FFFFFF;"}
+Variable transformation!
+:::
 
---
+```{r}
+ggplot(data = hbr_maples, 
+       mapping = aes(x = stem_length, y = stem_dry_mass)
+       ) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    x = "Stem Length (mm)",
+    y = "Log Transformed Stem Dry Mass (g)",
+    title = "Sugar Maple Seedlings in Hubbard Brook LTER"
+  ) +
+  theme_minimal() + 
+  scale_y_log10() +
+  my_theme
+```
 
-.pull-left\[For a single mean, we are assuming:
 
--   Independence -- The observations in the sample must be independent.
+##
 
--   Normality -- The observations come from a normally distributed population. \]
+::: {style="font-size: 2em; color: #FFFFFF;"}
+A Comparison
+:::
 
-## 
-
-.larger\[.gray\[A Comparison\]\]
-
-.large\[In general, when the conditions associated with a using theoretical methods are violated, these formulas will underestimate the true standard error of the sampling distribution.\]
+In general, when the conditions associated with a using theoretical methods are violated, these formulas will underestimate the true standard error of the sampling distribution.
