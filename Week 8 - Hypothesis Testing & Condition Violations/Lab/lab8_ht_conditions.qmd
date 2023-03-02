@@ -1,0 +1,129 @@
+---
+title: "Lab 8: Evaluating Conditions & Conducting Hypothesis Tests"
+format: 
+  html:
+    self-contained: true
+editor: visual
+execute: 
+  echo: true
+  eval: true
+  message: false
+  warning: false
+---
+
+```{r setup}
+library(tidyverse)
+library(gapminder)
+library(infer)
+```
+
+# Today's Data
+
+Here is a decription of the `gapminder` dataset as written by two of your peers:
+
+> The gapminder dataset contains data representing three numerical attributes of a country: its average life expectancy in years, its population, and its per-capita GDP in “international dollars” (a hypothetical currency with the purchasing power of the U.S. dollar in 2005). 
+
+> GDP data from years 1990 to 2019 come from the World Bank, which was published in May 2022. Data from previous years come from the Madison Project Database and the Penn World Table. The life expectancy data were compiled from three main sources: Mattias Lindgren and Klara Joahansson, gapminder version 7 (1800-1970), the Institute for Health Metrics and Evaluation (1970-2016), and the United Nations population data (2017-present). The geographical data for country and continent are based off of current borders as determined by the United Nations.
+
+> In total, there are 1704 observations and 6 variables, with the country variable being a factor containing 142 levels. The data were retrieved in 2008 and 2009 from [Gapminder](https://gapminder.org/), an organization that collects world data. The dataset was also manually cleaned by Dr. Jenny Bryan and her STAT 545 students. 
+
+> Gapminder itself collected its GDP data from the World Bank, its life expectancy data from various studies published by the Institute for Health Metrics and Evaluation, and its population data from the US Census Bureau.
+
+## Question of Interest
+
+The objective of this data analysis is to answer the question:
+
+> What is the relationship between life expectancy GDP per capita?
+
+
+## Exploratory data analysis
+
+Let's load the `gapminder` data into our workspace and start exploring! 
+
+```{r load-data}
+data(gapminder)
+```
+
+__1.  What are the observations / cases in this data set?__
+
+
+The `skim()` function from the **skimr** package produces nice summaries of the
+variables in the dataset, separating categorical (character) variables from 
+quantitative variables.
+
+```{r summary}
+yrbss %>% 
+  skim()
+```
+
+__2.  How many observations are we missing weights from?__
+
+
+
+
+## Inference
+
+__6.  Write the hypotheses for testing if the average weights are different for those who exercise at least times a week and those who don't.__
+<!-- Your answer goes below this line! -->
+
+
+
+Next, we will work through creating a permutation distribution using tools from
+the **infer** package.
+
+But first, we need to find the observed difference in means, which we will save
+as `obs_slope`.
+
+```{r obs-stat, warning = FALSE}
+obs_diff <- yrbss %>%
+  specify(response = weight, explanatory = physical_3plus) %>%
+  calculate(stat = "diff in means", order = c("yes", "no"))
+```
+
+Recall that the `specify()` function is used to specify the variables you are
+considering, and you can use the `calculate()` function to specify the
+`stat`istic you want to calculate.
+
+After you have calculated your observed statistic, you need to create a
+permutation distribution of statistics that might have occurred if the null 
+hypothesis was true. This distribution is created by shuffling the 
+
+__7. Generate 500 permuted statistics for the permutation distribution and save these statistics in an object named `null_dist`.__
+
+```{r null-dist}
+# Code for question 7 goes here! 
+
+
+```
+
+We can visualize this null distribution with the following code:
+
+```{r}
+visualise(null_dist) 
+```
+
+__8. Use the `shade_p_value()` function to add a vertical red line to the plot above, demonstrating where the observed difference in means (`obs_diff`) falls on the distribution.__
+
+<!-- Add your code to the plot above! -->
+
+
+
+Now that you have calculated the observed statistic and generated a permutation
+distribution, you can calculate the p-value for your hypothesis test using the
+function `get_p_value()` from the infer package.
+
+```{r pvalue}
+null_dist %>%
+  get_p_value(obs_stat = obs_diff, direction = "two sided")
+```
+
+__9. What decision would you reach for your hypothesis test with the p-value you obtained?__
+
+
+
+__10. What conclusion would you reach for the question of interest?__
+
+
+
+__11. If you would have made a confidence interval instead, would 0 be contained in the interval?__
+
