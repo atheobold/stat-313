@@ -1,5 +1,5 @@
 ---
-title: "`r emo::ji('scientist')` Simulation-Based Methods versus Theory-Based Methods"
+title: "`r emo::ji('microscope')` Simulation-Based Methods versus Theory-Based Methods"
 format: 
   revealjs:
     theme: dark
@@ -24,8 +24,22 @@ obs_slope <- evals %>%
   calculate(stat = "slope")
 ```
 
+::: {style="font-size: 2em; color: #FFFFFF;"}
+Plan for Revisions
+:::
+
+::: {style="font-size: 1.5em; color: #B6CADA;"}
+Revisions will be accepted until Sunday, March 19.
+:::
+
+- Week 8: **two** revisions will be accepted
+- Week 9: **one** revision will be accepted
+- Week 10: **two** revisions will be accepted
+
+##
+
 ::: {style="font-size: 4em; color: #FFFFFF;"}
-What did we just do?
+What did we do on Tuesday?
 :::
 
 ## 
