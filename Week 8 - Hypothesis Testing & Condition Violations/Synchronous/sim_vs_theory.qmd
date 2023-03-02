@@ -324,6 +324,12 @@ ggplot(data = tibble(x = c(-5, 5)),
 
 **How many degrees of freedom does this $t$-distribution have?**
 
+##
+
+::: {style="font-size: 3.5em; color: #B6CADA;"}
+Did we get similar results between these methods?
+:::
+
 ## 
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
