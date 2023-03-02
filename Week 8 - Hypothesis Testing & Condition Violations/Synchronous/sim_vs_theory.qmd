@@ -238,12 +238,91 @@ get_regression_table(evals_lm)
 ##
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
-How did R calculate the p-value?
+How did R calculate the $t$-statistic?
 :::
 
+::: {.panel-tabset}
+
+## Step 1: SE
+
+::: columns
+::: {.column width="40%"}
+$SE_{b_1} = \frac{\frac{s_y}{s_x} \cdot \sqrt{1 - r^2}}{\sqrt{n - 2}}$
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+```{r}
+se_num <- ( sd(evals$score) / sd(evals$bty_avg) ) * 
+  sqrt(
+    1 - cor(evals$score, evals$bty_avg)
+    ) 
+
+se_denom <- sqrt(nrow(evals) - 2)
+
+se <- se_num / se_denom
+
+se
+```
+
+:::
+:::
+
+## Step 2: t-statistic
+
+::: columns
+::: {.column width="40%"}
+$t = \frac{b_1}{SE_{b_1}}$
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+```{r}
+t <- pull(obs_slope) / se
+
+t
+```
+
+:::
+:::
+
+## Proof!
 ```{r}
 get_regression_table(evals_lm)
 ```
+:::
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+How does R calculate the p-value?
+:::
+
+. . .
+
+```{r}
+#| fig-align: center
+#| out-width: 50%
+
+ggplot(data = tibble(x = c(-5, 5)), 
+       mapping = aes(x)) +
+  stat_function(fun = dt, 
+                args = list(df = nrow(evals) - 2), 
+                color = "blue", 
+                linewidth = 1.5) +
+  ylab("") +
+  scale_y_continuous(breaks = NULL) +
+  geom_vline(xintercept = t, color = "red", linewidth = 1.5)
+
+```
+
+. . .
+
+**How many degrees of freedom does this $t$-distribution have?**
 
 ## 
 
@@ -470,7 +549,56 @@ ggplot(data = hbr_maples,
 ##
 
 ::: {style="font-size: 2em; color: #FFFFFF;"}
-A Comparison
+Are these conditions required for **both** methods?
 :::
 
-In general, when the conditions associated with a using theoretical methods are violated, these formulas will underestimate the true standard error of the sampling distribution.
+. . .
+
+::: columns
+::: {.column width="40%"}
+::: {style="font-size: 1.5em; color: #B6CADA;"}
+Simulation-based Methods
+:::
+
+::: {style="font-size: 0.75em; color: #FFFFFF;"}
+- Linearity of Relationship
+
+- Independence of Observations
+
+- Equal Variance of Residuals
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+::: {style="font-size: 1.5em; color: #B6CADA;"}
+Theory-based Methods
+:::
+
+::: {style="font-size: 0.75em; color: #FFFFFF;"}
+- Linearity of Relationship
+- Independence of Observations
+:::
+
+::: {style="font-size: 0.75em; color: #B6CADA;"}
+- Normality of Residuals
+:::
+
+::: {style="font-size: 0.75em; color: #FFFFFF;"}
+- Equal Variance of Residuals
+:::
+
+:::
+:::
+
+##
+
+::: {style="font-size: 2em; color: #FFFFFF;"}
+What happens if the conditions are violated?
+:::
+
+. . .
+
+In general, when the conditions associated with these methods are violated, the permutation and $t$-distributions will underestimate the true standard error of the sampling distribution.
