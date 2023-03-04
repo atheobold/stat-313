@@ -1,5 +1,5 @@
 ---
-title: "Lab 5: Conducting Hypothesis Tests"
+title: "Lab 5: Evaluating Conditions & Conducting Hypothesis Tests"
 author: "Your group's names here!"
 output: html_document
 ---
