@@ -1,0 +1,26 @@
+---
+title: "**AN**alysis **O**f **VA**riance"
+format: 
+  revealjs:
+    self-contained: true
+    theme: dark
+editor: visual
+---
+
+## 
+
+::: {style="font-size: 2em; color: #000000;"}
+Data Visualization Principles
+:::
+
+<!-- blurb on tufte -->
+
+<!-- blurb on other person who does what the human eye can read -->
+
+##
+
+::: {style="font-size: 2em; color: #000000;"}
+Themes in `ggplot()`
+:::
+
+<!-- blurb on classic, minimal, etc. -->
