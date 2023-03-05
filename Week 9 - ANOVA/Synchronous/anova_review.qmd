@@ -17,10 +17,23 @@ Data Visualization Principles
 
 <!-- blurb on other person who does what the human eye can read -->
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #000000;"}
 Themes in `ggplot()`
 :::
 
 <!-- blurb on classic, minimal, etc. -->
+
+[List of all `ggplot()` themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+
+## 
+
+::: {style="font-size: 2em; color: #000000;"}
+What theme to choose???
+:::
+
+<!-- blurb on major gridline anchoring -->
+
+comparison between faceted plot with classic theme and plot with black and #FFFFFF
+
