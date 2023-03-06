@@ -48,6 +48,8 @@ library(ggridges)
 
 ## Statistical Model
 
+## Model Conditions
+
 # Findings
 
 ## Two-Way ANOVA Interaction Model
@@ -61,7 +63,4 @@ library(ggridges)
 
 <!-- Note: You may need to add additional sections for additional models -->
 
-
 # Scope of Inference
-
-
