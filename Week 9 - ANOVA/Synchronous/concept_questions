@@ -1,0 +1,36 @@
+## ANOVA & MLR 
+
+</br> 
+
+In a two-way ANOVA, what are the two types of models you can fit? 
+
+</br> 
+
+How are these models similar / different from the multiple linear regression models we discussed? 
+
+</br> 
+
+## Inspecting MLR Models 
+
+<!-- In a simple linear regression, if the slope is close to 0, what model would we fit instead?  -->
+
+<!-- </br> -->
+
+In a multiple linear regression, if the slopes of every group are the same, what model would we fit instead?  
+
+- How would you justify this choice? 
+
+</br>
+
+In a parallel lines multiple linear regression, if the slopes of every group are 0, what model would we fit instead?  
+
+
+
+## Inspecting ANOVA Models  
+
+Why would a researcher choose to use a one-way ANOVA instead of a simple linear regression?  
+
+</br> 
+
+Why would a researcher choose to use a two-way ANOVA instead of a multiple linear regression? 
+
