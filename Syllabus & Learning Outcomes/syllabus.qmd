@@ -247,9 +247,9 @@ There will be two projects throughout the quarter, where you will be asked to sy
 +--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
 |                                | A-level                     | B-level                 | C-level                 | D-level                 |
 +================================+=============================+=========================+=========================+=========================+
-| **Reading Guides (11 total)**  | at least 10 completed       | at least 9 completed    | at least 7 completed    | 6 or fewer completed    |
+| **Reading Guides (12 total)**  | at least 11 completed       | at least 10 completed    | at least 8 completed    | 6 or fewer completed    |
 +--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-| **Concept Quizzes \            | at least 14 completed       | at least 12 completed   | at least 10 completed   | 9 or fewer completed    |
+| **Concept Quizzes\             | at least 14 completed       | at least 12 completed   | at least 10 completed   | 9 or fewer completed    |
 | (15 total)**                   |                             |                         |                         |                         |
 +--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
 | **Tutorials\                   | at least 13 completed       | at least 11 completed   | at least 10 completed   | 8 or fewer completed    |
