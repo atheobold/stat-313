@@ -23,39 +23,45 @@ library(ggridges)
 
 ```
 
-## Introduction
+# Introduction
 
-## Methods
+## Data Description
 
-### Variables
+## Research Question(s)
 
-### Data Visualizations
+# Methods
 
-```{r scatterplot}
+## Variables
+
+## Data Visualizations
+
+```{r density-plots}
 #| fig-align: center
-#| layout-nrow: 1
+#| layout-nrow: 2
 
-## Code to make your scatterplots goes here! 
+## Code to make your density ridge plots goes here! 
+## You should have three total plots!
 ## Don't forget to choose nice axis labels!
 
 
 ```
 
-### Proposed Statistical Model
+## Statistical Model
 
-## Findings
+# Findings
 
-### Multiple Linear Regression Model
+## Two-Way ANOVA Interaction Model
 
 ```{r lm}
-## Code to fit your multiple linear regression model
+## Code to fit your two-way ANOVA interaction model
 
-## Code to get coefficient table from regression model
+## Code to get your (tidy) ANOVA table
 
 ```
 
-### Model Interpretations
+<!-- Note: You may need to add additional sections for additional models -->
 
-### Model Conclusions
 
-## Scope of Inference
+# Scope of Inference
+
+
