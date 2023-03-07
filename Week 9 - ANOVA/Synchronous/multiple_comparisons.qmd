@@ -1,0 +1,81 @@
+---
+title: "Multiple Comparisons"
+format: revealjs
+editor: visual
+---
+
+
+
+---
+
+class: center, middle
+
+.larger[**Step 2: If the null hypothesis was rejected...**]
+
+.large[determine *which* group means are different.]
+
+--
+
+.large[.mango[Why not only pick out the groups that look different?]]
+
+---
+
+class: middle 
+
+.larger[**Multiple Comparisons**]  
+
+The idea of multiple comparisons is that you perform a difference in means 
+comparison (i.e. $\mu_1 = \mu_2$) for every possible combination of group means. 
+
+--
+
+.pull-left[
+- As the number of groups increases, the number of comparisons gets big fast!
+
+- For these data that is ${10 \choose 2} = 45$ possible differences in means! 
+]
+
+--
+
+.pull-right[
+When conducting __lots__ of hypothesis tests, we need to start worrying about 
+our Type I error rates. 
+
+- We expect to make a Type I error about 5% of the time with an $\alpha$ of 0.05. 
+]
+
+---
+
+.larger[**Bonferroi Adjustment**]
+
+We can fix the error rate problem by specifying a "family" $\alpha$ value, for 
+all of the comparisons.  
+
+.pull-left[
+- The family $\alpha$ is then spread to each test evenly. 
+
+- This is called the Bonferroni correction. 
+]
+
+.pull-right[
+```{r, out.width = "40%", echo = FALSE, fig.align='center', fig.cap="Carlo Emilio Bonferroni (1882-1960)"}
+knitr::include_graphics("images/Bonferroni.jpg")
+```
+]
+
+---
+
+class: center 
+
+.larger[**Family Error Rate**]
+
+The new $\alpha$ is $\alpha^\star = \frac{\alpha}{k}$, where $k$ is the
+number of comparisons / hypotheses. 
+
+</br> 
+
+For testing 45 groups at the 0.05 significance level,  
+$$\alpha^\star = \frac{0.05}{45} = 0.0011$$
+
+
+
