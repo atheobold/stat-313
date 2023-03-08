@@ -1,0 +1,74 @@
+---
+title: "Lab 9 -- One-Way ANOVA"
+format: 
+  html:
+    self-contained: true
+editor: visual
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+
+```{r packages}
+library(tidyverse)
+library(infer)
+```
+
+## Today's Data
+
+```{r data-cleaning}
+
+math <- read_csv(here::here("Week 9 - ANOVA",
+                            "Lab",
+                            "data", 
+                            "math_achievement_8th_grade.csv")
+                 ) %>% 
+  pivot_longer(cols = -country, names_to = "year", values_to = "grade_8_math_score") %>% 
+  drop_na(grade_8_math_score)
+
+countries_continents <- read_csv("https://raw.githubusercontent.com/dbouquin/IS_608/master/NanosatDB_munging/Countries-Continents.csv")
+
+
+math_continents <- math %>% 
+  left_join(countries_continents, by = c("country" = "Country")
+            ) %>% 
+  rename(continent = Continent) %>% 
+  mutate(continent = case_when(country == "Czech Republic" ~ "Europe", 
+                               country == "Russia" ~ "Asia", 
+                               country == "South Korea" ~ "Asia", 
+                               country == "United States" ~ "North America", 
+                               .default = continent), 
+         year_fct = as.factor(year)
+         )
+         
+```
+
+These data come from the Gapminder Foundation, an organization interested in 
+increasing the use and understanding of statistics and other information about
+social, economic and environmental development at local, national and global
+levels.
+
+- Math Achievement -- Average score in the international TIMSS test for children 
+in the 8th grade 
+
+We will be analyzing data form 42 countries from across the world from 2007. 
+
+
+## Data Visualizations
+
+## Statistical Model
+
+### Model Conditions
+
+## One-Way ANOVA Inference
+
+### Testing for a Difference Between Years
+
+
+
+### Testing for a Difference Between Continents
+
+
+### Testing for a Difference Between Continents AND Years
