@@ -10,65 +10,188 @@ execute:
   warning: false
 ---
 
-
 ```{r packages}
 library(tidyverse)
 library(infer)
+library(ggridges)
+library(broom)
 ```
 
 ## Today's Data
 
+These data come from the Gapminder Foundation, an organization interested in increasing the use and understanding of statistics and other information about social, economic and environmental development at local, national and global levels.
+
+Today we will be comparing math achievement scores across continents and years. Math achievement was measured for 42 countries based on their average score for the grade 8 international TIMSS test. 
+
 ```{r data-cleaning}
-
-math <- read_csv(here::here("Week 9 - ANOVA",
-                            "Lab",
-                            "data", 
-                            "math_achievement_8th_grade.csv")
-                 ) %>% 
-  pivot_longer(cols = -country, names_to = "year", values_to = "grade_8_math_score") %>% 
-  drop_na(grade_8_math_score)
-
-countries_continents <- read_csv("https://raw.githubusercontent.com/dbouquin/IS_608/master/NanosatDB_munging/Countries-Continents.csv")
+math_scores <- read_csv(here::here("Week 9 - ANOVA", 
+                                   "Lab",
+                                   "data", 
+                                   "math_scores.csv")
+                        )
 
 
-math_continents <- math %>% 
-  left_join(countries_continents, by = c("country" = "Country")
-            ) %>% 
-  rename(continent = Continent) %>% 
-  mutate(continent = case_when(country == "Czech Republic" ~ "Europe", 
-                               country == "Russia" ~ "Asia", 
-                               country == "South Korea" ~ "Asia", 
-                               country == "United States" ~ "North America", 
-                               .default = continent), 
-         year_fct = as.factor(year)
-         )
+
+math_scores <- read_csv(here::here("data", 
+                                   "math_scores.csv")
+                        )
+
+# Creating a year_cat variable that is the categorical version of year
+math_scores <- mutate(math_scores, 
+                      year_cat = as.factor(year)
+                      )
          
 ```
 
-These data come from the Gapminder Foundation, an organization interested in 
-increasing the use and understanding of statistics and other information about
-social, economic and environmental development at local, national and global
-levels.
-
-- Math Achievement -- Average score in the international TIMSS test for children 
-in the 8th grade 
-
-We will be analyzing data form 42 countries from across the world from 2007. 
-
-
 ## Data Visualizations
+
+The first step for a statistical analysis should always be creating visualizations of the data. Similar to what you are expected to do for your project, you will make three density ridge plots:
+
+- visualizing the relationship between math score and year
+- visualizing the relationship between math score and continent
+- visualizing the relationship between math score with both year **and** continent
+
+
+**Question 1** -- Fill in the code below to visualize the distribution of grade 8 math scores over time.
+
+**Don't forget to include axis labels!**
+
+```{r year-math-ridges}
+ggplot(data = math_scores, 
+       mapping = aes(x = ____, 
+                     y = ____)) +
+  geom_density_ridges(scale = 1) 
+
+```
+
+*Note:* I've included a `scale = 1` argument to show you how you can get the density plots not to overlap!
+
+**Question 2** -- What do you see in the plot you made? How do the centers (means) of the distributions compare? What about the variability (spread) of the distributions?
+
+
+
+**Question 3** -- Write the code to visualize the distribution of grade 8 math scores for the six different continents.
+
+**Don't forget to include axis labels!**
+
+```{r continent-math-ridges}
+ggplot(data = math_scores, 
+       mapping = aes(x = grade_8_math_score, 
+                     y = continent)) +
+  geom_density_ridges(scale = 1) + 
+  labs(x = "Grade 8 Math Score on TIMSS", 
+       y = "Continent")
+```
+
+**Question 4** -- What do you see in the plot you made? How do the centers (means) of the distributions compare? What about the variability (spread) of the distributions?
+
+
+
+**Question 5** -- Write the code to visualize the distribution of grade 8 math scores for the six different continents for each of the four years.
+
+**Remember, you could either include a facet or a color here!**
+**Also remember you can use `alpha` to change the transparency of your density ridges!**
+
+```{r year-continent-math-ridges}
+ggplot(data = math_scores, 
+       mapping = aes(x = grade_8_math_score, 
+                     y = year_cat, 
+                     fill = continent)) +
+  geom_density_ridges(alpha = 0.5, scale = 1) + 
+  labs(x = "Grade 8 Math Score on TIMSS", 
+       y = "Year", 
+       fill = "Continent")
+
+```
+
+**Question 6** -- What do you see in the plot you made? Does it seem that the relationship between year and grade 8 math scores changes based on the continent of the student?
 
 ## Statistical Model
 
+For our analysis we will be using an analysis of variance (ANOVA) model. An ANOVA is an appropriate statistical model as we have a continuous response variable (grade 8 math score) and categorical explanatory variables (year, continent). Year is not considered to be a continuous numerical variable as we have only four measurements in time (1996, 1999, 2003, 2007). 
+
 ### Model Conditions
+
+An ANOVA has model conditions that are very similar to what we learned for linear regression. In this section we will evaluate the conditions of the model.
+
+For this section, it might be helpful to know how many observations there are for each year and for each continent. I have written code below to provide you with a table of these numbers:
+
+```{r num-obs}
+count(math_scores, continent, year) %>% 
+  pivot_wider(names_from = continent, values_from = n) %>% 
+  janitor::adorn_totals(where = c("row", "col"))
+```
+
+
+#### Independence 
+
+Based on the table we know:
+
+- each year has measurements on about six continents 
+- each continent has measurements for about four years
+
+Use this information to evaluate the condition of independence of observations. 
+
+
+**Question 7** -- Is it reasonable to assume that the observations *within* a continent are independent of each other?
+
+<!-- No, these observations are related in time.  -->
+
+**Question 8** -- Is it reasonable to assume that the observations *within* a year are independent of each other?
+
+<!-- Yes, I don't see major relationships between continents. Each country can only belong to one continent. Additionally, there are very few countries who border two different continents (e.g., Russia).  -->
+
+**Question 9** -- Is it reasonable to assume that the observations *between* continents are independent of each other?
+
+<!-- Again, yes, I don't see any major relationships between continents. Each country can only belong to one continent. Additionally, there are very few countries who border two different continents (e.g., Russia).  -->
+
+
+**Question 10** -- Is it reasonable to assume that the observations *between* a years are independent of each other?
+
+<!-- No, these observations are related in time.  -->
+
+
+#### Normality 
+
+Now we will evaluate the normality of the the distributions of grade 8 math scores across years and across continents -- the plot you created in #5. *Keep in mind, the normality condition is very important when the sample sizes for each group are relatively small.*
+
+**Question 11** -- Is it reasonable to say that the grade 8 math scores across the four years and six continents are normally distributed?
+
+
+
+#### Equal Variance
+
+Now we will evaluate the normality of the the distributions of grade 8 math scores across years and across continents -- the plot you created in #5. *Keep in mind, the constant variance condition is especially important when the sample sizes differ between groups.*
+
+**Question 13** -- Is it reasonable to say that the grade 8 math scores across the four years and six continents have equal variability?
+
 
 ## One-Way ANOVA Inference
 
 ### Testing for a Difference Between Years
 
+<!-- theory-method -->
+
+```{r}
+aov(grade_8_math_score ~ year, data = math_scores) %>% 
+  broom::tidy()
+```
 
 
 ### Testing for a Difference Between Continents
 
+<!-- simulation method -->
 
-### Testing for a Difference Between Continents AND Years
+```{r}
+obs_F <- 
+  
+null_dist 
+
+
+visualize()
+
+get_p_value()
+```
+
+
+
