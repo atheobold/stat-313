@@ -230,9 +230,11 @@ question("Based on the plot below, is the condition of equal variablility violat
 penguins %>% 
   ggplot(aes(y = species, x = body_mass_g)) + 
   geom_density_ridges() + 
-  facet_wrap(~ year_cat)
-  
-
+  facet_wrap(~ year_cat) +
+  theme(axis.text.x = element_text(size = 6)) +
+  labs(x = "Body Mass (g)") +
+  ## increases the space between facets!
+  theme(panel.spacing = unit(1, "lines"))
 ```
 
 ```{r quiz_3}
@@ -344,3 +346,6 @@ question("What should your next step be?",
   answer("Fit a one-way ANOVA model with only year as an explanatory variable.", message = "Careful! What did you decide for the hypothesis test for a difference in mean body mass between years? ") 
 )
 ```
+
+**Submit a screenshot of the final page of this tutorial to _both_ the Week 10 Reading Guide _and_ R tutorial assignments!**
+
