@@ -58,7 +58,9 @@ The first step for a statistical analysis should always be creating visualizatio
 ggplot(data = math_scores, 
        mapping = aes(x = grade_8_math_score, 
                      y = year_cat)) +
-  geom_density_ridges(scale = 1) 
+  geom_density_ridges(scale = 1) +
+  labs(x = "Grade 8 Math Score", 
+       y = "Year")
 
 ```
 
@@ -99,7 +101,7 @@ ggplot(data = math_scores,
 
 **Question 6** -- What do you see in the plot you made? Does it seem that the relationship between year and grade 8 math scores changes based on the continent of the student?
 
-It looks like across the years Europe's scores stay about the same. For the years we have data, it also appears that Africa's scores stay about the same. Asia's scores, however, seem to change throughout the years, migrating to lower scores over time. 
+It looks like across the years Europe's scores stay about the same. For the years we have data, it also appears that Africa's scores stay about the same. Asia's scores, however, seem to change throughout the years, migrating to lower scores over time.
 
 ## Statistical Model
 
@@ -150,7 +152,7 @@ Now we will evaluate the normality of the the distributions of grade 8 math scor
 
 **Question 11** -- Is it reasonable to say that the grade 8 math scores across the four years and six continents are normally distributed?
 
-Not really, many of the distributions have multiple modes (e.g., Africa and Asia in 2003). 
+Not really, many of the distributions have multiple modes (e.g., Africa and Asia in 2003).
 
 #### Equal Variance
 
@@ -169,9 +171,9 @@ math_scores %>%
 
 ```
 
-Looking at the table, we can see that the largest variance of 10257 (North America, 2007) is nearly 27 times larger than the smallest variance of 381 (Europe, 2003). That's a lot! So, our equal variance condition is definitely violated. 
+Looking at the table, we can see that the largest variance of 10257 (North America, 2007) is nearly 27 times larger than the smallest variance of 381 (Europe, 2003). That's a lot! So, our equal variance condition is definitely violated.
 
-But, we have learned tools for remedying this issue! Let's take the log of `grade_8_math_score` and see how the variances compare. 
+But, we have learned tools for remedying this issue! Let's take the log of `grade_8_math_score` and see how the variances compare.
 
 ```{r group-variances-log}
 math_scores %>% 
@@ -181,20 +183,19 @@ math_scores %>%
   pivot_wider(names_from = continent, values_from = log_var)
 ```
 
-**Question 12** -- Based on the variances in the table above, is it reasonable to say that the
-*log* grade 8 math scores across the four years and six continents have equal variability?
+**Question 12** -- Based on the variances in the table above, is it reasonable to say that the *log* grade 8 math scores across the four years and six continents have equal variability?
 
 No, there is still a large difference between the largest (0.0576) and smallest (0.00158) variances.
 
 ## One-Way ANOVA Inference
 
-We are going to test out both methods for conducting a hypothesis test for an ANOVA -- theory-based and simulation-based methods. Keep in mind **both** methods require independence of observations **and** equal variability. Normality, however, is only a condition of theory-based methods. 
+We are going to test out both methods for conducting a hypothesis test for an ANOVA -- theory-based and simulation-based methods. Keep in mind **both** methods require independence of observations **and** equal variability. Normality, however, is only a condition of theory-based methods.
 
 ### Testing for a Difference Between Years
 
 Since the distribution of grade 8 math scores across the four years wasn't horribly not Normal, let's give a theory-based method a try.
 
-**Question 13** -- Fill in the code below to conduct a one-way ANOVA 
+**Question 13** -- Fill in the code below to conduct a one-way ANOVA
 
 *Keep in mind the response variable comes first and the explanatory variable comes second!*
 
@@ -205,17 +206,17 @@ aov(grade_8_math_score ~ year, data = math_scores) %>%
 
 **Question 14** -- At an $\alpha = 0.1$, what decision would you reach for your hypothesis test?
 
-Reject $H_0$
+Reject $H_0$ the p-value of 0000276 is much lower than 0.1. 
 
 **Question 15** -- What would you conclude about the relationship between the mean grade 8 math scores and year?
 
-There is evidence that at least one year has a different mean grade 8 math score. 
+There is evidence that at least one year has a different mean grade 8 math score.
 
 ### Testing for a Difference Between Continents
 
 Since the distribution of grade 8 math scores across the six continents didn't look very Normal, so let's give a simulation-based method a try.
 
-I've gotten you started by calculating the observed F-statistic for the relationship between a country's grade 8 math score and its continent. 
+I've gotten you started by calculating the observed F-statistic for the relationship between a country's grade 8 math score and its continent.
 
 ```{r obs-f}
 obs_F <- math_scores %>% 
@@ -235,7 +236,6 @@ null_dist <- math_scores %>%
   calculate(stat = "F")
 ```
 
-
 **Question 17** -- Visualize the null distribution and shade how the p-value should be calculated
 
 ```{r visualize-null}
@@ -254,8 +254,8 @@ get_p_value(null_dist,
 
 **Question 19** -- At an $\alpha = 0.1$, what decision would you reach for your hypothesis test?
 
-Reject $H_0$
+Reject $H_0$, the p-value of approximately 0 is much lower than 0.1. 
 
 **Question 20** -- What would you conclude about the relationship between the mean grade 8 math scores and continent?
 
-There is evidence that at least one continent has a different mean grade 8 math score. 
+There is evidence that at least one continent has a different mean grade 8 math score.
