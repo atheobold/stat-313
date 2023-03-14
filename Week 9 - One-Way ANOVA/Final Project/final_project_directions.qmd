@@ -58,12 +58,12 @@ Every visualization should have nicely formatted axis labels!
 Unlike the Midterm Project, you **will not** be choosing what statistical model to fit based on the visualizations. Everyone will be using a two-way ANOVA interaction model to analyze their data, so in this section you are to describe the statistical model you will use and why.
 :::
 
-- Evaluate the conditions of the statistical model you propose to use
+-   Evaluate the conditions of the statistical model you propose to use
 
-::: {.callout-note}
+::: callout-note
 # Condition violations
 
-If you find through the study design and / or your visualizations that certain model conditions are violated, you are expected to do your best to remedy these violations. 
+If you find through the study design and / or your visualizations that certain model conditions are violated, you are expected to do your best to remedy these violations.
 :::
 
 # Findings
@@ -120,7 +120,9 @@ Specifically, you should remove the explanatory variable with the **largest** p-
 
 ## Conclusions
 
-Based on the results of your analysis what is your conclusion for the questions of interest? Connect your conclusion(s) to the relationships you saw in the visualizations you made.
+Based on the results of your analysis what is your conclusion for the questions of interest? Connect your conclusion(s) to the relationships you saw in the visualizations you made. 
+
+In this section you should also describe whether you believe the tests you performed are "reliable". Meaning, did you violate any of the conditions required of a two-way or one-way ANOVA model?
 
 # Scope of Inference
 
