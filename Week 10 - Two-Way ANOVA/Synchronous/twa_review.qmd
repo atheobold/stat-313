@@ -31,7 +31,6 @@ movies <- movies_sample %>%
   filter(era %in% c("1970s", "1980s", "1990s", "2000s"))
 ```
 
-
 ::: {style="font-size: 3em; color: #000000;"}
 Two-way ANOVA
 :::
@@ -42,10 +41,9 @@ Two-way ANOVA
 Goal:
 :::
 
-Assess if the relationship between one categorical explanatory variable
-and the response [differs]{style="color: #0F4C81"} based on the values of another categorical variable
+Assess if the relationship between one categorical explanatory variable and the response [differs]{style="color: #0F4C81"} based on the values of another categorical variable
 
----
+------------------------------------------------------------------------
 
 ::: {style="font-size: 3em; color: #000000;"}
 Modeling Options
@@ -53,31 +51,31 @@ Modeling Options
 
 ::: columns
 ::: {.column width="40%"}
-
 ::: {style="font-size: 2em; color: #ed8402;"}
 Additive Model
 :::
-
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="55%"}
-
 ::: {style="font-size: 2em; color: #0F4C81;"}
 Interaction Model
 :::
+:::
+:::
 
-:::
-:::
----
+------------------------------------------------------------------------
 
 ::: {style="font-size: 2em; color: #000000;"}
 **What are we looking for?**
 :::
 
-```{r, echo = FALSE, fig.align = 'center'}
+```{r twa-plot}
+#| echo: false
+#| fig-align: center
+
 movies %>% 
   ggplot(aes(y = era, x = rating, fill = genre)) + 
   geom_density_ridges(alpha = 0.5, scale = 1) +
@@ -90,7 +88,7 @@ movies %>%
         legend.title = element_text(size = 18))
 ```
 
-##
+## 
 
 ::: {style="font-size: 3em; color: #000000;"}
 Hypothesis Test Steps
@@ -98,29 +96,25 @@ Hypothesis Test Steps
 
 ::: columns
 ::: {.column width="40%"}
-
 ::: {style="font-size: 1.5em; color: #0F4C81;"}
-Step 1: Fit an interaction model 
+Step 1: Fit an interaction model
 :::
-
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="55%"}
-
 ::: {style="font-size: 1.5em; color: #687244;"}
-Step 2: Decide if the interaction is necessary  
+Step 2: Decide if the interaction is necessary
 :::
 
-- If yes, then this is your model! 
-- If no, go to step 3.  
-
+-   If yes, then this is your model!
+-   If no, go to step 3.
 :::
 :::
 
-##
+## 
 
 ```{r}
 #| echo: true
@@ -143,18 +137,19 @@ aov(rating ~ era*genre, data = movies) %>%
 ```
 
 <center>
+
 ::: {style="font-size: 1.5em; color: #0F4C81;"}
 **What would you decide?**
 :::
+
 </center>
 
-##
-
+## 
 
 ::: columns
 ::: {.column width="40%"}
 ::: {style="font-size: 2em; color: #ed8402;"}
-Step 3: Fit an additive model 
+Step 3: Fit an additive model
 :::
 :::
 
@@ -163,12 +158,12 @@ Step 3: Fit an additive model
 
 ::: {.column width="55%"}
 ::: {style="font-size: 2em; color: #687244;"}
-Step 4: Decide if each explanatory variable is necessary 
+Step 4: Decide if each explanatory variable is necessary
 :::
 :::
 :::
 
-##
+## 
 
 ```{r}
 #| echo: true
@@ -189,10 +184,10 @@ aov(rating ~ era + genre, data = movies) %>%
 **What would you decide?**
 :::
 
-##
+## 
 
 ::: {style="font-size: 2em; color: #c54405;"}
-Step 5: Remove the variable with the largest p-value 
+Step 5: Remove the variable with the largest p-value
 :::
 
 ```{r}
@@ -214,8 +209,7 @@ aov(rating ~ genre, data = movies) %>%
 **What would you decide?**
 :::
 
-
-##
+## 
 
 ::: {style="font-size: 2em; color: #9a8e8d;"}
 Step 6: Fit a mean-only model
@@ -228,5 +222,3 @@ summarize(movies,
           mean_rating = mean(rating)
           )
 ```
-
-
