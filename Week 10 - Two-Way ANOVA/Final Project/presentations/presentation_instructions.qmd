@@ -23,7 +23,11 @@ For your presentation you are allowed to make **two** slides:
 1. A title slide (make it fun!) with your name
 2. A content slide
 
-**You slides are due on Tuesday by 5pm.** 
+**You slides are due on Tuesday by 5pm.**
+
+::: {.callout-caution}
+Your slides must be submitted as a PDF. Make sure they are saved in the correct orientation! 
+:::
 
 ## Presentations
 
