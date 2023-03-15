@@ -1,0 +1,9 @@
+---
+title: "Evaluating Independence"
+format: 
+  docx: 
+    self-contained: true
+editor: visual
+---
+
+
