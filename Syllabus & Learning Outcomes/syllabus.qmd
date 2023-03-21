@@ -22,15 +22,96 @@ execute:
 
 **Instructor: Dr. Allison Theobold** -- call me [**Dr. Theobold**](https://docs.google.com/document/d/1m4e-2l76luAd9WrxiwCVf8-yf-co82dDSe1jHYf-NBo/edit?usp=sharing) or Dr. T! I use **she / they** pronouns.
 
+# Welcoming Classroom
+
+I value diversity, inclusion and equity in this (and every) class. I hold the fundamental belief that everyone is fully capable of learning and doing statistics. There is more than one way to address a statistical problem, and our learning will be richer by being open to different ideas, rejecting stereotypes, and being aware of---in order to minimize---our biases. I look forward to getting to know you all as individuals and as a learning community.
+
 # What is this class?
 
 *Catalog Description*: Applications of statistics for students not majoring in statistics or mathematics. Analysis of variance including one-way classification, randomized blocks, and factorial designs; multiple regression, model diagnostics, and model comparison. Prerequisite: Stat 217, Stat 218, Stat 221 or Stat 312
 
-**What will class be like?** We will spend class time exploring statistics concepts and tools and using those tools to answer questions, often with real data. This will happen in small-group work, full-class discussions, or mini lectures. We'll often explore data with technology, so **please bring a laptop**! There will also be time in class to discuss research articles that draw on the statistics topics we study.
+## My course goals
 
-# Welcoming Classroom
+::: columns
+::: {.column width="45%"}
+**Data Visualization & Summarization**
 
-I value diversity, inclusion and equity in this (and every) class. I hold the fundamental belief that everyone is fully capable of learning and doing statistics. There is more than one way to address a statistical problem, and our learning will be richer by being open to different ideas, rejecting stereotypes, and being aware of---in order to minimize---our biases. I look forward to getting to know you all as individuals and as a learning community.
+-   create visualizations for one and two numerical variables
+
+-   use facets and / or color to include additional variables into a visualization
+
+-   calculate numerical summaries of variables
+
+-   find summaries of variables across multiple groups
+
+**Working with Data & Reproducibility**
+
+-   select necessary columns from a dataset
+
+-   filter rows from a dataset for numerical and categorical variables
+
+-   modify existing numerical and categorical variables and / or create new variables
+
+-   create professional-looking, reproducible analyses using Posit projects, Quarto documents, and the **here** package
+
+**Linear Models & Model Selection**
+
+-   identify which linear model is appropriate for a given research question
+
+-   describe the conditions required to obtain reliable estimates from linear models
+
+-   use visualizations, summary statistics, and critical thinking to evaluate if linear model conditions are violated
+
+-   identify methods to remedy condition violations
+
+-   fit additive and interactive linear models in R
+
+-   interpret the coefficient estimates of a linear model
+
+-   use visualizations and model selection techniques to determine if a specific variable should be included in a linear model
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="45%"}
+**Study Design**
+
+-   distinguish between an experiment and an observational study
+
+-   identify sources of variation and describe how to account for them
+
+-   explain differences in sampling methods and contrast the inferences they permit
+
+-   argue what population a given sample is representative of
+
+**Fundamentals of Statistical Inference**
+
+-   identify the parameter of interest for a given linear model and associated research question
+
+-   outline the null ($H_0$) and alternative ($H_A$) hypotheses for a given research question
+
+-   describe what a null distribution is and how it is used to obtain a p-value
+
+-   interpret a p-value in the context of a research question
+
+-   use a p-value to make a decision about a hypothesis test and reach a conclusion about a research question
+
+-   distinguish between Type I and Type II errors
+
+-   describe how sample size, significance level, and sampling variability effect Type I and Type II errors
+
+-   outline the strengths and weaknesses of significance testing
+
+-   describe what a bootstrap distribution is and how it is used to obtain a confidence interval
+
+-   interpret a confidence interval in the context of the parameter of interest
+
+-   describe the connection between confidence intervals and hypothesis testing
+:::
+:::
+
 
 # Key information
 
@@ -96,97 +177,40 @@ For this course we will be using one main textbook, accompanied by additional re
 :::
 :::
 
-::: callout-caution
-I strongly advise you to pay for the \$5 per month plan with Posit Cloud. The free plan only gives you 25 hours of working on projects a month, and I don't want anyone to run out of time and not be able to complete their assignment!
-:::
+<!-- ::: callout-caution -->
+<!-- I strongly advise you to pay for the \$5 per month plan with Posit Cloud. The free plan only gives you 25 hours of working on projects a month, and I don't want anyone to run out of time and not be able to complete their assignment! -->
+<!-- ::: -->
 
-# Course goals
+# Grade Breakdown {#sec-grades}
 
-::: columns
-::: {.column width="45%"}
-**Data Visualization & Summarization**
++--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
+|                                | A-level                     | B-level                                                               | C-level                 | D-level                 |         |
++================================+=============================+=======================================================================+=========================+=========================+=========+
+| **Reading Guides (12 total)**  | at least 11 completed       | at least 10 completed \| at least 8 completed \| 6 or fewer completed |                         |                         |         |
++--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
+| **Concept Quizzes\             | at least 14 completed       | at least 12 completed                                                 | at least 10 completed   | 9 or fewer completed    |         |
+| (15 total)**                   |                             |                                                                       |                         |                         |         |
++--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
+| **Tutorials\                   | at least 13 completed       | at least 11 completed                                                 | at least 10 completed   | 8 or fewer completed    |         |
+| (14 total)**                   |                             |                                                                       |                         |                         |         |
++--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
+| **Critiques & Lab Assignments\ | at least 9 Satisfactory[^1] | at least 8 Satisfactory                                               | at least 7 Satisfactory | 6 or fewer Satisfactory |         |
+| (10 total)**                   |                             |                                                                       |                         |                         |         |
++--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
+| **Peer Evaluations\            | 2 completed                 | 2 completed                                                           | at least 1 completed    | at least 1 completed    |         |
+| (2 total)**                    |                             |                                                                       |                         |                         |         |
++--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
+| **Midterm Project**            | Excellent                   | Satisfactory                                                          | Progressing             | Not Completed           |         |
++--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
+| **Final Project**              | Excellent                   | Satisfactory                                                          | Progressing             | Not Completed           |         |
++--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
 
--   create visualizations for one and two numerical variables
+[^1]: A "Satisfactory" lab or critique occurs when **every** problem has been marked *Satisfactory.*
 
--   use facets and / or color to include additional variables into a visualization
+I will set + / - grades based on how close you are to the next higher (or lower) letter grade. For example, if you meet all the criteria for an A but only completed 8 satisfactory labs and critiques, you would earn an A-. Similarly, if you meet all the criteria for an A, but received a Satisfactory on a project -- with more sections receiving an Excellent than Satisfactory -- you would earn an A-.
 
--   calculate numerical summaries of variables
 
--   find summaries of variables across multiple groups
-
-**Working with Data & Reproducibility**
-
--   select necessary columns from a dataset
-
--   filter rows from a dataset for numerical and categorical variables
-
--   modify existing numerical and categorical variables and / or create new variables
-
--   create professional-looking, reproducible analyses using Posit projects, Quarto documents, and the **here** package
-
-**Linear Models & Model Selection**
-
--   explain why simple linear regression (SLR), multiple linear regression (MLR), and analysis of variance (ANOVA) are all members of the linear model family
-
--   identify which linear model is appropriate for a given research question
-
--   describe the conditions required to obtain reliable estimates from linear models
-
--   use visualizations, summary statistics, and critical thinking to evaluate if linear model conditions are violated
-
--   identify methods to remedy condition violations
-
--   fit additive and interactive linear models in R
-
--   interpret the coefficient estimates of a linear model
-
--   use visualizations and model selection techniques to determine if a specific variable should be included in a model
-:::
-
-::: {.column width="5%"}
-<!-- empty column to create gap -->
-:::
-
-::: {.column width="45%"}
-**Study Design**
-
--   distinguish between an experiment and an observational study
-
--   identify sources of variation and describe how to account for them
-
--   explain differences in sampling methods and contrast the inferences they permit
-
--   argue what population a given sample is representative of
-
-**Fundamentals of Statistical Inference**
-
--   identify the parameter of interest for a given linear model and associated research question
-
--   outline the null ($H_0$) and alternative ($H_A$) hypotheses for a given research question
-
--   describe what a null distribution is and how it is used to obtain a p-value
-
--   interpret a p-value in the context of a research question
-
--   use a p-value to make a decision about a hypothesis test and reach a conclusion about a research question
-
--   distinguish between Type I and Type II errors
-
--   describe how sample size, significance level, and sampling variability effect Type I and Type II errors
-
--   outline the strengths and weaknesses of significance testing
-
--   describe what a bootstrap distribution is and how it is used to obtain a confidence interval
-
--   interpret a confidence interval in the context of the parameter of interest
-
--   describe the connection between confidence intervals and hypothesis testing
-:::
-:::
-
-------------------------------------------------------------------------
-
-# What assessments will there be?
+## What assessments will there be?
 
 The main idea of assessment in this course is communication and feedback. There are several different types of assessments or assignments in this class, but they will all allow you to check your own understanding and progress towards the learning goals, get in-depth feedback from me, and let me know where to spend more time or approach something differently.
 
@@ -212,7 +236,7 @@ The tutorials are **marked on completion** as complete or incomplete. You will s
 
 ## Critically evaluate the use of Statistics
 
-### Statistical critiques (every 2-weeks)
+### Statistical critiques (every 4-weeks)
 
 These assignments are case studies in which you will evaluate a data visualization or statistical analysis, determining how well-performed and presented the analysis was and making recommendations for improving or using the analysis. Critiques are due roughly 1-week after they are assigned and should take **1-2 hours**. You will **receive feedback** and a mark of **Success** or **Growing** (elaborated more on later), and you will be able to revise based on that feedback. There will be **four** total critiques.
 
@@ -224,7 +248,7 @@ Labs will be assigned on Thursday every week, providing the opportunity to explo
 
 You will complete the lab assignments in the same teams you collaborate with in class. You will access the lab assignment through Posit Cloud, which you will be walked through during the first lab. Your group will be expected to submit your completed lab on Canvas. You will need to submit **both** the HTML and Quarto documents. The individual assigned as the Report Manager (described below) will submit the team's completed Lab assignment by **Sunday at midnight.**
 
-**Success / Growing Grading**
+#### Success / Growing Grading
 
 I expect that you will approach each lab assignment seriously, investing the necessary time and energy to prepare your responses. Different from what you may have experienced, lab assignments are graded for "proficiency" of specific learning targets, which describe what you should be able to do after taking this course. You'll receive a score for each problem on an assignment according to the **Success** / **Not Yet** rubric below, as well as feedback to help you improve.
 
@@ -236,45 +260,11 @@ I expect that you will approach each lab assignment seriously, investing the nec
 | Growing    | The solution shows growth toward mastering the topic; however, it is incorrect and/or incomplete.                       |
 +------------+-------------------------------------------------------------------------------------------------------------------------+
 
-## Synthesize statistical ideas
-
-### Midterm & Final Projects
-
-There will be two projects throughout the quarter, where you will be asked to synthesize the statistical concepts you have learned in a formal statistical report. Your critiques will help guide you toward how you do / don't want your report to look. Each project will be done independently, and requires you to submit a project proposal and draft report before the final deadline. You are encouraged to use the feedback received on these assignments to improve your final report. The final reports will be graded as Excellent, Satisfactory, Progressing, or No Credit based on a rubric that will be shared with the initial assignment.
-
-# Grade Breakdown {#sec-grades}
-
-+--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-|                                | A-level                     | B-level                 | C-level                 | D-level                 |
-+================================+=============================+=========================+=========================+=========================+
-| **Reading Guides (12 total)**  | at least 11 completed       | at least 10 completed    | at least 8 completed    | 6 or fewer completed    |
-+--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-| **Concept Quizzes\             | at least 14 completed       | at least 12 completed   | at least 10 completed   | 9 or fewer completed    |
-| (15 total)**                   |                             |                         |                         |                         |
-+--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-| **Tutorials\                   | at least 13 completed       | at least 11 completed   | at least 10 completed   | 8 or fewer completed    |
-| (14 total)**                   |                             |                         |                         |                         |
-+--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-| **Critiques & Lab Assignments\ | at least 9 Satisfactory[^1] | at least 8 Satisfactory | at least 7 Satisfactory | 6 or fewer Satisfactory |
-| (10 total)**                   |                             |                         |                         |                         |
-+--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-| **Peer Evaluations\            | 2 completed                 | 2 completed             | at least 1 completed    | at least 1 completed    |
-| (2 total)**                    |                             |                         |                         |                         |
-+--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-| **Midterm Project**            | Excellent                   | Satisfactory            | Progressing             | Not Completed           |
-+--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-| **Final Project**              | Excellent                   | Satisfactory            | Progressing             | Not Completed           |
-+--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
-
-[^1]: A "Satisfactory" lab or critique ocurrs when **every** problem has been marked *Satisfactory.*
-
-I will set + / - grades based on how close you are to the next higher (or lower) letter grade. For example, if you meet all the criteria for an A but only completed 8 satisfactory labs and critiques, you would earn an A-. Similarly, if you meet all the criteria for an A, but received a Satisfactory on a project -- with more sections receiving an Excellent than Satisfactory -- you would earn an A-.
-
-### Completing Revisions
+#### Completing Revisions
 
 After the first submission of your lab or critique, you will have the option to retry any problems for which you scored a **Growing (G)**. A written reflection on how your understanding of the problem changed will accompany any revision. If you don't earn a **Success** by the second try, you can make an appointment with me to meet during my office hours (or another agreed-upon time) to create a reassessment strategy. You can schedule up to one meeting per week.
 
-You can submit **up to one** revised Lab Assignment or Critique per week, until Sunday, March 19 at 11:59 pm.
+You can submit **up to one** revised Lab Assignment or Statistical Critique per week, until Sunday, June 11 at 11:59 pm.
 
 #### Reflections on Your Learning
 
@@ -285,13 +275,20 @@ Revisions **must** include a reflection describing how you revised your thinking
 
 **Submit your revision to the same assignment box on Canvas as your original. This helps me keep track of any outstanding revisions each person has.**
 
+## Synthesize statistical ideas
+
+### Midterm & Final Projects
+
+There will be two projects throughout the quarter, where you will be asked to synthesize the statistical concepts you have learned in a formal statistical report. Your critiques will help guide you toward how you do / don't want your report to look. Each project will be done independently, and requires you to submit a project proposal and draft report before the final deadline. You are encouraged to use the feedback received on these assignments to improve your final report. The final reports will be graded as Excellent, Satisfactory, Progressing, or No Credit based on a rubric that will be shared with the initial assignment.
+
+
 ------------------------------------------------------------------------
 
 # Classroom community and policies
 
 ### Weekly expectations
 
-Every Sunday evening there will be an announcement on Canvas letting you know what is due over the next week, and the material we will be covering. The module for each week will be released on Friday by 5pm, so you can look over the content and see what the plan is for the week.
+The module for each week will be released on Friday by 5pm, so you can look over the content and see what the plan is for the week.
 
 ### Getting help
 
