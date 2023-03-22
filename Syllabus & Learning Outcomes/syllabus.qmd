@@ -112,7 +112,6 @@ I value diversity, inclusion and equity in this (and every) class. I hold the fu
 :::
 :::
 
-
 # Key information
 
 ### Class meetings
@@ -178,37 +177,38 @@ For this course we will be using one main textbook, accompanied by additional re
 :::
 
 <!-- ::: callout-caution -->
+
 <!-- I strongly advise you to pay for the \$5 per month plan with Posit Cloud. The free plan only gives you 25 hours of working on projects a month, and I don't want anyone to run out of time and not be able to complete their assignment! -->
+
 <!-- ::: -->
 
 # Grade Breakdown {#sec-grades}
 
-+--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
-|                                | A-level                     | B-level                                                               | C-level                 | D-level                 |         |
-+================================+=============================+=======================================================================+=========================+=========================+=========+
-| **Reading Guides (12 total)**  | at least 11 completed       | at least 10 completed \| at least 8 completed \| 6 or fewer completed |                         |                         |         |
-+--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
-| **Concept Quizzes\             | at least 14 completed       | at least 12 completed                                                 | at least 10 completed   | 9 or fewer completed    |         |
-| (15 total)**                   |                             |                                                                       |                         |                         |         |
-+--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
-| **Tutorials\                   | at least 13 completed       | at least 11 completed                                                 | at least 10 completed   | 8 or fewer completed    |         |
-| (14 total)**                   |                             |                                                                       |                         |                         |         |
-+--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
-| **Critiques & Lab Assignments\ | at least 9 Satisfactory[^1] | at least 8 Satisfactory                                               | at least 7 Satisfactory | 6 or fewer Satisfactory |         |
-| (10 total)**                   |                             |                                                                       |                         |                         |         |
-+--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
-| **Peer Evaluations\            | 2 completed                 | 2 completed                                                           | at least 1 completed    | at least 1 completed    |         |
-| (2 total)**                    |                             |                                                                       |                         |                         |         |
-+--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
-| **Midterm Project**            | Excellent                   | Satisfactory                                                          | Progressing             | Not Completed           |         |
-+--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
-| **Final Project**              | Excellent                   | Satisfactory                                                          | Progressing             | Not Completed           |         |
-+--------------------------------+-----------------------------+-----------------------------------------------------------------------+-------------------------+-------------------------+---------+
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+|                                | A-level                     | B-level                 | C-level                 | D-level                 |
++================================+=============================+=========================+=========================+=========================+
+| **Reading Guides (12 total)**  | at least 11 completed       | at least 10 completed   | at least 8 completed    | 6 or fewer completed    |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Concept Quizzes\             | at least 14 completed       | at least 12 completed   | at least 10 completed   | 9 or fewer completed    |
+| (15 total)**                   |                             |                         |                         |                         |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Tutorials\                   | at least 13 completed       | at least 11 completed   | at least 10 completed   | 8 or fewer completed    |
+| (14 total)**                   |                             |                         |                         |                         |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Critiques & Lab Assignments\ | at least 9 Satisfactory[^1] | at least 8 Satisfactory | at least 7 Satisfactory | 6 or fewer Satisfactory |
+| (10 total)**                   |                             |                         |                         |                         |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Peer Evaluations\            | 2 completed                 | 2 completed             | at least 1 completed    | at least 1 completed    |
+| (2 total)**                    |                             |                         |                         |                         |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Midterm Project**            | Excellent                   | Satisfactory            | Progressing             | Not Completed           |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
+| **Final Project**              | Excellent                   | Satisfactory            | Progressing             | Not Completed           |
++--------------------------------+-----------------------------+-------------------------+-------------------------+-------------------------+
 
 [^1]: A "Satisfactory" lab or critique occurs when **every** problem has been marked *Satisfactory.*
 
 I will set + / - grades based on how close you are to the next higher (or lower) letter grade. For example, if you meet all the criteria for an A but only completed 8 satisfactory labs and critiques, you would earn an A-. Similarly, if you meet all the criteria for an A, but received a Satisfactory on a project -- with more sections receiving an Excellent than Satisfactory -- you would earn an A-.
-
 
 ## What assessments will there be?
 
@@ -280,7 +280,6 @@ Revisions **must** include a reflection describing how you revised your thinking
 ### Midterm & Final Projects
 
 There will be two projects throughout the quarter, where you will be asked to synthesize the statistical concepts you have learned in a formal statistical report. Your critiques will help guide you toward how you do / don't want your report to look. Each project will be done independently, and requires you to submit a project proposal and draft report before the final deadline. You are encouraged to use the feedback received on these assignments to improve your final report. The final reports will be graded as Excellent, Satisfactory, Progressing, or No Credit based on a rubric that will be shared with the initial assignment.
-
 
 ------------------------------------------------------------------------
 
@@ -424,8 +423,8 @@ In this unit we *finally* begin exploring statistical methods. You will put the 
 
 Reading:
 
--   Chapter 7 in *IMS* and Chapter 5 in *Modern Dive*
--   Chapter 8 in *IMS* and Chapter 6 in *Modern Dive*
+-   Chapter 5 in *Modern Dive*
+-   Chapter 6 in *Modern Dive*
 
 ## Unit 4: Model Selection & Inference for Regression (Weeks 6 & 7)
 
@@ -439,4 +438,4 @@ There are occasions where the conditions required for linear regression are viol
 
 To wrap up the quarter, we will look at a special case of linear regression--ANOVA. In this special case, our regression will include **only** categorical variables as explanatory variables. We will first review how we compare the means of two groups and then connect with what we learned about categorical variables in multiple linear to conceptualize how we can compare the means of three or more groups.
 
-This unit will explore Chapter 21 and 22 in *IMS*
+This unit will explore Chapter 22 in *IMS*
