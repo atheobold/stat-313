@@ -1,7 +1,0 @@
----
-title: "Untitled"
-format: 
-  revealjs:
-    self-contained: true
-editor: visual
----
