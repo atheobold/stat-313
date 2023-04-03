@@ -38,7 +38,7 @@ Discord is a platform for text chatting, voice chatting, and screen sharing.Thro
 
 ## Join the server
 
-Join the [Stat 313 Server (https://discord.gg/TupTVEcb)](https://discord.gg/tVATtcFg) to start experimenting with the interface.
+Join the [Stat 313 Server (https://discord.gg/hfk9vyMXwS)](https://discord.gg/hfk9vyMXwS) to start experimenting with the interface.
 
 When you join the server, you will be given some suggestions to get started.
 
@@ -188,58 +188,58 @@ There will be two projects throughout the quarter, where you will be asked to sy
 
 **Question 1:** Where are student hours held?
 
-- In person
-- Discord
-- Zoom by appointment
-- Canvas
+-   In person
+-   Discord
+-   Zoom by appointment
+-   Canvas
 
-::: {.callout-tip}
-Look at the [student hours](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#key-information) section of the course syllabus! 
+::: callout-tip
+Look at the [student hours](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#key-information) section of the course syllabus!
 :::
 
 **Question 2:** What materials and technology are required for this course? Select all that apply!
 
-- Introduction to Modern Statistics
-- RStudio Cloud -- the application for working in R
-- Canvas
-- Discord
+-   Introduction to Modern Statistics
+-   RStudio Cloud -- the application for working in R
+-   Canvas
+-   Discord
 
-::: {.callout-tip}
-Look at the [required materials](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#required-materials) section of the course syllabus!  
+::: callout-tip
+Look at the [required materials](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#required-materials) section of the course syllabus!
 :::
 
 **Question 3:** In this course, Reading Guides are due by \_\_\_\_, Concept Quizzes are due by \_\_\_\_, and Tutorials are due by \_\_\_\_.
 
 **Question 4:** If you have a question about the course content, what is the best first step?
 
-- Post your question on Discord in the appropriate channel
-- Send Dr. Theobold an email
-- Go to Dr. Theobold's office hours on Tuesday
-- Google it
+-   Post your question on Discord in the appropriate channel
+-   Send Dr. Theobold an email
+-   Go to Dr. Theobold's office hours on Tuesday
+-   Google it
 
-::: {.callout-tip}
-Look at the [getting help](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#classroom-community-and-policies) section of the course syllabus!  
+::: callout-tip
+Look at the [getting help](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#classroom-community-and-policies) section of the course syllabus!
 :::
 
 **Question 4:** If you receive a "Growing" on a Lab Assignment or a Critique, what should you do?
 
-- read the comments and complete revisions on the problems receiving a "Growing"
-- read the comments and complete revisions on the entire assignment
-- complete revisions on the problems receiving a "Growing"
+-   read the comments and complete revisions on the problems receiving a "Growing"
+-   read the comments and complete revisions on the entire assignment
+-   complete revisions on the problems receiving a "Growing"
 
-::: {.callout-tip}
-Look at the [lab section](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#perform-statistical-analyses-to-answer-research-questions) of the course syllabus! 
+::: callout-tip
+Look at the [lab section](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#perform-statistical-analyses-to-answer-research-questions) of the course syllabus!
 :::
 
 **Question 5:** For revisions on Lab Assignments and Critiques to be considered that week they need to be turned in with:
 
-- reflections on how your learning progressed from your initial attempt
-- your new answers
-- your original answers
-- nothing
+-   reflections on how your learning progressed from your initial attempt
+-   your new answers
+-   your original answers
+-   nothing
 
-::: {.callout-tip}
-Look at the [revisions section](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#perform-statistical-analyses-to-answer-research-questions) of the course syllabus! 
+::: callout-tip
+Look at the [revisions section](https://atheobold.github.io/stat-313/Syllabus%20%26%20Learning%20Outcomes/Syllabus.html#perform-statistical-analyses-to-answer-research-questions) of the course syllabus!
 :::
 
 **Question 6:** You have finished the week's Concept Quiz, and you want to know if you did it right. You ask your friend, and they say, "Oh, I got *Luke Skywalker* as my answer." This is a violation of the Academic Honesty policy.
@@ -248,5 +248,4 @@ Look at the [revisions section](https://atheobold.github.io/stat-313/Syllabus%20
 
 **Question 8:** You have been working on making a visualization for your Midterm Project for what feels like forever and it seems like you are making little to no progress. You type the prompt into Google and "Wham!" the first result is a Stack Overflow page with a solution. You copy-and-paste the solution from the Stack Overflow page into your Midterm Project and do not reference that you used an outside source. You have violated the Academic Honesty policy.
 
-**Question 9:** Upload a picture of you introducing yourself in the 
-"Introductions" channel of the STAT 313 Discord Server.
+**Question 9:** Upload a picture of you introducing yourself in the "Introductions" channel of the STAT 313 Discord Server.
