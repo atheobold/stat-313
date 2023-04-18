@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -2631,28 +2631,17 @@ Q4<br>
 Q5<br>
 Q6<br>
 Q7<br>
-Q8</p>
+Q8<br>
+Q9<br>
+Q10</p>
 <section id="a" class="level2">
 <h2 class="anchored" data-anchor-id="a">1 (a)</h2>
 <p><strong>How large is the <code>nycflights</code> dataset? (i.e. How many rows and columns does it have?)</strong> <!-- Your response goes below this line! --></p>
 <p><strong>Success</strong>:</p>
 <ul>
-<li>Must have code that gives size of dataset, with a preference for <code>glimpse()</code></li>
+<li>Uses <code>glimpse()</code> to obtain the size of the dataset</li>
 <li>Size of 32,735 rows and 16 columns</li>
 </ul>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note most may put the <code>glimpse(nycflights)</code> code in the code chunk before Question 1, which will not produce output.</p>
-</div>
-</div>
 <p><strong>Growing</strong>:</p>
 <ul>
 <li>If no code is present</li>
@@ -2660,18 +2649,18 @@ Tip
 <li>If they do not provide size of data</li>
 </ul>
 <p><em>Feedback for no code:</em> For Question 1(a), you needed to write code to explore the size of the data and the types of variables.</p>
-<p><em>Feedback for no / incorrect dimensions:</em> For Question 1(a), look again at the output of the glimpse() function, how many rows and columns are included in the nycflights dataset?</p>
+<p><em>Feedback for not using <code>glimpse()</code>:</em> For this course, we prefer you use the tools being taught in the textbook and course materials. What function have you learned in this class which give a preview of a dataset?</p>
+<p><em>Feedback for no / incorrect dimensions:</em> For Question 1(a), look again at the output of the <code>glimpse()</code> function, how many rows and columns are included in the nycflights dataset?</p>
 </section>
 <section id="b" class="level2">
 <h2 class="anchored" data-anchor-id="b">1 (b)</h2>
-<p><strong>Are there numerical variables in the dataset? If so, what are their names?</strong><br>
-<!-- Your response goes below this line! --></p>
+<p><strong>Are there numerical variables in the dataset? If so, what are their names?</strong> <!-- Your response goes below this line! --></p>
 <p><strong>Success</strong>:</p>
 <ul>
-<li>Lists all variables with an <code>int</code> or <code>dbl</code> data type:
+<li>Lists <strong>all</strong> variables with an <code>int</code> or <code>dbl</code> data type:
 <ul>
 <li>year</li>
-<li>month</li>
+<li>month (many may miss)</li>
 <li>day</li>
 <li>dep_time</li>
 <li>dep_delay</li>
@@ -2683,11 +2672,11 @@ Tip
 <li>hour</li>
 <li>minute</li>
 </ul></li>
-<li>Permitted to miss 1-2 variables</li>
+<li>Permitted to miss 1 variable</li>
 </ul>
 <p><strong>Growing</strong>:</p>
 <ul>
-<li>If misses 3 or more variables</li>
+<li>If misses 2 or more variables</li>
 <li>If includes categorical variables (labeled <code>chr</code>)</li>
 </ul>
 <p><em>Feedback:</em> For Question 1(b), you need to be careful to include ALL of the variables that R believes are numerical, that includes variables which may behave more like a categorical variable.</p>
@@ -2711,6 +2700,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Note: Axis labels are not required!</p>
+<p>Note: May choose their own binwidth, but that is not required!</p>
 </div>
 </div>
 <p><strong>Growing</strong>: If maps <code>dep_delay</code> to y-axis instead of x-axis</p>
@@ -2730,7 +2720,7 @@ Note
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">150</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Growing</strong>: If code does not use correct <code>binwidth</code>s</p>
-<p><em>Feedback:</em> For Question 3(a), pay attention to what binwidth you need to use <em>within</em> your geom_histogram()</p>
+<p><em>Feedback:</em> For Question 3(a), pay attention to what binwidth you need to use <em>within</em> your <code>geom_histogram()</code>!</p>
 </section>
 <section id="b-1" class="level2">
 <h2 class="anchored" data-anchor-id="b-1">3 (b)</h2>
@@ -2744,7 +2734,7 @@ Note
 <li>If description only references how the bins are larger or smaller, but doesn’t talk about shape the distribution</li>
 <li>Only talks about how the y-axis scale changes</li>
 </ul>
-<p><em>Feedback:</em> For Question 3(b), your discussion should address how the binwidth affects the shape of the distribution or what you are able to see.</p>
+<p><em>Feedback:</em> For Question 3(b), your discussion should address how the binwidth affects the shape of the distribution and what you are able to see.</p>
 </section>
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1">4</h2>
@@ -2768,7 +2758,7 @@ Note
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>AND</strong></p>
-<p>They should state that 45 flights arrived early in July out of the 1345 flights to SFO.</p>
+<p>They should state that 45 flights arrived to SFO early in July.</p>
 <p><strong>Growing</strong>:</p>
 <ul>
 <li>If they don’t interpret the output</li>
@@ -2783,13 +2773,17 @@ Note
 </ul>
 <p><em>Feedback:</em> For Question 5, the 45 and the 16 refer to the size of the filtered dataset. What does that tell you in terms of the number of flights that satisfied your criteria out of the sfo_flights dataset?</p>
 <ul>
-<li>If they don’t say how many SFO flights there were to begin with (1345)</li>
-</ul>
-<p><em>Feedback:</em> For Question 5, how many SFO flight were there to begin with?</p>
-<ul>
-<li>If they don’t interpret the conditions of the filter (arrived early in July)</li>
+<li>If they’re missing the conditions of the filter (arrived early in July)</li>
 </ul>
 <p><em>Feedback:</em> For Question 5, what were the conditions of these 45 flights?</p>
+<ul>
+<li>If they’re missing the destination of these flights (SFO)</li>
+</ul>
+<p><em>Feedback:</em> For Question 5, what flights did you filter? All NYC flights or a smaller dataset?</p>
+<ul>
+<li>If they’re missing <strong>both</strong> the conditions of the filter <strong>and</strong> the destination of the flights</li>
+</ul>
+<p><em>Feedback:</em> For Question 5, what flights did you filter? All NYC flights or a smaller dataset? What were the conditions of these 45 flights?</p>
 </section>
 <section id="section-3" class="level2">
 <h2 class="anchored" data-anchor-id="section-3">6</h2>
@@ -2809,21 +2803,6 @@ Note
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">min_ad =</span> <span class="fu">min</span>(arr_delay)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>I’d give full credit for using either the <code>nycflights</code> dataset or the <code>sfo_flights</code> dataset</li>
-</ul>
-</div>
-</div>
 <ul>
 <li>If they don’t name their summary statistics</li>
 </ul>
@@ -2831,22 +2810,47 @@ Note
 <ul>
 <li>I’d write a comment if they used <code>_dd</code> in their names, since it should be <code>_ad</code> for the arrival delays.</li>
 </ul>
-<p><em>Feedback:</em> For Question 6, it would be more clear to use _ad at the end of your names, since you are summarizing the arrival delays (not the departure delays).</p>
+<p><em>Feedback:</em> For Question 6, it would be more clear to use <code>_ad</code> at the end of your names, since you are summarizing the arrival delays (not the departure delays).</p>
 <p><strong>Growing</strong>:</p>
+<ul>
+<li>If they miss some of the statistics</li>
+</ul>
 <p><em>Feedback:</em> For Question 6, you were asked to provide four (4) statistics!</p>
+<ul>
+<li>If they use the wrong dataset (nycflights instead of sfo_flights)</li>
+</ul>
+<p><em>Feedback:</em> For Question 6, what dataset should you be using to calculate your summary statistics?</p>
 </section>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">7</h2>
+<p><strong>Using the above summary statistics, what is your answer be to my question? What should I expect if I am flying from New York to San Francisco?</strong></p>
+<p><strong>Success</strong></p>
+<ul>
+<li>Makes a statement about what I should expect (flight to be early / late)</li>
+<li>Justifies statement based on summary statistics</li>
+</ul>
+<p><strong>Growing</strong></p>
+<ul>
+<li>Does not justify their statement</li>
+</ul>
+<p><em>Feedback:</em> In Statistics it is critical to back your claim with data! How did you decide what I should expect if I am flying from NYC to SFO?</p>
+<ul>
+<li>Only discuss the statistics but don’t address the question</li>
+</ul>
+<p><em>Feedback:</em> You point out the statistics and what they mean in terms of an arrival delay, but how do these statistics connect with my question about what I should expect?</p>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">8</h2>
 <p><strong>Now, rather than calculating summary statistics, plot the distribution of arrival delays for the <code>sfo_flights</code> dataset. Choose the type of plot you believe is appropriate for visualizing the distribution of arrival delays. Be sure to give your visualization nice axis labels!</strong></p>
 <p>You choose the type of plot you believe is appropriate for visualizing the <strong>distribution</strong> of departure delays.</p>
 <p><strong>Success</strong>: Code should look like:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nycflights, </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> arr_delay)) <span class="sc">+</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Arrival Delays (min)&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>I’d give full credit for using either the <code>sfo_flights</code> dataset or accidentally using the <code>nycflights</code> dataset</p></li>
 <li><p>Acceptable <code>geom</code>s:</p>
 <ul>
 <li><code>geom_histogram()</code></li>
@@ -2859,33 +2863,51 @@ Note
 <ul>
 <li>Uses <code>geom_boxplot()</code></li>
 </ul>
-<p><em>Feedback:</em> For Question 7, we need to use a geom which allows for us to see the <em>shape</em> of the distribution. Boxplots hide distributions with multiple modes, so what type of plot would be better?</p>
+<p><em>Feedback:</em> For Question 8, we need to use a geom which allows for us to see the <em>shape</em> of the distribution. Boxplots hide distributions with multiple modes, so what type of plot would be better?</p>
 <ul>
 <li>Doesn’t change x-axis label</li>
 </ul>
-<p><em>Feedback:</em> For Question 7, you were asked to give your visualization nice axis labels.</p>
+<p><em>Feedback:</em> For Question 8, you were asked to give your visualization nice axis labels. It is also important for the axis label to contain the units of the variable! What units were the arrival delays measured in?</p>
 <ul>
 <li>Doesn’t include units (minutes) in axis label</li>
 </ul>
-<p><em>Feedback:</em> For Question 7, it is important for the axis label to contain the units of the variable. What units were the arrival delays measured in?</p>
+<p><em>Feedback:</em> For Question 8, it is important for the axis label to contain the units of the variable. What units were the arrival delays measured in?</p>
 </section>
-<section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5">8</h2>
-<p><strong>What information can you obtain from the visualization that you could not from the data summaries?</strong></p>
-<p><strong>Success</strong>: Answer should address <em>all</em> of the following</p>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">9</h2>
+<p><strong>Using the plot above, what is your answer be to my question? What should I expect if I am flying from New York to San Francisco?</strong></p>
+<p><strong>Success</strong></p>
 <ul>
-<li>visualization allows for you to see skew</li>
-<li>visualization allows for you to see mode / peak</li>
+<li>Makes a statement about what I should expect (flight to be early / late)</li>
+<li>Justifies statement based on the plot</li>
+</ul>
+<p><strong>Growing</strong></p>
+<ul>
+<li>Does not justify their statement</li>
+</ul>
+<p><em>Feedback:</em> In Statistics it is critical to back your claim with data! How did you decide what I should expect if I am flying from NYC to SFO?</p>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">10</h2>
+<p><strong>How did your answer change when using the plot versus using the summary statistics? i.e. What were you able to see in the plot that could could not “see” with the summary statistics?</strong></p>
+<p><strong>Success</strong>:</p>
+<ul>
+<li>States if / how their answer did / did not change</li>
+<li>Discusses what could be see in the visualizations that could not be seen in the statistics
+<ul>
+<li>skew</li>
+<li>mode / peak</li>
+</ul></li>
 </ul>
 <p><strong>Growing</strong>:</p>
 <ul>
-<li>Response addresses either skew or modes, but not both</li>
+<li>Response <strong>does not</strong> discuss what could be seen in the visualizations that could not be seen in the statistics</li>
 </ul>
-<p><em>Feedback:</em> For Question 8, you should address the shape of the distribution, which includes the skew and the mode(s).</p>
+<p><em>Feedback:</em> For Question 10, you should address what you were able to SEE in the visualization that you could not “see” in the summary statistics.</p>
 <ul>
-<li>Response doesn’t make much sense</li>
+<li>Response doesn’t discuss if / how the answer to the question changed</li>
 </ul>
-<p><em>Feedback:</em> For Question 8, what can you <em>see</em> in the visualization that was not apparent from the data summaries?</p>
+<p><em>Feedback:</em> Great job discussing how the shape of the distribution informs you choice of statistic! You did not, however, discuss if / how your answer to my question changed between looking at the plot versus looking at the statistics.</p>
 </section>
 
 </main>
