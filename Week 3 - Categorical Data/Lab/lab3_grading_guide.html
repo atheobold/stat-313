@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -2649,7 +2649,7 @@ Q13</p>
 <li>If they do not provide size of data</li>
 </ul>
 <p><em>Feedback for no code:</em> For Question 1, you needed to write code to explore the size of the data and the types of variables.</p>
-<p><em>Feedback for no / incorrect dimensions:</em> For Question 1, look again at the output of the glimpse() function, how many rows and columns are included in the nycflights dataset?</p>
+<p><em>Feedback for no / incorrect dimensions:</em> For Question 1, look again at the output of the <code>glimpse()</code> function, how many rows and columns are included in the nycflights dataset?</p>
 </section>
 <section id="question-2-categorical-variables-in-dataset" class="level1">
 <h1>Question 2 – Categorical variables in dataset</h1>
@@ -2679,7 +2679,7 @@ Q13</p>
 <p><strong>Success</strong></p>
 <ul>
 <li>Provides code that uses <code>distinct()</code> function</li>
-<li>States there are 4 levels: Cutthroat trout, Coastal giant salamander, Olympic torrent salamander, and NA</li>
+<li>Inputs the <code>species</code> variable</li>
 </ul>
 <p><strong>Growing:</strong> Does not use <code>distinct()</code> function</p>
 <p><em>Feedback:</em> For Question 3, there is a function which finds the <em>distinct</em> levels of a categorical variable. What function might that be?</p>
@@ -2715,17 +2715,17 @@ Note
 </div>
 <p><strong>Growing:</strong> If <code>filter()</code> is not correct</p>
 <ul>
-<li><p>using <code>and_vertebrates</code></p></li>
-<li><p>using the wrong variable / value</p></li>
-<li><p>making a new dataset instead of updating the <code>trout</code> dataset</p></li>
+<li>using <code>and_vertebrates</code></li>
+<li>using the wrong variable / value</li>
+<li>making a new dataset instead of updating the <code>trout</code> dataset</li>
 </ul>
-<p><em>Feedback:</em> Careful! In Question 5 you were given code that would update the trout dataset, <em>not</em> make a new dataset. By making a new dataset, you forgot to use the correct name of the dataset later on!</p>
+<p><em>Feedback for filtering <code>and_vertebrates</code>:</em> Careful! In Question 5 you need to filter the <code>trout</code> dataset you made in Question 4 to meet the criteria specified.</p>
+<p><em>Feedback for making a new dataset:</em> Careful! In Question 5 you were given code that would update the trout dataset, <em>not</em> make a new dataset. By making a new dataset, you forgot to use the correct name of the dataset later on!</p>
 <section id="question-6-distribution-of-trout-lengths" class="level2">
 <h2 class="anchored" data-anchor-id="question-6-distribution-of-trout-lengths">Question 6 – Distribution of trout lengths</h2>
 <p><strong>Success</strong>: Acceptable <code>geom</code>s:</p>
 <ul>
 <li><code>geom_histogram()</code></li>
-<li><code>geom_dotplot()</code> (though not great)</li>
 <li><code>geom_density()</code></li>
 </ul>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -2743,6 +2743,10 @@ Note
 </div>
 </div>
 <p><strong>Growing</strong>:</p>
+<ul>
+<li>Use <code>geom_dotplot()</code></li>
+</ul>
+<p><em>Feedback:</em> Careful! A dotplot doesn’t automatically resize the dots based on the number of observations you have. This makes it so your dots are running off the page! You can resize the dots using the dotsize argument, with a number smaller than 1 (e.g., 0.5).</p>
 <ul>
 <li>Uses <code>geom_boxplot()</code></li>
 </ul>
@@ -2820,6 +2824,9 @@ Note
 <p><strong>Growing:</strong></p>
 <ul>
 <li>Comparisons are incomplete</li>
+</ul>
+<p><em>Feedback:</em> Your comparison of these distributions should include similarities / differences in their centers and shapes.</p>
+<ul>
 <li>Does not state what channel types did not have both types of forest</li>
 </ul>
 <p><em>Feedback:</em> Careful! For Question 10 you should note if not every forest type was observed for every type of channel.</p>
@@ -2851,11 +2858,11 @@ Note
 <h2 class="anchored" data-anchor-id="question-13-differences-in-averages-compared-to-plot">Question 13 – Differences in averages compared to plot</h2>
 <p><strong>Success:</strong></p>
 <ul>
-<li>States that the averages are all fairly similar</li>
-<li></li>
+<li>States that the averages are all fairly similar (comparing the centers)</li>
+<li>Connects with the skew seen in the visualizations</li>
 </ul>
 <p><strong>Growing:</strong> If all they say is that the differences in means are similar to the visualization</p>
-<p><em>Feedback:</em> For Question 13, <em>how</em> are the differences similar to the visualizations? How does what you saw in the visualizations manifest in these means?</p>
+<p><strong>Feedback:</strong> Note that in Question 13 you are specifically using the mean to summarize the center of the distribution. In Question 9 you saw the shape of each channel / forest section’s distribution. Based on what you saw, how do the shapes of the distributions influence the means you are seeing in Question 13?</p>
 </section>
 </section>
 
