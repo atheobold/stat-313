@@ -71,72 +71,59 @@ Q13
 
 *Feedback:* For Question 3, there is a function which finds the *distinct* levels of a categorical variable. What function might that be?
 
-# Question 4 -- Filtering to including only trout
+# Question 4 -- Filtering to including only catchable trout 
 
 **Success:** Code should look similar to:
 
 ```{r fish-filter-1}
 trout <- filter(and_vertebrates, 
-                species == "Cutthroat trout")
+                species == "Cutthroat trout", 
+                length_1_mm > 101)
 ```
 
 ::: callout-note
-The can use %>% or pass in `and_vertebrates` as first argument
+The can use %\>% or pass in `and_vertebrates` as first argument
 :::
 
 **Growing:** If `filter()` is not correct
 
-# Question 5 -- Filtering to include only catchable trout
-
-**Success:** Code should look similar to:
-
-```{r fish-filter-2}
-trout <- filter(trout, 
-                length_1_mm > 101)
-```
-
-**Growing:** If `filter()` is not correct
-
--   using `and_vertebrates`
 -   using the wrong variable / value
 -   making a new dataset instead of updating the `trout` dataset
 
-*Feedback for filtering `and_vertebrates`:* Careful! In Question 5 you need to filter the `trout` dataset you made in Question 4 to meet the criteria specified. 
+*Feedback for filtering `and_vertebrates`:* Careful! In Question 4 you need to filter the `trout` dataset you made in Question 4 to meet the criteria specified.
 
-*Feedback for making a new dataset:* Careful! In Question 5 you were given code that would update the trout dataset, *not* make a new dataset. By making a new dataset, you forgot to use the correct name of the dataset later on!
+*Feedback for making a new dataset:* Careful! In Question 4 you were given code that would update the trout dataset, *not* make a new dataset. By making a new dataset, you forgot to use the correct name of the dataset later on!
 
-## Question 6 -- Distribution of trout lengths
+## Question 5 -- Distribution of trout lengths
 
 **Success**: Acceptable `geom`s:
 
 -   `geom_histogram()`
 -   `geom_density()`
 
-::: callout-note
-Note: Axis labels are not required! But, if they don't change it, give the following feedback:
-
-*For Question 6, it is always nice to have professional looking axis labels!*
-:::
-
 **Growing**:
 
--   Use `geom_dotplot()` 
+-   Use `geom_dotplot()`
 
-*Feedback:* Careful! A dotplot doesn't automatically resize the dots based on the number of observations you have. This makes it so your dots are running off the page! You can resize the dots using the dotsize argument, with a number smaller than 1 (e.g., 0.5).  
+*Feedback:* Careful! A dotplot doesn't automatically resize the dots based on the number of observations you have. This makes it so your dots are running off the page! You can resize the dots using the dotsize argument, with a number smaller than 1 (e.g., 0.5).
 
 -   Uses `geom_boxplot()`
 
-*Feedback:* For Question 6, we need to use a geom which allows for us to see the *shape* of the distribution. Boxplots hide distributions with multiple modes, so what type of plot would be better?
+*Feedback:* For Question 5, we need to use a geom which allows for us to see the *shape* of the distribution. Boxplots hide distributions with multiple modes, so what type of plot would be better?
 
-## Question 7 -- Sources of variation
+- Does not change axis labels
+
+*Feedback:* For Question 5, it is important for the axis label to describe the variable that is being measured and its associated units. What unit was length measured in?
+
+## Question 6 -- Sources of variation
 
 **Success:** Names three "reasonable" sources of variation in fish length
 
 **Growing:** Names an unreasonable source of variation in fish lengths
 
-*Feedback:* For Question 7, we are interested in variables that, if changed, we would expect changes in the length of the Cutthroat trout.
+*Feedback:* For Question 6, we are interested in variables that, if changed, we would expect changes in the length of the Cutthroat trout.
 
-## Question 8 -- Ridge plot
+## Question 7 -- Ridge plot
 
 **Success:** Code should look like the following
 
@@ -152,17 +139,17 @@ ggplot(data = fish,
 
 -   Doesn't change axis labels
 
-*Feedback:* For Question 8, you were asked to give your visualization nice axis labels. Note that means BOTH axes!
+*Feedback:* For Question 7, you were asked to give your visualization nice axis labels. Note that means BOTH axes!
 
 -   Doesn't include units (mm) in x-axis label
 
-*Feedback:* For Question 8, it is important for the axis label to contain the units of the variable. What units were the lengths measured in?
+*Feedback:* For Question 7, it is important for the axis label to contain the units of the variable. What units were the lengths measured in?
 
 -   Y-axis should say something about the type of channel
 
-*Feedback:* For Question 8, it is important for the axis label to describe the variable that is being measured.
+*Feedback:* For Question 7, it is important for the axis label to describe the variable that is being measured.
 
-## Question 9 -- Adding another categorical variable
+## Question 8 -- Adding another categorical variable
 
 **Success:** Uses either color or facets to incorporate `species`
 
@@ -175,7 +162,7 @@ ggplot(data = fish,
 
 ## Option 2
 ggplot(data = fish, 
-       mapping = aes(x = length_1_mm, y = unittype, color = species)) +
+       mapping = aes(x = length_1_mm, y = unittype, fill = species)) +
   geom_density_ridges() 
 
 ```
@@ -183,12 +170,10 @@ ggplot(data = fish,
 **Growing:** If doesn't use facets or colors
 
 ::: callout-note
-If they got a growing on #8 for an axis label, they don't get a growing here.
+If they got a growing on #7 for an axis label, they don't get a growing here.
 :::
 
-**Question 10** -- Based on your plot, how different are the lengths of the Cutthroat trout between the different channel types and forest sections?
-
-## Question 10 -- Based on the plot, how different are the lengths between the channel types and forest sections?
+## Question 9 -- Based on the plot, how different are the lengths between the channel types and forest sections?
 
 **Success:** Must have all of the following
 
@@ -200,13 +185,13 @@ If they got a growing on #8 for an axis label, they don't get a growing here.
 
 -   Comparisons are incomplete
 
-*Feedback:* Your comparison of these distributions should include similarities / differences in their centers and shapes. 
+*Feedback:* Your comparison of these distributions should include similarities / differences in their centers and shapes.
 
 -   Does not state what channel types did not have both types of forest
 
-*Feedback:* Careful! For Question 10 you should note if not every forest type was observed for every type of channel.
+*Feedback:* Careful! For Question 9 you should note if not every forest type was observed for every type of channel.
 
-## Question 11 -- Average length of Cutthroat trout between channel types
+## Question 10 -- Average length of Cutthroat trout between channel types
 
 **Success:** Code should look similar to:
 
@@ -218,13 +203,11 @@ trout %>%
 
 If they don't name their summary statistics
 
-*Feedback:* For Question 11, the output of your summary statistics looks a lot nicer if you give them names! (like the example that was given)
+*Feedback:* For Question 10, the output of your summary statistics looks a lot nicer if you give them names! (like the example that was given)
 
 **Growing:** If process is not correct
 
-## Question 12 -- Find the average length of Cutthroat trout between channel
-
-types and forest section
+## Question 11 -- Find the average length of Cutthroat trout between channel types and forest section
 
 **Success:** Code should look similar to:
 
@@ -236,14 +219,13 @@ trout %>%
 
 **Growing:** If process is not correct
 
-## Question 13 -- Differences in averages compared to plot
+## Question 12 -- Differences in averages compared to plot
 
 **Success:**
 
-- States that the averages are all fairly similar (comparing the centers)
-- Connects with the skew seen in the visualizations
+-   States that the averages are all fairly similar (comparing the centers)
+-   Connects with the skew seen in the visualizations
 
 **Growing:** If all they say is that the differences in means are similar to the visualization
 
-**Feedback:** Note that in Question 13 you are specifically using the mean to summarize the center of the distribution. In Question 9 you saw the shape of each channel / forest section's distribution. Based on what you saw, how do the shapes of the distributions influence the means you are seeing in Question 13? 
-
+**Feedback:** Note that in Question 12 you are specifically using the mean to summarize the center of the distribution. In Question 8 you saw the shape of each channel / forest section's distribution. Based on what you saw, how do the shapes of the distributions influence the means you are seeing in Question 12?
