@@ -19,6 +19,10 @@ library(tidyverse)
 library(moderndive)
 library(infer)
 library(lterdatasampler)
+
+# This is so you will get the SAME bootstrap distribution every time you run your code
+# So your confidence interval won't change. :) 
+set.seed(1234)
 ```
 
 ## Data
@@ -43,7 +47,7 @@ The data contains information on at total of 392 Fiddler Crabs caught at 13 mars
 
 ```{r removing-duplicates}
 pie_crab_clean <- pie_crab %>% 
-  group_by(latitude) %>% 
+  group_by(site) %>% 
   slice_sample(n = 1) %>% 
   ungroup()
 ```
@@ -52,7 +56,9 @@ pie_crab_clean <- pie_crab %>%
 
 ## Visualizing Relationships
 
-**2. Create a scatterplot modeling the relationship between latitude (explanatory) and water temperature (response).** *Don't forget to add descriptive axis labels!*
+**2. Create a scatterplot modeling the relationship between latitude (explanatory) and water temperature (response)for these 13 marshes.** 
+
+*Don't forget to add descriptive axis labels!*
 
 ```{r scatterplot}
 ggplot(data = pie_crab_clean, 
@@ -64,7 +70,7 @@ ggplot(data = pie_crab_clean,
   
 ```
 
-**3. Describe the relationship you see in the scatterplot. Be sure to address the four aspects we discussed in class: form, direction, strength, and unusual points!**
+**3. Describe the relationship you see in the scatterplot. Be sure to address the four aspects we discussed in class: form, direction, strength, and unusual points!** Keep in mind that you are no longer analyzing data on crabs! The dataset you have is on marshes along the Atlantic coast!
 
 ### Summarizing the Relationships
 
@@ -75,22 +81,22 @@ Now that you've visualized the relationship, let's summarize this relationship w
 
 Let's calculate both!
 
-**4. Use the `get_correlation()` function to calculate the correlation between the water temperature and latitude.**
+**4. Use the `get_correlation()` function to calculate the correlation between the water temperature and latitude for these 13 marshes.**
 
 ```{r calculate-correlation}
 get_correlation(data = pie_crab_clean, 
                 formula = latitude ~ water_temp)
 ```
 
-**5. Fill in the code below to calculate the slope for the relationship between the water temperature (response) and latitude (explanatory).**
+**5. Fill in the code below to calculate the observed slope for the relationship between the water temperature (response) and latitude (explanatory) for these 13 marshes.**
+
+*Note: Nothing will be output when you run this code!* 
 
 ```{r calculate-slope}
 obs_slope <- pie_crab_clean %>% 
   specify(response = water_temp, 
           explanatory = latitude) %>% 
   calculate(stat = "slope")
-
-obs_slope
 ```
 
 ## Bootstrap Distribution
@@ -110,13 +116,10 @@ Let's give this a try!
 **6. Fill in the code to generate 500 bootstrap slope statistics (from 500 bootstrap resamples).**
 
 ```{r boot-dist}
-#| cache: true
-# The cache: true option stores your distribution so you don't get a new one every time you run the code! 
-
-bootstrap_dist <- pie_crab_clean %>% 
+bootstrap <- pie_crab_clean %>% 
   specify(response = water_temp, 
           explanatory = latitude) %>% 
-  generate(reps = 5000, 
+  generate(reps = 500, 
            type = "bootstrap") %>% 
   calculate(stat = "slope")
 ```
@@ -129,8 +132,8 @@ Alright, now that we have the bootstrap slope statistics, let's see what it look
 
 ```{r visualize-boot-dist}
 # Code to visualize bootstrap statistics
-visualise(bootstrap_dist) + 
-  labs(x = "Slope Statistic")
+visualise(bootstrap) + 
+  labs(x = "Slope Statistic for Relationship Between Water Temperature and Latitude")
 ```
 
 ## Confidence Interval
@@ -144,8 +147,9 @@ This seems like a study where we care a bit less about our interval capturing th
 ```{r ci-percentile}
 # Code to obtain a 85% PERCENTILE based confidence interval
 
-get_confidence_interval(bootstrap_dist, 
-                        level = 0.85)
+get_confidence_interval(bootstrap, 
+                        level = 0.85, 
+                        type = "percentile")
 
 ```
 
@@ -160,13 +164,17 @@ Just for fun, let's compare the confidence we obtained using a percentile method
 ```{r ci-se}
 # Code to obtain a 85% SE based confidence interval
 
-get_confidence_interval(bootstrap_dist, 
+get_confidence_interval(bootstrap, 
                         level = 0.85, 
+                        type = "se",
                         point_estimate = obs_slope)
 
 ```
 
-**11. How do your confidence intervals compare? Why do you believe they are similar or different?**
+**11. How do your confidence intervals compare? Based on the shape of the bootstrap distribution, would you expect for these methods to yield similar results?**
+
+*Hint: Think about the conditions for using the SE method to obtain a confidence interval!*
+
 
 *They are nearly identical! This is because the bootstrap distribution is approximately normal, so an SE method yields similar results to the percentile method.*
 
